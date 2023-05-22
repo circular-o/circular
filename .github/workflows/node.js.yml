@@ -30,6 +30,7 @@ jobs:
       - run: npx playwright install-deps
       - run: npm ci
       - run: npm run verify
-      - run: npm publish
+      - run: npm version prerelease --preid=next
+      - run: npm publish --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
