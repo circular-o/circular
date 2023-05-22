@@ -130,7 +130,7 @@ describe('<sl-tab-group>', () => {
         </sl-tab-group>
       `);
 
-      await aTimeout(0);
+      await aTimeout(100);
 
       const clientRectangles = getClientRectangles(tabGroup);
       expect(clientRectangles.body?.top).to.be.greaterThanOrEqual(clientRectangles.navigation?.bottom || -Infinity);
@@ -145,7 +145,7 @@ describe('<sl-tab-group>', () => {
       `);
       tabGroup.placement = 'bottom';
 
-      await aTimeout(0);
+      await aTimeout(100);
 
       const clientRectangles = getClientRectangles(tabGroup);
       expect(clientRectangles.body?.bottom).to.be.lessThanOrEqual(clientRectangles.navigation?.top || +Infinity);
@@ -160,7 +160,7 @@ describe('<sl-tab-group>', () => {
       `);
       tabGroup.placement = 'start';
 
-      await aTimeout(0);
+      await aTimeout(100);
 
       const clientRectangles = getClientRectangles(tabGroup);
       expect(clientRectangles.body?.left).to.be.greaterThanOrEqual(clientRectangles.navigation?.right || -Infinity);
@@ -175,7 +175,7 @@ describe('<sl-tab-group>', () => {
       `);
       tabGroup.placement = 'end';
 
-      await aTimeout(0);
+      await aTimeout(100);
 
       const clientRectangles = getClientRectangles(tabGroup);
       expect(clientRectangles.body?.right).to.be.lessThanOrEqual(clientRectangles.navigation?.left || -Infinity);
@@ -230,7 +230,7 @@ describe('<sl-tab-group>', () => {
       const tabGroup = await fixture<SlTabGroup>(html`<sl-tab-group> ${generateTabs(30)} </sl-tab-group>`);
       tabGroup.noScrollControls = true;
 
-      await aTimeout(0);
+      await aTimeout(100);
 
       const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sl-icon-button');
       expect(scrollButtons).to.have.length(0);
@@ -239,7 +239,7 @@ describe('<sl-tab-group>', () => {
     it('does not show scroll buttons if all tabs fit on the screen', async () => {
       const tabGroup = await fixture<SlTabGroup>(html`<sl-tab-group> ${generateTabs(2)} </sl-tab-group>`);
 
-      await aTimeout(0);
+      await aTimeout(100);
 
       const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sl-icon-button');
       expect(scrollButtons).to.have.length(0);
@@ -259,7 +259,7 @@ describe('<sl-tab-group>', () => {
       const tabGroup = await fixture<SlTabGroup>(html`<sl-tab-group> ${generateTabs(50)} </sl-tab-group>`);
       tabGroup.placement = 'end';
 
-      await aTimeout(0);
+      await aTimeout(100);
 
       const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sl-icon-button');
       expect(scrollButtons).to.have.length(0);
@@ -404,7 +404,7 @@ describe('<sl-tab-group>', () => {
 
       const showEventPromise = oneEvent(tabGroup, 'sl-tab-show') as Promise<SlTabShowEvent>;
       await sendKeys({ press: 'ArrowRight' });
-      await aTimeout(0);
+      await aTimeout(100);
       expect(generalHeader).to.have.attribute('active');
 
       await sendKeys({ press: 'Enter' });
@@ -439,7 +439,7 @@ describe('<sl-tab-group>', () => {
 
       return expectCustomTabToBeActiveAfter(tabGroup, () => {
         tabGroup.show('custom');
-        return aTimeout(0);
+        return aTimeout(100);
       });
     });
   });
