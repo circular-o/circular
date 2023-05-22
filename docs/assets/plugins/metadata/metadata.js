@@ -20,15 +20,15 @@
       </thead>
       <tbody>
         ${props
-        .map(prop => {
-          const hasAttribute = !!prop.attribute;
-          const isAttributeDifferent = prop.attribute !== prop.name;
-          let attributeInfo = '';
+          .map(prop => {
+            const hasAttribute = !!prop.attribute;
+            const isAttributeDifferent = prop.attribute !== prop.name;
+            let attributeInfo = '';
 
-          if (!hasAttribute) {
-            attributeInfo = `<br><small>(property only)</small>`;
-          } else if (isAttributeDifferent) {
-            attributeInfo = `
+            if (!hasAttribute) {
+              attributeInfo = `<br><small>(property only)</small>`;
+            } else if (isAttributeDifferent) {
+              attributeInfo = `
                 <br>
                 <sl-tooltip content="This attribute is different from its property">
                   <small>
@@ -37,9 +37,9 @@
                     </code>
                   </small>
                 </sl-tooltip>`;
-          }
+            }
 
-          return `
+            return `
               <tr>
                 <td>
                   <code class="nowrap">${escapeHtml(prop.name)}</code>
@@ -48,14 +48,15 @@
                 <td>
                   ${escapeHtml(prop.description)}
                 </td>
-                <td style="text-align: center;">${prop.reflects ? '<sl-icon label="yes" name="check-lg"></sl-icon>' : ''
-            }</td>
+                <td style="text-align: center;">${
+                  prop.reflects ? '<sl-icon label="yes" name="check-lg"></sl-icon>' : ''
+                }</td>
                 <td>${prop.type?.text ? `<code>${escapeHtml(prop.type?.text || '')}</code>` : '-'}</td>
                 <td>${prop.default ? `<code>${escapeHtml(prop.default)}</code>` : '-'}</td>
               </tr>
             `;
-        })
-        .join('')}
+          })
+          .join('')}
 
           <tr>
             <td class="nowrap"><code>updateComplete</code></td>
@@ -87,8 +88,8 @@
       </thead>
       <tbody>
         ${events
-        .map(
-          event => `
+          .map(
+            event => `
               <tr>
                 <td data-flavor="html"><code class="nowrap">${escapeHtml(event.name)}</code></td>
                 <td data-flavor="react"><code class="nowrap">${escapeHtml(event.reactName)}</code></td>
@@ -96,8 +97,8 @@
                 <td>${event.type?.text ? `<code>${escapeHtml(event.type?.text)}` : '-'}</td>
               </tr>
             `
-        )
-        .join('')}
+          )
+          .join('')}
       </tbody>
     `;
 
@@ -117,25 +118,26 @@
       </thead>
       <tbody>
         ${methods
-        .map(
-          method => `
+          .map(
+            method => `
               <tr>
                 <td class="nowrap"><code>${escapeHtml(method.name)}()</code></td>
                 <td>${escapeHtml(method.description)}</td>
                 <td>
-                  ${method.parameters?.length
-              ? `
+                  ${
+                    method.parameters?.length
+                      ? `
                         <code>${escapeHtml(
-                method.parameters.map(param => `${param.name}: ${param.type?.text || ''}`).join(', ')
-              )}</code>
+                          method.parameters.map(param => `${param.name}: ${param.type?.text || ''}`).join(', ')
+                        )}</code>
                       `
-              : '-'
-            }
+                      : '-'
+                  }
                 </td>
               </tr>
-           `
-        )
-        .join('')}
+            `
+          )
+          .join('')}
       </tbody>
     `;
 
@@ -154,15 +156,15 @@
       </thead>
       <tbody>
         ${slots
-        .map(
-          slot => `
+          .map(
+            slot => `
               <tr>
                 <td class="nowrap">${slot.name ? `<code>${escapeHtml(slot.name)}</code>` : '(default)'}</td>
                 <td>${escapeHtml(slot.description)}</td>
               </tr>
             `
-        )
-        .join('')}
+          )
+          .join('')}
       </tbody>
     `;
 
@@ -182,16 +184,16 @@
       </thead>
       <tbody>
         ${styles
-        .map(
-          style => `
+          .map(
+            style => `
               <tr>
                 <td class="nowrap"><code>${escapeHtml(style.name)}</code></td>
                 <td>${escapeHtml(style.description)}</td>
                 <td>${style.default ? `<code>${escapeHtml(style.default)}</code>` : ''}</td>
               </tr>
             `
-        )
-        .join('')}
+          )
+          .join('')}
       </tbody>
     `;
 
@@ -210,15 +212,15 @@
       </thead>
       <tbody>
         ${parts
-        .map(
-          part => `
+          .map(
+            part => `
               <tr>
                 <td class="nowrap"><code>${escapeHtml(part.name)}</code></td>
                 <td>${escapeHtml(part.description)}</td>
               </tr>
-           `
-        )
-        .join('')}
+            `
+          )
+          .join('')}
       </tbody>
     `;
 
@@ -237,15 +239,15 @@
       </thead>
       <tbody>
         ${animations
-        .map(
-          animation => `
+          .map(
+            animation => `
               <tr>
                 <td class="nowrap"><code>${escapeHtml(animation.name)}</code></td>
                 <td>${escapeHtml(animation.description)}</td>
               </tr>
             `
-        )
-        .join('')}
+          )
+          .join('')}
       </tbody>
     `;
 
