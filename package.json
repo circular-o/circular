@@ -3,7 +3,7 @@
   "description": "A forward-thinking library of web components.",
   "version": "0.1.0",
   "homepage": "https://github.com/jeysonj2/circular",
-  "author": "Cory LaViska + Interzero Circular Team",
+  "author": "Cory LaViska + Circular Team",
   "license": "MIT",
   "customElements": "dist/custom-elements.json",
   "web-types": "dist/web-types.json",
