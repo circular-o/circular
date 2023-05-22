@@ -3,6 +3,8 @@ name: Create GitHub Release
 
 on:
   push:
+    branches:
+      - current
     tags:
       - "v0.*"
       - "v1.*"
