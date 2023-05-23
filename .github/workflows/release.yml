@@ -1,11 +1,10 @@
-# This workflow will create a GitHub release every time a tag is pushed
-name: Create GitHub Release
+# This workflow will create a GitHub release every the current branch is pushed
+name: GitHub Release
 
 on:
   push:
-    tags:
-      - "v2.*"
-      - "v3.*"
+    branches:
+      - current
 
 jobs:
   release:

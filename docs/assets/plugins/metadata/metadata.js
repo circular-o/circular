@@ -135,7 +135,7 @@
                   }
                 </td>
               </tr>
-           `
+            `
           )
           .join('')}
       </tbody>
@@ -218,7 +218,7 @@
                 <td class="nowrap"><code>${escapeHtml(part.name)}</code></td>
                 <td>${escapeHtml(part.description)}</td>
               </tr>
-           `
+            `
           )
           .join('')}
       </tbody>
@@ -337,20 +337,20 @@
       sessionStorage.setItem('sl-version', metadata.package.version);
 
       // Add repo buttons
-      const buttons = document.createElement('div');
-      buttons.classList.add('sidebar-buttons');
-      buttons.innerHTML = `
-        <sl-button size="small" class="repo-button repo-button--sponsor" href="https://github.com/sponsors/claviska" target="_blank">
-          <sl-icon slot="prefix" name="heart"></sl-icon> Sponsor
-        </sl-button>
-        <sl-button size="small" class="repo-button repo-button--github" href="https://github.com/shoelace-style/shoelace/stargazers" target="_blank">
-          <sl-icon slot="prefix" name="github"></sl-icon> Star
-        </sl-button>
-        <sl-button size="small" class="repo-button repo-button--twitter" href="https://twitter.com/shoelace_style" target="_blank">
-          <sl-icon slot="prefix" name="twitter"></sl-icon> Follow
-        </sl-button>
-      `;
-      target.appendChild(buttons);
+      // const buttons = document.createElement('div');
+      // buttons.classList.add('sidebar-buttons');
+      // buttons.innerHTML = `
+      //   <sl-button size="small" class="repo-button repo-button--sponsor" href="https://github.com/sponsors/claviska" target="_blank">
+      //     <sl-icon slot="prefix" name="heart"></sl-icon> Sponsor
+      //   </sl-button>
+      //   <sl-button size="small" class="repo-button repo-button--github" href="https://github.com/shoelace-style/shoelace/stargazers" target="_blank">
+      //     <sl-icon slot="prefix" name="github"></sl-icon> Star
+      //   </sl-button>
+      //   <sl-button size="small" class="repo-button repo-button--twitter" href="https://twitter.com/shoelace_style" target="_blank">
+      //     <sl-icon slot="prefix" name="twitter"></sl-icon> Follow
+      //   </sl-button>
+      // `;
+      // target.appendChild(buttons);
     });
 
     hook.beforeEach(async (content, next) => {
