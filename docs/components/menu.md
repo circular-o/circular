@@ -2,7 +2,7 @@
 
 [component-header:sl-menu]
 
-You can use [menu items](/components/menu-item), [menu labels](/components/menu-label), and [dividers](/components/divider) to compose a menu.
+You can use [menu items](/components/menu-item), [menu labels](/components/menu-label), and [dividers](/components/divider) to compose a menu. Menus support keyboard interactions, including type-to-select an option.
 
 ```html preview
 <sl-menu style="max-width: 200px;">
