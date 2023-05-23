@@ -7,6 +7,11 @@ on:
 
 jobs:
   build-and-publish:
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
     runs-on: ubuntu-latest
 
     steps:
@@ -24,18 +29,7 @@ jobs:
           npm run verify-no-tests
 
       - name: Generate release version
-        run: |
-          git config --global user.name "${GITHUB_ACTOR}"
-          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          npm run semantic-release
-
-      - name: Publish to npmjs
-        run: npm publish
+        run: npm run semantic-release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Push version tag
-        run: |
-          git config --global user.name "${GITHUB_ACTOR}"
-          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git push --follow-tags
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
