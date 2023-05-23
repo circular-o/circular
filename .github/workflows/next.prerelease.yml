@@ -24,7 +24,10 @@ jobs:
           npm run verify
 
       - name: Generate prerelease version
-        run: npm version prerelease --preid=next
+        run: |
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          npm version prerelease --preid=next
 
       - name: Publish to npmjs
         run: npm publish --tag next
