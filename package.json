@@ -1,5 +1,5 @@
 {
-  "name": "@jeysonj2/circular",
+  "name": "@circular-o/circular",
   "description": "A forward-thinking library of web components.",
   "version": "0.1.1-next.1",
   "homepage": "https://github.com/circular-o/circular",
@@ -34,6 +34,9 @@
     "type": "git",
     "url": "git+https://github.com/circular-o/circular.git"
   },
+  "publishConfig": {
+    "@circular-o:registry": "https://npm.pkg.github.com"
+  },
   "bugs": {
     "url": "https://github.com/circular-o/circular/issues"
   },
@@ -45,7 +48,7 @@
     "start": "node scripts/build.js --bundle --serve",
     "build": "node scripts/build.js --bundle --types --copydir \"docs/dist\"",
     "verify": "npm run prettier:check && npm run lint && npm run build",
-    "prepublishOnly-skip": "npm run verify",
+    "prepublishOnly": "npm run verify",
     "prettier": "prettier --write --loglevel warn .",
     "prettier:check": "prettier --check --loglevel warn .",
     "lint": "eslint src --max-warnings 0",

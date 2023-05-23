@@ -5,26 +5,35 @@ name: Node.js CI
 
 on:
   push:
-    branches: [next-node-ci]
+    branches: [next]
   pull_request:
-    branches: [next-node-ci]
+    branches: [next]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      # Setup .npmrc file to publish to GitHub Packages
+      - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '18.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@circular-o'
           cache: 'npm'
       - run: npx playwright install-deps
       - run: npm ci
-      - run: npm run verify
+      # - run: npm run verify
+      - run: |
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+      - run: npm version prerelease --preid=next
+      - run: npm publish --tag next --access public
+      - run: git push --follow-tags
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
