@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies and build
         run: |
           npx playwright install-deps
-          npm install
+          npm ci
           npm run verify
 
       - name: Generate prerelease version
