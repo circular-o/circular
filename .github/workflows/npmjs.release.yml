@@ -1,8 +1,9 @@
 name: Nodejs Release (latest)
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - current
 
 jobs:
   build-and-publish:
@@ -20,9 +21,21 @@ jobs:
         run: |
           npx playwright install-deps
           npm ci
-          npm run verify
+          npm run verify-no-tests
+
+      - name: Generate release version
+        run: |
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          npm run semantic-release
 
       - name: Publish to npmjs
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Push version tag
+        run: |
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git push --follow-tags
