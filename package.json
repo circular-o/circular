@@ -1,7 +1,7 @@
 {
   "name": "@circular-o/circular",
   "description": "A forward-thinking library of web components.",
-  "version": "0.1.1-next.0",
+  "version": "0.1.0",
   "homepage": "https://github.com/jeysonj2/circular",
   "author": "Cory LaViska + Circular Team",
   "license": "MIT",
