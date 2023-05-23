@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - current
+      - next
 
 jobs:
   build-and-publish:
