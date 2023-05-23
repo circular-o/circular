@@ -1,6 +1,6 @@
 <div class="splash">
 <div class="splash-start">
-<img class="splash-logo" src="/assets/images/circular-logo-bg-transparent.png" alt="Shoelace">
+<img class="splash-logo" src="/assets/images/wordmark.svg" alt="Shoelace">
 
 # <sl-visually-hidden>Shoelace:</sl-visually-hidden> A forward-thinking library of web components.
 
