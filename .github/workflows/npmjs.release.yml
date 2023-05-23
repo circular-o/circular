@@ -26,7 +26,7 @@ jobs:
         run: |
           npx playwright install-deps
           npm ci
-          npm run verify-no-tests
+          npm run verify
 
       - name: Generate release version
         run: npm run semantic-release

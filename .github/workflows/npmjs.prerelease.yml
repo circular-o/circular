@@ -21,7 +21,7 @@ jobs:
         run: |
           npx playwright install-deps
           npm ci
-          npm run verify-no-tests
+          npm run verify
 
       - name: Generate prerelease version
         run: |
@@ -30,7 +30,7 @@ jobs:
           npm version prerelease --preid=next
 
       - name: Publish to npmjs
-        run: npm publish --tag next
+        run: npm publish --tag next --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
