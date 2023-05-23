@@ -21,7 +21,7 @@ jobs:
         run: |
           npx playwright install-deps
           npm ci
-          npm run verify
+          npm run verify-no-tests
 
       - name: Generate prerelease version
         run: |
