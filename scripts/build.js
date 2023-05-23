@@ -120,6 +120,22 @@ fs.mkdirSync(outdir, { recursive: true });
         routes: {
           '/dist': './dist'
         }
+      },
+      //
+      // Suppress Chrome's document.write() warning
+      //
+      // More info: https://github.com/BrowserSync/browser-sync/issues/1600)
+      //
+      snippetOptions: {
+        rule: {
+          match: /<\/head>/u,
+          fn: (snippet, match) => {
+            const {
+              groups: { src }
+            } = /src='(?<src>[^']+)'/u.exec(snippet);
+            return `<script src="${src}" async></script>${match}`;
+          }
+        }
       }
     };
 

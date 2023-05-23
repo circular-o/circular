@@ -147,13 +147,7 @@ To run just one test file:
 If the test file is `src/components/breadcrumb-item.test.ts`, then `<nameOfTestFile>` would be `breadcrumb-item`.
 
 ```bash
-npm run test:component:watch -- <nameOfTestFile>
-```
-
-or to run the test only once:
-
-```bash
-npm run test:component -- <nameOfTestFile>
+npm run test -- --group <nameOfTestFile>
 ```
 
 ## Best Practices

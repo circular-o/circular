@@ -249,7 +249,7 @@ describe('<sl-tab-group>', () => {
       const tabGroup = await fixture<SlTabGroup>(html`<sl-tab-group> ${generateTabs(50)} </sl-tab-group>`);
       tabGroup.placement = 'start';
 
-      await aTimeout(100);
+      await aTimeout(0);
 
       const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sl-icon-button');
       expect(scrollButtons).to.have.length(0);
