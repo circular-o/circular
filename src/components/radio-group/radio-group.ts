@@ -199,12 +199,7 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
     }
   }
 
-  private handleInvalid(event: Event) {
-    this.formControlController.setValidity(false);
-    this.formControlController.emitInvalidEvent(event);
-  }
-
-  private syncRadios() {
+  private handleSlotChange() {
     if (customElements.get('sl-radio') || customElements.get('sl-radio-button')) {
       const radios = this.getAllRadios();
 
@@ -237,20 +232,20 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
       }
     } else {
       // Rerun this handler when <sl-radio> or <sl-radio-button> is registered
-      customElements.whenDefined('sl-radio').then(() => this.syncRadios());
-      customElements.whenDefined('sl-radio-button').then(() => this.syncRadios());
+      customElements.whenDefined('sl-radio').then(() => this.handleSlotChange());
+      customElements.whenDefined('sl-radio-button').then(() => this.handleSlotChange());
     }
+  }
+
+  private handleInvalid(event: Event) {
+    this.formControlController.setValidity(false);
+    this.formControlController.emitInvalidEvent(event);
   }
 
   private updateCheckedRadio() {
     const radios = this.getAllRadios();
     radios.forEach(radio => (radio.checked = radio.value === this.value));
     this.formControlController.setValidity(this.validity.valid);
-  }
-
-  @watch('size', { waitUntilFirstUpdate: true })
-  handleSizeChange() {
-    this.syncRadios();
   }
 
   @watch('value')
@@ -315,7 +310,7 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
       <slot
         @click=${this.handleRadioClick}
         @keydown=${this.handleKeyDown}
-        @slotchange=${this.syncRadios}
+        @slotchange=${this.handleSlotChange}
         role="presentation"
       ></slot>
     `;
