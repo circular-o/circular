@@ -218,8 +218,6 @@ describe('<sl-tab-group>', () => {
     it('shows scroll buttons on too many tabs', async () => {
       const tabGroup = await fixture<SlTabGroup>(html`<sl-tab-group> ${generateTabs(30)} </sl-tab-group>`);
 
-      await aTimeout(100);
-
       await waitForScrollButtonsToBeRendered(tabGroup);
 
       const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sl-icon-button');
@@ -273,10 +271,7 @@ describe('<sl-tab-group>', () => {
         html`<sl-tab-group> ${generateTabs(numberOfElements)} </sl-tab-group>`
       );
 
-      await aTimeout(100);
-
       await waitForScrollButtonsToBeRendered(tabGroup);
-
       const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sl-icon-button');
       expect(scrollButtons).to.have.length(2);
 
