@@ -1,4 +1,4 @@
-name: Nodejs Next Prerelease
+name: Prerelease Workflow
 
 on:
   push:
@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -19,7 +18,7 @@ jobs:
       - name: Install dependencies and build
         run: |
           npx playwright install-deps
-          npm ci
+          npm install
           npm run verify
 
       - name: Generate prerelease version
