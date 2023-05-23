@@ -1,4 +1,4 @@
-name: Nodejs Prerelease (next)
+name: Nodejs Next Prerelease
 
 on:
   push:
