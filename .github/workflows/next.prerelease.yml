@@ -24,7 +24,7 @@ jobs:
           npm run verify
 
       - name: Generate prerelease version
-        run: npm version prerelease --preid=next --no-git-tag-version
+        run: npm version prerelease --preid=next
 
       - name: Publish to npmjs
         run: npm publish --tag next
@@ -35,5 +35,4 @@ jobs:
         run: |
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git tag -a $(npm --silent version) -m "Version $(npm --silent version)"
           git push --follow-tags
