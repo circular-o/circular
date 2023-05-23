@@ -1,4 +1,4 @@
-# Shoelace
+# Circular
 
 A forward-thinking library of web components.
 
@@ -21,7 +21,7 @@ Twitter: [@shoelace_style](https://twitter.com/shoelace_style)
 
 ---
 
-## Shoemakers 🥾
+## Circular makers 🥾
 
 Shoemakers, or "Shoelace developers," can use this documentation to learn how to build Shoelace from source. You will need Node >= 14.17 to build and run the project locally.
 
