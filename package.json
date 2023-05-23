@@ -1,8 +1,8 @@
 {
-  "name": "@circular-o/circular",
+  "name": "@jeysonj2/circular",
   "description": "A forward-thinking library of web components.",
-  "version": "0.1.0",
-  "homepage": "https://github.com/jeysonj2/circular",
+  "version": "0.1.4",
+  "homepage": "https://github.com/circular-o/circular",
   "author": "Cory LaViska + Circular Team",
   "license": "MIT",
   "customElements": "dist/custom-elements.json",
@@ -32,10 +32,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jeysonj2/circular.git"
+    "url": "git+https://github.com/circular-o/circular.git"
   },
   "bugs": {
-    "url": "https://github.com/jeysonj2/circular/issues"
+    "url": "https://github.com/circular-o/circular/issues"
   },
   "funding": {
     "type": "individual",
@@ -45,7 +45,7 @@
     "start": "node scripts/build.js --bundle --serve",
     "build": "node scripts/build.js --bundle --types --copydir \"docs/dist\"",
     "verify": "npm run prettier:check && npm run lint && npm run build && npm run test",
-    "prepublishOnly": "npm run verify",
+    "prepublishOnly-skip": "npm run verify",
     "prettier": "prettier --write --loglevel warn .",
     "prettier:check": "prettier --check --loglevel warn .",
     "lint": "eslint src --max-warnings 0",
@@ -61,7 +61,7 @@
     "update-dependencies": "npm-check-updates --peer -u && npm install"
   },
   "engines": {
-    "node": ">=14.17.0"
+    "node": ">=16.20.0"
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.6.0",
