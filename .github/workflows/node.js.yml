@@ -24,12 +24,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          registry-url: 'https://npm.decodeit.co'
-          scope: '@circular-o'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@jeysonj2'
           cache: 'npm'
       - run: npx playwright install-deps
       - run: npm ci
       - run: npm run verify
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
