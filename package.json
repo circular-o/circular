@@ -1,7 +1,7 @@
 {
   "name": "@jeysonj2/circular",
   "description": "A forward-thinking library of web components.",
-  "version": "0.1.1-next.0",
+  "version": "0.1.0-development",
   "homepage": "https://github.com/circular-o/circular",
   "author": "Cory LaViska + Circular Team",
   "license": "MIT",
@@ -62,7 +62,7 @@
     "list-outdated-dependencies": "npm-check-updates --format repo --peer",
     "update-dependencies": "npm-check-updates --peer -u && npm install",
     "commit": "git-cz",
-    "semantic-release": "semantic-release --branches current"
+    "semantic-release": "semantic-release"
   },
   "engines": {
     "node": ">=16.20.0"
@@ -139,5 +139,20 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "release": {
+    "branches": [
+      {
+        "name": "current"
+      },
+      {
+        "name": "next",
+        "channel": "next",
+        "prerelease": "next"
+      }
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
