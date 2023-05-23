@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: '18.x'
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@jeysonj2'
+          scope: '@circular-o'
           cache: 'npm'
       - run: npx playwright install-deps
       - run: npm ci
@@ -33,7 +33,7 @@ jobs:
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - run: npm version prerelease --preid=next
-      - run: npm publish
+      - run: npm publish --tag next --access public
       - run: git push --follow-tags
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
