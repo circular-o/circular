@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          registry-url: 'https://npm.decodeit.co'
+          registry-url: 'https://npm.pkg.github.com'
           scope: '@circular-o'
           cache: 'npm'
       - run: npx playwright install-deps
@@ -37,4 +37,4 @@ jobs:
       - run: npm publish --tag next
       - run: git push --follow-tags
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_GITHUB_TOKEN }}
