@@ -30,10 +30,7 @@ jobs:
       - run: npx playwright install-deps
       - run: npm ci
       - run: npm run verify
-      - run: |
-          git config --global user.name "${GITHUB_ACTOR}"
-          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          npm version prerelease --preid=next
+      - run: npm version prerelease --preid=next
       - run: npm publish --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

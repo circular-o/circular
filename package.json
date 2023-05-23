@@ -61,7 +61,7 @@
     "update-dependencies": "npm-check-updates --peer -u && npm install"
   },
   "engines": {
-    "node": ">=16.20.0"
+    "node": ">=14.17.0"
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.6.0",
