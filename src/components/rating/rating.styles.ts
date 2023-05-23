@@ -43,19 +43,12 @@ export default css`
     padding: var(--symbol-spacing);
   }
 
-  .rating__symbol--active,
-  .rating__partial--filled {
-    color: var(--symbol-color-active);
-  }
-
-  .rating__partial-symbol-container {
-    position: relative;
-  }
-
-  .rating__partial--filled {
+  .rating__symbols--indicator {
     position: absolute;
-    top: var(--symbol-spacing);
-    left: var(--symbol-spacing);
+    top: 0;
+    left: 0;
+    color: var(--symbol-color-active);
+    pointer-events: none;
   }
 
   .rating__symbol {
@@ -86,7 +79,7 @@ export default css`
 
   /* Forced colors mode */
   @media (forced-colors: active) {
-    .rating__symbol--active {
+    .rating__symbols--indicator {
       color: SelectedItem;
     }
   }
