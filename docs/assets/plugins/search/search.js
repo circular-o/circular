@@ -4,6 +4,8 @@
     throw new Error('Docsify must be loaded before installing this plugin.');
   }
 
+  const basePath = location.pathname.replace(/\/$/, '') + '/';
+
   window.$docsify.plugins.push(hook => {
     // Append the search box to the sidebar
     hook.mounted(() => {
@@ -99,7 +101,7 @@
     let map;
 
     // Load search data
-    fetch('../../../search.json')
+    fetch(basePath + 'search.json')
       .then(res => res.json())
       .then(data => {
         searchIndex = lunr.Index.load(data.searchIndex);
