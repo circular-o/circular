@@ -1,4 +1,4 @@
-name: Nodejs Release (latest)
+name: Nodejs Release
 
 on:
   push:
