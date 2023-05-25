@@ -1,3 +1,9 @@
+## [1.0.3-next.2](https://github.com/circular-o/circular/compare/v1.0.3-next.1...v1.0.3-next.2) (2023-05-25)
+
+### Bug Fixes
+
+- **ci:** runs prettier after CHANGELOG.md generation ([b02ebc5](https://github.com/circular-o/circular/commit/b02ebc5ee28fd206bc5c153579ebc3784504f199))
+
 ## [1.0.3-next.1](https://github.com/circular-o/circular/compare/v1.0.2...v1.0.3-next.1) (2023-05-25)
 
 ### Bug Fixes
