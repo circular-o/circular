@@ -20,6 +20,10 @@
 @media screen and (max-width: 768px) {
   .theme-picker {
     top: 0.5rem;
+    /* right: 0.5rem; */
+  }
+
+  body.close .theme-picker {
     right: 0.5rem;
   }
 
