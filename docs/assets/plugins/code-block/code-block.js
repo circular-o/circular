@@ -1,7 +1,18 @@
 /* global Prism */
 
 (() => {
+  const packagesCdnUrl = `https://cdn.jsdelivr.net/npm`;
+
+  const packageOrganization = '@shoelace-style';
+  const packageName = 'shoelace';
+  const packageVersion = 'latest';
+  const packageUrl = `${packagesCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
+
   const reactVersion = '17.0.2';
+  const reactCdnUrl = `https://cdn.skypack.dev`;
+  const reactUrl = `${reactCdnUrl}/react@${reactVersion}`;
+  const reactPackageUrl = `${reactCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
+
   let flavor = getFlavor();
   let count = 1;
 
@@ -12,13 +23,11 @@
     throw new Error('Docsify must be loaded before installing this plugin.');
   }
 
-  function convertModuleLinks(html) {
-    const version = sessionStorage.getItem('sl-version');
-
+  function convertModuleLinks(html, isReact = false) {
     html = html
-      .replace(/@shoelace-style\/shoelace/g, `https://cdn.skypack.dev/@shoelace-style/shoelace@${version}`)
-      .replace(/from 'react'/g, `from 'https://cdn.skypack.dev/react@${reactVersion}'`)
-      .replace(/from "react"/g, `from "https://cdn.skypack.dev/react@${reactVersion}"`);
+      .replace(/@shoelace-style\/shoelace/g, isReact ? reactPackageUrl : packageUrl)
+      .replace(/from 'react'/g, `from '${reactUrl}'`)
+      .replace(/from "react"/g, `from "${reactUrl}"`);
 
     return html;
   }
@@ -287,7 +296,7 @@
   // Open in CodePen
   document.addEventListener('click', event => {
     const button = event.target.closest('button');
-    const version = sessionStorage.getItem('sl-version');
+    // const version = sessionStorage.getItem('sl-version');
 
     if (button?.classList.contains('code-block__button--codepen')) {
       const codeBlock = button.closest('.code-block');
@@ -309,9 +318,7 @@
 
       // HTML templates
       if (!isReact) {
-        htmlTemplate =
-          `<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@${version}/dist/shoelace.js"></script>\n` +
-          `\n${htmlExample}`;
+        htmlTemplate = `<script type="module" src="${packageUrl}/dist/shoelace.js"></script>\n\n${htmlExample}`;
         jsTemplate = '';
       }
 
@@ -319,22 +326,20 @@
       if (isReact) {
         htmlTemplate = '<div id="root"></div>';
         jsTemplate =
-          `import React from 'https://cdn.skypack.dev/react@${reactVersion}';\n` +
-          `import ReactDOM from 'https://cdn.skypack.dev/react-dom@${reactVersion}';\n` +
-          `import { setBasePath } from 'https://cdn.skypack.dev/@shoelace-style/shoelace@${version}/dist/utilities/base-path';\n` +
+          `import React from '${reactUrl}';\n` +
+          `import ReactDOM from '${reactCdnUrl}/react-dom@${reactVersion}';\n` +
+          `import { setBasePath } from '${reactPackageUrl}/dist/utilities/base-path';\n` +
           `\n` +
           `// Set the base path for Shoelace assets\n` +
-          `setBasePath('https://cdn.skypack.dev/@shoelace-style/shoelace@${version}/dist/')\n` +
-          `\n${convertModuleLinks(reactExample)}\n` +
+          `setBasePath('${reactPackageUrl}/dist/')\n` +
+          `\n${convertModuleLinks(reactExample, isReact)}\n` +
           `\n` +
           `ReactDOM.render(<App />, document.getElementById('root'));`;
       }
 
       // CSS templates
       cssTemplate =
-        `@import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@${version}/dist/themes/${
-          isDark ? 'dark' : 'light'
-        }.css';\n` +
+        `@import '${packageUrl}/dist/themes/${isDark ? 'dark' : 'light'}.css';\n` +
         '\n' +
         'body {\n' +
         '  font: 16px sans-serif;\n' +
