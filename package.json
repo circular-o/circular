@@ -81,6 +81,7 @@
     "@custom-elements-manifest/analyzer": "^0.8.3",
     "@open-wc/testing": "^3.1.8",
     "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/mocha": "^10.0.1",
     "@types/react": "^18.2.6",
@@ -160,6 +161,12 @@
         "@semantic-release/changelog",
         {
           "changelogFile": "docs/CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "npm run prettier"
         }
       ],
       "@semantic-release/npm",
