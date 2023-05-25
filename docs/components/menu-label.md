@@ -17,7 +17,7 @@
 ```
 
 ```jsx react
-import { SlDivider, SlMenu, SlMenuLabel, SlMenuItem } from '@shoelace-style/shoelace/dist/react';
+import { SlDivider, SlMenu, SlMenuLabel, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <SlMenu style={{ maxWidth: '200px' }}>

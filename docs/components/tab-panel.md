@@ -17,7 +17,7 @@
 ```
 
 ```jsx react
-import { SlTab, SlTabGroup, SlTabPanel } from '@shoelace-style/shoelace/dist/react';
+import { SlTab, SlTabGroup, SlTabPanel } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <SlTabGroup>

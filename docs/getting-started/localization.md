@@ -18,12 +18,12 @@ Through the magic of a mutation observer, changing the `lang` attribute will aut
 
 ## Available Translations
 
-Shoelace ships with a number of translations. The default is English (US), which also serves as the fallback locale. As such, you do not need to import the English translation. To see a list of all available translations in the latest version, [refer to this directory](https://github.com/shoelace-style/shoelace/tree/current/src/translations).
+Shoelace ships with a number of translations. The default is English (US), which also serves as the fallback locale. As such, you do not need to import the English translation. To see a list of all available translations in the latest version, [refer to this directory](%REPO_URL%/tree/current/src/translations).
 
 The location of translations depends on how you're consuming Shoelace.
 
-- If you're using the CDN, [import them from the CDN](https://www.jsdelivr.com/package/npm/@shoelace-style/shoelace?path=dist%2Ftranslations)
-- If you're using a bundler, import them from `@shoelace-style/shoelace/dist/translations/[lang].js`
+- If you're using the CDN, [import them from the CDN](https://www.jsdelivr.com/package/npm/%PACKAGE_NAME%?path=dist%2Ftranslations)
+- If you're using a bundler, import them from `%PACKAGE_NAME%/dist/translations/[lang].js`
 
 You do not need to load translations up front. You can import them dynamically even after updating the `lang` attribute. Once a translation is registered, localized components will update automatically.
 
@@ -47,11 +47,11 @@ Shoelace uses English as a fallback to provide a better experience than renderin
 
 ### Submitting New Translations or Improvements
 
-To contribute new translations or improvements to existing translations, please submit a pull request on GitHub. Translations are located in [`src/translations`](https://github.com/shoelace-style/shoelace/blob/next/src/translations) and can be edited directly on GitHub if you don't want to clone the repo locally.
+To contribute new translations or improvements to existing translations, please submit a pull request on GitHub. Translations are located in [`src/translations`](%REPO_URL%/blob/next/src/translations) and can be edited directly on GitHub if you don't want to clone the repo locally.
 
 Regional translations are welcome! For example, if a German translation (`de`) exists it's perfectly acceptable to submit a German (Switzerland) (`de-CH`) translation.
 
-If you have any questions, please start a [discussion](https://github.com/shoelace-style/shoelace/discussions) or ask in the [community chat](https://discord.gg/mg8f26C).
+If you have any questions, please start a [discussion](%REPO_URL%/discussions) or ask in the [community chat](https://discord.gg/mg8f26C).
 
 ?> Shoelace provides a localization mechanism for component internals. This is not designed to be used as localization tool for your entire application. You should use a more appropriate tool such as [i18next](https://www.i18next.com/) if you need to localize content in your app.
 
@@ -93,8 +93,8 @@ You can provide your own translations if you have specific needs or if you don't
 Let's create a Spanish translation as an example. The following assumes you're using TypeScript, but you can also create translations with regular JavaScript.
 
 ```js
-import { registerTranslation } from '@shoelace-style/shoelace/dist/utilities/localize';
-import type { Translation } from '@shoelace-style/shoelace/dist/utilities/localize';
+import { registerTranslation } from '%PACKAGE_NAME%/dist/utilities/localize';
+import type { Translation } from '%PACKAGE_NAME%/dist/utilities/localize';
 
 const translation: Translation = {
   $code: 'es',

@@ -7,7 +7,7 @@ Angular [plays nice](https://custom-elements-everywhere.com/#angular) with custo
 To add Shoelace to your Angular app, install the package from npm.
 
 ```bash
-npm install @shoelace-style/shoelace
+npm install %PACKAGE_NAME%
 ```
 
 Next, [include a theme](/getting-started/themes) into your project. In this example, we'll import the light theme and use the CDN as a base path.
@@ -18,7 +18,7 @@ Include the theme into your `angular.json` config.
 ...
 "styles": [
   "src/app/theme/styles.scss",
-  "@shoelace-style/shoelace/dist/themes/light.css"
+  "%PACKAGE_NAME%/dist/themes/light.css"
 ],
 ...
 ```
@@ -27,19 +27,19 @@ OR
 include it into your `styles.scss`.
 
 ```scss
-@use "@shoelace-style/shoelace/dist/themes/light.css";
+@use "%PACKAGE_NAME%/dist/themes/light.css";
 ...
 ```
 
 After that set the [base path](/getting-started/installation#setting-the-base-path) in your `AppModule` for icons and other assets.
 
 ```jsx
-import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path';
+import { setBasePath } from '%PACKAGE_NAME%/dist/utilities/base-path';
 
-setBasePath('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@%VERSION%/dist/');
+setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/');
 ```
 
-?> If you'd rather not use the CDN for assets, you can create a build task that copies `node_modules/@shoelace-style/shoelace/dist/assets` into a public folder in your app. Then you can point the base path to that folder instead.
+?> If you'd rather not use the CDN for assets, you can create a build task that copies `node_modules/%PACKAGE_NAME%/dist/assets` into a public folder in your app. Then you can point the base path to that folder instead.
 
 ## Configuration
 
@@ -51,9 +51,9 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path';
+import { setBasePath } from '%PACKAGE_NAME%/dist/utilities/base-path';
 
-setBasePath('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@%VERSION%/dist/');
+setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/');
 
 @NgModule({
   declarations: [AppComponent],
@@ -68,7 +68,7 @@ export class AppModule {}
 ## Reference Shoelace components in your Angular component code
 
 ```js
-import { SlDrawer } from '@shoelace-style/shoelace';
+import { SlDrawer } from '%PACKAGE_NAME%';
 
 @Component({
   selector: 'app-drawer-example',
@@ -100,4 +100,4 @@ export class DrawerExampleComponent implements OnInit {
 
 Now you can start using Shoelace components in your app!
 
-?> Are you using Shoelace with Angular? [Help us improve this page!](https://github.com/shoelace-style/shoelace/blob/next/docs/frameworks/angular.md)
+?> Are you using Shoelace with Angular? [Help us improve this page!](%REPO_URL%/blob/next/docs/frameworks/angular.md)

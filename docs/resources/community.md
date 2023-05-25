@@ -6,14 +6,14 @@ Please be respectful of other users and remember that Shoelace is an open source
 
 ## Discussion Forum
 
-The [discussion forum](https://github.com/shoelace-style/shoelace/discussions) is open to anyone with a GitHub account. This is the best place to:
+The [discussion forum](%REPO_URL%/discussions) is open to anyone with a GitHub account. This is the best place to:
 
 - Ask for help
 - Share ideas and get feedback
 - Show the community what you're working on
 - Learn more about the project, its values, and its roadmap
 
-<sl-button variant="primary" href="https://github.com/shoelace-style/shoelace/discussions" target="_blank">
+<sl-button variant="primary" href="%REPO_URL%/discussions" target="_blank">
   <sl-icon name="github" slot="prefix"></sl-icon>
   Join the Discussion
 </sl-button>
@@ -43,11 +43,11 @@ You can post questions on Stack Overflow using [the "shoelace" tag](https://stac
 
 ## Twitter
 
-Follow [@shoelace_style](https://twitter.com/shoelace_style) on Twitter for general updates and announcements about Shoelace. This is a great place to say "hi" or to share something you're working on. You're also welcome to follow [@claviska](https://twitter.com/claviska), the creator, for tweets about web components, web development, and life.
+Follow [@%TWITTER_USER%](https://twitter.com/%TWITTER_USER%) on Twitter for general updates and announcements about Shoelace. This is a great place to say "hi" or to share something you're working on. You're also welcome to follow [@claviska](https://twitter.com/claviska), the creator, for tweets about web components, web development, and life.
 
-**Please avoid using Twitter for support questions.** The [discussion forum](https://github.com/shoelace-style/shoelace/discussions) is a much better place to share code snippets, screenshots, and other troubleshooting info. You'll have much better luck there, as more users will have a chance to help you.
+**Please avoid using Twitter for support questions.** The [discussion forum](%REPO_URL%/discussions) is a much better place to share code snippets, screenshots, and other troubleshooting info. You'll have much better luck there, as more users will have a chance to help you.
 
-<sl-button variant="primary" href="https://twitter.com/shoelace_style" target="_blank">
+<sl-button variant="primary" href="https://twitter.com/%TWITTER_USER%" target="_blank">
   <sl-icon name="twitter" slot="prefix"></sl-icon>
   Follow on Twitter
 </sl-button>

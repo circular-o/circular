@@ -7,38 +7,38 @@
   <sl-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-      src="/assets/examples/carousel/mountains.jpg"
+      src="assets/examples/carousel/mountains.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-      src="/assets/examples/carousel/waterfall.jpg"
+      src="assets/examples/carousel/waterfall.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-      src="/assets/examples/carousel/sunset.jpg"
+      src="assets/examples/carousel/sunset.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-      src="/assets/examples/carousel/field.jpg"
+      src="assets/examples/carousel/field.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-      src="/assets/examples/carousel/valley.jpg"
+      src="assets/examples/carousel/valley.jpg"
     />
   </sl-carousel-item>
 </sl-carousel>
 ```
 
 ```jsx react
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { SlCarousel, SlCarouselItem } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <>
@@ -46,31 +46,31 @@ const App = () => (
       <SlCarouselItem>
         <img
           alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-          src="/assets/examples/carousel/mountains.jpg"
+          src="assets/examples/carousel/mountains.jpg"
         />
       </SlCarouselItem>
       <SlCarouselItem>
         <img
           alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-          src="/assets/examples/carousel/waterfall.jpg"
+          src="assets/examples/carousel/waterfall.jpg"
         />
       </SlCarouselItem>
       <SlCarouselItem>
         <img
           alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-          src="/assets/examples/carousel/sunset.jpg"
+          src="assets/examples/carousel/sunset.jpg"
         />
       </SlCarouselItem>
       <SlCarouselItem>
         <img
           alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-          src="/assets/examples/carousel/field.jpg"
+          src="assets/examples/carousel/field.jpg"
         />
       </SlCarouselItem>
       <SlCarouselItem>
         <img
           alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-          src="/assets/examples/carousel/valley.jpg"
+          src="assets/examples/carousel/valley.jpg"
         />
       </SlCarouselItem>
     </SlCarousel>
@@ -89,69 +89,69 @@ Use the `pagination` attribute to show the total number of slides and the curren
   <sl-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-      src="/assets/examples/carousel/mountains.jpg"
+      src="assets/examples/carousel/mountains.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-      src="/assets/examples/carousel/waterfall.jpg"
+      src="assets/examples/carousel/waterfall.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-      src="/assets/examples/carousel/sunset.jpg"
+      src="assets/examples/carousel/sunset.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-      src="/assets/examples/carousel/field.jpg"
+      src="assets/examples/carousel/field.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-      src="/assets/examples/carousel/valley.jpg"
+      src="assets/examples/carousel/valley.jpg"
     />
   </sl-carousel-item>
 </sl-carousel>
 ```
 
 ```jsx react
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { SlCarousel, SlCarouselItem } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <SlCarousel pagination>
     <SlCarouselItem>
       <img
         alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-        src="/assets/examples/carousel/mountains.jpg"
+        src="assets/examples/carousel/mountains.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-        src="/assets/examples/carousel/waterfall.jpg"
+        src="assets/examples/carousel/waterfall.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-        src="/assets/examples/carousel/sunset.jpg"
+        src="assets/examples/carousel/sunset.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-        src="/assets/examples/carousel/field.jpg"
+        src="assets/examples/carousel/field.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-        src="/assets/examples/carousel/valley.jpg"
+        src="assets/examples/carousel/valley.jpg"
       />
     </SlCarouselItem>
   </SlCarousel>
@@ -167,69 +167,69 @@ Use the `navigation` attribute to show previous and next buttons.
   <sl-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-      src="/assets/examples/carousel/mountains.jpg"
+      src="assets/examples/carousel/mountains.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-      src="/assets/examples/carousel/waterfall.jpg"
+      src="assets/examples/carousel/waterfall.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-      src="/assets/examples/carousel/sunset.jpg"
+      src="assets/examples/carousel/sunset.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-      src="/assets/examples/carousel/field.jpg"
+      src="assets/examples/carousel/field.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-      src="/assets/examples/carousel/valley.jpg"
+      src="assets/examples/carousel/valley.jpg"
     />
   </sl-carousel-item>
 </sl-carousel>
 ```
 
 ```jsx react
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { SlCarousel, SlCarouselItem } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <SlCarousel navigation>
     <SlCarouselItem>
       <img
         alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-        src="/assets/examples/carousel/mountains.jpg"
+        src="assets/examples/carousel/mountains.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-        src="/assets/examples/carousel/waterfall.jpg"
+        src="assets/examples/carousel/waterfall.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-        src="/assets/examples/carousel/sunset.jpg"
+        src="assets/examples/carousel/sunset.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-        src="/assets/examples/carousel/field.jpg"
+        src="assets/examples/carousel/field.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-        src="/assets/examples/carousel/valley.jpg"
+        src="assets/examples/carousel/valley.jpg"
       />
     </SlCarouselItem>
   </SlCarousel>
@@ -245,69 +245,69 @@ By default, the carousel will not advanced beyond the first and last slides. You
   <sl-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-      src="/assets/examples/carousel/mountains.jpg"
+      src="assets/examples/carousel/mountains.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-      src="/assets/examples/carousel/waterfall.jpg"
+      src="assets/examples/carousel/waterfall.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-      src="/assets/examples/carousel/sunset.jpg"
+      src="assets/examples/carousel/sunset.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-      src="/assets/examples/carousel/field.jpg"
+      src="assets/examples/carousel/field.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-      src="/assets/examples/carousel/valley.jpg"
+      src="assets/examples/carousel/valley.jpg"
     />
   </sl-carousel-item>
 </sl-carousel>
 ```
 
 ```jsx react
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { SlCarousel, SlCarouselItem } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <SlCarousel loop navigation pagination>
     <SlCarouselItem>
       <img
         alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-        src="/assets/examples/carousel/mountains.jpg"
+        src="assets/examples/carousel/mountains.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-        src="/assets/examples/carousel/waterfall.jpg"
+        src="assets/examples/carousel/waterfall.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-        src="/assets/examples/carousel/sunset.jpg"
+        src="assets/examples/carousel/sunset.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-        src="/assets/examples/carousel/field.jpg"
+        src="assets/examples/carousel/field.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-        src="/assets/examples/carousel/valley.jpg"
+        src="assets/examples/carousel/valley.jpg"
       />
     </SlCarouselItem>
   </SlCarousel>
@@ -323,69 +323,69 @@ The carousel will automatically advance when the `autoplay` attribute is used. T
   <sl-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-      src="/assets/examples/carousel/mountains.jpg"
+      src="assets/examples/carousel/mountains.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-      src="/assets/examples/carousel/waterfall.jpg"
+      src="assets/examples/carousel/waterfall.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-      src="/assets/examples/carousel/sunset.jpg"
+      src="assets/examples/carousel/sunset.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-      src="/assets/examples/carousel/field.jpg"
+      src="assets/examples/carousel/field.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-      src="/assets/examples/carousel/valley.jpg"
+      src="assets/examples/carousel/valley.jpg"
     />
   </sl-carousel-item>
 </sl-carousel>
 ```
 
 ```jsx react
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { SlCarousel, SlCarouselItem } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <SlCarousel autoplay loop pagination>
     <SlCarouselItem>
       <img
         alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-        src="/assets/examples/carousel/mountains.jpg"
+        src="assets/examples/carousel/mountains.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-        src="/assets/examples/carousel/waterfall.jpg"
+        src="assets/examples/carousel/waterfall.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-        src="/assets/examples/carousel/sunset.jpg"
+        src="assets/examples/carousel/sunset.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-        src="/assets/examples/carousel/field.jpg"
+        src="assets/examples/carousel/field.jpg"
       />
     </SlCarouselItem>
     <SlCarouselItem>
       <img
         alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-        src="/assets/examples/carousel/valley.jpg"
+        src="assets/examples/carousel/valley.jpg"
       />
     </SlCarouselItem>
   </SlCarousel>
@@ -404,31 +404,31 @@ This example is best demonstrated using a mouse. Try clicking and dragging the s
     <sl-carousel-item>
       <img
         alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-        src="/assets/examples/carousel/mountains.jpg"
+        src="assets/examples/carousel/mountains.jpg"
       />
     </sl-carousel-item>
     <sl-carousel-item>
       <img
         alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-        src="/assets/examples/carousel/waterfall.jpg"
+        src="assets/examples/carousel/waterfall.jpg"
       />
     </sl-carousel-item>
     <sl-carousel-item>
       <img
         alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-        src="/assets/examples/carousel/sunset.jpg"
+        src="assets/examples/carousel/sunset.jpg"
       />
     </sl-carousel-item>
     <sl-carousel-item>
       <img
         alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-        src="/assets/examples/carousel/field.jpg"
+        src="assets/examples/carousel/field.jpg"
       />
     </sl-carousel-item>
     <sl-carousel-item>
       <img
         alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-        src="/assets/examples/carousel/valley.jpg"
+        src="assets/examples/carousel/valley.jpg"
       />
     </sl-carousel-item>
   </sl-carousel>
@@ -451,7 +451,7 @@ This example is best demonstrated using a mouse. Try clicking and dragging the s
 
 ```jsx react
 import { useState } from 'react';
-import { SlCarousel, SlCarouselItem, SlDivider, SlSwitch } from '@shoelace-style/shoelace/dist/react';
+import { SlCarousel, SlCarouselItem, SlDivider, SlSwitch } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -462,31 +462,31 @@ const App = () => {
         <SlCarouselItem>
           <img
             alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-            src="/assets/examples/carousel/mountains.jpg"
+            src="assets/examples/carousel/mountains.jpg"
           />
         </SlCarouselItem>
         <SlCarouselItem>
           <img
             alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-            src="/assets/examples/carousel/waterfall.jpg"
+            src="assets/examples/carousel/waterfall.jpg"
           />
         </SlCarouselItem>
         <SlCarouselItem>
           <img
             alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-            src="/assets/examples/carousel/sunset.jpg"
+            src="assets/examples/carousel/sunset.jpg"
           />
         </SlCarouselItem>
         <SlCarouselItem>
           <img
             alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-            src="/assets/examples/carousel/field.jpg"
+            src="assets/examples/carousel/field.jpg"
           />
         </SlCarouselItem>
         <SlCarouselItem>
           <img
             alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-            src="/assets/examples/carousel/valley.jpg"
+            src="assets/examples/carousel/valley.jpg"
           />
         </SlCarouselItem>
       </SlCarousel>
@@ -517,7 +517,7 @@ The `slides-per-view` attribute makes it possible to display multiple slides at 
 ```
 
 ```jsx react
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { SlCarousel, SlCarouselItem } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <SlCarousel navigation pagination slidesPerPage={2} slidesPerMove={2}>
@@ -605,7 +605,7 @@ The content of the carousel can be changed by adding or removing carousel items.
 
 ```jsx react
 import { useState } from 'react';
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { SlCarousel, SlCarouselItem } from '%PACKAGE_NAME%/dist/react';
 
 const css = `
   .dynamic-carousel {
@@ -670,31 +670,31 @@ Setting the `orientation` attribute to `vertical` will render the carousel in a 
   <sl-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-      src="/assets/examples/carousel/mountains.jpg"
+      src="assets/examples/carousel/mountains.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-      src="/assets/examples/carousel/waterfall.jpg"
+      src="assets/examples/carousel/waterfall.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-      src="/assets/examples/carousel/sunset.jpg"
+      src="assets/examples/carousel/sunset.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-      src="/assets/examples/carousel/field.jpg"
+      src="assets/examples/carousel/field.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-      src="/assets/examples/carousel/valley.jpg"
+      src="assets/examples/carousel/valley.jpg"
     />
   </sl-carousel-item>
 </sl-carousel>
@@ -719,7 +719,7 @@ Setting the `orientation` attribute to `vertical` will render the carousel in a 
 ```
 
 ```jsx react
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { SlCarousel, SlCarouselItem } from '%PACKAGE_NAME%/dist/react';
 
 const css = `
   .vertical {
@@ -746,31 +746,31 @@ const App = () => (
       <SlCarouselItem>
         <img
           alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-          src="/assets/examples/carousel/mountains.jpg"
+          src="assets/examples/carousel/mountains.jpg"
         />
       </SlCarouselItem>
       <SlCarouselItem>
         <img
           alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-          src="/assets/examples/carousel/waterfall.jpg"
+          src="assets/examples/carousel/waterfall.jpg"
         />
       </SlCarouselItem>
       <SlCarouselItem>
         <img
           alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-          src="/assets/examples/carousel/sunset.jpg"
+          src="assets/examples/carousel/sunset.jpg"
         />
       </SlCarouselItem>
       <SlCarouselItem>
         <img
           alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-          src="/assets/examples/carousel/field.jpg"
+          src="assets/examples/carousel/field.jpg"
         />
       </SlCarouselItem>
       <SlCarouselItem>
         <img
           alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-          src="/assets/examples/carousel/valley.jpg"
+          src="assets/examples/carousel/valley.jpg"
         />
       </SlCarouselItem>
     </SlCarousel>
@@ -788,31 +788,31 @@ Use the `--aspect-ratio` custom property to customize the size of the carousel's
   <sl-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-      src="/assets/examples/carousel/mountains.jpg"
+      src="assets/examples/carousel/mountains.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-      src="/assets/examples/carousel/waterfall.jpg"
+      src="assets/examples/carousel/waterfall.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-      src="/assets/examples/carousel/sunset.jpg"
+      src="assets/examples/carousel/sunset.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-      src="/assets/examples/carousel/field.jpg"
+      src="assets/examples/carousel/field.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-      src="/assets/examples/carousel/valley.jpg"
+      src="assets/examples/carousel/valley.jpg"
     />
   </sl-carousel-item>
 </sl-carousel>
@@ -839,7 +839,7 @@ Use the `--aspect-ratio` custom property to customize the size of the carousel's
 
 ```jsx react
 import { useState } from 'react';
-import { SlCarousel, SlCarouselItem, SlDivider, SlSelect, SlOption } from '@shoelace-style/shoelace/dist/react';
+import { SlCarousel, SlCarouselItem, SlDivider, SlSelect, SlOption } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => {
   const [aspectRatio, setAspectRatio] = useState('3/2');
@@ -850,31 +850,31 @@ const App = () => {
         <SlCarouselItem>
           <img
             alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-            src="/assets/examples/carousel/mountains.jpg"
+            src="assets/examples/carousel/mountains.jpg"
           />
         </SlCarouselItem>
         <SlCarouselItem>
           <img
             alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-            src="/assets/examples/carousel/waterfall.jpg"
+            src="assets/examples/carousel/waterfall.jpg"
           />
         </SlCarouselItem>
         <SlCarouselItem>
           <img
             alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-            src="/assets/examples/carousel/sunset.jpg"
+            src="assets/examples/carousel/sunset.jpg"
           />
         </SlCarouselItem>
         <SlCarouselItem>
           <img
             alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-            src="/assets/examples/carousel/field.jpg"
+            src="assets/examples/carousel/field.jpg"
           />
         </SlCarouselItem>
         <SlCarouselItem>
           <img
             alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-            src="/assets/examples/carousel/valley.jpg"
+            src="assets/examples/carousel/valley.jpg"
           />
         </SlCarouselItem>
       </SlCarousel>
@@ -907,31 +907,31 @@ Use the `--scroll-hint` custom property to add inline padding in horizontal caro
   <sl-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-      src="/assets/examples/carousel/mountains.jpg"
+      src="assets/examples/carousel/mountains.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-      src="/assets/examples/carousel/waterfall.jpg"
+      src="assets/examples/carousel/waterfall.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-      src="/assets/examples/carousel/sunset.jpg"
+      src="assets/examples/carousel/sunset.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-      src="/assets/examples/carousel/field.jpg"
+      src="assets/examples/carousel/field.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-      src="/assets/examples/carousel/valley.jpg"
+      src="assets/examples/carousel/valley.jpg"
     />
   </sl-carousel-item>
 </sl-carousel>
@@ -939,7 +939,7 @@ Use the `--scroll-hint` custom property to add inline padding in horizontal caro
 
 ```jsx react
 import { useState } from 'react';
-import { SlCarousel, SlCarouselItem, SlDivider, SlRange } from '@shoelace-style/shoelace/dist/react';
+import { SlCarousel, SlCarouselItem, SlDivider, SlRange } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <>
@@ -947,31 +947,31 @@ const App = () => (
       <SlCarouselItem>
         <img
           alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-          src="/assets/examples/carousel/mountains.jpg"
+          src="assets/examples/carousel/mountains.jpg"
         />
       </SlCarouselItem>
       <SlCarouselItem>
         <img
           alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-          src="/assets/examples/carousel/waterfall.jpg"
+          src="assets/examples/carousel/waterfall.jpg"
         />
       </SlCarouselItem>
       <SlCarouselItem>
         <img
           alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-          src="/assets/examples/carousel/sunset.jpg"
+          src="assets/examples/carousel/sunset.jpg"
         />
       </SlCarouselItem>
       <SlCarouselItem>
         <img
           alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-          src="/assets/examples/carousel/field.jpg"
+          src="assets/examples/carousel/field.jpg"
         />
       </SlCarouselItem>
       <SlCarouselItem>
         <img
           alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-          src="/assets/examples/carousel/valley.jpg"
+          src="assets/examples/carousel/valley.jpg"
         />
       </SlCarouselItem>
     </SlCarousel>
@@ -988,42 +988,42 @@ The carousel has a robust API that makes it possible to extend and customize. Th
   <sl-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
-      src="/assets/examples/carousel/mountains.jpg"
+      src="assets/examples/carousel/mountains.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
-      src="/assets/examples/carousel/waterfall.jpg"
+      src="assets/examples/carousel/waterfall.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
-      src="/assets/examples/carousel/sunset.jpg"
+      src="assets/examples/carousel/sunset.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
-      src="/assets/examples/carousel/field.jpg"
+      src="assets/examples/carousel/field.jpg"
     />
   </sl-carousel-item>
   <sl-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
-      src="/assets/examples/carousel/valley.jpg"
+      src="assets/examples/carousel/valley.jpg"
     />
   </sl-carousel-item>
 </sl-carousel>
 
 <div class="thumbnails">
   <div class="thumbnails__scroller">
-    <img alt="Thumbnail by 1" class="thumbnails__image active" src="/assets/examples/carousel/mountains.jpg" />
-    <img alt="Thumbnail by 2" class="thumbnails__image" src="/assets/examples/carousel/waterfall.jpg" />
-    <img alt="Thumbnail by 3" class="thumbnails__image" src="/assets/examples/carousel/sunset.jpg" />
-    <img alt="Thumbnail by 4" class="thumbnails__image" src="/assets/examples/carousel/field.jpg" />
-    <img alt="Thumbnail by 5" class="thumbnails__image" src="/assets/examples/carousel/valley.jpg" />
+    <img alt="Thumbnail by 1" class="thumbnails__image active" src="assets/examples/carousel/mountains.jpg" />
+    <img alt="Thumbnail by 2" class="thumbnails__image" src="assets/examples/carousel/waterfall.jpg" />
+    <img alt="Thumbnail by 3" class="thumbnails__image" src="assets/examples/carousel/sunset.jpg" />
+    <img alt="Thumbnail by 4" class="thumbnails__image" src="assets/examples/carousel/field.jpg" />
+    <img alt="Thumbnail by 5" class="thumbnails__image" src="assets/examples/carousel/valley.jpg" />
   </div>
 </div>
 
@@ -1100,7 +1100,7 @@ The carousel has a robust API that makes it possible to extend and customize. Th
 
 ```jsx react
 import { useRef } from 'react';
-import { SlCarousel, SlCarouselItem, SlDivider, SlRange } from '@shoelace-style/shoelace/dist/react';
+import { SlCarousel, SlCarouselItem, SlDivider, SlRange } from '%PACKAGE_NAME%/dist/react';
 
 const css = `
   .carousel-thumbnails {
@@ -1144,23 +1144,23 @@ const css = `
 
 const images = [
   {
-    src: '/assets/examples/carousel/mountains.jpg',
+    src: 'assets/examples/carousel/mountains.jpg',
     alt: 'The sun shines on the mountains and trees (by Adam Kool on Unsplash'
   },
   {
-    src: '/assets/examples/carousel/waterfall.jpg',
+    src: 'assets/examples/carousel/waterfall.jpg',
     alt: 'A waterfall in the middle of a forest (by Thomas Kelly on Unsplash'
   },
   {
-    src: '/assets/examples/carousel/sunset.jpg',
+    src: 'assets/examples/carousel/sunset.jpg',
     alt: 'The sun is setting over a lavender field (by Leonard Cotte on Unsplash'
   },
   {
-    src: '/assets/examples/carousel/field.jpg',
+    src: 'assets/examples/carousel/field.jpg',
     alt: 'A field of grass with the sun setting in the background (by Sapan Patel on Unsplash'
   },
   {
-    src: '/assets/examples/carousel/valley.jpg',
+    src: 'assets/examples/carousel/valley.jpg',
     alt: 'A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash'
   }
 ];

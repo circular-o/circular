@@ -63,7 +63,7 @@ Icons inherit their color from the current text color. Thus, you can set the `co
 ```
 
 ```jsx react
-import { SlIcon } from '@shoelace-style/shoelace/dist/react';
+import { SlIcon } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <>
@@ -121,7 +121,7 @@ Icons are sized relative to the current font size. To change their size, set the
 ```
 
 ```jsx react
-import { SlIcon } from '@shoelace-style/shoelace/dist/react';
+import { SlIcon } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <div style={{ fontSize: '32px' }}>
@@ -154,7 +154,7 @@ For non-decorative icons, use the `label` attribute to announce it to assistive 
 ```
 
 ```jsx react
-import { SlIcon } from '@shoelace-style/shoelace/dist/react';
+import { SlIcon } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => <SlIcon name="star-fill" label="Add to favorites" />;
 ```
@@ -164,13 +164,13 @@ const App = () => <SlIcon name="star-fill" label="Add to favorites" />;
 Custom icons can be loaded individually with the `src` attribute. Only SVGs on a local or CORS-enabled endpoint are supported. If you're using more than one custom icon, it might make sense to register a [custom icon library](#icon-libraries).
 
 ```html preview
-<sl-icon src="https://shoelace.style/assets/images/shoe.svg" style="font-size: 8rem;"></sl-icon>
+<sl-icon src="assets/images/shoe.svg" style="font-size: 8rem;"></sl-icon>
 ```
 
 ```jsx react
-import { SlIcon } from '@shoelace-style/shoelace/dist/react';
+import { SlIcon } from '%PACKAGE_NAME%/dist/react';
 
-const App = () => <SlIcon src="https://shoelace.style/assets/images/shoe.svg" style={{ fontSize: '8rem' }}></SlIcon>;
+const App = () => <SlIcon src="assets/images/shoe.svg" style={{ fontSize: '8rem' }}></SlIcon>;
 ```
 
 ## Icon Libraries
@@ -648,7 +648,7 @@ If you want to change the icons Shoelace uses internally, you can register an ic
     requestAnimationFrame(() => tooltip.dispatchEvent(new MouseEvent('mouseover')));
   }
 
-  fetch('/dist/assets/icons/icons.json')
+  fetch('dist/assets/icons/icons.json')
     .then(res => res.json())  
     .then(icons => {
       const container = document.querySelector('.icon-search');
@@ -668,7 +668,7 @@ If you want to change the icons Shoelace uses internally, you can register an ic
         item.setAttribute('data-terms', [i.name, i.title, ...(i.tags || []), ...(i.categories || [])].join(' '));
         item.innerHTML = `
           <svg width="1em" height="1em" fill="currentColor">
-            <use xlink:href="/assets/icons/sprite.svg#${i.name}"></use>
+            <use xlink:href="assets/icons/sprite.svg#${i.name}"></use>
           </svg>      
         `;
         list.appendChild(item);

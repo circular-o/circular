@@ -1,7 +1,8 @@
 .theme-picker {
   position: fixed;
   top: 1rem;
-  right: 1rem;
+  /* It shows the Git repo link on the top right corner */
+  right: 90px;
   z-index: 30;
 }
 
@@ -20,6 +21,10 @@
 @media screen and (max-width: 768px) {
   .theme-picker {
     top: 0.5rem;
+    /* right: 0.5rem; */
+  }
+
+  body.close .theme-picker {
     right: 0.5rem;
   }
 

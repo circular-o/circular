@@ -27,9 +27,9 @@ I realize that one cannot reasonably enforce this any more than one can enforce 
 
 ## Using the Issue Tracker
 
-The [issue tracker](https://github.com/shoelace-style/shoelace/issues) is for bug reports, feature requests, and pull requests.
+The [issue tracker](%REPO_URL%/issues) is for bug reports, feature requests, and pull requests.
 
-- Please **do not** use the issue tracker for personal support requests. Use [the discussion forum](https://github.com/shoelace-style/shoelace/discussions/categories/help) instead.
+- Please **do not** use the issue tracker for personal support requests. Use [the discussion forum](%REPO_URL%/discussions/categories/help) instead.
 - Please **do not** derail, hijack, or troll issues. Keep the discussion on topic and be respectful of others.
 - Please **do not** post comments with "+1" or "👍". Use [reactions](https://github.blog/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) instead.
 - Please **do** use the issue tracker for feature requests, bug reports, and pull requests.
@@ -45,7 +45,7 @@ Feature requests can be added using the issue tracker.
 - Please **do** share substantial use cases and perspective that support new features if they haven't already been mentioned.
 - Please **do not** bump, spam, or ping contributors to prioritize your own feature.
 
-If you would like your feature prioritized, please consider [sponsoring the project](https://github.com/sponsors/claviska).
+If you would like your feature prioritized, please consider [sponsoring the project](%SPONSOR_URL%).
 
 ### Bug Reports
 
@@ -59,7 +59,7 @@ A bug is _a demonstrable problem_ caused by code in the library. Bug reports are
 
 **A minimal test case is critical to a successful bug report.** It demonstrates that the bug exists in the library and not in surrounding code. Contributors should be able to understand the bug without studying your code, otherwise they'll probably move on to another bug.
 
-If you would like your bug prioritized, please consider [sponsoring the project](https://github.com/sponsors/claviska).
+If you would like your bug prioritized, please consider [sponsoring the project](%SPONSOR_URL%).
 
 ### Pull Requests
 
@@ -74,13 +74,15 @@ The author reserves the right to reject any PR that's outside the scope of the p
 
 ### Branches
 
-`current` - This branch reflects the latest release and powers [shoelace.style](https://shoelace.style/).
+`current` - This branch reflects the latest release and powers [Circular](%DOCS_WEBSITE%/).
 
-`next` - This is the branch you should submit pull requests against. It reflects what's coming in the _next_ release, which can be previewed at [next.shoelace.style](https://next.shoelace.style/).
+<!-- TODO: Change the next web site url -->
+
+`next` - This is the branch you should submit pull requests against. It reflects what's coming in the _next_ release, which can be previewed at [Circular Next](%DOCS_WEBSITE%/).
 
 ## Developing
 
-To set up a local dev environment, [fork the repo](https://github.com/shoelace-style/shoelace/fork) on GitHub, clone it locally, and install its dependencies.
+To set up a local dev environment, [fork the repo](%REPO_URL%/fork) on GitHub, clone it locally, and install its dependencies.
 
 ```bash
 git clone https://github.com/YOUR_GITHUB_USERNAME/shoelace
@@ -100,7 +102,7 @@ After the initial build, a browser will open automatically to a local version of
 
 Alternatively, you can use [Gitpod](https://www.gitpod.io/) to setup a dev environment in the cloud using only your browser.
 
-[![Open in Gitpod](../assets/images/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/shoelace-style/shoelace)
+[![Open in Gitpod](../assets/images/open-in-gitpod.svg)](https://gitpod.io/#%REPO_URL%)
 
 ### Creating New Components
 
@@ -168,7 +170,7 @@ If in doubt, use your best judgment and the maintainers will be happy to guide y
 
 Shoelace is built with accessibility in mind. Creating generic components that are fully accessible to users with varying capabilities across a multitude of circumstances is a daunting challenge. Oftentimes, the solution to an a11y problem is not written in black and white and, therefore, we may not get it right the first time around. There are, however, guidelines we can follow in our effort to make Shoelace an accessible foundation from which applications and websites can be built.
 
-We take this commitment seriously, so please ensure your contributions have this goal in mind. If you need help with anything a11y-related, please [reach out to the community](/resources/community) for assistance. If you discover an accessibility concern within the library, please file a bug on the [issue tracker](https://github.com/shoelace-style/shoelace/issues).
+We take this commitment seriously, so please ensure your contributions have this goal in mind. If you need help with anything a11y-related, please [reach out to the community](/resources/community) for assistance. If you discover an accessibility concern within the library, please file a bug on the [issue tracker](%REPO_URL%/issues).
 
 It's important to remember that, although accessibility starts with foundational components, it doesn't end with them. It everyone's responsibility to encourage best practices and ensure we're providing an optimal experience for all of our users.
 

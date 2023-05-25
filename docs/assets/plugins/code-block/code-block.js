@@ -1,17 +1,16 @@
 /* global Prism */
 
 (() => {
-  const packagesCdnUrl = `https://cdn.jsdelivr.net/npm`;
-
-  const packageOrganization = '@shoelace-style';
-  const packageName = 'shoelace';
-  const packageVersion = 'latest';
-  const packageUrl = `${packagesCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
+  // Global config variables
+  let packageOrganization = '';
+  let packageName = '';
+  let packageVersion = '';
+  let packageUrl = '';
 
   const reactVersion = '17.0.2';
   const reactCdnUrl = `https://cdn.skypack.dev`;
   const reactUrl = `${reactCdnUrl}/react@${reactVersion}`;
-  const reactPackageUrl = `${reactCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
+  let reactPackageUrl = `${reactCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
 
   let flavor = getFlavor();
   let count = 1;
@@ -25,7 +24,7 @@
 
   function convertModuleLinks(html, isReact = false) {
     html = html
-      .replace(/@shoelace-style\/shoelace/g, isReact ? reactPackageUrl : packageUrl)
+      .replace(new RegExp(`${packageOrganization}/${packageName}`, 'g'), isReact ? reactPackageUrl : packageUrl)
       .replace(/from 'react'/g, `from '${reactUrl}'`)
       .replace(/from "react"/g, `from "${reactUrl}"`);
 
@@ -73,6 +72,23 @@
   }
 
   window.$docsify.plugins.push(hook => {
+    // Get package data from the sessionStore
+    hook.init(() => {
+      const packageData = sessionStorage.getItem('sl-package-data')
+        ? JSON.parse(sessionStorage.getItem('sl-package-data'))
+        : {};
+
+      packageOrganization = packageData.packageOrganization;
+      packageName = packageData.packageName;
+      packageVersion = packageData.packageVersion;
+      packageUrl = packageData.packageUrl;
+      reactPackageUrl = `${reactCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
+
+      if (!packageOrganization || !packageName || !packageVersion || !packageUrl) {
+        throw new Error('Package data must be loaded before installing this plugin.');
+      }
+    });
+
     // Convert code blocks to previews
     hook.afterEach((html, next) => {
       const domParser = new DOMParser();

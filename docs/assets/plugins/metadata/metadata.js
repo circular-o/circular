@@ -1,7 +1,34 @@
 (() => {
+  const packagesCdnUrl = `https://cdn.jsdelivr.net/npm`;
+  const packageOrganization = '@jeysonj2';
+  const packageName = 'circular';
+  // TODO: use the latest version from the package.json
+  const packageVersion = 'latest';
+  const packageUrlNoVersion = `${packagesCdnUrl}/${packageOrganization}/${packageName}`;
+  const packageUrl = `${packagesCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
+  const docsWebsite = 'https://circular-o.github.io/circular';
+  const repoUrl = 'https://github.com/circular-o/circular';
+  const twitterUser = 'circular_o';
+  const sponsorUrl = 'https://github.com/sponsors/jeysonj2';
+
+  // Store package data in session storage so we can access it from the playground
+  sessionStorage.setItem(
+    'sl-package-data',
+    JSON.stringify({
+      packagesCdnUrl,
+      packageOrganization,
+      packageName,
+      packageVersion,
+      packageUrlNoVersion,
+      packageUrl,
+      docsWebsite,
+      repoUrl
+    })
+  );
+
   const isDev = location.hostname === 'localhost';
   const isNext = location.hostname === 'next.shoelace.style';
-  const customElements = fetch('/dist/custom-elements.json')
+  const customElements = fetch('dist/custom-elements.json')
     .then(res => res.json())
     .catch(err => console.error(err));
 
@@ -323,41 +350,51 @@
   }
 
   window.$docsify.plugins.push(hook => {
-    hook.mounted(async () => {
-      const metadata = await customElements;
+    hook.mounted(() => {
+      // const metadata = await customElements;
       const target = document.querySelector('.app-name');
 
       // Add version
       const version = document.createElement('div');
       version.classList.add('sidebar-version');
-      version.textContent = isDev ? 'Development' : isNext ? 'Next' : metadata.package.version;
+      version.textContent = isDev ? 'Development' : isNext ? 'Next' : packageVersion;
       target.appendChild(version);
 
       // Store version for reuse
-      sessionStorage.setItem('sl-version', metadata.package.version);
+      sessionStorage.setItem('sl-version', packageVersion);
 
       // Add repo buttons
-      // const buttons = document.createElement('div');
-      // buttons.classList.add('sidebar-buttons');
-      // buttons.innerHTML = `
-      //   <sl-button size="small" class="repo-button repo-button--sponsor" href="https://github.com/sponsors/claviska" target="_blank">
-      //     <sl-icon slot="prefix" name="heart"></sl-icon> Sponsor
-      //   </sl-button>
-      //   <sl-button size="small" class="repo-button repo-button--github" href="https://github.com/shoelace-style/shoelace/stargazers" target="_blank">
-      //     <sl-icon slot="prefix" name="github"></sl-icon> Star
-      //   </sl-button>
-      //   <sl-button size="small" class="repo-button repo-button--twitter" href="https://twitter.com/shoelace_style" target="_blank">
-      //     <sl-icon slot="prefix" name="twitter"></sl-icon> Follow
-      //   </sl-button>
-      // `;
-      // target.appendChild(buttons);
+      const buttons = document.createElement('div');
+      buttons.classList.add('sidebar-buttons');
+      buttons.innerHTML = `
+        <sl-button size="small" class="repo-button repo-button--sponsor" href="${sponsorUrl}" target="_blank">
+          <sl-icon slot="prefix" name="heart"></sl-icon> Sponsor
+        </sl-button>
+        <sl-button size="small" class="repo-button repo-button--github" href="${repoUrl}/stargazers" target="_blank">
+          <sl-icon slot="prefix" name="github"></sl-icon> Star
+        </sl-button>
+        <sl-button size="small" class="repo-button repo-button--twitter" href="https://twitter.com/${twitterUser}" target="_blank">
+          <sl-icon slot="prefix" name="twitter"></sl-icon> Follow
+        </sl-button>
+      `;
+      target.appendChild(buttons);
     });
 
     hook.beforeEach(async (content, next) => {
       const metadata = await customElements;
 
-      // Replace %VERSION% placeholders
-      content = content.replace(/%VERSION%/g, metadata.package.version);
+      // Replace %PACKAGE_VERSION% placeholders
+      content = content.replace(/%PACKAGE_VERSION%/g, packageVersion);
+      // Replace %PACKAGE_NAME% placeholders
+      content = content.replace(/%PACKAGE_NAME%/g, `${packageOrganization}/${packageName}`);
+      // Replace %DOCS_WEBSITE% placeholders
+      content = content.replace(/%DOCS_WEBSITE%/g, `${docsWebsite}`);
+      // Replace %REPO_URL% placeholders
+      content = content.replace(/%REPO_URL%/g, `${repoUrl}`);
+      // Replace %TWITTER_USER% placeholders
+      content = content.replace(/%TWITTER_USER%/g, `${twitterUser}`);
+      // Replace %SPONSOR_URL% placeholders
+      content = content.replace(/%SPONSOR_URL%/g, `${sponsorUrl}`);
 
       // Handle [component-header] tags
       content = content.replace(/\[component-header:([a-z-]+)\]/g, (match, tag) => {
@@ -400,7 +437,7 @@
             </div>
 
             <div class="component-header__summary">
-              ${component.summary ? `<p>${marked(component.summary)}</p>` : ''}
+              ${component.summary ? `<p>${component.summary}</p>` : ''}
             </div>
           </div>
         `;
@@ -446,52 +483,52 @@
             <sl-tab slot="nav" panel="react">React</sl-tab>
 
             <sl-tab-panel name="script">\n
-            To import this component from [the CDN](https://www.jsdelivr.com/package/npm/@shoelace-style/shoelace) using a script tag:
+            To import this component from [the CDN](${packageUrlNoVersion}) using a script tag:
 
             \`\`\`html
-            <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@${metadata.package.version}/dist/${component.path}"></script>
+            <script type="module" src="${packageUrl}/dist/${component.path}"></script>
             \`\`\`
             </sl-tab-panel>
 
             <sl-tab-panel name="import">\n
-            To import this component from [the CDN](https://www.jsdelivr.com/package/npm/@shoelace-style/shoelace) using a JavaScript import:
+            To import this component from [the CDN](${packageUrlNoVersion}) using a JavaScript import:
 
             \`\`\`js
-            import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@${metadata.package.version}/dist/${component.path}';
+            import '${packageUrl}/dist/${component.path}';
             \`\`\`
             </sl-tab-panel>
 
             <sl-tab-panel name="bundler">\n
             To import this component using [a bundler](/getting-started/installation#bundling):
             \`\`\`js
-            import '@shoelace-style/shoelace/dist/${component.path}';
+            import '${packageOrganization}/${packageName}/dist/${component.path}';
             \`\`\`
             </sl-tab-panel>
 
             <sl-tab-panel name="react">\n
             To import this component as a [React component](/frameworks/react):
             \`\`\`js
-            import { ${component.name} } from '@shoelace-style/shoelace/dist/react';
+            import { ${component.name} } from '${packageOrganization}/${packageName}/dist/react';
             \`\`\`
             </sl-tab-panel>
             </sl-tab-group>
 
             <div class="sponsor-callout">
               <p>
-                Shoelace is designed, developed, and maintained by <a href="https://twitter.com/claviska" target="_blank">Cory LaViska</a>.
+                Shoelace is designed, developed, and maintained by <a href="https://twitter.com/${twitterUser}" target="_blank">Circular Team</a>.
                 Please sponsor my open source work on GitHub. Your support will keep this project alive and growing!
               </p>
 
               <p>
-                <sl-button class="repo-button repo-button--sponsor" href="https://github.com/sponsors/claviska" target="_blank">
+                <sl-button class="repo-button repo-button--sponsor" href="${sponsorUrl}" target="_blank">
                   <sl-icon slot="prefix" name="heart"></sl-icon> Sponsor <span class="sponsor-callout__secondary-label">Development</span>
                 </sl-button>
 
-                <sl-button class="repo-button repo-button--github" href="https://github.com/shoelace-style/shoelace/stargazers" target="_blank">
+                <sl-button class="repo-button repo-button--github" href="${repoUrl}/stargazers" target="_blank">
                   <sl-icon slot="prefix" name="github"></sl-icon> Star <span class="sponsor-callout__secondary-label">on GitHub</span>
                 </sl-button>
 
-                <sl-button class="repo-button repo-button--twitter" href="https://twitter.com/shoelace_style" target="_blank">
+                <sl-button class="repo-button repo-button--twitter" href="https://twitter.com/${twitterUser}" target="_blank">
                   <sl-icon slot="prefix" name="twitter"></sl-icon> Follow <span class="sponsor-callout__secondary-label">on Twitter</span>
                 </sl-button>
               </p>

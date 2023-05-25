@@ -2,7 +2,7 @@
 
 This page explains how to integrate Shoelace with a Rails app.
 
-?> This is a community-maintained document. Please [ask the community](/resources/community) if you have questions about this integration. You can also [suggest improvements](https://github.com/shoelace-style/shoelace/blob/next/docs/tutorials/integrating-with-rails.md) to make it better.
+?> This is a community-maintained document. Please [ask the community](/resources/community) if you have questions about this integration. You can also [suggest improvements](%REPO_URL%/blob/next/docs/tutorials/integrating-with-rails.md) to make it better.
 
 ## Requirements
 
@@ -17,7 +17,7 @@ This integration has been tested with the following:
 To get started using Shoelace with Rails, the following packages must be installed.
 
 ```bash
-yarn add @shoelace-style/shoelace copy-webpack-plugin
+yarn add %PACKAGE_NAME% copy-webpack-plugin
 ```
 
 ### Importing the Default Theme
@@ -25,8 +25,8 @@ yarn add @shoelace-style/shoelace copy-webpack-plugin
 The next step is to import Shoelace's default theme (stylesheet) in `app/javascript/stylesheets/application.scss`.
 
 ```css
-@import '@shoelace-style/shoelace/dist/themes/light';
-@import '@shoelace-style/shoelace/dist/themes/dark'; // Optional dark theme
+@import '%PACKAGE_NAME%/dist/themes/light';
+@import '%PACKAGE_NAME%/dist/themes/dark'; // Optional dark theme
 ```
 
 Fore more details about themes, please refer to [Theme Basics](/getting-started/themes?id=theme-basics).
@@ -37,7 +37,7 @@ After importing the theme, you'll need to import the JavaScript files for Shoela
 
 ```js
 import '../stylesheets/application.scss'
-import { setBasePath, SlAlert, SlAnimation, SlButton, ... } from '@shoelace-style/shoelace'
+import { setBasePath, SlAlert, SlAnimation, SlButton, ... } from '%PACKAGE_NAME%'
 
 // ...
 
@@ -65,7 +65,7 @@ environment.plugins.append(
   new CopyPlugin({
     patterns: [
       {
-        from: path.resolve(__dirname, '../../node_modules/@shoelace-style/shoelace/dist/assets'),
+        from: path.resolve(__dirname, '../../node_modules/%PACKAGE_NAME%/dist/assets'),
         to: path.resolve(__dirname, '../../public/packs/js/assets')
       }
     ]

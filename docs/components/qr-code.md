@@ -6,7 +6,7 @@ QR codes are useful for providing small pieces of information to users who can q
 
 ```html preview
 <div class="qr-overview">
-  <sl-qr-code value="https://shoelace.style/" label="Scan this code to visit Shoelace on the web!"></sl-qr-code>
+  <sl-qr-code value="%DOCS_WEBSITE%/" label="Scan this code to visit Shoelace on the web!"></sl-qr-code>
   <br />
 
   <sl-input maxlength="255" clearable label="Value"></sl-input>
@@ -36,7 +36,7 @@ QR codes are useful for providing small pieces of information to users who can q
 
 ```jsx react
 import { useState } from 'react';
-import { SlQrCode, SlInput } from '@shoelace-style/shoelace/dist/react';
+import { SlQrCode, SlInput } from '%PACKAGE_NAME%/dist/react';
 
 const css = `
   .qr-overview {
@@ -49,7 +49,7 @@ const css = `
 `;
 
 const App = () => {
-  const [value, setValue] = useState('https://shoelace.style/');
+  const [value, setValue] = useState('%DOCS_WEBSITE%/');
 
   return (
     <>
@@ -73,13 +73,13 @@ const App = () => {
 Use the `fill` and `background` attributes to modify the QR code's colors. You should always ensure good contrast for optimal compatibility with QR code scanners.
 
 ```html preview
-<sl-qr-code value="https://shoelace.style/" fill="deeppink" background="white"></sl-qr-code>
+<sl-qr-code value="%DOCS_WEBSITE%/" fill="deeppink" background="white"></sl-qr-code>
 ```
 
 ```jsx react
-import { SlQrCode } from '@shoelace-style/shoelace/dist/react';
+import { SlQrCode } from '%PACKAGE_NAME%/dist/react';
 
-const App = () => <SlQrCode value="https://shoelace.style/" fill="deeppink" background="white" />;
+const App = () => <SlQrCode value="%DOCS_WEBSITE%/" fill="deeppink" background="white" />;
 ```
 
 ### Size
@@ -87,13 +87,13 @@ const App = () => <SlQrCode value="https://shoelace.style/" fill="deeppink" back
 Use the `size` attribute to change the size of the QR code.
 
 ```html preview
-<sl-qr-code value="https://shoelace.style/" size="64"></sl-qr-code>
+<sl-qr-code value="%DOCS_WEBSITE%/" size="64"></sl-qr-code>
 ```
 
 ```jsx react
-import { SlQrCode } from '@shoelace-style/shoelace/dist/react';
+import { SlQrCode } from '%PACKAGE_NAME%/dist/react';
 
-const App = () => <SlQrCode value="https://shoelace.style/" size="64" />;
+const App = () => <SlQrCode value="%DOCS_WEBSITE%/" size="64" />;
 ```
 
 ### Radius
@@ -101,13 +101,13 @@ const App = () => <SlQrCode value="https://shoelace.style/" size="64" />;
 Create a rounded effect with the `radius` attribute.
 
 ```html preview
-<sl-qr-code value="https://shoelace.style/" radius="0.5"></sl-qr-code>
+<sl-qr-code value="%DOCS_WEBSITE%/" radius="0.5"></sl-qr-code>
 ```
 
 ```jsx react
-import { SlQrCode } from '@shoelace-style/shoelace/dist/react';
+import { SlQrCode } from '%PACKAGE_NAME%/dist/react';
 
-const App = () => <SlQrCode value="https://shoelace.style/" radius="0.5" />;
+const App = () => <SlQrCode value="%DOCS_WEBSITE%/" radius="0.5" />;
 ```
 
 ### Error Correction
@@ -116,10 +116,10 @@ QR codes can be rendered with various levels of [error correction](https://www.q
 
 ```html preview
 <div class="qr-error-correction">
-  <sl-qr-code value="https://shoelace.style/" error-correction="L"></sl-qr-code>
-  <sl-qr-code value="https://shoelace.style/" error-correction="M"></sl-qr-code>
-  <sl-qr-code value="https://shoelace.style/" error-correction="Q"></sl-qr-code>
-  <sl-qr-code value="https://shoelace.style/" error-correction="H"></sl-qr-code>
+  <sl-qr-code value="%DOCS_WEBSITE%/" error-correction="L"></sl-qr-code>
+  <sl-qr-code value="%DOCS_WEBSITE%/" error-correction="M"></sl-qr-code>
+  <sl-qr-code value="%DOCS_WEBSITE%/" error-correction="Q"></sl-qr-code>
+  <sl-qr-code value="%DOCS_WEBSITE%/" error-correction="H"></sl-qr-code>
 </div>
 
 <style>
@@ -132,7 +132,7 @@ QR codes can be rendered with various levels of [error correction](https://www.q
 ```
 
 ```jsx react
-import { SlQrCode } from '@shoelace-style/shoelace/dist/react';
+import { SlQrCode } from '%PACKAGE_NAME%/dist/react';
 
 const css = `
   .qr-error-correction {
@@ -146,10 +146,10 @@ const App = () => {
   return (
     <>
       <div className="qr-error-correction">
-        <SlQrCode value="https://shoelace.style/" error-correction="L" />
-        <SlQrCode value="https://shoelace.style/" error-correction="M" />
-        <SlQrCode value="https://shoelace.style/" error-correction="Q" />
-        <SlQrCode value="https://shoelace.style/" error-correction="H" />
+        <SlQrCode value="%DOCS_WEBSITE%/" error-correction="L" />
+        <SlQrCode value="%DOCS_WEBSITE%/" error-correction="M" />
+        <SlQrCode value="%DOCS_WEBSITE%/" error-correction="Q" />
+        <SlQrCode value="%DOCS_WEBSITE%/" error-correction="H" />
       </div>
 
       <style>{css}</style>

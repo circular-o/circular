@@ -1,6 +1,6 @@
 <div class="splash">
 <div class="splash-start">
-<img class="splash-logo" src="/assets/images/circular-logo-bg-transparent.png" alt="Shoelace">
+<img class="splash-logo" src="assets/images/circular-logo-bg-transparent.png" alt="Shoelace">
 
 # <sl-visually-hidden>Shoelace:</sl-visually-hidden> A forward-thinking library of web components.
 
@@ -13,20 +13,24 @@
 - Built-in localization 💬
 - Open source 😸
 
-Designed in New Hampshire by [Cory LaViska](https://twitter.com/claviska).
+Designed and developed by [Circular Team](https://twitter.com/%TWITTER_USER%)
+
+<small>Inspired by [Shoelace](https://shoelace.style/) designed in New Hampshire by [Cory LaViska](https://twitter.com/claviska).</small>
 
 </div>
 <div class="splash-end">
-<img class="splash-image" src="/assets/images/undraw-content-team.svg" alt="Cartoon of people assembling components while standing on a giant laptop.">
+<img class="splash-image" src="assets/images/undraw-content-team.svg" alt="Cartoon of people assembling components while standing on a giant laptop.">
 </div>
 </div>
 
-[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/@shoelace-style/shoelace/badge)](https://www.jsdelivr.com/package/npm/@shoelace-style/shoelace)
-[![npm](https://img.shields.io/npm/dw/@shoelace-style/shoelace?label=npm&style=flat-square)](https://www.npmjs.com/package/@shoelace-style/shoelace)
-[![License](https://img.shields.io/badge/license-MIT-232323.svg?style=flat-square)](https://github.com/shoelace-style/shoelace/blob/next/LICENSE.md)<br>
-[![Discord](https://img.shields.io/badge/Discord-Join%20the%20chat-5965f2.svg?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/mg8f26C)
-[![Twitter](https://img.shields.io/badge/Twitter-Follow-00acee.svg?style=flat-square&logo=twitter&logoColor=white)](https://twitter.com/shoelace_style)
-[![Sponsor](https://img.shields.io/badge/GitHub-Code-232323.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/shoelace-style/shoelace)
+[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/%PACKAGE_NAME%/badge)](https://www.jsdelivr.com/package/npm/%PACKAGE_NAME%)
+[![npm](https://img.shields.io/npm/dw/%PACKAGE_NAME%?label=npm&style=flat-square)](https://www.npmjs.com/package/%PACKAGE_NAME%)
+[![License](https://img.shields.io/badge/license-MIT-232323.svg?style=flat-square)](%REPO_URL%/blob/next/LICENSE.md)<br>
+
+<!-- [![Discord](https://img.shields.io/badge/Discord-Join%20the%20chat-5965f2.svg?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/mg8f26C) -->
+
+[![Twitter](https://img.shields.io/badge/Twitter-Follow-00acee.svg?style=flat-square&logo=twitter&logoColor=white)](https://twitter.com/%TWITTER_USER%)
+[![Sponsor](https://img.shields.io/badge/GitHub-Code-232323.svg?style=flat-square&logo=github&logoColor=white)](%REPO_URL%)
 
 ## Quick Start
 
@@ -34,8 +38,8 @@ Add the following code to your page.
 
 <!-- prettier-ignore -->
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@%VERSION%/dist/themes/light.css" />
-<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@%VERSION%/dist/shoelace-autoloader.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/themes/light.css" />
+<script type="module" src="https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/shoelace-autoloader.js"></script>
 ```
 
 Now you have access to all of Shoelace's components! Try adding a button:
@@ -78,17 +82,17 @@ If your organization is looking to build a design system, [Shoelace will save yo
 
 Whether you use Shoelace as a starting point for your organization's design system or for a fun personal project, there's no limit to what you can do with it.
 
-<small>\*Please consider giving back some of what you save by [supporting this project with a sponsorship](https://github.com/sponsors/claviska).</small>
+<small>\*Please consider giving back some of what you save by [supporting this project with a sponsorship](%SPONSOR_URL%).</small>
 
 ## Browser Support
 
 Shoelace is tested in the latest two versions of the following browsers.
 
-<img src="/assets/images/chrome.png" alt="Chrome" width="64" height="64">
-<img src="/assets/images/edge.png" alt="Edge" width="64" height="64">
-<img src="/assets/images/firefox.png" alt="Firefox" width="64" height="64">
-<img src="/assets/images/opera.png" alt="Opera" width="64" height="64">
-<img src="/assets/images/safari.png" alt="Safari" width="64" height="64">
+<img src="assets/images/chrome.png" alt="Chrome" width="64" height="64">
+<img src="assets/images/edge.png" alt="Edge" width="64" height="64">
+<img src="assets/images/firefox.png" alt="Firefox" width="64" height="64">
+<img src="assets/images/opera.png" alt="Opera" width="64" height="64">
+<img src="assets/images/safari.png" alt="Safari" width="64" height="64">
 
 Critical bug fixes in earlier versions will be addressed based on their severity and impact.
 
@@ -98,19 +102,19 @@ If you need to support IE11 or pre-Chromium Edge, this library isn't for you. Al
 
 Shoelace is designed in New Hampshire by [Cory LaViska](https://twitter.com/claviska). It's available under the terms of the MIT license.
 
-Designing, developing, and supporting this library requires a lot of time, effort, and skill. If you're using this software to make a profit, I respectfully ask that you help [fund its development](https://github.com/sponsors/claviska) by becoming a sponsor.
+Designing, developing, and supporting this library requires a lot of time, effort, and skill. If you're using this software to make a profit, I respectfully ask that you help [fund its development](%SPONSOR_URL%) by becoming a sponsor.
 
 👇 Your support is very much appreciated! 👇
 
-<sl-button class="repo-button repo-button--sponsor" href="https://github.com/sponsors/claviska" target="_blank">
+<sl-button class="repo-button repo-button--sponsor" href="%SPONSOR_URL%" target="_blank">
   <sl-icon slot="prefix" name="heart"></sl-icon> Become a sponsor
 </sl-button>
 
-<sl-button class="repo-button repo-button--github" href="https://github.com/shoelace-style/shoelace/stargazers" target="_blank">
+<sl-button class="repo-button repo-button--github" href="%REPO_URL%/stargazers" target="_blank">
   <sl-icon slot="prefix" name="github"></sl-icon> Star
 </sl-button>
 
-<sl-button class="repo-button repo-button--twitter" href="https://twitter.com/shoelace_style" target="_blank">
+<sl-button class="repo-button repo-button--twitter" href="https://twitter.com/%TWITTER_USER%" target="_blank">
   <sl-icon slot="prefix" name="twitter"></sl-icon> Follow
 </sl-button>
 
@@ -118,6 +122,7 @@ Designing, developing, and supporting this library requires a lot of time, effor
 
 Special thanks to the following projects and individuals that help make Shoelace possible.
 
+- Inspired by [Shoelace](https://shoelace.style/)
 - Components are built with [Lit](https://lit.dev/)
 - Component metadata is generated by the [Custom Elements Manifest Analyzer](https://github.com/open-wc/custom-elements-manifest)
 - Documentation is powered by [Docsify](https://docsify.js.org/)

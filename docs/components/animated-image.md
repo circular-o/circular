@@ -3,21 +3,13 @@
 [component-header:sl-animated-image]
 
 ```html preview
-<sl-animated-image
-  src="https://shoelace.style/assets/images/walk.gif"
-  alt="Animation of untied shoes walking on pavement"
-></sl-animated-image>
+<sl-animated-image src="assets/images/walk.gif" alt="Animation of untied shoes walking on pavement"></sl-animated-image>
 ```
 
 ```jsx react
-import { SlAnimatedImage } from '@shoelace-style/shoelace/dist/react';
+import { SlAnimatedImage } from '%PACKAGE_NAME%/dist/react';
 
-const App = () => (
-  <SlAnimatedImage
-    src="https://shoelace.style/assets/images/walk.gif"
-    alt="Animation of untied shoes walking on pavement"
-  />
-);
+const App = () => <SlAnimatedImage src="assets/images/walk.gif" alt="Animation of untied shoes walking on pavement" />;
 ```
 
 ?> This component uses `<canvas>` to draw freeze frames, so images are subject to [cross-origin restrictions](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image).
@@ -29,18 +21,13 @@ const App = () => (
 Both GIF and WEBP images are supported.
 
 ```html preview
-<sl-animated-image
-  src="https://shoelace.style/assets/images/tie.webp"
-  alt="Animation of a shoe being tied"
-></sl-animated-image>
+<sl-animated-image src="assets/images/tie.webp" alt="Animation of a shoe being tied"></sl-animated-image>
 ```
 
 ```jsx react
-import { SlAnimatedImage } from '@shoelace-style/shoelace/dist/react';
+import { SlAnimatedImage } from '%PACKAGE_NAME%/dist/react';
 
-const App = () => (
-  <SlAnimatedImage src="https://shoelace.style/assets/images/tie.webp" alt="Animation of a shoe being tied" />
-);
+const App = () => <SlAnimatedImage src="assets/images/tie.webp" alt="Animation of a shoe being tied" />;
 ```
 
 ### Setting a Width and Height
@@ -49,7 +36,7 @@ To set a custom size, apply a width and/or height to the host element.
 
 ```html preview
 <sl-animated-image
-  src="https://shoelace.style/assets/images/walk.gif"
+  src="assets/images/walk.gif"
   alt="Animation of untied shoes walking on pavement"
   style="width: 150px; height: 200px;"
 >
@@ -57,11 +44,11 @@ To set a custom size, apply a width and/or height to the host element.
 ```
 
 ```jsx react
-import { SlAnimatedImage } from '@shoelace-style/shoelace/dist/react';
+import { SlAnimatedImage } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <SlAnimatedImage
-    src="https://shoelace.style/assets/images/walk.gif"
+    src="assets/images/walk.gif"
     alt="Animation of untied shoes walking on pavement"
     style={{ width: '150px', height: '200px' }}
   />
@@ -74,7 +61,7 @@ You can change the appearance and location of the control box by targeting the `
 
 ```html preview
 <sl-animated-image
-  src="https://shoelace.style/assets/images/walk.gif"
+  src="assets/images/walk.gif"
   alt="Animation of untied shoes walking on pavement"
   class="animated-image-custom-control-box"
 ></sl-animated-image>
@@ -93,7 +80,7 @@ You can change the appearance and location of the control box by targeting the `
 ```
 
 ```jsx react
-import { SlAnimatedImage } from '@shoelace-style/shoelace/dist/react';
+import { SlAnimatedImage } from '%PACKAGE_NAME%/dist/react';
 
 const css = `
   .animated-image-custom-control-box::part(control-box) {
@@ -111,7 +98,7 @@ const App = () => (
   <>
     <SlAnimatedImage
       className="animated-image-custom-control-box"
-      src="https://shoelace.style/assets/images/walk.gif"
+      src="assets/images/walk.gif"
       alt="Animation of untied shoes walking on pavement"
     />
 
