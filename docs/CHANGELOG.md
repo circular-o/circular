@@ -1,3 +1,10 @@
+## [1.1.1-next.2](https://github.com/circular-o/circular/compare/v1.1.1-next.1...v1.1.1-next.2) (2023-05-26)
+
+### Bug Fixes
+
+- **ci:** allows semantic-release to push changes ([acccb19](https://github.com/circular-o/circular/commit/acccb19f019d64adc2ebd279333d1b48bbc77dc5))
+- **docs:** Fixes search functionality ([#18](https://github.com/circular-o/circular/issues/18)) ([0fb1c71](https://github.com/circular-o/circular/commit/0fb1c71b2236dbd2465c99e3f23716271dcefca8))
+
 ## [1.1.1-next.1](https://github.com/circular-o/circular/compare/v1.1.0...v1.1.1-next.1) (2023-05-26)
 
 ### Bug Fixes
