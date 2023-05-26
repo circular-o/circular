@@ -244,6 +244,8 @@
 
         results.innerHTML = '';
 
+        const { docsBasePath } = window.getDocsConfig();
+
         matches.forEach((match, index) => {
           const page = map[match.ref];
           const li = document.createElement('li');
@@ -272,7 +274,8 @@
             icon = 'joystick';
           }
 
-          a.href = window.$docsify.routerMode === 'hash' ? `/#/${page.url}` : `/${page.url}`;
+          a.href =
+            window.$docsify.routerMode === 'hash' ? `${docsBasePath}#/${page.url}` : `${docsBasePath}${page.url}`;
           a.innerHTML = `
             <div class="site-search__result-icon">
               <sl-icon name="${icon}" aria-hidden="true"></sl-icon>

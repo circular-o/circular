@@ -1,52 +1,21 @@
 (() => {
-  // Configuration variables related to the package
-  const packagesCdnUrl = `https://cdn.jsdelivr.net/npm`;
-  const packageOrganization = '@jeysonj2';
-  const packageName = 'circular';
-  let packageVersion = 'latest';
-  const docsWebsite = 'https://circular-o.github.io/circular';
-  const repoUrl = 'https://github.com/circular-o/circular';
-  const twitterUser = 'circular_o';
-  const sponsorUrl = 'https://github.com/sponsors/jeysonj2';
-
-  // Variables which are composed by other package data
-  let packageUrlNoVersion = `${packagesCdnUrl}/${packageOrganization}/${packageName}`;
-  let packageUrl = `${packagesCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
-
-  // Store package data in session storage so we can access it from the playground
-  function savePackageData() {
-    // Updating the variables which are composed by other package data
-    packageUrlNoVersion = `${packagesCdnUrl}/${packageOrganization}/${packageName}`;
-    packageUrl = `${packagesCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
-
-    sessionStorage.setItem(
-      'sl-package-data',
-      JSON.stringify({
-        packagesCdnUrl,
-        packageOrganization,
-        packageName,
-        packageVersion,
-        packageUrlNoVersion,
-        packageUrl,
-        docsWebsite,
-        repoUrl
-      })
-    );
-  }
-
-  savePackageData();
-
   const isDev = location.hostname === 'localhost';
   const isNext = location.hostname === 'next.shoelace.style';
   const customElements = fetch('dist/custom-elements.json')
     .then(res => res.json())
     .catch(err => console.error(err));
 
+  // Global metadata object, it will be populated later in the docsify lifecycle
   let metadata = {};
+
   const getCustomElementsMetadata = async () => {
     const m = await customElements;
-    packageVersion = m.package.version;
-    savePackageData();
+    const { packageVersion } = window.getDocsConfig();
+    // If packageVersion is set to "latest", then it will be overwritten with the actual version number
+    if (packageVersion === 'latest') {
+      window.setDocsConfig({ packageVersion: m.package.version });
+    }
+
     return m;
   };
 
@@ -369,6 +338,8 @@
 
   window.$docsify.plugins.push(hook => {
     hook.mounted(async () => {
+      const { packageVersion, repoUrl, twitterUser, sponsorUrl } = window.getDocsConfig();
+
       metadata = await getCustomElementsMetadata();
       const target = document.querySelector('.app-name');
 
@@ -399,6 +370,18 @@
     });
 
     hook.beforeEach(async (content, next) => {
+      const {
+        packageOrganization,
+        packageName,
+        packageVersion,
+        docsWebsite,
+        repoUrl,
+        twitterUser,
+        sponsorUrl,
+        packageUrlNoVersion,
+        packageUrl
+      } = window.getDocsConfig();
+
       metadata = await getCustomElementsMetadata();
 
       // Replace %PACKAGE_VERSION% placeholders

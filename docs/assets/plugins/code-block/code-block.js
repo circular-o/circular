@@ -1,37 +1,8 @@
 /* global Prism */
 
 (() => {
-  // Global config variables
-  let packageOrganization = '';
-  let packageName = '';
-  let packageVersion = '';
-  let packageUrl = '';
-
-  const reactVersion = '17.0.2';
-  const reactCdnUrl = `https://cdn.skypack.dev`;
-  const reactUrl = `${reactCdnUrl}/react@${reactVersion}`;
-  let reactPackageUrl = `${reactCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
-
   let flavor = getFlavor();
   let count = 1;
-
-  // Get config vars from the sessionStore
-  const getPackageData = () => {
-    // The package data is stored in the sessionStore by the metadata plugin, please see the metadata.js file
-    const packageData = sessionStorage.getItem('sl-package-data')
-      ? JSON.parse(sessionStorage.getItem('sl-package-data'))
-      : {};
-
-    packageOrganization = packageData.packageOrganization;
-    packageName = packageData.packageName;
-    packageVersion = packageData.packageVersion;
-    packageUrl = packageData.packageUrl;
-    reactPackageUrl = `${reactCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
-
-    if (!packageOrganization || !packageName || !packageVersion || !packageUrl) {
-      throw new Error('Package data must be loaded before installing this plugin.');
-    }
-  };
 
   // Sync flavor UI on page load
   setFlavor(getFlavor());
@@ -41,6 +12,8 @@
   }
 
   function convertModuleLinks(html, isReact = false) {
+    const { packageOrganization, packageName, packageUrl, reactUrl, reactPackageUrl } = window.getDocsConfig();
+
     html = html
       .replace(new RegExp(`${packageOrganization}/${packageName}`, 'g'), isReact ? reactPackageUrl : packageUrl)
       .replace(/from 'react'/g, `from '${reactUrl}'`)
@@ -92,8 +65,6 @@
   window.$docsify.plugins.push(hook => {
     // Convert code blocks to previews
     hook.afterEach((html, next) => {
-      getPackageData();
-
       const domParser = new DOMParser();
       const doc = domParser.parseFromString(html, 'text/html');
 
@@ -314,6 +285,8 @@
 
   // Open in CodePen
   document.addEventListener('click', event => {
+    const { reactVersion, reactCdnUrl, packageUrl, reactUrl, reactPackageUrl } = window.getDocsConfig();
+
     const button = event.target.closest('button');
     // const version = sessionStorage.getItem('sl-version');
 

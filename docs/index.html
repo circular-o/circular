@@ -18,15 +18,15 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://circular.interzero.de/" />
     <meta property="og:image" content="assets/images/og-image.png" />
-    <!-- <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@interzero_circular" />
-    <meta name="twitter:creator" content="@interzero_circular" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@circular_o" />
+    <meta name="twitter:creator" content="@circular_o" />
     <meta name="twitter:title" content="Circular" />
     <meta
       name="twitter:description"
       content="Circular provides an Interzero collection of professionally designed, UI components built on a framework-agnostic technology."
     />
-    <meta name="twitter:image" content="assets/images/twitter-card.png" /> -->
+    <meta name="twitter:image" content="assets/images/twitter-card.png" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/pure.css" />
     <link rel="stylesheet" href="assets/styles/docs.css" />
@@ -50,9 +50,8 @@
       const theme = localStorage.getItem('theme') || 'auto';
       document.documentElement.classList.toggle('sl-theme-dark', theme === 'dark' || (theme === 'auto' && prefersDark));
     </script>
+    <script src="assets/docs-config.js"></script>
     <script>
-      const repo = 'https://github.com/circular-o/circular';
-
       window.$docsify = {
         alias: {
           '/.*/_sidebar.md': '/_sidebar.md'
@@ -81,7 +80,7 @@
         },
         // routerMode: 'history',
         themeColor: 'var(--sl-color-primary-500)',
-        repo
+        repo: window.DEFAULT_DOCS_CONFIGURATION.repo
       };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
