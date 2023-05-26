@@ -15,6 +15,24 @@
   let flavor = getFlavor();
   let count = 1;
 
+  // Get config vars from the sessionStore
+  const getPackageData = () => {
+    // The package data is stored in the sessionStore by the metadata plugin, please see the metadata.js file
+    const packageData = sessionStorage.getItem('sl-package-data')
+      ? JSON.parse(sessionStorage.getItem('sl-package-data'))
+      : {};
+
+    packageOrganization = packageData.packageOrganization;
+    packageName = packageData.packageName;
+    packageVersion = packageData.packageVersion;
+    packageUrl = packageData.packageUrl;
+    reactPackageUrl = `${reactCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
+
+    if (!packageOrganization || !packageName || !packageVersion || !packageUrl) {
+      throw new Error('Package data must be loaded before installing this plugin.');
+    }
+  };
+
   // Sync flavor UI on page load
   setFlavor(getFlavor());
 
@@ -72,25 +90,10 @@
   }
 
   window.$docsify.plugins.push(hook => {
-    // Get package data from the sessionStore
-    hook.init(() => {
-      const packageData = sessionStorage.getItem('sl-package-data')
-        ? JSON.parse(sessionStorage.getItem('sl-package-data'))
-        : {};
-
-      packageOrganization = packageData.packageOrganization;
-      packageName = packageData.packageName;
-      packageVersion = packageData.packageVersion;
-      packageUrl = packageData.packageUrl;
-      reactPackageUrl = `${reactCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
-
-      if (!packageOrganization || !packageName || !packageVersion || !packageUrl) {
-        throw new Error('Package data must be loaded before installing this plugin.');
-      }
-    });
-
     // Convert code blocks to previews
     hook.afterEach((html, next) => {
+      getPackageData();
+
       const domParser = new DOMParser();
       const doc = domParser.parseFromString(html, 'text/html');
 
