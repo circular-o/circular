@@ -19,7 +19,8 @@
   - [Community](/resources/community)
   - [Accessibility](/resources/accessibility)
   - [Contributing](/resources/contributing)
-  - [Changelog](/resources/changelog)
+  - [Changelog](/CHANGELOG)
+  - [Shoelace changelog](/resources/changelog)
 
 - Components
 
