@@ -1,3 +1,9 @@
+## [1.1.1-next.1](https://github.com/circular-o/circular/compare/v1.1.0...v1.1.1-next.1) (2023-05-26)
+
+### Bug Fixes
+
+- **package.json:** node version updated in engines ([#17](https://github.com/circular-o/circular/issues/17)) ([fd89d86](https://github.com/circular-o/circular/commit/fd89d86bfa805e808c673190e7170171fe489625))
+
 # [1.1.0](https://github.com/circular-o/circular/compare/v1.0.3...v1.1.0) (2023-05-26)
 
 ### Bug Fixes
