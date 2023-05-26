@@ -1,36 +1,54 @@
 (() => {
+  // Configuration variables related to the package
   const packagesCdnUrl = `https://cdn.jsdelivr.net/npm`;
   const packageOrganization = '@jeysonj2';
   const packageName = 'circular';
-  // TODO: use the latest version from the package.json
-  const packageVersion = 'latest';
-  const packageUrlNoVersion = `${packagesCdnUrl}/${packageOrganization}/${packageName}`;
-  const packageUrl = `${packagesCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
+  let packageVersion = 'latest';
   const docsWebsite = 'https://circular-o.github.io/circular';
   const repoUrl = 'https://github.com/circular-o/circular';
   const twitterUser = 'circular_o';
   const sponsorUrl = 'https://github.com/sponsors/jeysonj2';
 
+  // Variables which are composed by other package data
+  let packageUrlNoVersion = `${packagesCdnUrl}/${packageOrganization}/${packageName}`;
+  let packageUrl = `${packagesCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
+
   // Store package data in session storage so we can access it from the playground
-  sessionStorage.setItem(
-    'sl-package-data',
-    JSON.stringify({
-      packagesCdnUrl,
-      packageOrganization,
-      packageName,
-      packageVersion,
-      packageUrlNoVersion,
-      packageUrl,
-      docsWebsite,
-      repoUrl
-    })
-  );
+  function savePackageData() {
+    // Updating the variables which are composed by other package data
+    packageUrlNoVersion = `${packagesCdnUrl}/${packageOrganization}/${packageName}`;
+    packageUrl = `${packagesCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
+
+    sessionStorage.setItem(
+      'sl-package-data',
+      JSON.stringify({
+        packagesCdnUrl,
+        packageOrganization,
+        packageName,
+        packageVersion,
+        packageUrlNoVersion,
+        packageUrl,
+        docsWebsite,
+        repoUrl
+      })
+    );
+  }
+
+  savePackageData();
 
   const isDev = location.hostname === 'localhost';
   const isNext = location.hostname === 'next.shoelace.style';
   const customElements = fetch('dist/custom-elements.json')
     .then(res => res.json())
     .catch(err => console.error(err));
+
+  let metadata = {};
+  const getCustomElementsMetadata = async () => {
+    const m = await customElements;
+    packageVersion = m.package.version;
+    savePackageData();
+    return m;
+  };
 
   function createPropsTable(props) {
     const table = document.createElement('table');
@@ -325,9 +343,9 @@
       .replace(/`(.*?)`/g, '<code>$1</code>');
   }
 
-  function getAllComponents(metadata) {
+  function getAllComponents(componentsMetadata) {
     const allComponents = [];
-    metadata.modules?.forEach(module => {
+    componentsMetadata.modules?.forEach(module => {
       module.declarations?.forEach(declaration => {
         if (declaration.customElement) {
           // Generate the dist path based on the src path and attach it to the component
@@ -341,8 +359,8 @@
     return allComponents;
   }
 
-  function getComponent(metadata, tagName) {
-    return getAllComponents(metadata).find(component => component.tagName === tagName);
+  function getComponent(componentsMetadata, tagName) {
+    return getAllComponents(componentsMetadata).find(component => component.tagName === tagName);
   }
 
   if (!window.$docsify) {
@@ -350,8 +368,8 @@
   }
 
   window.$docsify.plugins.push(hook => {
-    hook.mounted(() => {
-      // const metadata = await customElements;
+    hook.mounted(async () => {
+      metadata = await getCustomElementsMetadata();
       const target = document.querySelector('.app-name');
 
       // Add version
@@ -381,7 +399,7 @@
     });
 
     hook.beforeEach(async (content, next) => {
-      const metadata = await customElements;
+      metadata = await getCustomElementsMetadata();
 
       // Replace %PACKAGE_VERSION% placeholders
       content = content.replace(/%PACKAGE_VERSION%/g, packageVersion);
