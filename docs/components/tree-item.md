@@ -1,35 +1,35 @@
 # Tree Item
 
-[component-header:sl-tree-item]
+[component-header:o-tree-item]
 
 ```html preview
-<sl-tree>
-  <sl-tree-item>
+<o-tree>
+  <o-tree-item>
     Item 1
-    <sl-tree-item>Item A</sl-tree-item>
-    <sl-tree-item>Item B</sl-tree-item>
-    <sl-tree-item>Item C</sl-tree-item>
-  </sl-tree-item>
-  <sl-tree-item>Item 2</sl-tree-item>
-  <sl-tree-item>Item 3</sl-tree-item>
-</sl-tree>
+    <o-tree-item>Item A</o-tree-item>
+    <o-tree-item>Item B</o-tree-item>
+    <o-tree-item>Item C</o-tree-item>
+  </o-tree-item>
+  <o-tree-item>Item 2</o-tree-item>
+  <o-tree-item>Item 3</o-tree-item>
+</o-tree>
 ```
 
 <!-- prettier-ignore -->
 ```jsx react
-import { SlTree, SlTreeItem } from '%PACKAGE_NAME%/dist/react';
+import { OTree, OTreeItem } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlTree>
-    <SlTreeItem>
+  <OTree>
+    <OTreeItem>
       Item 1
-      <SlTreeItem>Item A</SlTreeItem>
-      <SlTreeItem>Item B</SlTreeItem>
-      <SlTreeItem>Item C</SlTreeItem>
-    </SlTreeItem>
-    <SlTreeItem>Item 2</SlTreeItem>
-    <SlTreeItem>Item 3</SlTreeItem>
-  </SlTree>
+      <OTreeItem>Item A</OTreeItem>
+      <OTreeItem>Item B</OTreeItem>
+      <OTreeItem>Item C</OTreeItem>
+    </OTreeItem>
+    <OTreeItem>Item 2</OTreeItem>
+    <OTreeItem>Item 3</OTreeItem>
+  </OTree>
 );
 ```
 
@@ -40,43 +40,43 @@ const App = () => (
 A tree item can contain other tree items. This allows the node to be expanded or collapsed by the user.
 
 ```html preview
-<sl-tree>
-  <sl-tree-item>
+<o-tree>
+  <o-tree-item>
     Item 1
-    <sl-tree-item>
+    <o-tree-item>
       Item A
-      <sl-tree-item>Item Z</sl-tree-item>
-      <sl-tree-item>Item Y</sl-tree-item>
-      <sl-tree-item>Item X</sl-tree-item>
-    </sl-tree-item>
-    <sl-tree-item>Item B</sl-tree-item>
-    <sl-tree-item>Item C</sl-tree-item>
-  </sl-tree-item>
-  <sl-tree-item>Item 2</sl-tree-item>
-  <sl-tree-item>Item 3</sl-tree-item>
-</sl-tree>
+      <o-tree-item>Item Z</o-tree-item>
+      <o-tree-item>Item Y</o-tree-item>
+      <o-tree-item>Item X</o-tree-item>
+    </o-tree-item>
+    <o-tree-item>Item B</o-tree-item>
+    <o-tree-item>Item C</o-tree-item>
+  </o-tree-item>
+  <o-tree-item>Item 2</o-tree-item>
+  <o-tree-item>Item 3</o-tree-item>
+</o-tree>
 ```
 
 <!-- prettier-ignore -->
 ```jsx react
-import { SlTree, SlTreeItem } from '%PACKAGE_NAME%/dist/react';
+import { OTree, OTreeItem } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlTree>
-    <SlTreeItem>
+  <OTree>
+    <OTreeItem>
       Item 1
-      <SlTreeItem>
+      <OTreeItem>
         Item A
-        <SlTreeItem>Item Z</SlTreeItem>
-        <SlTreeItem>Item Y</SlTreeItem>
-        <SlTreeItem>Item X</SlTreeItem>
-      </SlTreeItem>
-      <SlTreeItem>Item B</SlTreeItem>
-      <SlTreeItem>Item C</SlTreeItem>
-    </SlTreeItem>
-    <SlTreeItem>Item 2</SlTreeItem>
-    <SlTreeItem>Item 3</SlTreeItem>
-  </SlTree>
+        <OTreeItem>Item Z</OTreeItem>
+        <OTreeItem>Item Y</OTreeItem>
+        <OTreeItem>Item X</OTreeItem>
+      </OTreeItem>
+      <OTreeItem>Item B</OTreeItem>
+      <OTreeItem>Item C</OTreeItem>
+    </OTreeItem>
+    <OTreeItem>Item 2</OTreeItem>
+    <OTreeItem>Item 3</OTreeItem>
+  </OTree>
 );
 ```
 
@@ -85,33 +85,33 @@ const App = () => (
 Use the `selected` attribute to select a tree item initially.
 
 ```html preview
-<sl-tree>
-  <sl-tree-item selected>
+<o-tree>
+  <o-tree-item selected>
     Item 1
-    <sl-tree-item>Item A</sl-tree-item>
-    <sl-tree-item>Item B</sl-tree-item>
-    <sl-tree-item>Item C</sl-tree-item>
-  </sl-tree-item>
-  <sl-tree-item>Item 2</sl-tree-item>
-  <sl-tree-item>Item 3</sl-tree-item>
-</sl-tree>
+    <o-tree-item>Item A</o-tree-item>
+    <o-tree-item>Item B</o-tree-item>
+    <o-tree-item>Item C</o-tree-item>
+  </o-tree-item>
+  <o-tree-item>Item 2</o-tree-item>
+  <o-tree-item>Item 3</o-tree-item>
+</o-tree>
 ```
 
 <!-- prettier-ignore -->
 ```jsx react
-import { SlTree, SlTreeItem } from '%PACKAGE_NAME%/dist/react';
+import { OTree, OTreeItem } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlTree>
-    <SlTreeItem selected>
+  <OTree>
+    <OTreeItem selected>
       Item 1
-      <SlTreeItem>Item A</SlTreeItem>
-      <SlTreeItem>Item B</SlTreeItem>
-      <SlTreeItem>Item C</SlTreeItem>
-    </SlTreeItem>
-    <SlTreeItem>Item 2</SlTreeItem>
-    <SlTreeItem>Item 3</SlTreeItem>
-  </SlTree>
+      <OTreeItem>Item A</OTreeItem>
+      <OTreeItem>Item B</OTreeItem>
+      <OTreeItem>Item C</OTreeItem>
+    </OTreeItem>
+    <OTreeItem>Item 2</OTreeItem>
+    <OTreeItem>Item 3</OTreeItem>
+  </OTree>
 );
 ```
 
@@ -120,44 +120,44 @@ const App = () => (
 Use the `expanded` attribute to expand a tree item initially.
 
 ```html preview
-<sl-tree>
-  <sl-tree-item expanded>
+<o-tree>
+  <o-tree-item expanded>
     Item 1
-    <sl-tree-item expanded>
+    <o-tree-item expanded>
       Item A
-      <sl-tree-item>Item Z</sl-tree-item>
-      <sl-tree-item>Item Y</sl-tree-item>
-      <sl-tree-item>Item X</sl-tree-item>
-    </sl-tree-item>
-    <sl-tree-item>Item B</sl-tree-item>
-    <sl-tree-item>Item C</sl-tree-item>
-  </sl-tree-item>
-  <sl-tree-item>Item 2</sl-tree-item>
-  <sl-tree-item>Item 3</sl-tree-item>
-</sl-tree>
+      <o-tree-item>Item Z</o-tree-item>
+      <o-tree-item>Item Y</o-tree-item>
+      <o-tree-item>Item X</o-tree-item>
+    </o-tree-item>
+    <o-tree-item>Item B</o-tree-item>
+    <o-tree-item>Item C</o-tree-item>
+  </o-tree-item>
+  <o-tree-item>Item 2</o-tree-item>
+  <o-tree-item>Item 3</o-tree-item>
+</o-tree>
 ```
 
 <!-- prettier-ignore -->
 ```jsx react
-import { SlTree, SlTreeItem } from '%PACKAGE_NAME%/dist/react';
+import { OTree, OTreeItem } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlTree>
-    <SlTreeItem expanded>
+  <OTree>
+    <OTreeItem expanded>
       Item 1
-      <SlTreeItem expanded>
+      <OTreeItem expanded>
         Item A
-        <SlTreeItem>Item Z</SlTreeItem>
-        <SlTreeItem>Item Y</SlTreeItem>
-        <SlTreeItem>Item X</SlTreeItem>
-      </SlTreeItem>
-      <SlTreeItem>Item B</SlTreeItem>
-      <SlTreeItem>Item C</SlTreeItem>
-    </SlTreeItem>
-    <SlTreeItem>Item 2</SlTreeItem>
-    <SlTreeItem>Item 3</SlTreeItem>
-  </SlTree>
+        <OTreeItem>Item Z</OTreeItem>
+        <OTreeItem>Item Y</OTreeItem>
+        <OTreeItem>Item X</OTreeItem>
+      </OTreeItem>
+      <OTreeItem>Item B</OTreeItem>
+      <OTreeItem>Item C</OTreeItem>
+    </OTreeItem>
+    <OTreeItem>Item 2</OTreeItem>
+    <OTreeItem>Item 3</OTreeItem>
+  </OTree>
 );
 ```
 
-[component-metadata:sl-tree-item]
+[component-metadata:o-tree-item]

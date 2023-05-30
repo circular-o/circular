@@ -18,7 +18,7 @@ export async function discover(root: Element | ShadowRoot) {
   const rootIsCustomElement = rootTagName?.includes('-');
   const tags = [...root.querySelectorAll(':not(:defined)')]
     .map(el => el.tagName.toLowerCase())
-    .filter(tag => tag.startsWith('sl-'));
+    .filter(tag => tag.startsWith('o-'));
 
   // If the root element is an undefined custom element, add it to the list
   if (rootIsCustomElement && !customElements.get(rootTagName)) {
@@ -35,7 +35,7 @@ export async function discover(root: Element | ShadowRoot) {
  * Registers an element by tag name.
  */
 function register(tagName: string): Promise<void> {
-  const tagWithoutPrefix = tagName.replace(/^sl-/i, '');
+  const tagWithoutPrefix = tagName.replace(/^o-/i, '');
   const path = getBasePath(`components/${tagWithoutPrefix}/${tagWithoutPrefix}.js`);
 
   // If the element is already defined, there's nothing more to do

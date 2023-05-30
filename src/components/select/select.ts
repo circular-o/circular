@@ -16,10 +16,10 @@ import { watch } from '../../internal/watch';
 import ShoelaceElement from '../../internal/shoelace-element';
 import styles from './select.styles';
 import type { CSSResultGroup } from 'lit';
+import type { ORemoveEvent } from '../../events/events';
 import type { ShoelaceFormControl } from '../../internal/shoelace-element';
-import type SlOption from '../option/option';
-import type SlPopup from '../popup/popup';
-import type SlRemoveEvent from '../../events/sl-remove';
+import type OOption from '../option/option';
+import type OPopup from '../popup/popup';
 
 /**
  * @summary Selects allow you to choose items from a menu of predefined options.
@@ -27,27 +27,27 @@ import type SlRemoveEvent from '../../events/sl-remove';
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
- * @dependency sl-popup
- * @dependency sl-tag
+ * @dependency o-icon
+ * @dependency o-popup
+ * @dependency o-tag
  *
- * @slot - The listbox options. Must be `<sl-option>` elements. You can use `<sl-divider>` to group items visually.
+ * @slot - The listbox options. Must be `<o-option>` elements. You can use `<o-divider>` to group items visually.
  * @slot label - The input's label. Alternatively, you can use the `label` attribute.
  * @slot prefix - Used to prepend a presentational icon or similar element to the combobox.
  * @slot clear-icon - An icon to use in lieu of the default clear icon.
  * @slot expand-icon - The icon to show when the control is expanded and collapsed. Rotates on open and close.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  *
- * @event sl-change - Emitted when the control's value changes.
- * @event sl-clear - Emitted when the control's value is cleared.
- * @event sl-input - Emitted when the control receives input.
- * @event sl-focus - Emitted when the control gains focus.
- * @event sl-blur - Emitted when the control loses focus.
- * @event sl-show - Emitted when the select's menu opens.
- * @event sl-after-show - Emitted after the select's menu opens and all animations are complete.
- * @event sl-hide - Emitted when the select's menu closes.
- * @event sl-after-hide - Emitted after the select's menu closes and all animations are complete.
- * @event sl-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
+ * @event o-change - Emitted when the control's value changes.
+ * @event o-clear - Emitted when the control's value is cleared.
+ * @event o-input - Emitted when the control receives input.
+ * @event o-focus - Emitted when the control gains focus.
+ * @event o-blur - Emitted when the control loses focus.
+ * @event o-show - Emitted when the select's menu opens.
+ * @event o-after-show - Emitted after the select's menu opens and all animations are complete.
+ * @event o-hide - Emitted when the select's menu closes.
+ * @event o-after-hide - Emitted after the select's menu closes and all animations are complete.
+ * @event o-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
  *
  * @csspart form-control - The form control that wraps the label, input, and help text.
  * @csspart form-control-label - The label's wrapper.
@@ -66,19 +66,19 @@ import type SlRemoveEvent from '../../events/sl-remove';
  * @csspart clear-button - The clear button.
  * @csspart expand-icon - The container that wraps the expand icon.
  */
-@customElement('sl-select')
-export default class SlSelect extends ShoelaceElement implements ShoelaceFormControl {
+@customElement('o-select')
+export default class OSelect extends ShoelaceElement implements ShoelaceFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this, {
-    assumeInteractionOn: ['sl-blur', 'sl-input']
+    assumeInteractionOn: ['o-blur', 'o-input']
   });
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
   private readonly localize = new LocalizeController(this);
   private typeToSelectString = '';
   private typeToSelectTimeout: number;
 
-  @query('.select') popup: SlPopup;
+  @query('.select') popup: OPopup;
   @query('.select__combobox') combobox: HTMLSlotElement;
   @query('.select__display-input') displayInput: HTMLInputElement;
   @query('.select__value-input') valueInput: HTMLInputElement;
@@ -86,8 +86,8 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
 
   @state() private hasFocus = false;
   @state() displayLabel = '';
-  @state() currentOption: SlOption;
-  @state() selectedOptions: SlOption[] = [];
+  @state() currentOption: OOption;
+  @state() selectedOptions: OOption[] = [];
 
   /** The name of the select, submitted as a name/value pair with form data. */
   @property() name = '';
@@ -203,12 +203,12 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
   private handleFocus() {
     this.hasFocus = true;
     this.displayInput.setSelectionRange(0, 0);
-    this.emit('sl-focus');
+    this.emit('o-focus');
   }
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('o-blur');
   }
 
   private handleDocumentFocusIn(event: KeyboardEvent) {
@@ -222,9 +222,9 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
   private handleDocumentKeyDown(event: KeyboardEvent) {
     const target = event.target as HTMLElement;
     const isClearButton = target.closest('.select__clear') !== null;
-    const isIconButton = target.closest('sl-icon-button') !== null;
+    const isIconButton = target.closest('o-icon-button') !== null;
 
-    // Ignore presses when the target is an icon button (e.g. the remove button in <sl-tag>)
+    // Ignore presses when the target is an icon button (e.g. the remove button in <o-tag>)
     if (isClearButton || isIconButton) {
       return;
     }
@@ -259,8 +259,8 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
 
         // Emit after updating
         this.updateComplete.then(() => {
-          this.emit('sl-input');
-          this.emit('sl-change');
+          this.emit('o-input');
+          this.emit('o-change');
         });
 
         if (!this.multiple) {
@@ -362,7 +362,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
 
   private handleComboboxMouseDown(event: MouseEvent) {
     const path = event.composedPath();
-    const isIconButton = path.some(el => el instanceof Element && el.tagName.toLowerCase() === 'sl-icon-button');
+    const isIconButton = path.some(el => el instanceof Element && el.tagName.toLowerCase() === 'o-icon-button');
 
     // Ignore disabled controls and clicks on tags (remove buttons)
     if (this.disabled || isIconButton) {
@@ -388,9 +388,9 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
 
       // Emit after update
       this.updateComplete.then(() => {
-        this.emit('sl-clear');
-        this.emit('sl-input');
-        this.emit('sl-change');
+        this.emit('o-clear');
+        this.emit('o-input');
+        this.emit('o-change');
       });
     }
   }
@@ -403,7 +403,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
 
   private handleOptionClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
-    const option = target.closest('sl-option');
+    const option = target.closest('o-option');
     const oldValue = this.value;
 
     if (option && !option.disabled) {
@@ -419,8 +419,8 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
       if (this.value !== oldValue) {
         // Emit after updating
         this.updateComplete.then(() => {
-          this.emit('sl-input');
-          this.emit('sl-change');
+          this.emit('o-input');
+          this.emit('o-change');
         });
       }
 
@@ -437,18 +437,18 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
     const values: string[] = [];
 
     // Check for duplicate values in menu items
-    if (customElements.get('sl-option')) {
+    if (customElements.get('o-option')) {
       allOptions.forEach(option => values.push(option.value));
 
       // Select only the options that match the new value
       this.setSelectedOptions(allOptions.filter(el => value.includes(el.value)));
     } else {
-      // Rerun this handler when <sl-option> is registered
-      customElements.whenDefined('sl-option').then(() => this.handleDefaultSlotChange());
+      // Rerun this handler when <o-option> is registered
+      customElements.whenDefined('o-option').then(() => this.handleDefaultSlotChange());
     }
   }
 
-  private handleTagRemove(event: SlRemoveEvent, option: SlOption) {
+  private handleTagRemove(event: ORemoveEvent, option: OOption) {
     event.stopPropagation();
 
     if (!this.disabled) {
@@ -456,25 +456,25 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
 
       // Emit after updating
       this.updateComplete.then(() => {
-        this.emit('sl-input');
-        this.emit('sl-change');
+        this.emit('o-input');
+        this.emit('o-change');
       });
     }
   }
 
-  // Gets an array of all <sl-option> elements
+  // Gets an array of all <o-option> elements
   private getAllOptions() {
-    return [...this.querySelectorAll<SlOption>('sl-option')];
+    return [...this.querySelectorAll<OOption>('o-option')];
   }
 
-  // Gets the first <sl-option> element
+  // Gets the first <o-option> element
   private getFirstOption() {
-    return this.querySelector<SlOption>('sl-option');
+    return this.querySelector<OOption>('o-option');
   }
 
   // Sets the current option, which is the option the user is currently interacting with (e.g. via keyboard). Only one
   // option may be "current" at a time.
-  private setCurrentOption(option: SlOption | null) {
+  private setCurrentOption(option: OOption | null) {
     const allOptions = this.getAllOptions();
 
     // Clear selection
@@ -493,7 +493,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
   }
 
   // Sets the selected option(s)
-  private setSelectedOptions(option: SlOption | SlOption[]) {
+  private setSelectedOptions(option: OOption | OOption[]) {
     const allOptions = this.getAllOptions();
     const newSelectedOptions = Array.isArray(option) ? option : [option];
 
@@ -510,7 +510,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
   }
 
   // Toggles an option's selected state
-  private toggleOptionSelection(option: SlOption, force?: boolean) {
+  private toggleOptionSelection(option: OOption, force?: boolean) {
     if (force === true || force === false) {
       option.selected = force;
     } else {
@@ -577,7 +577,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
       this.setCurrentOption(this.selectedOptions[0] || this.getFirstOption());
 
       // Show
-      this.emit('sl-show');
+      this.emit('o-show');
       this.addOpenListeners();
 
       await stopAnimations(this);
@@ -597,10 +597,10 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
         scrollIntoView(this.currentOption, this.listbox, 'vertical', 'auto');
       }
 
-      this.emit('sl-after-show');
+      this.emit('o-after-show');
     } else {
       // Hide
-      this.emit('sl-hide');
+      this.emit('o-hide');
       this.removeOpenListeners();
 
       await stopAnimations(this);
@@ -609,7 +609,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
       this.listbox.hidden = true;
       this.popup.active = false;
 
-      this.emit('sl-after-hide');
+      this.emit('o-after-hide');
     }
   }
 
@@ -621,7 +621,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
     }
 
     this.open = true;
-    return waitForEvent(this, 'sl-after-show');
+    return waitForEvent(this, 'o-after-show');
   }
 
   /** Hides the listbox. */
@@ -632,7 +632,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
     }
 
     this.open = false;
-    return waitForEvent(this, 'sl-after-hide');
+    return waitForEvent(this, 'o-after-hide');
   }
 
   /** Checks for validity but does not show a validation message. Returns `true` when valid and `false` when invalid. */
@@ -697,7 +697,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
         </label>
 
         <div part="form-control-input" class="form-control-input">
-          <sl-popup
+          <o-popup
             class=${classMap({
               select: true,
               'select--standard': true,
@@ -760,7 +760,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
                       ${this.selectedOptions.map((option, index) => {
                         if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
                           return html`
-                            <sl-tag
+                            <o-tag
                               part="tag"
                               exportparts="
                                 base:tag__base,
@@ -771,13 +771,13 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
                               ?pill=${this.pill}
                               size=${this.size}
                               removable
-                              @sl-remove=${(event: SlRemoveEvent) => this.handleTagRemove(event, option)}
+                              @o-remove=${(event: ORemoveEvent) => this.handleTagRemove(event, option)}
                             >
                               ${option.getTextLabel()}
-                            </sl-tag>
+                            </o-tag>
                           `;
                         } else if (index === this.maxOptionsVisible) {
-                          return html` <sl-tag size=${this.size}> +${this.selectedOptions.length - index} </sl-tag> `;
+                          return html` <o-tag size=${this.size}> +${this.selectedOptions.length - index} </o-tag> `;
                         } else {
                           return null;
                         }
@@ -810,14 +810,14 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
                       tabindex="-1"
                     >
                       <slot name="clear-icon">
-                        <sl-icon name="x-circle-fill" library="system"></sl-icon>
+                        <o-icon name="x-circle-fill" library="system"></o-icon>
                       </slot>
                     </button>
                   `
                 : ''}
 
               <slot name="expand-icon" part="expand-icon" class="select__expand-icon">
-                <sl-icon library="system" name="chevron-down"></sl-icon>
+                <o-icon library="system" name="chevron-down"></o-icon>
               </slot>
             </div>
 
@@ -835,7 +835,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
             >
               <slot></slot>
             </div>
-          </sl-popup>
+          </o-popup>
         </div>
 
         <slot
@@ -870,6 +870,6 @@ setDefaultAnimation('select.hide', {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-select': SlSelect;
+    'o-select': OSelect;
   }
 }

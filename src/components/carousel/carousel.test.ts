@@ -1,17 +1,17 @@
 import { clickOnElement } from '../../internal/test';
 import { expect, fixture, html, oneEvent } from '@open-wc/testing';
 import sinon from 'sinon';
-import type SlCarousel from './carousel';
+import type OCarousel from './carousel';
 
-describe('<sl-carousel>', () => {
+describe('<o-carousel>', () => {
   it('should render a carousel with default configuration', async () => {
     // Arrange
     const el = await fixture(html`
-      <sl-carousel>
-        <sl-carousel-item>Node 1</sl-carousel-item>
-        <sl-carousel-item>Node 2</sl-carousel-item>
-        <sl-carousel-item>Node 3</sl-carousel-item>
-      </sl-carousel>
+      <o-carousel>
+        <o-carousel-item>Node 1</o-carousel-item>
+        <o-carousel-item>Node 2</o-carousel-item>
+        <o-carousel-item>Node 3</o-carousel-item>
+      </o-carousel>
     `);
 
     // Assert
@@ -37,12 +37,12 @@ describe('<sl-carousel>', () => {
 
     it('should scroll forwards every `autoplay-interval` milliseconds', async () => {
       // Arrange
-      const el = await fixture<SlCarousel>(html`
-        <sl-carousel autoplay autoplay-interval="10">
-          <sl-carousel-item>Node 1</sl-carousel-item>
-          <sl-carousel-item>Node 2</sl-carousel-item>
-          <sl-carousel-item>Node 3</sl-carousel-item>
-        </sl-carousel>
+      const el = await fixture<OCarousel>(html`
+        <o-carousel autoplay autoplay-interval="10">
+          <o-carousel-item>Node 1</o-carousel-item>
+          <o-carousel-item>Node 2</o-carousel-item>
+          <o-carousel-item>Node 3</o-carousel-item>
+        </o-carousel>
       `);
       sinon.stub(el, 'next');
 
@@ -58,12 +58,12 @@ describe('<sl-carousel>', () => {
 
     it('should pause the autoplay while the user is interacting', async () => {
       // Arrange
-      const el = await fixture<SlCarousel>(html`
-        <sl-carousel autoplay autoplay-interval="10">
-          <sl-carousel-item>Node 1</sl-carousel-item>
-          <sl-carousel-item>Node 2</sl-carousel-item>
-          <sl-carousel-item>Node 3</sl-carousel-item>
-        </sl-carousel>
+      const el = await fixture<OCarousel>(html`
+        <o-carousel autoplay autoplay-interval="10">
+          <o-carousel-item>Node 1</o-carousel-item>
+          <o-carousel-item>Node 2</o-carousel-item>
+          <o-carousel-item>Node 3</o-carousel-item>
+        </o-carousel>
       `);
       sinon.stub(el, 'next');
 
@@ -81,12 +81,12 @@ describe('<sl-carousel>', () => {
 
     it('should not resume if the user is still interacting', async () => {
       // Arrange
-      const el = await fixture<SlCarousel>(html`
-        <sl-carousel autoplay autoplay-interval="10">
-          <sl-carousel-item>Node 1</sl-carousel-item>
-          <sl-carousel-item>Node 2</sl-carousel-item>
-          <sl-carousel-item>Node 3</sl-carousel-item>
-        </sl-carousel>
+      const el = await fixture<OCarousel>(html`
+        <o-carousel autoplay autoplay-interval="10">
+          <o-carousel-item>Node 1</o-carousel-item>
+          <o-carousel-item>Node 2</o-carousel-item>
+          <o-carousel-item>Node 3</o-carousel-item>
+        </o-carousel>
       `);
       sinon.stub(el, 'next');
 
@@ -111,12 +111,12 @@ describe('<sl-carousel>', () => {
   describe('when `loop` attribute is provided', () => {
     it('should create clones of the first and last slides', async () => {
       // Arrange
-      const el = await fixture<SlCarousel>(html`
-        <sl-carousel loop>
-          <sl-carousel-item>Node 1</sl-carousel-item>
-          <sl-carousel-item>Node 2</sl-carousel-item>
-          <sl-carousel-item>Node 3</sl-carousel-item>
-        </sl-carousel>
+      const el = await fixture<OCarousel>(html`
+        <o-carousel loop>
+          <o-carousel-item>Node 1</o-carousel-item>
+          <o-carousel-item>Node 2</o-carousel-item>
+          <o-carousel-item>Node 3</o-carousel-item>
+        </o-carousel>
       `);
 
       // Act
@@ -130,12 +130,12 @@ describe('<sl-carousel>', () => {
     describe('and `slides-per-page` is provided', () => {
       it('should create multiple clones', async () => {
         // Arrange
-        const el = await fixture<SlCarousel>(html`
-          <sl-carousel loop slides-per-page="2">
-            <sl-carousel-item>Node 1</sl-carousel-item>
-            <sl-carousel-item>Node 2</sl-carousel-item>
-            <sl-carousel-item>Node 3</sl-carousel-item>
-          </sl-carousel>
+        const el = await fixture<OCarousel>(html`
+          <o-carousel loop slides-per-page="2">
+            <o-carousel-item>Node 1</o-carousel-item>
+            <o-carousel-item>Node 2</o-carousel-item>
+            <o-carousel-item>Node 3</o-carousel-item>
+          </o-carousel>
         `);
 
         // Act
@@ -152,11 +152,11 @@ describe('<sl-carousel>', () => {
     it('should render pagination controls', async () => {
       // Arrange
       const el = await fixture(html`
-        <sl-carousel pagination>
-          <sl-carousel-item>Node 1</sl-carousel-item>
-          <sl-carousel-item>Node 2</sl-carousel-item>
-          <sl-carousel-item>Node 3</sl-carousel-item>
-        </sl-carousel>
+        <o-carousel pagination>
+          <o-carousel-item>Node 1</o-carousel-item>
+          <o-carousel-item>Node 2</o-carousel-item>
+          <o-carousel-item>Node 3</o-carousel-item>
+        </o-carousel>
       `);
 
       // Assert
@@ -168,12 +168,12 @@ describe('<sl-carousel>', () => {
     describe('and user clicks on a pagination button', () => {
       it('should scroll the carousel to the nth slide', async () => {
         // Arrange
-        const el = await fixture<SlCarousel>(html`
-          <sl-carousel pagination>
-            <sl-carousel-item>Node 1</sl-carousel-item>
-            <sl-carousel-item>Node 2</sl-carousel-item>
-            <sl-carousel-item>Node 3</sl-carousel-item>
-          </sl-carousel>
+        const el = await fixture<OCarousel>(html`
+          <o-carousel pagination>
+            <o-carousel-item>Node 1</o-carousel-item>
+            <o-carousel-item>Node 2</o-carousel-item>
+            <o-carousel-item>Node 3</o-carousel-item>
+          </o-carousel>
         `);
         sinon.stub(el, 'goToSlide');
         await el.updateComplete;
@@ -191,11 +191,11 @@ describe('<sl-carousel>', () => {
     it('should render navigation controls', async () => {
       // Arrange
       const el = await fixture(html`
-        <sl-carousel navigation>
-          <sl-carousel-item>Node 1</sl-carousel-item>
-          <sl-carousel-item>Node 2</sl-carousel-item>
-          <sl-carousel-item>Node 3</sl-carousel-item>
-        </sl-carousel>
+        <o-carousel navigation>
+          <o-carousel-item>Node 1</o-carousel-item>
+          <o-carousel-item>Node 2</o-carousel-item>
+          <o-carousel-item>Node 3</o-carousel-item>
+        </o-carousel>
       `);
 
       // Assert
@@ -208,12 +208,12 @@ describe('<sl-carousel>', () => {
   describe('when `slides-per-page` attribute is provided', () => {
     it('should show multiple slides at a given time', async () => {
       // Arrange
-      const el = await fixture<SlCarousel>(html`
-        <sl-carousel slides-per-page="2">
-          <sl-carousel-item>Node 1</sl-carousel-item>
-          <sl-carousel-item>Node 2</sl-carousel-item>
-          <sl-carousel-item>Node 3</sl-carousel-item>
-        </sl-carousel>
+      const el = await fixture<OCarousel>(html`
+        <o-carousel slides-per-page="2">
+          <o-carousel-item>Node 1</o-carousel-item>
+          <o-carousel-item>Node 2</o-carousel-item>
+          <o-carousel-item>Node 3</o-carousel-item>
+        </o-carousel>
       `);
 
       // Act
@@ -228,13 +228,13 @@ describe('<sl-carousel>', () => {
     it('should set the granularity of snapping', async () => {
       // Arrange
       const expectedSnapGranularity = 2;
-      const el = await fixture<SlCarousel>(html`
-        <sl-carousel slides-per-move="${expectedSnapGranularity}">
-          <sl-carousel-item>Node 1</sl-carousel-item>
-          <sl-carousel-item>Node 2</sl-carousel-item>
-          <sl-carousel-item>Node 3</sl-carousel-item>
-          <sl-carousel-item>Node 4</sl-carousel-item>
-        </sl-carousel>
+      const el = await fixture<OCarousel>(html`
+        <o-carousel slides-per-move="${expectedSnapGranularity}">
+          <o-carousel-item>Node 1</o-carousel-item>
+          <o-carousel-item>Node 2</o-carousel-item>
+          <o-carousel-item>Node 3</o-carousel-item>
+          <o-carousel-item>Node 4</o-carousel-item>
+        </o-carousel>
       `);
 
       // Act
@@ -257,11 +257,11 @@ describe('<sl-carousel>', () => {
     describe('and value is `vertical`', () => {
       it('should make the scrollable along the y-axis', async () => {
         // Arrange
-        const el = await fixture<SlCarousel>(html`
-          <sl-carousel orientation="vertical" style="height: 100px">
-            <sl-carousel-item>Node 1</sl-carousel-item>
-            <sl-carousel-item>Node 2</sl-carousel-item>
-          </sl-carousel>
+        const el = await fixture<OCarousel>(html`
+          <o-carousel orientation="vertical" style="height: 100px">
+            <o-carousel-item>Node 1</o-carousel-item>
+            <o-carousel-item>Node 2</o-carousel-item>
+          </o-carousel>
         `);
 
         // Act
@@ -276,11 +276,11 @@ describe('<sl-carousel>', () => {
     describe('and value is `horizontal`', () => {
       it('should make the scrollable along the x-axis', async () => {
         // Arrange
-        const el = await fixture<SlCarousel>(html`
-          <sl-carousel orientation="horizontal" style="height: 100px">
-            <sl-carousel-item>Node 1</sl-carousel-item>
-            <sl-carousel-item>Node 2</sl-carousel-item>
-          </sl-carousel>
+        const el = await fixture<OCarousel>(html`
+          <o-carousel orientation="horizontal" style="height: 100px">
+            <o-carousel-item>Node 1</o-carousel-item>
+            <o-carousel-item>Node 2</o-carousel-item>
+          </o-carousel>
         `);
 
         // Act
@@ -297,12 +297,12 @@ describe('<sl-carousel>', () => {
     describe('when the user clicks the next button', () => {
       it('should scroll to the next slide', async () => {
         // Arrange
-        const el = await fixture<SlCarousel>(html`
-          <sl-carousel navigation>
-            <sl-carousel-item>Node 1</sl-carousel-item>
-            <sl-carousel-item>Node 2</sl-carousel-item>
-            <sl-carousel-item>Node 3</sl-carousel-item>
-          </sl-carousel>
+        const el = await fixture<OCarousel>(html`
+          <o-carousel navigation>
+            <o-carousel-item>Node 1</o-carousel-item>
+            <o-carousel-item>Node 2</o-carousel-item>
+            <o-carousel-item>Node 3</o-carousel-item>
+          </o-carousel>
         `);
         const nextButton: HTMLElement = el.shadowRoot!.querySelector('.carousel__navigation-button--next')!;
         sinon.stub(el, 'next');
@@ -320,12 +320,12 @@ describe('<sl-carousel>', () => {
       describe('and carousel is positioned on the last slide', () => {
         it('should not scroll', async () => {
           // Arrange
-          const el = await fixture<SlCarousel>(html`
-            <sl-carousel navigation>
-              <sl-carousel-item>Node 1</sl-carousel-item>
-              <sl-carousel-item>Node 2</sl-carousel-item>
-              <sl-carousel-item>Node 3</sl-carousel-item>
-            </sl-carousel>
+          const el = await fixture<OCarousel>(html`
+            <o-carousel navigation>
+              <o-carousel-item>Node 1</o-carousel-item>
+              <o-carousel-item>Node 2</o-carousel-item>
+              <o-carousel-item>Node 3</o-carousel-item>
+            </o-carousel>
           `);
           const nextButton: HTMLElement = el.shadowRoot!.querySelector('.carousel__navigation-button--next')!;
           sinon.stub(el, 'next');
@@ -346,12 +346,12 @@ describe('<sl-carousel>', () => {
         describe('and `loop` attribute is provided', () => {
           it('should scroll to the first slide', async () => {
             // Arrange
-            const el = await fixture<SlCarousel>(html`
-              <sl-carousel navigation loop>
-                <sl-carousel-item>Node 1</sl-carousel-item>
-                <sl-carousel-item>Node 2</sl-carousel-item>
-                <sl-carousel-item>Node 3</sl-carousel-item>
-              </sl-carousel>
+            const el = await fixture<OCarousel>(html`
+              <o-carousel navigation loop>
+                <o-carousel-item>Node 1</o-carousel-item>
+                <o-carousel-item>Node 2</o-carousel-item>
+                <o-carousel-item>Node 3</o-carousel-item>
+              </o-carousel>
             `);
             const nextButton: HTMLElement = el.shadowRoot!.querySelector('.carousel__navigation-button--next')!;
 
@@ -378,12 +378,12 @@ describe('<sl-carousel>', () => {
     describe('and clicks the previous button', () => {
       it('should scroll to the previous slide', async () => {
         // Arrange
-        const el = await fixture<SlCarousel>(html`
-          <sl-carousel navigation>
-            <sl-carousel-item>Node 1</sl-carousel-item>
-            <sl-carousel-item>Node 2</sl-carousel-item>
-            <sl-carousel-item>Node 3</sl-carousel-item>
-          </sl-carousel>
+        const el = await fixture<OCarousel>(html`
+          <o-carousel navigation>
+            <o-carousel-item>Node 1</o-carousel-item>
+            <o-carousel-item>Node 2</o-carousel-item>
+            <o-carousel-item>Node 3</o-carousel-item>
+          </o-carousel>
         `);
 
         // Go to the second slide so that the previous button will be enabled
@@ -407,12 +407,12 @@ describe('<sl-carousel>', () => {
       describe('and carousel is positioned on the first slide', () => {
         it('should not scroll', async () => {
           // Arrange
-          const el = await fixture<SlCarousel>(html`
-            <sl-carousel navigation>
-              <sl-carousel-item>Node 1</sl-carousel-item>
-              <sl-carousel-item>Node 2</sl-carousel-item>
-              <sl-carousel-item>Node 3</sl-carousel-item>
-            </sl-carousel>
+          const el = await fixture<OCarousel>(html`
+            <o-carousel navigation>
+              <o-carousel-item>Node 1</o-carousel-item>
+              <o-carousel-item>Node 2</o-carousel-item>
+              <o-carousel-item>Node 3</o-carousel-item>
+            </o-carousel>
           `);
 
           const previousButton: HTMLElement = el.shadowRoot!.querySelector('.carousel__navigation-button--previous')!;
@@ -431,12 +431,12 @@ describe('<sl-carousel>', () => {
         describe('and `loop` attribute is provided', () => {
           it('should scroll to the last slide', async () => {
             // Arrange
-            const el = await fixture<SlCarousel>(html`
-              <sl-carousel navigation loop>
-                <sl-carousel-item>Node 1</sl-carousel-item>
-                <sl-carousel-item>Node 2</sl-carousel-item>
-                <sl-carousel-item>Node 3</sl-carousel-item>
-              </sl-carousel>
+            const el = await fixture<OCarousel>(html`
+              <o-carousel navigation loop>
+                <o-carousel-item>Node 1</o-carousel-item>
+                <o-carousel-item>Node 2</o-carousel-item>
+                <o-carousel-item>Node 3</o-carousel-item>
+              </o-carousel>
             `);
 
             const previousButton: HTMLElement = el.shadowRoot!.querySelector('.carousel__navigation-button--previous')!;
@@ -463,12 +463,12 @@ describe('<sl-carousel>', () => {
     describe('#next', () => {
       it('should scroll the carousel to the next slide', async () => {
         // Arrange
-        const el = await fixture<SlCarousel>(html`
-          <sl-carousel slides-per-move="2">
-            <sl-carousel-item>Node 1</sl-carousel-item>
-            <sl-carousel-item>Node 2</sl-carousel-item>
-            <sl-carousel-item>Node 3</sl-carousel-item>
-          </sl-carousel>
+        const el = await fixture<OCarousel>(html`
+          <o-carousel slides-per-move="2">
+            <o-carousel-item>Node 1</o-carousel-item>
+            <o-carousel-item>Node 2</o-carousel-item>
+            <o-carousel-item>Node 3</o-carousel-item>
+          </o-carousel>
         `);
         sinon.stub(el, 'goToSlide');
         await el.updateComplete;
@@ -483,12 +483,12 @@ describe('<sl-carousel>', () => {
     describe('#previous', () => {
       it('should scroll the carousel to the previous slide', async () => {
         // Arrange
-        const el = await fixture<SlCarousel>(html`
-          <sl-carousel slides-per-move="2">
-            <sl-carousel-item>Node 1</sl-carousel-item>
-            <sl-carousel-item>Node 2</sl-carousel-item>
-            <sl-carousel-item>Node 3</sl-carousel-item>
-          </sl-carousel>
+        const el = await fixture<OCarousel>(html`
+          <o-carousel slides-per-move="2">
+            <o-carousel-item>Node 1</o-carousel-item>
+            <o-carousel-item>Node 2</o-carousel-item>
+            <o-carousel-item>Node 3</o-carousel-item>
+          </o-carousel>
         `);
         sinon.stub(el, 'goToSlide');
         await el.updateComplete;
@@ -503,12 +503,12 @@ describe('<sl-carousel>', () => {
     describe('#goToSlide', () => {
       it('should scroll the carousel to the nth slide', async () => {
         // Arrange
-        const el = await fixture<SlCarousel>(html`
-          <sl-carousel>
-            <sl-carousel-item>Node 1</sl-carousel-item>
-            <sl-carousel-item>Node 2</sl-carousel-item>
-            <sl-carousel-item>Node 3</sl-carousel-item>
-          </sl-carousel>
+        const el = await fixture<OCarousel>(html`
+          <o-carousel>
+            <o-carousel-item>Node 1</o-carousel-item>
+            <o-carousel-item>Node 2</o-carousel-item>
+            <o-carousel-item>Node 3</o-carousel-item>
+          </o-carousel>
         `);
         await el.updateComplete;
 
@@ -526,12 +526,12 @@ describe('<sl-carousel>', () => {
   describe('Accessibility', () => {
     it('should pass accessibility tests', async () => {
       // Arrange
-      const el = await fixture<SlCarousel>(html`
-        <sl-carousel navigation pagination>
-          <sl-carousel-item>Node 1</sl-carousel-item>
-          <sl-carousel-item>Node 2</sl-carousel-item>
-          <sl-carousel-item>Node 3</sl-carousel-item>
-        </sl-carousel>
+      const el = await fixture<OCarousel>(html`
+        <o-carousel navigation pagination>
+          <o-carousel-item>Node 1</o-carousel-item>
+          <o-carousel-item>Node 2</o-carousel-item>
+          <o-carousel-item>Node 3</o-carousel-item>
+        </o-carousel>
       `);
       const pagination = el.shadowRoot!.querySelector('.carousel__pagination')!;
       const navigation = el.shadowRoot!.querySelector('.carousel__navigation')!;
@@ -561,12 +561,12 @@ describe('<sl-carousel>', () => {
     describe('when scrolling', () => {
       it('should update aria-busy attribute', async () => {
         // Arrange
-        const el = await fixture<SlCarousel>(html`
-          <sl-carousel autoplay>
-            <sl-carousel-item>Node 1</sl-carousel-item>
-            <sl-carousel-item>Node 2</sl-carousel-item>
-            <sl-carousel-item>Node 3</sl-carousel-item>
-          </sl-carousel>
+        const el = await fixture<OCarousel>(html`
+          <o-carousel autoplay>
+            <o-carousel-item>Node 1</o-carousel-item>
+            <o-carousel-item>Node 2</o-carousel-item>
+            <o-carousel-item>Node 3</o-carousel-item>
+          </o-carousel>
         `);
 
         await el.updateComplete;

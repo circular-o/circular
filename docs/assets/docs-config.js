@@ -22,8 +22,8 @@ window.DEFAULT_DOCS_CONFIGURATION = {
 // Get config vars from the sessionStore
 window.getDocsConfig = () => {
   // The package data is stored in the sessionStore by the metadata plugin, please see the metadata.js file
-  const packageData = sessionStorage.getItem('sl-package-data')
-    ? JSON.parse(sessionStorage.getItem('sl-package-data'))
+  const packageData = sessionStorage.getItem('o-package-data')
+    ? JSON.parse(sessionStorage.getItem('o-package-data'))
     : {};
 
   return packageData;
@@ -41,7 +41,7 @@ window.setDocsConfig = newConfig => {
   const reactPackageUrl = `${config.reactCdnUrl}/${config.packageOrganization}/${config.packageName}@${config.packageVersion}`;
 
   sessionStorage.setItem(
-    'sl-package-data',
+    'o-package-data',
     JSON.stringify({
       ...config,
       packageUrlNoVersion,

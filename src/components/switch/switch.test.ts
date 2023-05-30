@@ -2,16 +2,16 @@ import { aTimeout, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/t
 import { runFormControlBaseTests } from '../../internal/test/form-control-base-tests';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
-import type SlSwitch from './switch';
+import type OSwitch from './switch';
 
-describe('<sl-switch>', () => {
+describe('<o-switch>', () => {
   it('should pass accessibility tests', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch>Switch</sl-switch> `);
+    const el = await fixture<OSwitch>(html` <o-switch>Switch</o-switch> `);
     await expect(el).to.be.accessible();
   });
 
   it('default properties', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch></sl-switch> `);
+    const el = await fixture<OSwitch>(html` <o-switch></o-switch> `);
 
     expect(el.name).to.equal('');
     expect(el.value).to.be.undefined;
@@ -23,32 +23,32 @@ describe('<sl-switch>', () => {
   });
 
   it('should have title if title attribute is set', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch title="Test"></sl-switch> `);
+    const el = await fixture<OSwitch>(html` <o-switch title="Test"></o-switch> `);
     const input = el.shadowRoot!.querySelector('input')!;
 
     expect(input.title).to.equal('Test');
   });
 
   it('should be disabled with the disabled attribute', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch disabled></sl-switch> `);
+    const el = await fixture<OSwitch>(html` <o-switch disabled></o-switch> `);
     const input = el.shadowRoot!.querySelector<HTMLInputElement>('input')!;
 
     expect(input.disabled).to.be.true;
   });
 
   it('should be valid by default', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch></sl-switch> `);
+    const el = await fixture<OSwitch>(html` <o-switch></o-switch> `);
 
     expect(el.checkValidity()).to.be.true;
   });
 
-  it('should emit sl-change and sl-input when clicked', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch></sl-switch> `);
+  it('should emit o-change and o-input when clicked', async () => {
+    const el = await fixture<OSwitch>(html` <o-switch></o-switch> `);
     const changeHandler = sinon.spy();
     const inputHandler = sinon.spy();
 
-    el.addEventListener('sl-change', changeHandler);
-    el.addEventListener('sl-input', inputHandler);
+    el.addEventListener('o-change', changeHandler);
+    el.addEventListener('o-input', inputHandler);
     el.click();
     await el.updateComplete;
 
@@ -57,13 +57,13 @@ describe('<sl-switch>', () => {
     expect(el.checked).to.be.true;
   });
 
-  it('should emit sl-change when toggled with spacebar', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch></sl-switch> `);
+  it('should emit o-change when toggled with spacebar', async () => {
+    const el = await fixture<OSwitch>(html` <o-switch></o-switch> `);
     const changeHandler = sinon.spy();
     const inputHandler = sinon.spy();
 
-    el.addEventListener('sl-change', changeHandler);
-    el.addEventListener('sl-input', inputHandler);
+    el.addEventListener('o-change', changeHandler);
+    el.addEventListener('o-input', inputHandler);
     el.focus();
     await sendKeys({ press: ' ' });
 
@@ -72,13 +72,13 @@ describe('<sl-switch>', () => {
     expect(el.checked).to.be.true;
   });
 
-  it('should emit sl-change and sl-input when toggled with the right arrow', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch></sl-switch> `);
+  it('should emit o-change and o-input when toggled with the right arrow', async () => {
+    const el = await fixture<OSwitch>(html` <o-switch></o-switch> `);
     const changeHandler = sinon.spy();
     const inputHandler = sinon.spy();
 
-    el.addEventListener('sl-change', changeHandler);
-    el.addEventListener('sl-input', inputHandler);
+    el.addEventListener('o-change', changeHandler);
+    el.addEventListener('o-input', inputHandler);
     el.focus();
     await sendKeys({ press: 'ArrowRight' });
     await el.updateComplete;
@@ -88,13 +88,13 @@ describe('<sl-switch>', () => {
     expect(el.checked).to.be.true;
   });
 
-  it('should emit sl-change and sl-input when toggled with the left arrow', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch checked></sl-switch> `);
+  it('should emit o-change and o-input when toggled with the left arrow', async () => {
+    const el = await fixture<OSwitch>(html` <o-switch checked></o-switch> `);
     const changeHandler = sinon.spy();
     const inputHandler = sinon.spy();
 
-    el.addEventListener('sl-change', changeHandler);
-    el.addEventListener('sl-input', inputHandler);
+    el.addEventListener('o-change', changeHandler);
+    el.addEventListener('o-input', inputHandler);
     el.focus();
     await sendKeys({ press: 'ArrowLeft' });
     await el.updateComplete;
@@ -104,10 +104,10 @@ describe('<sl-switch>', () => {
     expect(el.checked).to.be.false;
   });
 
-  it('should not emit sl-change or sl-input when checked is set by JavaScript', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch></sl-switch> `);
-    el.addEventListener('sl-change', () => expect.fail('sl-change incorrectly emitted'));
-    el.addEventListener('sl-input', () => expect.fail('sl-change incorrectly emitted'));
+  it('should not emit o-change or o-input when checked is set by JavaScript', async () => {
+    const el = await fixture<OSwitch>(html` <o-switch></o-switch> `);
+    el.addEventListener('o-change', () => expect.fail('o-change incorrectly emitted'));
+    el.addEventListener('o-input', () => expect.fail('o-change incorrectly emitted'));
     el.checked = true;
     await el.updateComplete;
     el.checked = false;
@@ -118,7 +118,7 @@ describe('<sl-switch>', () => {
     //
     // See: https://github.com/shoelace-style/shoelace/issues/1169
     //
-    const el = await fixture<SlSwitch>(html` <sl-switch></sl-switch> `);
+    const el = await fixture<OSwitch>(html` <o-switch></o-switch> `);
     const label = el.shadowRoot!.querySelector('.switch')!;
     const input = el.shadowRoot!.querySelector('.switch__input')!;
 
@@ -133,11 +133,11 @@ describe('<sl-switch>', () => {
     it('should submit the correct value when a value is provided', async () => {
       const form = await fixture<HTMLFormElement>(html`
         <form>
-          <sl-switch name="a" value="1" checked></sl-switch>
-          <sl-button type="submit">Submit</sl-button>
+          <o-switch name="a" value="1" checked></o-switch>
+          <o-button type="submit">Submit</o-button>
         </form>
       `);
-      const button = form.querySelector('sl-button')!;
+      const button = form.querySelector('o-button')!;
       const submitHandler = sinon.spy((event: SubmitEvent) => {
         formData = new FormData(form);
         event.preventDefault();
@@ -155,11 +155,11 @@ describe('<sl-switch>', () => {
     it('should submit "on" when no value is provided', async () => {
       const form = await fixture<HTMLFormElement>(html`
         <form>
-          <sl-switch name="a" checked></sl-switch>
-          <sl-button type="submit">Submit</sl-button>
+          <o-switch name="a" checked></o-switch>
+          <o-button type="submit">Submit</o-button>
         </form>
       `);
-      const button = form.querySelector('sl-button')!;
+      const button = form.querySelector('o-button')!;
       const submitHandler = sinon.spy((event: SubmitEvent) => {
         formData = new FormData(form);
         event.preventDefault();
@@ -177,16 +177,16 @@ describe('<sl-switch>', () => {
     it('should show a constraint validation error when setCustomValidity() is called', async () => {
       const form = await fixture<HTMLFormElement>(html`
         <form>
-          <sl-switch name="a" value="1" checked></sl-switch>
-          <sl-button type="submit">Submit</sl-button>
+          <o-switch name="a" value="1" checked></o-switch>
+          <o-button type="submit">Submit</o-button>
         </form>
       `);
-      const button = form.querySelector('sl-button')!;
-      const slSwitch = form.querySelector('sl-switch')!;
+      const button = form.querySelector('o-button')!;
+      const OSwitch = form.querySelector('o-switch')!;
       const submitHandler = sinon.spy((event: SubmitEvent) => event.preventDefault());
 
       // Submitting the form after setting custom validity should not trigger the handler
-      slSwitch.setCustomValidity('Invalid selection');
+      OSwitch.setCustomValidity('Invalid selection');
       form.addEventListener('submit', submitHandler);
       button.click();
       await aTimeout(100);
@@ -195,22 +195,22 @@ describe('<sl-switch>', () => {
     });
 
     it('should be invalid when required and unchecked', async () => {
-      const slSwitch = await fixture<HTMLFormElement>(html` <sl-switch required></sl-switch> `);
-      expect(slSwitch.checkValidity()).to.be.false;
+      const OSwitch = await fixture<HTMLFormElement>(html` <o-switch required></o-switch> `);
+      expect(OSwitch.checkValidity()).to.be.false;
     });
 
     it('should be valid when required and checked', async () => {
-      const slSwitch = await fixture<HTMLFormElement>(html` <sl-switch required checked></sl-switch> `);
-      expect(slSwitch.checkValidity()).to.be.true;
+      const OSwitch = await fixture<HTMLFormElement>(html` <o-switch required checked></o-switch> `);
+      expect(OSwitch.checkValidity()).to.be.true;
     });
 
     it('should be present in form data when using the form attribute and located outside of a <form>', async () => {
       const el = await fixture<HTMLFormElement>(html`
         <div>
           <form id="f">
-            <sl-button type="submit">Submit</sl-button>
+            <o-button type="submit">Submit</o-button>
           </form>
-          <sl-switch form="f" name="a" value="1" checked></sl-switch>
+          <o-switch form="f" name="a" value="1" checked></o-switch>
         </div>
       `);
       const form = el.querySelector('form')!;
@@ -220,15 +220,15 @@ describe('<sl-switch>', () => {
     });
 
     it('should receive validation attributes ("states") even when novalidate is used on the parent form', async () => {
-      const el = await fixture<HTMLFormElement>(html` <form novalidate><sl-switch required></sl-switch></form> `);
-      const slSwitch = el.querySelector<SlSwitch>('sl-switch')!;
+      const el = await fixture<HTMLFormElement>(html` <form novalidate><o-switch required></o-switch></form> `);
+      const OSwitch = el.querySelector<OSwitch>('o-switch')!;
 
-      expect(slSwitch.hasAttribute('data-required')).to.be.true;
-      expect(slSwitch.hasAttribute('data-optional')).to.be.false;
-      expect(slSwitch.hasAttribute('data-invalid')).to.be.true;
-      expect(slSwitch.hasAttribute('data-valid')).to.be.false;
-      expect(slSwitch.hasAttribute('data-user-invalid')).to.be.false;
-      expect(slSwitch.hasAttribute('data-user-valid')).to.be.false;
+      expect(OSwitch.hasAttribute('data-required')).to.be.true;
+      expect(OSwitch.hasAttribute('data-optional')).to.be.false;
+      expect(OSwitch.hasAttribute('data-invalid')).to.be.true;
+      expect(OSwitch.hasAttribute('data-valid')).to.be.false;
+      expect(OSwitch.hasAttribute('data-user-invalid')).to.be.false;
+      expect(OSwitch.hasAttribute('data-user-valid')).to.be.false;
     });
   });
 
@@ -236,12 +236,12 @@ describe('<sl-switch>', () => {
     it('should reset the element to its initial value', async () => {
       const form = await fixture<HTMLFormElement>(html`
         <form>
-          <sl-switch name="a" value="1" checked></sl-switch>
-          <sl-button type="reset">Reset</sl-button>
+          <o-switch name="a" value="1" checked></o-switch>
+          <o-button type="reset">Reset</o-button>
         </form>
       `);
-      const button = form.querySelector('sl-button')!;
-      const switchEl = form.querySelector('sl-switch')!;
+      const button = form.querySelector('o-button')!;
+      const switchEl = form.querySelector('o-switch')!;
       switchEl.checked = false;
 
       await switchEl.updateComplete;
@@ -266,52 +266,52 @@ describe('<sl-switch>', () => {
     // https://github.com/shoelace-style/shoelace/issues/1169
     const el = await fixture<HTMLDivElement>(html`
       <div style="display: flex; flex-direction: column; overflow: auto; max-height: 400px;">
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
-        <sl-switch>Switch</sl-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
+        <o-switch>Switch</o-switch>
       </div>
       ;
     `);
 
-    const switches = el.querySelectorAll<SlSwitch>('sl-switch');
+    const switches = el.querySelectorAll<OSwitch>('o-switch');
     const lastSwitch = switches[switches.length - 1];
 
     expect(window.scrollY).to.equal(0);
@@ -322,5 +322,5 @@ describe('<sl-switch>', () => {
     expect(window.scrollY).to.equal(0);
   });
 
-  runFormControlBaseTests('sl-switch');
+  runFormControlBaseTests('o-switch');
 });

@@ -9,8 +9,8 @@ import ShoelaceElement from '../../internal/shoelace-element';
  * @status stable
  * @since 2.0
  */
-@customElement('sl-format-date')
-export default class SlFormatDate extends ShoelaceElement {
+@customElement('o-format-date')
+export default class OFormatDate extends ShoelaceElement {
   private readonly localize = new LocalizeController(this);
 
   /**
@@ -84,6 +84,6 @@ export default class SlFormatDate extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-format-date': SlFormatDate;
+    'o-format-date': OFormatDate;
   }
 }

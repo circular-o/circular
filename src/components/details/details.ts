@@ -17,17 +17,17 @@ import type { CSSResultGroup } from 'lit';
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
+ * @dependency o-icon
  *
  * @slot - The details' main content.
  * @slot summary - The details' summary. Alternatively, you can use the `summary` attribute.
- * @slot expand-icon - Optional expand icon to use instead of the default. Works best with `<sl-icon>`.
- * @slot collapse-icon - Optional collapse icon to use instead of the default. Works best with `<sl-icon>`.
+ * @slot expand-icon - Optional expand icon to use instead of the default. Works best with `<o-icon>`.
+ * @slot collapse-icon - Optional collapse icon to use instead of the default. Works best with `<o-icon>`.
  *
- * @event sl-show - Emitted when the details opens.
- * @event sl-after-show - Emitted after the details opens and all animations are complete.
- * @event sl-hide - Emitted when the details closes.
- * @event sl-after-hide - Emitted after the details closes and all animations are complete.
+ * @event o-show - Emitted when the details opens.
+ * @event o-after-show - Emitted after the details opens and all animations are complete.
+ * @event o-hide - Emitted when the details closes.
+ * @event o-after-hide - Emitted after the details closes and all animations are complete.
  *
  * @csspart base - The component's base wrapper.
  * @csspart header - The header that wraps both the summary and the expand/collapse icon.
@@ -38,8 +38,8 @@ import type { CSSResultGroup } from 'lit';
  * @animation details.show - The animation to use when showing details. You can use `height: auto` with this animation.
  * @animation details.hide - The animation to use when hiding details. You can use `height: auto` with this animation.
  */
-@customElement('sl-details')
-export default class SlDetails extends ShoelaceElement {
+@customElement('o-details')
+export default class ODetails extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
 
   private readonly localize = new LocalizeController(this);
@@ -104,7 +104,7 @@ export default class SlDetails extends ShoelaceElement {
   async handleOpenChange() {
     if (this.open) {
       // Show
-      const slShow = this.emit('sl-show', { cancelable: true });
+      const slShow = this.emit('o-show', { cancelable: true });
       if (slShow.defaultPrevented) {
         this.open = false;
         return;
@@ -117,10 +117,10 @@ export default class SlDetails extends ShoelaceElement {
       await animateTo(this.body, shimKeyframesHeightAuto(keyframes, this.body.scrollHeight), options);
       this.body.style.height = 'auto';
 
-      this.emit('sl-after-show');
+      this.emit('o-after-show');
     } else {
       // Hide
-      const slHide = this.emit('sl-hide', { cancelable: true });
+      const slHide = this.emit('o-hide', { cancelable: true });
       if (slHide.defaultPrevented) {
         this.open = true;
         return;
@@ -133,7 +133,7 @@ export default class SlDetails extends ShoelaceElement {
       this.body.hidden = true;
       this.body.style.height = 'auto';
 
-      this.emit('sl-after-hide');
+      this.emit('o-after-hide');
     }
   }
 
@@ -144,7 +144,7 @@ export default class SlDetails extends ShoelaceElement {
     }
 
     this.open = true;
-    return waitForEvent(this, 'sl-after-show');
+    return waitForEvent(this, 'o-after-show');
   }
 
   /** Hides the details */
@@ -154,7 +154,7 @@ export default class SlDetails extends ShoelaceElement {
     }
 
     this.open = false;
-    return waitForEvent(this, 'sl-after-hide');
+    return waitForEvent(this, 'o-after-hide');
   }
 
   render() {
@@ -186,10 +186,10 @@ export default class SlDetails extends ShoelaceElement {
 
           <span part="summary-icon" class="details__summary-icon">
             <slot name="expand-icon">
-              <sl-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></sl-icon>
+              <o-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></o-icon>
             </slot>
             <slot name="collapse-icon">
-              <sl-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></sl-icon>
+              <o-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></o-icon>
             </slot>
           </span>
         </div>
@@ -220,6 +220,6 @@ setDefaultAnimation('details.hide', {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-details': SlDetails;
+    'o-details': ODetails;
   }
 }

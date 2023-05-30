@@ -4,11 +4,11 @@ You can load Shoelace via CDN or by installing it locally. If you're using a fra
 
 ## CDN Installation (Easiest)
 
-<sl-tab-group>
-<sl-tab slot="nav" panel="autoloader" active>Autoloader</sl-tab>
-<sl-tab slot="nav" panel="traditional">Traditional Loader</sl-tab>
+<o-tab-group>
+<o-tab slot="nav" panel="autoloader" active>Autoloader</o-tab>
+<o-tab slot="nav" panel="traditional">Traditional Loader</o-tab>
 
-<sl-tab-panel name="autoloader">
+<o-tab-panel name="autoloader">
 
 The experimental autoloader is the easiest and most efficient way to use Shoelace. A lightweight script watches the DOM for unregistered Shoelace elements and lazy loads them for you — even if they're added dynamically.
 
@@ -20,9 +20,9 @@ While convenient, autoloading may lead to a [Flash of Undefined Custom Elements]
 <script type="module" src="https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/shoelace-autoloader.js"></script>
 ```
 
-</sl-tab-panel>
+</o-tab-panel>
 
-<sl-tab-panel name="traditional">
+<o-tab-panel name="traditional">
 
 The traditional CDN loader registers all Shoelace elements up front. Note that, if you're only using a handful of components, it will be much more efficient to stick with the autoloader. However, you can also [cherry pick](#cherry-picking) components if you want to load specific ones up front.
 
@@ -31,12 +31,12 @@ The traditional CDN loader registers all Shoelace elements up front. Note that, 
 <script type="module" src="https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/shoelace.js"></script>
 ```
 
-</sl-tab-panel>
-</sl-tab-group>
+</o-tab-panel>
+</o-tab-group>
 
 ### Dark Theme
 
-The code above will load the light theme. If you want to use the [dark theme](/getting-started/themes#dark-theme) instead, update the stylesheet as shown below and add `<html class="sl-theme-dark">` to your page.
+The code above will load the light theme. If you want to use the [dark theme](/getting-started/themes#dark-theme) instead, update the stylesheet as shown below and add `<html class="o-theme-dark">` to your page.
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/themes/dark.css" />
@@ -56,7 +56,7 @@ If you want to load the light or dark theme based on the user's `prefers-color-s
   rel="stylesheet"
   media="(prefers-color-scheme:dark)"
   href="https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/themes/dark.css"
-  onload="document.documentElement.classList.add('sl-theme-dark');"
+  onload="document.documentElement.classList.add('o-theme-dark');"
 />
 ```
 
@@ -115,7 +115,7 @@ Here's an example that loads only the button component. Again, if you're not usi
 <script type="module" data-shoelace="/path/to/shoelace/dist">
   import '%PACKAGE_NAME%/dist/components/button/button.js';
 
-  // <sl-button> is ready to use!
+  // <o-button> is ready to use!
 </script>
 ```
 
@@ -153,7 +153,7 @@ import { setBasePath } from '%PACKAGE_NAME%/dist/utilities/base-path.js';
 // Set the base path to the folder you copied Shoelace's assets to
 setBasePath('/path/to/shoelace/dist');
 
-// <sl-button>, <sl-icon>, <sl-input>, and <sl-rating> are ready to use!
+// <o-button>, <o-icon>, <o-input>, and <o-rating> are ready to use!
 ```
 
 !> Component modules include side effects for registration purposes. Because of this, importing directly from `%PACKAGE_NAME%` may result in a larger bundle size than necessary. For optimal tree shaking, always cherry pick, i.e. import components and utilities from their respective files, as shown above.

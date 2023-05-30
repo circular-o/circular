@@ -12,8 +12,8 @@ import type { CSSResultGroup } from 'lit';
  *
  * @slot - The content to be visually hidden.
  */
-@customElement('sl-visually-hidden')
-export default class SlVisuallyHidden extends ShoelaceElement {
+@customElement('o-visually-hidden')
+export default class OVisuallyHidden extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
 
   render() {
@@ -23,6 +23,6 @@ export default class SlVisuallyHidden extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-visually-hidden': SlVisuallyHidden;
+    'o-visually-hidden': OVisuallyHidden;
   }
 }

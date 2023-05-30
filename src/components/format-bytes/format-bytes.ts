@@ -8,8 +8,8 @@ import ShoelaceElement from '../../internal/shoelace-element';
  * @status stable
  * @since 2.0
  */
-@customElement('sl-format-bytes')
-export default class SlFormatBytes extends ShoelaceElement {
+@customElement('o-format-bytes')
+export default class OFormatBytes extends ShoelaceElement {
   private readonly localize = new LocalizeController(this);
 
   /** The number to format in bytes. */
@@ -43,6 +43,6 @@ export default class SlFormatBytes extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-format-bytes': SlFormatBytes;
+    'o-format-bytes': OFormatBytes;
   }
 }

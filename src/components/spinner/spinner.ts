@@ -18,8 +18,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --indicator-color - The color of the spinner's indicator.
  * @cssproperty --speed - The time it takes for the spinner to complete one animation cycle.
  */
-@customElement('sl-spinner')
-export default class SlSpinner extends ShoelaceElement {
+@customElement('o-spinner')
+export default class OSpinner extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
 
   private readonly localize = new LocalizeController(this);
@@ -36,6 +36,6 @@ export default class SlSpinner extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-spinner': SlSpinner;
+    'o-spinner': OSpinner;
   }
 }

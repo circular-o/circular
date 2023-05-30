@@ -2,7 +2,7 @@
 <div class="splash-start">
 <img class="splash-logo" src="assets/images/circular-logo-bg-transparent.png" alt="Shoelace">
 
-# <sl-visually-hidden>Shoelace:</sl-visually-hidden> A forward-thinking library of web components.
+# <o-visually-hidden>Shoelace:</o-visually-hidden> A forward-thinking library of web components.
 
 - Works with all frameworks 🧩
 - Works with CDNs 🚛
@@ -45,7 +45,7 @@ Add the following code to your page.
 Now you have access to all of Shoelace's components! Try adding a button:
 
 ```html preview expanded
-<sl-button>Click me</sl-button>
+<o-button>Click me</o-button>
 ```
 
 ?> This will activate Shoelace's experimental autoloader, which registers components on the fly as you use them. To learn more about it, or for other ways to install Shoelace, refer to the [installation instructions](getting-started/installation).
@@ -106,17 +106,17 @@ Designing, developing, and supporting this library requires a lot of time, effor
 
 👇 Your support is very much appreciated! 👇
 
-<sl-button class="repo-button repo-button--sponsor" href="%SPONSOR_URL%" target="_blank">
-  <sl-icon slot="prefix" name="heart"></sl-icon> Become a sponsor
-</sl-button>
+<o-button class="repo-button repo-button--sponsor" href="%SPONSOR_URL%" target="_blank">
+  <o-icon slot="prefix" name="heart"></o-icon> Become a sponsor
+</o-button>
 
-<sl-button class="repo-button repo-button--github" href="%REPO_URL%/stargazers" target="_blank">
-  <sl-icon slot="prefix" name="github"></sl-icon> Star
-</sl-button>
+<o-button class="repo-button repo-button--github" href="%REPO_URL%/stargazers" target="_blank">
+  <o-icon slot="prefix" name="github"></o-icon> Star
+</o-button>
 
-<sl-button class="repo-button repo-button--twitter" href="https://twitter.com/%TWITTER_USER%" target="_blank">
-  <sl-icon slot="prefix" name="twitter"></sl-icon> Follow
-</sl-button>
+<o-button class="repo-button repo-button--twitter" href="https://twitter.com/%TWITTER_USER%" target="_blank">
+  <o-icon slot="prefix" name="twitter"></o-icon> Follow
+</o-button>
 
 ## Attribution
 

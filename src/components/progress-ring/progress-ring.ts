@@ -23,8 +23,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --indicator-color - The color of the indicator.
  * @cssproperty --indicator-transition-duration - The duration of the indicator's transition when the value changes.
  */
-@customElement('sl-progress-ring')
-export default class SlProgressRing extends ShoelaceElement {
+@customElement('o-progress-ring')
+export default class OProgressRing extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
 
   private readonly localize = new LocalizeController(this);
@@ -82,6 +82,6 @@ export default class SlProgressRing extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-progress-ring': SlProgressRing;
+    'o-progress-ring': OProgressRing;
   }
 }

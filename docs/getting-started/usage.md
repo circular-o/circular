@@ -9,22 +9,22 @@ If you're new to custom elements, often referred to as "web components," this se
 Many components have properties that can be set using attributes. For example, buttons accept a `size` attribute that maps to the `size` property which dictates the button's size.
 
 ```html
-<sl-button size="small">Click me</sl-button>
+<o-button size="small">Click me</o-button>
 ```
 
 Some properties are boolean, so they only have true/false values. To activate a boolean property, add the corresponding attribute without a value.
 
 ```html
-<sl-button disabled>Click me</sl-button>
+<o-button disabled>Click me</o-button>
 ```
 
 In rare cases, a property may require an array, an object, or a function. For example, to customize the color picker's list of preset swatches, you set the `swatches` property to an array of colors. This must be done with JavaScript.
 
 ```html
-<sl-color-picker></sl-color-picker>
+<o-color-picker></o-color-picker>
 
 <script>
-  const colorPicker = document.querySelector('sl-color-picker');
+  const colorPicker = document.querySelector('o-color-picker');
   colorPicker.swatches = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
 </script>
 ```
@@ -35,30 +35,30 @@ Refer to a component's documentation for a complete list of its properties.
 
 You can listen for standard events such as `click`, `mouseover`, etc. as you normally would. However, it's important to note that many events emitted within a component's shadow root will be [retargeted](https://dom.spec.whatwg.org/#retarget) to the host element. This may result in, for example, multiple `click` handlers executing even if the user clicks just once. Furthermore, `event.target` will point to the host element, making things even more confusing.
 
-As a result, you should almost always listen for custom events instead. For example, instead of listening to `click` to determine when an `<sl-checkbox>` gets toggled, listen to `sl-change`.
+As a result, you should almost always listen for custom events instead. For example, instead of listening to `click` to determine when an `<o-checkbox>` gets toggled, listen to `o-change`.
 
 ```html
-<sl-checkbox>Check me</sl-checkbox>
+<o-checkbox>Check me</o-checkbox>
 
 <script>
-  const checkbox = document.querySelector('sl-checkbox');
-  checkbox.addEventListener('sl-change', event => {
+  const checkbox = document.querySelector('o-checkbox');
+  checkbox.addEventListener('o-change', event => {
     console.log(event.target.checked ? 'checked' : 'not checked');
   });
 </script>
 ```
 
-All custom events are prefixed with `sl-` to prevent collisions with standard events and other libraries. Refer to a component's documentation for a complete list of its custom events.
+All custom events are prefixed with `o-` to prevent collisions with standard events and other libraries. Refer to a component's documentation for a complete list of its custom events.
 
 ## Methods
 
 Some components have methods you can call to trigger various behaviors. For example, you can set focus on a Shoelace input using the `focus()` method.
 
 ```html
-<sl-input></sl-input>
+<o-input></o-input>
 
 <script>
-  const input = document.querySelector('sl-input');
+  const input = document.querySelector('o-input');
   input.focus();
 </script>
 ```
@@ -72,16 +72,16 @@ Many components use slots to accept content inside of them. The most common slot
 For example, a button's default slot is used to populate its label.
 
 ```html
-<sl-button>Click me</sl-button>
+<o-button>Click me</o-button>
 ```
 
 Some components also have _named_ slots. A named slot can be populated by adding a child element with the appropriate `slot` attribute. Notice how the icon below has the `slot="prefix"` attribute? This tells the component to place the icon into its `prefix` slot.
 
 ```html
-<sl-button>
-  <sl-icon slot="prefix" name="gear"></sl-icon>
+<o-button>
+  <o-icon slot="prefix" name="gear"></o-icon>
   Settings
-</sl-button>
+</o-button>
 ```
 
 The location of a named slot doesn't matter. You can put it anywhere inside the component and the browser will move it to the right place automatically!
@@ -94,17 +94,17 @@ Custom elements cannot have self-closing tags. Similar to `<script>` and `<texta
 
 ```html
 <!-- Don't do this -->
-<sl-input />
+<o-input />
 
 <!-- Always do this -->
-<sl-input></sl-input>
+<o-input></o-input>
 ```
 
 ## Differences from Native Elements
 
 You might expect similarly named elements to share the same API as native HTML elements. This is not always the case. Shoelace components **are not** designed to be one-to-one replacements for their HTML counterparts.
 
-For example, `<button>` and `<sl-button>` both have a `type` attribute, but it does different things. The former controls whether the button submits a form and the latter controls the button's appearance.
+For example, `<button>` and `<o-button>` both have a `type` attribute, but it does different things. The former controls whether the button submits a form and the latter controls the button's appearance.
 
 ?> **Don't make assumptions about a component's API!** To prevent unexpected behaviors, please take the time to review the documentation and make sure you understand what each attribute, property, method, and event is intended to do.
 
@@ -140,9 +140,9 @@ A clever way to use this method is to hide the `<body>` with `opacity: 0` and ad
 
 <script type="module">
   await Promise.allSettled([
-    customElements.whenDefined('sl-button'),
-    customElements.whenDefined('sl-card'),
-    customElements.whenDefined('sl-rating')
+    customElements.whenDefined('o-button'),
+    customElements.whenDefined('o-card'),
+    customElements.whenDefined('o-rating')
   ]);
 
   // Button, card, and rating are registered now! Add
@@ -160,7 +160,7 @@ To optimize performance and reduce re-renders, Lit batches component updates. Th
 Consider this example. We're going to change the `checked` property of the checkbox and observe its corresponding `checked` attribute, which happens to reflect.
 
 ```js
-const checkbox = document.querySelector('sl-checkbox');
+const checkbox = document.querySelector('o-checkbox');
 checkbox.checked = true;
 
 console.log(checkbox.hasAttribute('checked')); // false
@@ -169,7 +169,7 @@ console.log(checkbox.hasAttribute('checked')); // false
 Most developers will expect this to be `true` instead of `false`, but the component hasn't had a chance to re-render yet so the attribute doesn't exist when `hasAttribute()` is called. Since changes are batched, we need to wait for the update before proceeding. This can be done using the `updateComplete` property, which is available on all Lit-based components.
 
 ```js
-const checkbox = document.querySelector('sl-checkbox');
+const checkbox = document.querySelector('o-checkbox');
 checkbox.checked = true;
 
 checkbox.updateComplete.then(() => {

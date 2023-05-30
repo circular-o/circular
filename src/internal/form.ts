@@ -1,6 +1,6 @@
 import type { ReactiveController, ReactiveControllerHost } from 'lit';
 import type { ShoelaceFormControl } from '../internal/shoelace-element';
-import type SlButton from '../components/button/button';
+import type OButton from '../components/button/button';
 
 //
 // We store a WeakMap of forms + controls so we can keep references to all Shoelace controls within a given form. As
@@ -78,7 +78,7 @@ export class FormControlController implements ReactiveController {
       disabled: input => input.disabled ?? false,
       reportValidity: input => (typeof input.reportValidity === 'function' ? input.reportValidity() : true),
       setValue: (input, value: string) => (input.value = value),
-      assumeInteractionOn: ['sl-input'],
+      assumeInteractionOn: ['o-input'],
       ...options
     };
     this.handleFormData = this.handleFormData.bind(this);
@@ -182,7 +182,7 @@ export class FormControlController implements ReactiveController {
 
     // For buttons, we only submit the value if they were the submitter. This is currently done in doAction() by
     // injecting the name/value on a temporary button, so we can just skip them here.
-    const isButton = this.host.tagName.toLowerCase() === 'sl-button';
+    const isButton = this.host.tagName.toLowerCase() === 'o-button';
 
     if (!disabled && !isButton && typeof name === 'string' && name.length > 0 && typeof value !== 'undefined') {
       if (Array.isArray(value)) {
@@ -271,7 +271,7 @@ export class FormControlController implements ReactiveController {
     el.requestUpdate();
   }
 
-  private doAction(type: 'submit' | 'reset', submitter?: HTMLInputElement | SlButton) {
+  private doAction(type: 'submit' | 'reset', submitter?: HTMLInputElement | OButton) {
     if (this.form) {
       const button = document.createElement('button');
       button.type = type;
@@ -306,12 +306,12 @@ export class FormControlController implements ReactiveController {
   }
 
   /** Resets the form, restoring all the control to their default value */
-  reset(submitter?: HTMLInputElement | SlButton) {
+  reset(submitter?: HTMLInputElement | OButton) {
     this.doAction('reset', submitter);
   }
 
   /** Submits the form, triggering validation and form data injection. */
-  submit(submitter?: HTMLInputElement | SlButton) {
+  submit(submitter?: HTMLInputElement | OButton) {
     // Calling form.submit() bypasses the submit event and constraint validation. To prevent this, we can inject a
     // native submit button into the form, "click" it, then remove it to simulate a standard form submission.
     this.doAction('submit', submitter);
@@ -350,14 +350,14 @@ export class FormControlController implements ReactiveController {
   }
 
   /**
-   * Dispatches a non-bubbling, cancelable custom event of type `sl-invalid`.
-   * If the `sl-invalid` event will be cancelled then the original `invalid`
+   * Dispatches a non-bubbling, cancelable custom event of type `o-invalid`.
+   * If the `o-invalid` event will be cancelled then the original `invalid`
    * event (which may have been passed as argument) will also be cancelled.
-   * If no original `invalid` event has been passed then the `sl-invalid`
+   * If no original `invalid` event has been passed then the `o-invalid`
    * event will be cancelled before being dispatched.
    */
   emitInvalidEvent(originalInvalidEvent?: Event) {
-    const slInvalidEvent = new CustomEvent<Record<PropertyKey, never>>('sl-invalid', {
+    const OInvalidEvent = new CustomEvent<Record<PropertyKey, never>>('o-invalid', {
       bubbles: false,
       composed: false,
       cancelable: true,
@@ -365,10 +365,10 @@ export class FormControlController implements ReactiveController {
     });
 
     if (!originalInvalidEvent) {
-      slInvalidEvent.preventDefault();
+      OInvalidEvent.preventDefault();
     }
 
-    if (!this.host.dispatchEvent(slInvalidEvent)) {
+    if (!this.host.dispatchEvent(OInvalidEvent)) {
       originalInvalidEvent?.preventDefault();
     }
   }

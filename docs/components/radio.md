@@ -1,26 +1,26 @@
 # Radio
 
-[component-header:sl-radio]
+[component-header:o-radio]
 
 Radios are designed to be used with [radio groups](/components/radio-group).
 
 ```html preview
-<sl-radio-group label="Select an option" name="a" value="1">
-  <sl-radio value="1">Option 1</sl-radio>
-  <sl-radio value="2">Option 2</sl-radio>
-  <sl-radio value="3">Option 3</sl-radio>
-</sl-radio-group>
+<o-radio-group label="Select an option" name="a" value="1">
+  <o-radio value="1">Option 1</o-radio>
+  <o-radio value="2">Option 2</o-radio>
+  <o-radio value="3">Option 3</o-radio>
+</o-radio-group>
 ```
 
 ```jsx react
-import { SlRadio, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadio, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlRadioGroup label="Select an option" name="a" value="1">
-    <SlRadio value="1">Option 1</SlRadio>
-    <SlRadio value="2">Option 2</SlRadio>
-    <SlRadio value="3">Option 3</SlRadio>
-  </SlRadioGroup>
+  <ORadioGroup label="Select an option" name="a" value="1">
+    <ORadio value="1">Option 1</ORadio>
+    <ORadio value="2">Option 2</ORadio>
+    <ORadio value="3">Option 3</ORadio>
+  </ORadioGroup>
 );
 ```
 
@@ -33,22 +33,22 @@ const App = () => (
 To set the initial value and checked state, use the `value` attribute on the containing radio group.
 
 ```html preview
-<sl-radio-group label="Select an option" name="a" value="3">
-  <sl-radio value="1">Option 1</sl-radio>
-  <sl-radio value="2">Option 2</sl-radio>
-  <sl-radio value="3">Option 3</sl-radio>
-</sl-radio-group>
+<o-radio-group label="Select an option" name="a" value="3">
+  <o-radio value="1">Option 1</o-radio>
+  <o-radio value="2">Option 2</o-radio>
+  <o-radio value="3">Option 3</o-radio>
+</o-radio-group>
 ```
 
 ```jsx react
-import { SlRadio, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadio, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlRadioGroup label="Select an option" name="a" value="3">
-    <SlRadio value="1">Option 1</SlRadio>
-    <SlRadio value="2">Option 2</SlRadio>
-    <SlRadio value="3">Option 3</SlRadio>
-  </SlRadioGroup>
+  <ORadioGroup label="Select an option" name="a" value="3">
+    <ORadio value="1">Option 1</ORadio>
+    <ORadio value="2">Option 2</ORadio>
+    <ORadio value="3">Option 3</ORadio>
+  </ORadioGroup>
 );
 ```
 
@@ -57,24 +57,24 @@ const App = () => (
 Use the `disabled` attribute to disable a radio.
 
 ```html preview
-<sl-radio-group label="Select an option" name="a" value="1">
-  <sl-radio value="1">Option 1</sl-radio>
-  <sl-radio value="2" disabled>Option 2</sl-radio>
-  <sl-radio value="3">Option 3</sl-radio>
-</sl-radio-group>
+<o-radio-group label="Select an option" name="a" value="1">
+  <o-radio value="1">Option 1</o-radio>
+  <o-radio value="2" disabled>Option 2</o-radio>
+  <o-radio value="3">Option 3</o-radio>
+</o-radio-group>
 ```
 
 ```jsx react
-import { SlRadio, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadio, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlRadioGroup label="Select an option" name="a" value="1">
-    <SlRadio value="1">Option 1</SlRadio>
-    <SlRadio value="2" disabled>
+  <ORadioGroup label="Select an option" name="a" value="1">
+    <ORadio value="1">Option 1</ORadio>
+    <ORadio value="2" disabled>
       Option 2
-    </SlRadio>
-    <SlRadio value="3">Option 3</SlRadio>
-  </SlRadioGroup>
+    </ORadio>
+    <ORadio value="3">Option 3</ORadio>
+  </ORadioGroup>
 );
 ```
 
@@ -83,57 +83,57 @@ const App = () => (
 Add the `size` attribute to the [Radio Group](/components/radio-group) to change the size of the radios.
 
 ```html preview
-<sl-radio-group label="Select an option" size="small" value="1">
-  <sl-radio value="1">Small 1</sl-radio>
-  <sl-radio value="2">Small 2</sl-radio>
-  <sl-radio value="3">Small 3</sl-radio>
-</sl-radio-group>
+<o-radio-group label="Select an option" size="small" value="1">
+  <o-radio value="1">Small 1</o-radio>
+  <o-radio value="2">Small 2</o-radio>
+  <o-radio value="3">Small 3</o-radio>
+</o-radio-group>
 
 <br />
 
-<sl-radio-group label="Select an option" size="medium" value="1">
-  <sl-radio value="1">Medium 1</sl-radio>
-  <sl-radio value="2">Medium 2</sl-radio>
-  <sl-radio value="3">Medium 3</sl-radio>
-</sl-radio-group>
+<o-radio-group label="Select an option" size="medium" value="1">
+  <o-radio value="1">Medium 1</o-radio>
+  <o-radio value="2">Medium 2</o-radio>
+  <o-radio value="3">Medium 3</o-radio>
+</o-radio-group>
 
 <br />
 
-<sl-radio-group label="Select an option" size="large" value="1">
-  <sl-radio value="1">Large 1</sl-radio>
-  <sl-radio value="2">Large 2</sl-radio>
-  <sl-radio value="3">Large 3</sl-radio>
-</sl-radio-group>
+<o-radio-group label="Select an option" size="large" value="1">
+  <o-radio value="1">Large 1</o-radio>
+  <o-radio value="2">Large 2</o-radio>
+  <o-radio value="3">Large 3</o-radio>
+</o-radio-group>
 ```
 
 ```jsx react
-import { SlRadio } from '%PACKAGE_NAME%/dist/react';
+import { ORadio } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <>
-    <SlRadioGroup size="small" value="1">
-      <SlRadio value="1">Small 1</SlRadio>
-      <SlRadio value="2">Small 2</SlRadio>
-      <SlRadio value="3">Small 3</SlRadio>
-    </SlRadioGroup>
+    <ORadioGroup size="small" value="1">
+      <ORadio value="1">Small 1</ORadio>
+      <ORadio value="2">Small 2</ORadio>
+      <ORadio value="3">Small 3</ORadio>
+    </ORadioGroup>
 
     <br />
 
-    <SlRadioGroup size="medium" value="1">
-      <SlRadio value="1">Medium 1</SlRadio>
-      <SlRadio value="2">Medium 2</SlRadio>
-      <SlRadio value="3">Medium 3</SlRadio>
-    </SlRadioGroup>
+    <ORadioGroup size="medium" value="1">
+      <ORadio value="1">Medium 1</ORadio>
+      <ORadio value="2">Medium 2</ORadio>
+      <ORadio value="3">Medium 3</ORadio>
+    </ORadioGroup>
 
     <br />
 
-    <SlRadioGroup size="large" value="1">
-      <SlRadio value="1">Large 1</SlRadio>
-      <SlRadio value="2">Large 2</SlRadio>
-      <SlRadio value="3">Large 3</SlRadio>
-    </SlRadioGroup>
+    <ORadioGroup size="large" value="1">
+      <ORadio value="1">Large 1</ORadio>
+      <ORadio value="2">Large 2</ORadio>
+      <ORadio value="3">Large 3</ORadio>
+    </ORadioGroup>
   </>
 );
 ```
 
-[component-metadata:sl-radio]
+[component-metadata:o-radio]

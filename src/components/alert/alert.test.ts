@@ -3,14 +3,14 @@ import { clickOnElement, moveMouseOnElement } from '../../internal/test';
 import { queryByTestId } from '../../internal/test/data-testid-helpers';
 import { resetMouse } from '@web/test-runner-commands';
 import sinon from 'sinon';
-import type SlAlert from './alert';
-import type SlIconButton from '../icon-button/icon-button';
+import type OAlert from './alert';
+import type OIconButton from '../icon-button/icon-button';
 
-const getAlertContainer = (alert: SlAlert): HTMLElement => {
+const getAlertContainer = (alert: OAlert): HTMLElement => {
   return alert.shadowRoot!.querySelector<HTMLElement>('[part="base"]')!;
 };
 
-const expectAlertToBeVisible = (alert: SlAlert): void => {
+const expectAlertToBeVisible = (alert: OAlert): void => {
   const alertContainer = getAlertContainer(alert);
   const style = window.getComputedStyle(alertContainer);
   expect(style.display).not.to.equal('none');
@@ -18,17 +18,17 @@ const expectAlertToBeVisible = (alert: SlAlert): void => {
   expect(style.visibility).not.to.equal('collapse');
 };
 
-const expectAlertToBeInvisible = (alert: SlAlert): void => {
+const expectAlertToBeInvisible = (alert: OAlert): void => {
   const alertContainer = getAlertContainer(alert);
   const style = window.getComputedStyle(alertContainer);
   expect(style.display, 'alert should be invisible').to.equal('none');
 };
 
-const expectHideAndAfterHideToBeEmittedInCorrectOrder = async (alert: SlAlert, action: () => void | Promise<void>) => {
-  const hidePromise = oneEvent(alert, 'sl-hide');
-  const afterHidePromise = oneEvent(alert, 'sl-after-hide');
+const expectHideAndAfterHideToBeEmittedInCorrectOrder = async (alert: OAlert, action: () => void | Promise<void>) => {
+  const hidePromise = oneEvent(alert, 'o-hide');
+  const afterHidePromise = oneEvent(alert, 'o-after-hide');
   let afterHideHappened = false;
-  oneEvent(alert, 'sl-after-hide').then(() => (afterHideHappened = true));
+  oneEvent(alert, 'o-after-hide').then(() => (afterHideHappened = true));
 
   action();
 
@@ -39,11 +39,11 @@ const expectHideAndAfterHideToBeEmittedInCorrectOrder = async (alert: SlAlert, a
   expectAlertToBeInvisible(alert);
 };
 
-const expectShowAndAfterShowToBeEmittedInCorrectOrder = async (alert: SlAlert, action: () => void | Promise<void>) => {
-  const showPromise = oneEvent(alert, 'sl-show');
-  const afterShowPromise = oneEvent(alert, 'sl-after-show');
+const expectShowAndAfterShowToBeEmittedInCorrectOrder = async (alert: OAlert, action: () => void | Promise<void>) => {
+  const showPromise = oneEvent(alert, 'o-show');
+  const afterShowPromise = oneEvent(alert, 'o-after-show');
   let afterShowHappened = false;
-  oneEvent(alert, 'sl-after-show').then(() => (afterShowHappened = true));
+  oneEvent(alert, 'o-after-show').then(() => (afterShowHappened = true));
 
   action();
 
@@ -54,10 +54,10 @@ const expectShowAndAfterShowToBeEmittedInCorrectOrder = async (alert: SlAlert, a
   expectAlertToBeVisible(alert);
 };
 
-const getCloseButton = (alert: SlAlert): SlIconButton | null | undefined =>
-  alert.shadowRoot?.querySelector<SlIconButton>('[part="close-button"]');
+const getCloseButton = (alert: OAlert): OIconButton | null | undefined =>
+  alert.shadowRoot?.querySelector<OIconButton>('[part="close-button"]');
 
-describe('<sl-alert>', () => {
+describe('<o-alert>', () => {
   let clock: sinon.SinonFakeTimers | null = null;
 
   afterEach(async () => {
@@ -66,54 +66,54 @@ describe('<sl-alert>', () => {
   });
 
   it('renders', async () => {
-    const alert = await fixture<SlAlert>(html`<sl-alert open>I am an alert</sl-alert>`);
+    const alert = await fixture<OAlert>(html`<o-alert open>I am an alert</o-alert>`);
 
     expectAlertToBeVisible(alert);
   });
 
   it('is accessible', async () => {
-    const alert = await fixture<SlAlert>(html`<sl-alert open>I am an alert</sl-alert>`);
+    const alert = await fixture<OAlert>(html`<o-alert open>I am an alert</o-alert>`);
 
     await expect(alert).to.be.accessible();
   });
 
   describe('alert visibility', () => {
     it('should be visible with the open attribute', async () => {
-      const alert = await fixture<SlAlert>(html`<sl-alert open>I am an alert</sl-alert>`);
+      const alert = await fixture<OAlert>(html`<o-alert open>I am an alert</o-alert>`);
 
       expectAlertToBeVisible(alert);
     });
 
     it('should not be visible without the open attribute', async () => {
-      const alert = await fixture<SlAlert>(html` <sl-alert>I am an alert</sl-alert>`);
+      const alert = await fixture<OAlert>(html` <o-alert>I am an alert</o-alert>`);
 
       expectAlertToBeInvisible(alert);
     });
 
-    it('should emit sl-show and sl-after-show when calling show()', async () => {
-      const alert = await fixture<SlAlert>(html` <sl-alert>I am an alert</sl-alert>`);
+    it('should emit o-show and o-after-show when calling show()', async () => {
+      const alert = await fixture<OAlert>(html` <o-alert>I am an alert</o-alert>`);
 
       expectAlertToBeInvisible(alert);
 
       await expectShowAndAfterShowToBeEmittedInCorrectOrder(alert, () => alert.show());
     });
 
-    it('should emit sl-hide and sl-after-hide when calling hide()', async () => {
-      const alert = await fixture<SlAlert>(html` <sl-alert open>I am an alert</sl-alert>`);
+    it('should emit o-hide and o-after-hide when calling hide()', async () => {
+      const alert = await fixture<OAlert>(html` <o-alert open>I am an alert</o-alert>`);
 
       await expectHideAndAfterHideToBeEmittedInCorrectOrder(alert, () => alert.hide());
     });
 
-    it('should emit sl-show and sl-after-show when setting open = true', async () => {
-      const alert = await fixture<SlAlert>(html` <sl-alert>I am an alert</sl-alert> `);
+    it('should emit o-show and o-after-show when setting open = true', async () => {
+      const alert = await fixture<OAlert>(html` <o-alert>I am an alert</o-alert> `);
 
       await expectShowAndAfterShowToBeEmittedInCorrectOrder(alert, () => {
         alert.open = true;
       });
     });
 
-    it('should emit sl-hide and sl-after-hide when setting open = false', async () => {
-      const alert = await fixture<SlAlert>(html` <sl-alert open>I am an alert</sl-alert> `);
+    it('should emit o-hide and o-after-hide when setting open = false', async () => {
+      const alert = await fixture<OAlert>(html` <o-alert open>I am an alert</o-alert> `);
 
       await expectHideAndAfterHideToBeEmittedInCorrectOrder(alert, () => {
         alert.open = false;
@@ -123,14 +123,14 @@ describe('<sl-alert>', () => {
 
   describe('close button', () => {
     it('shows a close button if the alert has the closable attribute', () => async () => {
-      const alert = await fixture<SlAlert>(html` <sl-alert open closable>I am an alert</sl-alert> `);
+      const alert = await fixture<OAlert>(html` <o-alert open closable>I am an alert</o-alert> `);
       const closeButton = getCloseButton(alert);
 
       expect(closeButton).to.be.visible;
     });
 
     it('clicking the close button closes the alert', () => async () => {
-      const alert = await fixture<SlAlert>(html` <sl-alert open closable>I am an alert</sl-alert> `);
+      const alert = await fixture<OAlert>(html` <o-alert open closable>I am an alert</o-alert> `);
       const closeButton = getCloseButton(alert);
 
       await expectHideAndAfterHideToBeEmittedInCorrectOrder(alert, () => {
@@ -140,13 +140,13 @@ describe('<sl-alert>', () => {
   });
 
   describe('toast', () => {
-    const getToastStack = (): HTMLDivElement | null => document.querySelector<HTMLDivElement>('.sl-toast-stack');
+    const getToastStack = (): HTMLDivElement | null => document.querySelector<HTMLDivElement>('.o-toast-stack');
 
     const closeRemainingAlerts = async (): Promise<void> => {
       const toastStack = getToastStack();
       if (toastStack?.children) {
         for (const element of toastStack.children) {
-          await (element as SlAlert).hide();
+          await (element as OAlert).hide();
         }
       }
     };
@@ -156,7 +156,7 @@ describe('<sl-alert>', () => {
     });
 
     it('can be rendered as a toast', async () => {
-      const alert = await fixture<SlAlert>(html`<sl-alert>I am an alert</sl-alert>`);
+      const alert = await fixture<OAlert>(html`<o-alert>I am an alert</o-alert>`);
 
       expectShowAndAfterShowToBeEmittedInCorrectOrder(alert, () => alert.toast());
       const toastStack = getToastStack();
@@ -165,16 +165,16 @@ describe('<sl-alert>', () => {
     });
 
     it('resolves only after being closed', async () => {
-      const alert = await fixture<SlAlert>(html`<sl-alert closable>I am an alert</sl-alert>`);
+      const alert = await fixture<OAlert>(html`<o-alert closable>I am an alert</o-alert>`);
 
-      const afterShowEvent = oneEvent(alert, 'sl-after-show');
+      const afterShowEvent = oneEvent(alert, 'o-after-show');
       let toastPromiseResolved = false;
       alert.toast().then(() => (toastPromiseResolved = true));
 
       await afterShowEvent;
       expect(toastPromiseResolved).to.be.false;
 
-      const closePromise = oneEvent(alert, 'sl-after-hide');
+      const closePromise = oneEvent(alert, 'o-after-hide');
       const closeButton = getCloseButton(alert);
       clickOnElement(closeButton!);
 
@@ -194,14 +194,14 @@ describe('<sl-alert>', () => {
       expect(toastStack).to.be.null;
     };
 
-    const openToast = async (alert: SlAlert): Promise<void> => {
-      const openPromise = oneEvent(alert, 'sl-after-show');
+    const openToast = async (alert: OAlert): Promise<void> => {
+      const openPromise = oneEvent(alert, 'o-after-show');
       alert.toast();
       await openPromise;
     };
 
-    const closeToast = async (alert: SlAlert): Promise<void> => {
-      const closePromise = oneEvent(alert, 'sl-after-hide');
+    const closeToast = async (alert: OAlert): Promise<void> => {
+      const closePromise = oneEvent(alert, 'o-after-hide');
       const closeButton = getCloseButton(alert);
       await clickOnElement(closeButton!);
       await closePromise;
@@ -210,12 +210,12 @@ describe('<sl-alert>', () => {
 
     it('deletes the toast stack after the last alert is done', async () => {
       const container = await fixture<HTMLElement>(html`<div>
-        <sl-alert data-testid="alert1" closable>alert 1</sl-alert>
-        <sl-alert data-testid="alert2" closable>alert 2</sl-alert>
+        <o-alert data-testid="alert1" closable>alert 1</o-alert>
+        <o-alert data-testid="alert2" closable>alert 2</o-alert>
       </div>`);
 
-      const alert1 = queryByTestId<SlAlert>(container, 'alert1');
-      const alert2 = queryByTestId<SlAlert>(container, 'alert2');
+      const alert1 = queryByTestId<OAlert>(container, 'alert1');
+      const alert2 = queryByTestId<OAlert>(container, 'alert2');
 
       await openToast(alert1!);
 
@@ -238,7 +238,7 @@ describe('<sl-alert>', () => {
   describe('timer controlled closing', () => {
     it('closes after a predefined amount of time', async () => {
       clock = sinon.useFakeTimers();
-      const alert = await fixture<SlAlert>(html` <sl-alert open duration="3000">I am an alert</sl-alert>`);
+      const alert = await fixture<OAlert>(html` <o-alert open duration="3000">I am an alert</o-alert>`);
 
       expectAlertToBeVisible(alert);
 
@@ -253,7 +253,7 @@ describe('<sl-alert>', () => {
 
     it('resets the closing timer after mouse-over', async () => {
       clock = sinon.useFakeTimers();
-      const alert = await fixture<SlAlert>(html` <sl-alert open duration="3000">I am an alert</sl-alert>`);
+      const alert = await fixture<OAlert>(html` <o-alert open duration="3000">I am an alert</o-alert>`);
 
       expectAlertToBeVisible(alert);
 
@@ -272,13 +272,13 @@ describe('<sl-alert>', () => {
 
     it('resets the closing timer after opening', async () => {
       clock = sinon.useFakeTimers();
-      const alert = await fixture<SlAlert>(html` <sl-alert duration="3000">I am an alert</sl-alert>`);
+      const alert = await fixture<OAlert>(html` <o-alert duration="3000">I am an alert</o-alert>`);
 
       expectAlertToBeInvisible(alert);
 
       clock.tick(1000);
 
-      const afterShowPromise = oneEvent(alert, 'sl-after-show');
+      const afterShowPromise = oneEvent(alert, 'o-after-show');
       alert.show();
       await afterShowPromise;
 
@@ -295,7 +295,7 @@ describe('<sl-alert>', () => {
 
     variants.forEach(variant => {
       it(`adapts to the variant: ${variant}`, async () => {
-        const alert = await fixture<SlAlert>(html`<sl-alert variant="${variant}" open>I am an alert</sl-alert>`);
+        const alert = await fixture<OAlert>(html`<o-alert variant="${variant}" open>I am an alert</o-alert>`);
 
         const alertContainer = getAlertContainer(alert);
         expect(alertContainer).to.have.class(`alert--${variant}`);

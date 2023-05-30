@@ -13,10 +13,10 @@ import type { CSSResultGroup } from 'lit';
  *
  * @slot - One or more elements to watch for resizing.
  *
- * @event {{ entries: ResizeObserverEntry[] }} sl-resize - Emitted when the element is resized.
+ * @event {{ entries: ResizeObserverEntry[] }} o-resize - Emitted when the element is resized.
  */
-@customElement('sl-resize-observer')
-export default class SlResizeObserver extends ShoelaceElement {
+@customElement('o-resize-observer')
+export default class OResizeObserver extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
 
   private resizeObserver: ResizeObserver;
@@ -28,7 +28,7 @@ export default class SlResizeObserver extends ShoelaceElement {
   connectedCallback() {
     super.connectedCallback();
     this.resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
-      this.emit('sl-resize', { detail: { entries } });
+      this.emit('o-resize', { detail: { entries } });
     });
 
     if (!this.disabled) {
@@ -85,6 +85,6 @@ export default class SlResizeObserver extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-resize-observer': SlResizeObserver;
+    'o-resize-observer': OResizeObserver;
   }
 }

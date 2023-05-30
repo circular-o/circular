@@ -68,18 +68,18 @@ export class AppModule {}
 ## Reference Shoelace components in your Angular component code
 
 ```js
-import { SlDrawer } from '%PACKAGE_NAME%';
+import { ODrawer } from '%PACKAGE_NAME%';
 
 @Component({
   selector: 'app-drawer-example',
-  template: '<div id="page"><button (click)="showDrawer()">Show drawer</button><sl-drawer #drawer label="Drawer" class="drawer-focus" style="--size: 50vw"><p>Drawer content</p></sl-drawer></div>',
-  providers: [SlDrawer]
+  template: '<div id="page"><button (click)="showDrawer()">Show drawer</button><o-drawer #drawer label="Drawer" class="drawer-focus" style="--size: 50vw"><p>Drawer content</p></o-drawer></div>',
+  providers: [ODrawer]
 })
 export class DrawerExampleComponent implements OnInit {
 
   // use @ViewChild to get a reference to the #drawer element within component template
   @ViewChild('drawer')
-  drawer?: ElementRef<SlDrawer>;
+  drawer?: ElementRef<ODrawer>;
 
   ...
 

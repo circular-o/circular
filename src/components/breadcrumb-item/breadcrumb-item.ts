@@ -17,7 +17,7 @@ import type { CSSResultGroup } from 'lit';
  * @slot prefix - An optional prefix, usually an icon or icon button.
  * @slot suffix - An optional suffix, usually an icon or icon button.
  * @slot separator - The separator to use for the breadcrumb item. This will only change the separator for this item. If
- * you want to change it for all items in the group, set the separator on `<sl-breadcrumb>` instead.
+ * you want to change it for all items in the group, set the separator on `<o-breadcrumb>` instead.
  *
  * @csspart base - The component's base wrapper.
  * @csspart label - The breadcrumb item's label.
@@ -25,8 +25,8 @@ import type { CSSResultGroup } from 'lit';
  * @csspart suffix - The container that wraps the suffix.
  * @csspart separator - The container that wraps the separator.
  */
-@customElement('sl-breadcrumb-item')
-export default class SlBreadcrumbItem extends ShoelaceElement {
+@customElement('o-breadcrumb-item')
+export default class OBreadcrumbItem extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
 
   private readonly hasSlotController = new HasSlotController(this, 'prefix', 'suffix');
@@ -85,6 +85,6 @@ export default class SlBreadcrumbItem extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-breadcrumb-item': SlBreadcrumbItem;
+    'o-breadcrumb-item': OBreadcrumbItem;
   }
 }

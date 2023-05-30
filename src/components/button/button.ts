@@ -19,12 +19,12 @@ import type { ShoelaceFormControl } from '../../internal/shoelace-element';
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
- * @dependency sl-spinner
+ * @dependency o-icon
+ * @dependency o-spinner
  *
- * @event sl-blur - Emitted when the button loses focus.
- * @event sl-focus - Emitted when the button gains focus.
- * @event sl-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
+ * @event o-blur - Emitted when the button loses focus.
+ * @event o-focus - Emitted when the button gains focus.
+ * @event o-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
  *
  * @slot - The button's label.
  * @slot prefix - A presentational prefix icon or similar element.
@@ -34,10 +34,10 @@ import type { ShoelaceFormControl } from '../../internal/shoelace-element';
  * @csspart prefix - The container that wraps the prefix.
  * @csspart label - The button's label.
  * @csspart suffix - The container that wraps the suffix.
- * @csspart caret - The button's caret icon, an `<sl-icon>` element.
+ * @csspart caret - The button's caret icon, an `<o-icon>` element.
  */
-@customElement('sl-button')
-export default class SlButton extends ShoelaceElement implements ShoelaceFormControl {
+@customElement('o-button')
+export default class OButton extends ShoelaceElement implements ShoelaceFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this, {
@@ -87,7 +87,7 @@ export default class SlButton extends ShoelaceElement implements ShoelaceFormCon
   @property({ type: Boolean, reflect: true }) pill = false;
 
   /**
-   * Draws a circular icon button. When this attribute is present, the button expects a single `<sl-icon>` in the
+   * Draws a circular icon button. When this attribute is present, the button expects a single `<o-icon>` in the
    * default slot.
    */
   @property({ type: Boolean, reflect: true }) circle = false;
@@ -186,12 +186,12 @@ export default class SlButton extends ShoelaceElement implements ShoelaceFormCon
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('o-blur');
   }
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sl-focus');
+    this.emit('o-focus');
   }
 
   private handleClick() {
@@ -333,10 +333,8 @@ export default class SlButton extends ShoelaceElement implements ShoelaceFormCon
         <slot name="prefix" part="prefix" class="button__prefix"></slot>
         <slot part="label" class="button__label"></slot>
         <slot name="suffix" part="suffix" class="button__suffix"></slot>
-        ${
-          this.caret ? html` <sl-icon part="caret" class="button__caret" library="system" name="caret"></sl-icon> ` : ''
-        }
-        ${this.loading ? html`<sl-spinner></sl-spinner>` : ''}
+        ${this.caret ? html` <o-icon part="caret" class="button__caret" library="system" name="caret"></o-icon> ` : ''}
+        ${this.loading ? html`<o-spinner></o-spinner>` : ''}
       </${tag}>
     `;
     /* eslint-enable lit/no-invalid-html */
@@ -346,6 +344,6 @@ export default class SlButton extends ShoelaceElement implements ShoelaceFormCon
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-button': SlButton;
+    'o-button': OButton;
   }
 }

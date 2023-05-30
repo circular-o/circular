@@ -2,12 +2,12 @@
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
-import type SlDrawer from './drawer';
+import type ODrawer from './drawer';
 
-describe('<sl-drawer>', () => {
+describe('<o-drawer>', () => {
   it('should be visible with the open attribute', async () => {
-    const el = await fixture<SlDrawer>(html`
-      <sl-drawer open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sl-drawer>
+    const el = await fixture<ODrawer>(html`
+      <o-drawer open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</o-drawer>
     `);
     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
 
@@ -15,24 +15,24 @@ describe('<sl-drawer>', () => {
   });
 
   it('should not be visible without the open attribute', async () => {
-    const el = await fixture<SlDrawer>(
-      html` <sl-drawer>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sl-drawer> `
+    const el = await fixture<ODrawer>(
+      html` <o-drawer>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</o-drawer> `
     );
     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
 
     expect(base.hidden).to.be.true;
   });
 
-  it('should emit sl-show and sl-after-show when calling show()', async () => {
-    const el = await fixture<SlDrawer>(html`
-      <sl-drawer>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sl-drawer>
+  it('should emit o-show and o-after-show when calling show()', async () => {
+    const el = await fixture<ODrawer>(html`
+      <o-drawer>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</o-drawer>
     `);
     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
-    el.addEventListener('sl-show', showHandler);
-    el.addEventListener('sl-after-show', afterShowHandler);
+    el.addEventListener('o-show', showHandler);
+    el.addEventListener('o-after-show', afterShowHandler);
     el.show();
 
     await waitUntil(() => showHandler.calledOnce);
@@ -43,16 +43,16 @@ describe('<sl-drawer>', () => {
     expect(base.hidden).to.be.false;
   });
 
-  it('should emit sl-hide and sl-after-hide when calling hide()', async () => {
-    const el = await fixture<SlDrawer>(html`
-      <sl-drawer open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sl-drawer>
+  it('should emit o-hide and o-after-hide when calling hide()', async () => {
+    const el = await fixture<ODrawer>(html`
+      <o-drawer open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</o-drawer>
     `);
     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
-    el.addEventListener('sl-hide', hideHandler);
-    el.addEventListener('sl-after-hide', afterHideHandler);
+    el.addEventListener('o-hide', hideHandler);
+    el.addEventListener('o-after-hide', afterHideHandler);
     el.hide();
 
     await waitUntil(() => hideHandler.calledOnce);
@@ -63,16 +63,16 @@ describe('<sl-drawer>', () => {
     expect(base.hidden).to.be.true;
   });
 
-  it('should emit sl-show and sl-after-show when setting open = true', async () => {
-    const el = await fixture<SlDrawer>(html`
-      <sl-drawer>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sl-drawer>
+  it('should emit o-show and o-after-show when setting open = true', async () => {
+    const el = await fixture<ODrawer>(html`
+      <o-drawer>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</o-drawer>
     `);
     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
-    el.addEventListener('sl-show', showHandler);
-    el.addEventListener('sl-after-show', afterShowHandler);
+    el.addEventListener('o-show', showHandler);
+    el.addEventListener('o-after-show', afterShowHandler);
     el.open = true;
 
     await waitUntil(() => showHandler.calledOnce);
@@ -83,16 +83,16 @@ describe('<sl-drawer>', () => {
     expect(base.hidden).to.be.false;
   });
 
-  it('should emit sl-hide and sl-after-hide when setting open = false', async () => {
-    const el = await fixture<SlDrawer>(html`
-      <sl-drawer open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sl-drawer>
+  it('should emit o-hide and o-after-hide when setting open = false', async () => {
+    const el = await fixture<ODrawer>(html`
+      <o-drawer open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</o-drawer>
     `);
     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
-    el.addEventListener('sl-hide', hideHandler);
-    el.addEventListener('sl-after-hide', afterHideHandler);
+    el.addEventListener('o-hide', hideHandler);
+    el.addEventListener('o-after-hide', afterHideHandler);
     el.open = false;
 
     await waitUntil(() => hideHandler.calledOnce);
@@ -103,13 +103,13 @@ describe('<sl-drawer>', () => {
     expect(base.hidden).to.be.true;
   });
 
-  it('should not close when sl-request-close is prevented', async () => {
-    const el = await fixture<SlDrawer>(html`
-      <sl-drawer open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sl-drawer>
+  it('should not close when o-request-close is prevented', async () => {
+    const el = await fixture<ODrawer>(html`
+      <o-drawer open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</o-drawer>
     `);
     const overlay = el.shadowRoot!.querySelector<HTMLElement>('[part~="overlay"]')!;
 
-    el.addEventListener('sl-request-close', event => {
+    el.addEventListener('o-request-close', event => {
       event.preventDefault();
     });
     overlay.click();
@@ -118,14 +118,14 @@ describe('<sl-drawer>', () => {
   });
 
   it('should allow initial focus to be set', async () => {
-    const el = await fixture<SlDrawer>(html` <sl-drawer><input /></sl-drawer> `);
+    const el = await fixture<ODrawer>(html` <o-drawer><input /></o-drawer> `);
     const input = el.querySelector<HTMLInputElement>('input')!;
     const initialFocusHandler = sinon.spy((event: InputEvent) => {
       event.preventDefault();
       input.focus();
     });
 
-    el.addEventListener('sl-initial-focus', initialFocusHandler);
+    el.addEventListener('o-initial-focus', initialFocusHandler);
     el.show();
 
     await waitUntil(() => initialFocusHandler.calledOnce);
@@ -135,10 +135,10 @@ describe('<sl-drawer>', () => {
   });
 
   it('should close when pressing Escape', async () => {
-    const el = await fixture<SlDrawer>(html` <sl-drawer open></sl-drawer> `);
+    const el = await fixture<ODrawer>(html` <o-drawer open></o-drawer> `);
     const hideHandler = sinon.spy();
 
-    el.addEventListener('sl-hide', hideHandler);
+    el.addEventListener('o-hide', hideHandler);
 
     await sendKeys({ press: 'Escape' });
     await waitUntil(() => hideHandler.calledOnce);

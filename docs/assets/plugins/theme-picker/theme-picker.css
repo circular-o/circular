@@ -10,11 +10,11 @@
   display: none;
 }
 
-.theme-picker sl-menu-label {
+.theme-picker o-menu-label {
   white-space: nowrap;
 }
 
-.theme-picker sl-menu-label kbd {
+.theme-picker o-menu-label kbd {
   margin-left: 0.5rem;
 }
 
@@ -28,7 +28,7 @@
     right: 0.5rem;
   }
 
-  .theme-picker sl-menu-label {
+  .theme-picker o-menu-label {
     display: none;
   }
 }
