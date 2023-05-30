@@ -12,9 +12,9 @@ import type { CSSResultGroup } from 'lit';
  * @status experimental
  * @since 2.0
  *
- * @dependency sl-example
+ * @dependency o-example
  *
- * @event sl-event-name - Emitted as an example.
+ * @event o-event-name - Emitted as an example.
  *
  * @slot - The default slot.
  * @slot example - An example slot.
@@ -35,7 +35,7 @@ export default class {{ properCase tag }} extends ShoelaceElement {
   @watch('someProperty')
   doSomething() {
     // Example event
-    this.emit('sl-event-name');
+    this.emit('o-event-name');
   }
 
   render() {

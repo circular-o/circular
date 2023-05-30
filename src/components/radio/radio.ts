@@ -13,21 +13,21 @@ import type { CSSResultGroup } from 'lit';
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
+ * @dependency o-icon
  *
  * @slot - The radio's label.
  *
- * @event sl-blur - Emitted when the control loses focus.
- * @event sl-focus - Emitted when the control gains focus.
+ * @event o-blur - Emitted when the control loses focus.
+ * @event o-focus - Emitted when the control gains focus.
  *
  * @csspart base - The component's base wrapper.
  * @csspart control - The circular container that wraps the radio's checked state.
  * @csspart control--checked - The radio control when the radio is checked.
- * @csspart checked-icon - The checked icon, an `<sl-icon>` element.
+ * @csspart checked-icon - The checked icon, an `<o-icon>` element.
  * @csspart label - The container that wraps the radio's label.
  */
-@customElement('sl-radio')
-export default class SlRadio extends ShoelaceElement {
+@customElement('o-radio')
+export default class ORadio extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
 
   @state() checked = false;
@@ -73,7 +73,7 @@ export default class SlRadio extends ShoelaceElement {
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('o-blur');
   }
 
   private handleClick() {
@@ -84,7 +84,7 @@ export default class SlRadio extends ShoelaceElement {
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sl-focus');
+    this.emit('o-focus');
   }
 
   private setInitialAttributes() {
@@ -120,7 +120,7 @@ export default class SlRadio extends ShoelaceElement {
       >
         <span part="${`control${this.checked ? ' control--checked' : ''}`}" class="radio__control">
           ${this.checked
-            ? html` <sl-icon part="checked-icon" class="radio__checked-icon" library="system" name="radio"></sl-icon> `
+            ? html` <o-icon part="checked-icon" class="radio__checked-icon" library="system" name="radio"></o-icon> `
             : ''}
         </span>
 
@@ -132,6 +132,6 @@ export default class SlRadio extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-radio': SlRadio;
+    'o-radio': ORadio;
   }
 }

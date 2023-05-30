@@ -25,8 +25,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --indicator-color - The color of the indicator.
  * @cssproperty --label-color - The color of the label.
  */
-@customElement('sl-progress-bar')
-export default class SlProgressBar extends ShoelaceElement {
+@customElement('o-progress-bar')
+export default class OProgressBar extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
   private readonly localize = new LocalizeController(this);
 
@@ -65,6 +65,6 @@ export default class SlProgressBar extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-progress-bar': SlProgressBar;
+    'o-progress-bar': OProgressBar;
   }
 }

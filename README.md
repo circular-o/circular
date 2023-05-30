@@ -68,10 +68,10 @@ npm run build
 
 ### Creating New Components
 
-To scaffold a new component, run the following command, replacing `sl-tag-name` with the desired tag name.
+To scaffold a new component, run the following command, replacing `o-(tag-name` with the desired tag name.)
 
 ```bash
-npm run create sl-tag-name
+npm run create o-(tag-name)
 ```
 
 This will generate a source file, a stylesheet, and a docs page for you. When you start the dev server, you'll find the new component in the "Components" section of the sidebar.

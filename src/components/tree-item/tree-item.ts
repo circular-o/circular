@@ -20,16 +20,16 @@ import type { CSSResultGroup, PropertyValueMap } from 'lit';
  * @status stable
  * @since 2.0
  *
- * @dependency sl-checkbox
- * @dependency sl-icon
- * @dependency sl-spinner
+ * @dependency o-checkbox
+ * @dependency o-icon
+ * @dependency o-spinner
  *
- * @event sl-expand - Emitted when the tree item expands.
- * @event sl-after-expand - Emitted after the tree item expands and all animations are complete.
- * @event sl-collapse - Emitted when the tree item collapses.
- * @event sl-after-collapse - Emitted after the tree item collapses and all animations are complete.
- * @event sl-lazy-change - Emitted when the tree item's lazy state changes.
- * @event sl-lazy-load - Emitted when a lazy item is selected. Use this event to asynchronously load data and append
+ * @event o-expand - Emitted when the tree item expands.
+ * @event o-after-expand - Emitted after the tree item expands and all animations are complete.
+ * @event o-collapse - Emitted when the tree item collapses.
+ * @event o-after-collapse - Emitted after the tree item collapses and all animations are complete.
+ * @event o-lazy-change - Emitted when the tree item's lazy state changes.
+ * @event o-lazy-load - Emitted when a lazy item is selected. Use this event to asynchronously load data and append
  *  items to the tree before expanding. After appending new items, remove the `lazy` attribute to remove the loading
  *  state and update the tree.
  *
@@ -56,8 +56,8 @@ import type { CSSResultGroup, PropertyValueMap } from 'lit';
  * @csspart checkbox__indeterminate-icon - The checkbox's exported `indeterminate-icon` part.
  * @csspart checkbox__label - The checkbox's exported `label` part.
  */
-@customElement('sl-tree-item')
-export default class SlTreeItem extends ShoelaceElement {
+@customElement('o-tree-item')
+export default class OTreeItem extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
 
   static isTreeItem(node: Node) {
@@ -109,7 +109,7 @@ export default class SlTreeItem extends ShoelaceElement {
   }
 
   private async animateCollapse() {
-    this.emit('sl-collapse');
+    this.emit('o-collapse');
 
     await stopAnimations(this.childrenContainer);
 
@@ -121,13 +121,13 @@ export default class SlTreeItem extends ShoelaceElement {
     );
     this.childrenContainer.hidden = true;
 
-    this.emit('sl-after-collapse');
+    this.emit('o-after-collapse');
   }
 
   // Checks whether the item is nested into an item
   private isNestedItem(): boolean {
     const parent = this.parentElement;
-    return !!parent && SlTreeItem.isTreeItem(parent);
+    return !!parent && OTreeItem.isTreeItem(parent);
   }
 
   private handleChildrenSlotChange() {
@@ -135,14 +135,14 @@ export default class SlTreeItem extends ShoelaceElement {
     this.isLeaf = !this.lazy && this.getChildrenItems().length === 0;
   }
 
-  protected willUpdate(changedProperties: PropertyValueMap<SlTreeItem> | Map<PropertyKey, unknown>) {
+  protected willUpdate(changedProperties: PropertyValueMap<OTreeItem> | Map<PropertyKey, unknown>) {
     if (changedProperties.has('selected') && !changedProperties.has('indeterminate')) {
       this.indeterminate = false;
     }
   }
 
   private async animateExpand() {
-    this.emit('sl-expand');
+    this.emit('o-expand');
 
     await stopAnimations(this.childrenContainer);
     this.childrenContainer.hidden = false;
@@ -155,7 +155,7 @@ export default class SlTreeItem extends ShoelaceElement {
     );
     this.childrenContainer.style.height = 'auto';
 
-    this.emit('sl-after-expand');
+    this.emit('o-after-expand');
   }
 
   @watch('loading', { waitUntilFirstUpdate: true })
@@ -192,7 +192,7 @@ export default class SlTreeItem extends ShoelaceElement {
       if (this.lazy) {
         this.loading = true;
 
-        this.emit('sl-lazy-load');
+        this.emit('o-lazy-load');
       } else {
         this.animateExpand();
       }
@@ -203,15 +203,15 @@ export default class SlTreeItem extends ShoelaceElement {
 
   @watch('lazy', { waitUntilFirstUpdate: true })
   handleLazyChange() {
-    this.emit('sl-lazy-change');
+    this.emit('o-lazy-change');
   }
 
   /** Gets all the nested tree items in this node. */
-  getChildrenItems({ includeDisabled = true }: { includeDisabled?: boolean } = {}): SlTreeItem[] {
+  getChildrenItems({ includeDisabled = true }: { includeDisabled?: boolean } = {}): OTreeItem[] {
     return this.childrenSlot
       ? ([...this.childrenSlot.assignedElements({ flatten: true })].filter(
-          (item: SlTreeItem) => SlTreeItem.isTreeItem(item) && (includeDisabled || !item.disabled)
-        ) as SlTreeItem[])
+          (item: OTreeItem) => OTreeItem.isTreeItem(item) && (includeDisabled || !item.disabled)
+        ) as OTreeItem[])
       : [];
   }
 
@@ -252,12 +252,12 @@ export default class SlTreeItem extends ShoelaceElement {
             })}
             aria-hidden="true"
           >
-            ${when(this.loading, () => html` <sl-spinner></sl-spinner> `)}
+            ${when(this.loading, () => html` <o-spinner></o-spinner> `)}
             <slot class="tree-item__expand-icon-slot" name="expand-icon">
-              <sl-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></sl-icon>
+              <o-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></o-icon>
             </slot>
             <slot class="tree-item__expand-icon-slot" name="collapse-icon">
-              <sl-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></sl-icon>
+              <o-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></o-icon>
             </slot>
           </div>
 
@@ -265,7 +265,7 @@ export default class SlTreeItem extends ShoelaceElement {
             this.selectable,
             () =>
               html`
-                <sl-checkbox
+                <o-checkbox
                   part="checkbox"
                   exportparts="
                     base:checkbox__base,
@@ -281,7 +281,7 @@ export default class SlTreeItem extends ShoelaceElement {
                   ?checked="${live(this.selected)}"
                   ?indeterminate="${this.indeterminate}"
                   tabindex="-1"
-                ></sl-checkbox>
+                ></o-checkbox>
               `
           )}
 
@@ -318,6 +318,6 @@ setDefaultAnimation('tree-item.collapse', {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-tree-item': SlTreeItem;
+    'o-tree-item': OTreeItem;
   }
 }

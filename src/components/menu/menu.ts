@@ -3,9 +3,9 @@ import { html } from 'lit';
 import ShoelaceElement from '../../internal/shoelace-element';
 import styles from './menu.styles';
 import type { CSSResultGroup } from 'lit';
-import type SlMenuItem from '../menu-item/menu-item';
+import type OMenuItem from '../menu-item/menu-item';
 export interface MenuSelectEventDetail {
-  item: SlMenuItem;
+  item: OMenuItem;
 }
 
 /**
@@ -16,10 +16,10 @@ export interface MenuSelectEventDetail {
  *
  * @slot - The menu's content, including menu items, menu labels, and dividers.
  *
- * @event {{ item: SlMenuItem }} sl-select - Emitted when a menu item is selected.
+ * @event {{ item: OMenuItem }} o-select - Emitted when a menu item is selected.
  */
-@customElement('sl-menu')
-export default class SlMenu extends ShoelaceElement {
+@customElement('o-menu')
+export default class OMenu extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
 
   @query('slot') defaultSlot: HTMLSlotElement;
@@ -31,7 +31,7 @@ export default class SlMenu extends ShoelaceElement {
 
   private handleClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
-    const item = target.closest('sl-menu-item');
+    const item = target.closest('o-menu-item');
 
     if (!item || item.disabled || item.inert) {
       return;
@@ -41,7 +41,7 @@ export default class SlMenu extends ShoelaceElement {
       item.checked = !item.checked;
     }
 
-    this.emit('sl-select', { detail: { item } });
+    this.emit('o-select', { detail: { item } });
   }
 
   private handleKeyDown(event: KeyboardEvent) {
@@ -95,7 +95,7 @@ export default class SlMenu extends ShoelaceElement {
     const target = event.target as HTMLElement;
 
     if (this.isMenuItem(target)) {
-      this.setCurrentItem(target as SlMenuItem);
+      this.setCurrentItem(target as OMenuItem);
     }
   }
 
@@ -110,7 +110,7 @@ export default class SlMenu extends ShoelaceElement {
 
   private isMenuItem(item: HTMLElement) {
     return (
-      item.tagName.toLowerCase() === 'sl-menu-item' ||
+      item.tagName.toLowerCase() === 'o-menu-item' ||
       ['menuitem', 'menuitemcheckbox', 'menuitemradio'].includes(item.getAttribute('role') ?? '')
     );
   }
@@ -122,7 +122,7 @@ export default class SlMenu extends ShoelaceElement {
         return false;
       }
       return true;
-    }) as SlMenuItem[];
+    }) as OMenuItem[];
   }
 
   /**
@@ -137,7 +137,7 @@ export default class SlMenu extends ShoelaceElement {
    * @internal Sets the current menu item to the specified element. This sets `tabindex="0"` on the target element and
    * `tabindex="-1"` to all other items. This method must be called prior to setting focus on a menu item.
    */
-  setCurrentItem(item: SlMenuItem) {
+  setCurrentItem(item: OMenuItem) {
     const items = this.getAllItems();
 
     // Update tab indexes
@@ -160,6 +160,6 @@ export default class SlMenu extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-menu': SlMenu;
+    'o-menu': OMenu;
   }
 }

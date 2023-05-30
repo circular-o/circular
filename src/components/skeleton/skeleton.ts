@@ -18,8 +18,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --color - The color of the skeleton.
  * @cssproperty --sheen-color - The sheen color when the skeleton is in its loading state.
  */
-@customElement('sl-skeleton')
-export default class SlSkeleton extends ShoelaceElement {
+@customElement('o-skeleton')
+export default class OSkeleton extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
 
   /** Determines which effect the skeleton will use. */
@@ -43,6 +43,6 @@ export default class SlSkeleton extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-skeleton': SlSkeleton;
+    'o-skeleton': OSkeleton;
   }
 }

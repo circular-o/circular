@@ -1,26 +1,26 @@
 # Radio Button
 
-[component-header:sl-radio-button]
+[component-header:o-radio-button]
 
 Radio buttons are designed to be used with [radio groups](/components/radio-group). When a radio button has focus, the arrow keys can be used to change the selected option just like standard radio controls.
 
 ```html preview
-<sl-radio-group label="Select an option" name="a" value="1">
-  <sl-radio-button value="1">Option 1</sl-radio-button>
-  <sl-radio-button value="2">Option 2</sl-radio-button>
-  <sl-radio-button value="3">Option 3</sl-radio-button>
-</sl-radio-group>
+<o-radio-group label="Select an option" name="a" value="1">
+  <o-radio-button value="1">Option 1</o-radio-button>
+  <o-radio-button value="2">Option 2</o-radio-button>
+  <o-radio-button value="3">Option 3</o-radio-button>
+</o-radio-group>
 ```
 
 ```jsx react
-import { SlRadioButton, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadioButton, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlRadioGroup label="Select an option" name="a" value="1">
-    <SlRadioButton value="1">Option 1</SlRadioButton>
-    <SlRadioButton value="2">Option 2</SlRadioButton>
-    <SlRadioButton value="3">Option 3</SlRadioButton>
-  </SlRadioGroup>
+  <ORadioGroup label="Select an option" name="a" value="1">
+    <ORadioButton value="1">Option 1</ORadioButton>
+    <ORadioButton value="2">Option 2</ORadioButton>
+    <ORadioButton value="3">Option 3</ORadioButton>
+  </ORadioGroup>
 );
 ```
 
@@ -31,22 +31,22 @@ const App = () => (
 To set the initial value and checked state, use the `value` attribute on the containing radio group.
 
 ```html preview
-<sl-radio-group label="Select an option" name="a" value="1">
-  <sl-radio-button value="1">Option 1</sl-radio-button>
-  <sl-radio-button value="2">Option 2</sl-radio-button>
-  <sl-radio-button value="3">Option 3</sl-radio-button>
-</sl-radio-group>
+<o-radio-group label="Select an option" name="a" value="1">
+  <o-radio-button value="1">Option 1</o-radio-button>
+  <o-radio-button value="2">Option 2</o-radio-button>
+  <o-radio-button value="3">Option 3</o-radio-button>
+</o-radio-group>
 ```
 
 ```jsx react
-import { SlRadioButton, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadioButton, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlRadioGroup label="Select an option" name="a" value="1">
-    <SlRadioButton value="1">Option 1</SlRadioButton>
-    <SlRadioButton value="2">Option 2</SlRadioButton>
-    <SlRadioButton value="3">Option 3</SlRadioButton>
-  </SlRadioGroup>
+  <ORadioGroup label="Select an option" name="a" value="1">
+    <ORadioButton value="1">Option 1</ORadioButton>
+    <ORadioButton value="2">Option 2</ORadioButton>
+    <ORadioButton value="3">Option 3</ORadioButton>
+  </ORadioGroup>
 );
 ```
 
@@ -55,24 +55,24 @@ const App = () => (
 Use the `disabled` attribute to disable a radio button.
 
 ```html preview
-<sl-radio-group label="Select an option" name="a" value="1">
-  <sl-radio-button value="1">Option 1</sl-radio-button>
-  <sl-radio-button value="2" disabled>Option 2</sl-radio-button>
-  <sl-radio-button value="3">Option 3</sl-radio-button>
-</sl-radio-group>
+<o-radio-group label="Select an option" name="a" value="1">
+  <o-radio-button value="1">Option 1</o-radio-button>
+  <o-radio-button value="2" disabled>Option 2</o-radio-button>
+  <o-radio-button value="3">Option 3</o-radio-button>
+</o-radio-group>
 ```
 
 ```jsx react
-import { SlRadioButton, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadioButton, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlRadioGroup label="Select an option" name="a" value="1">
-    <SlRadioButton value="1">Option 1</SlRadioButton>
-    <SlRadioButton value="2" disabled>
+  <ORadioGroup label="Select an option" name="a" value="1">
+    <ORadioButton value="1">Option 1</ORadioButton>
+    <ORadioButton value="2" disabled>
       Option 2
-    </SlRadioButton>
-    <SlRadioButton value="3">Option 3</SlRadioButton>
-  </SlRadioGroup>
+    </ORadioButton>
+    <ORadioButton value="3">Option 3</ORadioButton>
+  </ORadioGroup>
 );
 ```
 
@@ -81,55 +81,55 @@ const App = () => (
 Add the `size` attribute to the [Radio Group](/components/radio-group) to change the size of the radio buttons.
 
 ```html preview
-<sl-radio-group label="Select an option" size="small" value="1">
-  <sl-radio-button value="1">Option 1</sl-radio-button>
-  <sl-radio-button value="2">Option 2</sl-radio-button>
-  <sl-radio-button value="3">Option 3</sl-radio-button>
-</sl-radio-group>
+<o-radio-group label="Select an option" size="small" value="1">
+  <o-radio-button value="1">Option 1</o-radio-button>
+  <o-radio-button value="2">Option 2</o-radio-button>
+  <o-radio-button value="3">Option 3</o-radio-button>
+</o-radio-group>
 
 <br />
 
-<sl-radio-group label="Select an option" size="medium" value="1">
-  <sl-radio-button value="1">Option 1</sl-radio-button>
-  <sl-radio-button value="2">Option 2</sl-radio-button>
-  <sl-radio-button value="3">Option 3</sl-radio-button>
-</sl-radio-group>
+<o-radio-group label="Select an option" size="medium" value="1">
+  <o-radio-button value="1">Option 1</o-radio-button>
+  <o-radio-button value="2">Option 2</o-radio-button>
+  <o-radio-button value="3">Option 3</o-radio-button>
+</o-radio-group>
 
 <br />
 
-<sl-radio-group label="Select an option" size="large" value="1">
-  <sl-radio-button value="1">Option 1</sl-radio-button>
-  <sl-radio-button value="2">Option 2</sl-radio-button>
-  <sl-radio-button value="3">Option 3</sl-radio-button>
-</sl-radio-group>
+<o-radio-group label="Select an option" size="large" value="1">
+  <o-radio-button value="1">Option 1</o-radio-button>
+  <o-radio-button value="2">Option 2</o-radio-button>
+  <o-radio-button value="3">Option 3</o-radio-button>
+</o-radio-group>
 ```
 
 ```jsx react
-import { SlRadioButton, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadioButton, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <>
-    <SlRadioGroup label="Select an option" size="small" value="1">
-      <SlRadioButton value="1">Option 1</SlRadioButton>
-      <SlRadioButton value="2">Option 2</SlRadioButton>
-      <SlRadioButton value="3">Option 3</SlRadioButton>
-    </SlRadioGroup>
+    <ORadioGroup label="Select an option" size="small" value="1">
+      <ORadioButton value="1">Option 1</ORadioButton>
+      <ORadioButton value="2">Option 2</ORadioButton>
+      <ORadioButton value="3">Option 3</ORadioButton>
+    </ORadioGroup>
 
     <br />
 
-    <SlRadioGroup label="Select an option" size="medium" value="1">
-      <SlRadioButton value="1">Option 1</SlRadioButton>
-      <SlRadioButton value="2">Option 2</SlRadioButton>
-      <SlRadioButton value="3">Option 3</SlRadioButton>
-    </SlRadioGroup>
+    <ORadioGroup label="Select an option" size="medium" value="1">
+      <ORadioButton value="1">Option 1</ORadioButton>
+      <ORadioButton value="2">Option 2</ORadioButton>
+      <ORadioButton value="3">Option 3</ORadioButton>
+    </ORadioGroup>
 
     <br />
 
-    <SlRadioGroup label="Select an option" size="large" value="1">
-      <SlRadioButton value="1">Option 1</SlRadioButton>
-      <SlRadioButton value="2">Option 2</SlRadioButton>
-      <SlRadioButton value="3">Option 3</SlRadioButton>
-    </SlRadioGroup>
+    <ORadioGroup label="Select an option" size="large" value="1">
+      <ORadioButton value="1">Option 1</ORadioButton>
+      <ORadioButton value="2">Option 2</ORadioButton>
+      <ORadioButton value="3">Option 3</ORadioButton>
+    </ORadioGroup>
   </>
 );
 ```
@@ -139,54 +139,54 @@ const App = () => (
 Use the `pill` attribute to give radio buttons rounded edges.
 
 ```html preview
-<sl-radio-group label="Select an option" name="a" value="1">
-  <sl-radio-button pill size="small" value="1">Option 1</sl-radio-button>
-  <sl-radio-button pill size="small" value="2">Option 2</sl-radio-button>
-  <sl-radio-button pill size="small" value="3">Option 3</sl-radio-button>
-</sl-radio-group>
+<o-radio-group label="Select an option" name="a" value="1">
+  <o-radio-button pill size="small" value="1">Option 1</o-radio-button>
+  <o-radio-button pill size="small" value="2">Option 2</o-radio-button>
+  <o-radio-button pill size="small" value="3">Option 3</o-radio-button>
+</o-radio-group>
 
 <br />
 
-<sl-radio-group label="Select an option" name="a" value="1">
-  <sl-radio-button pill size="medium" value="1">Option 1</sl-radio-button>
-  <sl-radio-button pill size="medium" value="2">Option 2</sl-radio-button>
-  <sl-radio-button pill size="medium" value="3">Option 3</sl-radio-button>
-</sl-radio-group>
+<o-radio-group label="Select an option" name="a" value="1">
+  <o-radio-button pill size="medium" value="1">Option 1</o-radio-button>
+  <o-radio-button pill size="medium" value="2">Option 2</o-radio-button>
+  <o-radio-button pill size="medium" value="3">Option 3</o-radio-button>
+</o-radio-group>
 
 <br />
 
-<sl-radio-group label="Select an option" name="a" value="1">
-  <sl-radio-button pill size="large" value="1">Option 1</sl-radio-button>
-  <sl-radio-button pill size="large" value="2">Option 2</sl-radio-button>
-  <sl-radio-button pill size="large" value="3">Option 3</sl-radio-button>
-</sl-radio-group>
+<o-radio-group label="Select an option" name="a" value="1">
+  <o-radio-button pill size="large" value="1">Option 1</o-radio-button>
+  <o-radio-button pill size="large" value="2">Option 2</o-radio-button>
+  <o-radio-button pill size="large" value="3">Option 3</o-radio-button>
+</o-radio-group>
 ```
 
 ```jsx react
-import { SlRadioButton, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadioButton, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlRadioGroup label="Select an option" name="a" value="1">
-    <SlRadioButton pill size="small" value="1">Option 1</SlRadioButton>
-    <SlRadioButton pill size="small" value="2">Option 2</SlRadioButton>
-    <SlRadioButton pill size="small" value="3">Option 3</SlRadioButton>
-  </SlRadioGroup>
+  <ORadioGroup label="Select an option" name="a" value="1">
+    <ORadioButton pill size="small" value="1">Option 1</ORadioButton>
+    <ORadioButton pill size="small" value="2">Option 2</ORadioButton>
+    <ORadioButton pill size="small" value="3">Option 3</ORadioButton>
+  </ORadioGroup>
 
   <br />
 
-  <SlRadioGroup label="Select an option" name="a" value="1">
-    <SlRadioButton pill size="medium" value="1">Option 1</SlRadioButton>
-    <SlRadioButton pill size="medium" value="2">Option 2</SlRadioButton>
-    <SlRadioButton pill size="medium" value="3">Option 3</SlRadioButton>
-  </SlRadioGroup>
+  <ORadioGroup label="Select an option" name="a" value="1">
+    <ORadioButton pill size="medium" value="1">Option 1</ORadioButton>
+    <ORadioButton pill size="medium" value="2">Option 2</ORadioButton>
+    <ORadioButton pill size="medium" value="3">Option 3</ORadioButton>
+  </ORadioGroup>
 
   <br />
 
-  <SlRadioGroup label="Select an option" name="a" value="1">
-    <SlRadioButton pill size="large" value="1">Option 1</SlRadioButton>
-    <SlRadioButton pill size="large" value="2">Option 2</SlRadioButton>
-    <SlRadioButton pill size="large" value="3">Option 3</SlRadioButton>
-  </SlRadioGroup>
+  <ORadioGroup label="Select an option" name="a" value="1">
+    <ORadioButton pill size="large" value="1">Option 1</ORadioButton>
+    <ORadioButton pill size="large" value="2">Option 2</ORadioButton>
+    <ORadioButton pill size="large" value="3">Option 3</ORadioButton>
+  </ORadioGroup>
 );
 ```
 
@@ -195,46 +195,46 @@ const App = () => (
 Use the `prefix` and `suffix` slots to add icons.
 
 ```html preview
-<sl-radio-group label="Select an option" name="a" value="1">
-  <sl-radio-button value="1">
-    <sl-icon slot="prefix" name="archive"></sl-icon>
+<o-radio-group label="Select an option" name="a" value="1">
+  <o-radio-button value="1">
+    <o-icon slot="prefix" name="archive"></o-icon>
     Option 1
-  </sl-radio-button>
+  </o-radio-button>
 
-  <sl-radio-button value="2">
-    <sl-icon slot="suffix" name="bag"></sl-icon>
+  <o-radio-button value="2">
+    <o-icon slot="suffix" name="bag"></o-icon>
     Option 2
-  </sl-radio-button>
+  </o-radio-button>
 
-  <sl-radio-button value="3">
-    <sl-icon slot="prefix" name="gift"></sl-icon>
-    <sl-icon slot="suffix" name="cart"></sl-icon>
+  <o-radio-button value="3">
+    <o-icon slot="prefix" name="gift"></o-icon>
+    <o-icon slot="suffix" name="cart"></o-icon>
     Option 3
-  </sl-radio-button>
-</sl-radio-group>
+  </o-radio-button>
+</o-radio-group>
 ```
 
 ```jsx react
-import { SlIcon, SlRadioButton, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { OIcon, ORadioButton, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlRadioGroup label="Select an option" name="a" value="1">
-    <SlRadioButton value="1">
-      <SlIcon slot="prefix" name="archive" />
+  <ORadioGroup label="Select an option" name="a" value="1">
+    <ORadioButton value="1">
+      <OIcon slot="prefix" name="archive" />
       Option 1
-    </SlRadioButton>
+    </ORadioButton>
 
-    <SlRadioButton value="2">
-      <SlIcon slot="suffix" name="bag" />
+    <ORadioButton value="2">
+      <OIcon slot="suffix" name="bag" />
       Option 2
-    </SlRadioButton>
+    </ORadioButton>
 
-    <SlRadioButton value="3">
-      <SlIcon slot="prefix" name="gift" />
-      <SlIcon slot="suffix" name="cart" />
+    <ORadioButton value="3">
+      <OIcon slot="prefix" name="gift" />
+      <OIcon slot="suffix" name="cart" />
       Option 3
-    </SlRadioButton>
-  </SlRadioGroup>
+    </ORadioButton>
+  </ORadioGroup>
 );
 ```
 
@@ -243,55 +243,55 @@ const App = () => (
 You can omit button labels and use icons instead. Make sure to set a `label` attribute on each icon so screen readers will announce each option correctly.
 
 ```html preview
-<sl-radio-group label="Select an option" name="a" value="neutral">
-  <sl-radio-button value="angry">
-    <sl-icon name="emoji-angry" label="Angry"></sl-icon>
-  </sl-radio-button>
+<o-radio-group label="Select an option" name="a" value="neutral">
+  <o-radio-button value="angry">
+    <o-icon name="emoji-angry" label="Angry"></o-icon>
+  </o-radio-button>
 
-  <sl-radio-button value="sad">
-    <sl-icon name="emoji-frown" label="Sad"></sl-icon>
-  </sl-radio-button>
+  <o-radio-button value="sad">
+    <o-icon name="emoji-frown" label="Sad"></o-icon>
+  </o-radio-button>
 
-  <sl-radio-button value="neutral">
-    <sl-icon name="emoji-neutral" label="Neutral"></sl-icon>
-  </sl-radio-button>
+  <o-radio-button value="neutral">
+    <o-icon name="emoji-neutral" label="Neutral"></o-icon>
+  </o-radio-button>
 
-  <sl-radio-button value="happy">
-    <sl-icon name="emoji-smile" label="Happy"></sl-icon>
-  </sl-radio-button>
+  <o-radio-button value="happy">
+    <o-icon name="emoji-smile" label="Happy"></o-icon>
+  </o-radio-button>
 
-  <sl-radio-button value="laughing">
-    <sl-icon name="emoji-laughing" label="Laughing"></sl-icon>
-  </sl-radio-button>
-</sl-radio-group>
+  <o-radio-button value="laughing">
+    <o-icon name="emoji-laughing" label="Laughing"></o-icon>
+  </o-radio-button>
+</o-radio-group>
 ```
 
 ```jsx react
-import { SlIcon, SlRadioButton, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { OIcon, ORadioButton, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlRadioGroup label="Select an option" name="a" value="neutral">
-    <SlRadioButton value="angry">
-      <SlIcon name="emoji-angry" label="Angry" />
-    </SlRadioButton>
+  <ORadioGroup label="Select an option" name="a" value="neutral">
+    <ORadioButton value="angry">
+      <OIcon name="emoji-angry" label="Angry" />
+    </ORadioButton>
 
-    <SlRadioButton value="sad">
-      <SlIcon name="emoji-frown" label="Sad" />
-    </SlRadioButton>
+    <ORadioButton value="sad">
+      <OIcon name="emoji-frown" label="Sad" />
+    </ORadioButton>
 
-    <SlRadioButton value="neutral">
-      <SlIcon name="emoji-neutral" label="Neutral" />
-    </SlRadioButton>
+    <ORadioButton value="neutral">
+      <OIcon name="emoji-neutral" label="Neutral" />
+    </ORadioButton>
 
-    <SlRadioButton value="happy">
-      <SlIcon name="emoji-smile" label="Happy" />
-    </SlRadioButton>
+    <ORadioButton value="happy">
+      <OIcon name="emoji-smile" label="Happy" />
+    </ORadioButton>
 
-    <SlRadioButton value="laughing">
-      <SlIcon name="emoji-laughing" label="Laughing" />
-    </SlRadioButton>
-  </SlRadioGroup>
+    <ORadioButton value="laughing">
+      <OIcon name="emoji-laughing" label="Laughing" />
+    </ORadioButton>
+  </ORadioGroup>
 );
 ```
 
-[component-metadata:sl-radio-button]
+[component-metadata:o-radio-button]

@@ -28,12 +28,12 @@ Now you can start using components!
 
 ### Importing Components
 
-Every Shoelace component is available to import as a React component. Note that we're importing the `<SlButton>` _React component_ instead of the `<sl-button>` _custom element_ in the example below.
+Every Shoelace component is available to import as a React component. Note that we're importing the `<OButton>` _React component_ instead of the `<o-button>` _custom element_ in the example below.
 
 ```jsx
-import { SlButton } from '%PACKAGE_NAME%/dist/react';
+import { OButton } from '%PACKAGE_NAME%/dist/react';
 
-const MyComponent = () => <SlButton variant="primary">Click me</SlButton>;
+const MyComponent = () => <OButton variant="primary">Click me</OButton>;
 
 export default MyComponent;
 ```
@@ -42,18 +42,18 @@ You can find a copy + paste import for each component in the "importing" section
 
 ### Event Handling
 
-Many Shoelace components emit [custom events](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent). For example, the [input component](/components/input) emits the `sl-input` event when it receives input. In React, you can listen for the event using `onSlInput`.
+Many Shoelace components emit [custom events](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent). For example, the [input component](/components/input) emits the `o-input` event when it receives input. In React, you can listen for the event using `onOInput`.
 
 Here's how you can bind the input's value to a state variable.
 
 ```jsx
 import { useState } from 'react';
-import { SlInput } from '%PACKAGE_NAME%/dist/react';
+import { OInput } from '%PACKAGE_NAME%/dist/react';
 
 function MyComponent() {
   const [value, setValue] = useState('');
 
-  return <SlInput value={value} onSlInput={event => setValue(event.target.value)} />;
+  return <OInput value={value} onOInput={event => setValue(event.target.value)} />;
 }
 
 export default MyComponent;
@@ -63,13 +63,13 @@ If you're using TypeScript, it's important to note that `event.target` will be a
 
 ```tsx
 import { useState } from 'react';
-import { SlInput } from '%PACKAGE_NAME%/dist/react';
-import type SlInputElement from '%PACKAGE_NAME%/dist/components/input/input';
+import { OInput } from '%PACKAGE_NAME%/dist/react';
+import type OInputElement from '%PACKAGE_NAME%/dist/components/input/input';
 
 function MyComponent() {
   const [value, setValue] = useState('');
 
-  return <SlInput value={value} onSlInput={event => setValue((event.target as SlInputElement).value)} />;
+  return <OInput value={value} onOInput={event => setValue((event.target as OInputElement).value)} />;
 }
 
 export default MyComponent;

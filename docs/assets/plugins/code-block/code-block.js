@@ -124,7 +124,7 @@
               <div class="code-block__preview">
                 ${code.textContent}
                 <div class="code-block__resizer">
-                  <sl-icon name="grip-vertical"></sl-icon>
+                  <o-icon name="grip-vertical"></o-icon>
                 </div>
               </div>
 
@@ -288,7 +288,7 @@
     const { reactVersion, reactCdnUrl, packageUrl, reactUrl, reactPackageUrl } = window.getDocsConfig();
 
     const button = event.target.closest('button');
-    // const version = sessionStorage.getItem('sl-version');
+    // const version = sessionStorage.getItem('o-version');
 
     if (button?.classList.contains('code-block__button--codepen')) {
       const codeBlock = button.closest('.code-block');
@@ -335,8 +335,8 @@
         '\n' +
         'body {\n' +
         '  font: 16px sans-serif;\n' +
-        '  background-color: var(--sl-color-neutral-0);\n' +
-        '  color: var(--sl-color-neutral-900);\n' +
+        '  background-color: var(--o-color-neutral-0);\n' +
+        '  color: var(--o-color-neutral-900);\n' +
         '  padding: 1rem;\n' +
         '}';
 
@@ -347,7 +347,7 @@
         tags: ['shoelace', 'web components'],
         editors,
         head: `<meta name="viewport" content="width=device-width">`,
-        html_classes: `sl-theme-${isDark ? 'dark' : 'light'}`,
+        html_classes: `o-theme-${isDark ? 'dark' : 'light'}`,
         css_external: ``,
         js_external: ``,
         js_module: true,

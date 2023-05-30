@@ -15,8 +15,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --aspect-ratio - The slide's aspect ratio. Inherited from the carousel by default.
  *
  */
-@customElement('sl-carousel-item')
-export default class SlCarouselItem extends ShoelaceElement {
+@customElement('o-carousel-item')
+export default class OCarouselItem extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
 
   static isCarouselItem(node: Node) {
@@ -35,6 +35,6 @@ export default class SlCarouselItem extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-carousel-item': SlCarouselItem;
+    'o-carousel-item': OCarouselItem;
   }
 }

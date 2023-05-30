@@ -25,7 +25,7 @@ setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/
 
 ## Configuration
 
-You'll need to tell Vue to ignore Shoelace components. This is pretty easy because they all start with `sl-`.
+You'll need to tell Vue to ignore Shoelace components. This is pretty easy because they all start with `o-`.
 
 ```js
 import { fileURLToPath, URL } from 'url';
@@ -39,7 +39,7 @@ export default defineConfig({
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: tag => tag.startsWith('sl-')
+          isCustomElement: tag => tag.startsWith('o-')
         }
       }
     })
@@ -63,9 +63,9 @@ Now you can start using Shoelace components in your app!
   <div class="container">
     <h1>QR code generator</h1>
 
-    <sl-input maxlength="255" clearable label="Value" v-model="qrCode"></sl-input>
+    <o-input maxlength="255" clearable label="Value" v-model="qrCode"></o-input>
 
-    <sl-qr-code :value="qrCode"></sl-qr-code>
+    <o-qr-code :value="qrCode"></o-qr-code>
   </div>
 </template>
 
@@ -83,8 +83,8 @@ Now you can start using Shoelace components in your app!
     margin: 0 auto;
   }
 
-  sl-input {
-    margin: var(--sl-spacing-large) 0;
+  o-input {
+    margin: var(--o-spacing-large) 0;
   }
 </style>
 ```
@@ -94,7 +94,7 @@ Now you can start using Shoelace components in your app!
 When binding complex data such as objects and arrays, use the `.prop` modifier to make Vue bind them as a property instead of an attribute.
 
 ```html
-<sl-color-picker :swatches.prop="mySwatches" />
+<o-color-picker :swatches.prop="mySwatches" />
 ```
 
 ?> Are you using Shoelace with Vue? [Help us improve this page!](%REPO_URL%/blob/next/docs/frameworks/vue.md)
@@ -106,10 +106,10 @@ To use Shoelace components with slots, follow the Vue documentation on using [sl
 Here is an example:
 
 ```html
-<sl-drawer label="Drawer" placement="start" class="drawer-placement-start" :open="drawerIsOpen">
+<o-drawer label="Drawer" placement="start" class="drawer-placement-start" :open="drawerIsOpen">
   This drawer slides in from the start.
   <div slot="footer">
-    <sl-button variant="primary" @click=" drawerIsOpen = false">Close</sl-button>
+    <o-button variant="primary" @click=" drawerIsOpen = false">Close</o-button>
   </div>
-</sl-drawer>
+</o-drawer>
 ```

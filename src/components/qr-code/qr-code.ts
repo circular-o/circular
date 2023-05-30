@@ -15,8 +15,8 @@ import type { CSSResultGroup } from 'lit';
  *
  * @csspart base - The component's base wrapper.
  */
-@customElement('sl-qr-code')
-export default class SlQrCode extends ShoelaceElement {
+@customElement('o-qr-code')
+export default class OQrCode extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
 
   @query('canvas') canvas: HTMLElement;
@@ -84,6 +84,6 @@ export default class SlQrCode extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-qr-code': SlQrCode;
+    'o-qr-code': OQrCode;
   }
 }

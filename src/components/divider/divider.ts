@@ -14,8 +14,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --width - The width of the divider.
  * @cssproperty --spacing - The spacing of the divider.
  */
-@customElement('sl-divider')
-export default class SlDivider extends ShoelaceElement {
+@customElement('o-divider')
+export default class ODivider extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
 
   /** Draws the divider in a vertical orientation. */
@@ -34,6 +34,6 @@ export default class SlDivider extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-divider': SlDivider;
+    'o-divider': ODivider;
   }
 }

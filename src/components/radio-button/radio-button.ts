@@ -18,8 +18,8 @@ import type { CSSResultGroup } from 'lit';
  * @slot prefix - A presentational prefix icon or similar element.
  * @slot suffix - A presentational suffix icon or similar element.
  *
- * @event sl-blur - Emitted when the button loses focus.
- * @event sl-focus - Emitted when the button gains focus.
+ * @event o-blur - Emitted when the button loses focus.
+ * @event o-focus - Emitted when the button gains focus.
  *
  * @csspart base - The component's base wrapper.
  * @csspart button - The internal `<button>` element.
@@ -28,8 +28,8 @@ import type { CSSResultGroup } from 'lit';
  * @csspart label - The container that wraps the radio button's label.
  * @csspart suffix - The container that wraps the suffix.
  */
-@customElement('sl-radio-button')
-export default class SlRadioButton extends ShoelaceElement {
+@customElement('o-radio-button')
+export default class ORadioButton extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
 
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'prefix', 'suffix');
@@ -67,7 +67,7 @@ export default class SlRadioButton extends ShoelaceElement {
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('o-blur');
   }
 
   private handleClick(e: MouseEvent) {
@@ -82,7 +82,7 @@ export default class SlRadioButton extends ShoelaceElement {
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sl-focus');
+    this.emit('o-focus');
   }
 
   @watch('disabled', { waitUntilFirstUpdate: true })
@@ -141,6 +141,6 @@ export default class SlRadioButton extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-radio-button': SlRadioButton;
+    'o-radio-button': ORadioButton;
   }
 }

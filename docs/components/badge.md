@@ -1,15 +1,15 @@
 # Badge
 
-[component-header:sl-badge]
+[component-header:o-badge]
 
 ```html preview
-<sl-badge>Badge</sl-badge>
+<o-badge>Badge</o-badge>
 ```
 
 ```jsx react
-import { SlBadge } from '%PACKAGE_NAME%/dist/react';
+import { OBadge } from '%PACKAGE_NAME%/dist/react';
 
-const App = () => <SlBadge>Badge</SlBadge>;
+const App = () => <OBadge>Badge</OBadge>;
 ```
 
 ## Examples
@@ -19,23 +19,23 @@ const App = () => <SlBadge>Badge</SlBadge>;
 Set the `variant` attribute to change the badge's variant.
 
 ```html preview
-<sl-badge variant="primary">Primary</sl-badge>
-<sl-badge variant="success">Success</sl-badge>
-<sl-badge variant="neutral">Neutral</sl-badge>
-<sl-badge variant="warning">Warning</sl-badge>
-<sl-badge variant="danger">Danger</sl-badge>
+<o-badge variant="primary">Primary</o-badge>
+<o-badge variant="success">Success</o-badge>
+<o-badge variant="neutral">Neutral</o-badge>
+<o-badge variant="warning">Warning</o-badge>
+<o-badge variant="danger">Danger</o-badge>
 ```
 
 ```jsx react
-import { SlBadge } from '%PACKAGE_NAME%/dist/react';
+import { OBadge } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <>
-    <SlBadge variant="primary">Primary</SlBadge>
-    <SlBadge variant="success">Success</SlBadge>
-    <SlBadge variant="neutral">Neutral</SlBadge>
-    <SlBadge variant="warning">Warning</SlBadge>
-    <SlBadge variant="danger">Danger</SlBadge>
+    <OBadge variant="primary">Primary</OBadge>
+    <OBadge variant="success">Success</OBadge>
+    <OBadge variant="neutral">Neutral</OBadge>
+    <OBadge variant="warning">Warning</OBadge>
+    <OBadge variant="danger">Danger</OBadge>
   </>
 );
 ```
@@ -45,33 +45,33 @@ const App = () => (
 Use the `pill` attribute to give badges rounded edges.
 
 ```html preview
-<sl-badge variant="primary" pill>Primary</sl-badge>
-<sl-badge variant="success" pill>Success</sl-badge>
-<sl-badge variant="neutral" pill>Neutral</sl-badge>
-<sl-badge variant="warning" pill>Warning</sl-badge>
-<sl-badge variant="danger" pill>Danger</sl-badge>
+<o-badge variant="primary" pill>Primary</o-badge>
+<o-badge variant="success" pill>Success</o-badge>
+<o-badge variant="neutral" pill>Neutral</o-badge>
+<o-badge variant="warning" pill>Warning</o-badge>
+<o-badge variant="danger" pill>Danger</o-badge>
 ```
 
 ```jsx react
-import { SlBadge } from '%PACKAGE_NAME%/dist/react';
+import { OBadge } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <>
-    <SlBadge variant="primary" pill>
+    <OBadge variant="primary" pill>
       Primary
-    </SlBadge>
-    <SlBadge variant="success" pill>
+    </OBadge>
+    <OBadge variant="success" pill>
       Success
-    </SlBadge>
-    <SlBadge variant="neutral" pill>
+    </OBadge>
+    <OBadge variant="neutral" pill>
       Neutral
-    </SlBadge>
-    <SlBadge variant="warning" pill>
+    </OBadge>
+    <OBadge variant="warning" pill>
       Warning
-    </SlBadge>
-    <SlBadge variant="danger" pill>
+    </OBadge>
+    <OBadge variant="danger" pill>
       Danger
-    </SlBadge>
+    </OBadge>
   </>
 );
 ```
@@ -82,25 +82,25 @@ Use the `pulse` attribute to draw attention to the badge with a subtle animation
 
 ```html preview
 <div class="badge-pulse">
-  <sl-badge variant="primary" pill pulse>1</sl-badge>
-  <sl-badge variant="success" pill pulse>1</sl-badge>
-  <sl-badge variant="neutral" pill pulse>1</sl-badge>
-  <sl-badge variant="warning" pill pulse>1</sl-badge>
-  <sl-badge variant="danger" pill pulse>1</sl-badge>
+  <o-badge variant="primary" pill pulse>1</o-badge>
+  <o-badge variant="success" pill pulse>1</o-badge>
+  <o-badge variant="neutral" pill pulse>1</o-badge>
+  <o-badge variant="warning" pill pulse>1</o-badge>
+  <o-badge variant="danger" pill pulse>1</o-badge>
 </div>
 
 <style>
-  .badge-pulse sl-badge:not(:last-of-type) {
+  .badge-pulse o-badge:not(:last-of-type) {
     margin-right: 1rem;
   }
 </style>
 ```
 
 ```jsx react
-import { SlBadge } from '%PACKAGE_NAME%/dist/react';
+import { OBadge } from '%PACKAGE_NAME%/dist/react';
 
 const css = `
-  .badge-pulse sl-badge:not(:last-of-type) {
+  .badge-pulse o-badge:not(:last-of-type) {
     margin-right: 1rem;
   }
 `;
@@ -108,21 +108,21 @@ const css = `
 const App = () => (
   <>
     <div className="badge-pulse">
-      <SlBadge variant="primary" pill pulse>
+      <OBadge variant="primary" pill pulse>
         1
-      </SlBadge>
-      <SlBadge variant="success" pill pulse>
+      </OBadge>
+      <OBadge variant="success" pill pulse>
         1
-      </SlBadge>
-      <SlBadge variant="neutral" pill pulse>
+      </OBadge>
+      <OBadge variant="neutral" pill pulse>
         1
-      </SlBadge>
-      <SlBadge variant="warning" pill pulse>
+      </OBadge>
+      <OBadge variant="warning" pill pulse>
         1
-      </SlBadge>
-      <SlBadge variant="danger" pill pulse>
+      </OBadge>
+      <OBadge variant="danger" pill pulse>
         1
-      </SlBadge>
+      </OBadge>
     </div>
 
     <style>{css}</style>
@@ -135,45 +135,45 @@ const App = () => (
 One of the most common use cases for badges is attaching them to buttons. To make this easier, badges will be automatically positioned at the top-right when they're a child of a button.
 
 ```html preview
-<sl-button>
+<o-button>
   Requests
-  <sl-badge pill>30</sl-badge>
-</sl-button>
+  <o-badge pill>30</o-badge>
+</o-button>
 
-<sl-button style="margin-inline-start: 1rem;">
+<o-button style="margin-inline-start: 1rem;">
   Warnings
-  <sl-badge variant="warning" pill>8</sl-badge>
-</sl-button>
+  <o-badge variant="warning" pill>8</o-badge>
+</o-button>
 
-<sl-button style="margin-inline-start: 1rem;">
+<o-button style="margin-inline-start: 1rem;">
   Errors
-  <sl-badge variant="danger" pill>6</sl-badge>
-</sl-button>
+  <o-badge variant="danger" pill>6</o-badge>
+</o-button>
 ```
 
 ```jsx react
-import { SlBadge, SlButton } from '%PACKAGE_NAME%/dist/react';
+import { OBadge, OButton } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
   <>
-    <SlButton>
+    <OButton>
       Requests
-      <SlBadge pill>30</SlBadge>
-    </SlButton>
+      <OBadge pill>30</OBadge>
+    </OButton>
 
-    <SlButton style={{ marginInlineStart: '1rem' }}>
+    <OButton style={{ marginInlineStart: '1rem' }}>
       Warnings
-      <SlBadge variant="warning" pill>
+      <OBadge variant="warning" pill>
         8
-      </SlBadge>
-    </SlButton>
+      </OBadge>
+    </OButton>
 
-    <SlButton style={{ marginInlineStart: '1rem' }}>
+    <OButton style={{ marginInlineStart: '1rem' }}>
       Errors
-      <SlBadge variant="danger" pill>
+      <OBadge variant="danger" pill>
         6
-      </SlBadge>
-    </SlButton>
+      </OBadge>
+    </OButton>
   </>
 );
 ```
@@ -183,39 +183,39 @@ const App = () => (
 When including badges in menu items, use the `suffix` slot to make sure they're aligned correctly.
 
 ```html preview
-<sl-menu style="max-width: 240px;">
-  <sl-menu-label>Messages</sl-menu-label>
-  <sl-menu-item>Comments <sl-badge slot="suffix" variant="neutral" pill>4</sl-badge></sl-menu-item>
-  <sl-menu-item>Replies <sl-badge slot="suffix" variant="neutral" pill>12</sl-badge></sl-menu-item>
-</sl-menu>
+<o-menu style="max-width: 240px;">
+  <o-menu-label>Messages</o-menu-label>
+  <o-menu-item>Comments <o-badge slot="suffix" variant="neutral" pill>4</o-badge></o-menu-item>
+  <o-menu-item>Replies <o-badge slot="suffix" variant="neutral" pill>12</o-badge></o-menu-item>
+</o-menu>
 ```
 
 ```jsx react
-import { SlBadge, SlButton, SlMenu, SlMenuItem, SlMenuLabel } from '%PACKAGE_NAME%/dist/react';
+import { OBadge, OButton, OMenu, OMenuItem, OMenuLabel } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlMenu
+  <OMenu
     style={{
       maxWidth: '240px',
-      border: 'solid 1px var(--sl-panel-border-color)',
-      borderRadius: 'var(--sl-border-radius-medium)'
+      border: 'solid 1px var(--o-panel-border-color)',
+      borderRadius: 'var(--o-border-radius-medium)'
     }}
   >
-    <SlMenuLabel>Messages</SlMenuLabel>
-    <SlMenuItem>
+    <OMenuLabel>Messages</OMenuLabel>
+    <OMenuItem>
       Comments
-      <SlBadge slot="suffix" variant="neutral" pill>
+      <OBadge slot="suffix" variant="neutral" pill>
         4
-      </SlBadge>
-    </SlMenuItem>
-    <SlMenuItem>
+      </OBadge>
+    </OMenuItem>
+    <OMenuItem>
       Replies
-      <SlBadge slot="suffix" variant="neutral" pill>
+      <OBadge slot="suffix" variant="neutral" pill>
         12
-      </SlBadge>
-    </SlMenuItem>
-  </SlMenu>
+      </OBadge>
+    </OMenuItem>
+  </OMenu>
 );
 ```
 
-[component-metadata:sl-badge]
+[component-metadata:o-badge]

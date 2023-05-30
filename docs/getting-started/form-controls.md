@@ -44,26 +44,26 @@ If you don't want to use client-side validation, you can suppress this behavior 
 
 ### Required Fields
 
-To make a field required, use the `required` attribute. Required fields will automatically receive a `*` after their labels. This is configurable through the `--sl-input-required-content` custom property.
+To make a field required, use the `required` attribute. Required fields will automatically receive a `*` after their labels. This is configurable through the `--o-input-required-content` custom property.
 
 The form will not be submitted if a required field is incomplete.
 
 ```html preview
 <form class="input-validation-required">
-  <sl-input name="name" label="Name" required></sl-input>
+  <o-input name="name" label="Name" required></o-input>
   <br />
-  <sl-select label="Favorite Animal" clearable required>
-    <sl-option value="birds">Birds</sl-option>
-    <sl-option value="cats">Cats</sl-option>
-    <sl-option value="dogs">Dogs</sl-option>
-    <sl-option value="other">Other</sl-option>
-  </sl-select>
+  <o-select label="Favorite Animal" clearable required>
+    <o-option value="birds">Birds</o-option>
+    <o-option value="cats">Cats</o-option>
+    <o-option value="dogs">Dogs</o-option>
+    <o-option value="other">Other</o-option>
+  </o-select>
   <br />
-  <sl-textarea name="comment" label="Comment" required></sl-textarea>
+  <o-textarea name="comment" label="Comment" required></o-textarea>
   <br />
-  <sl-checkbox required>Check me before submitting</sl-checkbox>
+  <o-checkbox required>Check me before submitting</o-checkbox>
   <br /><br />
-  <sl-button type="submit" variant="primary">Submit</sl-button>
+  <o-button type="submit" variant="primary">Submit</o-button>
 </form>
 
 <script type="module">
@@ -76,7 +76,7 @@ The form will not be submitted if a required field is incomplete.
 ```
 
 ```jsx react
-import { SlButton, SlCheckbox, SlInput, SlMenuItem, SlSelect, SlTextarea } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OCheckbox, OInput, OMenuItem, OSelect, OTextarea } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => {
   function handleSubmit(event) {
@@ -86,23 +86,23 @@ const App = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <SlInput name="name" label="Name" required />
+      <OInput name="name" label="Name" required />
       <br />
-      <SlSelect label="Favorite Animal" clearable required>
-        <SlMenuItem value="birds">Birds</SlMenuItem>
-        <SlMenuItem value="cats">Cats</SlMenuItem>
-        <SlMenuItem value="dogs">Dogs</SlMenuItem>
-        <SlMenuItem value="other">Other</SlMenuItem>
-      </SlSelect>
+      <OSelect label="Favorite Animal" clearable required>
+        <OMenuItem value="birds">Birds</OMenuItem>
+        <OMenuItem value="cats">Cats</OMenuItem>
+        <OMenuItem value="dogs">Dogs</OMenuItem>
+        <OMenuItem value="other">Other</OMenuItem>
+      </OSelect>
       <br />
-      <SlTextarea name="comment" label="Comment" required></SlTextarea>
+      <OTextarea name="comment" label="Comment" required></OTextarea>
       <br />
-      <SlCheckbox required>Check me before submitting</SlCheckbox>
+      <OCheckbox required>Check me before submitting</OCheckbox>
       <br />
       <br />
-      <SlButton type="submit" variant="primary">
+      <OButton type="submit" variant="primary">
         Submit
-      </SlButton>
+      </OButton>
     </form>
   );
 };
@@ -110,14 +110,14 @@ const App = () => {
 
 ### Input Patterns
 
-To restrict a value to a specific [pattern](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern), use the `pattern` attribute. This example only allows the letters A-Z, so the form will not submit if a number or symbol is entered. This only works with `<sl-input>` elements.
+To restrict a value to a specific [pattern](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern), use the `pattern` attribute. This example only allows the letters A-Z, so the form will not submit if a number or symbol is entered. This only works with `<o-input>` elements.
 
 ```html preview
 <form class="input-validation-pattern">
-  <sl-input name="letters" required label="Letters" pattern="[A-Za-z]+"></sl-input>
+  <o-input name="letters" required label="Letters" pattern="[A-Za-z]+"></o-input>
   <br />
-  <sl-button type="submit" variant="primary">Submit</sl-button>
-  <sl-button type="reset" variant="default">Reset</sl-button>
+  <o-button type="submit" variant="primary">Submit</o-button>
+  <o-button type="reset" variant="default">Reset</o-button>
 </form>
 
 <script type="module">
@@ -130,7 +130,7 @@ To restrict a value to a specific [pattern](https://developer.mozilla.org/en-US/
 ```
 
 ```jsx react
-import { SlButton, SlInput } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OInput } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => {
   function handleSubmit(event) {
@@ -140,11 +140,11 @@ const App = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <SlInput name="letters" required label="Letters" pattern="[A-Za-z]+" />
+      <OInput name="letters" required label="Letters" pattern="[A-Za-z]+" />
       <br />
-      <SlButton type="submit" variant="primary">
+      <OButton type="submit" variant="primary">
         Submit
-      </SlButton>
+      </OButton>
     </form>
   );
 };
@@ -156,12 +156,12 @@ Some input types will automatically trigger constraints, such as `email` and `ur
 
 ```html preview
 <form class="input-validation-type">
-  <sl-input type="email" label="Email" placeholder="you@example.com" required></sl-input>
+  <o-input type="email" label="Email" placeholder="you@example.com" required></o-input>
   <br />
-  <sl-input type="url" label="URL" placeholder="https://example.com/" required></sl-input>
+  <o-input type="url" label="URL" placeholder="https://example.com/" required></o-input>
   <br />
-  <sl-button type="submit" variant="primary">Submit</sl-button>
-  <sl-button type="reset" variant="default">Reset</sl-button>
+  <o-button type="submit" variant="primary">Submit</o-button>
+  <o-button type="reset" variant="default">Reset</o-button>
 </form>
 
 <script type="module">
@@ -174,7 +174,7 @@ Some input types will automatically trigger constraints, such as `email` and `ur
 ```
 
 ```jsx react
-import { SlButton, SlInput } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OInput } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => {
   function handleSubmit(event) {
@@ -184,13 +184,13 @@ const App = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <SlInput type="email" label="Email" placeholder="you@example.com" required />
+      <OInput type="email" label="Email" placeholder="you@example.com" required />
       <br />
-      <SlInput type="url" label="URL" placeholder="https://example.com/" required />
+      <OInput type="url" label="URL" placeholder="https://example.com/" required />
       <br />
-      <SlButton type="submit" variant="primary">
+      <OButton type="submit" variant="primary">
         Submit
-      </SlButton>
+      </OButton>
     </form>
   );
 };
@@ -202,22 +202,22 @@ To create a custom validation error, pass a non-empty string to the `setCustomVa
 
 ```html preview
 <form class="input-validation-custom">
-  <sl-input label="Type “shoelace”" required></sl-input>
+  <o-input label="Type “shoelace”" required></o-input>
   <br />
-  <sl-button type="submit" variant="primary">Submit</sl-button>
-  <sl-button type="reset" variant="default">Reset</sl-button>
+  <o-button type="submit" variant="primary">Submit</o-button>
+  <o-button type="reset" variant="default">Reset</o-button>
 </form>
 
 <script type="module">
   const form = document.querySelector('.input-validation-custom');
-  const input = form.querySelector('sl-input');
+  const input = form.querySelector('o-input');
 
   form.addEventListener('submit', event => {
     event.preventDefault();
     alert('All fields are valid!');
   });
 
-  input.addEventListener('sl-input', () => {
+  input.addEventListener('o-input', () => {
     if (input.value === 'shoelace') {
       input.setCustomValidity('');
     } else {
@@ -229,7 +229,7 @@ To create a custom validation error, pass a non-empty string to the `setCustomVa
 
 ```jsx react
 import { useRef, useState } from 'react';
-import { SlButton, SlInput } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OInput } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => {
   const input = useRef(null);
@@ -252,11 +252,11 @@ const App = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <SlInput ref={input} label="Type 'shoelace'" required value={value} onSlInput={handleInput} />
+      <OInput ref={input} label="Type 'shoelace'" required value={value} onOInput={handleInput} />
       <br />
-      <SlButton type="submit" variant="primary">
+      <OButton type="submit" variant="primary">
         Submit
-      </SlButton>
+      </OButton>
     </form>
   );
 };
@@ -287,25 +287,25 @@ This example demonstrates custom validation styles using `data-user-invalid` and
 
 ```html preview
 <form class="validity-styles">
-  <sl-input
+  <o-input
     name="name"
     label="Name"
     help-text="What would you like people to call you?"
     autocomplete="off"
     required
-  ></sl-input>
+  ></o-input>
 
-  <sl-select name="animal" label="Favorite Animal" help-text="Select the best option." clearable required>
-    <sl-option value="birds">Birds</sl-option>
-    <sl-option value="cats">Cats</sl-option>
-    <sl-option value="dogs">Dogs</sl-option>
-    <sl-option value="other">Other</sl-option>
-  </sl-select>
+  <o-select name="animal" label="Favorite Animal" help-text="Select the best option." clearable required>
+    <o-option value="birds">Birds</o-option>
+    <o-option value="cats">Cats</o-option>
+    <o-option value="dogs">Dogs</o-option>
+    <o-option value="other">Other</o-option>
+  </o-select>
 
-  <sl-checkbox value="accept" required>Accept terms and conditions</sl-checkbox>
+  <o-checkbox value="accept" required>Accept terms and conditions</o-checkbox>
 
-  <sl-button type="submit" variant="primary">Submit</sl-button>
-  <sl-button type="reset" variant="default">Reset</sl-button>
+  <o-button type="submit" variant="primary">Submit</o-button>
+  <o-button type="reset" variant="default">Reset</o-button>
 </form>
 
 <script type="module">
@@ -317,60 +317,60 @@ This example demonstrates custom validation styles using `data-user-invalid` and
 </script>
 
 <style>
-  .validity-styles sl-input,
-  .validity-styles sl-select,
-  .validity-styles sl-checkbox {
+  .validity-styles o-input,
+  .validity-styles o-select,
+  .validity-styles o-checkbox {
     display: block;
-    margin-bottom: var(--sl-spacing-medium);
+    margin-bottom: var(--o-spacing-medium);
   }
 
   /* user invalid styles */
-  .validity-styles sl-input[data-user-invalid]::part(base),
-  .validity-styles sl-select[data-user-invalid]::part(combobox),
-  .validity-styles sl-checkbox[data-user-invalid]::part(control) {
-    border-color: var(--sl-color-danger-600);
+  .validity-styles o-input[data-user-invalid]::part(base),
+  .validity-styles o-select[data-user-invalid]::part(combobox),
+  .validity-styles o-checkbox[data-user-invalid]::part(control) {
+    border-color: var(--o-color-danger-600);
   }
 
   .validity-styles [data-user-invalid]::part(form-control-label),
   .validity-styles [data-user-invalid]::part(form-control-help-text),
-  .validity-styles sl-checkbox[data-user-invalid]::part(label) {
-    color: var(--sl-color-danger-700);
+  .validity-styles o-checkbox[data-user-invalid]::part(label) {
+    color: var(--o-color-danger-700);
   }
 
-  .validity-styles sl-checkbox[data-user-invalid]::part(control) {
+  .validity-styles o-checkbox[data-user-invalid]::part(control) {
     outline: none;
   }
 
-  .validity-styles sl-input:focus-within[data-user-invalid]::part(base),
-  .validity-styles sl-select:focus-within[data-user-invalid]::part(combobox),
-  .validity-styles sl-checkbox:focus-within[data-user-invalid]::part(control) {
-    border-color: var(--sl-color-danger-600);
-    box-shadow: 0 0 0 var(--sl-focus-ring-width) var(--sl-color-danger-300);
+  .validity-styles o-input:focus-within[data-user-invalid]::part(base),
+  .validity-styles o-select:focus-within[data-user-invalid]::part(combobox),
+  .validity-styles o-checkbox:focus-within[data-user-invalid]::part(control) {
+    border-color: var(--o-color-danger-600);
+    box-shadow: 0 0 0 var(--o-focus-ring-width) var(--o-color-danger-300);
   }
 
   /* User valid styles */
-  .validity-styles sl-input[data-user-valid]::part(base),
-  .validity-styles sl-select[data-user-valid]::part(combobox),
-  .validity-styles sl-checkbox[data-user-valid]::part(control) {
-    border-color: var(--sl-color-success-600);
+  .validity-styles o-input[data-user-valid]::part(base),
+  .validity-styles o-select[data-user-valid]::part(combobox),
+  .validity-styles o-checkbox[data-user-valid]::part(control) {
+    border-color: var(--o-color-success-600);
   }
 
   .validity-styles [data-user-valid]::part(form-control-label),
   .validity-styles [data-user-valid]::part(form-control-help-text),
-  .validity-styles sl-checkbox[data-user-valid]::part(label) {
-    color: var(--sl-color-success-700);
+  .validity-styles o-checkbox[data-user-valid]::part(label) {
+    color: var(--o-color-success-700);
   }
 
-  .validity-styles sl-checkbox[data-user-valid]::part(control) {
-    background-color: var(--sl-color-success-600);
+  .validity-styles o-checkbox[data-user-valid]::part(control) {
+    background-color: var(--o-color-success-600);
     outline: none;
   }
 
-  .validity-styles sl-input:focus-within[data-user-valid]::part(base),
-  .validity-styles sl-select:focus-within[data-user-valid]::part(combobox),
-  .validity-styles sl-checkbox:focus-within[data-user-valid]::part(control) {
-    border-color: var(--sl-color-success-600);
-    box-shadow: 0 0 0 var(--sl-focus-ring-width) var(--sl-color-success-300);
+  .validity-styles o-input:focus-within[data-user-valid]::part(base),
+  .validity-styles o-select:focus-within[data-user-valid]::part(combobox),
+  .validity-styles o-checkbox:focus-within[data-user-valid]::part(control) {
+    border-color: var(--o-color-success-600);
+    box-shadow: 0 0 0 var(--o-focus-ring-width) var(--o-color-success-300);
   }
 </style>
 ```
@@ -379,22 +379,22 @@ This example demonstrates custom validation styles using `data-user-invalid` and
 
 By default, Shoelace form controls use the browser's tooltip-style error messages. No mechanism is provided to show errors inline, as there are too many opinions on how that would work when combined with native form controls and other custom elements. You can, however, implement your own solution using the following technique.
 
-To disable the browser's error messages, you need to cancel the `sl-invalid` event. Then you can apply your own inline validation errors. This example demonstrates a primitive way to do this.
+To disable the browser's error messages, you need to cancel the `o-invalid` event. Then you can apply your own inline validation errors. This example demonstrates a primitive way to do this.
 
 ```html preview
 <form class="inline-validation">
-  <sl-input
+  <o-input
     name="name"
     label="Name"
     help-text="What would you like people to call you?"
     autocomplete="off"
     required
-  ></sl-input>
+  ></o-input>
 
   <div id="name-error" aria-live="polite" hidden></div>
 
-  <sl-button type="submit" variant="primary">Submit</sl-button>
-  <sl-button type="reset" variant="default">Reset</sl-button>
+  <o-button type="submit" variant="primary">Submit</o-button>
+  <o-button type="reset" variant="default">Reset</o-button>
 </form>
 
 <script>
@@ -403,7 +403,7 @@ To disable the browser's error messages, you need to cancel the `sl-invalid` eve
 
   // A form control is invalid
   form.addEventListener(
-    'sl-invalid',
+    'o-invalid',
     event => {
       // Suppress the browser's constraint validation message
       event.preventDefault();
@@ -413,7 +413,7 @@ To disable the browser's error messages, you need to cancel the `sl-invalid` eve
 
       event.target.focus();
     },
-    { capture: true } // you must use capture since sl-invalid doesn't bubble!
+    { capture: true } // you must use capture since o-invalid doesn't bubble!
   );
 
   // Handle form submit
@@ -433,51 +433,51 @@ To disable the browser's error messages, you need to cancel the `sl-invalid` eve
 
 <style>
   #name-error {
-    font-size: var(--sl-input-help-text-font-size-medium);
-    color: var(--sl-color-danger-700);
+    font-size: var(--o-input-help-text-font-size-medium);
+    color: var(--o-color-danger-700);
   }
 
-  #name-error ~ sl-button {
-    margin-top: var(--sl-spacing-medium);
+  #name-error ~ o-button {
+    margin-top: var(--o-spacing-medium);
   }
 
-  .inline-validation sl-input {
+  .inline-validation o-input {
     display: block;
   }
 
   /* user invalid styles */
-  .inline-validation sl-input[data-user-invalid]::part(base) {
-    border-color: var(--sl-color-danger-600);
+  .inline-validation o-input[data-user-invalid]::part(base) {
+    border-color: var(--o-color-danger-600);
   }
 
   .inline-validation [data-user-invalid]::part(form-control-label),
   .inline-validation [data-user-invalid]::part(form-control-help-text) {
-    color: var(--sl-color-danger-700);
+    color: var(--o-color-danger-700);
   }
 
-  .inline-validation sl-input:focus-within[data-user-invalid]::part(base) {
-    border-color: var(--sl-color-danger-600);
-    box-shadow: 0 0 0 var(--sl-focus-ring-width) var(--sl-color-danger-300);
+  .inline-validation o-input:focus-within[data-user-invalid]::part(base) {
+    border-color: var(--o-color-danger-600);
+    box-shadow: 0 0 0 var(--o-focus-ring-width) var(--o-color-danger-300);
   }
 
   /* User valid styles */
-  .inline-validation sl-input[data-user-valid]::part(base) {
-    border-color: var(--sl-color-success-600);
+  .inline-validation o-input[data-user-valid]::part(base) {
+    border-color: var(--o-color-success-600);
   }
 
   .inline-validation [data-user-valid]::part(form-control-label),
   .inline-validation [data-user-valid]::part(form-control-help-text) {
-    color: var(--sl-color-success-700);
+    color: var(--o-color-success-700);
   }
 
-  .inline-validation sl-checkbox[data-user-valid]::part(control) {
-    background-color: var(--sl-color-success-600);
+  .inline-validation o-checkbox[data-user-valid]::part(control) {
+    background-color: var(--o-color-success-600);
     outline: none;
   }
 
-  .inline-validation sl-input:focus-within[data-user-valid]::part(base) {
-    border-color: var(--sl-color-success-600);
-    box-shadow: 0 0 0 var(--sl-focus-ring-width) var(--sl-color-success-300);
+  .inline-validation o-input:focus-within[data-user-valid]::part(base) {
+    border-color: var(--o-color-success-600);
+    box-shadow: 0 0 0 var(--o-focus-ring-width) var(--o-color-success-300);
   }
 </style>
 ```
@@ -494,7 +494,7 @@ import { getFormControls } from '%PACKAGE_NAME%/dist/utilities/form.js';
 const form = document.querySelector('#my-form');
 const formControls = getFormControls(form);
 
-console.log(formControls); // e.g. [input, sl-input, ...]
+console.log(formControls); // e.g. [input, o-input, ...]
 ```
 
 ?> You probably don't need this function! If you're gathering form data for submission, you probably want to use [Data Serialization](#data-serializing) instead.

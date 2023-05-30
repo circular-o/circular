@@ -1,24 +1,24 @@
 # Radio Group
 
-[component-header:sl-radio-group]
+[component-header:o-radio-group]
 
 ```html preview
-<sl-radio-group label="Select an option" name="a" value="1">
-  <sl-radio value="1">Option 1</sl-radio>
-  <sl-radio value="2">Option 2</sl-radio>
-  <sl-radio value="3">Option 3</sl-radio>
-</sl-radio-group>
+<o-radio-group label="Select an option" name="a" value="1">
+  <o-radio value="1">Option 1</o-radio>
+  <o-radio value="2">Option 2</o-radio>
+  <o-radio value="3">Option 3</o-radio>
+</o-radio-group>
 ```
 
 ```jsx react
-import { SlRadio, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadio, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlRadioGroup label="Select an option" name="a" value="1">
-    <SlRadio value="1">Option 1</SlRadio>
-    <SlRadio value="2">Option 2</SlRadio>
-    <SlRadio value="3">Option 3</SlRadio>
-  </SlRadioGroup>
+  <ORadioGroup label="Select an option" name="a" value="1">
+    <ORadio value="1">Option 1</ORadio>
+    <ORadio value="2">Option 2</ORadio>
+    <ORadio value="3">Option 3</ORadio>
+  </ORadioGroup>
 );
 ```
 
@@ -29,22 +29,22 @@ const App = () => (
 Add descriptive help text to a radio group with the `help-text` attribute. For help texts that contain HTML, use the `help-text` slot instead.
 
 ```html preview
-<sl-radio-group label="Select an option" help-text="Choose the most appropriate option." name="a" value="1">
-  <sl-radio value="1">Option 1</sl-radio>
-  <sl-radio value="2">Option 2</sl-radio>
-  <sl-radio value="3">Option 3</sl-radio>
-</sl-radio-group>
+<o-radio-group label="Select an option" help-text="Choose the most appropriate option." name="a" value="1">
+  <o-radio value="1">Option 1</o-radio>
+  <o-radio value="2">Option 2</o-radio>
+  <o-radio value="3">Option 3</o-radio>
+</o-radio-group>
 ```
 
 ```jsx react
-import { SlRadio, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadio, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlRadioGroup label="Select an option" help-text="Choose the most appropriate option." name="a" value="1">
-    <SlRadio value="1">Option 1</SlRadio>
-    <SlRadio value="2">Option 2</SlRadio>
-    <SlRadio value="3">Option 3</SlRadio>
-  </SlRadioGroup>
+  <ORadioGroup label="Select an option" help-text="Choose the most appropriate option." name="a" value="1">
+    <ORadio value="1">Option 1</ORadio>
+    <ORadio value="2">Option 2</ORadio>
+    <ORadio value="3">Option 3</ORadio>
+  </ORadioGroup>
 );
 ```
 
@@ -53,22 +53,22 @@ const App = () => (
 [Radio buttons](/components/radio-button) offer an alternate way to display radio controls. In this case, an internal [button group](/components/button-group) is used to group the buttons into a single, cohesive control.
 
 ```html preview
-<sl-radio-group label="Select an option" help-text="Select an option that makes you proud." name="a" value="1">
-  <sl-radio-button value="1">Option 1</sl-radio-button>
-  <sl-radio-button value="2">Option 2</sl-radio-button>
-  <sl-radio-button value="3">Option 3</sl-radio-button>
-</sl-radio-group>
+<o-radio-group label="Select an option" help-text="Select an option that makes you proud." name="a" value="1">
+  <o-radio-button value="1">Option 1</o-radio-button>
+  <o-radio-button value="2">Option 2</o-radio-button>
+  <o-radio-button value="3">Option 3</o-radio-button>
+</o-radio-group>
 ```
 
 ```jsx react
-import { SlRadioButton, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadioButton, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlRadioGroup label="Select an option" name="a" value="1">
-    <SlRadioButton value="1">Option 1</SlRadioButton>
-    <SlRadioButton value="2">Option 2</SlRadioButton>
-    <SlRadioButton value="3">Option 3</SlRadioButton>
-  </SlRadioGroup>
+  <ORadioGroup label="Select an option" name="a" value="1">
+    <ORadioButton value="1">Option 1</ORadioButton>
+    <ORadioButton value="2">Option 2</ORadioButton>
+    <ORadioButton value="3">Option 3</ORadioButton>
+  </ORadioGroup>
 );
 ```
 
@@ -77,24 +77,24 @@ const App = () => (
 Radios and radio buttons can be disabled by adding the `disabled` attribute to the respective options inside the radio group.
 
 ```html preview
-<sl-radio-group label="Select an option" name="a" value="1">
-  <sl-radio value="1">Option 1</sl-radio>
-  <sl-radio value="2" disabled>Option 2</sl-radio>
-  <sl-radio value="3">Option 3</sl-radio>
-</sl-radio-group>
+<o-radio-group label="Select an option" name="a" value="1">
+  <o-radio value="1">Option 1</o-radio>
+  <o-radio value="2" disabled>Option 2</o-radio>
+  <o-radio value="3">Option 3</o-radio>
+</o-radio-group>
 ```
 
 ```jsx react
-import { SlRadio, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadio, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => (
-  <SlRadioGroup label="Select an option" name="a" value="1">
-    <SlRadio value="1">Option 1</SlRadio>
-    <SlRadio value="2" disabled>
+  <ORadioGroup label="Select an option" name="a" value="1">
+    <ORadio value="1">Option 1</ORadio>
+    <ORadio value="2" disabled>
       Option 2
-    </SlRadio>
-    <SlRadio value="3">Option 3</SlRadio>
-  </SlRadioGroup>
+    </ORadio>
+    <ORadio value="3">Option 3</ORadio>
+  </ORadioGroup>
 );
 ```
 
@@ -103,16 +103,16 @@ const App = () => (
 The size of [Radios](/components/radio) and [Radio Buttons](/components/radio-buttons) will be determined by the Radio Group's `size` attribute.
 
 ```html preview
-<sl-radio-group label="Select an option" size="medium" value="medium" class="radio-group-size">
-  <sl-radio value="small">Small</sl-radio>
-  <sl-radio value="medium">Medium</sl-radio>
-  <sl-radio value="large">Large</sl-radio>
-</sl-radio-group>
+<o-radio-group label="Select an option" size="medium" value="medium" class="radio-group-size">
+  <o-radio value="small">Small</o-radio>
+  <o-radio value="medium">Medium</o-radio>
+  <o-radio value="large">Large</o-radio>
+</o-radio-group>
 
 <script>
   const radioGroup = document.querySelector('.radio-group-size');
 
-  radioGroup.addEventListener('sl-change', () => {
+  radioGroup.addEventListener('o-change', () => {
     radioGroup.size = radioGroup.value;
   });
 </script>
@@ -120,24 +120,24 @@ The size of [Radios](/components/radio) and [Radio Buttons](/components/radio-bu
 
 ```jsx react
 import { useState } from 'react';
-import { SlRadio, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadio, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 
 const App = () => {
   const [size, setSize] = useState('medium');
 
   return (
     <>
-      <SlRadioGroup
+      <ORadioGroup
         label="Select an option"
         size={size}
         value={size}
         class="radio-group-size"
         onSlChange={event => setSize(event.target.value)}
       >
-        <SlRadio value="small">Small</SlRadio>
-        <SlRadio value="medium">Medium</SlRadio>
-        <SlRadio value="large">Large</SlRadio>
-      </SlRadioGroup>
+        <ORadio value="small">Small</ORadio>
+        <ORadio value="medium">Medium</ORadio>
+        <ORadio value="large">Large</ORadio>
+      </ORadioGroup>
     </>
   );
 };
@@ -151,13 +151,13 @@ Setting the `required` attribute to make selecting an option mandatory. If a val
 
 ```html preview
 <form class="validation">
-  <sl-radio-group label="Select an option" name="a" required>
-    <sl-radio value="1">Option 1</sl-radio>
-    <sl-radio value="2">Option 2</sl-radio>
-    <sl-radio value="3">Option 3</sl-radio>
-  </sl-radio-group>
+  <o-radio-group label="Select an option" name="a" required>
+    <o-radio value="1">Option 1</o-radio>
+    <o-radio value="2">Option 2</o-radio>
+    <o-radio value="3">Option 3</o-radio>
+  </o-radio-group>
   <br />
-  <sl-button type="submit" variant="primary">Submit</sl-button>
+  <o-button type="submit" variant="primary">Submit</o-button>
 </form>
 
 <script>
@@ -172,7 +172,7 @@ Setting the `required` attribute to make selecting an option mandatory. If a val
 ```
 
 ```jsx react
-import { SlButton, SlIcon, SlRadio, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OIcon, ORadio, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 const App = () => {
   function handleSubmit(event) {
     event.preventDefault();
@@ -181,21 +181,21 @@ const App = () => {
 
   return (
     <form class="custom-validity" onSubmit={handleSubmit}>
-      <SlRadioGroup label="Select an option" name="a" required onSlChange={handleChange}>
-        <SlRadio value="1">
+      <ORadioGroup label="Select an option" name="a" required onSlChange={handleChange}>
+        <ORadio value="1">
           Option 1
-        </SlRadio>
-        <SlRadiovalue="2">
+        </ORadio>
+        <ORadiovalue="2">
           Option 2
-        </SlRadio>
-        <SlRadio value="3">
+        </ORadio>
+        <ORadio value="3">
           Option 3
-        </SlRadio>
-      </SlRadioGroup>
+        </ORadio>
+      </ORadioGroup>
       <br />
-      <SlButton type="submit" variant="primary">
+      <OButton type="submit" variant="primary">
         Submit
-      </SlButton>
+      </OButton>
     </form>
   );
 };
@@ -207,27 +207,27 @@ Use the `setCustomValidity()` method to set a custom validation message. This wi
 
 ```html preview
 <form class="custom-validity">
-  <sl-radio-group label="Select an option" name="a" value="1">
-    <sl-radio value="1">Not me</sl-radio>
-    <sl-radio value="2">Me neither</sl-radio>
-    <sl-radio value="3">Choose me</sl-radio>
-  </sl-radio-group>
+  <o-radio-group label="Select an option" name="a" value="1">
+    <o-radio value="1">Not me</o-radio>
+    <o-radio value="2">Me neither</o-radio>
+    <o-radio value="3">Choose me</o-radio>
+  </o-radio-group>
   <br />
-  <sl-button type="submit" variant="primary">Submit</sl-button>
+  <o-button type="submit" variant="primary">Submit</o-button>
 </form>
 
 <script>
   const form = document.querySelector('.custom-validity');
-  const radioGroup = form.querySelector('sl-radio-group');
+  const radioGroup = form.querySelector('o-radio-group');
   const errorMessage = 'You must choose the last option';
 
   // Set initial validity as soon as the element is defined
-  customElements.whenDefined('sl-radio').then(() => {
+  customElements.whenDefined('o-radio').then(() => {
     radioGroup.setCustomValidity(errorMessage);
   });
 
   // Update validity when a selection is made
-  form.addEventListener('sl-change', () => {
+  form.addEventListener('o-change', () => {
     const isValid = radioGroup.value === '3';
     radioGroup.setCustomValidity(isValid ? '' : errorMessage);
   });
@@ -242,7 +242,7 @@ Use the `setCustomValidity()` method to set a custom validation message. This wi
 
 ```jsx react
 import { useEffect, useRef } from 'react';
-import { SlButton, SlIcon, SlRadio, SlRadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OIcon, ORadio, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
 const App = () => {
   const radioGroup = useRef(null);
   const errorMessage = 'You must choose this option';
@@ -262,18 +262,18 @@ const App = () => {
 
   return (
     <form class="custom-validity" onSubmit={handleSubmit}>
-      <SlRadioGroup ref={radioGroup} label="Select an option" name="a" value="1" onSlChange={handleChange}>
-        <SlRadio value="1">Not me</SlRadio>
-        <SlRadio value="2">Me neither</SlRadio>
-        <SlRadio value="3">Choose me</SlRadio>
-      </SlRadioGroup>
+      <ORadioGroup ref={radioGroup} label="Select an option" name="a" value="1" onSlChange={handleChange}>
+        <ORadio value="1">Not me</ORadio>
+        <ORadio value="2">Me neither</ORadio>
+        <ORadio value="3">Choose me</ORadio>
+      </ORadioGroup>
       <br />
-      <SlButton type="submit" variant="primary">
+      <OButton type="submit" variant="primary">
         Submit
-      </SlButton>
+      </OButton>
     </form>
   );
 };
 ```
 
-[component-metadata:sl-radio-group]
+[component-metadata:o-radio-group]

@@ -48,7 +48,7 @@
       // Set the initial theme to prevent flashing
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const theme = localStorage.getItem('theme') || 'auto';
-      document.documentElement.classList.toggle('sl-theme-dark', theme === 'dark' || (theme === 'auto' && prefersDark));
+      document.documentElement.classList.toggle('o-theme-dark', theme === 'dark' || (theme === 'auto' && prefersDark));
     </script>
     <script src="assets/docs-config.js"></script>
     <script>
@@ -79,7 +79,7 @@
           crossChapterText: false
         },
         // routerMode: 'history',
-        themeColor: 'var(--sl-color-primary-500)',
+        themeColor: 'var(--o-color-primary-500)',
         repo: window.DEFAULT_DOCS_CONFIGURATION.repo
       };
     </script>

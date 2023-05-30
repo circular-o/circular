@@ -44,13 +44,13 @@
             } else if (isAttributeDifferent) {
               attributeInfo = `
                 <br>
-                <sl-tooltip content="This attribute is different from its property">
+                <o-tooltip content="This attribute is different from its property">
                   <small>
                     <code class="nowrap">
                       ${escapeHtml(prop.attribute)}
                     </code>
                   </small>
-                </sl-tooltip>`;
+                </o-tooltip>`;
             }
 
             return `
@@ -63,7 +63,7 @@
                   ${escapeHtml(prop.description)}
                 </td>
                 <td style="text-align: center;">${
-                  prop.reflects ? '<sl-icon label="yes" name="check-lg"></sl-icon>' : ''
+                  prop.reflects ? '<o-icon label="yes" name="check-lg"></o-icon>' : ''
                 }</td>
                 <td>${prop.type?.text ? `<code>${escapeHtml(prop.type?.text || '')}</code>` : '-'}</td>
                 <td>${prop.default ? `<code>${escapeHtml(prop.default)}</code>` : '-'}</td>
@@ -350,21 +350,21 @@
       target.appendChild(version);
 
       // Store version for reuse
-      sessionStorage.setItem('sl-version', packageVersion);
+      sessionStorage.setItem('o-version', packageVersion);
 
       // Add repo buttons
       const buttons = document.createElement('div');
       buttons.classList.add('sidebar-buttons');
       buttons.innerHTML = `
-        <sl-button size="small" class="repo-button repo-button--sponsor" href="${sponsorUrl}" target="_blank">
-          <sl-icon slot="prefix" name="heart"></sl-icon> Sponsor
-        </sl-button>
-        <sl-button size="small" class="repo-button repo-button--github" href="${repoUrl}/stargazers" target="_blank">
-          <sl-icon slot="prefix" name="github"></sl-icon> Star
-        </sl-button>
-        <sl-button size="small" class="repo-button repo-button--twitter" href="https://twitter.com/${twitterUser}" target="_blank">
-          <sl-icon slot="prefix" name="twitter"></sl-icon> Follow
-        </sl-button>
+        <o-button size="small" class="repo-button repo-button--sponsor" href="${sponsorUrl}" target="_blank">
+          <o-icon slot="prefix" name="heart"></o-icon> Sponsor
+        </o-button>
+        <o-button size="small" class="repo-button repo-button--github" href="${repoUrl}/stargazers" target="_blank">
+          <o-icon slot="prefix" name="github"></o-icon> Star
+        </o-button>
+        <o-button size="small" class="repo-button repo-button--twitter" href="https://twitter.com/${twitterUser}" target="_blank">
+          <o-icon slot="prefix" name="twitter"></o-icon> Follow
+        </o-button>
       `;
       target.appendChild(buttons);
     });
@@ -428,13 +428,13 @@
             </div>
 
             <div class="component-header__info">
-              <sl-badge variant="neutral" pill>
+              <o-badge variant="neutral" pill>
                 Since ${component.since || '?'}
-              </sl-badge>
+              </o-badge>
 
-              <sl-badge variant="${badgeType}" pill style="text-transform: capitalize;">
+              <o-badge variant="${badgeType}" pill style="text-transform: capitalize;">
                 ${component.status}
-              </sl-badge>
+              </o-badge>
             </div>
 
             <div class="component-header__summary">
@@ -477,42 +477,42 @@
             If you're using the autoloader or the traditional loader, you can ignore this section. Otherwise, feel free to
             use any of the following snippets to [cherry pick](getting-started/installation#cherry-picking) this component.
 
-            <sl-tab-group>
-            <sl-tab slot="nav" panel="script">Script</sl-tab>
-            <sl-tab slot="nav" panel="import">Import</sl-tab>
-            <sl-tab slot="nav" panel="bundler">Bundler</sl-tab>
-            <sl-tab slot="nav" panel="react">React</sl-tab>
+            <o-tab-group>
+            <o-tab slot="nav" panel="script">Script</o-tab>
+            <o-tab slot="nav" panel="import">Import</o-tab>
+            <o-tab slot="nav" panel="bundler">Bundler</o-tab>
+            <o-tab slot="nav" panel="react">React</o-tab>
 
-            <sl-tab-panel name="script">\n
+            <o-tab-panel name="script">\n
             To import this component from [the CDN](${packageUrlNoVersion}) using a script tag:
 
             \`\`\`html
             <script type="module" src="${packageUrl}/dist/${component.path}"></script>
             \`\`\`
-            </sl-tab-panel>
+            </o-tab-panel>
 
-            <sl-tab-panel name="import">\n
+            <o-tab-panel name="import">\n
             To import this component from [the CDN](${packageUrlNoVersion}) using a JavaScript import:
 
             \`\`\`js
             import '${packageUrl}/dist/${component.path}';
             \`\`\`
-            </sl-tab-panel>
+            </o-tab-panel>
 
-            <sl-tab-panel name="bundler">\n
+            <o-tab-panel name="bundler">\n
             To import this component using [a bundler](/getting-started/installation#bundling):
             \`\`\`js
             import '${packageOrganization}/${packageName}/dist/${component.path}';
             \`\`\`
-            </sl-tab-panel>
+            </o-tab-panel>
 
-            <sl-tab-panel name="react">\n
+            <o-tab-panel name="react">\n
             To import this component as a [React component](/frameworks/react):
             \`\`\`js
             import { ${component.name} } from '${packageOrganization}/${packageName}/dist/react';
             \`\`\`
-            </sl-tab-panel>
-            </sl-tab-group>
+            </o-tab-panel>
+            </o-tab-group>
 
             <div class="sponsor-callout">
               <p>
@@ -521,17 +521,17 @@
               </p>
 
               <p>
-                <sl-button class="repo-button repo-button--sponsor" href="${sponsorUrl}" target="_blank">
-                  <sl-icon slot="prefix" name="heart"></sl-icon> Sponsor <span class="sponsor-callout__secondary-label">Development</span>
-                </sl-button>
+                <o-button class="repo-button repo-button--sponsor" href="${sponsorUrl}" target="_blank">
+                  <o-icon slot="prefix" name="heart"></o-icon> Sponsor <span class="sponsor-callout__secondary-label">Development</span>
+                </o-button>
 
-                <sl-button class="repo-button repo-button--github" href="${repoUrl}/stargazers" target="_blank">
-                  <sl-icon slot="prefix" name="github"></sl-icon> Star <span class="sponsor-callout__secondary-label">on GitHub</span>
-                </sl-button>
+                <o-button class="repo-button repo-button--github" href="${repoUrl}/stargazers" target="_blank">
+                  <o-icon slot="prefix" name="github"></o-icon> Star <span class="sponsor-callout__secondary-label">on GitHub</span>
+                </o-button>
 
-                <sl-button class="repo-button repo-button--twitter" href="https://twitter.com/${twitterUser}" target="_blank">
-                  <sl-icon slot="prefix" name="twitter"></sl-icon> Follow <span class="sponsor-callout__secondary-label">on Twitter</span>
-                </sl-button>
+                <o-button class="repo-button repo-button--twitter" href="https://twitter.com/${twitterUser}" target="_blank">
+                  <o-icon slot="prefix" name="twitter"></o-icon> Follow <span class="sponsor-callout__secondary-label">on Twitter</span>
+                </o-button>
               </p>
             </div>
           `;

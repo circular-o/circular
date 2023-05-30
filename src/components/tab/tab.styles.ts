@@ -11,12 +11,12 @@ export default css`
   .tab {
     display: inline-flex;
     align-items: center;
-    font-family: var(--sl-font-sans);
-    font-size: var(--sl-font-size-small);
-    font-weight: var(--sl-font-weight-semibold);
-    border-radius: var(--sl-border-radius-medium);
-    color: var(--sl-color-neutral-600);
-    padding: var(--sl-spacing-medium) var(--sl-spacing-large);
+    font-family: var(--o-font-sans);
+    font-size: var(--o-font-size-small);
+    font-weight: var(--o-font-weight-semibold);
+    border-radius: var(--o-border-radius-medium);
+    color: var(--o-color-neutral-600);
+    padding: var(--o-spacing-medium) var(--o-spacing-large);
     white-space: nowrap;
     user-select: none;
     cursor: pointer;
@@ -24,7 +24,7 @@ export default css`
   }
 
   .tab:hover:not(.tab--disabled) {
-    color: var(--sl-color-primary-600);
+    color: var(--o-color-primary-600);
   }
 
   .tab:focus {
@@ -32,20 +32,20 @@ export default css`
   }
 
   .tab:focus-visible:not(.tab--disabled) {
-    color: var(--sl-color-primary-600);
+    color: var(--o-color-primary-600);
   }
 
   .tab:focus-visible {
-    outline: var(--sl-focus-ring);
-    outline-offset: calc(-1 * var(--sl-focus-ring-width) - var(--sl-focus-ring-offset));
+    outline: var(--o-focus-ring);
+    outline-offset: calc(-1 * var(--o-focus-ring-width) - var(--o-focus-ring-offset));
   }
 
   .tab.tab--active:not(.tab--disabled) {
-    color: var(--sl-color-primary-600);
+    color: var(--o-color-primary-600);
   }
 
   .tab.tab--closable {
-    padding-inline-end: var(--sl-spacing-small);
+    padding-inline-end: var(--o-spacing-small);
   }
 
   .tab.tab--disabled {
@@ -54,12 +54,12 @@ export default css`
   }
 
   .tab__close-button {
-    font-size: var(--sl-font-size-small);
-    margin-inline-start: var(--sl-spacing-small);
+    font-size: var(--o-font-size-small);
+    margin-inline-start: var(--o-spacing-small);
   }
 
   .tab__close-button::part(base) {
-    padding: var(--sl-spacing-3x-small);
+    padding: var(--o-spacing-3x-small);
   }
 
   @media (forced-colors: active) {
