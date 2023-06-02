@@ -5,13 +5,13 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './split-panel.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Split panels display two adjacent panels, allowing the user to reposition them.
- * @documentation https://shoelace.style/components/split-panel
+ * @documentation https://circular-o.github.io/circular/#/components/split-panel
  * @status stable
  * @since 2.0
  *
@@ -33,7 +33,7 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty [--max=100%] - The maximum allowed size of the primary panel.
  */
 @customElement('o-split-panel')
-export default class OSplitPanel extends ShoelaceElement {
+export default class OSplitPanel extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private cachedPositionInPixels: number;

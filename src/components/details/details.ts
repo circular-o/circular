@@ -7,13 +7,13 @@ import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './details.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Details show a brief summary and expand to show additional content.
- * @documentation https://shoelace.style/components/details
+ * @documentation https://circular-o.github.io/circular/#/components/details
  * @status stable
  * @since 2.0
  *
@@ -39,7 +39,7 @@ import type { CSSResultGroup } from 'lit';
  * @animation details.hide - The animation to use when hiding details. You can use `height: auto` with this animation.
  */
 @customElement('o-details')
-export default class ODetails extends ShoelaceElement {
+export default class ODetails extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private readonly localize = new LocalizeController(this);

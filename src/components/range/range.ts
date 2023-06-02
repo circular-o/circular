@@ -8,14 +8,14 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { LocalizeController } from '../../utilities/localize';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './range.styles';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element';
 
 /**
  * @summary Ranges allow the user to select a single value within a given range using a slider.
- * @documentation https://shoelace.style/components/range
+ * @documentation https://circular-o.github.io/circular/#/components/range
  * @status stable
  * @since 2.0
  *
@@ -44,7 +44,7 @@ import type { ShoelaceFormControl } from '../../internal/shoelace-element';
  * @cssproperty --track-active-offset - The point of origin of the active track.
  */
 @customElement('o-range')
-export default class ORange extends ShoelaceElement implements ShoelaceFormControl {
+export default class ORange extends LibraryBaseElement implements LibraryBaseFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this);

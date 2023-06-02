@@ -1,15 +1,15 @@
 import { customElement, property } from 'lit/decorators.js';
 import { LocalizeController } from '../../utilities/localize';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 
 /**
  * @summary Formats a number as a human readable bytes value.
- * @documentation https://shoelace.style/components/format-bytes
+ * @documentation https://circular-o.github.io/circular/#/components/format-bytes
  * @status stable
  * @since 2.0
  */
 @customElement('o-format-bytes')
-export default class OFormatBytes extends ShoelaceElement {
+export default class OFormatBytes extends LibraryBaseElement {
   private readonly localize = new LocalizeController(this);
 
   /** The number to format in bytes. */

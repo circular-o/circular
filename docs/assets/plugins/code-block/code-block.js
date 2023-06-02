@@ -322,7 +322,7 @@
           `import ReactDOM from '${reactCdnUrl}/react-dom@${reactVersion}';\n` +
           `import { setBasePath } from '${reactPackageUrl}/dist/utilities/base-path';\n` +
           `\n` +
-          `// Set the base path for Shoelace assets\n` +
+          `// Set the base path for assets\n` +
           `setBasePath('${reactPackageUrl}/dist/')\n` +
           `\n${convertModuleLinks(reactExample, isReact)}\n` +
           `\n` +

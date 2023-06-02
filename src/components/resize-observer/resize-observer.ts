@@ -1,13 +1,13 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './resize-observer.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary The Resize Observer component offers a thin, declarative interface to the [`ResizeObserver API`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver).
- * @documentation https://shoelace.style/components/resize-observer
+ * @documentation https://circular-o.github.io/circular/#/components/resize-observer
  * @status stable
  * @since 2.0
  *
@@ -16,7 +16,7 @@ import type { CSSResultGroup } from 'lit';
  * @event {{ entries: ResizeObserverEntry[] }} o-resize - Emitted when the element is resized.
  */
 @customElement('o-resize-observer')
-export default class OResizeObserver extends ShoelaceElement {
+export default class OResizeObserver extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private resizeObserver: ResizeObserver;

@@ -2,13 +2,13 @@ import '../icon/icon';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './animated-image.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary A component for displaying animated GIFs and WEBPs that play and pause on interaction.
- * @documentation https://shoelace.style/components/animated-image
+ * @documentation https://circular-o.github.io/circular/#/components/animated-image
  * @status stable
  * @since 2.0
  *
@@ -26,7 +26,7 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --icon-size - The size of the play/pause icons.
  */
 @customElement('o-animated-image')
-export default class OAnimatedImage extends ShoelaceElement {
+export default class OAnimatedImage extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   @query('.animated-image__animated') animatedImage: HTMLImageElement;

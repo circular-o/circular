@@ -1,6 +1,6 @@
 import { customElement, query } from 'lit/decorators.js';
 import { html } from 'lit';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './menu.styles';
 import type { CSSResultGroup } from 'lit';
 import type OMenuItem from '../menu-item/menu-item';
@@ -10,7 +10,7 @@ export interface MenuSelectEventDetail {
 
 /**
  * @summary Menus provide a list of options for the user to choose from.
- * @documentation https://shoelace.style/components/menu
+ * @documentation https://circular-o.github.io/circular/#/components/menu
  * @status stable
  * @since 2.0
  *
@@ -19,7 +19,7 @@ export interface MenuSelectEventDetail {
  * @event {{ item: OMenuItem }} o-select - Emitted when a menu item is selected.
  */
 @customElement('o-menu')
-export default class OMenu extends ShoelaceElement {
+export default class OMenu extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   @query('slot') defaultSlot: HTMLSlotElement;

@@ -7,14 +7,14 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './checkbox.styles';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element';
 
 /**
  * @summary Checkboxes allow the user to toggle an option on or off.
- * @documentation https://shoelace.style/components/checkbox
+ * @documentation https://circular-o.github.io/circular/#/components/checkbox
  * @status stable
  * @since 2.0
  *
@@ -37,7 +37,7 @@ import type { ShoelaceFormControl } from '../../internal/shoelace-element';
  * @csspart label - The container that wraps the checkbox's label.
  */
 @customElement('o-checkbox')
-export default class OCheckbox extends ShoelaceElement implements ShoelaceFormControl {
+export default class OCheckbox extends LibraryBaseElement implements LibraryBaseFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this, {

@@ -2,14 +2,14 @@ import '../icon/icon';
 import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './breadcrumb.styles';
 import type { CSSResultGroup } from 'lit';
 import type OBreadcrumbItem from '../breadcrumb-item/breadcrumb-item';
 
 /**
  * @summary Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
- * @documentation https://shoelace.style/components/breadcrumb
+ * @documentation https://circular-o.github.io/circular/#/components/breadcrumb
  * @status stable
  * @since 2.0
  *
@@ -21,7 +21,7 @@ import type OBreadcrumbItem from '../breadcrumb-item/breadcrumb-item';
  * @csspart base - The component's base wrapper.
  */
 @customElement('o-breadcrumb')
-export default class OBreadcrumb extends ShoelaceElement {
+export default class OBreadcrumb extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private readonly localize = new LocalizeController(this);

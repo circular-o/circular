@@ -3,13 +3,13 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
 import { offsetParent } from 'composed-offset-position';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './popup.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Popup is a utility that lets you declaratively anchor "popup" containers to another element.
- * @documentation https://shoelace.style/components/popup
+ * @documentation https://circular-o.github.io/circular/#/components/popup
  * @status stable
  * @since 2.0
  *
@@ -36,7 +36,7 @@ import type { CSSResultGroup } from 'lit';
  *  available when using `auto-size`.
  */
 @customElement('o-popup')
-export default class OPopup extends ShoelaceElement {
+export default class OPopup extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private anchorEl: Element | null;

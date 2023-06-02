@@ -3,13 +3,13 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, state } from 'lit/decorators.js';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './avatar.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Avatars are used to represent a person or object.
- * @documentation https://shoelace.style/components/avatar
+ * @documentation https://circular-o.github.io/circular/#/components/avatar
  * @status stable
  * @since 2.0
  *
@@ -25,7 +25,7 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --size - The size of the avatar.
  */
 @customElement('o-avatar')
-export default class OAvatar extends ShoelaceElement {
+export default class OAvatar extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   @state() private hasError = false;

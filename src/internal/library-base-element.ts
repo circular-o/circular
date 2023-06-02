@@ -62,7 +62,7 @@ type GetCustomEventType<T> = T extends keyof GlobalEventHandlersEventMap
 // `keyof ValidEventTypeMap` is equivalent to `keyof GlobalEventHandlersEventMap` but gives a nicer error message
 type ValidEventTypeMap = EventTypesWithRequiredDetail | EventTypesWithoutRequiredDetail;
 
-export default class ShoelaceElement extends LitElement {
+export default class LibraryBaseElement extends LitElement {
   // Make localization attributes reactive
   @property() dir: string;
   @property() lang: string;
@@ -94,7 +94,7 @@ export default class ShoelaceElement extends LitElement {
   }
 }
 
-export interface ShoelaceFormControl extends ShoelaceElement {
+export interface LibraryBaseFormControl extends LibraryBaseElement {
   // Form attributes
   name: string;
   value: unknown;

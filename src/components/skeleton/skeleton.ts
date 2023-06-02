@@ -1,13 +1,13 @@
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './skeleton.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Skeletons are used to provide a visual representation of where content will eventually be drawn.
- * @documentation https://shoelace.style/components/skeleton
+ * @documentation https://circular-o.github.io/circular/#/components/skeleton
  * @status stable
  * @since 2.0
  *
@@ -19,7 +19,7 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --sheen-color - The sheen color when the skeleton is in its loading state.
  */
 @customElement('o-skeleton')
-export default class OSkeleton extends ShoelaceElement {
+export default class OSkeleton extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   /** Determines which effect the skeleton will use. */

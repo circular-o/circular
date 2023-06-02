@@ -1,5 +1,5 @@
 import { elementUpdated, expect, fixture, html, oneEvent } from '@open-wc/testing';
-import { registerIconLibrary } from '../../../dist/shoelace.js';
+import { registerIconLibrary } from '../../../dist/circular.js';
 import type { OErrorEvent, OLoadEvent } from '../../events/events.js';
 import type OIcon from './icon';
 

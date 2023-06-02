@@ -13,17 +13,17 @@ import { LocalizeController } from '../../utilities/localize';
 import { scrollIntoView } from 'src/internal/scroll';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './select.styles';
 import type { CSSResultGroup } from 'lit';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element';
 import type { ORemoveEvent } from '../../events/events';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
 import type OOption from '../option/option';
 import type OPopup from '../popup/popup';
 
 /**
  * @summary Selects allow you to choose items from a menu of predefined options.
- * @documentation https://shoelace.style/components/select
+ * @documentation https://circular-o.github.io/circular/#/components/select
  * @status stable
  * @since 2.0
  *
@@ -67,7 +67,7 @@ import type OPopup from '../popup/popup';
  * @csspart expand-icon - The container that wraps the expand icon.
  */
 @customElement('o-select')
-export default class OSelect extends ShoelaceElement implements ShoelaceFormControl {
+export default class OSelect extends LibraryBaseElement implements LibraryBaseFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this, {

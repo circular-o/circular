@@ -16,11 +16,11 @@ import { LocalizeController } from '../../utilities/localize';
 import { styleMap } from 'lit/directives/style-map.js';
 import { TinyColor } from '@ctrl/tinycolor';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './color-picker.styles';
 import type { CSSResultGroup } from 'lit';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element';
 import type { OChangeEvent, OInputEvent } from '../../events/events';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
 import type ODropdown from '../dropdown/dropdown';
 import type OInput from '../input/input';
 
@@ -38,7 +38,7 @@ declare const EyeDropper: EyeDropperConstructor;
 
 /**
  * @summary Color pickers allow the user to select a color.
- * @documentation https://shoelace.style/components/color-picker
+ * @documentation https://circular-o.github.io/circular/#/components/color-picker
  * @status stable
  * @since 2.0
  *
@@ -91,7 +91,7 @@ declare const EyeDropper: EyeDropperConstructor;
  * @cssproperty --swatch-size - The size of each predefined color swatch.
  */
 @customElement('o-color-picker')
-export default class OColorPicker extends ShoelaceElement implements ShoelaceFormControl {
+export default class OColorPicker extends LibraryBaseElement implements LibraryBaseFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this);

@@ -1,7 +1,7 @@
 import { customElement, property, state } from 'lit/decorators.js';
 import { getIconLibrary, unwatchIcon, watchIcon } from './library';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './icon.styles';
 import type { CSSResultGroup } from 'lit';
 
@@ -14,7 +14,7 @@ const iconCache = new Map<string, Promise<SVGResult>>();
 
 /**
  * @summary Icons are symbols that can be used to represent various options within an application.
- * @documentation https://shoelace.style/components/icon
+ * @documentation https://circular-o.github.io/circular/#/components/icon
  * @status stable
  * @since 2.0
  *
@@ -24,7 +24,7 @@ const iconCache = new Map<string, Promise<SVGResult>>();
  * @csspart svg - The internal SVG element.
  */
 @customElement('o-icon')
-export default class OIcon extends ShoelaceElement {
+export default class OIcon extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   /** Given a URL, this function returns the resulting SVG element or an appropriate error symbol. */

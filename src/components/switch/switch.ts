@@ -6,14 +6,14 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './switch.styles';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element';
 
 /**
  * @summary Switches allow the user to toggle an option on or off.
- * @documentation https://shoelace.style/components/switch
+ * @documentation https://circular-o.github.io/circular/#/components/switch
  * @status stable
  * @since 2.0
  *
@@ -35,7 +35,7 @@ import type { ShoelaceFormControl } from '../../internal/shoelace-element';
  * @cssproperty --thumb-size - The size of the thumb.
  */
 @customElement('o-switch')
-export default class OSwitch extends ShoelaceElement implements ShoelaceFormControl {
+export default class OSwitch extends LibraryBaseElement implements LibraryBaseFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this, {

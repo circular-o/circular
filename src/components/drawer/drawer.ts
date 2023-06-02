@@ -11,14 +11,14 @@ import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { uppercaseFirstLetter } from '../../internal/string';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
+import LibraryBaseElement from '../../internal/library-base-element';
 import Modal from '../../internal/modal';
-import ShoelaceElement from '../../internal/shoelace-element';
 import styles from './drawer.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Drawers slide in from a container to expose additional options and information.
- * @documentation https://shoelace.style/components/drawer
+ * @documentation https://circular-o.github.io/circular/#/components/drawer
  * @status stable
  * @since 2.0
  *
@@ -70,7 +70,7 @@ import type { CSSResultGroup } from 'lit';
  * @animation drawer.overlay.hide - The animation to use when hiding the drawer's overlay.
  */
 @customElement('o-drawer')
-export default class ODrawer extends ShoelaceElement {
+export default class ODrawer extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private readonly hasSlotController = new HasSlotController(this, 'footer');

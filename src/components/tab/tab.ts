@@ -4,7 +4,7 @@ import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './tab.styles';
 import type { CSSResultGroup } from 'lit';
 
@@ -12,7 +12,7 @@ let id = 0;
 
 /**
  * @summary Tabs are used inside [tab groups](/components/tab-group) to represent and activate [tab panels](/components/tab-panel).
- * @documentation https://shoelace.style/components/tab
+ * @documentation https://circular-o.github.io/circular/#/components/tab
  * @status stable
  * @since 2.0
  *
@@ -27,7 +27,7 @@ let id = 0;
  * @csspart close-button__base - The close button's exported `base` part.
  */
 @customElement('o-tab')
-export default class OTab extends ShoelaceElement {
+export default class OTab extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
   private readonly localize = new LocalizeController(this);
 

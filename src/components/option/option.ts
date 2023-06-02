@@ -4,13 +4,13 @@ import { customElement, property, query, state } from 'lit/decorators.js';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './option.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Options define the selectable items within various form controls such as [select](/components/select).
- * @documentation https://shoelace.style/components/option
+ * @documentation https://circular-o.github.io/circular/#/components/option
  * @status stable
  * @since 2.0
  *
@@ -27,7 +27,7 @@ import type { CSSResultGroup } from 'lit';
  * @csspart suffix - The container that wraps the suffix.
  */
 @customElement('o-option')
-export default class OOption extends ShoelaceElement {
+export default class OOption extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private cachedTextLabel: string;

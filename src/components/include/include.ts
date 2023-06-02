@@ -2,13 +2,13 @@ import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
 import { requestInclude } from './request';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './include.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Includes give you the power to embed external HTML files into the page.
- * @documentation https://shoelace.style/components/include
+ * @documentation https://circular-o.github.io/circular/#/components/include
  * @status stable
  * @since 2.0
  *
@@ -16,7 +16,7 @@ import type { CSSResultGroup } from 'lit';
  * @event {{ status: number }} o-error - Emitted when the included file fails to load due to an error.
  */
 @customElement('o-include')
-export default class OInclude extends ShoelaceElement {
+export default class OInclude extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   /**

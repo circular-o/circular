@@ -7,14 +7,14 @@ import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './tooltip.styles';
 import type { CSSResultGroup } from 'lit';
 import type OPopup from '../popup/popup';
 
 /**
  * @summary Tooltips display additional information based on a specific action.
- * @documentation https://shoelace.style/components/tooltip
+ * @documentation https://circular-o.github.io/circular/#/components/tooltip
  * @status stable
  * @since 2.0
  *
@@ -41,7 +41,7 @@ import type OPopup from '../popup/popup';
  * @animation tooltip.hide - The animation to use when hiding the tooltip.
  */
 @customElement('o-tooltip')
-export default class OTooltip extends ShoelaceElement {
+export default class OTooltip extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private hoverTimeout: number;

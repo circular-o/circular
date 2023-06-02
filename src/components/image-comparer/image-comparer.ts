@@ -7,13 +7,13 @@ import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { styleMap } from 'lit/directives/style-map.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './image-comparer.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Compare visual differences between similar photos with a sliding panel.
- * @documentation https://shoelace.style/components/image-comparer
+ * @documentation https://circular-o.github.io/circular/#/components/image-comparer
  * @status stable
  * @since 2.0
  *
@@ -35,7 +35,7 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --handle-size - The size of the compare handle.
  */
 @customElement('o-image-comparer')
-export default class OImageComparer extends ShoelaceElement {
+export default class OImageComparer extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private readonly localize = new LocalizeController(this);

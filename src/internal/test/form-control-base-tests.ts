@@ -1,10 +1,10 @@
 import { expect, fixture } from '@open-wc/testing';
-import type { ShoelaceFormControl } from '../shoelace-element';
+import type { LibraryBaseFormControl } from '../library-base-element';
 
-type CreateControlFn = () => Promise<ShoelaceFormControl>;
+type CreateControlFn = () => Promise<LibraryBaseFormControl>;
 
 /** Runs a set of generic tests for Shoelace form controls */
-export function runFormControlBaseTests<T extends ShoelaceFormControl = ShoelaceFormControl>(
+export function runFormControlBaseTests<T extends LibraryBaseFormControl = LibraryBaseFormControl>(
   tagNameOrConfig:
     | string
     | {
@@ -48,7 +48,7 @@ export function runFormControlBaseTests<T extends ShoelaceFormControl = Shoelace
 function runAllValidityTests(
   tagName: string, //
   displayName: string,
-  createControl: () => Promise<ShoelaceFormControl>
+  createControl: () => Promise<LibraryBaseFormControl>
 ) {
   // will be used later to retrieve meta information about the control
   describe(`Form validity base test for ${displayName}`, async () => {
@@ -261,13 +261,15 @@ function runSpecialTests_standard(createControl: CreateControlFn) {
 //
 
 // Creates a testable Shoelace form control instance
-async function createFormControl<T extends ShoelaceFormControl = ShoelaceFormControl>(tagName: string): Promise<T> {
+async function createFormControl<T extends LibraryBaseFormControl = LibraryBaseFormControl>(
+  tagName: string
+): Promise<T> {
   return await fixture<T>(`<${tagName}></${tagName}>`);
 }
 
 // Runs an action while listening for emitted events of a given type. Returns an array of all events of the given type
 // that have been been emitted while the action was running.
-function checkEventEmissions(control: ShoelaceFormControl, eventType: string, action: () => void): Event[] {
+function checkEventEmissions(control: LibraryBaseFormControl, eventType: string, action: () => void): Event[] {
   const emittedEvents: Event[] = [];
 
   const eventHandler = (event: Event) => {
@@ -286,7 +288,7 @@ function checkEventEmissions(control: ShoelaceFormControl, eventType: string, ac
 
 // Component `o-button` behaves quite different to the other components. To keep things simple we use simple conditions
 // here. `o-button` might stay the only component in Shoelace core behaves that way, so we just hard code it here.
-function getMode(control: ShoelaceFormControl) {
+function getMode(control: LibraryBaseFormControl) {
   if (
     control.localName === 'o-button' && //
     'href' in control &&
