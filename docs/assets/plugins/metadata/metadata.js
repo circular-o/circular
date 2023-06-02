@@ -1,6 +1,6 @@
 (() => {
   const isDev = location.hostname === 'localhost';
-  const isNext = location.hostname === 'next.shoelace.style';
+  const isNext = location.hostname === 'next.circular.interzero.de';
   const customElements = fetch('dist/custom-elements.json')
     .then(res => res.json())
     .catch(err => console.error(err));
@@ -516,7 +516,7 @@
 
             <div class="sponsor-callout">
               <p>
-                Shoelace is designed, developed, and maintained by <a href="https://twitter.com/${twitterUser}" target="_blank">Circular Team</a>.
+                Circular is designed, developed, and maintained by <a href="https://twitter.com/${twitterUser}" target="_blank">Circular Team</a>.
                 Please sponsor my open source work on GitHub. Your support will keep this project alive and growing!
               </p>
 

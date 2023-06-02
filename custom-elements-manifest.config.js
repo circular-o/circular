@@ -31,7 +31,7 @@ export default {
   plugins: [
     // Append package data
     {
-      name: 'shoelace-package-data',
+      name: 'circular-package-data',
       packageLinkPhase({ customElementsManifest }) {
         customElementsManifest.package = { name, description, version, author, homepage, license };
       }
@@ -39,7 +39,7 @@ export default {
 
     // Parse custom jsDoc tags
     {
-      name: 'shoelace-custom-tags',
+      name: 'circular-custom-tags',
       analyzePhase({ ts, node, moduleDoc }) {
         switch (node.kind) {
           case ts.SyntaxKind.ClassDeclaration: {
@@ -106,7 +106,7 @@ export default {
       }
     },
     {
-      name: 'shoelace-react-event-names',
+      name: 'circular-react-event-names',
       analyzePhase({ ts, node, moduleDoc }) {
         switch (node.kind) {
           case ts.SyntaxKind.ClassDeclaration: {
@@ -123,7 +123,7 @@ export default {
       }
     },
     {
-      name: 'shoelace-translate-module-paths',
+      name: 'circular-translate-module-paths',
       packageLinkPhase({ customElementsManifest }) {
         customElementsManifest?.modules?.forEach(mod => {
           //
