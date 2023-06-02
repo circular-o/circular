@@ -1,6 +1,6 @@
 # Color Tokens
 
-Color tokens help maintain consistent use of color throughout your app. Shoelace provides palettes for theme colors and primitives that you can use as a foundation for your design system.
+Color tokens help maintain consistent use of color throughout your app. %LIBRARY_NAME% provides palettes for theme colors and primitives that you can use as a foundation for your design system.
 
 Color tokens are referenced using the `--o-color-{name}-{n}` CSS custom property, where `{name}` is the name of the palette and `{n}` is the numeric value of the desired swatch.
 

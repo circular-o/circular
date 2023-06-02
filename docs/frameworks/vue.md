@@ -1,12 +1,12 @@
 # Vue
 
-Vue [plays nice](https://custom-elements-everywhere.com/#vue) with custom elements, so you can use Shoelace in your Vue apps with ease.
+Vue [plays nice](https://custom-elements-everywhere.com/#vue) with custom elements, so you can use %LIBRARY_NAME% in your Vue apps with ease.
 
 ?> These instructions are for Vue 3 and above. If you're using Vue 2, please see the [Vue 2 instructions](/frameworks/vue-2).
 
 ## Installation
 
-To add Shoelace to your Vue app, install the package from npm.
+To add %LIBRARY_NAME% to your Vue app, install the package from npm.
 
 ```bash
 npm install %PACKAGE_FULL_PATH%
@@ -25,7 +25,7 @@ setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/
 
 ## Configuration
 
-You'll need to tell Vue to ignore Shoelace components. This is pretty easy because they all start with `o-`.
+You'll need to tell Vue to ignore %LIBRARY_NAME% components. This is pretty easy because they all start with `o-`.
 
 ```js
 import { fileURLToPath, URL } from 'url';
@@ -52,7 +52,7 @@ export default defineConfig({
 });
 ```
 
-Now you can start using Shoelace components in your app!
+Now you can start using %LIBRARY_NAME% components in your app!
 
 ## Usage
 
@@ -97,11 +97,11 @@ When binding complex data such as objects and arrays, use the `.prop` modifier t
 <o-color-picker :swatches.prop="mySwatches" />
 ```
 
-?> Are you using Shoelace with Vue? [Help us improve this page!](%REPO_URL%/blob/next/docs/frameworks/vue.md)
+?> Are you using %LIBRARY_NAME% with Vue? [Help us improve this page!](%REPO_URL%/blob/next/docs/frameworks/vue.md)
 
 ### Slots
 
-To use Shoelace components with slots, follow the Vue documentation on using [slots with custom elements](https://vuejs.org/guide/extras/web-components.html#building-custom-elements-with-vue).
+To use %LIBRARY_NAME% components with slots, follow the Vue documentation on using [slots with custom elements](https://vuejs.org/guide/extras/web-components.html#building-custom-elements-with-vue).
 
 Here is an example:
 

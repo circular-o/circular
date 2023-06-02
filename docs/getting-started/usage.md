@@ -1,6 +1,6 @@
 # Usage
 
-Shoelace components are just regular HTML elements, or [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) to be precise. You can use them like any other element. Each component has detailed documentation that describes its full API, including properties, events, methods, and more.
+%LIBRARY_NAME% components are just regular HTML elements, or [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) to be precise. You can use them like any other element. Each component has detailed documentation that describes its full API, including properties, events, methods, and more.
 
 If you're new to custom elements, often referred to as "web components," this section will familiarize you with how to use them.
 
@@ -52,7 +52,7 @@ All custom events are prefixed with `o-` to prevent collisions with standard eve
 
 ## Methods
 
-Some components have methods you can call to trigger various behaviors. For example, you can set focus on a Shoelace input using the `focus()` method.
+Some components have methods you can call to trigger various behaviors. For example, you can set focus on a %LIBRARY_NAME% input using the `focus()` method.
 
 ```html
 <o-input></o-input>
@@ -102,7 +102,7 @@ Custom elements cannot have self-closing tags. Similar to `<script>` and `<texta
 
 ## Differences from Native Elements
 
-You might expect similarly named elements to share the same API as native HTML elements. This is not always the case. Shoelace components **are not** designed to be one-to-one replacements for their HTML counterparts.
+You might expect similarly named elements to share the same API as native HTML elements. This is not always the case. %LIBRARY_NAME% components **are not** designed to be one-to-one replacements for their HTML counterparts.
 
 For example, `<button>` and `<o-button>` both have a `type` attribute, but it does different things. The former controls whether the button submits a form and the latter controls the button's appearance.
 
@@ -110,7 +110,7 @@ For example, `<button>` and `<o-button>` both have a `type` attribute, but it do
 
 ## Waiting for Components to Load
 
-Web components are registered with JavaScript, so depending on how and when you load Shoelace, you may notice a [Flash of Undefined Custom Elements (FOUCE)](https://www.abeautifulsite.net/posts/flash-of-undefined-custom-elements/) when the page loads. There are a couple ways to prevent this, both of which are described in the linked article.
+Web components are registered with JavaScript, so depending on how and when you load %LIBRARY_NAME%, you may notice a [Flash of Undefined Custom Elements (FOUCE)](https://www.abeautifulsite.net/posts/flash-of-undefined-custom-elements/) when the page loads. There are a couple ways to prevent this, both of which are described in the linked article.
 
 One option is to use the [`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/:defined) CSS pseudo-class to "hide" custom elements that haven't been registered yet. You can scope it to specific tags or you can hide all undefined custom elements as shown below.
 
@@ -153,7 +153,7 @@ A clever way to use this method is to hide the `<body>` with `opacity: 0` and ad
 
 ## Component Rendering and Updating
 
-Shoelace components are built with [Lit](https://lit.dev/), a tiny library that makes authoring custom elements easier, more maintainable, and a lot of fun! As a Shoelace user, here is some helpful information about rendering and updating you should probably be aware of.
+%LIBRARY_NAME% components are built with [Lit](https://lit.dev/), a tiny library that makes authoring custom elements easier, more maintainable, and a lot of fun! As a %LIBRARY_NAME% user, here is some helpful information about rendering and updating you should probably be aware of.
 
 To optimize performance and reduce re-renders, Lit batches component updates. This means changing multiple attributes or properties at the same time will result in just a single re-render. In most cases, this isn't an issue, but there may be times you'll need to wait for the component to update before continuing.
 
@@ -185,9 +185,9 @@ This time we see an empty string, which means the boolean attribute is now prese
 
 ### VS Code
 
-Shoelace ships with a file called `vscode.html-custom-data.json` that can be used to describe it's custom elements to Visual Studio Code. This enables code completion for Shoelace components (also known as "code hinting" or "IntelliSense"). To enable it, you need to tell VS Code where the file is.
+%LIBRARY_NAME% ships with a file called `vscode.html-custom-data.json` that can be used to describe it's custom elements to Visual Studio Code. This enables code completion for %LIBRARY_NAME% components (also known as "code hinting" or "IntelliSense"). To enable it, you need to tell VS Code where the file is.
 
-1. [Install Shoelace locally](/getting-started/installation#local-installation)
+1. [Install %LIBRARY_NAME% locally](/getting-started/installation#local-installation)
 2. If it doesn't already exist, create a folder called `.vscode` at the root of your project
 3. If it doesn't already exist, create a file inside that folder called `settings.json`
 4. Add the following to the file

@@ -473,7 +473,7 @@ describe('<o-input>', () => {
   });
 
   describe('when using the getFormControls() function', () => {
-    it('should return both native and Shoelace form controls in the correct DOM order', async () => {
+    it('should return both native and the library form controls in the correct DOM order', async () => {
       const el = await fixture<HTMLFormElement>(html`
         <div>
           <input type="text" name="a" value="1" form="f1" />

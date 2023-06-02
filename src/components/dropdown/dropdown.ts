@@ -291,7 +291,7 @@ export default class ODropdown extends LibraryBaseElement {
 
     if (accessibleTrigger) {
       switch (accessibleTrigger.tagName.toLowerCase()) {
-        // Shoelace buttons have to update the internal button so it's announced correctly by screen readers
+        // Buttons have to update the internal button so it's announced correctly by screen readers
         case 'o-button':
         case 'o-icon-button':
           target = (accessibleTrigger as OButton | OIconButton).button;

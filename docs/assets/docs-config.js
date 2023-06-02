@@ -16,7 +16,9 @@ window.DEFAULT_DOCS_CONFIGURATION = {
   reactVersion: '17.0.2',
   reactCdnUrl: `https://cdn.skypack.dev`,
   // Get base path of the page
-  docsBasePath: `${location.pathname.split('/').slice(0, -1).join('/')}/`
+  docsBasePath: `${location.pathname.split('/').slice(0, -1).join('/')}/`,
+  // Library name to be used in the docs
+  libraryName: 'Circular'
 };
 
 // Get config vars from the sessionStore

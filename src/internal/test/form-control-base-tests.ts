@@ -3,7 +3,7 @@ import type { LibraryBaseFormControl } from '../library-base-element';
 
 type CreateControlFn = () => Promise<LibraryBaseFormControl>;
 
-/** Runs a set of generic tests for Shoelace form controls */
+/** Runs a set of generic tests for the library form controls */
 export function runFormControlBaseTests<T extends LibraryBaseFormControl = LibraryBaseFormControl>(
   tagNameOrConfig:
     | string
@@ -38,7 +38,7 @@ export function runFormControlBaseTests<T extends LibraryBaseFormControl = Libra
 }
 
 //
-// Applicable for all Shoelace form controls. This function checks the behavior of:
+// Applicable for all library form controls. This function checks the behavior of:
 //   - `.validity`
 //   - `.validationMessage`,
 //   - `.checkValidity()`
@@ -260,7 +260,7 @@ function runSpecialTests_standard(createControl: CreateControlFn) {
 // Local helper functions
 //
 
-// Creates a testable Shoelace form control instance
+// Creates a testable library form control instance
 async function createFormControl<T extends LibraryBaseFormControl = LibraryBaseFormControl>(
   tagName: string
 ): Promise<T> {
@@ -287,7 +287,7 @@ function checkEventEmissions(control: LibraryBaseFormControl, eventType: string,
 }
 
 // Component `o-button` behaves quite different to the other components. To keep things simple we use simple conditions
-// here. `o-button` might stay the only component in Shoelace core behaves that way, so we just hard code it here.
+// here. `o-button` might stay the only component in the library core behaves that way, so we just hard code it here.
 function getMode(control: LibraryBaseFormControl) {
   if (
     control.localName === 'o-button' && //

@@ -3,7 +3,7 @@ import type { ReactiveController, ReactiveControllerHost } from 'lit';
 import type OButton from '../components/button/button';
 
 //
-// We store a WeakMap of forms + controls so we can keep references to all Shoelace controls within a given form. As
+// We store a WeakMap of forms + controls so we can keep references to all Circular controls within a given form. As
 // elements connect and disconnect to/from the DOM, their containing form is used as the key and the form control is
 // added and removed from the form's set, respectively.
 //
@@ -146,7 +146,7 @@ export class FormControlController implements ReactiveController {
       this.form.addEventListener('submit', this.handleFormSubmit);
       this.form.addEventListener('reset', this.handleFormReset);
 
-      // Overload the form's reportValidity() method so it looks at Shoelace form controls
+      // Overload the form's reportValidity() method so it looks at library form controls
       if (!reportValidityOverloads.has(this.form)) {
         reportValidityOverloads.set(this.form, this.form.reportValidity);
         this.form.reportValidity = () => this.reportFormValidity();
@@ -233,7 +233,7 @@ export class FormControlController implements ReactiveController {
 
   private reportFormValidity() {
     //
-    // Shoelace form controls work hard to act like regular form controls. They support the Constraint Validation API
+    // Circular form controls work hard to act like regular form controls. They support the Constraint Validation API
     // and its associated methods such as setCustomValidity() and reportValidity(). However, the HTMLFormElement also
     // has a reportValidity() method that will trigger validation on all child controls. Since we're not yet using
     // ElementInternals, we need to overload this method so it looks for any element with the reportValidity() method.
@@ -245,7 +245,7 @@ export class FormControlController implements ReactiveController {
     // Note that we're also honoring the form's novalidate attribute.
     //
     if (this.form && !this.form.noValidate) {
-      // This seems sloppy, but checking all elements will cover native inputs, Shoelace inputs, and other custom
+      // This seems sloppy, but checking all elements will cover native inputs, Circular inputs, and other custom
       // elements that support the constraint validation API.
       const elements = this.form.querySelectorAll<HTMLInputElement>('*');
 
