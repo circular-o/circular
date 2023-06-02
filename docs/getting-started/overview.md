@@ -1,6 +1,6 @@
 <div class="splash">
 <div class="splash-start">
-<img class="splash-logo" src="assets/images/circular-logo-bg-transparent.png" alt="%LIBRARY-NAME%">
+<img class="splash-logo library-logo" src="assets/images/circular-logo-light.svg" alt="%LIBRARY-NAME%">
 
 # <o-visually-hidden>%LIBRARY-NAME%:</o-visually-hidden> A forward-thinking library of web components.
 

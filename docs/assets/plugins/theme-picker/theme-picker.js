@@ -4,39 +4,60 @@
   }
 
   window.$docsify.plugins.push(hook => {
+    function getTheme() {
+      return localStorage.getItem('theme') || 'auto';
+    }
+
+    function isDark() {
+      if (theme === 'auto') {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+      return theme === 'dark';
+    }
+
+    function setTheme(newTheme) {
+      const noTransitions = Object.assign(document.createElement('style'), {
+        textContent: '* { transition: none !important; }'
+      });
+
+      theme = newTheme;
+      localStorage.setItem('theme', theme);
+
+      // Update the UI
+      [...menu.querySelectorAll('o-menu-item')].map(item => (item.checked = item.getAttribute('value') === theme));
+      menuIcon.name = isDark() ? 'moon' : 'sun';
+
+      // Toggle the dark mode class without transitions
+      document.body.appendChild(noTransitions);
+      requestAnimationFrame(() => {
+        document.documentElement.classList.toggle('o-theme-dark', isDark());
+        requestAnimationFrame(() => document.body.removeChild(noTransitions));
+      });
+
+      // Update the logo
+      setLogo();
+    }
+
+    function setLogo() {
+      // Update sidebar app image
+      const sidebarAppImage = document.querySelector('.sidebar .app-name .app-name-link img');
+      if (sidebarAppImage) {
+        sidebarAppImage.src = `assets/images/circular-logo-${isDark() ? 'dark' : 'light'}.svg`;
+      }
+
+      // Update library logo
+      const libraryLogo = document.querySelector('img.library-logo');
+      if (libraryLogo) {
+        libraryLogo.src = `assets/images/circular-logo-${isDark() ? 'dark' : 'light'}.svg`;
+      }
+    }
+
+    let theme = null;
+    let menuIcon = null;
+    let menu = null;
+
     hook.mounted(() => {
-      function getTheme() {
-        return localStorage.getItem('theme') || 'auto';
-      }
-
-      function isDark() {
-        if (theme === 'auto') {
-          return window.matchMedia('(prefers-color-scheme: dark)').matches;
-        }
-        return theme === 'dark';
-      }
-
-      function setTheme(newTheme) {
-        const noTransitions = Object.assign(document.createElement('style'), {
-          textContent: '* { transition: none !important; }'
-        });
-
-        theme = newTheme;
-        localStorage.setItem('theme', theme);
-
-        // Update the UI
-        [...menu.querySelectorAll('o-menu-item')].map(item => (item.checked = item.getAttribute('value') === theme));
-        menuIcon.name = isDark() ? 'moon' : 'sun';
-
-        // Toggle the dark mode class without transitions
-        document.body.appendChild(noTransitions);
-        requestAnimationFrame(() => {
-          document.documentElement.classList.toggle('o-theme-dark', isDark());
-          requestAnimationFrame(() => document.body.removeChild(noTransitions));
-        });
-      }
-
-      let theme = getTheme();
+      theme = getTheme();
 
       // Generate the theme picker dropdown
       const dropdown = document.createElement('o-dropdown');
@@ -56,8 +77,8 @@
       document.querySelector('.sidebar-toggle').insertAdjacentElement('afterend', dropdown);
 
       // Listen for selections
-      const menu = dropdown.querySelector('o-menu');
-      const menuIcon = dropdown.querySelector('o-icon');
+      menu = dropdown.querySelector('o-menu');
+      menuIcon = dropdown.querySelector('o-icon');
       menu.addEventListener('o-select', event => setTheme(event.detail.item.value));
 
       // Update the theme when the preference changes
@@ -77,6 +98,11 @@
 
       // Set the initial theme and sync the UI
       setTheme(theme);
+    });
+
+    hook.doneEach(() => {
+      // Update the logo
+      setLogo();
     });
   });
 })();
