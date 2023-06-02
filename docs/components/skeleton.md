@@ -53,7 +53,7 @@ Skeletons try not to be opinionated, as there are endless possibilities for desi
 ```
 
 ```jsx react
-import { OSkeleton } from '%PACKAGE_NAME%/dist/react';
+import { OSkeleton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .skeleton-overview header {
@@ -136,7 +136,7 @@ There are two built-in effects, `sheen` and `pulse`. Effects are intentionally s
 ```
 
 ```jsx react
-import { OSkeleton } from '%PACKAGE_NAME%/dist/react';
+import { OSkeleton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .skeleton-effects {
@@ -197,7 +197,7 @@ Use multiple skeletons and some clever styles to simulate paragraphs.
 ```
 
 ```jsx react
-import { OSkeleton } from '%PACKAGE_NAME%/dist/react';
+import { OSkeleton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .skeleton-paragraphs o-skeleton {
@@ -262,7 +262,7 @@ Set a matching width and height to make a circle, square, or rounded avatar skel
 ```
 
 ```jsx react
-import { OSkeleton } from '%PACKAGE_NAME%/dist/react';
+import { OSkeleton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .skeleton-avatars o-skeleton {
@@ -357,7 +357,7 @@ Use the `--border-radius` custom property to make circles, squares, and rectangl
 ```
 
 ```jsx react
-import { OSkeleton } from '%PACKAGE_NAME%/dist/react';
+import { OSkeleton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .skeleton-shapes o-skeleton {
@@ -418,7 +418,7 @@ Set the `--color` and `--sheen-color` custom properties to adjust the skeleton's
 ```
 
 ```jsx react
-import { OSkeleton } from '%PACKAGE_NAME%/dist/react';
+import { OSkeleton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .skeleton-avatars o-skeleton {

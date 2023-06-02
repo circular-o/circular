@@ -17,7 +17,7 @@ This integration has been tested with the following:
 To get started using Shoelace with Rails, the following packages must be installed.
 
 ```bash
-yarn add %PACKAGE_NAME% copy-webpack-plugin
+yarn add %PACKAGE_FULL_PATH% copy-webpack-plugin
 ```
 
 ### Importing the Default Theme
@@ -25,8 +25,8 @@ yarn add %PACKAGE_NAME% copy-webpack-plugin
 The next step is to import Shoelace's default theme (stylesheet) in `app/javascript/stylesheets/application.scss`.
 
 ```css
-@import '%PACKAGE_NAME%/dist/themes/light';
-@import '%PACKAGE_NAME%/dist/themes/dark'; // Optional dark theme
+@import '%PACKAGE_FULL_PATH%/dist/themes/light';
+@import '%PACKAGE_FULL_PATH%/dist/themes/dark'; // Optional dark theme
 ```
 
 Fore more details about themes, please refer to [Theme Basics](/getting-started/themes?id=theme-basics).
@@ -37,7 +37,7 @@ After importing the theme, you'll need to import the JavaScript files for Shoela
 
 ```js
 import '../stylesheets/application.scss'
-import { setBasePath, OAlert, OAnimation, OButton, ... } from '%PACKAGE_NAME%'
+import { setBasePath, OAlert, OAnimation, OButton, ... } from '%PACKAGE_FULL_PATH%'
 
 // ...
 
@@ -59,13 +59,13 @@ const { environment } = require('@rails/webpacker');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 
-// Add shoelace assets to webpack's build process
+// Add %PACKAGE_NAME% assets to webpack's build process
 environment.plugins.append(
   'CopyPlugin',
   new CopyPlugin({
     patterns: [
       {
-        from: path.resolve(__dirname, '../../node_modules/%PACKAGE_NAME%/dist/assets'),
+        from: path.resolve(__dirname, '../../node_modules/%PACKAGE_FULL_PATH%/dist/assets'),
         to: path.resolve(__dirname, '../../public/packs/js/assets')
       }
     ]

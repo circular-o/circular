@@ -7,7 +7,7 @@ Angular [plays nice](https://custom-elements-everywhere.com/#angular) with custo
 To add Shoelace to your Angular app, install the package from npm.
 
 ```bash
-npm install %PACKAGE_NAME%
+npm install %PACKAGE_FULL_PATH%
 ```
 
 Next, [include a theme](/getting-started/themes) into your project. In this example, we'll import the light theme and use the CDN as a base path.
@@ -18,7 +18,7 @@ Include the theme into your `angular.json` config.
 ...
 "styles": [
   "src/app/theme/styles.scss",
-  "%PACKAGE_NAME%/dist/themes/light.css"
+  "%PACKAGE_FULL_PATH%/dist/themes/light.css"
 ],
 ...
 ```
@@ -27,19 +27,19 @@ OR
 include it into your `styles.scss`.
 
 ```scss
-@use "%PACKAGE_NAME%/dist/themes/light.css";
+@use "%PACKAGE_FULL_PATH%/dist/themes/light.css";
 ...
 ```
 
 After that set the [base path](/getting-started/installation#setting-the-base-path) in your `AppModule` for icons and other assets.
 
 ```jsx
-import { setBasePath } from '%PACKAGE_NAME%/dist/utilities/base-path';
+import { setBasePath } from '%PACKAGE_FULL_PATH%/dist/utilities/base-path';
 
-setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/');
+setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/dist/');
 ```
 
-?> If you'd rather not use the CDN for assets, you can create a build task that copies `node_modules/%PACKAGE_NAME%/dist/assets` into a public folder in your app. Then you can point the base path to that folder instead.
+?> If you'd rather not use the CDN for assets, you can create a build task that copies `node_modules/%PACKAGE_FULL_PATH%/dist/assets` into a public folder in your app. Then you can point the base path to that folder instead.
 
 ## Configuration
 
@@ -51,9 +51,9 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import { setBasePath } from '%PACKAGE_NAME%/dist/utilities/base-path';
+import { setBasePath } from '%PACKAGE_FULL_PATH%/dist/utilities/base-path';
 
-setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/');
+setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/dist/');
 
 @NgModule({
   declarations: [AppComponent],
@@ -68,7 +68,7 @@ export class AppModule {}
 ## Reference Shoelace components in your Angular component code
 
 ```js
-import { ODrawer } from '%PACKAGE_NAME%';
+import { ODrawer } from '%PACKAGE_FULL_PATH%';
 
 @Component({
   selector: 'app-drawer-example',

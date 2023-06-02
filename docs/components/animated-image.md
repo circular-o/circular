@@ -7,7 +7,7 @@
 ```
 
 ```jsx react
-import { OAnimatedImage } from '%PACKAGE_NAME%/dist/react';
+import { OAnimatedImage } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OAnimatedImage src="assets/images/walk.gif" alt="Animation of untied shoes walking on pavement" />;
 ```
@@ -25,7 +25,7 @@ Both GIF and WEBP images are supported.
 ```
 
 ```jsx react
-import { OAnimatedImage } from '%PACKAGE_NAME%/dist/react';
+import { OAnimatedImage } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OAnimatedImage src="assets/images/tie.webp" alt="Animation of a shoe being tied" />;
 ```
@@ -44,7 +44,7 @@ To set a custom size, apply a width and/or height to the host element.
 ```
 
 ```jsx react
-import { OAnimatedImage } from '%PACKAGE_NAME%/dist/react';
+import { OAnimatedImage } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OAnimatedImage
@@ -80,7 +80,7 @@ You can change the appearance and location of the control box by targeting the `
 ```
 
 ```jsx react
-import { OAnimatedImage } from '%PACKAGE_NAME%/dist/react';
+import { OAnimatedImage } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .animated-image-custom-control-box::part(control-box) {

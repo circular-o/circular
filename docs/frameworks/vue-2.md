@@ -9,19 +9,19 @@ Vue [plays nice](https://custom-elements-everywhere.com/#vue) with custom elemen
 To add Shoelace to your Vue app, install the package from npm.
 
 ```bash
-npm install %PACKAGE_NAME%
+npm install %PACKAGE_FULL_PATH%
 ```
 
 Next, [include a theme](/getting-started/themes) and set the [base path](/getting-started/installation#setting-the-base-path) for icons and other assets. In this example, we'll import the light theme and use the CDN as a base path.
 
 ```jsx
-import '%PACKAGE_NAME%/dist/themes/light.css';
-import { setBasePath } from '%PACKAGE_NAME%/dist/utilities/base-path';
+import '%PACKAGE_FULL_PATH%/dist/themes/light.css';
+import { setBasePath } from '%PACKAGE_FULL_PATH%/dist/utilities/base-path';
 
-setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/');
+setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/dist/');
 ```
 
-?> If you'd rather not use the CDN for assets, you can create a build task that copies `node_modules/%PACKAGE_NAME%/dist/assets` into a public folder in your app. Then you can point the base path to that folder instead.
+?> If you'd rather not use the CDN for assets, you can create a build task that copies `node_modules/%PACKAGE_FULL_PATH%/dist/assets` into a public folder in your app. Then you can point the base path to that folder instead.
 
 ## Configuration
 

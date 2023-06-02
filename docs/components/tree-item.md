@@ -17,7 +17,7 @@
 
 <!-- prettier-ignore -->
 ```jsx react
-import { OTree, OTreeItem } from '%PACKAGE_NAME%/dist/react';
+import { OTree, OTreeItem } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OTree>
@@ -59,7 +59,7 @@ A tree item can contain other tree items. This allows the node to be expanded or
 
 <!-- prettier-ignore -->
 ```jsx react
-import { OTree, OTreeItem } from '%PACKAGE_NAME%/dist/react';
+import { OTree, OTreeItem } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OTree>
@@ -99,7 +99,7 @@ Use the `selected` attribute to select a tree item initially.
 
 <!-- prettier-ignore -->
 ```jsx react
-import { OTree, OTreeItem } from '%PACKAGE_NAME%/dist/react';
+import { OTree, OTreeItem } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OTree>
@@ -139,7 +139,7 @@ Use the `expanded` attribute to expand a tree item initially.
 
 <!-- prettier-ignore -->
 ```jsx react
-import { OTree, OTreeItem } from '%PACKAGE_NAME%/dist/react';
+import { OTree, OTreeItem } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OTree>

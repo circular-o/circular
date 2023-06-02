@@ -33,7 +33,7 @@ The resize observer will report changes to the dimensions of the elements it wra
 ```
 
 ```jsx react
-import { OResizeObserver } from '%PACKAGE_NAME%/dist/react';
+import { OResizeObserver } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .resize-observer-overview div {

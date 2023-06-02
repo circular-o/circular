@@ -7,7 +7,7 @@
 ```
 
 ```jsx react
-import { OButton } from '%PACKAGE_NAME%/dist/react';
+import { OButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OButton>Button</OButton>;
 ```
@@ -28,7 +28,7 @@ Use the `variant` attribute to set the button's variant.
 ```
 
 ```jsx react
-import { OButton } from '%PACKAGE_NAME%/dist/react';
+import { OButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -53,7 +53,7 @@ Use the `size` attribute to change a button's size.
 ```
 
 ```jsx react
-import { OButton } from '%PACKAGE_NAME%/dist/react';
+import { OButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -78,7 +78,7 @@ Use the `outline` attribute to draw outlined buttons with transparent background
 ```
 
 ```jsx react
-import { OButton } from '%PACKAGE_NAME%/dist/react';
+import { OButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -115,7 +115,7 @@ Use the `pill` attribute to give buttons rounded edges.
 ```
 
 ```jsx react
-import { OButton } from '%PACKAGE_NAME%/dist/react';
+import { OButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -151,7 +151,7 @@ Use the `circle` attribute to create circular icon buttons. When this attribute 
 ```
 
 ```jsx react
-import { OButton, OIcon } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -179,7 +179,7 @@ Use the `text` variant to create text buttons that share the same size as regula
 ```
 
 ```jsx react
-import { OButton } from '%PACKAGE_NAME%/dist/react';
+import { OButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -203,12 +203,12 @@ It's often helpful to have a button that works like a link. This is possible by 
 ```html preview
 <o-button href="https://example.com/">Link</o-button>
 <o-button href="https://example.com/" target="_blank">New Window</o-button>
-<o-button href="assets/images/wordmark.svg" download="shoelace.svg">Download</o-button>
+<o-button href="assets/images/wordmark.svg" download="%PACKAGE_NAME%.svg">Download</o-button>
 <o-button href="https://example.com/" disabled>Disabled</o-button>
 ```
 
 ```jsx react
-import { OButton } from '%PACKAGE_NAME%/dist/react';
+import { OButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -216,7 +216,7 @@ const App = () => (
     <OButton href="https://example.com/" target="_blank">
       New Window
     </OButton>
-    <OButton href="assets/images/wordmark.svg" download="shoelace.svg">
+    <OButton href="assets/images/wordmark.svg" download="%PACKAGE_NAME%.svg">
       Download
     </OButton>
     <OButton href="https://example.com/" disabled>
@@ -239,7 +239,7 @@ As expected, buttons can be given a custom width by setting the `width` attribut
 ```
 
 ```jsx react
-import { OButton } from '%PACKAGE_NAME%/dist/react';
+import { OButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -315,7 +315,7 @@ Use the `prefix` and `suffix` slots to add icons.
 ```
 
 ```jsx react
-import { OButton, OIcon } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -387,7 +387,7 @@ Use the `caret` attribute to add a dropdown indicator when a button will trigger
 ```
 
 ```jsx react
-import { OButton } from '%PACKAGE_NAME%/dist/react';
+import { OButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -418,7 +418,7 @@ Use the `loading` attribute to make a button busy. The width will remain the sam
 ```
 
 ```jsx react
-import { OButton } from '%PACKAGE_NAME%/dist/react';
+import { OButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -458,7 +458,7 @@ Use the `disabled` attribute to disable a button. Clicks will be suppressed unti
 ```
 
 ```jsx react
-import { OButton } from '%PACKAGE_NAME%/dist/react';
+import { OButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>

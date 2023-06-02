@@ -10,7 +10,7 @@
 ```
 
 ```jsx react
-import { OAlert, OIcon } from '%PACKAGE_NAME%/dist/react';
+import { OAlert, OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OAlert open>
@@ -69,7 +69,7 @@ Set the `variant` attribute to change the alert's variant.
 ```
 
 ```jsx react
-import { OAlert, OIcon } from '%PACKAGE_NAME%/dist/react';
+import { OAlert, OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -139,7 +139,7 @@ Add the `closable` attribute to show a close button that will hide the alert.
 
 ```jsx react
 import { useState } from 'react';
-import { OAlert, OIcon } from '%PACKAGE_NAME%/dist/react';
+import { OAlert, OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => {
   const [open, setOpen] = useState(true);
@@ -167,7 +167,7 @@ Icons are optional. Simply omit the `icon` slot if you don't want them.
 ```
 
 ```jsx react
-import { OAlert } from '%PACKAGE_NAME%/dist/react';
+import { OAlert } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OAlert variant="primary" open>
@@ -207,7 +207,7 @@ Set the `duration` attribute to automatically hide an alert after a period of ti
 
 ```jsx react
 import { useState } from 'react';
-import { OAlert, OButton, OIcon } from '%PACKAGE_NAME%/dist/react';
+import { OAlert, OButton, OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .alert-duration o-alert {
@@ -296,7 +296,7 @@ You should always use the `closable` attribute so users can dismiss the notifica
 
 ```jsx react
 import { useRef } from 'react';
-import { OAlert, OButton, OIcon } from '%PACKAGE_NAME%/dist/react';
+import { OAlert, OButton, OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
 
 function showToast(alert) {
   alert.toast();

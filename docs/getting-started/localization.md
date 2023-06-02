@@ -5,7 +5,7 @@ Components can be localized by importing the appropriate translation file and se
 ```html
 <html lang="es">
   <head>
-    <script type="module" src="/path/to/shoelace/dist/translations/es.js"></script>
+    <script type="module" src="/path/to/%PACKAGE_NAME%/dist/translations/es.js"></script>
   </head>
 
   <body>
@@ -22,8 +22,8 @@ Shoelace ships with a number of translations. The default is English (US), which
 
 The location of translations depends on how you're consuming Shoelace.
 
-- If you're using the CDN, [import them from the CDN](https://www.jsdelivr.com/package/npm/%PACKAGE_NAME%?path=dist%2Ftranslations)
-- If you're using a bundler, import them from `%PACKAGE_NAME%/dist/translations/[lang].js`
+- If you're using the CDN, [import them from the CDN](https://www.jsdelivr.com/package/npm/%PACKAGE_FULL_PATH%?path=dist%2Ftranslations)
+- If you're using a bundler, import them from `%PACKAGE_FULL_PATH%/dist/translations/[lang].js`
 
 You do not need to load translations up front. You can import them dynamically even after updating the `lang` attribute. Once a translation is registered, localized components will update automatically.
 
@@ -32,7 +32,7 @@ You do not need to load translations up front. You can import them dynamically e
 document.documentElement.lang = 'de';
 
 // Import the translation
-import('/path/to/shoelace/dist/translations/de.js');
+import('/path/to/%PACKAGE_NAME%/dist/translations/de.js');
 ```
 
 ### Translation Resolution
@@ -93,8 +93,8 @@ You can provide your own translations if you have specific needs or if you don't
 Let's create a Spanish translation as an example. The following assumes you're using TypeScript, but you can also create translations with regular JavaScript.
 
 ```js
-import { registerTranslation } from '%PACKAGE_NAME%/dist/utilities/localize';
-import type { Translation } from '%PACKAGE_NAME%/dist/utilities/localize';
+import { registerTranslation } from '%PACKAGE_FULL_PATH%/dist/utilities/localize';
+import type { Translation } from '%PACKAGE_FULL_PATH%/dist/utilities/localize';
 
 const translation: Translation = {
   $code: 'es',

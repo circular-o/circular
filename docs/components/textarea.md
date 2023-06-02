@@ -7,7 +7,7 @@
 ```
 
 ```jsx react
-import { OTextarea } from '%PACKAGE_NAME%/dist/react';
+import { OTextarea } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OTextarea />;
 ```
@@ -25,7 +25,7 @@ Use the `label` attribute to give the textarea an accessible label. For labels t
 ```
 
 ```jsx react
-import { OTextarea } from '%PACKAGE_NAME%/dist/react';
+import { OTextarea } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OTextarea label="Comments" />;
 ```
@@ -39,7 +39,7 @@ Add descriptive help text to a textarea with the `help-text` attribute. For help
 ```
 
 ```jsx react
-import { OTextarea } from '%PACKAGE_NAME%/dist/react';
+import { OTextarea } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OTextarea label="Feedback" help-text="Please tell us what you think." />;
 ```
@@ -53,7 +53,7 @@ Use the `rows` attribute to change the number of text rows that get shown.
 ```
 
 ```jsx react
-import { OTextarea } from '%PACKAGE_NAME%/dist/react';
+import { OTextarea } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OTextarea rows={2} />;
 ```
@@ -67,7 +67,7 @@ Use the `placeholder` attribute to add a placeholder.
 ```
 
 ```jsx react
-import { OTextarea } from '%PACKAGE_NAME%/dist/react';
+import { OTextarea } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OTextarea placeholder="Type something" />;
 ```
@@ -81,7 +81,7 @@ Add the `filled` attribute to draw a filled textarea.
 ```
 
 ```jsx react
-import { OTextarea } from '%PACKAGE_NAME%/dist/react';
+import { OTextarea } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OTextarea placeholder="Type something" filled />;
 ```
@@ -95,7 +95,7 @@ Use the `disabled` attribute to disable a textarea.
 ```
 
 ```jsx react
-import { OTextarea } from '%PACKAGE_NAME%/dist/react';
+import { OTextarea } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OTextarea placeholder="Textarea" disabled />;
 ```
@@ -113,7 +113,7 @@ Use the `size` attribute to change a textarea's size.
 ```
 
 ```jsx react
-import { OTextarea } from '%PACKAGE_NAME%/dist/react';
+import { OTextarea } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -135,7 +135,7 @@ By default, textareas can be resized vertically by the user. To prevent resizing
 ```
 
 ```jsx react
-import { OTextarea } from '%PACKAGE_NAME%/dist/react';
+import { OTextarea } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OTextarea resize="none" />;
 ```
@@ -149,7 +149,7 @@ Textareas will automatically resize to expand to fit their content when `resize`
 ```
 
 ```jsx react
-import { OTextarea } from '%PACKAGE_NAME%/dist/react';
+import { OTextarea } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OTextarea resize="auto" />;
 ```

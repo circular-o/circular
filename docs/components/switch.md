@@ -7,7 +7,7 @@
 ```
 
 ```jsx react
-import { OSwitch } from '%PACKAGE_NAME%/dist/react';
+import { OSwitch } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OSwitch>Switch</OSwitch>;
 ```
@@ -25,7 +25,7 @@ Use the `checked` attribute to activate the switch.
 ```
 
 ```jsx react
-import { OSwitch } from '%PACKAGE_NAME%/dist/react';
+import { OSwitch } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OSwitch checked>Checked</OSwitch>;
 ```
@@ -39,7 +39,7 @@ Use the `disabled` attribute to disable the switch.
 ```
 
 ```jsx react
-import { OSwitch } from '%PACKAGE_NAME%/dist/react';
+import { OSwitch } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OSwitch disabled>Disabled</OSwitch>;
 ```
@@ -57,7 +57,7 @@ Use the `size` attribute to change a switch's size.
 ```
 
 ```jsx react
-import { OSwitch } from '%PACKAGE_NAME%/dist/react';
+import { OSwitch } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -79,7 +79,7 @@ Use the available custom properties to change how the switch is styled.
 ```
 
 ```jsx react
-import { OSwitch } from '%PACKAGE_NAME%/dist/react';
+import { OSwitch } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OSwitch

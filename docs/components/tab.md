@@ -10,7 +10,7 @@
 ```
 
 ```jsx react
-import { OTab } from '%PACKAGE_NAME%/dist/react';
+import { OTab } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>

@@ -13,7 +13,7 @@ Radio buttons are designed to be used with [radio groups](/components/radio-grou
 ```
 
 ```jsx react
-import { ORadioButton, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadioButton, ORadioGroup } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <ORadioGroup label="Select an option" name="a" value="1">
@@ -39,7 +39,7 @@ To set the initial value and checked state, use the `value` attribute on the con
 ```
 
 ```jsx react
-import { ORadioButton, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadioButton, ORadioGroup } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <ORadioGroup label="Select an option" name="a" value="1">
@@ -63,7 +63,7 @@ Use the `disabled` attribute to disable a radio button.
 ```
 
 ```jsx react
-import { ORadioButton, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadioButton, ORadioGroup } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <ORadioGroup label="Select an option" name="a" value="1">
@@ -105,7 +105,7 @@ Add the `size` attribute to the [Radio Group](/components/radio-group) to change
 ```
 
 ```jsx react
-import { ORadioButton, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadioButton, ORadioGroup } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -163,7 +163,7 @@ Use the `pill` attribute to give radio buttons rounded edges.
 ```
 
 ```jsx react
-import { ORadioButton, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { ORadioButton, ORadioGroup } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <ORadioGroup label="Select an option" name="a" value="1">
@@ -215,7 +215,7 @@ Use the `prefix` and `suffix` slots to add icons.
 ```
 
 ```jsx react
-import { OIcon, ORadioButton, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { OIcon, ORadioButton, ORadioGroup } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <ORadioGroup label="Select an option" name="a" value="1">
@@ -267,7 +267,7 @@ You can omit button labels and use icons instead. Make sure to set a `label` att
 ```
 
 ```jsx react
-import { OIcon, ORadioButton, ORadioGroup } from '%PACKAGE_NAME%/dist/react';
+import { OIcon, ORadioButton, ORadioGroup } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <ORadioGroup label="Select an option" name="a" value="neutral">

@@ -22,7 +22,7 @@ Localization is handled by the browser's [`Intl.NumberFormat` API](https://devel
 
 ```jsx react
 import { useState } from 'react';
-import { OFormatNumber, OInput } from '%PACKAGE_NAME%/dist/react';
+import { OFormatNumber, OInput } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => {
   const [value, setValue] = useState(1000);
@@ -59,7 +59,7 @@ To get the value as a percent, set the `type` attribute to `percent`.
 ```
 
 ```jsx react
-import { OFormatNumber } from '%PACKAGE_NAME%/dist/react';
+import { OFormatNumber } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -87,7 +87,7 @@ Russian: <o-format-number value="2000" lang="ru" minimum-fraction-digits="2"></o
 ```
 
 ```jsx react
-import { OFormatNumber } from '%PACKAGE_NAME%/dist/react';
+import { OFormatNumber } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -113,7 +113,7 @@ To format a number as a monetary value, set the `type` attribute to `currency` a
 ```
 
 ```jsx react
-import { OFormatNumber } from '%PACKAGE_NAME%/dist/react';
+import { OFormatNumber } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>

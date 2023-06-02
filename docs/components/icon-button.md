@@ -9,7 +9,7 @@ For a full list of icons that come bundled with Shoelace, refer to the [icon com
 ```
 
 ```jsx react
-import { OIconButton } from '%PACKAGE_NAME%/dist/react';
+import { OIconButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OIconButton name="gear" label="Settings" />;
 ```
@@ -27,7 +27,7 @@ Icon buttons inherit their parent element's `font-size`.
 ```
 
 ```jsx react
-import { OIconButton } from '%PACKAGE_NAME%/dist/react';
+import { OIconButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -66,7 +66,7 @@ Icon buttons are designed to have a uniform appearance, so their color is not in
 ```
 
 ```jsx react
-import { OIconButton } from '%PACKAGE_NAME%/dist/react';
+import { OIconButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .icon-button-color o-icon-button::part(base) {
@@ -105,7 +105,7 @@ Use the `href` attribute to convert the button to a link.
 ```
 
 ```jsx react
-import { OIconButton } from '%PACKAGE_NAME%/dist/react';
+import { OIconButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OIconButton name="gear" label="Settings" href="https://example.com" target="_blank" />;
 ```
@@ -121,7 +121,7 @@ Wrap a tooltip around an icon button to provide contextual information to the us
 ```
 
 ```jsx react
-import { OIconButton, OTooltip } from '%PACKAGE_NAME%/dist/react';
+import { OIconButton, OTooltip } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OTooltip content="Settings">
@@ -139,7 +139,7 @@ Use the `disabled` attribute to disable the icon button.
 ```
 
 ```jsx react
-import { OIconButton } from '%PACKAGE_NAME%/dist/react';
+import { OIconButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OIconButton name="gear" label="Settings" disabled />;
 ```
