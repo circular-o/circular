@@ -38,7 +38,7 @@
 ```
 
 ```jsx react
-import { OButton, OCard, ORating } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OButton, OCard, ORating } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .card-overview {
@@ -99,7 +99,7 @@ Basic cards aren't very exciting, but they can display any content you want them
 ```
 
 ```jsx react
-import { OCard } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OCard } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .card-basic {
@@ -154,7 +154,7 @@ Headers can be used to display titles and more.
 ```
 
 ```jsx react
-import { OCard, OIconButton } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OCard, OIconButton } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .card-header {
@@ -219,7 +219,7 @@ Footers can be used to display actions, summaries, or other relevant content.
 ```
 
 ```jsx react
-import { OButton, OCard, ORating } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OButton, OCard, ORating } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .card-footer {
@@ -272,7 +272,7 @@ Cards accept an `image` slot. The image is displayed atop the card and stretches
 ```
 
 ```jsx react
-import { OCard } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OCard } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .card-image {

@@ -1,13 +1,13 @@
 # Angular
 
-Angular [plays nice](https://custom-elements-everywhere.com/#angular) with custom elements, so you can use %LIBRARY_NAME% in your Angular apps with ease.
+Angular [plays nice](https://custom-elements-everywhere.com/#angular) with custom elements, so you can use %LIBRARY-NAME% in your Angular apps with ease.
 
 ## Installation
 
-To add %LIBRARY_NAME% to your Angular app, install the package from npm.
+To add %LIBRARY-NAME% to your Angular app, install the package from npm.
 
 ```bash
-npm install %PACKAGE_FULL_PATH%
+npm install %PACKAGE-FULL-PATH%
 ```
 
 Next, [include a theme](/getting-started/themes) into your project. In this example, we'll import the light theme and use the CDN as a base path.
@@ -18,7 +18,7 @@ Include the theme into your `angular.json` config.
 ...
 "styles": [
   "src/app/theme/styles.scss",
-  "%PACKAGE_FULL_PATH%/dist/themes/light.css"
+  "%PACKAGE-FULL-PATH%/dist/themes/light.css"
 ],
 ...
 ```
@@ -27,19 +27,19 @@ OR
 include it into your `styles.scss`.
 
 ```scss
-@use "%PACKAGE_FULL_PATH%/dist/themes/light.css";
+@use "%PACKAGE-FULL-PATH%/dist/themes/light.css";
 ...
 ```
 
 After that set the [base path](/getting-started/installation#setting-the-base-path) in your `AppModule` for icons and other assets.
 
 ```jsx
-import { setBasePath } from '%PACKAGE_FULL_PATH%/dist/utilities/base-path';
+import { setBasePath } from '%PACKAGE-FULL-PATH%/dist/utilities/base-path';
 
-setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/dist/');
+setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE-FULL-PATH%@%PACKAGE-VERSION%/dist/');
 ```
 
-?> If you'd rather not use the CDN for assets, you can create a build task that copies `node_modules/%PACKAGE_FULL_PATH%/dist/assets` into a public folder in your app. Then you can point the base path to that folder instead.
+?> If you'd rather not use the CDN for assets, you can create a build task that copies `node_modules/%PACKAGE-FULL-PATH%/dist/assets` into a public folder in your app. Then you can point the base path to that folder instead.
 
 ## Configuration
 
@@ -51,9 +51,9 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import { setBasePath } from '%PACKAGE_FULL_PATH%/dist/utilities/base-path';
+import { setBasePath } from '%PACKAGE-FULL-PATH%/dist/utilities/base-path';
 
-setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/dist/');
+setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE-FULL-PATH%@%PACKAGE-VERSION%/dist/');
 
 @NgModule({
   declarations: [AppComponent],
@@ -65,10 +65,10 @@ setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/
 export class AppModule {}
 ```
 
-## Reference %LIBRARY_NAME% components in your Angular component code
+## Reference %LIBRARY-NAME% components in your Angular component code
 
 ```js
-import { ODrawer } from '%PACKAGE_FULL_PATH%';
+import { ODrawer } from '%PACKAGE-FULL-PATH%';
 
 @Component({
   selector: 'app-drawer-example',
@@ -92,12 +92,12 @@ export class DrawerExampleComponent implements OnInit {
   ...
 
   showDrawer() {
-    // use nativeElement to access %LIBRARY_NAME% components
+    // use nativeElement to access %LIBRARY-NAME% components
     this.drawer?.nativeElement.show();
   }
 }
 ```
 
-Now you can start using %LIBRARY_NAME% components in your app!
+Now you can start using %LIBRARY-NAME% components in your app!
 
-?> Are you using %LIBRARY_NAME% with Angular? [Help us improve this page!](%REPO_URL%/blob/next/docs/frameworks/angular.md)
+?> Are you using %LIBRARY-NAME% with Angular? [Help us improve this page!](%REPO-URL%/blob/next/docs/frameworks/angular.md)

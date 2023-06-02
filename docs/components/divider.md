@@ -7,7 +7,7 @@
 ```
 
 ```jsx react
-import { ODivider } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ODivider } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <ODivider />;
 ```
@@ -23,7 +23,7 @@ Use the `--width` custom property to change the width of the divider.
 ```
 
 ```jsx react
-import { ODivider } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ODivider } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <ODivider style={{ '--width': '4px' }} />;
 ```
@@ -37,7 +37,7 @@ Use the `--color` custom property to change the color of the divider.
 ```
 
 ```jsx react
-import { ODivider } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ODivider } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <ODivider style={{ '--color': 'tomato' }} />;
 ```
@@ -55,7 +55,7 @@ Use the `--spacing` custom property to change the amount of space between the di
 ```
 
 ```jsx react
-import { ODivider } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ODivider } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <>
@@ -81,7 +81,7 @@ Add the `vertical` attribute to draw the divider in a vertical orientation. The 
 ```
 
 ```jsx react
-import { ODivider } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ODivider } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <div
@@ -117,7 +117,7 @@ Use dividers in [menus](/components/menu) to visually group menu items.
 ```
 
 ```jsx react
-import { ODivider, OMenu, OMenuItem } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ODivider, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OMenu style={{ maxWidth: '200px' }}>

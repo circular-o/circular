@@ -385,24 +385,24 @@
 
       metadata = await getCustomElementsMetadata();
 
-      // Replace %PACKAGE_VERSION% placeholders
-      content = content.replace(/%PACKAGE_VERSION%/g, packageVersion);
-      // Replace %PACKAGE_ORGANIZATION% placeholders
-      content = content.replace(/%PACKAGE_ORGANIZATION%/g, `${packageOrganization}`);
-      // Replace %PACKAGE_NAME% placeholders
-      content = content.replace(/%PACKAGE_NAME%/g, `${packageName}`);
-      // Replace %PACKAGE_FULL_PATH% placeholders
-      content = content.replace(/%PACKAGE_FULL_PATH%/g, `${packageOrganization}/${packageName}`);
-      // Replace %DOCS_WEBSITE% placeholders
-      content = content.replace(/%DOCS_WEBSITE%/g, `${docsWebsite}`);
-      // Replace %REPO_URL% placeholders
-      content = content.replace(/%REPO_URL%/g, `${repoUrl}`);
-      // Replace %TWITTER_USER% placeholders
-      content = content.replace(/%TWITTER_USER%/g, `${twitterUser}`);
-      // Replace %SPONSOR_URL% placeholders
-      content = content.replace(/%SPONSOR_URL%/g, `${sponsorUrl}`);
-      // Replace %LIBRARY_NAME% placeholders
-      content = content.replace(/%LIBRARY_NAME%/g, `${libraryName}`);
+      // Replace %PACKAGE-VERSION% placeholders
+      content = content.replace(/%PACKAGE-VERSION%/g, packageVersion);
+      // Replace %PACKAGE-ORGANIZATION% placeholders
+      content = content.replace(/%PACKAGE-ORGANIZATION%/g, `${packageOrganization}`);
+      // Replace %PACKAGE-NAME% placeholders
+      content = content.replace(/%PACKAGE-NAME%/g, `${packageName}`);
+      // Replace %PACKAGE-FULL-PATH% placeholders
+      content = content.replace(/%PACKAGE-FULL-PATH%/g, `${packageOrganization}/${packageName}`);
+      // Replace %DOCS-WEBSITE% placeholders
+      content = content.replace(/%DOCS-WEBSITE%/g, `${docsWebsite}`);
+      // Replace %REPO-URL% placeholders
+      content = content.replace(/%REPO-URL%/g, `${repoUrl}`);
+      // Replace %TWITTER-USER% placeholders
+      content = content.replace(/%TWITTER-USER%/g, `${twitterUser}`);
+      // Replace %SPONSOR-URL% placeholders
+      content = content.replace(/%SPONSOR-URL%/g, `${sponsorUrl}`);
+      // Replace %LIBRARY-NAME% placeholders
+      content = content.replace(/%LIBRARY-NAME%/g, `${libraryName}`);
 
       // Handle [component-header] tags
       content = content.replace(/\[component-header:([a-z-]+)\]/g, (match, tag) => {

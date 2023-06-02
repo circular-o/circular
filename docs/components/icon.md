@@ -2,9 +2,9 @@
 
 [component-header:o-icon]
 
-%LIBRARY_NAME% comes bundled with over 1,500 icons courtesy of the [Bootstrap Icons](https://icons.getbootstrap.com/) project. These icons are part of the `default` icon library. If you prefer, you can register [custom icon libraries](#icon-libraries) as well.
+%LIBRARY-NAME% comes bundled with over 1,500 icons courtesy of the [Bootstrap Icons](https://icons.getbootstrap.com/) project. These icons are part of the `default` icon library. If you prefer, you can register [custom icon libraries](#icon-libraries) as well.
 
-?> Depending on how you're loading %LIBRARY_NAME%, you may need to copy icon assets and/or [set the base path](getting-started/installation#setting-the-base-path) so %LIBRARY_NAME% knows where to load them from. Otherwise, icons may not appear and you'll see 404 Not Found errors in the dev console.
+?> Depending on how you're loading %LIBRARY-NAME%, you may need to copy icon assets and/or [set the base path](getting-started/installation#setting-the-base-path) so %LIBRARY-NAME% knows where to load them from. Otherwise, icons may not appear and you'll see 404 Not Found errors in the dev console.
 
 ## Default Icons
 
@@ -63,7 +63,7 @@ Icons inherit their color from the current text color. Thus, you can set the `co
 ```
 
 ```jsx react
-import { OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OIcon } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <>
@@ -121,7 +121,7 @@ Icons are sized relative to the current font size. To change their size, set the
 ```
 
 ```jsx react
-import { OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OIcon } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <div style={{ fontSize: '32px' }}>
@@ -154,7 +154,7 @@ For non-decorative icons, use the `label` attribute to announce it to assistive 
 ```
 
 ```jsx react
-import { OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OIcon } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <OIcon name="star-fill" label="Add to favorites" />;
 ```
@@ -168,7 +168,7 @@ Custom icons can be loaded individually with the `src` attribute. Only SVGs on a
 ```
 
 ```jsx react
-import { OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OIcon } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <OIcon src="assets/images/shoe.svg" style={{ fontSize: '8rem' }}></OIcon>;
 ```
@@ -177,7 +177,7 @@ const App = () => <OIcon src="assets/images/shoe.svg" style={{ fontSize: '8rem' 
 
 You can register additional icons to use with the `<o-icon>` component through icon libraries. Icon files can exist locally or on a CORS-enabled endpoint (e.g. a CDN). There is no limit to how many icon libraries you can register and there is no cost associated with registering them, as individual icons are only requested when they're used.
 
-%LIBRARY_NAME% ships with two built-in icon libraries, `default` and `system`. The [default icon library](#customizing-the-default-library) contains all of the icons in the Bootstrap Icons project. The [system icon library](#customizing-the-system-library) contains only a small subset of icons that are used internally by %LIBRARY_NAME% components.
+%LIBRARY-NAME% ships with two built-in icon libraries, `default` and `system`. The [default icon library](#customizing-the-default-library) contains all of the icons in the Bootstrap Icons project. The [system icon library](#customizing-the-system-library) contains only a small subset of icons that are used internally by %LIBRARY-NAME% components.
 
 To register an additional icon library, use the `registerIconLibrary()` function that's exported from `utilities/icon-library.js`. At a minimum, you must provide a name and a resolver function. The resolver function translates an icon name to a URL where the corresponding SVG file exists. Refer to the examples below to better understand how it works.
 
@@ -619,9 +619,9 @@ This example will load the same set of icons from the jsDelivr CDN instead of yo
 
 ### Customizing the System Library
 
-The system library contains only the icons used internally by %LIBRARY_NAME% components. Unlike the default icon library, the system library does not rely on physical assets. Instead, its icons are hard-coded as data URIs into the resolver to ensure their availability.
+The system library contains only the icons used internally by %LIBRARY-NAME% components. Unlike the default icon library, the system library does not rely on physical assets. Instead, its icons are hard-coded as data URIs into the resolver to ensure their availability.
 
-If you want to change the icons %LIBRARY_NAME% uses internally, you can register an icon library using the `system` name and a custom resolver. If you choose to do this, it's your responsibility to provide all of the icons that are required by components. You can reference `src/components/library.system.ts` for a complete list of system icons used by %LIBRARY_NAME%.
+If you want to change the icons %LIBRARY-NAME% uses internally, you can register an icon library using the `system` name and a custom resolver. If you choose to do this, it's your responsibility to provide all of the icons that are required by components. You can reference `src/components/library.system.ts` for a complete list of system icons used by %LIBRARY-NAME%.
 
 ```html
 <script type="module">

@@ -12,7 +12,7 @@
 ```
 
 ```jsx react
-import { ODetails } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ODetails } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <ODetails summary="Toggle Me">
@@ -36,7 +36,7 @@ Use the `disable` attribute to prevent the details from expanding.
 ```
 
 ```jsx react
-import { ODetails } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ODetails } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <ODetails summary="Disabled" disabled>
@@ -68,7 +68,7 @@ Use the `expand-icon` and `collapse-icon` slots to change the expand and collaps
 ```
 
 ```jsx react
-import { ODetails, OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ODetails, OIcon } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   o-details.custom-icon::part(summary-icon) {

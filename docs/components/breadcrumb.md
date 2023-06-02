@@ -14,7 +14,7 @@ Breadcrumbs are usually placed before a page's main content with the current pag
 ```
 
 ```jsx react
-import { OBreadcrumb, OBreadcrumbItem } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OBreadcrumb, OBreadcrumbItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OBreadcrumb>
@@ -47,7 +47,7 @@ For websites, you'll probably want to use links instead. You can make any breadc
 ```
 
 ```jsx react
-import { OBreadcrumb, OBreadcrumbItem } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OBreadcrumb, OBreadcrumbItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OBreadcrumb>
@@ -94,8 +94,8 @@ Use the `separator` slot to change the separator that goes between breadcrumb it
 ```
 
 ```jsx react
-import '%PACKAGE_FULL_PATH%/dist/components/icon/icon.js';
-import { OBreadcrumb, OBreadcrumbItem } from '%PACKAGE_FULL_PATH%/dist/react';
+import '%PACKAGE-FULL-PATH%/dist/components/icon/icon.js';
+import { OBreadcrumb, OBreadcrumbItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <>
@@ -143,7 +143,7 @@ Use the `prefix` slot to add content before any breadcrumb item.
 ```
 
 ```jsx react
-import { OBreadcrumb, OBreadcrumbItem, OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OBreadcrumb, OBreadcrumbItem, OIcon } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OBreadcrumb>
@@ -173,7 +173,7 @@ Use the `suffix` slot to add content after any breadcrumb item.
 ```
 
 ```jsx react
-import { OBreadcrumb, OBreadcrumbItem, OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OBreadcrumb, OBreadcrumbItem, OIcon } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OBreadcrumb>
@@ -221,7 +221,7 @@ import {
   OIcon,
   OMenu,
   OMenuItem
-} from '%PACKAGE_FULL_PATH%/dist/react';
+} from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OBreadcrumb>

@@ -11,7 +11,7 @@
 ```
 
 ```jsx react
-import { OOption, OSelect } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OOption, OSelect } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OSelect>
@@ -37,7 +37,7 @@ Use the `disabled` attribute to disable an option and prevent it from being sele
 ```
 
 ```jsx react
-import { OOption, OSelect } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OOption, OSelect } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OSelect>

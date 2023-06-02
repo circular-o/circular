@@ -1,6 +1,6 @@
 # Contributing
 
-%LIBRARY_NAME% is an open source project, meaning everyone can use it and contribute to its development. When you join our community, you'll find a friendly group of enthusiasts at all experience levels who are willing to chat about anything and everything related to %LIBRARY_NAME%.
+%LIBRARY-NAME% is an open source project, meaning everyone can use it and contribute to its development. When you join our community, you'll find a friendly group of enthusiasts at all experience levels who are willing to chat about anything and everything related to %LIBRARY-NAME%.
 
 The easiest way to get started contributing is to join the [community chat](https://discord.gg/mg8f26C). This is where we hang out, discuss new ideas, ask for feedback, and more!
 
@@ -27,9 +27,9 @@ I realize that one cannot reasonably enforce this any more than one can enforce 
 
 ## Using the Issue Tracker
 
-The [issue tracker](%REPO_URL%/issues) is for bug reports, feature requests, and pull requests.
+The [issue tracker](%REPO-URL%/issues) is for bug reports, feature requests, and pull requests.
 
-- Please **do not** use the issue tracker for personal support requests. Use [the discussion forum](%REPO_URL%/discussions/categories/help) instead.
+- Please **do not** use the issue tracker for personal support requests. Use [the discussion forum](%REPO-URL%/discussions/categories/help) instead.
 - Please **do not** derail, hijack, or troll issues. Keep the discussion on topic and be respectful of others.
 - Please **do not** post comments with "+1" or "👍". Use [reactions](https://github.blog/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) instead.
 - Please **do** use the issue tracker for feature requests, bug reports, and pull requests.
@@ -45,7 +45,7 @@ Feature requests can be added using the issue tracker.
 - Please **do** share substantial use cases and perspective that support new features if they haven't already been mentioned.
 - Please **do not** bump, spam, or ping contributors to prioritize your own feature.
 
-If you would like your feature prioritized, please consider [sponsoring the project](%SPONSOR_URL%).
+If you would like your feature prioritized, please consider [sponsoring the project](%SPONSOR-URL%).
 
 ### Bug Reports
 
@@ -59,7 +59,7 @@ A bug is _a demonstrable problem_ caused by code in the library. Bug reports are
 
 **A minimal test case is critical to a successful bug report.** It demonstrates that the bug exists in the library and not in surrounding code. Contributors should be able to understand the bug without studying your code, otherwise they'll probably move on to another bug.
 
-If you would like your bug prioritized, please consider [sponsoring the project](%SPONSOR_URL%).
+If you would like your bug prioritized, please consider [sponsoring the project](%SPONSOR-URL%).
 
 ### Pull Requests
 
@@ -74,23 +74,23 @@ The author reserves the right to reject any PR that's outside the scope of the p
 
 ### Branches
 
-`current` - This branch reflects the latest release and powers [%LIBRARY_NAME%](%DOCS_WEBSITE%/).
+`current` - This branch reflects the latest release and powers [%LIBRARY-NAME%](%DOCS-WEBSITE%/).
 
 <!-- TODO: Change the next web site url -->
 
-`next` - This is the branch you should submit pull requests against. It reflects what's coming in the _next_ release, which can be previewed at [%LIBRARY_NAME% Next](%DOCS_WEBSITE%/).
+`next` - This is the branch you should submit pull requests against. It reflects what's coming in the _next_ release, which can be previewed at [%LIBRARY-NAME% Next](%DOCS-WEBSITE%/).
 
 ## Developing
 
-To set up a local dev environment, [fork the repo](%REPO_URL%/fork) on GitHub, clone it locally, and install its dependencies.
+To set up a local dev environment, [fork the repo](%REPO-URL%/fork) on GitHub, clone it locally, and install its dependencies.
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/%PACKAGE_NAME%
-cd %PACKAGE_NAME%
+git clone https://github.com/YOUR_GITHUB_USERNAME/%PACKAGE-NAME%
+cd %PACKAGE-NAME%
 npm install
 ```
 
-Once you've cloned the repo, run the following command to spin up the %LIBRARY_NAME% dev server.
+Once you've cloned the repo, run the following command to spin up the %LIBRARY-NAME% dev server.
 
 ```bash
 npm run start
@@ -102,7 +102,7 @@ After the initial build, a browser will open automatically to a local version of
 
 Alternatively, you can use [Gitpod](https://www.gitpod.io/) to setup a dev environment in the cloud using only your browser.
 
-[![Open in Gitpod](../assets/images/open-in-gitpod.svg)](https://gitpod.io/#%REPO_URL%)
+[![Open in Gitpod](../assets/images/open-in-gitpod.svg)](https://gitpod.io/#%REPO-URL%)
 
 ### Creating New Components
 
@@ -124,7 +124,7 @@ For more information about running and building the project locally, refer to `R
 
 ### Testing
 
-%LIBRARY_NAME% uses [Web Test Runner](https://modern-web.dev/guides/test-runner/getting-started/) for testing. To launch the test runner during development, open a terminal and launch the dev server.
+%LIBRARY-NAME% uses [Web Test Runner](https://modern-web.dev/guides/test-runner/getting-started/) for testing. To launch the test runner during development, open a terminal and launch the dev server.
 
 ```bash
 npm run start
@@ -168,17 +168,17 @@ If in doubt, use your best judgment and the maintainers will be happy to guide y
 
 ### Accessibility
 
-%LIBRARY_NAME% is built with accessibility in mind. Creating generic components that are fully accessible to users with varying capabilities across a multitude of circumstances is a daunting challenge. Oftentimes, the solution to an a11y problem is not written in black and white and, therefore, we may not get it right the first time around. There are, however, guidelines we can follow in our effort to make %LIBRARY_NAME% an accessible foundation from which applications and websites can be built.
+%LIBRARY-NAME% is built with accessibility in mind. Creating generic components that are fully accessible to users with varying capabilities across a multitude of circumstances is a daunting challenge. Oftentimes, the solution to an a11y problem is not written in black and white and, therefore, we may not get it right the first time around. There are, however, guidelines we can follow in our effort to make %LIBRARY-NAME% an accessible foundation from which applications and websites can be built.
 
-We take this commitment seriously, so please ensure your contributions have this goal in mind. If you need help with anything a11y-related, please [reach out to the community](/resources/community) for assistance. If you discover an accessibility concern within the library, please file a bug on the [issue tracker](%REPO_URL%/issues).
+We take this commitment seriously, so please ensure your contributions have this goal in mind. If you need help with anything a11y-related, please [reach out to the community](/resources/community) for assistance. If you discover an accessibility concern within the library, please file a bug on the [issue tracker](%REPO-URL%/issues).
 
 It's important to remember that, although accessibility starts with foundational components, it doesn't end with them. It everyone's responsibility to encourage best practices and ensure we're providing an optimal experience for all of our users.
 
 ### Documentation
 
-Maintaining good documentation can be a painstaking task, but poor documentation leads to frustration and makes the project less appealing to users. Fortunately, writing documentation for %LIBRARY_NAME% is fast and easy!
+Maintaining good documentation can be a painstaking task, but poor documentation leads to frustration and makes the project less appealing to users. Fortunately, writing documentation for %LIBRARY-NAME% is fast and easy!
 
-Most of %LIBRARY_NAME%'s technical documentation is generated with JSDoc comments and TypeScript metadata from the source code. Every property, method, event, etc. is documented this way. In-code comments encourage contributors to keep the documentation up to date as changes occur so the docs are less likely to become stale. Refer to an existing component to see how JSDoc comments are used in %LIBRARY_NAME%.
+Most of %LIBRARY-NAME%'s technical documentation is generated with JSDoc comments and TypeScript metadata from the source code. Every property, method, event, etc. is documented this way. In-code comments encourage contributors to keep the documentation up to date as changes occur so the docs are less likely to become stale. Refer to an existing component to see how JSDoc comments are used in %LIBRARY-NAME%.
 
 Instructions, code examples, and interactive demos are hand-curated to give users the best possible experience. Typically, the most relevant information is shown first and less common examples are shown towards the bottom. Edge cases and gotchas should be called out in context with tips or warnings.
 
@@ -273,7 +273,7 @@ This convention avoids the problem of browsers lowercasing attributes, causing s
 
 ### Change Events
 
-When change events are emitted by %LIBRARY_NAME% components, they should be named `o-change` and they should only be emitted as a result of user input. Programmatic changes, such as setting `el.value = '…'` _should not_ result in a change event being emitted. This is consistent with how native form controls work.
+When change events are emitted by %LIBRARY-NAME% components, they should be named `o-change` and they should only be emitted as a result of user input. Programmatic changes, such as setting `el.value = '…'` _should not_ result in a change event being emitted. This is consistent with how native form controls work.
 
 ### CSS Custom Properties
 
@@ -321,7 +321,7 @@ This convention can be relaxed when the developer experience is greatly improved
 
 ### Naming CSS Parts
 
-While CSS parts can be named [virtually anything](https://www.abeautifulsite.net/posts/valid-names-for-css-parts/), within %LIBRARY_NAME% they must use the kebab-case convention and lowercase letters. Additionally, [a BEM-inspired naming convention](https://www.abeautifulsite.net/posts/css-parts-inspired-by-bem/) is used to distinguish parts, subparts, and states.
+While CSS parts can be named [virtually anything](https://www.abeautifulsite.net/posts/valid-names-for-css-parts/), within %LIBRARY-NAME% they must use the kebab-case convention and lowercase letters. Additionally, [a BEM-inspired naming convention](https://www.abeautifulsite.net/posts/css-parts-inspired-by-bem/) is used to distinguish parts, subparts, and states.
 
 When composing elements, use `part` to export the host element and `exportparts` to export its parts.
 
@@ -341,11 +341,11 @@ This results in a consistent, easy to understand structure for parts. In this ex
 
 TL;DR – a component is a dependency if and only if it's rendered inside another component's shadow root.
 
-Many %LIBRARY_NAME% components use other %LIBRARY_NAME% components internally. For example, `<o-button>` uses both `<o-icon>` and `<o-spinner>` for its caret icon and loading state, respectively. Since these components appear in the button's shadow root, they are considered dependencies of Button. Since dependencies are automatically loaded, users only need to import the button and everything will work as expected.
+Many %LIBRARY-NAME% components use other %LIBRARY-NAME% components internally. For example, `<o-button>` uses both `<o-icon>` and `<o-spinner>` for its caret icon and loading state, respectively. Since these components appear in the button's shadow root, they are considered dependencies of Button. Since dependencies are automatically loaded, users only need to import the button and everything will work as expected.
 
 Contrast this to `<o-select>` and `<o-option>`. At first, one might assume that Option is a dependency of Select. After all, you can't really use Select without slotting in at least one Option. However, Option _is not_ a dependency of Select! The reason is because no Option is rendered in the Select's shadow root. Since the options are provided by the user, it's up to them to import both components independently.
 
-People often suggest that %LIBRARY_NAME% should auto-load Select + Option, Menu + Menu Item, Breadcrumb + Breadcrumb Item, etc. Although some components are designed to work together, they're technically not dependencies so eagerly loading them may not be desirable. What if someone wants to roll their own component with a superset of features? They wouldn't be able to if %LIBRARY_NAME% automatically imported it!
+People often suggest that %LIBRARY-NAME% should auto-load Select + Option, Menu + Menu Item, Breadcrumb + Breadcrumb Item, etc. Although some components are designed to work together, they're technically not dependencies so eagerly loading them may not be desirable. What if someone wants to roll their own component with a superset of features? They wouldn't be able to if %LIBRARY-NAME% automatically imported it!
 
 Similarly, in the case of `<o-radio-group>` there was originally only `<o-radio>`, but now you can use either `<o-radio>` or `<o-radio-button>` as child elements. Which component(s) should be auto-loaded dependencies in this case? Had Radio been a dependency of Radio Group, users that only wanted Radio Buttons would be forced to register both with no way to opt out and no way to provide their own customized version.
 

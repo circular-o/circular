@@ -7,7 +7,7 @@
 ```
 
 ```jsx react
-import { OProgressRing } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OProgressRing } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <OProgressRing value="25" />;
 ```
@@ -23,7 +23,7 @@ Use the `--size` custom property to set the diameter of the progress ring.
 ```
 
 ```jsx react
-import { OProgressRing } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OProgressRing } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <OProgressRing value="50" style={{ '--size': '200px' }} />;
 ```
@@ -37,7 +37,7 @@ Use the `--track-width` and `--indicator-width` custom properties to set the wid
 ```
 
 ```jsx react
-import { OProgressRing } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OProgressRing } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <OProgressRing value="50" style={{ '--track-width': '6px', '--indicator-width': '12px' }} />;
 ```
@@ -57,7 +57,7 @@ To change the color, use the `--track-color` and `--indicator-color` custom prop
 ```
 
 ```jsx react
-import { OProgressRing } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OProgressRing } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OProgressRing
@@ -79,7 +79,7 @@ Use the `label` attribute to label the progress ring and tell assistive devices 
 ```
 
 ```jsx react
-import { OProgressRing } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OProgressRing } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <OProgressRing value="50" label="Upload progress" />;
 ```
@@ -117,7 +117,7 @@ Use the default slot to show a label inside the progress ring.
 
 ```jsx react
 import { useState } from 'react';
-import { OButton, OIcon, OProgressRing } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OButton, OIcon, OProgressRing } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => {
   const [value, setValue] = useState(50);
