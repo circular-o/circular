@@ -1,6 +1,6 @@
 (() => {
   const isDev = location.hostname === 'localhost';
-  const isNext = location.hostname === 'next.circular.interzero.de';
+  const isNext = location.hostname === 'next.circular-o.de';
   const customElements = fetch('dist/custom-elements.json')
     .then(res => res.json())
     .catch(err => console.error(err));
