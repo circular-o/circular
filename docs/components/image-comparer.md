@@ -20,7 +20,7 @@ For best results, use images that share the same dimensions. The slider can be c
 ```
 
 ```jsx react
-import { OImageComparer } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OImageComparer } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OImageComparer>
@@ -60,7 +60,7 @@ Use the `position` attribute to set the initial position of the slider. This is 
 ```
 
 ```jsx react
-import { OImageComparer } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OImageComparer } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OImageComparer position={25}>

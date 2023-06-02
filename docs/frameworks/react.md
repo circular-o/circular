@@ -1,26 +1,26 @@
 # React
 
-%LIBRARY_NAME% offers a React version of every component to provide an idiomatic experience for React users. You can easily toggle between HTML and React examples throughout the documentation.
+%LIBRARY-NAME% offers a React version of every component to provide an idiomatic experience for React users. You can easily toggle between HTML and React examples throughout the documentation.
 
 ## Installation
 
-To add %LIBRARY_NAME% to your React app, install the package from npm.
+To add %LIBRARY-NAME% to your React app, install the package from npm.
 
 ```bash
-npm install %PACKAGE_FULL_PATH%
+npm install %PACKAGE-FULL-PATH%
 ```
 
 Next, [include a theme](/getting-started/themes) and set the [base path](/getting-started/installation#setting-the-base-path) for icons and other assets. In this example, we'll import the light theme and use the CDN as a base path.
 
 ```jsx
 // App.jsx
-import '%PACKAGE_FULL_PATH%/dist/themes/light.css';
-import { setBasePath } from '%PACKAGE_FULL_PATH%/dist/utilities/base-path';
+import '%PACKAGE-FULL-PATH%/dist/themes/light.css';
+import { setBasePath } from '%PACKAGE-FULL-PATH%/dist/utilities/base-path';
 
-setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/dist/');
+setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE-FULL-PATH%@%PACKAGE-VERSION%/dist/');
 ```
 
-?> If you'd rather not use the CDN for assets, you can create a [build task](https://webpack.js.org/plugins/copy-webpack-plugin/) that copies `node_modules/%PACKAGE_FULL_PATH%/dist/assets` into your app's `public` directory. Then you can point the base path to that folder instead.
+?> If you'd rather not use the CDN for assets, you can create a [build task](https://webpack.js.org/plugins/copy-webpack-plugin/) that copies `node_modules/%PACKAGE-FULL-PATH%/dist/assets` into your app's `public` directory. Then you can point the base path to that folder instead.
 
 Now you can start using components!
 
@@ -28,10 +28,10 @@ Now you can start using components!
 
 ### Importing Components
 
-Every %LIBRARY_NAME% component is available to import as a React component. Note that we're importing the `<OButton>` _React component_ instead of the `<o-button>` _custom element_ in the example below.
+Every %LIBRARY-NAME% component is available to import as a React component. Note that we're importing the `<OButton>` _React component_ instead of the `<o-button>` _custom element_ in the example below.
 
 ```jsx
-import { OButton } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OButton } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const MyComponent = () => <OButton variant="primary">Click me</OButton>;
 
@@ -42,13 +42,13 @@ You can find a copy + paste import for each component in the "importing" section
 
 ### Event Handling
 
-Many %LIBRARY_NAME% components emit [custom events](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent). For example, the [input component](/components/input) emits the `o-input` event when it receives input. In React, you can listen for the event using `onOInput`.
+Many %LIBRARY-NAME% components emit [custom events](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent). For example, the [input component](/components/input) emits the `o-input` event when it receives input. In React, you can listen for the event using `onOInput`.
 
 Here's how you can bind the input's value to a state variable.
 
 ```jsx
 import { useState } from 'react';
-import { OInput } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OInput } from '%PACKAGE-FULL-PATH%/dist/react';
 
 function MyComponent() {
   const [value, setValue] = useState('');
@@ -63,8 +63,8 @@ If you're using TypeScript, it's important to note that `event.target` will be a
 
 ```tsx
 import { useState } from 'react';
-import { OInput } from '%PACKAGE_FULL_PATH%/dist/react';
-import type OInputElement from '%PACKAGE_FULL_PATH%/dist/components/input/input';
+import { OInput } from '%PACKAGE-FULL-PATH%/dist/react';
+import type OInputElement from '%PACKAGE-FULL-PATH%/dist/components/input/input';
 
 function MyComponent() {
   const [value, setValue] = useState('');
@@ -79,7 +79,7 @@ export default MyComponent;
 
 Testing with web components can be challenging if your test environment runs in a Node environment (i.e. it doesn't run in a real browser). Fortunately, [Jest](https://jestjs.io/) has made a number of strides to support web components and provide additional browser APIs. However, it's still not a complete replication of a browser environment.
 
-Here are some tips that will help smooth things over if you're having trouble with Jest + %LIBRARY_NAME%.
+Here are some tips that will help smooth things over if you're having trouble with Jest + %LIBRARY-NAME%.
 
 ?> If you're looking for a fast, modern testing alternative, consider [Web Test Runner](https://modern-web.dev/docs/test-runner/overview/).
 
@@ -119,18 +119,18 @@ For more details, refer to Jest's [manual mocking](https://jestjs.io/docs/manual
 
 ### Transform ES Modules
 
-ES Modules are a [well-supported browser standard](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/). This is how %LIBRARY_NAME% is distributed, but most React apps expect CommonJS. As a result, you'll probably run into the following error.
+ES Modules are a [well-supported browser standard](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/). This is how %LIBRARY-NAME% is distributed, but most React apps expect CommonJS. As a result, you'll probably run into the following error.
 
 ```
 Error: Unable to import outside of a module
 ```
 
-To fix this, add the following to your `package.json` which tells the transpiler to process %LIBRARY_NAME% modules.
+To fix this, add the following to your `package.json` which tells the transpiler to process %LIBRARY-NAME% modules.
 
 ```js
 {
   "jest": {
-    "transformIgnorePatterns": ["node_modules/?!(@%PACKAGE_NAME%)"]
+    "transformIgnorePatterns": ["node_modules/?!(@%PACKAGE-NAME%)"]
   }
 }
 ```
@@ -139,4 +139,4 @@ These instructions are for apps created via Create React App. If you're using Je
 
 For more details, refer to Jest's [`transformIgnorePatterns` customization](https://jestjs.io/docs/tutorial-react-native#transformignorepatterns-customization) documentation.
 
-?> Are you using %LIBRARY_NAME% with React? [Help us improve this page!](%REPO_URL%/blob/next/docs/frameworks/react.md)
+?> Are you using %LIBRARY-NAME% with React? [Help us improve this page!](%REPO-URL%/blob/next/docs/frameworks/react.md)

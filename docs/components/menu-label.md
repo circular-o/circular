@@ -17,7 +17,7 @@
 ```
 
 ```jsx react
-import { ODivider, OMenu, OMenuLabel, OMenuItem } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ODivider, OMenu, OMenuLabel, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OMenu style={{ maxWidth: '200px' }}>

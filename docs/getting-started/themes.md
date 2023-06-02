@@ -1,8 +1,8 @@
 # Themes
 
-%LIBRARY_NAME% is designed to be highly customizable through pure CSS. Out of the box, you can choose from a light or dark theme. Alternatively, you can design your own theme.
+%LIBRARY-NAME% is designed to be highly customizable through pure CSS. Out of the box, you can choose from a light or dark theme. Alternatively, you can design your own theme.
 
-A theme is nothing more than a stylesheet that uses the %LIBRARY_NAME% API to define design tokens and apply custom styles to components. To create a theme, you will need a decent understanding of CSS, including [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) and the [`::part` selector](https://developer.mozilla.org/en-US/docs/Web/CSS/::part).
+A theme is nothing more than a stylesheet that uses the %LIBRARY-NAME% API to define design tokens and apply custom styles to components. To create a theme, you will need a decent understanding of CSS, including [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) and the [`::part` selector](https://developer.mozilla.org/en-US/docs/Web/CSS/::part).
 
 ?> For component developers, built-in themes are also available as JavaScript modules that export [Lit CSSResult](https://lit.dev/docs/api/styles/#CSSResult) objects. You can find them in `dist/themes/*.styles.js`.
 
@@ -26,7 +26,7 @@ To activate a theme, import it and apply the theme's class to the `<html>` eleme
 ```html
 <html class="o-theme-dark">
   <head>
-    <link rel="stylesheet" href="path/to/%PACKAGE_NAME%/dist/themes/dark.css" />
+    <link rel="stylesheet" href="path/to/%PACKAGE-NAME%/dist/themes/dark.css" />
   </head>
 
   <body>
@@ -44,8 +44,8 @@ You can activate themes on various containers throughout the page. This example 
 ```html
 <html>
   <head>
-    <link rel="stylesheet" href="path/to/%PACKAGE_NAME%/dist/themes/light.css" />
-    <link rel="stylesheet" href="path/to/%PACKAGE_NAME%/dist/themes/dark.css" />
+    <link rel="stylesheet" href="path/to/%PACKAGE-NAME%/dist/themes/light.css" />
+    <link rel="stylesheet" href="path/to/%PACKAGE-NAME%/dist/themes/dark.css" />
   </head>
 
   <body>
@@ -66,7 +66,7 @@ There are two ways to create themes. The easiest way is to customize a built-in 
 
 ### Customizing a Built-in Theme
 
-The easiest way to customize %LIBRARY_NAME% is to override one of the built-in themes. You can do this by importing the light or dark theme as-is, then creating a separate stylesheet that overrides [design tokens](/getting-started/customizing#design-tokens) and adds [component styles](/getting-started/customizing#component-parts) to your liking. You must import your theme _after_ the built-in theme.
+The easiest way to customize %LIBRARY-NAME% is to override one of the built-in themes. You can do this by importing the light or dark theme as-is, then creating a separate stylesheet that overrides [design tokens](/getting-started/customizing#design-tokens) and adds [component styles](/getting-started/customizing#component-parts) to your liking. You must import your theme _after_ the built-in theme.
 
 If you're customizing the light theme, you should scope your styles to the following selectors.
 
@@ -87,7 +87,7 @@ If you're customizing the dark theme, you should scope your styles to the follow
 }
 ```
 
-By customizing a built-in theme, you'll maintain a smaller stylesheet containing only the changes you've made. Contrast this to [creating a new theme](#creating-a-new-theme), where you need to explicitly define every design token required by the library. This approach is more "future-proof," as new design tokens that emerge in subsequent versions of %LIBRARY_NAME% will be accounted for by the built-in theme.
+By customizing a built-in theme, you'll maintain a smaller stylesheet containing only the changes you've made. Contrast this to [creating a new theme](#creating-a-new-theme), where you need to explicitly define every design token required by the library. This approach is more "future-proof," as new design tokens that emerge in subsequent versions of %LIBRARY-NAME% will be accounted for by the built-in theme.
 
 While this approach is easier to maintain, the drawback is that your theme can't be activated independently — it's tied to the built-in theme you're extending.
 
@@ -106,7 +106,7 @@ Start by changing the selector to match your theme's name. Assuming your new the
 
 By creating a new theme, you won't be relying on a built-in theme as a foundation. Because the theme is decoupled from the built-ins, you can activate it independently as an alternative to the built-ins. This is the recommended approach if you're looking to open source your theme for others to use.
 
-You will, however, need to maintain your theme more carefully, as new versions of %LIBRARY_NAME% may introduce new design tokens that your theme won't have accounted for. Because of this, it's recommended that you clearly specify which version(s) of %LIBRARY_NAME% your theme is designed to work with and keep it up to date as new versions of %LIBRARY_NAME% are released.
+You will, however, need to maintain your theme more carefully, as new versions of %LIBRARY-NAME% may introduce new design tokens that your theme won't have accounted for. Because of this, it's recommended that you clearly specify which version(s) of %LIBRARY-NAME% your theme is designed to work with and keep it up to date as new versions of %LIBRARY-NAME% are released.
 
 ## Dark Theme
 
@@ -117,7 +117,7 @@ The dark theme works by taking the light theme's [color tokens](/tokens/color) a
 To install the dark theme, add the following to the `<head>` section of your page.
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/dist/themes/dark.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/%PACKAGE-FULL-PATH%@%PACKAGE-VERSION%/dist/themes/dark.css" />
 ```
 
 To activate the theme, apply the `o-theme-dark` class to the `<html>` element.
@@ -130,10 +130,10 @@ To activate the theme, apply the `o-theme-dark` class to the `<html>` element.
 
 ### Detecting the User's Color Scheme Preference
 
-%LIBRARY_NAME% doesn't try to auto-detect the user's light/dark mode preference. This should be done at the application level. As a best practice, to provide a dark theme in your app, you should:
+%LIBRARY-NAME% doesn't try to auto-detect the user's light/dark mode preference. This should be done at the application level. As a best practice, to provide a dark theme in your app, you should:
 
 - Check for [`prefers-color-scheme`](https://stackoverflow.com/a/57795495/567486) and use its value by default
 - Allow the user to override the setting in your app
 - Remember the user's preference and restore it on subsequent logins
 
-%LIBRARY_NAME% avoids using the `prefers-color-scheme` media query because not all apps support dark mode, and it would break things for the ones that don't.
+%LIBRARY-NAME% avoids using the `prefers-color-scheme` media query because not all apps support dark mode, and it would break things for the ones that don't.

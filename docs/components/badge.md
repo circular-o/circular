@@ -7,7 +7,7 @@
 ```
 
 ```jsx react
-import { OBadge } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OBadge } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <OBadge>Badge</OBadge>;
 ```
@@ -27,7 +27,7 @@ Set the `variant` attribute to change the badge's variant.
 ```
 
 ```jsx react
-import { OBadge } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OBadge } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <>
@@ -53,7 +53,7 @@ Use the `pill` attribute to give badges rounded edges.
 ```
 
 ```jsx react
-import { OBadge } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OBadge } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <>
@@ -97,7 +97,7 @@ Use the `pulse` attribute to draw attention to the badge with a subtle animation
 ```
 
 ```jsx react
-import { OBadge } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OBadge } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .badge-pulse o-badge:not(:last-of-type) {
@@ -152,7 +152,7 @@ One of the most common use cases for badges is attaching them to buttons. To mak
 ```
 
 ```jsx react
-import { OBadge, OButton } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OBadge, OButton } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <>
@@ -191,7 +191,7 @@ When including badges in menu items, use the `suffix` slot to make sure they're 
 ```
 
 ```jsx react
-import { OBadge, OButton, OMenu, OMenuItem, OMenuLabel } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OBadge, OButton, OMenu, OMenuItem, OMenuLabel } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OMenu

@@ -14,7 +14,7 @@
 ```
 
 ```jsx react
-import { OOption, OSelect } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OOption, OSelect } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OSelect>
@@ -45,7 +45,7 @@ Use the `label` attribute to give the select an accessible label. For labels tha
 ```
 
 ```jsx react
-import { OOption, OSelect } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OOption, OSelect } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OSelect label="Select one">
@@ -69,7 +69,7 @@ Add descriptive help text to a select with the `help-text` attribute. For help t
 ```
 
 ```jsx react
-import { OOption, OSelect } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OOption, OSelect } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OSelect label="Experience" help-text="Please tell us your skill level.">
@@ -93,7 +93,7 @@ Use the `placeholder` attribute to add a placeholder.
 ```
 
 ```jsx react
-import { OOption, OSelect } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OOption, OSelect } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OSelect placeholder="Select one">
@@ -117,7 +117,7 @@ Use the `clearable` attribute to make the control clearable. The clear button on
 ```
 
 ```jsx react
-import { OOption, OSelect } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OOption, OSelect } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OSelect placeholder="Clearable" clearable>
@@ -141,7 +141,7 @@ Add the `filled` attribute to draw a filled select.
 ```
 
 ```jsx react
-import { OOption, OSelect } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OOption, OSelect } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OSelect filled>
@@ -165,7 +165,7 @@ Use the `pill` attribute to give selects rounded edges.
 ```
 
 ```jsx react
-import { OOption, OSelect } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OOption, OSelect } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OSelect pill>
@@ -189,7 +189,7 @@ Use the `disabled` attribute to disable a select.
 ```
 
 ```jsx react
-import { OOption, OSelect } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OOption, OSelect } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OSelect placeholder="Disabled" disabled>
@@ -216,7 +216,7 @@ To allow multiple options to be selected, use the `multiple` attribute. It's a g
 ```
 
 ```jsx react
-import { OOption, OSelect } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OOption, OSelect } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OSelect label="Select a Few" value="option-1 option-2 option-3" multiple clearable>
@@ -246,7 +246,7 @@ Use the `value` attribute to set the initial selection. When using `multiple`, u
 ```
 
 ```jsx react
-import { ODivider, OOption, OSelect } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ODivider, OOption, OSelect } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OSelect value="option-1 option-2" multiple clearable>
@@ -276,7 +276,7 @@ Use `<o-divider>` to group listbox items visually. You can also use `<small>` to
 ```
 
 ```jsx react
-import { OOption, OSelect } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OOption, OSelect } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OSelect>
@@ -319,7 +319,7 @@ Use the `size` attribute to change a select's size. Note that size does not appl
 ```
 
 ```jsx react
-import { OOption, OSelect } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OOption, OSelect } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <>
@@ -364,7 +364,7 @@ The preferred placement of the select's listbox can be set with the `placement` 
 import {
   OOption,
   OSelect
-} from '%PACKAGE_FULL_PATH%/dist/react';
+} from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OSelect placement="top">
@@ -403,7 +403,7 @@ Use the `prefix` slot to prepend an icon to the control.
 ```
 
 ```jsx react
-import { OIcon, OOption, OSelect } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OIcon, OOption, OSelect } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <>

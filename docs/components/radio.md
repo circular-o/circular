@@ -13,7 +13,7 @@ Radios are designed to be used with [radio groups](/components/radio-group).
 ```
 
 ```jsx react
-import { ORadio, ORadioGroup } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ORadio, ORadioGroup } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <ORadioGroup label="Select an option" name="a" value="1">
@@ -41,7 +41,7 @@ To set the initial value and checked state, use the `value` attribute on the con
 ```
 
 ```jsx react
-import { ORadio, ORadioGroup } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ORadio, ORadioGroup } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <ORadioGroup label="Select an option" name="a" value="3">
@@ -65,7 +65,7 @@ Use the `disabled` attribute to disable a radio.
 ```
 
 ```jsx react
-import { ORadio, ORadioGroup } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ORadio, ORadioGroup } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <ORadioGroup label="Select an option" name="a" value="1">
@@ -107,7 +107,7 @@ Add the `size` attribute to the [Radio Group](/components/radio-group) to change
 ```
 
 ```jsx react
-import { ORadio } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ORadio } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <>

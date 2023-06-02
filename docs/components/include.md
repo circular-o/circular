@@ -11,7 +11,7 @@ The included content will be inserted into the `<o-include>` element's default s
 ```
 
 ```jsx react
-import { OInclude } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OInclude } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <OInclude src="assets/examples/include.html" />;
 ```

@@ -4,7 +4,7 @@ All of the design tokens described herein are considered relatively stable. Howe
 
 Most design tokens are consistent across the light and dark theme. Those that vary will show both values.
 
-?> Currently, the source of design tokens is considered to be [`light.css`](%REPO_URL%/blob/next/src/themes/light.css). The dark theme, [dark.css](%REPO_URL%/blob/next/src/themes/dark.css), mirrors all of the same tokens with dark mode-specific values where appropriate. Work is planned to move all design tokens to a single file, perhaps JSON or YAML, in the near future.
+?> Currently, the source of design tokens is considered to be [`light.css`](%REPO-URL%/blob/next/src/themes/light.css). The dark theme, [dark.css](%REPO-URL%/blob/next/src/themes/dark.css), mirrors all of the same tokens with dark mode-specific values where appropriate. Work is planned to move all design tokens to a single file, perhaps JSON or YAML, in the near future.
 
 ## Focus Rings
 

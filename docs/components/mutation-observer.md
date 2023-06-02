@@ -42,7 +42,7 @@ The mutation observer will report changes to the content it wraps through the `o
 
 ```jsx react
 import { useState } from 'react';
-import { OButton, OMutationObserver } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OButton, OMutationObserver } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .resize-observer-overview div {
@@ -141,7 +141,7 @@ Use the `child-list` attribute to watch for new child elements that are added or
 
 ```jsx react
 import { useState } from 'react';
-import { OButton, OMutationObserver } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OButton, OMutationObserver } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .mutation-child-list .buttons {

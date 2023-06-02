@@ -30,7 +30,7 @@ Dropdowns are designed to work well with [menus](/components/menu) to provide a 
 ```
 
 ```jsx react
-import { OButton, ODivider, ODropdown, OIcon, OMenu, OMenuItem } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OButton, ODivider, ODropdown, OIcon, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <ODropdown>
@@ -90,7 +90,7 @@ When dropdowns are used with [menus](/components/menu), you can listen for the [
 ```
 
 ```jsx react
-import { OButton, ODropdown, OMenu, OMenuItem } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OButton, ODropdown, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => {
   function handleSelect(event) {
@@ -140,7 +140,7 @@ Alternatively, you can listen for the `click` event on individual menu items. No
 ```
 
 ```jsx react
-import { OButton, ODropdown, OMenu, OMenuItem } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OButton, ODropdown, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => {
   function handleCut() {
@@ -189,7 +189,7 @@ The preferred placement of the dropdown can be set with the `placement` attribut
 ```
 
 ```jsx react
-import { OButton, ODivider, ODropdown, OMenu, OMenuItem } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OButton, ODivider, ODropdown, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <ODropdown placement="top-start">
@@ -227,7 +227,7 @@ The distance from the panel to the trigger can be customized using the `distance
 ```
 
 ```jsx react
-import { OButton, ODivider, ODropdown, OMenu, OMenuItem } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OButton, ODivider, ODropdown, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <ODropdown distance={30}>
@@ -265,7 +265,7 @@ The offset of the panel along the trigger can be customized using the `skidding`
 ```
 
 ```jsx react
-import { OButton, ODivider, ODropdown, OMenu, OMenuItem } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OButton, ODivider, ODropdown, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <ODropdown skidding={30}>
@@ -320,7 +320,7 @@ Dropdown panels will be clipped if they're inside a container that has `overflow
 ```
 
 ```jsx react
-import { OButton, ODivider, ODropdown, OIcon, OMenu, OMenuItem } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OButton, ODivider, ODropdown, OIcon, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .dropdown-hoist {

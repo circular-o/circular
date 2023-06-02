@@ -7,7 +7,7 @@
 ```
 
 ```jsx react
-import { ORating } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ORating } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <ORating label="Rating" />;
 ```
@@ -23,7 +23,7 @@ Ratings are commonly identified contextually, so labels aren't displayed. Howeve
 ```
 
 ```jsx react
-import { ORating } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ORating } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <ORating label="Rate this component" />;
 ```
@@ -37,7 +37,7 @@ Ratings are 0-5 by default. To change the maximum possible value, use the `max` 
 ```
 
 ```jsx react
-import { ORating } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ORating } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <ORating label="Rating" max={3} />;
 ```
@@ -51,7 +51,7 @@ Use the `precision` attribute to let users select fractional ratings.
 ```
 
 ```jsx react
-import { ORating } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ORating } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <ORating label="Rating" precision={0.5} value={2.5} />;
 ```
@@ -65,7 +65,7 @@ Set the `--symbol-size` custom property to adjust the size.
 ```
 
 ```jsx react
-import { ORating } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ORating } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <ORating label="Rating" style={{ '--symbol-size': '2rem' }} />;
 ```
@@ -79,7 +79,7 @@ Use the `readonly` attribute to display a rating that users can't change.
 ```
 
 ```jsx react
-import { ORating } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ORating } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <ORating label="Rating" readonly value={3} />;
 ```
@@ -93,7 +93,7 @@ Use the `disable` attribute to disable the rating.
 ```
 
 ```jsx react
-import { ORating } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ORating } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => <ORating label="Rating" disabled value={3} />;
 ```
@@ -145,7 +145,7 @@ The event has a payload with `phase` and `value` properties. The `phase` propert
 
 ```jsx react
 import { useState } from 'react';
-import { ORating } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ORating } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const terms = ['No rating', 'Terrible', 'Bad', 'OK', 'Good', 'Excellent'];
 const css = `
@@ -205,7 +205,7 @@ You can provide custom icons by passing a function to the `getSymbol` property.
 ```
 
 ```jsx react
-import { ORating } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ORating } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <ORating
@@ -234,7 +234,7 @@ You can also use the `getSymbol` property to render different icons based on val
 ```
 
 ```jsx react
-import { ORating } from '%PACKAGE_FULL_PATH%/dist/react';
+import { ORating } from '%PACKAGE-FULL-PATH%/dist/react';
 
 function getSymbol(value) {
   const icons = ['emoji-angry', 'emoji-frown', 'emoji-expressionless', 'emoji-smile', 'emoji-laughing'];

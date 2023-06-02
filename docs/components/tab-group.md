@@ -19,7 +19,7 @@ Tab groups make use of [tabs](/components/tab) and [tab panels](/components/tab-
 ```
 
 ```jsx react
-import { OTab, OTabGroup, OTabPanel } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OTab, OTabGroup, OTabPanel } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OTabGroup>
@@ -65,7 +65,7 @@ Tabs can be shown on the bottom by setting `placement` to `bottom`.
 ```
 
 ```jsx react
-import { OTab, OTabGroup, OTabPanel } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OTab, OTabGroup, OTabPanel } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OTabGroup placement="bottom">
@@ -109,7 +109,7 @@ Tabs can be shown on the starting side by setting `placement` to `start`.
 ```
 
 ```jsx react
-import { OTab, OTabGroup, OTabPanel } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OTab, OTabGroup, OTabPanel } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OTabGroup placement="start">
@@ -153,7 +153,7 @@ Tabs can be shown on the ending side by setting `placement` to `end`.
 ```
 
 ```jsx react
-import { OTab, OTabGroup, OTabPanel } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OTab, OTabGroup, OTabPanel } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OTabGroup placement="end">
@@ -215,7 +215,7 @@ Add the `closable` attribute to a tab to show a close button. This example shows
 ```
 
 ```jsx react
-import { OTab, OTabGroup, OTabPanel } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OTab, OTabGroup, OTabPanel } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => {
   function handleClose(event) {
@@ -307,7 +307,7 @@ When there are more tabs than horizontal space allows, the nav will be scrollabl
 ```
 
 ```jsx react
-import { OTab, OTabGroup, OTabPanel } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OTab, OTabGroup, OTabPanel } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OTabGroup>
@@ -415,7 +415,7 @@ When focused, keyboard users can press <kbd>Left</kbd> or <kbd>Right</kbd> to se
 ```
 
 ```jsx react
-import { OTab, OTabGroup, OTabPanel } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OTab, OTabGroup, OTabPanel } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <OTabGroup activation="manual">

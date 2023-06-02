@@ -24,7 +24,7 @@ To animate an element, wrap it in `<o-animation>` and set an animation `name`. T
 ```
 
 ```jsx react
-import { OAnimation } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OAnimation } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .animation-overview .box {
@@ -168,7 +168,7 @@ Use an [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/
 
 ```jsx react
 import { useEffect, useRef, useState } from 'react';
-import { OAnimation } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OAnimation } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .animation-scroll {
@@ -257,7 +257,7 @@ Supply your own [keyframe formats](https://developer.mozilla.org/en-US/docs/Web/
 ```
 
 ```jsx react
-import { OAnimation } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OAnimation } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .animation-keyframes .box {
@@ -324,7 +324,7 @@ Animations won't play until you apply the `play` attribute. You can omit it init
 
 ```jsx react
 import { useState } from 'react';
-import { OAnimation, OButton } from '%PACKAGE_FULL_PATH%/dist/react';
+import { OAnimation, OButton } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => {
   const [play, setPlay] = useState(false);
