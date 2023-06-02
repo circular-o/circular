@@ -1,13 +1,13 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './mutation-observer.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary The Mutation Observer component offers a thin, declarative interface to the [`MutationObserver API`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
- * @documentation https://shoelace.style/components/mutation-observer
+ * @documentation https://circular-o.github.io/circular/#/components/mutation-observer
  * @status stable
  * @since 2.0
  *
@@ -16,7 +16,7 @@ import type { CSSResultGroup } from 'lit';
  * @slot - The content to watch for mutations.
  */
 @customElement('o-mutation-observer')
-export default class OMutationObserver extends ShoelaceElement {
+export default class OMutationObserver extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private mutationObserver: MutationObserver;

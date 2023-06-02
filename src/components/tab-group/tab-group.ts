@@ -5,7 +5,7 @@ import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { scrollIntoView } from '../../internal/scroll';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './tab-group.styles';
 import type { CSSResultGroup } from 'lit';
 import type OTab from '../tab/tab';
@@ -13,7 +13,7 @@ import type OTabPanel from '../tab-panel/tab-panel';
 
 /**
  * @summary Tab groups organize content into a container that shows one section at a time.
- * @documentation https://shoelace.style/components/tab-group
+ * @documentation https://circular-o.github.io/circular/#/components/tab-group
  * @status stable
  * @since 2.0
  *
@@ -40,7 +40,7 @@ import type OTabPanel from '../tab-panel/tab-panel';
  * @cssproperty --track-width - The width of the indicator's track (the line that separates tabs from panels).
  */
 @customElement('o-tab-group')
-export default class OTabGroup extends ShoelaceElement {
+export default class OTabGroup extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
   private readonly localize = new LocalizeController(this);
 

@@ -3,13 +3,13 @@ import { customElement, property } from 'lit/decorators.js';
 import { HasSlotController } from '../../internal/slot';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './breadcrumb-item.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Breadcrumb Items are used inside [breadcrumbs](/components/breadcrumb) to represent different links.
- * @documentation https://shoelace.style/components/breadcrumb-item
+ * @documentation https://circular-o.github.io/circular/#/components/breadcrumb-item
  * @status stable
  * @since 2.0
  *
@@ -26,7 +26,7 @@ import type { CSSResultGroup } from 'lit';
  * @csspart separator - The container that wraps the separator.
  */
 @customElement('o-breadcrumb-item')
-export default class OBreadcrumbItem extends ShoelaceElement {
+export default class OBreadcrumbItem extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private readonly hasSlotController = new HasSlotController(this, 'prefix', 'suffix');

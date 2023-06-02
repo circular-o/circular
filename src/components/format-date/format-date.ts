@@ -1,16 +1,16 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 
 /**
  * @summary Formats a date/time using the specified locale and options.
- * @documentation https://shoelace.style/components/format-date
+ * @documentation https://circular-o.github.io/circular/#/components/format-date
  * @status stable
  * @since 2.0
  */
 @customElement('o-format-date')
-export default class OFormatDate extends ShoelaceElement {
+export default class OFormatDate extends LibraryBaseElement {
   private readonly localize = new LocalizeController(this);
 
   /**

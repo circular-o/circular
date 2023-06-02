@@ -8,11 +8,11 @@
   "customElements": "dist/custom-elements.json",
   "web-types": "dist/web-types.json",
   "type": "module",
-  "types": "dist/shoelace.d.ts",
+  "types": "dist/circular.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/shoelace.d.ts",
-      "import": "./dist/shoelace.js"
+      "types": "./dist/circular.d.ts",
+      "import": "./dist/circular.js"
     },
     "./dist/custom-elements.json": "./dist/custom-elements.json",
     "./dist/themes/*": "./dist/themes/*",

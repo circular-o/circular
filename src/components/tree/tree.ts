@@ -3,8 +3,8 @@ import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { watch } from '../../internal/watch';
+import LibraryBaseElement from '../../internal/library-base-element';
 import OTreeItem from '../tree-item/tree-item';
-import ShoelaceElement from '../../internal/shoelace-element';
 import styles from './tree.styles';
 import type { CSSResultGroup } from 'lit';
 
@@ -50,7 +50,7 @@ function syncCheckboxes(changedTreeItem: OTreeItem, initialSync = false) {
 
 /**
  * @summary Trees allow you to display a hierarchical list of selectable [tree items](/components/tree-item). Items with children can be expanded and collapsed as desired by the user.
- * @documentation https://shoelace.style/components/tree
+ * @documentation https://circular-o.github.io/circular/#/components/tree
  * @status stable
  * @since 2.0
  *
@@ -70,7 +70,7 @@ function syncCheckboxes(changedTreeItem: OTreeItem, initialSync = false) {
  * @cssproperty [--indent-guide-width=0] - The width of the indentation line.
  */
 @customElement('o-tree')
-export default class OTree extends ShoelaceElement {
+export default class OTree extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;

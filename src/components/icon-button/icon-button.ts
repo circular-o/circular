@@ -3,13 +3,13 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './icon-button.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Icons buttons are simple, icon-only buttons that can be used for actions and in toolbars.
- * @documentation https://shoelace.style/components/icon-button
+ * @documentation https://circular-o.github.io/circular/#/components/icon-button
  * @status stable
  * @since 2.0
  *
@@ -21,7 +21,7 @@ import type { CSSResultGroup } from 'lit';
  * @csspart base - The component's base wrapper.
  */
 @customElement('o-icon-button')
-export default class OIconButton extends ShoelaceElement {
+export default class OIconButton extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   @query('.icon-button') button: HTMLButtonElement | HTMLLinkElement;

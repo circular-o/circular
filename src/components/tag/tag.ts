@@ -3,13 +3,13 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './tag.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Tags are used as labels to organize things or to indicate a selection.
- * @documentation https://shoelace.style/components/tag
+ * @documentation https://circular-o.github.io/circular/#/components/tag
  * @status stable
  * @since 2.0
  *
@@ -25,7 +25,7 @@ import type { CSSResultGroup } from 'lit';
  * @csspart remove-button__base - The remove button's exported `base` part.
  */
 @customElement('o-tag')
-export default class OTag extends ShoelaceElement {
+export default class OTag extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
   private readonly localize = new LocalizeController(this);
 

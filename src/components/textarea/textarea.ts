@@ -7,14 +7,14 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './textarea.styles';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element';
 
 /**
  * @summary Textareas collect data from the user and allow multiple lines of text.
- * @documentation https://shoelace.style/components/textarea
+ * @documentation https://circular-o.github.io/circular/#/components/textarea
  * @status stable
  * @since 2.0
  *
@@ -35,7 +35,7 @@ import type { ShoelaceFormControl } from '../../internal/shoelace-element';
  * @csspart textarea - The internal `<textarea>` control.
  */
 @customElement('o-textarea')
-export default class OTextarea extends ShoelaceElement implements ShoelaceFormControl {
+export default class OTextarea extends LibraryBaseElement implements LibraryBaseFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this, {

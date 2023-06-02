@@ -10,8 +10,8 @@ import { prefersReducedMotion } from '../../internal/animate';
 import { range } from 'lit/directives/range.js';
 import { ScrollController } from './scroll-controller';
 import { watch } from '../../internal/watch';
+import LibraryBaseElement from '../../internal/library-base-element';
 import OCarouselItem from '../carousel-item/carousel-item';
-import ShoelaceElement from '../../internal/shoelace-element';
 import styles from './carousel.styles';
 import type { CSSResultGroup } from 'lit';
 
@@ -45,7 +45,7 @@ import type { CSSResultGroup } from 'lit';
  *  partially visible as a scroll hint.
  */
 @customElement('o-carousel')
-export default class OCarousel extends ShoelaceElement {
+export default class OCarousel extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   /** When set, allows the user to navigate the carousel in the same direction indefinitely. */

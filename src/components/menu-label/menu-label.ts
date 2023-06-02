@@ -1,12 +1,12 @@
 import { customElement } from 'lit/decorators.js';
 import { html } from 'lit';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './menu-label.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Menu labels are used to describe a group of menu items.
- * @documentation https://shoelace.style/components/menu-label
+ * @documentation https://circular-o.github.io/circular/#/components/menu-label
  * @status stable
  * @since 2.0
  *
@@ -15,7 +15,7 @@ import type { CSSResultGroup } from 'lit';
  * @csspart base - The component's base wrapper.
  */
 @customElement('o-menu-label')
-export default class OMenuLabel extends ShoelaceElement {
+export default class OMenuLabel extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   render() {

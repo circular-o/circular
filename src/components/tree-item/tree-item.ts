@@ -10,13 +10,13 @@ import { live } from 'lit/directives/live.js';
 import { LocalizeController } from '../../utilities/localize';
 import { watch } from '../../internal/watch';
 import { when } from 'lit/directives/when.js';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './tree-item.styles';
 import type { CSSResultGroup, PropertyValueMap } from 'lit';
 
 /**
  * @summary A tree item serves as a hierarchical node that lives inside a [tree](/components/tree).
- * @documentation https://shoelace.style/components/tree-item
+ * @documentation https://circular-o.github.io/circular/#/components/tree-item
  * @status stable
  * @since 2.0
  *
@@ -57,7 +57,7 @@ import type { CSSResultGroup, PropertyValueMap } from 'lit';
  * @csspart checkbox__label - The checkbox's exported `label` part.
  */
 @customElement('o-tree-item')
-export default class OTreeItem extends ShoelaceElement {
+export default class OTreeItem extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   static isTreeItem(node: Node) {

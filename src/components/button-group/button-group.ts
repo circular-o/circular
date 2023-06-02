@@ -1,12 +1,12 @@
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html } from 'lit';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './button-group.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Button groups can be used to group related buttons into sections.
- * @documentation https://shoelace.style/components/button-group
+ * @documentation https://circular-o.github.io/circular/#/components/button-group
  * @status stable
  * @since 2.0
  *
@@ -15,7 +15,7 @@ import type { CSSResultGroup } from 'lit';
  * @csspart base - The component's base wrapper.
  */
 @customElement('o-button-group')
-export default class OButtonGroup extends ShoelaceElement {
+export default class OButtonGroup extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   @query('slot') defaultSlot: HTMLSlotElement;

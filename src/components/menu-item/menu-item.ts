@@ -4,13 +4,13 @@ import { customElement, property, query } from 'lit/decorators.js';
 import { getTextContent } from '../../internal/slot';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './menu-item.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Menu items provide options for the user to pick from in a menu.
- * @documentation https://shoelace.style/components/menu-item
+ * @documentation https://circular-o.github.io/circular/#/components/menu-item
  * @status stable
  * @since 2.0
  *
@@ -28,7 +28,7 @@ import type { CSSResultGroup } from 'lit';
  * @csspart submenu-icon - The submenu icon, visible only when the menu item has a submenu (not yet implemented).
  */
 @customElement('o-menu-item')
-export default class OMenuItem extends ShoelaceElement {
+export default class OMenuItem extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private cachedTextLabel: string;

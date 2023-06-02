@@ -8,14 +8,14 @@ import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './button.styles';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element';
 
 /**
  * @summary Buttons represent actions that are available to the user.
- * @documentation https://shoelace.style/components/button
+ * @documentation https://circular-o.github.io/circular/#/components/button
  * @status stable
  * @since 2.0
  *
@@ -37,7 +37,7 @@ import type { ShoelaceFormControl } from '../../internal/shoelace-element';
  * @csspart caret - The button's caret icon, an `<o-icon>` element.
  */
 @customElement('o-button')
-export default class OButton extends ShoelaceElement implements ShoelaceFormControl {
+export default class OButton extends LibraryBaseElement implements LibraryBaseFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this, {

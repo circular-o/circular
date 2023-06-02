@@ -8,7 +8,7 @@ import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './alert.styles';
 import type { CSSResultGroup } from 'lit';
 
@@ -16,7 +16,7 @@ const toastStack = Object.assign(document.createElement('div'), { className: 'o-
 
 /**
  * @summary Alerts are used to display important messages inline or as toast notifications.
- * @documentation https://shoelace.style/components/alert
+ * @documentation https://circular-o.github.io/circular/#/components/alert
  * @status stable
  * @since 2.0
  *
@@ -41,7 +41,7 @@ const toastStack = Object.assign(document.createElement('div'), { className: 'o-
  */
 
 @customElement('o-alert')
-export default class OAlert extends ShoelaceElement {
+export default class OAlert extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private autoHideTimeout: number;

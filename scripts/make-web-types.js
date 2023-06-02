@@ -10,6 +10,7 @@ import path from 'path';
 
 const { outdir } = commandLineArgs({ name: 'outdir', type: String });
 const metadata = JSON.parse(fs.readFileSync(path.join(outdir, 'custom-elements.json'), 'utf8'));
+const docsBaseUrl = 'https://circular-o.github.io/circular/#/';
 
 const jsonataExprString = `{
   "$schema": "http://json.schemastore.org/web-types",
@@ -29,7 +30,7 @@ const jsonataExprString = `{
         modules.declarations.{
           "name": tagName,
           "description": description,
-          "doc-url": $join(["https://shoelace.style/components/", $substringAfter(tagName, 'o-')]),
+          "doc-url": $join(["${docsBaseUrl}", $substringAfter(tagName, 'o-')]),
           "js": {
             "properties": [
               members.{

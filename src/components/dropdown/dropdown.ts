@@ -8,7 +8,7 @@ import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './dropdown.styles';
 import type { CSSResultGroup } from 'lit';
 import type { OSelectEvent } from '../../events/events';
@@ -19,7 +19,7 @@ import type OPopup from '../popup/popup';
 
 /**
  * @summary Dropdowns expose additional content that "drops down" in a panel.
- * @documentation https://shoelace.style/components/dropdown
+ * @documentation https://circular-o.github.io/circular/#/components/dropdown
  * @status stable
  * @since 2.0
  *
@@ -41,7 +41,7 @@ import type OPopup from '../popup/popup';
  * @animation dropdown.hide - The animation to use when hiding the dropdown.
  */
 @customElement('o-dropdown')
-export default class ODropdown extends ShoelaceElement {
+export default class ODropdown extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   @query('.dropdown') popup: OPopup;

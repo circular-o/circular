@@ -10,16 +10,16 @@ import {
 import { HasSlotController } from '../../internal/slot';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './radio-group.styles';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element';
 import type ORadio from '../radio/radio';
 import type ORadioButton from '../radio-button/radio-button';
 
 /**
  * @summary Radio groups are used to group multiple [radios](/components/radio) or [radio buttons](/components/radio-button) so they function as a single form control.
- * @documentation https://shoelace.style/components/radio-group
+ * @documentation https://circular-o.github.io/circular/#/components/radio-group
  * @status stable
  * @since 2.0
  *
@@ -41,7 +41,7 @@ import type ORadioButton from '../radio-button/radio-button';
  * @csspart button-group__base - The button group's `base` part.
  */
 @customElement('o-radio-group')
-export default class ORadioGroup extends ShoelaceElement implements ShoelaceFormControl {
+export default class ORadioGroup extends LibraryBaseElement implements LibraryBaseFormControl {
   static styles: CSSResultGroup = styles;
 
   protected readonly formControlController = new FormControlController(this);

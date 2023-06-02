@@ -3,13 +3,13 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, state } from 'lit/decorators.js';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './radio.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Radios allow the user to select a single option from a group.
- * @documentation https://shoelace.style/components/radio
+ * @documentation https://circular-o.github.io/circular/#/components/radio
  * @status stable
  * @since 2.0
  *
@@ -27,7 +27,7 @@ import type { CSSResultGroup } from 'lit';
  * @csspart label - The container that wraps the radio's label.
  */
 @customElement('o-radio')
-export default class ORadio extends ShoelaceElement {
+export default class ORadio extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   @state() checked = false;

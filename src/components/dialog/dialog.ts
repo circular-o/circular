@@ -10,14 +10,14 @@ import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
+import LibraryBaseElement from '../../internal/library-base-element';
 import Modal from '../../internal/modal';
-import ShoelaceElement from '../../internal/shoelace-element';
 import styles from './dialog.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Dialogs, sometimes called "modals", appear above the page and require the user's immediate attention.
- * @documentation https://shoelace.style/components/dialog
+ * @documentation https://circular-o.github.io/circular/#/components/dialog
  * @status stable
  * @since 2.0
  *
@@ -62,7 +62,7 @@ import type { CSSResultGroup } from 'lit';
  * @animation dialog.overlay.hide - The animation to use when hiding the dialog's overlay.
  */
 @customElement('o-dialog')
-export default class ODialog extends ShoelaceElement {
+export default class ODialog extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private readonly hasSlotController = new HasSlotController(this, 'footer');
