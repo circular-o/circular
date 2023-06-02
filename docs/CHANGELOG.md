@@ -1,3 +1,9 @@
+# [1.2.0-next.1](https://github.com/circular-o/circular/compare/v1.1.1-next.2...v1.2.0-next.1) (2023-06-02)
+
+### Features
+
+- Renames all as expected in Circular ([d414700](https://github.com/circular-o/circular/commit/d4147004d1fe6233d61795a93f286f2b2cf80d30))
+
 ## [1.1.1-next.2](https://github.com/circular-o/circular/compare/v1.1.1-next.1...v1.1.1-next.2) (2023-05-26)
 
 ### Bug Fixes
