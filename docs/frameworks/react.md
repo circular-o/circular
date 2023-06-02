@@ -7,20 +7,20 @@ Shoelace offers a React version of every component to provide an idiomatic exper
 To add Shoelace to your React app, install the package from npm.
 
 ```bash
-npm install %PACKAGE_NAME%
+npm install %PACKAGE_FULL_PATH%
 ```
 
 Next, [include a theme](/getting-started/themes) and set the [base path](/getting-started/installation#setting-the-base-path) for icons and other assets. In this example, we'll import the light theme and use the CDN as a base path.
 
 ```jsx
 // App.jsx
-import '%PACKAGE_NAME%/dist/themes/light.css';
-import { setBasePath } from '%PACKAGE_NAME%/dist/utilities/base-path';
+import '%PACKAGE_FULL_PATH%/dist/themes/light.css';
+import { setBasePath } from '%PACKAGE_FULL_PATH%/dist/utilities/base-path';
 
-setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/');
+setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/dist/');
 ```
 
-?> If you'd rather not use the CDN for assets, you can create a [build task](https://webpack.js.org/plugins/copy-webpack-plugin/) that copies `node_modules/%PACKAGE_NAME%/dist/assets` into your app's `public` directory. Then you can point the base path to that folder instead.
+?> If you'd rather not use the CDN for assets, you can create a [build task](https://webpack.js.org/plugins/copy-webpack-plugin/) that copies `node_modules/%PACKAGE_FULL_PATH%/dist/assets` into your app's `public` directory. Then you can point the base path to that folder instead.
 
 Now you can start using components!
 
@@ -31,7 +31,7 @@ Now you can start using components!
 Every Shoelace component is available to import as a React component. Note that we're importing the `<OButton>` _React component_ instead of the `<o-button>` _custom element_ in the example below.
 
 ```jsx
-import { OButton } from '%PACKAGE_NAME%/dist/react';
+import { OButton } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const MyComponent = () => <OButton variant="primary">Click me</OButton>;
 
@@ -48,7 +48,7 @@ Here's how you can bind the input's value to a state variable.
 
 ```jsx
 import { useState } from 'react';
-import { OInput } from '%PACKAGE_NAME%/dist/react';
+import { OInput } from '%PACKAGE_FULL_PATH%/dist/react';
 
 function MyComponent() {
   const [value, setValue] = useState('');
@@ -63,8 +63,8 @@ If you're using TypeScript, it's important to note that `event.target` will be a
 
 ```tsx
 import { useState } from 'react';
-import { OInput } from '%PACKAGE_NAME%/dist/react';
-import type OInputElement from '%PACKAGE_NAME%/dist/components/input/input';
+import { OInput } from '%PACKAGE_FULL_PATH%/dist/react';
+import type OInputElement from '%PACKAGE_FULL_PATH%/dist/components/input/input';
 
 function MyComponent() {
   const [value, setValue] = useState('');
@@ -130,7 +130,7 @@ To fix this, add the following to your `package.json` which tells the transpiler
 ```js
 {
   "jest": {
-    "transformIgnorePatterns": ["node_modules/?!(@shoelace)"]
+    "transformIgnorePatterns": ["node_modules/?!(@%PACKAGE_NAME%)"]
   }
 }
 ```

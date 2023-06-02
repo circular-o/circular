@@ -17,7 +17,7 @@ This integration has been tested with the following:
 To get started using Shoelace with NextJS, the following packages must be installed.
 
 ```bash
-yarn add %PACKAGE_NAME% copy-webpack-plugin next-compose-plugins next-transpile-modules
+yarn add %PACKAGE_FULL_PATH% copy-webpack-plugin next-compose-plugins next-transpile-modules
 ```
 
 ### Enabling ESM
@@ -36,7 +36,7 @@ There's one more step to enable ESM in NextJS, but we'll tackle that in our Next
 The next step is to import Shoelace's default theme (stylesheet) in your `_app.js` file:
 
 ```css
-import '%PACKAGE_NAME%/dist/themes/light.css';
+import '%PACKAGE_FULL_PATH%/dist/themes/light.css';
 ```
 
 ### Defining Custom Elements
@@ -55,14 +55,14 @@ function CustomEls({ URL }) {
       return;
     }
 
-    import('%PACKAGE_NAME%/dist/utilities/base-path').then(({ setBasePath }) => {
+    import('%PACKAGE_FULL_PATH%/dist/utilities/base-path').then(({ setBasePath }) => {
       setBasePath(`${URL}/static/static`);
 
       // This imports all components
-      import('%PACKAGE_NAME%/dist/shoelace');
+      import('%PACKAGE_FULL_PATH%/dist/%PACKAGE_NAME%');
       // If you're wanting to selectively import components, replace this line with your own definitions
 
-      // import("%PACKAGE_NAME%/dist/components/button/button");
+      // import("%PACKAGE_FULL_PATH%/dist/components/button/button");
       customEls.current = true;
     });
   }, [URL, customEls]);
@@ -113,7 +113,7 @@ MyApp.getInitialProps = async context => {
 };
 ```
 
-?> You'll need to set this `BASE_URL` variable inside the build process of whatever local build or CI/CD you have. This will need to be an absolute URL, as a relative URL will cause shoelace to throw a warning
+?> You'll need to set this `BASE_URL` variable inside the build process of whatever local build or CI/CD you have. This will need to be an absolute URL, as a relative URL will cause %PACKAGE_NAME% to throw a warning
 
 ### webpack Config
 
@@ -126,7 +126,7 @@ import CopyPlugin from 'copy-webpack-plugin';
 import withPlugins from 'next-compose-plugins';
 import withTM from 'next-transpile-modules';
 
-const withTMCompiled = withTM(['%PACKAGE_NAME%']);
+const withTMCompiled = withTM(['%PACKAGE_FULL_PATH%']);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -138,7 +138,7 @@ export default withPlugins([withTMCompiled], {
       new CopyPlugin({
         patterns: [
           {
-            from: resolve(__dirname, 'node_modules/%PACKAGE_NAME%/dist/assets/icons'),
+            from: resolve(__dirname, 'node_modules/%PACKAGE_FULL_PATH%/dist/assets/icons'),
             to: resolve(__dirname, 'static/icons')
           }
         ]

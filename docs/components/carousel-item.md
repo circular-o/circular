@@ -38,7 +38,7 @@
 ```
 
 ```jsx react
-import { OCarousel, OCarouselItem } from '%PACKAGE_NAME%/dist/react';
+import { OCarousel, OCarouselItem } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OCarousel pagination>

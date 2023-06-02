@@ -7,7 +7,7 @@
 ```
 
 ```jsx react
-import { OColorPicker } from '%PACKAGE_NAME%/dist/react';
+import { OColorPicker } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OColorPicker label="Select a color" />;
 ```
@@ -25,7 +25,7 @@ Use the `value` attribute to set an initial value for the color picker.
 ```
 
 ```jsx react
-import { OColorPicker } from '%PACKAGE_NAME%/dist/react';
+import { OColorPicker } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OColorPicker value="#4a90e2" label="Select a color" />;
 ```
@@ -39,7 +39,7 @@ Use the `opacity` attribute to enable the opacity slider. When this is enabled, 
 ```
 
 ```jsx react
-import { OColorPicker } from '%PACKAGE_NAME%/dist/react';
+import { OColorPicker } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OColorPicker opacity label="Select a color" />;
 ```
@@ -58,7 +58,7 @@ To prevent users from toggling the format themselves, add the `no-format-toggle`
 ```
 
 ```jsx react
-import { OColorPicker } from '%PACKAGE_NAME%/dist/react';
+import { OColorPicker } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -85,7 +85,7 @@ Use the `swatches` attribute to add convenient presets to the color picker. Any 
 ```
 
 ```jsx react
-import { OColorPicker } from '%PACKAGE_NAME%/dist/react';
+import { OColorPicker } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OColorPicker
@@ -109,7 +109,7 @@ Use the `size` attribute to change the color picker's trigger size.
 ```
 
 ```jsx react
-import { OColorPicker } from '%PACKAGE_NAME%/dist/react';
+import { OColorPicker } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -129,7 +129,7 @@ The color picker can be rendered inline instead of in a dropdown using the `inli
 ```
 
 ```jsx react
-import { OColorPicker } from '%PACKAGE_NAME%/dist/react';
+import { OColorPicker } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OColorPicker inline label="Select a color" />;
 ```

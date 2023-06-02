@@ -85,8 +85,8 @@ The author reserves the right to reject any PR that's outside the scope of the p
 To set up a local dev environment, [fork the repo](%REPO_URL%/fork) on GitHub, clone it locally, and install its dependencies.
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/shoelace
-cd shoelace
+git clone https://github.com/YOUR_GITHUB_USERNAME/%PACKAGE_NAME%
+cd %PACKAGE_NAME%
 npm install
 ```
 

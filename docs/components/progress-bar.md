@@ -7,7 +7,7 @@
 ```
 
 ```jsx react
-import { OProgressBar } from '%PACKAGE_NAME%/dist/react';
+import { OProgressBar } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OProgressBar value={50} />;
 ```
@@ -23,7 +23,7 @@ Use the `label` attribute to label the progress bar and tell assistive devices h
 ```
 
 ```jsx react
-import { OProgressBar } from '%PACKAGE_NAME%/dist/react';
+import { OProgressBar } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OProgressBar value="50" label="Upload progress" />;
 ```
@@ -37,7 +37,7 @@ Use the `--height` custom property to set the progress bar's height.
 ```
 
 ```jsx react
-import { OProgressBar } from '%PACKAGE_NAME%/dist/react';
+import { OProgressBar } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OProgressBar value={50} style={{ '--height': '6px' }} />;
 ```
@@ -75,7 +75,7 @@ Use the default slot to show a value.
 
 ```jsx react
 import { useState } from 'react';
-import { OButton, OIcon, OProgressBar } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OIcon, OProgressBar } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => {
   const [value, setValue] = useState(50);
@@ -114,7 +114,7 @@ The `indeterminate` attribute can be used to inform the user that the operation 
 ```
 
 ```jsx react
-import { OProgressBar } from '%PACKAGE_NAME%/dist/react';
+import { OProgressBar } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OProgressBar indeterminate />;
 ```

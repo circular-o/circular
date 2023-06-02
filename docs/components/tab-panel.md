@@ -17,7 +17,7 @@
 ```
 
 ```jsx react
-import { OTab, OTabGroup, OTabPanel } from '%PACKAGE_NAME%/dist/react';
+import { OTab, OTabGroup, OTabPanel } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OTabGroup>

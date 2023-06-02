@@ -26,7 +26,7 @@ To activate a theme, import it and apply the theme's class to the `<html>` eleme
 ```html
 <html class="o-theme-dark">
   <head>
-    <link rel="stylesheet" href="path/to/shoelace/dist/themes/dark.css" />
+    <link rel="stylesheet" href="path/to/%PACKAGE_NAME%/dist/themes/dark.css" />
   </head>
 
   <body>
@@ -44,8 +44,8 @@ You can activate themes on various containers throughout the page. This example 
 ```html
 <html>
   <head>
-    <link rel="stylesheet" href="path/to/shoelace/dist/themes/light.css" />
-    <link rel="stylesheet" href="path/to/shoelace/dist/themes/dark.css" />
+    <link rel="stylesheet" href="path/to/%PACKAGE_NAME%/dist/themes/light.css" />
+    <link rel="stylesheet" href="path/to/%PACKAGE_NAME%/dist/themes/dark.css" />
   </head>
 
   <body>
@@ -117,7 +117,7 @@ The dark theme works by taking the light theme's [color tokens](/tokens/color) a
 To install the dark theme, add the following to the `<head>` section of your page.
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/themes/dark.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/dist/themes/dark.css" />
 ```
 
 To activate the theme, apply the `o-theme-dark` class to the `<html>` element.

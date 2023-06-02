@@ -386,8 +386,12 @@
 
       // Replace %PACKAGE_VERSION% placeholders
       content = content.replace(/%PACKAGE_VERSION%/g, packageVersion);
+      // Replace %PACKAGE_ORGANIZATION% placeholders
+      content = content.replace(/%PACKAGE_ORGANIZATION%/g, `${packageOrganization}`);
       // Replace %PACKAGE_NAME% placeholders
-      content = content.replace(/%PACKAGE_NAME%/g, `${packageOrganization}/${packageName}`);
+      content = content.replace(/%PACKAGE_NAME%/g, `${packageName}`);
+      // Replace %PACKAGE_FULL_PATH% placeholders
+      content = content.replace(/%PACKAGE_FULL_PATH%/g, `${packageOrganization}/${packageName}`);
       // Replace %DOCS_WEBSITE% placeholders
       content = content.replace(/%DOCS_WEBSITE%/g, `${docsWebsite}`);
       // Replace %REPO_URL% placeholders

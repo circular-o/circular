@@ -23,8 +23,8 @@ Designed and developed by [Circular Team](https://twitter.com/%TWITTER_USER%)
 </div>
 </div>
 
-[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/%PACKAGE_NAME%/badge)](https://www.jsdelivr.com/package/npm/%PACKAGE_NAME%)
-[![npm](https://img.shields.io/npm/dw/%PACKAGE_NAME%?label=npm&style=flat-square)](https://www.npmjs.com/package/%PACKAGE_NAME%)
+[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/%PACKAGE_FULL_PATH%/badge)](https://www.jsdelivr.com/package/npm/%PACKAGE_FULL_PATH%)
+[![npm](https://img.shields.io/npm/dw/%PACKAGE_FULL_PATH%?label=npm&style=flat-square)](https://www.npmjs.com/package/%PACKAGE_FULL_PATH%)
 [![License](https://img.shields.io/badge/license-MIT-232323.svg?style=flat-square)](%REPO_URL%/blob/next/LICENSE.md)<br>
 
 <!-- [![Discord](https://img.shields.io/badge/Discord-Join%20the%20chat-5965f2.svg?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/mg8f26C) -->
@@ -38,8 +38,8 @@ Add the following code to your page.
 
 <!-- prettier-ignore -->
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/themes/light.css" />
-<script type="module" src="https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/shoelace-autoloader.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/dist/themes/light.css" />
+<script type="module" src="https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/dist/%PACKAGE_NAME%-autoloader.js"></script>
 ```
 
 Now you have access to all of Shoelace's components! Try adding a button:

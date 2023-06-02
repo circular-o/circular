@@ -38,7 +38,7 @@
 ```
 
 ```jsx react
-import { OCarousel, OCarouselItem } from '%PACKAGE_NAME%/dist/react';
+import { OCarousel, OCarouselItem } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -120,7 +120,7 @@ Use the `pagination` attribute to show the total number of slides and the curren
 ```
 
 ```jsx react
-import { OCarousel, OCarouselItem } from '%PACKAGE_NAME%/dist/react';
+import { OCarousel, OCarouselItem } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OCarousel pagination>
@@ -198,7 +198,7 @@ Use the `navigation` attribute to show previous and next buttons.
 ```
 
 ```jsx react
-import { OCarousel, OCarouselItem } from '%PACKAGE_NAME%/dist/react';
+import { OCarousel, OCarouselItem } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OCarousel navigation>
@@ -276,7 +276,7 @@ By default, the carousel will not advanced beyond the first and last slides. You
 ```
 
 ```jsx react
-import { OCarousel, OCarouselItem } from '%PACKAGE_NAME%/dist/react';
+import { OCarousel, OCarouselItem } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OCarousel loop navigation pagination>
@@ -354,7 +354,7 @@ The carousel will automatically advance when the `autoplay` attribute is used. T
 ```
 
 ```jsx react
-import { OCarousel, OCarouselItem } from '%PACKAGE_NAME%/dist/react';
+import { OCarousel, OCarouselItem } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OCarousel autoplay loop pagination>
@@ -451,7 +451,7 @@ This example is best demonstrated using a mouse. Try clicking and dragging the s
 
 ```jsx react
 import { useState } from 'react';
-import { OCarousel, OCarouselItem, ODivider, OSwitch } from '%PACKAGE_NAME%/dist/react';
+import { OCarousel, OCarouselItem, ODivider, OSwitch } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -517,7 +517,7 @@ The `slides-per-view` attribute makes it possible to display multiple slides at 
 ```
 
 ```jsx react
-import { OCarousel, OCarouselItem } from '%PACKAGE_NAME%/dist/react';
+import { OCarousel, OCarouselItem } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OCarousel navigation pagination slidesPerPage={2} slidesPerMove={2}>
@@ -605,7 +605,7 @@ The content of the carousel can be changed by adding or removing carousel items.
 
 ```jsx react
 import { useState } from 'react';
-import { OCarousel, OCarouselItem } from '%PACKAGE_NAME%/dist/react';
+import { OCarousel, OCarouselItem } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .dynamic-carousel {
@@ -719,7 +719,7 @@ Setting the `orientation` attribute to `vertical` will render the carousel in a 
 ```
 
 ```jsx react
-import { OCarousel, OCarouselItem } from '%PACKAGE_NAME%/dist/react';
+import { OCarousel, OCarouselItem } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .vertical {
@@ -839,7 +839,7 @@ Use the `--aspect-ratio` custom property to customize the size of the carousel's
 
 ```jsx react
 import { useState } from 'react';
-import { OCarousel, OCarouselItem, ODivider, OSelect, OOption } from '%PACKAGE_NAME%/dist/react';
+import { OCarousel, OCarouselItem, ODivider, OSelect, OOption } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => {
   const [aspectRatio, setAspectRatio] = useState('3/2');
@@ -939,7 +939,7 @@ Use the `--scroll-hint` custom property to add inline padding in horizontal caro
 
 ```jsx react
 import { useState } from 'react';
-import { OCarousel, OCarouselItem, ODivider, ORange } from '%PACKAGE_NAME%/dist/react';
+import { OCarousel, OCarouselItem, ODivider, ORange } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -1100,7 +1100,7 @@ The carousel has a robust API that makes it possible to extend and customize. Th
 
 ```jsx react
 import { useRef } from 'react';
-import { OCarousel, OCarouselItem, ODivider, ORange } from '%PACKAGE_NAME%/dist/react';
+import { OCarousel, OCarouselItem, ODivider, ORange } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .carousel-thumbnails {

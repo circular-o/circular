@@ -36,7 +36,7 @@ QR codes are useful for providing small pieces of information to users who can q
 
 ```jsx react
 import { useState } from 'react';
-import { OQrCode, OInput } from '%PACKAGE_NAME%/dist/react';
+import { OQrCode, OInput } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .qr-overview {
@@ -77,7 +77,7 @@ Use the `fill` and `background` attributes to modify the QR code's colors. You s
 ```
 
 ```jsx react
-import { OQrCode } from '%PACKAGE_NAME%/dist/react';
+import { OQrCode } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OQrCode value="%DOCS_WEBSITE%/" fill="deeppink" background="white" />;
 ```
@@ -91,7 +91,7 @@ Use the `size` attribute to change the size of the QR code.
 ```
 
 ```jsx react
-import { OQrCode } from '%PACKAGE_NAME%/dist/react';
+import { OQrCode } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OQrCode value="%DOCS_WEBSITE%/" size="64" />;
 ```
@@ -105,7 +105,7 @@ Create a rounded effect with the `radius` attribute.
 ```
 
 ```jsx react
-import { OQrCode } from '%PACKAGE_NAME%/dist/react';
+import { OQrCode } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OQrCode value="%DOCS_WEBSITE%/" radius="0.5" />;
 ```
@@ -132,7 +132,7 @@ QR codes can be rendered with various levels of [error correction](https://www.q
 ```
 
 ```jsx react
-import { OQrCode } from '%PACKAGE_NAME%/dist/react';
+import { OQrCode } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .qr-error-correction {

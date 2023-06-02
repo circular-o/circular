@@ -113,7 +113,7 @@ To customize a default animation, use the `setDefaultAnimation()` method. The fu
 This example will make all dialogs use a custom show animation.
 
 ```js
-import { setDefaultAnimation } from '%PACKAGE_NAME%/dist/utilities/animation-registry.js';
+import { setDefaultAnimation } from '%PACKAGE_FULL_PATH%/dist/utilities/animation-registry.js';
 
 // Change the default animation for all dialogs
 setDefaultAnimation('dialog.show', {
@@ -134,7 +134,7 @@ If you only want to target a single component, use the `setAnimation()` method i
 In this example, only the target dialog will use a custom show animation.
 
 ```js
-import { setAnimation } from '%PACKAGE_NAME%/dist/utilities/animation-registry.js';
+import { setAnimation } from '%PACKAGE_FULL_PATH%/dist/utilities/animation-registry.js';
 
 // Change the animation for a single dialog
 const dialog = document.querySelector('#my-dialog');

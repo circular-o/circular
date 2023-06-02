@@ -285,7 +285,7 @@
 
   // Open in CodePen
   document.addEventListener('click', event => {
-    const { reactVersion, reactCdnUrl, packageUrl, reactUrl, reactPackageUrl } = window.getDocsConfig();
+    const { reactVersion, reactCdnUrl, packageUrl, reactUrl, reactPackageUrl, packageName } = window.getDocsConfig();
 
     const button = event.target.closest('button');
     // const version = sessionStorage.getItem('o-version');
@@ -310,7 +310,7 @@
 
       // HTML templates
       if (!isReact) {
-        htmlTemplate = `<script type="module" src="${packageUrl}/dist/shoelace.js"></script>\n\n${htmlExample}`;
+        htmlTemplate = `<script type="module" src="${packageUrl}/dist/${packageName}.js"></script>\n\n${htmlExample}`;
         jsTemplate = '';
       }
 
@@ -344,7 +344,7 @@
       const data = {
         title: '',
         description: '',
-        tags: ['shoelace', 'web components'],
+        tags: ['circular', 'web components'],
         editors,
         head: `<meta name="viewport" content="width=device-width">`,
         html_classes: `o-theme-${isDark ? 'dark' : 'light'}`,

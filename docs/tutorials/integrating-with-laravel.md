@@ -19,7 +19,7 @@ Be sure to run `npm install` to install the default Laravel front-end dependenci
 ### Install the Shoelace package
 
 ```bash
-npm install %PACKAGE_NAME%
+npm install %PACKAGE_FULL_PATH%
 ```
 
 ### Import the Default Theme
@@ -27,7 +27,7 @@ npm install %PACKAGE_NAME%
 Import the Shoelace default theme (stylesheet) in `/resources/css/app.css`:
 
 ```css
-@import '/node_modules/%PACKAGE_NAME%/dist/themes/light.css';
+@import '/node_modules/%PACKAGE_FULL_PATH%/dist/themes/light.css';
 ```
 
 ### Import Your Shoelace Components
@@ -35,9 +35,9 @@ Import the Shoelace default theme (stylesheet) in `/resources/css/app.css`:
 Import each Shoelace component you plan to use in `/resources/js/bootstrap.js`. Use the full path to each component (as outlined in the [Cherry Picking instructions](%DOCS_WEBSITE%/#/getting-started/installation?id=cherry-picking)). You can find the full import statement for a component in the _Importing_ section of the component's documentation (use the _Bundler_ import). Your imports should look similar to:
 
 ```js
-import '%PACKAGE_NAME%/dist/components/button/button.js';
-import '%PACKAGE_NAME%/dist/components/icon/icon.js';
-import '%PACKAGE_NAME%/dist/components/dialog/dialog.js';
+import '%PACKAGE_FULL_PATH%/dist/components/button/button.js';
+import '%PACKAGE_FULL_PATH%/dist/components/icon/icon.js';
+import '%PACKAGE_FULL_PATH%/dist/components/dialog/dialog.js';
 ```
 
 ### Copy the Shoelace Static Assets (icons, images, etc.) to a Public Folder
@@ -45,7 +45,7 @@ import '%PACKAGE_NAME%/dist/components/dialog/dialog.js';
 Since Vite has no way to copy arbitrary assets into your build (like webpack), you need to manually copy the Shoelace static assets to your project's public folder. Run this command from your project's root directory to copy the Shoelace static assets to the `./public/assets` folder:
 
 ```sh
-cp -aR node_modules/%PACKAGE_NAME%/dist/assets/ ./public/assets
+cp -aR node_modules/%PACKAGE_FULL_PATH%/dist/assets/ ./public/assets
 ```
 
 ### Set the Base Path
@@ -53,19 +53,19 @@ cp -aR node_modules/%PACKAGE_NAME%/dist/assets/ ./public/assets
 Add the base path to your Shoelace assets (icons, images, etc.) in `/resources/js/bootstrap.js`. The path must point to the same folder where you copy assets to in the next step.
 
 ```js
-import { setBasePath } from '%PACKAGE_NAME%/dist/utilities/base-path.js';
+import { setBasePath } from '%PACKAGE_FULL_PATH%/dist/utilities/base-path.js';
 setBasePath('/');
 ```
 
 Example `/resources/js/bootstrap.js` file:
 
 ```js
-import { setBasePath } from '%PACKAGE_NAME%/dist/utilities/base-path.js';
+import { setBasePath } from '%PACKAGE_FULL_PATH%/dist/utilities/base-path.js';
 setBasePath('/');
 
-import '%PACKAGE_NAME%/dist/components/button/button.js';
-import '%PACKAGE_NAME%/dist/components/icon/icon.js';
-import '%PACKAGE_NAME%/dist/components/dialog/dialog.js';
+import '%PACKAGE_FULL_PATH%/dist/components/button/button.js';
+import '%PACKAGE_FULL_PATH%/dist/components/icon/icon.js';
+import '%PACKAGE_FULL_PATH%/dist/components/dialog/dialog.js';
 ```
 
 ### Verify Vite Entry Points

@@ -14,7 +14,7 @@
 ```
 
 ```jsx react
-import { OBreadcrumb, OBreadcrumbItem, OIcon } from '%PACKAGE_NAME%/dist/react';
+import { OBreadcrumb, OBreadcrumbItem, OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OBreadcrumb>

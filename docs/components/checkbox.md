@@ -7,7 +7,7 @@
 ```
 
 ```jsx react
-import { OCheckbox } from '%PACKAGE_NAME%/dist/react';
+import { OCheckbox } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OCheckbox>Checkbox</OCheckbox>;
 ```
@@ -25,7 +25,7 @@ Use the `checked` attribute to activate the checkbox.
 ```
 
 ```jsx react
-import { OCheckbox } from '%PACKAGE_NAME%/dist/react';
+import { OCheckbox } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OCheckbox checked>Checked</OCheckbox>;
 ```
@@ -39,7 +39,7 @@ Use the `indeterminate` attribute to make the checkbox indeterminate.
 ```
 
 ```jsx react
-import { OCheckbox } from '%PACKAGE_NAME%/dist/react';
+import { OCheckbox } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OCheckbox indeterminate>Indeterminate</OCheckbox>;
 ```
@@ -53,7 +53,7 @@ Use the `disabled` attribute to disable the checkbox.
 ```
 
 ```jsx react
-import { OCheckbox } from '%PACKAGE_NAME%/dist/react';
+import { OCheckbox } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OCheckbox disabled>Disabled</OCheckbox>;
 ```
@@ -71,7 +71,7 @@ Use the `size` attribute to change a checkbox's size.
 ```
 
 ```jsx react
-import { OCheckbox } from '%PACKAGE_NAME%/dist/react';
+import { OCheckbox } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -120,7 +120,7 @@ Use the `setCustomValidity()` method to set a custom validation message. This wi
 
 ```jsx react
 import { useEffect, useRef } from 'react';
-import { OButton, OCheckbox } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OCheckbox } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => {
   const checkbox = useRef(null);

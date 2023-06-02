@@ -9,7 +9,7 @@ By default, a generic icon will be shown. You can personalize avatars by adding 
 ```
 
 ```jsx react
-import { OAvatar } from '%PACKAGE_NAME%/dist/react';
+import { OAvatar } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OAvatar label="User avatar" />;
 ```
@@ -34,7 +34,7 @@ Avatar images can be lazily loaded by setting the `loading` attribute to `lazy`.
 ```
 
 ```jsx react
-import { OAvatar } from '%PACKAGE_NAME%/dist/react';
+import { OAvatar } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <OAvatar
@@ -58,7 +58,7 @@ When you don't have an image to use, you can set the `initials` attribute to sho
 ```
 
 ```jsx react
-import { OAvatar } from '%PACKAGE_NAME%/dist/react';
+import { OAvatar } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OAvatar initials="SL" label="Avatar with initials: SL" />;
 ```
@@ -82,7 +82,7 @@ When no image or initials are set, an icon will be shown. The default avatar sho
 ```
 
 ```jsx react
-import { OAvatar, OIcon } from '%PACKAGE_NAME%/dist/react';
+import { OAvatar, OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -112,7 +112,7 @@ Avatars can be shaped using the `shape` attribute.
 ```
 
 ```jsx react
-import { OAvatar, OIcon } from '%PACKAGE_NAME%/dist/react';
+import { OAvatar, OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -162,7 +162,7 @@ You can group avatars with a few lines of CSS.
 ```
 
 ```jsx react
-import { OAvatar, OIcon } from '%PACKAGE_NAME%/dist/react';
+import { OAvatar, OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const css = `
   .avatar-group o-avatar:not(:first-of-type) {

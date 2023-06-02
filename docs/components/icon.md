@@ -63,7 +63,7 @@ Icons inherit their color from the current text color. Thus, you can set the `co
 ```
 
 ```jsx react
-import { OIcon } from '%PACKAGE_NAME%/dist/react';
+import { OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <>
@@ -121,7 +121,7 @@ Icons are sized relative to the current font size. To change their size, set the
 ```
 
 ```jsx react
-import { OIcon } from '%PACKAGE_NAME%/dist/react';
+import { OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => (
   <div style={{ fontSize: '32px' }}>
@@ -154,7 +154,7 @@ For non-decorative icons, use the `label` attribute to announce it to assistive 
 ```
 
 ```jsx react
-import { OIcon } from '%PACKAGE_NAME%/dist/react';
+import { OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OIcon name="star-fill" label="Add to favorites" />;
 ```
@@ -168,7 +168,7 @@ Custom icons can be loaded individually with the `src` attribute. Only SVGs on a
 ```
 
 ```jsx react
-import { OIcon } from '%PACKAGE_NAME%/dist/react';
+import { OIcon } from '%PACKAGE_FULL_PATH%/dist/react';
 
 const App = () => <OIcon src="assets/images/shoe.svg" style={{ fontSize: '8rem' }}></OIcon>;
 ```
