@@ -1,8 +1,8 @@
 <div class="splash">
 <div class="splash-start">
-<img class="splash-logo" src="assets/images/circular-logo-bg-transparent.png" alt="Shoelace">
+<img class="splash-logo" src="assets/images/circular-logo-bg-transparent.png" alt="%LIBRARY_NAME%">
 
-# <o-visually-hidden>Shoelace:</o-visually-hidden> A forward-thinking library of web components.
+# <o-visually-hidden>%LIBRARY_NAME%:</o-visually-hidden> A forward-thinking library of web components.
 
 - Works with all frameworks 🧩
 - Works with CDNs 🚛
@@ -13,7 +13,7 @@
 - Built-in localization 💬
 - Open source 😸
 
-Designed and developed by [Circular Team](https://twitter.com/%TWITTER_USER%)
+Designed and developed by [%TWITTER_USER% Team](https://twitter.com/%TWITTER_USER%)
 
 <small>Inspired by [Shoelace](https://shoelace.style/) designed in New Hampshire by [Cory LaViska](https://twitter.com/claviska).</small>
 
@@ -42,13 +42,13 @@ Add the following code to your page.
 <script type="module" src="https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/dist/%PACKAGE_NAME%-autoloader.js"></script>
 ```
 
-Now you have access to all of Shoelace's components! Try adding a button:
+Now you have access to all of %LIBRARY_NAME%'s components! Try adding a button:
 
 ```html preview expanded
 <o-button>Click me</o-button>
 ```
 
-?> This will activate Shoelace's experimental autoloader, which registers components on the fly as you use them. To learn more about it, or for other ways to install Shoelace, refer to the [installation instructions](getting-started/installation).
+?> This will activate %LIBRARY_NAME%'s experimental autoloader, which registers components on the fly as you use them. To learn more about it, or for other ways to install %LIBRARY_NAME%, refer to the [installation instructions](getting-started/installation).
 
 ## New to Web Components?
 
@@ -64,13 +64,13 @@ Unfortunately, _framework-specific_ components fail us in a number of ways:
 
 Web components solve these problems. They're [supported by all modern browsers](https://caniuse.com/#feat=custom-elementsv1), they're framework-agnostic, and they're [part of the standard](https://developer.mozilla.org/en-US/docs/Web/Web_Components), so we know they'll be supported for many years to come.
 
-This is the technology that Shoelace is built on.
+This is the technology that %LIBRARY_NAME% is built on.
 
 ## What Problem Does This Solve?
 
-Shoelace provides a collection of professionally designed, highly customizable UI components built on a framework agnostic technology. Why spend hundreds of hours (or more) building a design system from scratch? Why make a component library that only works with one framework?
+%LIBRARY_NAME% provides a collection of professionally designed, highly customizable UI components built on a framework agnostic technology. Why spend hundreds of hours (or more) building a design system from scratch? Why make a component library that only works with one framework?
 
-With Shoelace, you can:
+With %LIBRARY_NAME%, you can:
 
 - Start building things faster (no need to roll your own buttons)
 - Build multiple apps with different frameworks that all share the same UI components
@@ -78,15 +78,15 @@ With Shoelace, you can:
 - Incrementally adopt components as needed (no need to ditch your framework)
 - Upgrade or switch frameworks without rebuilding foundational components
 
-If your organization is looking to build a design system, [Shoelace will save you thousands of dollars](https://medium.com/eightshapes-llc/and-you-thought-buttons-were-easy-26eb5b5c1871).\* All the foundational components you need are right here, ready to be customized for your brand. And since it's built on web standards, browsers will continue to support it for many years to come.
+If your organization is looking to build a design system, [%LIBRARY_NAME% will save you thousands of dollars](https://medium.com/eightshapes-llc/and-you-thought-buttons-were-easy-26eb5b5c1871).\* All the foundational components you need are right here, ready to be customized for your brand. And since it's built on web standards, browsers will continue to support it for many years to come.
 
-Whether you use Shoelace as a starting point for your organization's design system or for a fun personal project, there's no limit to what you can do with it.
+Whether you use %LIBRARY_NAME% as a starting point for your organization's design system or for a fun personal project, there's no limit to what you can do with it.
 
 <small>\*Please consider giving back some of what you save by [supporting this project with a sponsorship](%SPONSOR_URL%).</small>
 
 ## Browser Support
 
-Shoelace is tested in the latest two versions of the following browsers.
+%LIBRARY_NAME% is tested in the latest two versions of the following browsers.
 
 <img src="assets/images/chrome.png" alt="Chrome" width="64" height="64">
 <img src="assets/images/edge.png" alt="Edge" width="64" height="64">
@@ -96,11 +96,11 @@ Shoelace is tested in the latest two versions of the following browsers.
 
 Critical bug fixes in earlier versions will be addressed based on their severity and impact.
 
-If you need to support IE11 or pre-Chromium Edge, this library isn't for you. Although web components can (to some degree) be polyfilled for legacy browsers, supporting them is outside the scope of this project. If you're using Shoelace in such a browser, you're gonna have a bad time. ⛷
+If you need to support IE11 or pre-Chromium Edge, this library isn't for you. Although web components can (to some degree) be polyfilled for legacy browsers, supporting them is outside the scope of this project. If you're using %LIBRARY_NAME% in such a browser, you're gonna have a bad time. ⛷
 
 ## License
 
-Shoelace is designed in New Hampshire by [Cory LaViska](https://twitter.com/claviska). It's available under the terms of the MIT license.
+%LIBRARY_NAME% is designed and developed in Hamburg by [%LIBRARY_NAME% Team](https://twitter.com/%TWITTER_USER%). It's available under the terms of the MIT license.
 
 Designing, developing, and supporting this library requires a lot of time, effort, and skill. If you're using this software to make a profit, I respectfully ask that you help [fund its development](%SPONSOR_URL%) by becoming a sponsor.
 
@@ -120,7 +120,7 @@ Designing, developing, and supporting this library requires a lot of time, effor
 
 ## Attribution
 
-Special thanks to the following projects and individuals that help make Shoelace possible.
+Special thanks to the following projects and individuals that help make %LIBRARY_NAME% possible.
 
 - Inspired by [Shoelace](https://shoelace.style/)
 - Components are built with [Lit](https://lit.dev/)
@@ -134,4 +134,3 @@ Special thanks to the following projects and individuals that help make Shoelace
 - Animations are courtesy of [animate.css](https://animate.style/)
 - QR codes are generated with [qr-creator](https://github.com/nimiq/qr-creator)
 - Search is powered by [Lunr](https://lunrjs.com/)
-- The Shoelace logo was designed with a single shoelace by [Adam K Olson](https://twitter.com/adamkolson)

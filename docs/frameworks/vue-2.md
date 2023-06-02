@@ -1,12 +1,12 @@
 # Vue (version 2)
 
-Vue [plays nice](https://custom-elements-everywhere.com/#vue) with custom elements, so you can use Shoelace in your Vue apps with ease.
+Vue [plays nice](https://custom-elements-everywhere.com/#vue) with custom elements, so you can use %LIBRARY_NAME% in your Vue apps with ease.
 
 !> These instructions are for Vue 2. If you're using Vue 3 or above, please see the [Vue 3 instructions](/frameworks/vue).
 
 ## Installation
 
-To add Shoelace to your Vue app, install the package from npm.
+To add %LIBRARY_NAME% to your Vue app, install the package from npm.
 
 ```bash
 npm install %PACKAGE_FULL_PATH%
@@ -25,7 +25,7 @@ setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/
 
 ## Configuration
 
-You'll need to tell Vue to ignore Shoelace components. This is pretty easy because they all start with `o-`.
+You'll need to tell Vue to ignore %LIBRARY_NAME% components. This is pretty easy because they all start with `o-`.
 
 ```js
 import Vue from 'vue';
@@ -40,7 +40,7 @@ const app = new Vue({
 app.$mount('#app');
 ```
 
-Now you can start using Shoelace components in your app!
+Now you can start using %LIBRARY_NAME% components in your app!
 
 ## Usage
 
@@ -63,7 +63,7 @@ One caveat is there's currently [no support for v-model on custom elements](http
 <o-input :value="name" @input="name = $event.target.value"></o-input>
 ```
 
-If that's too verbose for your liking, you can use a custom directive instead. [This utility](https://www.npmjs.com/package/@shoelace-style/vue-o-model) adds a custom directive that will work just like `v-model` but for Shoelace components. To install it, use this command.
+If that's too verbose for your liking, you can use a custom directive instead. [This utility](https://www.npmjs.com/package/@shoelace-style/vue-o-model) adds a custom directive that will work just like `v-model` but for %LIBRARY_NAME% components. To install it, use this command.
 
 ```bash
 npm install @shoelace-style/vue-o-model@1
@@ -92,4 +92,4 @@ Now you can use the `v-o-model` directive to keep your data in sync!
 <o-input v-o-model="name"></o-input>
 ```
 
-?> Are you using Shoelace with Vue? [Help us improve this page!](%REPO_URL%/blob/next/docs/frameworks/vue-2.md)
+?> Are you using %LIBRARY_NAME% with Vue? [Help us improve this page!](%REPO_URL%/blob/next/docs/frameworks/vue-2.md)

@@ -11,7 +11,7 @@ export function setBasePath(path: string) {
  * The base path is used to load assets such as icons and images, so it needs to be set for components to work properly.
  * By default, this script will look for a script ending in circular.js or circular-autoloader.js and set the base path
  * to the directory that contains that file. To override this behavior, you can add the data-circular attribute to any
- * script on the page (it probably makes the most sense to attach it to the Shoelace script, but it could also be on a
+ * script on the page (it probably makes the most sense to attach it to the Circular script, but it could also be on a
  * bundle). The value can be a local folder or it can point to a CORS-enabled endpoint such as a CDN.
  *
  *   <script src="bundle.js" data-circular="/custom/base/path"></script>

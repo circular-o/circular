@@ -1,6 +1,6 @@
 # Installation
 
-You can load Shoelace via CDN or by installing it locally. If you're using a framework, make sure to check out the pages for [React](/frameworks/react), [Vue](/frameworks/vue), and [Angular](/frameworks/angular) for additional information.
+You can load %LIBRARY_NAME% via CDN or by installing it locally. If you're using a framework, make sure to check out the pages for [React](/frameworks/react), [Vue](/frameworks/vue), and [Angular](/frameworks/angular) for additional information.
 
 ## CDN Installation (Easiest)
 
@@ -10,7 +10,7 @@ You can load Shoelace via CDN or by installing it locally. If you're using a fra
 
 <o-tab-panel name="autoloader">
 
-The experimental autoloader is the easiest and most efficient way to use Shoelace. A lightweight script watches the DOM for unregistered Shoelace elements and lazy loads them for you — even if they're added dynamically.
+The experimental autoloader is the easiest and most efficient way to use %LIBRARY_NAME%. A lightweight script watches the DOM for unregistered %LIBRARY_NAME% elements and lazy loads them for you — even if they're added dynamically.
 
 While convenient, autoloading may lead to a [Flash of Undefined Custom Elements](https://www.abeautifulsite.net/posts/flash-of-undefined-custom-elements/). The linked article describes some ways to alleviate it.
 
@@ -24,7 +24,7 @@ While convenient, autoloading may lead to a [Flash of Undefined Custom Elements]
 
 <o-tab-panel name="traditional">
 
-The traditional CDN loader registers all Shoelace elements up front. Note that, if you're only using a handful of components, it will be much more efficient to stick with the autoloader. However, you can also [cherry pick](#cherry-picking) components if you want to load specific ones up front.
+The traditional CDN loader registers all %LIBRARY_NAME% elements up front. Note that, if you're only using a handful of components, it will be much more efficient to stick with the autoloader. However, you can also [cherry pick](#cherry-picking) components if you want to load specific ones up front.
 
 ```html
 <link
@@ -66,11 +66,11 @@ If you want to load the light or dark theme based on the user's `prefers-color-s
 />
 ```
 
-Now you can [start using Shoelace!](/getting-started/usage)
+Now you can [start using %LIBRARY_NAME%!](/getting-started/usage)
 
 ## Local Installation
 
-If you don't want to use the CDN, you can install Shoelace locally with the following command.
+If you don't want to use the CDN, you can install %LIBRARY_NAME% locally with the following command.
 
 ```bash
 npm install %PACKAGE_FULL_PATH%
@@ -87,13 +87,13 @@ Once you've done that, add the following tags to your page. Make sure to update 
 
 Alternatively, [you can use a bundler](#bundling).
 
-?> For clarity, the docs will usually show imports from `%PACKAGE_FULL_PATH%`. If you're not using a module resolver or bundler, you'll need to adjust these paths to point to the folder Shoelace is in.
+?> For clarity, the docs will usually show imports from `%PACKAGE_FULL_PATH%`. If you're not using a module resolver or bundler, you'll need to adjust these paths to point to the folder %LIBRARY_NAME% is in.
 
 ## Setting the Base Path
 
-Some components rely on assets (icons, images, etc.) and Shoelace needs to know where they're located. For convenience, Shoelace will try to auto-detect the correct location based on the script you've loaded it from. This assumes assets are colocated with `%PACKAGE_NAME%.js` or `%PACKAGE_NAME%-autoloader.js` and will "just work" for most users.
+Some components rely on assets (icons, images, etc.) and %LIBRARY_NAME% needs to know where they're located. For convenience, %LIBRARY_NAME% will try to auto-detect the correct location based on the script you've loaded it from. This assumes assets are colocated with `%PACKAGE_NAME%.js` or `%PACKAGE_NAME%-autoloader.js` and will "just work" for most users.
 
-However, if you're [cherry picking](#cherry-picking) or [bundling](#bundling) Shoelace, you'll need to set the base path. You can do this one of two ways.
+However, if you're [cherry picking](#cherry-picking) or [bundling](#bundling) %LIBRARY_NAME%, you'll need to set the base path. You can do this one of two ways.
 
 ```html
 <!-- Option 1: the data-%PACKAGE_NAME% attribute -->
@@ -113,7 +113,7 @@ However, if you're [cherry picking](#cherry-picking) or [bundling](#bundling) Sh
 
 Cherry picking can be done from [the CDN](#cdn-installation-easiest) or your [local installation](#local-installation). This approach will load only the components you need up front, while limiting the number of files the browser has to download. The disadvantage is that you need to import each individual component.
 
-Here's an example that loads only the button component. Again, if you're not using a module resolver, you'll need to adjust the path to point to the folder Shoelace is in.
+Here's an example that loads only the button component. Again, if you're not using a module resolver, you'll need to adjust the path to point to the folder %LIBRARY_NAME% is in.
 
 ```html
 <link rel="stylesheet" href="/path/to/%PACKAGE_NAME%/dist/themes/light.css" />
@@ -133,9 +133,9 @@ You can copy and paste the code to import a component from the "Importing" secti
 
 ## Bundling
 
-Shoelace is distributed as a collection of standard ES modules that [all modern browsers can understand](https://caniuse.com/es6-module). However, importing a lot of modules can result in a lot of HTTP requests and potentially longer load times. Using a CDN can alleviate this, but some users may wish to further optimize their imports with a bundler.
+%LIBRARY_NAME% is distributed as a collection of standard ES modules that [all modern browsers can understand](https://caniuse.com/es6-module). However, importing a lot of modules can result in a lot of HTTP requests and potentially longer load times. Using a CDN can alleviate this, but some users may wish to further optimize their imports with a bundler.
 
-To use Shoelace with a bundler, first install Shoelace along with your bundler of choice.
+To use %LIBRARY_NAME% with a bundler, first install %LIBRARY_NAME% along with your bundler of choice.
 
 ```bash
 npm install %PACKAGE_FULL_PATH%
@@ -146,7 +146,7 @@ Now it's time to configure your bundler. Configurations vary for each tool, but 
 - [Example webpack config](https://github.com/shoelace-style/webpack-example/blob/master/webpack.config.js)
 - [Example Rollup config](https://github.com/shoelace-style/rollup-example/blob/master/rollup.config.js)
 
-Once your bundler is configured, you'll be able to import Shoelace components and utilities.
+Once your bundler is configured, you'll be able to import %LIBRARY_NAME% components and utilities.
 
 ```js
 import '%PACKAGE_FULL_PATH%/dist/themes/light.css';
@@ -156,7 +156,7 @@ import '%PACKAGE_FULL_PATH%/dist/components/input/input.js';
 import '%PACKAGE_FULL_PATH%/dist/components/rating/rating.js';
 import { setBasePath } from '%PACKAGE_FULL_PATH%/dist/utilities/base-path.js';
 
-// Set the base path to the folder you copied Shoelace's assets to
+// Set the base path to the folder you copied %LIBRARY_NAME%'s assets to
 setBasePath('/path/to/%PACKAGE_NAME%/dist');
 
 // <o-button>, <o-icon>, <o-input>, and <o-rating> are ready to use!

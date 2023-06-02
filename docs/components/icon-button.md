@@ -2,7 +2,7 @@
 
 [component-header:o-icon-button]
 
-For a full list of icons that come bundled with Shoelace, refer to the [icon component](/components/icon).
+For a full list of icons that come bundled with %LIBRARY_NAME%, refer to the [icon component](/components/icon).
 
 ```html preview
 <o-icon-button name="gear" label="Settings"></o-icon-button>

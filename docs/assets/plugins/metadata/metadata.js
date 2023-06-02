@@ -379,7 +379,8 @@
         twitterUser,
         sponsorUrl,
         packageUrlNoVersion,
-        packageUrl
+        packageUrl,
+        libraryName
       } = window.getDocsConfig();
 
       metadata = await getCustomElementsMetadata();
@@ -400,6 +401,8 @@
       content = content.replace(/%TWITTER_USER%/g, `${twitterUser}`);
       // Replace %SPONSOR_URL% placeholders
       content = content.replace(/%SPONSOR_URL%/g, `${sponsorUrl}`);
+      // Replace %LIBRARY_NAME% placeholders
+      content = content.replace(/%LIBRARY_NAME%/g, `${libraryName}`);
 
       // Handle [component-header] tags
       content = content.replace(/\[component-header:([a-z-]+)\]/g, (match, tag) => {

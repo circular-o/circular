@@ -1,10 +1,10 @@
 # Angular
 
-Angular [plays nice](https://custom-elements-everywhere.com/#angular) with custom elements, so you can use Shoelace in your Angular apps with ease.
+Angular [plays nice](https://custom-elements-everywhere.com/#angular) with custom elements, so you can use %LIBRARY_NAME% in your Angular apps with ease.
 
 ## Installation
 
-To add Shoelace to your Angular app, install the package from npm.
+To add %LIBRARY_NAME% to your Angular app, install the package from npm.
 
 ```bash
 npm install %PACKAGE_FULL_PATH%
@@ -65,7 +65,7 @@ setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE_FULL_PATH%@%PACKAGE_VERSION%/
 export class AppModule {}
 ```
 
-## Reference Shoelace components in your Angular component code
+## Reference %LIBRARY_NAME% components in your Angular component code
 
 ```js
 import { ODrawer } from '%PACKAGE_FULL_PATH%';
@@ -92,12 +92,12 @@ export class DrawerExampleComponent implements OnInit {
   ...
 
   showDrawer() {
-    // use nativeElement to access Shoelace components
+    // use nativeElement to access %LIBRARY_NAME% components
     this.drawer?.nativeElement.show();
   }
 }
 ```
 
-Now you can start using Shoelace components in your app!
+Now you can start using %LIBRARY_NAME% components in your app!
 
-?> Are you using Shoelace with Angular? [Help us improve this page!](%REPO_URL%/blob/next/docs/frameworks/angular.md)
+?> Are you using %LIBRARY_NAME% with Angular? [Help us improve this page!](%REPO_URL%/blob/next/docs/frameworks/angular.md)

@@ -6,7 +6,7 @@ QR codes are useful for providing small pieces of information to users who can q
 
 ```html preview
 <div class="qr-overview">
-  <o-qr-code value="%DOCS_WEBSITE%/" label="Scan this code to visit Shoelace on the web!"></o-qr-code>
+  <o-qr-code value="%DOCS_WEBSITE%/" label="Scan this code to visit %LIBRARY_NAME% on the web!"></o-qr-code>
   <br />
 
   <o-input maxlength="255" clearable label="Value"></o-input>
@@ -54,7 +54,7 @@ const App = () => {
   return (
     <>
       <div className="qr-overview">
-        <OQrCode value={value} label="Scan this code to visit Shoelace on the web!" />
+        <OQrCode value={value} label="Scan this code to visit %LIBRARY_NAME% on the web!" />
         <br />
 
         <OInput maxlength="255" clearable onInput={event => setValue(event.target.value)} />
