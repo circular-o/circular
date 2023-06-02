@@ -45,6 +45,7 @@
     "start": "node scripts/build.js --bundle --serve --copydir \"docs/dist\"",
     "build": "node scripts/build.js --bundle --types --copydir \"docs/dist\"",
     "verify": "npm run prettier:check && npm run lint && npm run build && npm run test",
+    "verify:fix": "npm run prettier && npm run lint:fix && npm run build && npm run test",
     "/* 1": "verify-no-tests is useful to test the CI without running tests */",
     "verify-no-tests": "npm run prettier:check && npm run lint && npm run build",
     "prepublishOnly-skip": "npm run verify",
