@@ -1,7 +1,7 @@
 {
   "name": "@jeysonj2/circular",
   "description": "A forward-thinking library of web components.",
-  "version": "1.2.0-next.1",
+  "version": "1.2.0",
   "homepage": "https://github.com/circular-o/circular",
   "author": "Cory LaViska + Circular Team",
   "license": "MIT",
@@ -167,7 +167,7 @@
       [
         "@semantic-release/exec",
         {
-          "prepareCmd": "npm run prettier"
+          "prepareCmd": "npm run prettier && npm run build"
         }
       ],
       "@semantic-release/npm",
