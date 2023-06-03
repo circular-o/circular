@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/circular-o/circular/compare/v1.2.0...v1.2.1) (2023-06-03)
+
+### Bug Fixes
+
+- Releases using the generated version after semantic-release ([9ffecdf](https://github.com/circular-o/circular/commit/9ffecdfb12b8c61e18a201c14dc15de892ee2a1e))
+
 ## [1.2.1-next.1](https://github.com/circular-o/circular/compare/v1.2.0...v1.2.1-next.1) (2023-06-03)
 
 ### Bug Fixes
