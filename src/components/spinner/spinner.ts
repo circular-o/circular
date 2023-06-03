@@ -1,13 +1,13 @@
 import { customElement } from 'lit/decorators.js';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './spinner.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Spinners are used to show the progress of an indeterminate operation.
- * @documentation https://shoelace.style/components/spinner
+ * @documentation https://circular-o.github.io/circular/#/components/spinner
  * @status stable
  * @since 2.0
  *
@@ -18,8 +18,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --indicator-color - The color of the spinner's indicator.
  * @cssproperty --speed - The time it takes for the spinner to complete one animation cycle.
  */
-@customElement('sl-spinner')
-export default class SlSpinner extends ShoelaceElement {
+@customElement('o-spinner')
+export default class OSpinner extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private readonly localize = new LocalizeController(this);
@@ -36,6 +36,6 @@ export default class SlSpinner extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-spinner': SlSpinner;
+    'o-spinner': OSpinner;
   }
 }

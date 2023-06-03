@@ -1,79 +1,79 @@
 # Popup
 
-[component-header:sl-popup]
+[component-header:o-popup]
 
 This component's name is inspired by [`<popup>`](https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/Popup/explainer.md). It uses [Floating UI](https://floating-ui.com/) under the hood to provide a well-tested, lightweight, and fully declarative positioning utility for tooltips, dropdowns, and more.
 
 Popup doesn't provide any styles — just positioning! The popup's preferred placement, distance, and skidding (offset) can be configured using attributes. An arrow that points to the anchor can be shown and customized to your liking. Additional positioning options are available and described in more detail below.
 
-!> Popup is a low-level utility built specifically for positioning elements. Do not mistake it for a [tooltip](/components/tooltip) or similar because _it does not facilitate an accessible experience!_ Almost every correct usage of `<sl-popup>` will involve building other components. It should rarely, if ever, occur directly in your HTML.
+!> Popup is a low-level utility built specifically for positioning elements. Do not mistake it for a [tooltip](/components/tooltip) or similar because _it does not facilitate an accessible experience!_ Almost every correct usage of `<o-popup>` will involve building other components. It should rarely, if ever, occur directly in your HTML.
 
 ```html preview
 <div class="popup-overview">
-  <sl-popup placement="top" active>
+  <o-popup placement="top" active>
     <span slot="anchor"></span>
     <div class="box"></div>
-  </sl-popup>
+  </o-popup>
 
   <div class="popup-overview-options">
-    <sl-select label="Placement" name="placement" value="top" class="popup-overview-select">
-      <sl-option value="top">top</sl-option>
-      <sl-option value="top-start">top-start</sl-option>
-      <sl-option value="top-end">top-end</sl-option>
-      <sl-option value="bottom">bottom</sl-option>
-      <sl-option value="bottom-start">bottom-start</sl-option>
-      <sl-option value="bottom-end">bottom-end</sl-option>
-      <sl-option value="right">right</sl-option>
-      <sl-option value="right-start">right-start</sl-option>
-      <sl-option value="right-end">right-end</sl-option>
-      <sl-option value="left">left</sl-option>
-      <sl-option value="left-start">left-start</sl-option>
-      <sl-option value="left-end">left-end</sl-option>
-    </sl-select>
-    <sl-input type="number" name="distance" label="distance" value="0"></sl-input>
-    <sl-input type="number" name="skidding" label="Skidding" value="0"></sl-input>
+    <o-select label="Placement" name="placement" value="top" class="popup-overview-select">
+      <o-option value="top">top</o-option>
+      <o-option value="top-start">top-start</o-option>
+      <o-option value="top-end">top-end</o-option>
+      <o-option value="bottom">bottom</o-option>
+      <o-option value="bottom-start">bottom-start</o-option>
+      <o-option value="bottom-end">bottom-end</o-option>
+      <o-option value="right">right</o-option>
+      <o-option value="right-start">right-start</o-option>
+      <o-option value="right-end">right-end</o-option>
+      <o-option value="left">left</o-option>
+      <o-option value="left-start">left-start</o-option>
+      <o-option value="left-end">left-end</o-option>
+    </o-select>
+    <o-input type="number" name="distance" label="distance" value="0"></o-input>
+    <o-input type="number" name="skidding" label="Skidding" value="0"></o-input>
   </div>
 
   <div class="popup-overview-options">
-    <sl-switch name="active" checked>Active</sl-switch>
-    <sl-switch name="arrow">Arrow</sl-switch>
+    <o-switch name="active" checked>Active</o-switch>
+    <o-switch name="arrow">Arrow</o-switch>
   </div>
 </div>
 
 <script>
   const container = document.querySelector('.popup-overview');
-  const popup = container.querySelector('sl-popup');
-  const select = container.querySelector('sl-select[name="placement"]');
-  const distance = container.querySelector('sl-input[name="distance"]');
-  const skidding = container.querySelector('sl-input[name="skidding"]');
-  const active = container.querySelector('sl-switch[name="active"]');
-  const arrow = container.querySelector('sl-switch[name="arrow"]');
+  const popup = container.querySelector('o-popup');
+  const select = container.querySelector('o-select[name="placement"]');
+  const distance = container.querySelector('o-input[name="distance"]');
+  const skidding = container.querySelector('o-input[name="skidding"]');
+  const active = container.querySelector('o-switch[name="active"]');
+  const arrow = container.querySelector('o-switch[name="arrow"]');
 
-  select.addEventListener('sl-change', () => (popup.placement = select.value));
-  distance.addEventListener('sl-input', () => (popup.distance = distance.value));
-  skidding.addEventListener('sl-input', () => (popup.skidding = skidding.value));
-  active.addEventListener('sl-change', () => (popup.active = active.checked));
-  arrow.addEventListener('sl-change', () => (popup.arrow = arrow.checked));
+  select.addEventListener('o-change', () => (popup.placement = select.value));
+  distance.addEventListener('o-input', () => (popup.distance = distance.value));
+  skidding.addEventListener('o-input', () => (popup.skidding = skidding.value));
+  active.addEventListener('o-change', () => (popup.active = active.checked));
+  arrow.addEventListener('o-change', () => (popup.arrow = arrow.checked));
 </script>
 
 <style>
-  .popup-overview sl-popup {
-    --arrow-color: var(--sl-color-primary-600);
+  .popup-overview o-popup {
+    --arrow-color: var(--o-color-primary-600);
   }
 
   .popup-overview span[slot='anchor'] {
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 50px;
   }
 
   .popup-overview .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 
   .popup-overview-options {
@@ -83,11 +83,11 @@ Popup doesn't provide any styles — just positioning! The popup's preferred pla
     gap: 1rem;
   }
 
-  .popup-overview-options sl-select {
+  .popup-overview-options o-select {
     width: 160px;
   }
 
-  .popup-overview-options sl-input {
+  .popup-overview-options o-input {
     width: 100px;
   }
 
@@ -99,26 +99,26 @@ Popup doesn't provide any styles — just positioning! The popup's preferred pla
 
 ```jsx react
 import { useState } from 'react';
-import { SlPopup, SlSelect, SlMenuItem, SlInput, SlSwitch } from '%PACKAGE_NAME%/dist/react';
+import { OPopup, OSelect, OMenuItem, OInput, OSwitch } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
-  .popup-overview sl-popup {
-    --arrow-color: var(--sl-color-primary-600);
+  .popup-overview o-popup {
+    --arrow-color: var(--o-color-primary-600);
   }
 
   .popup-overview span[slot='anchor'] {
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 50px;
   }
 
   .popup-overview .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 
   .popup-overview-options {
@@ -128,11 +128,11 @@ const css = `
     gap: 1rem;
   }
 
-  .popup-overview-options sl-select {
+  .popup-overview-options o-select {
     width: 160px;
   }
 
-  .popup-overview-options sl-input {
+  .popup-overview-options o-input {
     width: 100px;
   }
 
@@ -151,7 +151,7 @@ const App = () => {
   return (
     <>
       <div className="popup-overview">
-        <SlPopup
+        <OPopup
           placement={placement}
           active={active || null}
           distance={distance}
@@ -160,52 +160,52 @@ const App = () => {
         >
           <span slot="anchor" />
           <div className="box" />
-        </SlPopup>
+        </OPopup>
 
         <div className="popup-overview-options">
-          <SlSelect
+          <OSelect
             label="Placement"
             name="placement"
             value={placement}
             className="popup-overview-select"
             onSlChange={event => setPlacement(event.target.value)}
           >
-            <SlMenuItem value="top">top</SlMenuItem>
-            <SlMenuItem value="top-start">top-start</SlMenuItem>
-            <SlMenuItem value="top-end">top-end</SlMenuItem>
-            <SlMenuItem value="bottom">bottom</SlMenuItem>
-            <SlMenuItem value="bottom-start">bottom-start</SlMenuItem>
-            <SlMenuItem value="bottom-end">bottom-end</SlMenuItem>
-            <SlMenuItem value="right">right</SlMenuItem>
-            <SlMenuItem value="right-start">right-start</SlMenuItem>
-            <SlMenuItem value="right-end">right-end</SlMenuItem>
-            <SlMenuItem value="left">left</SlMenuItem>
-            <SlMenuItem value="left-start">left-start</SlMenuItem>
-            <SlMenuItem value="left-end">left-end</SlMenuItem>
-          </SlSelect>
-          <SlInput
+            <OMenuItem value="top">top</OMenuItem>
+            <OMenuItem value="top-start">top-start</OMenuItem>
+            <OMenuItem value="top-end">top-end</OMenuItem>
+            <OMenuItem value="bottom">bottom</OMenuItem>
+            <OMenuItem value="bottom-start">bottom-start</OMenuItem>
+            <OMenuItem value="bottom-end">bottom-end</OMenuItem>
+            <OMenuItem value="right">right</OMenuItem>
+            <OMenuItem value="right-start">right-start</OMenuItem>
+            <OMenuItem value="right-end">right-end</OMenuItem>
+            <OMenuItem value="left">left</OMenuItem>
+            <OMenuItem value="left-start">left-start</OMenuItem>
+            <OMenuItem value="left-end">left-end</OMenuItem>
+          </OSelect>
+          <OInput
             type="number"
             name="distance"
             label="distance"
             value={distance}
-            onSlInput={event => setDistance(event.target.value)}
+            onOInput={event => setDistance(event.target.value)}
           />
-          <SlInput
+          <OInput
             type="number"
             name="skidding"
             label="Skidding"
             value={skidding}
-            onSlInput={event => setSkidding(event.target.value)}
+            onOInput={event => setSkidding(event.target.value)}
           />
         </div>
 
         <div className="popup-overview-options">
-          <SlSwitch checked={active} onSlChange={event => setActive(event.target.checked)}>
+          <OSwitch checked={active} onSlChange={event => setActive(event.target.checked)}>
             Active
-          </SlSwitch>
-          <SlSwitch checked={arrow} onSlChange={event => setArrow(event.target.checked)}>
+          </OSwitch>
+          <OSwitch checked={arrow} onSlChange={event => setArrow(event.target.checked)}>
             Arrow
-          </SlSwitch>
+          </OSwitch>
         </div>
       </div>
 
@@ -225,13 +225,13 @@ Popups are inactive and hidden until the `active` attribute is applied. Removing
 
 ```html preview
 <div class="popup-active">
-  <sl-popup placement="top" active>
+  <o-popup placement="top" active>
     <span slot="anchor"></span>
     <div class="box"></div>
-  </sl-popup>
+  </o-popup>
 
   <br />
-  <sl-switch checked>Active</sl-switch>
+  <o-switch checked>Active</o-switch>
 </div>
 
 <style>
@@ -239,45 +239,45 @@ Popups are inactive and hidden until the `active` attribute is applied. Removing
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 50px;
   }
 
   .popup-active .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 </style>
 
 <script>
   const container = document.querySelector('.popup-active');
-  const popup = container.querySelector('sl-popup');
-  const active = container.querySelector('sl-switch');
+  const popup = container.querySelector('o-popup');
+  const active = container.querySelector('o-switch');
 
-  active.addEventListener('sl-change', () => (popup.active = active.checked));
+  active.addEventListener('o-change', () => (popup.active = active.checked));
 </script>
 ```
 
 ```jsx react
 import { useState } from 'react';
-import { SlPopup, SlSwitch } from '%PACKAGE_NAME%/dist/react';
+import { OPopup, OSwitch } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .popup-active span[slot='anchor'] {
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 50px;
   }
 
   .popup-active .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 `;
 
@@ -287,15 +287,15 @@ const App = () => {
   return (
     <>
       <div className="popup-active">
-        <SlPopup placement="top" active={active}>
+        <OPopup placement="top" active={active}>
           <span slot="anchor" />
           <div className="box" />
-        </SlPopup>
+        </OPopup>
 
         <br />
-        <SlSwitch checked={active} onSlChange={event => setActive(event.target.checked)}>
+        <OSwitch checked={active} onSlChange={event => setActive(event.target.checked)}>
           Active
-        </SlSwitch>
+        </OSwitch>
       </div>
 
       <style>{css}</style>
@@ -311,45 +311,45 @@ By default, anchors are slotted into the popup using the `anchor` slot. If your 
 ```html preview
 <span id="external-anchor"></span>
 
-<sl-popup anchor="external-anchor" placement="top" active>
+<o-popup anchor="external-anchor" placement="top" active>
   <div class="box"></div>
-</sl-popup>
+</o-popup>
 
 <style>
   #external-anchor {
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 50px 0 0 50px;
   }
 
-  #external-anchor ~ sl-popup .box {
+  #external-anchor ~ o-popup .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 </style>
 ```
 
 ```jsx react
-import { SlPopup } from '%PACKAGE_NAME%/dist/react';
+import { OPopup } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   #external-anchor {
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 50px 0 0 50px;
   }
 
-  #external-anchor ~ sl-popup .box {
+  #external-anchor ~ o-popup .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 `;
 
@@ -358,9 +358,9 @@ const App = () => {
     <>
       <span id="external-anchor" />
 
-      <SlPopup anchor="external-anchor" placement="top" active>
+      <OPopup anchor="external-anchor" placement="top" active>
         <div class="box" />
-      </SlPopup>
+      </OPopup>
 
       <style>{css}</style>
     </>
@@ -376,25 +376,25 @@ Since placement is preferred when using `flip`, you can observe the popup's curr
 
 ```html preview
 <div class="popup-placement">
-  <sl-popup placement="top" active>
+  <o-popup placement="top" active>
     <span slot="anchor"></span>
     <div class="box"></div>
-  </sl-popup>
+  </o-popup>
 
-  <sl-select label="Placement" value="top">
-    <sl-option value="top">top</sl-option>
-    <sl-option value="top-start">top-start</sl-option>
-    <sl-option value="top-end">top-end</sl-option>
-    <sl-option value="bottom">bottom</sl-option>
-    <sl-option value="bottom-start">bottom-start</sl-option>
-    <sl-option value="bottom-end">bottom-end</sl-option>
-    <sl-option value="right">right</sl-option>
-    <sl-option value="right-start">right-start</sl-option>
-    <sl-option value="right-end">right-end</sl-option>
-    <sl-option value="left">left</sl-option>
-    <sl-option value="left-start">left-start</sl-option>
-    <sl-option value="left-end">left-end</sl-option>
-  </sl-select>
+  <o-select label="Placement" value="top">
+    <o-option value="top">top</o-option>
+    <o-option value="top-start">top-start</o-option>
+    <o-option value="top-end">top-end</o-option>
+    <o-option value="bottom">bottom</o-option>
+    <o-option value="bottom-start">bottom-start</o-option>
+    <o-option value="bottom-end">bottom-end</o-option>
+    <o-option value="right">right</o-option>
+    <o-option value="right-start">right-start</o-option>
+    <o-option value="right-end">right-end</o-option>
+    <o-option value="left">left</o-option>
+    <o-option value="left-start">left-start</o-option>
+    <o-option value="left-end">left-end</o-option>
+  </o-select>
 </div>
 
 <style>
@@ -402,52 +402,52 @@ Since placement is preferred when using `flip`, you can observe the popup's curr
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 50px;
   }
 
   .popup-placement .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 
-  .popup-placement sl-select {
+  .popup-placement o-select {
     max-width: 280px;
   }
 </style>
 
 <script>
   const container = document.querySelector('.popup-placement');
-  const popup = container.querySelector('sl-popup');
-  const select = container.querySelector('sl-select');
+  const popup = container.querySelector('o-popup');
+  const select = container.querySelector('o-select');
 
-  select.addEventListener('sl-change', () => (popup.placement = select.value));
+  select.addEventListener('o-change', () => (popup.placement = select.value));
 </script>
 ```
 
 ```jsx react
 import { useState } from 'react';
-import { SlPopup, SlSelect, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { OPopup, OSelect, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .popup-placement span[slot='anchor'] {
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 50px;
   }
 
   .popup-placement .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 
-  .popup-placement sl-select {
+  .popup-placement o-select {
     max-width: 280px;
   }
 `;
@@ -458,25 +458,25 @@ const App = () => {
   return (
     <div className="popup-active">
       <div className="popup-placement">
-        <SlPopup placement={placement} active>
+        <OPopup placement={placement} active>
           <span slot="anchor" />
           <div className="box" />
-        </SlPopup>
+        </OPopup>
 
-        <SlSelect label="Placement" value={placement} onSlChange={event => setPlacement(event.target.value)}>
-          <SlMenuItem value="top">top</SlMenuItem>
-          <SlMenuItem value="top-start">top-start</SlMenuItem>
-          <SlMenuItem value="top-end">top-end</SlMenuItem>
-          <SlMenuItem value="bottom">bottom</SlMenuItem>
-          <SlMenuItem value="bottom-start">bottom-start</SlMenuItem>
-          <SlMenuItem value="bottom-end">bottom-end</SlMenuItem>
-          <SlMenuItem value="right">right</SlMenuItem>
-          <SlMenuItem value="right-start">right-start</SlMenuItem>
-          <SlMenuItem value="right-end">right-end</SlMenuItem>
-          <SlMenuItem value="left">left</SlMenuItem>
-          <SlMenuItem value="left-start">left-start</SlMenuItem>
-          <SlMenuItem value="left-end">left-end</SlMenuItem>
-        </SlSelect>
+        <OSelect label="Placement" value={placement} onSlChange={event => setPlacement(event.target.value)}>
+          <OMenuItem value="top">top</OMenuItem>
+          <OMenuItem value="top-start">top-start</OMenuItem>
+          <OMenuItem value="top-end">top-end</OMenuItem>
+          <OMenuItem value="bottom">bottom</OMenuItem>
+          <OMenuItem value="bottom-start">bottom-start</OMenuItem>
+          <OMenuItem value="bottom-end">bottom-end</OMenuItem>
+          <OMenuItem value="right">right</OMenuItem>
+          <OMenuItem value="right-start">right-start</OMenuItem>
+          <OMenuItem value="right-end">right-end</OMenuItem>
+          <OMenuItem value="left">left</OMenuItem>
+          <OMenuItem value="left-start">left-start</OMenuItem>
+          <OMenuItem value="left-end">left-end</OMenuItem>
+        </OSelect>
       </div>
 
       <style>{css}</style>
@@ -491,12 +491,12 @@ Use the `distance` attribute to change the distance between the popup and its an
 
 ```html preview
 <div class="popup-distance">
-  <sl-popup placement="top" distance="0" active>
+  <o-popup placement="top" distance="0" active>
     <span slot="anchor"></span>
     <div class="box"></div>
-  </sl-popup>
+  </o-popup>
 
-  <sl-range min="-50" max="50" step="1" value="0" label="Distance"></sl-range>
+  <o-range min="-50" max="50" step="1" value="0" label="Distance"></o-range>
 </div>
 
 <style>
@@ -504,52 +504,52 @@ Use the `distance` attribute to change the distance between the popup and its an
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 50px;
   }
 
   .popup-distance .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 
-  .popup-distance sl-range {
+  .popup-distance o-range {
     max-width: 260px;
   }
 </style>
 
 <script>
   const container = document.querySelector('.popup-distance');
-  const popup = container.querySelector('sl-popup');
-  const distance = container.querySelector('sl-range');
+  const popup = container.querySelector('o-popup');
+  const distance = container.querySelector('o-range');
 
-  distance.addEventListener('sl-input', () => (popup.distance = distance.value));
+  distance.addEventListener('o-input', () => (popup.distance = distance.value));
 </script>
 ```
 
 ```jsx react
 import { useState } from 'react';
-import { SlPopup, SlRange } from '%PACKAGE_NAME%/dist/react';
+import { OPopup, ORange } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .popup-distance span[slot='anchor'] {
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 50px;
   }
 
   .popup-distance .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 
-  .popup-distance sl-range {
+  .popup-distance o-range {
     max-width: 260px;
   }
 `;
@@ -560,12 +560,12 @@ const App = () => {
   return (
     <>
       <div className="popup-distance">
-        <SlPopup placement="top" distance={distance} active>
+        <OPopup placement="top" distance={distance} active>
           <span slot="anchor" />
           <div class="box" />
-        </SlPopup>
+        </OPopup>
 
-        <SlRange
+        <ORange
           label="Distance"
           min="-50"
           max="50"
@@ -587,12 +587,12 @@ The `skidding` attribute is similar to `distance`, but instead allows you to off
 
 ```html preview
 <div class="popup-skidding">
-  <sl-popup placement="top" skidding="0" active>
+  <o-popup placement="top" skidding="0" active>
     <span slot="anchor"></span>
     <div class="box"></div>
-  </sl-popup>
+  </o-popup>
 
-  <sl-range min="-50" max="50" step="1" value="0" label="Skidding"></sl-range>
+  <o-range min="-50" max="50" step="1" value="0" label="Skidding"></o-range>
 </div>
 
 <style>
@@ -600,52 +600,52 @@ The `skidding` attribute is similar to `distance`, but instead allows you to off
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 50px;
   }
 
   .popup-skidding .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 
-  .popup-skidding sl-range {
+  .popup-skidding o-range {
     max-width: 260px;
   }
 </style>
 
 <script>
   const container = document.querySelector('.popup-skidding');
-  const popup = container.querySelector('sl-popup');
-  const skidding = container.querySelector('sl-range');
+  const popup = container.querySelector('o-popup');
+  const skidding = container.querySelector('o-range');
 
-  skidding.addEventListener('sl-input', () => (popup.skidding = skidding.value));
+  skidding.addEventListener('o-input', () => (popup.skidding = skidding.value));
 </script>
 ```
 
 ```jsx react
 import { useState } from 'react';
-import { SlPopup, SlRange } from '%PACKAGE_NAME%/dist/react';
+import { OPopup, ORange } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .popup-skidding span[slot='anchor'] {
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 50px;
   }
 
   .popup-skidding .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 
-  .popup-skidding sl-range {
+  .popup-skidding o-range {
     max-width: 260px;
   }
 `;
@@ -656,12 +656,12 @@ const App = () => {
   return (
     <>
       <div className="popup-skidding">
-        <SlPopup placement="top" skidding={skidding} active>
+        <OPopup placement="top" skidding={skidding} active>
           <span slot="anchor"></span>
           <div className="box"></div>
-        </SlPopup>
+        </OPopup>
 
-        <SlRange
+        <ORange
           label="Skidding"
           min="-50"
           max="50"
@@ -685,57 +685,57 @@ By default, the arrow will be aligned as close to the center of the _anchor_ as 
 
 ```html preview
 <div class="popup-arrow">
-  <sl-popup placement="top" arrow arrow-placement="anchor" distance="8" active>
+  <o-popup placement="top" arrow arrow-placement="anchor" distance="8" active>
     <span slot="anchor"></span>
     <div class="box"></div>
-  </sl-popup>
+  </o-popup>
 
   <div class="popup-arrow-options">
-    <sl-select label="Placement" name="placement" value="top" class="popup-overview-select">
-      <sl-option value="top">top</sl-option>
-      <sl-option value="top-start">top-start</sl-option>
-      <sl-option value="top-end">top-end</sl-option>
-      <sl-option value="bottom">bottom</sl-option>
-      <sl-option value="bottom-start">bottom-start</sl-option>
-      <sl-option value="bottom-end">bottom-end</sl-option>
-      <sl-option value="right">right</sl-option>
-      <sl-option value="right-start">right-start</sl-option>
-      <sl-option value="right-end">right-end</sl-option>
-      <sl-option value="left">left</sl-option>
-      <sl-option value="left-start">left-start</sl-option>
-      <sl-option value="left-end">left-end</sl-option>
-    </sl-select>
+    <o-select label="Placement" name="placement" value="top" class="popup-overview-select">
+      <o-option value="top">top</o-option>
+      <o-option value="top-start">top-start</o-option>
+      <o-option value="top-end">top-end</o-option>
+      <o-option value="bottom">bottom</o-option>
+      <o-option value="bottom-start">bottom-start</o-option>
+      <o-option value="bottom-end">bottom-end</o-option>
+      <o-option value="right">right</o-option>
+      <o-option value="right-start">right-start</o-option>
+      <o-option value="right-end">right-end</o-option>
+      <o-option value="left">left</o-option>
+      <o-option value="left-start">left-start</o-option>
+      <o-option value="left-end">left-end</o-option>
+    </o-select>
 
-    <sl-select label="Arrow Placement" name="arrow-placement" value="anchor">
-      <sl-option value="anchor">anchor</sl-option>
-      <sl-option value="start">start</sl-option>
-      <sl-option value="end">end</sl-option>
-      <sl-option value="center">center</sl-option>
-    </sl-select>
+    <o-select label="Arrow Placement" name="arrow-placement" value="anchor">
+      <o-option value="anchor">anchor</o-option>
+      <o-option value="start">start</o-option>
+      <o-option value="end">end</o-option>
+      <o-option value="center">center</o-option>
+    </o-select>
   </div>
 
   <div class="popup-arrow-options">
-    <sl-switch name="arrow" checked>Arrow</sl-switch>
+    <o-switch name="arrow" checked>Arrow</o-switch>
   </div>
 
   <style>
-    .popup-arrow sl-popup {
-      --arrow-color: var(--sl-color-primary-600);
+    .popup-arrow o-popup {
+      --arrow-color: var(--o-color-primary-600);
     }
 
     .popup-arrow span[slot='anchor'] {
       display: inline-block;
       width: 150px;
       height: 150px;
-      border: dashed 2px var(--sl-color-neutral-600);
+      border: dashed 2px var(--o-color-neutral-600);
       margin: 50px;
     }
 
     .popup-arrow .box {
       width: 100px;
       height: 50px;
-      background: var(--sl-color-primary-600);
-      border-radius: var(--sl-border-radius-medium);
+      background: var(--o-color-primary-600);
+      border-radius: var(--o-border-radius-medium);
     }
 
     .popup-arrow-options {
@@ -745,7 +745,7 @@ By default, the arrow will be aligned as close to the center of the _anchor_ as 
       gap: 1rem;
     }
 
-    .popup-arrow-options sl-select {
+    .popup-arrow-options o-select {
       width: 160px;
     }
 
@@ -756,40 +756,40 @@ By default, the arrow will be aligned as close to the center of the _anchor_ as 
 
   <script>
     const container = document.querySelector('.popup-arrow');
-    const popup = container.querySelector('sl-popup');
+    const popup = container.querySelector('o-popup');
     const placement = container.querySelector('[name="placement"]');
     const arrowPlacement = container.querySelector('[name="arrow-placement"]');
     const arrow = container.querySelector('[name="arrow"]');
 
-    placement.addEventListener('sl-change', () => (popup.placement = placement.value));
-    arrowPlacement.addEventListener('sl-change', () => (popup.arrowPlacement = arrowPlacement.value));
-    arrow.addEventListener('sl-change', () => (popup.arrow = arrow.checked));
+    placement.addEventListener('o-change', () => (popup.placement = placement.value));
+    arrowPlacement.addEventListener('o-change', () => (popup.arrowPlacement = arrowPlacement.value));
+    arrow.addEventListener('o-change', () => (popup.arrow = arrow.checked));
   </script>
 </div>
 ```
 
 ```jsx react
 import { useState } from 'react';
-import { SlPopup, SlSelect, SlMenuItem, SlSwitch } from '%PACKAGE_NAME%/dist/react';
+import { OPopup, OSelect, OMenuItem, OSwitch } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
-  .popup-arrow sl-popup {
-    --arrow-color: var(--sl-color-primary-600);
+  .popup-arrow o-popup {
+    --arrow-color: var(--o-color-primary-600);
   }
 
   .popup-arrow span[slot='anchor'] {
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 50px;
   }
 
   .popup-arrow .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 
   .popup-arrow-options {
@@ -799,7 +799,7 @@ const css = `
     gap: 1rem;
   }
 
-  .popup-arrow-options sl-select {
+  .popup-arrow-options o-select {
     width: 160px;
   }
 
@@ -816,50 +816,50 @@ const App = () => {
   return (
     <>
       <div className="popup-arrow">
-        <SlPopup placement={placement} arrow={arrow || null} arrow-placement={arrowPlacement} distance="8" active>
+        <OPopup placement={placement} arrow={arrow || null} arrow-placement={arrowPlacement} distance="8" active>
           <span slot="anchor" />
           <div className="box" />
-        </SlPopup>
+        </OPopup>
 
         <div className="popup-arrow-options">
-          <SlSelect
+          <OSelect
             label="Placement"
             name="placement"
             value={placement}
             className="popup-overview-select"
             onSlChange={event => setPlacement(event.target.value)}
           >
-            <SlMenuItem value="top">top</SlMenuItem>
-            <SlMenuItem value="top-start">top-start</SlMenuItem>
-            <SlMenuItem value="top-end">top-end</SlMenuItem>
-            <SlMenuItem value="bottom">bottom</SlMenuItem>
-            <SlMenuItem value="bottom-start">bottom-start</SlMenuItem>
-            <SlMenuItem value="bottom-end">bottom-end</SlMenuItem>
-            <SlMenuItem value="right">right</SlMenuItem>
-            <SlMenuItem value="right-start">right-start</SlMenuItem>
-            <SlMenuItem value="right-end">right-end</SlMenuItem>
-            <SlMenuItem value="left">left</SlMenuItem>
-            <SlMenuItem value="left-start">left-start</SlMenuItem>
-            <SlMenuItem value="left-end">left-end</SlMenuItem>
-          </SlSelect>
+            <OMenuItem value="top">top</OMenuItem>
+            <OMenuItem value="top-start">top-start</OMenuItem>
+            <OMenuItem value="top-end">top-end</OMenuItem>
+            <OMenuItem value="bottom">bottom</OMenuItem>
+            <OMenuItem value="bottom-start">bottom-start</OMenuItem>
+            <OMenuItem value="bottom-end">bottom-end</OMenuItem>
+            <OMenuItem value="right">right</OMenuItem>
+            <OMenuItem value="right-start">right-start</OMenuItem>
+            <OMenuItem value="right-end">right-end</OMenuItem>
+            <OMenuItem value="left">left</OMenuItem>
+            <OMenuItem value="left-start">left-start</OMenuItem>
+            <OMenuItem value="left-end">left-end</OMenuItem>
+          </OSelect>
 
-          <SlSelect
+          <OSelect
             label="Arrow Placement"
             name="arrow-placement"
             value={arrowPlacement}
             onSlChange={event => setArrowPlacement(event.target.value)}
           >
-            <SlMenuItem value="anchor">anchor</SlMenuItem>
-            <SlMenuItem value="start">start</SlMenuItem>
-            <SlMenuItem value="end">end</SlMenuItem>
-            <SlMenuItem value="center">center</SlMenuItem>
-          </SlSelect>
+            <OMenuItem value="anchor">anchor</OMenuItem>
+            <OMenuItem value="start">start</OMenuItem>
+            <OMenuItem value="end">end</OMenuItem>
+            <OMenuItem value="center">center</OMenuItem>
+          </OSelect>
         </div>
 
         <div className="popup-arrow-options">
-          <SlSwitch name="arrow" checked={arrow} onSlChange={event => setArrow(event.target.checked)}>
+          <OSwitch name="arrow" checked={arrow} onSlChange={event => setArrow(event.target.checked)}>
             Arrow
-          </SlSwitch>
+          </OSwitch>
         </div>
       </div>
 
@@ -875,17 +875,17 @@ Use the `sync` attribute to make the popup the same width or height as the ancho
 
 ```html preview
 <div class="popup-sync">
-  <sl-popup placement="top" sync="width" active>
+  <o-popup placement="top" sync="width" active>
     <span slot="anchor"></span>
     <div class="box"></div>
-  </sl-popup>
+  </o-popup>
 
-  <sl-select value="width" label="Sync">
-    <sl-option value="width">Width</sl-option>
-    <sl-option value="height">Height</sl-option>
-    <sl-option value="both">Both</sl-option>
-    <sl-option value="">None</sl-option>
-  </sl-select>
+  <o-select value="width" label="Sync">
+    <o-option value="width">Width</o-option>
+    <o-option value="height">Height</o-option>
+    <o-option value="both">Both</o-option>
+    <o-option value="">None</o-option>
+  </o-select>
 </div>
 
 <style>
@@ -893,7 +893,7 @@ Use the `sync` attribute to make the popup the same width or height as the ancho
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 50px;
   }
 
@@ -902,35 +902,35 @@ Use the `sync` attribute to make the popup the same width or height as the ancho
     height: 100%;
     min-width: 50px;
     min-height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 
-  .popup-sync sl-select {
+  .popup-sync o-select {
     width: 160px;
   }
 </style>
 
 <script>
   const container = document.querySelector('.popup-sync');
-  const popup = container.querySelector('sl-popup');
-  const fixed = container.querySelector('sl-switch');
-  const sync = container.querySelector('sl-select');
+  const popup = container.querySelector('o-popup');
+  const fixed = container.querySelector('o-switch');
+  const sync = container.querySelector('o-select');
 
-  sync.addEventListener('sl-change', () => (popup.sync = sync.value));
+  sync.addEventListener('o-change', () => (popup.sync = sync.value));
 </script>
 ```
 
 ```jsx react
 import { useState } from 'react';
-import { SlPopup, SlSelect, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { OPopup, OSelect, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .popup-sync span[slot='anchor'] {
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 50px;
   }
 
@@ -939,11 +939,11 @@ const css = `
     height: 100%;
     min-width: 50px;
     min-height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 
-  .popup-sync sl-switch {
+  .popup-sync o-switch {
     margin-top: 1rem;
   }
 `;
@@ -954,17 +954,17 @@ const App = () => {
   return (
     <>
       <div class="popup-sync">
-        <SlPopup placement="top" sync={sync} active>
+        <OPopup placement="top" sync={sync} active>
           <span slot="anchor" />
           <div class="box" />
-        </SlPopup>
+        </OPopup>
 
-        <SlSelect value={sync} label="Sync" onSlChange={event => setSync(event.target.value)}>
-          <SlMenuItem value="width">Width</SlMenuItem>
-          <SlMenuItem value="height">Height</SlMenuItem>
-          <SlMenuItem value="both">Both</SlMenuItem>
-          <SlMenuItem value="">None</SlMenuItem>
-        </SlSelect>
+        <OSelect value={sync} label="Sync" onSlChange={event => setSync(event.target.value)}>
+          <OMenuItem value="width">Width</OMenuItem>
+          <OMenuItem value="height">Height</OMenuItem>
+          <OMenuItem value="both">Both</OMenuItem>
+          <OMenuItem value="">None</OMenuItem>
+        </OSelect>
       </div>
 
       <style>{css}</style>
@@ -986,20 +986,20 @@ Toggle the switch and scroll the container to see the difference.
 ```html preview
 <div class="popup-strategy">
   <div class="overflow">
-    <sl-popup placement="top" strategy="fixed" active>
+    <o-popup placement="top" strategy="fixed" active>
       <span slot="anchor"></span>
       <div class="box"></div>
-    </sl-popup>
+    </o-popup>
   </div>
 
-  <sl-switch checked>Fixed</sl-switch>
+  <o-switch checked>Fixed</o-switch>
 </div>
 
 <style>
   .popup-strategy .overflow {
     position: relative;
     height: 300px;
-    border: solid 2px var(--sl-color-neutral-200);
+    border: solid 2px var(--o-color-neutral-200);
     overflow: auto;
   }
 
@@ -1007,40 +1007,40 @@ Toggle the switch and scroll the container to see the difference.
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 150px 50px;
   }
 
   .popup-strategy .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 
-  .popup-strategy sl-switch {
+  .popup-strategy o-switch {
     margin-top: 1rem;
   }
 </style>
 
 <script>
   const container = document.querySelector('.popup-strategy');
-  const popup = container.querySelector('sl-popup');
-  const fixed = container.querySelector('sl-switch');
+  const popup = container.querySelector('o-popup');
+  const fixed = container.querySelector('o-switch');
 
-  fixed.addEventListener('sl-change', () => (popup.strategy = fixed.checked ? 'fixed' : 'absolute'));
+  fixed.addEventListener('o-change', () => (popup.strategy = fixed.checked ? 'fixed' : 'absolute'));
 </script>
 ```
 
 ```jsx react
 import { useState } from 'react';
-import { SlPopup, SlSwitch } from '%PACKAGE_NAME%/dist/react';
+import { OPopup, OSwitch } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .popup-strategy .overflow {
     position: relative;
     height: 300px;
-    border: solid 2px var(--sl-color-neutral-200);
+    border: solid 2px var(--o-color-neutral-200);
     overflow: auto;
   }
 
@@ -1048,18 +1048,18 @@ const css = `
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 150px 50px;
   }
 
   .popup-strategy .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 
-  .popup-strategy sl-switch {
+  .popup-strategy o-switch {
     margin-top: 1rem;
   }
 `;
@@ -1071,15 +1071,15 @@ const App = () => {
     <>
       <div className="popup-strategy">
         <div className="overflow">
-          <SlPopup placement="top" strategy={fixed ? 'fixed' : 'absolute'} active>
+          <OPopup placement="top" strategy={fixed ? 'fixed' : 'absolute'} active>
             <span slot="anchor" />
             <div className="box" />
-          </SlPopup>
+          </OPopup>
         </div>
 
-        <SlSwitch checked={fixed} onSlChange={event => setFixed(event.target.checked)}>
+        <OSwitch checked={fixed} onSlChange={event => setFixed(event.target.checked)}>
           Fixed
-        </SlSwitch>
+        </OSwitch>
       </div>
 
       <style>{css}</style>
@@ -1097,21 +1097,21 @@ Scroll the container to see how the popup flips to prevent clipping.
 ```html preview
 <div class="popup-flip">
   <div class="overflow">
-    <sl-popup placement="top" flip active>
+    <o-popup placement="top" flip active>
       <span slot="anchor"></span>
       <div class="box"></div>
-    </sl-popup>
+    </o-popup>
   </div>
 
   <br />
-  <sl-switch checked>Flip</sl-switch>
+  <o-switch checked>Flip</o-switch>
 </div>
 
 <style>
   .popup-flip .overflow {
     position: relative;
     height: 300px;
-    border: solid 2px var(--sl-color-neutral-200);
+    border: solid 2px var(--o-color-neutral-200);
     overflow: auto;
   }
 
@@ -1119,36 +1119,36 @@ Scroll the container to see how the popup flips to prevent clipping.
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 150px 50px;
   }
 
   .popup-flip .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 </style>
 
 <script>
   const container = document.querySelector('.popup-flip');
-  const popup = container.querySelector('sl-popup');
-  const flip = container.querySelector('sl-switch');
+  const popup = container.querySelector('o-popup');
+  const flip = container.querySelector('o-switch');
 
-  flip.addEventListener('sl-change', () => (popup.flip = flip.checked));
+  flip.addEventListener('o-change', () => (popup.flip = flip.checked));
 </script>
 ```
 
 ```jsx react
 import { useState } from 'react';
-import { SlPopup, SlSwitch } from '%PACKAGE_NAME%/dist/react';
+import { OPopup, OSwitch } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .popup-flip .overflow {
     position: relative;
     height: 300px;
-    border: solid 2px var(--sl-color-neutral-200);
+    border: solid 2px var(--o-color-neutral-200);
     overflow: auto;
   }
 
@@ -1156,15 +1156,15 @@ const css = `
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 150px 50px;
   }
 
   .popup-flip .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 `;
 
@@ -1175,16 +1175,16 @@ const App = () => {
     <>
       <div className="popup-flip">
         <div className="overflow">
-          <SlPopup placement="top" flip={flip} active>
+          <OPopup placement="top" flip={flip} active>
             <span slot="anchor" />
             <div className="box" />
-          </SlPopup>
+          </OPopup>
         </div>
 
         <br />
-        <SlSwitch checked={flip} onSlChange={event => setFlip(event.target.checked)}>
+        <OSwitch checked={flip} onSlChange={event => setFlip(event.target.checked)}>
           Flip
-        </SlSwitch>
+        </OSwitch>
       </div>
 
       <style>{css}</style>
@@ -1206,10 +1206,10 @@ Scroll the container to see how the popup changes it's fallback placement to pre
 ```html preview
 <div class="popup-flip-fallbacks">
   <div class="overflow">
-    <sl-popup placement="top" flip flip-fallback-placements="right bottom" flip-fallback-strategy="initial" active>
+    <o-popup placement="top" flip flip-fallback-placements="right bottom" flip-fallback-strategy="initial" active>
       <span slot="anchor"></span>
       <div class="box"></div>
-    </sl-popup>
+    </o-popup>
   </div>
 </div>
 
@@ -1217,7 +1217,7 @@ Scroll the container to see how the popup changes it's fallback placement to pre
   .popup-flip-fallbacks .overflow {
     position: relative;
     height: 300px;
-    border: solid 2px var(--sl-color-neutral-200);
+    border: solid 2px var(--o-color-neutral-200);
     overflow: auto;
   }
 
@@ -1225,27 +1225,27 @@ Scroll the container to see how the popup changes it's fallback placement to pre
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 250px 50px;
   }
 
   .popup-flip-fallbacks .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 </style>
 ```
 
 ```jsx react
-import { SlPopup } from '%PACKAGE_NAME%/dist/react';
+import { OPopup } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .popup-flip-fallbacks .overflow {
     position: relative;
     height: 300px;
-    border: solid 2px var(--sl-color-neutral-200);
+    border: solid 2px var(--o-color-neutral-200);
     overflow: auto;
   }
 
@@ -1253,15 +1253,15 @@ const css = `
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 250px 50px;
   }
 
   .popup-flip-fallbacks .box {
     width: 100px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 `;
 
@@ -1270,10 +1270,10 @@ const App = () => {
     <>
       <div className="popup-flip-fallbacks">
         <div className="overflow">
-          <SlPopup placement="top" flip flip-fallback-placements="right bottom" flip-fallback-strategy="initial" active>
+          <OPopup placement="top" flip flip-fallback-placements="right bottom" flip-fallback-strategy="initial" active>
             <span slot="anchor" />
             <div className="box" />
-          </SlPopup>
+          </OPopup>
         </div>
       </div>
 
@@ -1292,19 +1292,19 @@ Toggle the switch to see the difference.
 ```html preview
 <div class="popup-shift">
   <div class="overflow">
-    <sl-popup placement="top" shift shift-padding="10" active>
+    <o-popup placement="top" shift shift-padding="10" active>
       <span slot="anchor"></span>
       <div class="box"></div>
-    </sl-popup>
+    </o-popup>
   </div>
 
-  <sl-switch checked>Shift</sl-switch>
+  <o-switch checked>Shift</o-switch>
 </div>
 
 <style>
   .popup-shift .overflow {
     position: relative;
-    border: solid 2px var(--sl-color-neutral-200);
+    border: solid 2px var(--o-color-neutral-200);
     overflow: auto;
   }
 
@@ -1312,35 +1312,35 @@ Toggle the switch to see the difference.
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 60px 0 0 10px;
   }
 
   .popup-shift .box {
     width: 300px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 </style>
 
 <script>
   const container = document.querySelector('.popup-shift');
-  const popup = container.querySelector('sl-popup');
-  const shift = container.querySelector('sl-switch');
+  const popup = container.querySelector('o-popup');
+  const shift = container.querySelector('o-switch');
 
-  shift.addEventListener('sl-change', () => (popup.shift = shift.checked));
+  shift.addEventListener('o-change', () => (popup.shift = shift.checked));
 </script>
 ```
 
 ```jsx react
 import { useState } from 'react';
-import { SlPopup, SlSwitch } from '%PACKAGE_NAME%/dist/react';
+import { OPopup, OSwitch } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .popup-shift .overflow {
     position: relative;
-    border: solid 2px var(--sl-color-neutral-200);
+    border: solid 2px var(--o-color-neutral-200);
     overflow: auto;
   }
 
@@ -1348,15 +1348,15 @@ const css = `
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 60px 0 0 10px;
   }
 
   .popup-shift .box {
     width: 300px;
     height: 50px;
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
   }
 `;
 
@@ -1367,15 +1367,15 @@ const App = () => {
     <>
       <div className="popup-shift">
         <div className="overflow">
-          <SlPopup placement="top" shift={shift} shift-padding="10" active>
+          <OPopup placement="top" shift={shift} shift-padding="10" active>
             <span slot="anchor" />
             <div className="box" />
-          </SlPopup>
+          </OPopup>
         </div>
 
-        <SlSwitch checked={shift} onSlChange={event => setShift(event.target.checked)}>
+        <OSwitch checked={shift} onSlChange={event => setShift(event.target.checked)}>
           Shift
-        </SlSwitch>
+        </OSwitch>
       </div>
 
       <style>{css}</style>
@@ -1395,21 +1395,21 @@ Scroll the container to see the popup resize as its available space changes.
 ```html preview
 <div class="popup-auto-size">
   <div class="overflow">
-    <sl-popup placement="top" auto-size="both" auto-size-padding="10" active>
+    <o-popup placement="top" auto-size="both" auto-size-padding="10" active>
       <span slot="anchor"></span>
       <div class="box"></div>
-    </sl-popup>
+    </o-popup>
   </div>
 
   <br />
-  <sl-switch checked>Auto-size</sl-switch>
+  <o-switch checked>Auto-size</o-switch>
 </div>
 
 <style>
   .popup-auto-size .overflow {
     position: relative;
     height: 300px;
-    border: solid 2px var(--sl-color-neutral-200);
+    border: solid 2px var(--o-color-neutral-200);
     overflow: auto;
   }
 
@@ -1417,13 +1417,13 @@ Scroll the container to see the popup resize as its available space changes.
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 250px 50px 100px 50px;
   }
 
   .popup-auto-size .box {
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
 
     /* This sets the preferred size of the popup's content */
     width: 100px;
@@ -1438,22 +1438,22 @@ Scroll the container to see the popup resize as its available space changes.
 
 <script>
   const container = document.querySelector('.popup-auto-size');
-  const popup = container.querySelector('sl-popup');
-  const autoSize = container.querySelector('sl-switch');
+  const popup = container.querySelector('o-popup');
+  const autoSize = container.querySelector('o-switch');
 
-  autoSize.addEventListener('sl-change', () => (popup.autoSize = autoSize.checked ? 'both' : ''));
+  autoSize.addEventListener('o-change', () => (popup.autoSize = autoSize.checked ? 'both' : ''));
 </script>
 ```
 
 ```jsx react
 import { useState } from 'react';
-import { SlPopup, SlSwitch } from '%PACKAGE_NAME%/dist/react';
+import { OPopup, OSwitch } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .popup-auto-size .overflow {
     position: relative;
     height: 300px;
-    border: solid 2px var(--sl-color-neutral-200);
+    border: solid 2px var(--o-color-neutral-200);
     overflow: auto;
   }
 
@@ -1461,13 +1461,13 @@ const css = `
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: dashed 2px var(--sl-color-neutral-600);
+    border: dashed 2px var(--o-color-neutral-600);
     margin: 250px 50px 100px 50px;
   }
 
   .popup-auto-size .box {
-    background: var(--sl-color-primary-600);
-    border-radius: var(--sl-border-radius-medium);
+    background: var(--o-color-primary-600);
+    border-radius: var(--o-border-radius-medium);
 
     /* This sets the preferred size of the popup's content */
     width: 100px;
@@ -1487,16 +1487,16 @@ const App = () => {
     <>
       <div className="popup-auto-size">
         <div className="overflow">
-          <SlPopup placement="top" auto-size={autoSize ? 'both' || null} auto-size-padding="10" active>
+          <OPopup placement="top" auto-size={autoSize ? 'both' || null} auto-size-padding="10" active>
             <span slot="anchor" />
             <div className="box" />
-          </SlPopup>
+          </OPopup>
         </div>
 
         <br />
-        <SlSwitch checked={autoSize} onSlChange={event => setAutoSize(event.target.checked)}>
+        <OSwitch checked={autoSize} onSlChange={event => setAutoSize(event.target.checked)}>
           Auto-size
-        </SlSwitch>
+        </OSwitch>
       </div>
 
       <style>{css}</style>
@@ -1505,4 +1505,4 @@ const App = () => {
 };
 ```
 
-[component-metadata:sl-popup]
+[component-metadata:o-popup]

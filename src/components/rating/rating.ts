@@ -7,20 +7,20 @@ import { LocalizeController } from '../../utilities/localize';
 import { styleMap } from 'lit/directives/style-map.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './rating.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Ratings give users a way to quickly view and provide feedback.
- * @documentation https://shoelace.style/components/rating
+ * @documentation https://circular-o.github.io/circular/#/components/rating
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
+ * @dependency o-icon
  *
- * @event sl-change - Emitted when the rating's value changes.
- * @event {{ phase: 'start' | 'move' | 'end', value: number }} sl-hover - Emitted when the user hovers over a value. The
+ * @event o-change - Emitted when the rating's value changes.
+ * @event {{ phase: 'start' | 'move' | 'end', value: number }} o-hover - Emitted when the user hovers over a value. The
  *  `phase` property indicates when hovering starts, moves to a new value, or ends. The `value` property tells what the
  *  rating's value would be if the user were to commit to the hovered value.
  *
@@ -31,8 +31,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --symbol-size - The size of symbols.
  * @cssproperty --symbol-spacing - The spacing to use around symbols.
  */
-@customElement('sl-rating')
-export default class SlRating extends ShoelaceElement {
+@customElement('o-rating')
+export default class ORating extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private readonly localize = new LocalizeController(this);
@@ -66,9 +66,9 @@ export default class SlRating extends ShoelaceElement {
   /**
    * A function that customizes the symbol to be rendered. The first and only argument is the rating's current value.
    * The function should return a string containing trusted HTML of the symbol to render at the specified value. Works
-   * well with `<sl-icon>` elements.
+   * well with `<o-icon>` elements.
    */
-  @property() getSymbol: (value: number) => string = () => '<sl-icon name="star-fill" library="system"></sl-icon>';
+  @property() getSymbol: (value: number) => string = () => '<o-icon name="star-fill" library="system"></o-icon>';
 
   private getValueFromMousePosition(event: MouseEvent) {
     return this.getValueFromXCoordinate(event.clientX);
@@ -94,7 +94,7 @@ export default class SlRating extends ShoelaceElement {
     }
 
     this.setValue(this.getValueFromMousePosition(event));
-    this.emit('sl-change');
+    this.emit('o-change');
   }
 
   private setValue(newValue: number) {
@@ -138,7 +138,7 @@ export default class SlRating extends ShoelaceElement {
     }
 
     if (this.value !== oldValue) {
-      this.emit('sl-change');
+      this.emit('o-change');
     }
   }
 
@@ -171,7 +171,7 @@ export default class SlRating extends ShoelaceElement {
   private handleTouchEnd(event: TouchEvent) {
     this.isHovering = false;
     this.setValue(this.hoverValue);
-    this.emit('sl-change');
+    this.emit('o-change');
 
     // Prevent click on mobile devices
     event.preventDefault();
@@ -184,7 +184,7 @@ export default class SlRating extends ShoelaceElement {
 
   @watch('hoverValue')
   handleHoverValueChange() {
-    this.emit('sl-hover', {
+    this.emit('o-hover', {
       detail: {
         phase: 'move',
         value: this.hoverValue
@@ -194,7 +194,7 @@ export default class SlRating extends ShoelaceElement {
 
   @watch('isHovering')
   handleIsHoveringChange() {
-    this.emit('sl-hover', {
+    this.emit('o-hover', {
       detail: {
         phase: this.isHovering ? 'start' : 'end',
         value: this.hoverValue
@@ -310,6 +310,6 @@ export default class SlRating extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-rating': SlRating;
+    'o-rating': ORating;
   }
 }

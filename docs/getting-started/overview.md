@@ -1,8 +1,8 @@
 <div class="splash">
 <div class="splash-start">
-<img class="splash-logo" src="assets/images/circular-logo-bg-transparent.png" alt="Shoelace">
+<img class="splash-logo library-logo" src="assets/images/circular-logo-light.svg" alt="%LIBRARY-NAME%">
 
-# <sl-visually-hidden>Shoelace:</sl-visually-hidden> A forward-thinking library of web components.
+# <o-visually-hidden>%LIBRARY-NAME%:</o-visually-hidden> A forward-thinking library of web components.
 
 - Works with all frameworks 🧩
 - Works with CDNs 🚛
@@ -13,7 +13,7 @@
 - Built-in localization 💬
 - Open source 😸
 
-Designed and developed by [Circular Team](https://twitter.com/%TWITTER_USER%)
+Designed and developed by [%TWITTER-USER% Team](https://twitter.com/%TWITTER-USER%)
 
 <small>Inspired by [Shoelace](https://shoelace.style/) designed in New Hampshire by [Cory LaViska](https://twitter.com/claviska).</small>
 
@@ -23,14 +23,14 @@ Designed and developed by [Circular Team](https://twitter.com/%TWITTER_USER%)
 </div>
 </div>
 
-[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/%PACKAGE_NAME%/badge)](https://www.jsdelivr.com/package/npm/%PACKAGE_NAME%)
-[![npm](https://img.shields.io/npm/dw/%PACKAGE_NAME%?label=npm&style=flat-square)](https://www.npmjs.com/package/%PACKAGE_NAME%)
-[![License](https://img.shields.io/badge/license-MIT-232323.svg?style=flat-square)](%REPO_URL%/blob/next/LICENSE.md)<br>
+[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/%PACKAGE-FULL-PATH%/badge)](https://www.jsdelivr.com/package/npm/%PACKAGE-FULL-PATH%)
+[![npm](https://img.shields.io/npm/dw/%PACKAGE-FULL-PATH%?label=npm&style=flat-square)](https://www.npmjs.com/package/%PACKAGE-FULL-PATH%)
+[![License](https://img.shields.io/badge/license-MIT-232323.svg?style=flat-square)](%REPO-URL%/blob/next/LICENSE.md)<br>
 
 <!-- [![Discord](https://img.shields.io/badge/Discord-Join%20the%20chat-5965f2.svg?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/mg8f26C) -->
 
-[![Twitter](https://img.shields.io/badge/Twitter-Follow-00acee.svg?style=flat-square&logo=twitter&logoColor=white)](https://twitter.com/%TWITTER_USER%)
-[![Sponsor](https://img.shields.io/badge/GitHub-Code-232323.svg?style=flat-square&logo=github&logoColor=white)](%REPO_URL%)
+[![Twitter](https://img.shields.io/badge/Twitter-Follow-00acee.svg?style=flat-square&logo=twitter&logoColor=white)](https://twitter.com/%TWITTER-USER%)
+[![Sponsor](https://img.shields.io/badge/GitHub-Code-232323.svg?style=flat-square&logo=github&logoColor=white)](%REPO-URL%)
 
 ## Quick Start
 
@@ -38,17 +38,17 @@ Add the following code to your page.
 
 <!-- prettier-ignore -->
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/themes/light.css" />
-<script type="module" src="https://cdn.jsdelivr.net/npm/%PACKAGE_NAME%@%PACKAGE_VERSION%/dist/shoelace-autoloader.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/%PACKAGE-FULL-PATH%@%PACKAGE-VERSION%/dist/themes/light.css" />
+<script type="module" src="https://cdn.jsdelivr.net/npm/%PACKAGE-FULL-PATH%@%PACKAGE-VERSION%/dist/%PACKAGE-NAME%-autoloader.js"></script>
 ```
 
-Now you have access to all of Shoelace's components! Try adding a button:
+Now you have access to all of %LIBRARY-NAME%'s components! Try adding a button:
 
 ```html preview expanded
-<sl-button>Click me</sl-button>
+<o-button>Click me</o-button>
 ```
 
-?> This will activate Shoelace's experimental autoloader, which registers components on the fly as you use them. To learn more about it, or for other ways to install Shoelace, refer to the [installation instructions](getting-started/installation).
+?> This will activate %LIBRARY-NAME%'s experimental autoloader, which registers components on the fly as you use them. To learn more about it, or for other ways to install %LIBRARY-NAME%, refer to the [installation instructions](getting-started/installation).
 
 ## New to Web Components?
 
@@ -64,13 +64,13 @@ Unfortunately, _framework-specific_ components fail us in a number of ways:
 
 Web components solve these problems. They're [supported by all modern browsers](https://caniuse.com/#feat=custom-elementsv1), they're framework-agnostic, and they're [part of the standard](https://developer.mozilla.org/en-US/docs/Web/Web_Components), so we know they'll be supported for many years to come.
 
-This is the technology that Shoelace is built on.
+This is the technology that %LIBRARY-NAME% is built on.
 
 ## What Problem Does This Solve?
 
-Shoelace provides a collection of professionally designed, highly customizable UI components built on a framework agnostic technology. Why spend hundreds of hours (or more) building a design system from scratch? Why make a component library that only works with one framework?
+%LIBRARY-NAME% provides a collection of professionally designed, highly customizable UI components built on a framework agnostic technology. Why spend hundreds of hours (or more) building a design system from scratch? Why make a component library that only works with one framework?
 
-With Shoelace, you can:
+With %LIBRARY-NAME%, you can:
 
 - Start building things faster (no need to roll your own buttons)
 - Build multiple apps with different frameworks that all share the same UI components
@@ -78,15 +78,15 @@ With Shoelace, you can:
 - Incrementally adopt components as needed (no need to ditch your framework)
 - Upgrade or switch frameworks without rebuilding foundational components
 
-If your organization is looking to build a design system, [Shoelace will save you thousands of dollars](https://medium.com/eightshapes-llc/and-you-thought-buttons-were-easy-26eb5b5c1871).\* All the foundational components you need are right here, ready to be customized for your brand. And since it's built on web standards, browsers will continue to support it for many years to come.
+If your organization is looking to build a design system, [%LIBRARY-NAME% will save you thousands of dollars](https://medium.com/eightshapes-llc/and-you-thought-buttons-were-easy-26eb5b5c1871).\* All the foundational components you need are right here, ready to be customized for your brand. And since it's built on web standards, browsers will continue to support it for many years to come.
 
-Whether you use Shoelace as a starting point for your organization's design system or for a fun personal project, there's no limit to what you can do with it.
+Whether you use %LIBRARY-NAME% as a starting point for your organization's design system or for a fun personal project, there's no limit to what you can do with it.
 
-<small>\*Please consider giving back some of what you save by [supporting this project with a sponsorship](%SPONSOR_URL%).</small>
+<small>\*Please consider giving back some of what you save by [supporting this project with a sponsorship](%SPONSOR-URL%).</small>
 
 ## Browser Support
 
-Shoelace is tested in the latest two versions of the following browsers.
+%LIBRARY-NAME% is tested in the latest two versions of the following browsers.
 
 <img src="assets/images/chrome.png" alt="Chrome" width="64" height="64">
 <img src="assets/images/edge.png" alt="Edge" width="64" height="64">
@@ -96,31 +96,31 @@ Shoelace is tested in the latest two versions of the following browsers.
 
 Critical bug fixes in earlier versions will be addressed based on their severity and impact.
 
-If you need to support IE11 or pre-Chromium Edge, this library isn't for you. Although web components can (to some degree) be polyfilled for legacy browsers, supporting them is outside the scope of this project. If you're using Shoelace in such a browser, you're gonna have a bad time. ⛷
+If you need to support IE11 or pre-Chromium Edge, this library isn't for you. Although web components can (to some degree) be polyfilled for legacy browsers, supporting them is outside the scope of this project. If you're using %LIBRARY-NAME% in such a browser, you're gonna have a bad time. ⛷
 
 ## License
 
-Shoelace is designed in New Hampshire by [Cory LaViska](https://twitter.com/claviska). It's available under the terms of the MIT license.
+%LIBRARY-NAME% is designed and developed in Hamburg by [%LIBRARY-NAME% Team](https://twitter.com/%TWITTER-USER%). It's available under the terms of the MIT license.
 
-Designing, developing, and supporting this library requires a lot of time, effort, and skill. If you're using this software to make a profit, I respectfully ask that you help [fund its development](%SPONSOR_URL%) by becoming a sponsor.
+Designing, developing, and supporting this library requires a lot of time, effort, and skill. If you're using this software to make a profit, I respectfully ask that you help [fund its development](%SPONSOR-URL%) by becoming a sponsor.
 
 👇 Your support is very much appreciated! 👇
 
-<sl-button class="repo-button repo-button--sponsor" href="%SPONSOR_URL%" target="_blank">
-  <sl-icon slot="prefix" name="heart"></sl-icon> Become a sponsor
-</sl-button>
+<o-button class="repo-button repo-button--sponsor" href="%SPONSOR-URL%" target="_blank">
+  <o-icon slot="prefix" name="heart"></o-icon> Become a sponsor
+</o-button>
 
-<sl-button class="repo-button repo-button--github" href="%REPO_URL%/stargazers" target="_blank">
-  <sl-icon slot="prefix" name="github"></sl-icon> Star
-</sl-button>
+<o-button class="repo-button repo-button--github" href="%REPO-URL%/stargazers" target="_blank">
+  <o-icon slot="prefix" name="github"></o-icon> Star
+</o-button>
 
-<sl-button class="repo-button repo-button--twitter" href="https://twitter.com/%TWITTER_USER%" target="_blank">
-  <sl-icon slot="prefix" name="twitter"></sl-icon> Follow
-</sl-button>
+<o-button class="repo-button repo-button--twitter" href="https://twitter.com/%TWITTER-USER%" target="_blank">
+  <o-icon slot="prefix" name="twitter"></o-icon> Follow
+</o-button>
 
 ## Attribution
 
-Special thanks to the following projects and individuals that help make Shoelace possible.
+Special thanks to the following projects and individuals that help make %LIBRARY-NAME% possible.
 
 - Inspired by [Shoelace](https://shoelace.style/)
 - Components are built with [Lit](https://lit.dev/)
@@ -134,4 +134,3 @@ Special thanks to the following projects and individuals that help make Shoelace
 - Animations are courtesy of [animate.css](https://animate.style/)
 - QR codes are generated with [qr-creator](https://github.com/nimiq/qr-creator)
 - Search is powered by [Lunr](https://lunrjs.com/)
-- The Shoelace logo was designed with a single shoelace by [Adam K Olson](https://twitter.com/adamkolson)

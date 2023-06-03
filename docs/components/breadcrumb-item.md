@@ -1,33 +1,33 @@
 # Breadcrumb Item
 
-[component-header:sl-breadcrumb-item]
+[component-header:o-breadcrumb-item]
 
 ```html preview
-<sl-breadcrumb>
-  <sl-breadcrumb-item>
-    <sl-icon slot="prefix" name="house"></sl-icon>
+<o-breadcrumb>
+  <o-breadcrumb-item>
+    <o-icon slot="prefix" name="house"></o-icon>
     Home
-  </sl-breadcrumb-item>
-  <sl-breadcrumb-item>Clothing</sl-breadcrumb-item>
-  <sl-breadcrumb-item>Shirts</sl-breadcrumb-item>
-</sl-breadcrumb>
+  </o-breadcrumb-item>
+  <o-breadcrumb-item>Clothing</o-breadcrumb-item>
+  <o-breadcrumb-item>Shirts</o-breadcrumb-item>
+</o-breadcrumb>
 ```
 
 ```jsx react
-import { SlBreadcrumb, SlBreadcrumbItem, SlIcon } from '%PACKAGE_NAME%/dist/react';
+import { OBreadcrumb, OBreadcrumbItem, OIcon } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
-  <SlBreadcrumb>
-    <SlBreadcrumbItem>
-      <SlIcon slot="prefix" name="house"></SlIcon>
+  <OBreadcrumb>
+    <OBreadcrumbItem>
+      <OIcon slot="prefix" name="house"></OIcon>
       Home
-    </SlBreadcrumbItem>
-    <SlBreadcrumbItem>Clothing</SlBreadcrumbItem>
-    <SlBreadcrumbItem>Shirts</SlBreadcrumbItem>
-  </SlBreadcrumb>
+    </OBreadcrumbItem>
+    <OBreadcrumbItem>Clothing</OBreadcrumbItem>
+    <OBreadcrumbItem>Shirts</OBreadcrumbItem>
+  </OBreadcrumb>
 );
 ```
 
 ?> Additional demonstrations can be found in the [breadcrumb examples](/components/breadcrumb).
 
-[component-metadata:sl-breadcrumb-item]
+[component-metadata:o-breadcrumb-item]

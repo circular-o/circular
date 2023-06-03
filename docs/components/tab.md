@@ -1,27 +1,27 @@
 # Tab
 
-[component-header:sl-tab]
+[component-header:o-tab]
 
 ```html preview
-<sl-tab>Tab</sl-tab>
-<sl-tab active>Active</sl-tab>
-<sl-tab closable>Closable</sl-tab>
-<sl-tab disabled>Disabled</sl-tab>
+<o-tab>Tab</o-tab>
+<o-tab active>Active</o-tab>
+<o-tab closable>Closable</o-tab>
+<o-tab disabled>Disabled</o-tab>
 ```
 
 ```jsx react
-import { SlTab } from '%PACKAGE_NAME%/dist/react';
+import { OTab } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <>
-    <SlTab>Tab</SlTab>
-    <SlTab active>Active</SlTab>
-    <SlTab closable>Closable</SlTab>
-    <SlTab disabled>Disabled</SlTab>
+    <OTab>Tab</OTab>
+    <OTab active>Active</OTab>
+    <OTab closable>Closable</OTab>
+    <OTab disabled>Disabled</OTab>
   </>
 );
 ```
 
 ?> Additional demonstrations can be found in the [tab group examples](/components/tab-group).
 
-[component-metadata:sl-tab]
+[component-metadata:o-tab]

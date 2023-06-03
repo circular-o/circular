@@ -3,19 +3,19 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, state } from 'lit/decorators.js';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './avatar.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Avatars are used to represent a person or object.
- * @documentation https://shoelace.style/components/avatar
+ * @documentation https://circular-o.github.io/circular/#/components/avatar
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
+ * @dependency o-icon
  *
- * @slot icon - The default icon to use when no image or initials are present. Works best with `<sl-icon>`.
+ * @slot icon - The default icon to use when no image or initials are present. Works best with `<o-icon>`.
  *
  * @csspart base - The component's base wrapper.
  * @csspart icon - The container that wraps the avatar's icon.
@@ -24,8 +24,8 @@ import type { CSSResultGroup } from 'lit';
  *
  * @cssproperty --size - The size of the avatar.
  */
-@customElement('sl-avatar')
-export default class SlAvatar extends ShoelaceElement {
+@customElement('o-avatar')
+export default class OAvatar extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   @state() private hasError = false;
@@ -70,7 +70,7 @@ export default class SlAvatar extends ShoelaceElement {
     } else {
       avatarWithoutImage = html`
         <slot name="icon" part="icon" class="avatar__icon" aria-hidden="true">
-          <sl-icon name="person-fill" library="system"></sl-icon>
+          <o-icon name="person-fill" library="system"></o-icon>
         </slot>
       `;
     }
@@ -95,6 +95,6 @@ export default class SlAvatar extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-avatar': SlAvatar;
+    'o-avatar': OAvatar;
   }
 }

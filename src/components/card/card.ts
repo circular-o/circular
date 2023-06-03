@@ -2,13 +2,13 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators.js';
 import { HasSlotController } from '../../internal/slot';
 import { html } from 'lit';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './card.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Cards can be used to group related subjects in a container.
- * @documentation https://shoelace.style/components/card
+ * @documentation https://circular-o.github.io/circular/#/components/card
  * @status stable
  * @since 2.0
  *
@@ -28,8 +28,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --border-width - The width of the card's borders.
  * @cssproperty --padding - The padding to use for the card's sections.
  */
-@customElement('sl-card')
-export default class SlCard extends ShoelaceElement {
+@customElement('o-card')
+export default class OCard extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private readonly hasSlotController = new HasSlotController(this, 'footer', 'header', 'image');
@@ -56,6 +56,6 @@ export default class SlCard extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-card': SlCard;
+    'o-card': OCard;
   }
 }

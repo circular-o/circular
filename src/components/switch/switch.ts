@@ -6,24 +6,24 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './switch.styles';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element';
 
 /**
  * @summary Switches allow the user to toggle an option on or off.
- * @documentation https://shoelace.style/components/switch
+ * @documentation https://circular-o.github.io/circular/#/components/switch
  * @status stable
  * @since 2.0
  *
  * @slot - The switch's label.
  *
- * @event sl-blur - Emitted when the control loses focus.
- * @event sl-change - Emitted when the control's checked state changes.
- * @event sl-input - Emitted when the control receives input.
- * @event sl-focus - Emitted when the control gains focus.
- * @event sl-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
+ * @event o-blur - Emitted when the control loses focus.
+ * @event o-change - Emitted when the control's checked state changes.
+ * @event o-input - Emitted when the control receives input.
+ * @event o-focus - Emitted when the control gains focus.
+ * @event o-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
  *
  * @csspart base - The component's base wrapper.
  * @csspart control - The control that houses the switch's thumb.
@@ -34,14 +34,14 @@ import type { ShoelaceFormControl } from '../../internal/shoelace-element';
  * @cssproperty --height - The height of the switch.
  * @cssproperty --thumb-size - The size of the thumb.
  */
-@customElement('sl-switch')
-export default class SlSwitch extends ShoelaceElement implements ShoelaceFormControl {
+@customElement('o-switch')
+export default class OSwitch extends LibraryBaseElement implements LibraryBaseFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this, {
-    value: (control: SlSwitch) => (control.checked ? control.value || 'on' : undefined),
-    defaultValue: (control: SlSwitch) => control.defaultChecked,
-    setValue: (control: SlSwitch, checked: boolean) => (control.checked = checked)
+    value: (control: OSwitch) => (control.checked ? control.value || 'on' : undefined),
+    defaultValue: (control: OSwitch) => control.defaultChecked,
+    setValue: (control: OSwitch, checked: boolean) => (control.checked = checked)
   });
 
   @query('input[type="checkbox"]') input: HTMLInputElement;
@@ -93,11 +93,11 @@ export default class SlSwitch extends ShoelaceElement implements ShoelaceFormCon
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('o-blur');
   }
 
   private handleInput() {
-    this.emit('sl-input');
+    this.emit('o-input');
   }
 
   private handleInvalid(event: Event) {
@@ -107,27 +107,27 @@ export default class SlSwitch extends ShoelaceElement implements ShoelaceFormCon
 
   private handleClick() {
     this.checked = !this.checked;
-    this.emit('sl-change');
+    this.emit('o-change');
   }
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sl-focus');
+    this.emit('o-focus');
   }
 
   private handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
       this.checked = false;
-      this.emit('sl-change');
-      this.emit('sl-input');
+      this.emit('o-change');
+      this.emit('o-input');
     }
 
     if (event.key === 'ArrowRight') {
       event.preventDefault();
       this.checked = true;
-      this.emit('sl-change');
-      this.emit('sl-input');
+      this.emit('o-change');
+      this.emit('o-input');
     }
   }
 
@@ -224,6 +224,6 @@ export default class SlSwitch extends ShoelaceElement implements ShoelaceFormCon
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-switch': SlSwitch;
+    'o-switch': OSwitch;
   }
 }

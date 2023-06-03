@@ -9,7 +9,7 @@ A forward-thinking library of web components.
 - Built with accessibility in mind ♿️
 - Open source 😸
 
-Designed and developed in Hamburg by Interzero Circular Team
+Designed and developed in Hamburg by Circular Team
 
 Inspired by [shoelace.style](https://shoelace.style)
 Designed in New Hampshire by [Cory LaViska](https://twitter.com/claviska).
@@ -30,7 +30,7 @@ Circular makers can use this documentation to learn how to build Circular from s
 
 **You don't need to do any of this to use Circular!** This page is for people who want to contribute to the project, tinker with the source, or create a custom build of Circular.
 
-If that's not what you're trying to do, the [documentation website](https://circular.interzero.de) is where you want to be.
+If that's not what you're trying to do, the [documentation website](https://circular-o.de) is where you want to be.
 
 ### What are you using to build Circular?
 
@@ -68,10 +68,10 @@ npm run build
 
 ### Creating New Components
 
-To scaffold a new component, run the following command, replacing `sl-tag-name` with the desired tag name.
+To scaffold a new component, run the following command, replacing `o-(tag-name` with the desired tag name.)
 
 ```bash
-npm run create sl-tag-name
+npm run create o-(tag-name)
 ```
 
 This will generate a source file, a stylesheet, and a docs page for you. When you start the dev server, you'll find the new component in the "Components" section of the sidebar.
@@ -82,7 +82,7 @@ Circular is an open source project and contributions are encouraged! If you're i
 
 ## License
 
-Circular is designed and develop in Hamburg by Interzero Circular Team. It’s available under the terms of the MIT license.
+Circular is designed and develop in Hamburg by Circular Team. It’s available under the terms of the MIT license.
 
 **If you’re using Circular to make a profit,** We respectfully ask that you help [fund its original development](https://github.com/sponsors/claviska) by becoming a sponsor. There are multiple tiers to choose from with benefits at every level, including prioritized support, bug fixes, feature requests, and advertising.
 

@@ -7,25 +7,25 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './textarea.styles';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element';
 
 /**
  * @summary Textareas collect data from the user and allow multiple lines of text.
- * @documentation https://shoelace.style/components/textarea
+ * @documentation https://circular-o.github.io/circular/#/components/textarea
  * @status stable
  * @since 2.0
  *
  * @slot label - The textarea's label. Alternatively, you can use the `label` attribute.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  *
- * @event sl-blur - Emitted when the control loses focus.
- * @event sl-change - Emitted when an alteration to the control's value is committed by the user.
- * @event sl-focus - Emitted when the control gains focus.
- * @event sl-input - Emitted when the control receives input.
- * @event sl-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
+ * @event o-blur - Emitted when the control loses focus.
+ * @event o-change - Emitted when an alteration to the control's value is committed by the user.
+ * @event o-focus - Emitted when the control gains focus.
+ * @event o-input - Emitted when the control receives input.
+ * @event o-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
  *
  * @csspart form-control - The form control that wraps the label, input, and help text.
  * @csspart form-control-label - The label's wrapper.
@@ -34,12 +34,12 @@ import type { ShoelaceFormControl } from '../../internal/shoelace-element';
  * @csspart base - The component's base wrapper.
  * @csspart textarea - The internal `<textarea>` control.
  */
-@customElement('sl-textarea')
-export default class SlTextarea extends ShoelaceElement implements ShoelaceFormControl {
+@customElement('o-textarea')
+export default class OTextarea extends LibraryBaseElement implements LibraryBaseFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this, {
-    assumeInteractionOn: ['sl-blur', 'sl-input']
+    assumeInteractionOn: ['o-blur', 'o-input']
   });
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
   private resizeObserver: ResizeObserver;
@@ -167,23 +167,23 @@ export default class SlTextarea extends ShoelaceElement implements ShoelaceFormC
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('o-blur');
   }
 
   private handleChange() {
     this.value = this.input.value;
     this.setTextareaHeight();
-    this.emit('sl-change');
+    this.emit('o-change');
   }
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sl-focus');
+    this.emit('o-focus');
   }
 
   private handleInput() {
     this.value = this.input.value;
-    this.emit('sl-input');
+    this.emit('o-input');
   }
 
   private handleInvalid(event: Event) {
@@ -388,6 +388,6 @@ export default class SlTextarea extends ShoelaceElement implements ShoelaceFormC
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-textarea': SlTextarea;
+    'o-textarea': OTextarea;
   }
 }

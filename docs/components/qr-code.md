@@ -1,25 +1,25 @@
 # QR Code
 
-[component-header:sl-qr-code]
+[component-header:o-qr-code]
 
 QR codes are useful for providing small pieces of information to users who can quickly scan them with a smartphone. Most smartphones have built-in QR code scanners, so simply pointing the camera at a QR code will decode it and allow the user to visit a website, dial a phone number, read a message, etc.
 
 ```html preview
 <div class="qr-overview">
-  <sl-qr-code value="%DOCS_WEBSITE%/" label="Scan this code to visit Shoelace on the web!"></sl-qr-code>
+  <o-qr-code value="%DOCS-WEBSITE%/" label="Scan this code to visit %LIBRARY-NAME% on the web!"></o-qr-code>
   <br />
 
-  <sl-input maxlength="255" clearable label="Value"></sl-input>
+  <o-input maxlength="255" clearable label="Value"></o-input>
 </div>
 
 <script>
   const container = document.querySelector('.qr-overview');
-  const qrCode = container.querySelector('sl-qr-code');
-  const input = container.querySelector('sl-input');
+  const qrCode = container.querySelector('o-qr-code');
+  const input = container.querySelector('o-input');
 
-  customElements.whenDefined('sl-qr-code').then(() => {
+  customElements.whenDefined('o-qr-code').then(() => {
     input.value = qrCode.value;
-    input.addEventListener('sl-input', () => (qrCode.value = input.value));
+    input.addEventListener('o-input', () => (qrCode.value = input.value));
   });
 </script>
 
@@ -28,7 +28,7 @@ QR codes are useful for providing small pieces of information to users who can q
     max-width: 256px;
   }
 
-  .qr-overview sl-input {
+  .qr-overview o-input {
     margin-top: 1rem;
   }
 </style>
@@ -36,28 +36,28 @@ QR codes are useful for providing small pieces of information to users who can q
 
 ```jsx react
 import { useState } from 'react';
-import { SlQrCode, SlInput } from '%PACKAGE_NAME%/dist/react';
+import { OQrCode, OInput } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .qr-overview {
     max-width: 256px;
   }
 
-  .qr-overview sl-input {
+  .qr-overview o-input {
     margin-top: 1rem;
   }
 `;
 
 const App = () => {
-  const [value, setValue] = useState('%DOCS_WEBSITE%/');
+  const [value, setValue] = useState('%DOCS-WEBSITE%/');
 
   return (
     <>
       <div className="qr-overview">
-        <SlQrCode value={value} label="Scan this code to visit Shoelace on the web!" />
+        <OQrCode value={value} label="Scan this code to visit %LIBRARY-NAME% on the web!" />
         <br />
 
-        <SlInput maxlength="255" clearable onInput={event => setValue(event.target.value)} />
+        <OInput maxlength="255" clearable onInput={event => setValue(event.target.value)} />
       </div>
 
       <style>{css}</style>
@@ -73,13 +73,13 @@ const App = () => {
 Use the `fill` and `background` attributes to modify the QR code's colors. You should always ensure good contrast for optimal compatibility with QR code scanners.
 
 ```html preview
-<sl-qr-code value="%DOCS_WEBSITE%/" fill="deeppink" background="white"></sl-qr-code>
+<o-qr-code value="%DOCS-WEBSITE%/" fill="deeppink" background="white"></o-qr-code>
 ```
 
 ```jsx react
-import { SlQrCode } from '%PACKAGE_NAME%/dist/react';
+import { OQrCode } from '%PACKAGE-FULL-PATH%/dist/react';
 
-const App = () => <SlQrCode value="%DOCS_WEBSITE%/" fill="deeppink" background="white" />;
+const App = () => <OQrCode value="%DOCS-WEBSITE%/" fill="deeppink" background="white" />;
 ```
 
 ### Size
@@ -87,13 +87,13 @@ const App = () => <SlQrCode value="%DOCS_WEBSITE%/" fill="deeppink" background="
 Use the `size` attribute to change the size of the QR code.
 
 ```html preview
-<sl-qr-code value="%DOCS_WEBSITE%/" size="64"></sl-qr-code>
+<o-qr-code value="%DOCS-WEBSITE%/" size="64"></o-qr-code>
 ```
 
 ```jsx react
-import { SlQrCode } from '%PACKAGE_NAME%/dist/react';
+import { OQrCode } from '%PACKAGE-FULL-PATH%/dist/react';
 
-const App = () => <SlQrCode value="%DOCS_WEBSITE%/" size="64" />;
+const App = () => <OQrCode value="%DOCS-WEBSITE%/" size="64" />;
 ```
 
 ### Radius
@@ -101,13 +101,13 @@ const App = () => <SlQrCode value="%DOCS_WEBSITE%/" size="64" />;
 Create a rounded effect with the `radius` attribute.
 
 ```html preview
-<sl-qr-code value="%DOCS_WEBSITE%/" radius="0.5"></sl-qr-code>
+<o-qr-code value="%DOCS-WEBSITE%/" radius="0.5"></o-qr-code>
 ```
 
 ```jsx react
-import { SlQrCode } from '%PACKAGE_NAME%/dist/react';
+import { OQrCode } from '%PACKAGE-FULL-PATH%/dist/react';
 
-const App = () => <SlQrCode value="%DOCS_WEBSITE%/" radius="0.5" />;
+const App = () => <OQrCode value="%DOCS-WEBSITE%/" radius="0.5" />;
 ```
 
 ### Error Correction
@@ -116,10 +116,10 @@ QR codes can be rendered with various levels of [error correction](https://www.q
 
 ```html preview
 <div class="qr-error-correction">
-  <sl-qr-code value="%DOCS_WEBSITE%/" error-correction="L"></sl-qr-code>
-  <sl-qr-code value="%DOCS_WEBSITE%/" error-correction="M"></sl-qr-code>
-  <sl-qr-code value="%DOCS_WEBSITE%/" error-correction="Q"></sl-qr-code>
-  <sl-qr-code value="%DOCS_WEBSITE%/" error-correction="H"></sl-qr-code>
+  <o-qr-code value="%DOCS-WEBSITE%/" error-correction="L"></o-qr-code>
+  <o-qr-code value="%DOCS-WEBSITE%/" error-correction="M"></o-qr-code>
+  <o-qr-code value="%DOCS-WEBSITE%/" error-correction="Q"></o-qr-code>
+  <o-qr-code value="%DOCS-WEBSITE%/" error-correction="H"></o-qr-code>
 </div>
 
 <style>
@@ -132,7 +132,7 @@ QR codes can be rendered with various levels of [error correction](https://www.q
 ```
 
 ```jsx react
-import { SlQrCode } from '%PACKAGE_NAME%/dist/react';
+import { OQrCode } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .qr-error-correction {
@@ -146,10 +146,10 @@ const App = () => {
   return (
     <>
       <div className="qr-error-correction">
-        <SlQrCode value="%DOCS_WEBSITE%/" error-correction="L" />
-        <SlQrCode value="%DOCS_WEBSITE%/" error-correction="M" />
-        <SlQrCode value="%DOCS_WEBSITE%/" error-correction="Q" />
-        <SlQrCode value="%DOCS_WEBSITE%/" error-correction="H" />
+        <OQrCode value="%DOCS-WEBSITE%/" error-correction="L" />
+        <OQrCode value="%DOCS-WEBSITE%/" error-correction="M" />
+        <OQrCode value="%DOCS-WEBSITE%/" error-correction="Q" />
+        <OQrCode value="%DOCS-WEBSITE%/" error-correction="H" />
       </div>
 
       <style>{css}</style>
@@ -158,4 +158,4 @@ const App = () => {
 };
 ```
 
-[component-metadata:sl-qr-code]
+[component-metadata:o-qr-code]

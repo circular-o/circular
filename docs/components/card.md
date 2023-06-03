@@ -1,9 +1,9 @@
 # Card
 
-[component-header:sl-card]
+[component-header:o-card]
 
 ```html preview
-<sl-card class="card-overview">
+<o-card class="card-overview">
   <img
     slot="image"
     src="https://images.unsplash.com/photo-1559209172-0ff8f6d49ff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
@@ -15,10 +15,10 @@
   <small>6 weeks old</small>
 
   <div slot="footer">
-    <sl-button variant="primary" pill>More Info</sl-button>
-    <sl-rating></sl-rating>
+    <o-button variant="primary" pill>More Info</o-button>
+    <o-rating></o-rating>
   </div>
-</sl-card>
+</o-card>
 
 <style>
   .card-overview {
@@ -26,7 +26,7 @@
   }
 
   .card-overview small {
-    color: var(--sl-color-neutral-500);
+    color: var(--o-color-neutral-500);
   }
 
   .card-overview [slot='footer'] {
@@ -38,7 +38,7 @@
 ```
 
 ```jsx react
-import { SlButton, SlCard, SlRating } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OCard, ORating } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .card-overview {
@@ -46,7 +46,7 @@ const css = `
   }
 
   .card-overview small {
-    color: var(--sl-color-neutral-500);
+    color: var(--o-color-neutral-500);
   }
 
   .card-overview [slot="footer"] {
@@ -58,7 +58,7 @@ const css = `
 
 const App = () => (
   <>
-    <SlCard className="card-overview">
+    <OCard className="card-overview">
       <img
         slot="image"
         src="https://images.unsplash.com/photo-1559209172-0ff8f6d49ff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
@@ -70,12 +70,12 @@ const App = () => (
       <br />
       <small>6 weeks old</small>
       <div slot="footer">
-        <SlButton variant="primary" pill>
+        <OButton variant="primary" pill>
           More Info
-        </SlButton>
-        <SlRating></SlRating>
+        </OButton>
+        <ORating></ORating>
       </div>
-    </SlCard>
+    </OCard>
 
     <style>{css}</style>
   </>
@@ -89,9 +89,7 @@ const App = () => (
 Basic cards aren't very exciting, but they can display any content you want them to.
 
 ```html preview
-<sl-card class="card-basic">
-  This is just a basic card. No image, no header, and no footer. Just your content.
-</sl-card>
+<o-card class="card-basic"> This is just a basic card. No image, no header, and no footer. Just your content. </o-card>
 
 <style>
   .card-basic {
@@ -101,7 +99,7 @@ Basic cards aren't very exciting, but they can display any content you want them
 ```
 
 ```jsx react
-import { SlCard } from '%PACKAGE_NAME%/dist/react';
+import { OCard } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .card-basic {
@@ -111,9 +109,9 @@ const css = `
 
 const App = () => (
   <>
-    <SlCard className="card-basic">
+    <OCard className="card-basic">
       This is just a basic card. No image, no header, and no footer. Just your content.
-    </SlCard>
+    </OCard>
 
     <style>{css}</style>
   </>
@@ -125,14 +123,14 @@ const App = () => (
 Headers can be used to display titles and more.
 
 ```html preview
-<sl-card class="card-header">
+<o-card class="card-header">
   <div slot="header">
     Header Title
-    <sl-icon-button name="gear" label="Settings"></sl-icon-button>
+    <o-icon-button name="gear" label="Settings"></o-icon-button>
   </div>
 
   This card has a header. You can put all sorts of things in it!
-</sl-card>
+</o-card>
 
 <style>
   .card-header {
@@ -149,14 +147,14 @@ Headers can be used to display titles and more.
     margin: 0;
   }
 
-  .card-header sl-icon-button {
-    font-size: var(--sl-font-size-medium);
+  .card-header o-icon-button {
+    font-size: var(--o-font-size-medium);
   }
 </style>
 ```
 
 ```jsx react
-import { SlCard, SlIconButton } from '%PACKAGE_NAME%/dist/react';
+import { OCard, OIconButton } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .card-header {
@@ -173,20 +171,20 @@ const css = `
     margin: 0;
   }
 
-  .card-header sl-icon-button {
-    font-size: var(--sl-font-size-medium);
+  .card-header o-icon-button {
+    font-size: var(--o-font-size-medium);
   }
 `;
 
 const App = () => (
   <>
-    <SlCard className="card-header">
+    <OCard className="card-header">
       <div slot="header">
         Header Title
-        <SlIconButton name="gear"></SlIconButton>
+        <OIconButton name="gear"></OIconButton>
       </div>
       This card has a header. You can put all sorts of things in it!
-    </SlCard>
+    </OCard>
 
     <style>{css}</style>
   </>
@@ -198,14 +196,14 @@ const App = () => (
 Footers can be used to display actions, summaries, or other relevant content.
 
 ```html preview
-<sl-card class="card-footer">
+<o-card class="card-footer">
   This card has a footer. You can put all sorts of things in it!
 
   <div slot="footer">
-    <sl-rating></sl-rating>
-    <sl-button variant="primary">Preview</sl-button>
+    <o-rating></o-rating>
+    <o-button variant="primary">Preview</o-button>
   </div>
-</sl-card>
+</o-card>
 
 <style>
   .card-footer {
@@ -221,7 +219,7 @@ Footers can be used to display actions, summaries, or other relevant content.
 ```
 
 ```jsx react
-import { SlButton, SlCard, SlRating } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OCard, ORating } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .card-footer {
@@ -237,15 +235,15 @@ const css = `
 
 const App = () => (
   <>
-    <SlCard className="card-footer">
+    <OCard className="card-footer">
       This card has a footer. You can put all sorts of things in it!
       <div slot="footer">
-        <SlRating></SlRating>
-        <SlButton slot="footer" variant="primary">
+        <ORating></ORating>
+        <OButton slot="footer" variant="primary">
           Preview
-        </SlButton>
+        </OButton>
       </div>
-    </SlCard>
+    </OCard>
 
     <style>{css}</style>
   </>
@@ -257,14 +255,14 @@ const App = () => (
 Cards accept an `image` slot. The image is displayed atop the card and stretches to fit.
 
 ```html preview
-<sl-card class="card-image">
+<o-card class="card-image">
   <img
     slot="image"
     src="https://images.unsplash.com/photo-1547191783-94d5f8f6d8b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80"
     alt="A kitten walks towards camera on top of pallet."
   />
   This is a kitten, but not just any kitten. This kitten likes walking along pallets.
-</sl-card>
+</o-card>
 
 <style>
   .card-image {
@@ -274,7 +272,7 @@ Cards accept an `image` slot. The image is displayed atop the card and stretches
 ```
 
 ```jsx react
-import { SlCard } from '%PACKAGE_NAME%/dist/react';
+import { OCard } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .card-image {
@@ -284,18 +282,18 @@ const css = `
 
 const App = () => (
   <>
-    <SlCard className="card-image">
+    <OCard className="card-image">
       <img
         slot="image"
         src="https://images.unsplash.com/photo-1547191783-94d5f8f6d8b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80"
         alt="A kitten walks towards camera on top of pallet."
       />
       This is a kitten, but not just any kitten. This kitten likes walking along pallets.
-    </SlCard>
+    </OCard>
 
     <style>{css}</style>
   </>
 );
 ```
 
-[component-metadata:sl-card]
+[component-metadata:o-card]

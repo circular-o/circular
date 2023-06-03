@@ -3,17 +3,17 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
 import { offsetParent } from 'composed-offset-position';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './popup.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Popup is a utility that lets you declaratively anchor "popup" containers to another element.
- * @documentation https://shoelace.style/components/popup
+ * @documentation https://circular-o.github.io/circular/#/components/popup
  * @status stable
  * @since 2.0
  *
- * @event sl-reposition - Emitted when the popup is repositioned. This event can fire a lot, so avoid putting expensive
+ * @event o-reposition - Emitted when the popup is repositioned. This event can fire a lot, so avoid putting expensive
  *  operations in your listener or consider debouncing it.
  *
  * @slot - The popup's content.
@@ -27,7 +27,7 @@ import type { CSSResultGroup } from 'lit';
  *
  * @cssproperty [--arrow-size=6px] - The size of the arrow. Note that an arrow won't be shown unless the `arrow`
  *  attribute is used.
- * @cssproperty [--arrow-color=var(--sl-color-neutral-0)] - The color of the arrow.
+ * @cssproperty [--arrow-color=var(--o-color-neutral-0)] - The color of the arrow.
  * @cssproperty [--auto-size-available-width] - A read-only custom property that determines the amount of width the
  *  popup can be before overflowing. Useful for positioning child elements that need to overflow. This property is only
  *  available when using `auto-size`.
@@ -35,8 +35,8 @@ import type { CSSResultGroup } from 'lit';
  *  popup can be before overflowing. Useful for positioning child elements that need to overflow. This property is only
  *  available when using `auto-size`.
  */
-@customElement('sl-popup')
-export default class SlPopup extends ShoelaceElement {
+@customElement('o-popup')
+export default class OPopup extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private anchorEl: Element | null;
@@ -441,7 +441,7 @@ export default class SlPopup extends ShoelaceElement {
       }
     });
 
-    this.emit('sl-reposition');
+    this.emit('o-reposition');
   }
 
   render() {
@@ -466,6 +466,6 @@ export default class SlPopup extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-popup': SlPopup;
+    'o-popup': OPopup;
   }
 }

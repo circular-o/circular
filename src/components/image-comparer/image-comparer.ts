@@ -7,23 +7,23 @@ import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { styleMap } from 'lit/directives/style-map.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './image-comparer.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Compare visual differences between similar photos with a sliding panel.
- * @documentation https://shoelace.style/components/image-comparer
+ * @documentation https://circular-o.github.io/circular/#/components/image-comparer
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
+ * @dependency o-icon
  *
  * @slot before - The before image, an `<img>` or `<svg>` element.
  * @slot after - The after image, an `<img>` or `<svg>` element.
  * @slot handle - The icon used inside the handle.
  *
- * @event sl-change - Emitted when the position changes.
+ * @event o-change - Emitted when the position changes.
  *
  * @csspart base - The component's base wrapper.
  * @csspart before - The container that wraps the before image.
@@ -34,8 +34,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --divider-width - The width of the dividing line.
  * @cssproperty --handle-size - The size of the compare handle.
  */
-@customElement('sl-image-comparer')
-export default class SlImageComparer extends ShoelaceElement {
+@customElement('o-image-comparer')
+export default class OImageComparer extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private readonly localize = new LocalizeController(this);
@@ -91,7 +91,7 @@ export default class SlImageComparer extends ShoelaceElement {
 
   @watch('position', { waitUntilFirstUpdate: true })
   handlePositionChange() {
-    this.emit('sl-change');
+    this.emit('o-change');
   }
 
   render() {
@@ -140,7 +140,7 @@ export default class SlImageComparer extends ShoelaceElement {
             aria-controls="image-comparer"
             tabindex="0"
           >
-            <sl-icon library="system" name="grip-vertical"></sl-icon>
+            <o-icon library="system" name="grip-vertical"></o-icon>
           </slot>
         </div>
       </div>
@@ -150,6 +150,6 @@ export default class SlImageComparer extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-image-comparer': SlImageComparer;
+    'o-image-comparer': OImageComparer;
   }
 }

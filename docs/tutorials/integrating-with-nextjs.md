@@ -1,8 +1,8 @@
 # Integrating with NextJS
 
-This page explains how to integrate Shoelace with a NextJS app.
+This page explains how to integrate %LIBRARY-NAME% with a NextJS app.
 
-?> This is a community-maintained document. Please [ask the community](/resources/community) if you have questions about this integration. You can also [suggest improvements](%REPO_URL%/blob/next/docs/tutorials/integrating-with-nextjs.md) to make it better.
+?> This is a community-maintained document. Please [ask the community](/resources/community) if you have questions about this integration. You can also [suggest improvements](%REPO-URL%/blob/next/docs/tutorials/integrating-with-nextjs.md) to make it better.
 
 ## Requirements
 
@@ -10,19 +10,19 @@ This integration has been tested with the following:
 
 - Node: 16.13.1
 - NextJS: 12.1.6
-- Shoelace: 2.0.0-beta.74
+- %LIBRARY-NAME%: 1.1.0
 
 ## Instructions
 
-To get started using Shoelace with NextJS, the following packages must be installed.
+To get started using %LIBRARY-NAME% with NextJS, the following packages must be installed.
 
 ```bash
-yarn add %PACKAGE_NAME% copy-webpack-plugin next-compose-plugins next-transpile-modules
+yarn add %PACKAGE-FULL-PATH% copy-webpack-plugin next-compose-plugins next-transpile-modules
 ```
 
 ### Enabling ESM
 
-Because Shoelace utilizes ESM, we need to modify our `package.json` to support ESM packages. Simply add the following to
+Because %LIBRARY-NAME% utilizes ESM, we need to modify our `package.json` to support ESM packages. Simply add the following to
 your root of `package.json`:
 
 ```
@@ -33,15 +33,15 @@ There's one more step to enable ESM in NextJS, but we'll tackle that in our Next
 
 ### Importing the Default Theme
 
-The next step is to import Shoelace's default theme (stylesheet) in your `_app.js` file:
+The next step is to import %LIBRARY-NAME%'s default theme (stylesheet) in your `_app.js` file:
 
 ```css
-import '%PACKAGE_NAME%/dist/themes/light.css';
+import '%PACKAGE-FULL-PATH%/dist/themes/light.css';
 ```
 
 ### Defining Custom Elements
 
-After importing the theme, you'll need to import the JavaScript files for Shoelace. However, this is a bit tricky to do in NextJS thanks to the SSR environment not having any of the required browser APIs to define endpoints.
+After importing the theme, you'll need to import the JavaScript files for %LIBRARY-NAME%. However, this is a bit tricky to do in NextJS thanks to the SSR environment not having any of the required browser APIs to define endpoints.
 
 We'll want to create a component that uses [React's `useLayoutEffect`](https://reactjs.org/docs/hooks-reference.html#uselayouteffect) to add in the custom components before the first render:
 
@@ -55,14 +55,14 @@ function CustomEls({ URL }) {
       return;
     }
 
-    import('%PACKAGE_NAME%/dist/utilities/base-path').then(({ setBasePath }) => {
+    import('%PACKAGE-FULL-PATH%/dist/utilities/base-path').then(({ setBasePath }) => {
       setBasePath(`${URL}/static/static`);
 
       // This imports all components
-      import('%PACKAGE_NAME%/dist/shoelace');
+      import('%PACKAGE-FULL-PATH%/dist/%PACKAGE-NAME%');
       // If you're wanting to selectively import components, replace this line with your own definitions
 
-      // import("%PACKAGE_NAME%/dist/components/button/button");
+      // import("%PACKAGE-FULL-PATH%/dist/components/button/button");
       customEls.current = true;
     });
   }, [URL, customEls]);
@@ -71,9 +71,9 @@ function CustomEls({ URL }) {
 }
 ```
 
-?> If we use `useEffect` instead of `useLayoutEffect`, the initial render will occur with the expected `sl-` props applied, but the subsequent render (caused by the `useEffect`) will remove those props as the custom components initialize. We _must_ use `useLayoutEffect` to have expected behavior
+?> If we use `useEffect` instead of `useLayoutEffect`, the initial render will occur with the expected `o-` props applied, but the subsequent render (caused by the `useEffect`) will remove those props as the custom components initialize. We _must_ use `useLayoutEffect` to have expected behavior
 
-?> This will import all Shoelace components for convenience. To selectively import components, refer to the [Using webpack](/getting-started/installation?id=using-webpack) section of the docs.
+?> This will import all %LIBRARY-NAME% components for convenience. To selectively import components, refer to the [Using webpack](/getting-started/installation?id=using-webpack) section of the docs.
 
 You may be wondering where the `URL` property is coming from. We'll address that in the next few sections.
 
@@ -113,11 +113,11 @@ MyApp.getInitialProps = async context => {
 };
 ```
 
-?> You'll need to set this `BASE_URL` variable inside the build process of whatever local build or CI/CD you have. This will need to be an absolute URL, as a relative URL will cause shoelace to throw a warning
+?> You'll need to set this `BASE_URL` variable inside the build process of whatever local build or CI/CD you have. This will need to be an absolute URL, as a relative URL will cause %PACKAGE-NAME% to throw a warning
 
 ### webpack Config
 
-Next we need to add Shoelace's assets to the final build output. To do this, modify `next.config.js` to look like this.
+Next we need to add %LIBRARY-NAME%'s assets to the final build output. To do this, modify `next.config.js` to look like this.
 
 ```javascript
 import { dirname, resolve } from 'path';
@@ -126,19 +126,19 @@ import CopyPlugin from 'copy-webpack-plugin';
 import withPlugins from 'next-compose-plugins';
 import withTM from 'next-transpile-modules';
 
-const withTMCompiled = withTM(['%PACKAGE_NAME%']);
+const withTMCompiled = withTM(['%PACKAGE-FULL-PATH%']);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default withPlugins([withTMCompiled], {
-  // This is required for ESM to work properly with Shoelace
+  // This is required for ESM to work properly with %LIBRARY-NAME%
   experimental: { esmExternals: 'loose' },
   webpack: config => {
     config.plugins.push(
       new CopyPlugin({
         patterns: [
           {
-            from: resolve(__dirname, 'node_modules/%PACKAGE_NAME%/dist/assets/icons'),
+            from: resolve(__dirname, 'node_modules/%PACKAGE-FULL-PATH%/dist/assets/icons'),
             to: resolve(__dirname, 'static/icons')
           }
         ]

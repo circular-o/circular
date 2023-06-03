@@ -49,9 +49,9 @@ fs.mkdirSync(outdir, { recursive: true });
         // NOTE: Entry points must be mapped in package.json > exports, otherwise users won't be able to import them!
         //
         // The whole shebang
-        './src/shoelace.ts',
+        './src/circular.ts',
         // The auto-loader
-        './src/shoelace-autoloader.ts',
+        './src/circular-autoloader.ts',
         // Components
         ...(await globby('./src/components/**/!(*.(style|test)).ts')),
         // Translations
@@ -110,7 +110,7 @@ fs.mkdirSync(outdir, { recursive: true });
       startPath: '/',
       port,
       logLevel: 'silent',
-      logPrefix: '[shoelace]',
+      logPrefix: '[wc-library]',
       logFileChanges: true,
       notify: false,
       single: true,
@@ -126,7 +126,7 @@ fs.mkdirSync(outdir, { recursive: true });
     // Launch browser sync
     bs.init(browserSyncConfig, () => {
       const url = `http://localhost:${port}`;
-      console.log(chalk.cyan(`Launched the Shoelace dev server at ${url} 🥾\n`));
+      console.log(chalk.cyan(`Launched the dev server at ${url} 🥾\n`));
     });
 
     // Rebuild and reload when source files change

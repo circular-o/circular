@@ -1,8 +1,8 @@
 # Integrating with Laravel
 
-This page explains how to integrate Shoelace with a [Laravel 9](https://laravel.com) app using Vite. For additional details refer to the [Bundling Assets (Vite)](https://laravel.com/docs/9.x/vite) section in the official Laravel docs.
+This page explains how to integrate %LIBRARY-NAME% with a [Laravel 9](https://laravel.com) app using Vite. For additional details refer to the [Bundling Assets (Vite)](https://laravel.com/docs/9.x/vite) section in the official Laravel docs.
 
-?> This is a community-maintained document. Please [ask the community](/resources/community) if you have questions about this integration. You can also [suggest improvements](%REPO_URL%/blob/next/docs/tutorials/integrating-with-laravel.md) to make it better.
+?> This is a community-maintained document. Please [ask the community](/resources/community) if you have questions about this integration. You can also [suggest improvements](%REPO-URL%/blob/next/docs/tutorials/integrating-with-laravel.md) to make it better.
 
 ## Requirements
 
@@ -14,58 +14,58 @@ This integration has been tested with the following:
 ## Instructions
 
 These instructions assume a default [Laravel 9 install](https://laravel.com/docs/9.x/installation) that uses [Vite](https://vitejs.dev/) to bundle assets.
-Be sure to run `npm install` to install the default Laravel front-end dependencies before installing Shoelace.
+Be sure to run `npm install` to install the default Laravel front-end dependencies before installing %LIBRARY-NAME%.
 
-### Install the Shoelace package
+### Install the %LIBRARY-NAME% package
 
 ```bash
-npm install %PACKAGE_NAME%
+npm install %PACKAGE-FULL-PATH%
 ```
 
 ### Import the Default Theme
 
-Import the Shoelace default theme (stylesheet) in `/resources/css/app.css`:
+Import the %LIBRARY-NAME% default theme (stylesheet) in `/resources/css/app.css`:
 
 ```css
-@import '/node_modules/%PACKAGE_NAME%/dist/themes/light.css';
+@import '/node_modules/%PACKAGE-FULL-PATH%/dist/themes/light.css';
 ```
 
-### Import Your Shoelace Components
+### Import Your %LIBRARY-NAME% Components
 
-Import each Shoelace component you plan to use in `/resources/js/bootstrap.js`. Use the full path to each component (as outlined in the [Cherry Picking instructions](%DOCS_WEBSITE%/#/getting-started/installation?id=cherry-picking)). You can find the full import statement for a component in the _Importing_ section of the component's documentation (use the _Bundler_ import). Your imports should look similar to:
+Import each %LIBRARY-NAME% component you plan to use in `/resources/js/bootstrap.js`. Use the full path to each component (as outlined in the [Cherry Picking instructions](%DOCS-WEBSITE%/#/getting-started/installation?id=cherry-picking)). You can find the full import statement for a component in the _Importing_ section of the component's documentation (use the _Bundler_ import). Your imports should look similar to:
 
 ```js
-import '%PACKAGE_NAME%/dist/components/button/button.js';
-import '%PACKAGE_NAME%/dist/components/icon/icon.js';
-import '%PACKAGE_NAME%/dist/components/dialog/dialog.js';
+import '%PACKAGE-FULL-PATH%/dist/components/button/button.js';
+import '%PACKAGE-FULL-PATH%/dist/components/icon/icon.js';
+import '%PACKAGE-FULL-PATH%/dist/components/dialog/dialog.js';
 ```
 
-### Copy the Shoelace Static Assets (icons, images, etc.) to a Public Folder
+### Copy the %LIBRARY-NAME% Static Assets (icons, images, etc.) to a Public Folder
 
-Since Vite has no way to copy arbitrary assets into your build (like webpack), you need to manually copy the Shoelace static assets to your project's public folder. Run this command from your project's root directory to copy the Shoelace static assets to the `./public/assets` folder:
+Since Vite has no way to copy arbitrary assets into your build (like webpack), you need to manually copy the %LIBRARY-NAME% static assets to your project's public folder. Run this command from your project's root directory to copy the %LIBRARY-NAME% static assets to the `./public/assets` folder:
 
 ```sh
-cp -aR node_modules/%PACKAGE_NAME%/dist/assets/ ./public/assets
+cp -aR node_modules/%PACKAGE-FULL-PATH%/dist/assets/ ./public/assets
 ```
 
 ### Set the Base Path
 
-Add the base path to your Shoelace assets (icons, images, etc.) in `/resources/js/bootstrap.js`. The path must point to the same folder where you copy assets to in the next step.
+Add the base path to your %LIBRARY-NAME% assets (icons, images, etc.) in `/resources/js/bootstrap.js`. The path must point to the same folder where you copy assets to in the next step.
 
 ```js
-import { setBasePath } from '%PACKAGE_NAME%/dist/utilities/base-path.js';
+import { setBasePath } from '%PACKAGE-FULL-PATH%/dist/utilities/base-path.js';
 setBasePath('/');
 ```
 
 Example `/resources/js/bootstrap.js` file:
 
 ```js
-import { setBasePath } from '%PACKAGE_NAME%/dist/utilities/base-path.js';
+import { setBasePath } from '%PACKAGE-FULL-PATH%/dist/utilities/base-path.js';
 setBasePath('/');
 
-import '%PACKAGE_NAME%/dist/components/button/button.js';
-import '%PACKAGE_NAME%/dist/components/icon/icon.js';
-import '%PACKAGE_NAME%/dist/components/dialog/dialog.js';
+import '%PACKAGE-FULL-PATH%/dist/components/button/button.js';
+import '%PACKAGE-FULL-PATH%/dist/components/icon/icon.js';
+import '%PACKAGE-FULL-PATH%/dist/components/dialog/dialog.js';
 ```
 
 ### Verify Vite Entry Points
@@ -103,4 +103,4 @@ Add the `@vite()` Blade directive to the `<head>` of your application's root tem
 </head>
 ```
 
-Have fun using Shoelace components in your Laravel app!
+Have fun using %LIBRARY-NAME% components in your Laravel app!

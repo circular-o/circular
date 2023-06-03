@@ -1,52 +1,21 @@
 (() => {
-  // Configuration variables related to the package
-  const packagesCdnUrl = `https://cdn.jsdelivr.net/npm`;
-  const packageOrganization = '@jeysonj2';
-  const packageName = 'circular';
-  let packageVersion = 'latest';
-  const docsWebsite = 'https://circular-o.github.io/circular';
-  const repoUrl = 'https://github.com/circular-o/circular';
-  const twitterUser = 'circular_o';
-  const sponsorUrl = 'https://github.com/sponsors/jeysonj2';
-
-  // Variables which are composed by other package data
-  let packageUrlNoVersion = `${packagesCdnUrl}/${packageOrganization}/${packageName}`;
-  let packageUrl = `${packagesCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
-
-  // Store package data in session storage so we can access it from the playground
-  function savePackageData() {
-    // Updating the variables which are composed by other package data
-    packageUrlNoVersion = `${packagesCdnUrl}/${packageOrganization}/${packageName}`;
-    packageUrl = `${packagesCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
-
-    sessionStorage.setItem(
-      'sl-package-data',
-      JSON.stringify({
-        packagesCdnUrl,
-        packageOrganization,
-        packageName,
-        packageVersion,
-        packageUrlNoVersion,
-        packageUrl,
-        docsWebsite,
-        repoUrl
-      })
-    );
-  }
-
-  savePackageData();
-
   const isDev = location.hostname === 'localhost';
-  const isNext = location.hostname === 'next.shoelace.style';
+  const isNext = location.hostname === 'next.circular-o.de';
   const customElements = fetch('dist/custom-elements.json')
     .then(res => res.json())
     .catch(err => console.error(err));
 
+  // Global metadata object, it will be populated later in the docsify lifecycle
   let metadata = {};
+
   const getCustomElementsMetadata = async () => {
     const m = await customElements;
-    packageVersion = m.package.version;
-    savePackageData();
+    const { packageVersion } = window.getDocsConfig();
+    // If packageVersion is set to "latest", then it will be overwritten with the actual version number
+    if (packageVersion === 'latest') {
+      window.setDocsConfig({ packageVersion: m.package.version });
+    }
+
     return m;
   };
 
@@ -75,13 +44,13 @@
             } else if (isAttributeDifferent) {
               attributeInfo = `
                 <br>
-                <sl-tooltip content="This attribute is different from its property">
+                <o-tooltip content="This attribute is different from its property">
                   <small>
                     <code class="nowrap">
                       ${escapeHtml(prop.attribute)}
                     </code>
                   </small>
-                </sl-tooltip>`;
+                </o-tooltip>`;
             }
 
             return `
@@ -94,7 +63,7 @@
                   ${escapeHtml(prop.description)}
                 </td>
                 <td style="text-align: center;">${
-                  prop.reflects ? '<sl-icon label="yes" name="check-lg"></sl-icon>' : ''
+                  prop.reflects ? '<o-icon label="yes" name="check-lg"></o-icon>' : ''
                 }</td>
                 <td>${prop.type?.text ? `<code>${escapeHtml(prop.type?.text || '')}</code>` : '-'}</td>
                 <td>${prop.default ? `<code>${escapeHtml(prop.default)}</code>` : '-'}</td>
@@ -369,6 +338,8 @@
 
   window.$docsify.plugins.push(hook => {
     hook.mounted(async () => {
+      const { packageVersion, repoUrl, twitterUser, sponsorUrl } = window.getDocsConfig();
+
       metadata = await getCustomElementsMetadata();
       const target = document.querySelector('.app-name');
 
@@ -379,40 +350,59 @@
       target.appendChild(version);
 
       // Store version for reuse
-      sessionStorage.setItem('sl-version', packageVersion);
+      sessionStorage.setItem('o-version', packageVersion);
 
       // Add repo buttons
       const buttons = document.createElement('div');
       buttons.classList.add('sidebar-buttons');
       buttons.innerHTML = `
-        <sl-button size="small" class="repo-button repo-button--sponsor" href="${sponsorUrl}" target="_blank">
-          <sl-icon slot="prefix" name="heart"></sl-icon> Sponsor
-        </sl-button>
-        <sl-button size="small" class="repo-button repo-button--github" href="${repoUrl}/stargazers" target="_blank">
-          <sl-icon slot="prefix" name="github"></sl-icon> Star
-        </sl-button>
-        <sl-button size="small" class="repo-button repo-button--twitter" href="https://twitter.com/${twitterUser}" target="_blank">
-          <sl-icon slot="prefix" name="twitter"></sl-icon> Follow
-        </sl-button>
+        <o-button size="small" class="repo-button repo-button--sponsor" href="${sponsorUrl}" target="_blank">
+          <o-icon slot="prefix" name="heart"></o-icon> Sponsor
+        </o-button>
+        <o-button size="small" class="repo-button repo-button--github" href="${repoUrl}/stargazers" target="_blank">
+          <o-icon slot="prefix" name="github"></o-icon> Star
+        </o-button>
+        <o-button size="small" class="repo-button repo-button--twitter" href="https://twitter.com/${twitterUser}" target="_blank">
+          <o-icon slot="prefix" name="twitter"></o-icon> Follow
+        </o-button>
       `;
       target.appendChild(buttons);
     });
 
     hook.beforeEach(async (content, next) => {
+      const {
+        packageOrganization,
+        packageName,
+        packageVersion,
+        docsWebsite,
+        repoUrl,
+        twitterUser,
+        sponsorUrl,
+        packageUrlNoVersion,
+        packageUrl,
+        libraryName
+      } = window.getDocsConfig();
+
       metadata = await getCustomElementsMetadata();
 
-      // Replace %PACKAGE_VERSION% placeholders
-      content = content.replace(/%PACKAGE_VERSION%/g, packageVersion);
-      // Replace %PACKAGE_NAME% placeholders
-      content = content.replace(/%PACKAGE_NAME%/g, `${packageOrganization}/${packageName}`);
-      // Replace %DOCS_WEBSITE% placeholders
-      content = content.replace(/%DOCS_WEBSITE%/g, `${docsWebsite}`);
-      // Replace %REPO_URL% placeholders
-      content = content.replace(/%REPO_URL%/g, `${repoUrl}`);
-      // Replace %TWITTER_USER% placeholders
-      content = content.replace(/%TWITTER_USER%/g, `${twitterUser}`);
-      // Replace %SPONSOR_URL% placeholders
-      content = content.replace(/%SPONSOR_URL%/g, `${sponsorUrl}`);
+      // Replace %PACKAGE-VERSION% placeholders
+      content = content.replace(/%PACKAGE-VERSION%/g, packageVersion);
+      // Replace %PACKAGE-ORGANIZATION% placeholders
+      content = content.replace(/%PACKAGE-ORGANIZATION%/g, `${packageOrganization}`);
+      // Replace %PACKAGE-NAME% placeholders
+      content = content.replace(/%PACKAGE-NAME%/g, `${packageName}`);
+      // Replace %PACKAGE-FULL-PATH% placeholders
+      content = content.replace(/%PACKAGE-FULL-PATH%/g, `${packageOrganization}/${packageName}`);
+      // Replace %DOCS-WEBSITE% placeholders
+      content = content.replace(/%DOCS-WEBSITE%/g, `${docsWebsite}`);
+      // Replace %REPO-URL% placeholders
+      content = content.replace(/%REPO-URL%/g, `${repoUrl}`);
+      // Replace %TWITTER-USER% placeholders
+      content = content.replace(/%TWITTER-USER%/g, `${twitterUser}`);
+      // Replace %SPONSOR-URL% placeholders
+      content = content.replace(/%SPONSOR-URL%/g, `${sponsorUrl}`);
+      // Replace %LIBRARY-NAME% placeholders
+      content = content.replace(/%LIBRARY-NAME%/g, `${libraryName}`);
 
       // Handle [component-header] tags
       content = content.replace(/\[component-header:([a-z-]+)\]/g, (match, tag) => {
@@ -445,13 +435,13 @@
             </div>
 
             <div class="component-header__info">
-              <sl-badge variant="neutral" pill>
+              <o-badge variant="neutral" pill>
                 Since ${component.since || '?'}
-              </sl-badge>
+              </o-badge>
 
-              <sl-badge variant="${badgeType}" pill style="text-transform: capitalize;">
+              <o-badge variant="${badgeType}" pill style="text-transform: capitalize;">
                 ${component.status}
-              </sl-badge>
+              </o-badge>
             </div>
 
             <div class="component-header__summary">
@@ -494,61 +484,61 @@
             If you're using the autoloader or the traditional loader, you can ignore this section. Otherwise, feel free to
             use any of the following snippets to [cherry pick](getting-started/installation#cherry-picking) this component.
 
-            <sl-tab-group>
-            <sl-tab slot="nav" panel="script">Script</sl-tab>
-            <sl-tab slot="nav" panel="import">Import</sl-tab>
-            <sl-tab slot="nav" panel="bundler">Bundler</sl-tab>
-            <sl-tab slot="nav" panel="react">React</sl-tab>
+            <o-tab-group>
+            <o-tab slot="nav" panel="script">Script</o-tab>
+            <o-tab slot="nav" panel="import">Import</o-tab>
+            <o-tab slot="nav" panel="bundler">Bundler</o-tab>
+            <o-tab slot="nav" panel="react">React</o-tab>
 
-            <sl-tab-panel name="script">\n
+            <o-tab-panel name="script">\n
             To import this component from [the CDN](${packageUrlNoVersion}) using a script tag:
 
             \`\`\`html
             <script type="module" src="${packageUrl}/dist/${component.path}"></script>
             \`\`\`
-            </sl-tab-panel>
+            </o-tab-panel>
 
-            <sl-tab-panel name="import">\n
+            <o-tab-panel name="import">\n
             To import this component from [the CDN](${packageUrlNoVersion}) using a JavaScript import:
 
             \`\`\`js
             import '${packageUrl}/dist/${component.path}';
             \`\`\`
-            </sl-tab-panel>
+            </o-tab-panel>
 
-            <sl-tab-panel name="bundler">\n
+            <o-tab-panel name="bundler">\n
             To import this component using [a bundler](/getting-started/installation#bundling):
             \`\`\`js
             import '${packageOrganization}/${packageName}/dist/${component.path}';
             \`\`\`
-            </sl-tab-panel>
+            </o-tab-panel>
 
-            <sl-tab-panel name="react">\n
+            <o-tab-panel name="react">\n
             To import this component as a [React component](/frameworks/react):
             \`\`\`js
             import { ${component.name} } from '${packageOrganization}/${packageName}/dist/react';
             \`\`\`
-            </sl-tab-panel>
-            </sl-tab-group>
+            </o-tab-panel>
+            </o-tab-group>
 
             <div class="sponsor-callout">
               <p>
-                Shoelace is designed, developed, and maintained by <a href="https://twitter.com/${twitterUser}" target="_blank">Circular Team</a>.
+                Circular is designed, developed, and maintained by <a href="https://twitter.com/${twitterUser}" target="_blank">Circular Team</a>.
                 Please sponsor my open source work on GitHub. Your support will keep this project alive and growing!
               </p>
 
               <p>
-                <sl-button class="repo-button repo-button--sponsor" href="${sponsorUrl}" target="_blank">
-                  <sl-icon slot="prefix" name="heart"></sl-icon> Sponsor <span class="sponsor-callout__secondary-label">Development</span>
-                </sl-button>
+                <o-button class="repo-button repo-button--sponsor" href="${sponsorUrl}" target="_blank">
+                  <o-icon slot="prefix" name="heart"></o-icon> Sponsor <span class="sponsor-callout__secondary-label">Development</span>
+                </o-button>
 
-                <sl-button class="repo-button repo-button--github" href="${repoUrl}/stargazers" target="_blank">
-                  <sl-icon slot="prefix" name="github"></sl-icon> Star <span class="sponsor-callout__secondary-label">on GitHub</span>
-                </sl-button>
+                <o-button class="repo-button repo-button--github" href="${repoUrl}/stargazers" target="_blank">
+                  <o-icon slot="prefix" name="github"></o-icon> Star <span class="sponsor-callout__secondary-label">on GitHub</span>
+                </o-button>
 
-                <sl-button class="repo-button repo-button--twitter" href="https://twitter.com/${twitterUser}" target="_blank">
-                  <sl-icon slot="prefix" name="twitter"></sl-icon> Follow <span class="sponsor-callout__secondary-label">on Twitter</span>
-                </sl-button>
+                <o-button class="repo-button repo-button--twitter" href="https://twitter.com/${twitterUser}" target="_blank">
+                  <o-icon slot="prefix" name="twitter"></o-icon> Follow <span class="sponsor-callout__secondary-label">on Twitter</span>
+                </o-button>
               </p>
             </div>
           `;

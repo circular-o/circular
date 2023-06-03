@@ -4,7 +4,7 @@ import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './tab.styles';
 import type { CSSResultGroup } from 'lit';
 
@@ -12,27 +12,27 @@ let id = 0;
 
 /**
  * @summary Tabs are used inside [tab groups](/components/tab-group) to represent and activate [tab panels](/components/tab-panel).
- * @documentation https://shoelace.style/components/tab
+ * @documentation https://circular-o.github.io/circular/#/components/tab
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon-button
+ * @dependency o-icon-button
  *
  * @slot - The tab's label.
  *
- * @event sl-close - Emitted when the tab is closable and the close button is activated.
+ * @event o-close - Emitted when the tab is closable and the close button is activated.
  *
  * @csspart base - The component's base wrapper.
- * @csspart close-button - The close button, an `<sl-icon-button>`.
+ * @csspart close-button - The close button, an `<o-icon-button>`.
  * @csspart close-button__base - The close button's exported `base` part.
  */
-@customElement('sl-tab')
-export default class SlTab extends ShoelaceElement {
+@customElement('o-tab')
+export default class OTab extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
   private readonly localize = new LocalizeController(this);
 
   private readonly attrId = ++id;
-  private readonly componentId = `sl-tab-${this.attrId}`;
+  private readonly componentId = `o-tab-${this.attrId}`;
 
   @query('.tab') tab: HTMLElement;
 
@@ -55,7 +55,7 @@ export default class SlTab extends ShoelaceElement {
 
   private handleCloseClick(event: Event) {
     event.stopPropagation();
-    this.emit('sl-close');
+    this.emit('o-close');
   }
 
   @watch('active')
@@ -96,7 +96,7 @@ export default class SlTab extends ShoelaceElement {
         <slot></slot>
         ${this.closable
           ? html`
-              <sl-icon-button
+              <o-icon-button
                 part="close-button"
                 exportparts="base:close-button__base"
                 name="x-lg"
@@ -105,7 +105,7 @@ export default class SlTab extends ShoelaceElement {
                 class="tab__close-button"
                 @click=${this.handleCloseClick}
                 tabindex="-1"
-              ></sl-icon-button>
+              ></o-icon-button>
             `
           : ''}
       </div>
@@ -115,6 +115,6 @@ export default class SlTab extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-tab': SlTab;
+    'o-tab': OTab;
   }
 }

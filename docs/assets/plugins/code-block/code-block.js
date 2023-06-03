@@ -1,37 +1,8 @@
 /* global Prism */
 
 (() => {
-  // Global config variables
-  let packageOrganization = '';
-  let packageName = '';
-  let packageVersion = '';
-  let packageUrl = '';
-
-  const reactVersion = '17.0.2';
-  const reactCdnUrl = `https://cdn.skypack.dev`;
-  const reactUrl = `${reactCdnUrl}/react@${reactVersion}`;
-  let reactPackageUrl = `${reactCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
-
   let flavor = getFlavor();
   let count = 1;
-
-  // Get config vars from the sessionStore
-  const getPackageData = () => {
-    // The package data is stored in the sessionStore by the metadata plugin, please see the metadata.js file
-    const packageData = sessionStorage.getItem('sl-package-data')
-      ? JSON.parse(sessionStorage.getItem('sl-package-data'))
-      : {};
-
-    packageOrganization = packageData.packageOrganization;
-    packageName = packageData.packageName;
-    packageVersion = packageData.packageVersion;
-    packageUrl = packageData.packageUrl;
-    reactPackageUrl = `${reactCdnUrl}/${packageOrganization}/${packageName}@${packageVersion}`;
-
-    if (!packageOrganization || !packageName || !packageVersion || !packageUrl) {
-      throw new Error('Package data must be loaded before installing this plugin.');
-    }
-  };
 
   // Sync flavor UI on page load
   setFlavor(getFlavor());
@@ -41,6 +12,8 @@
   }
 
   function convertModuleLinks(html, isReact = false) {
+    const { packageOrganization, packageName, packageUrl, reactUrl, reactPackageUrl } = window.getDocsConfig();
+
     html = html
       .replace(new RegExp(`${packageOrganization}/${packageName}`, 'g'), isReact ? reactPackageUrl : packageUrl)
       .replace(/from 'react'/g, `from '${reactUrl}'`)
@@ -92,8 +65,6 @@
   window.$docsify.plugins.push(hook => {
     // Convert code blocks to previews
     hook.afterEach((html, next) => {
-      getPackageData();
-
       const domParser = new DOMParser();
       const doc = domParser.parseFromString(html, 'text/html');
 
@@ -153,7 +124,7 @@
               <div class="code-block__preview">
                 ${code.textContent}
                 <div class="code-block__resizer">
-                  <sl-icon name="grip-vertical"></sl-icon>
+                  <o-icon name="grip-vertical"></o-icon>
                 </div>
               </div>
 
@@ -314,8 +285,10 @@
 
   // Open in CodePen
   document.addEventListener('click', event => {
+    const { reactVersion, reactCdnUrl, packageUrl, reactUrl, reactPackageUrl, packageName } = window.getDocsConfig();
+
     const button = event.target.closest('button');
-    // const version = sessionStorage.getItem('sl-version');
+    // const version = sessionStorage.getItem('o-version');
 
     if (button?.classList.contains('code-block__button--codepen')) {
       const codeBlock = button.closest('.code-block');
@@ -337,7 +310,7 @@
 
       // HTML templates
       if (!isReact) {
-        htmlTemplate = `<script type="module" src="${packageUrl}/dist/shoelace.js"></script>\n\n${htmlExample}`;
+        htmlTemplate = `<script type="module" src="${packageUrl}/dist/${packageName}.js"></script>\n\n${htmlExample}`;
         jsTemplate = '';
       }
 
@@ -349,7 +322,7 @@
           `import ReactDOM from '${reactCdnUrl}/react-dom@${reactVersion}';\n` +
           `import { setBasePath } from '${reactPackageUrl}/dist/utilities/base-path';\n` +
           `\n` +
-          `// Set the base path for Shoelace assets\n` +
+          `// Set the base path for assets\n` +
           `setBasePath('${reactPackageUrl}/dist/')\n` +
           `\n${convertModuleLinks(reactExample, isReact)}\n` +
           `\n` +
@@ -362,8 +335,8 @@
         '\n' +
         'body {\n' +
         '  font: 16px sans-serif;\n' +
-        '  background-color: var(--sl-color-neutral-0);\n' +
-        '  color: var(--sl-color-neutral-900);\n' +
+        '  background-color: var(--o-color-neutral-0);\n' +
+        '  color: var(--o-color-neutral-900);\n' +
         '  padding: 1rem;\n' +
         '}';
 
@@ -371,10 +344,10 @@
       const data = {
         title: '',
         description: '',
-        tags: ['shoelace', 'web components'],
+        tags: ['circular', 'web components'],
         editors,
         head: `<meta name="viewport" content="width=device-width">`,
-        html_classes: `sl-theme-${isDark ? 'dark' : 'light'}`,
+        html_classes: `o-theme-${isDark ? 'dark' : 'light'}`,
         css_external: ``,
         js_external: ``,
         js_module: true,

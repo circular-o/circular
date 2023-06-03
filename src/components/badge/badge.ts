@@ -1,13 +1,13 @@
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './badge.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Badges are used to draw attention and display statuses or counts.
- * @documentation https://shoelace.style/components/badge
+ * @documentation https://circular-o.github.io/circular/#/components/badge
  * @status stable
  * @since 2.0
  *
@@ -15,8 +15,8 @@ import type { CSSResultGroup } from 'lit';
  *
  * @csspart base - The component's base wrapper.
  */
-@customElement('sl-badge')
-export default class SlBadge extends ShoelaceElement {
+@customElement('o-badge')
+export default class OBadge extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   /** The badge's theme variant. */
@@ -50,6 +50,6 @@ export default class SlBadge extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-badge': SlBadge;
+    'o-badge': OBadge;
   }
 }

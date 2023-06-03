@@ -1,62 +1,62 @@
 # Dropdown
 
-[component-header:sl-dropdown]
+[component-header:o-dropdown]
 
 Dropdowns consist of a trigger and a panel. By default, activating the trigger will expose the panel and interacting outside of the panel will close it.
 
 Dropdowns are designed to work well with [menus](/components/menu) to provide a list of options the user can select from. However, dropdowns can also be used in lower-level applications (e.g. [color picker](/components/color-picker) and [select](/components/select)). The API gives you complete control over showing, hiding, and positioning the panel.
 
 ```html preview
-<sl-dropdown>
-  <sl-button slot="trigger" caret>Dropdown</sl-button>
-  <sl-menu>
-    <sl-menu-item>Dropdown Item 1</sl-menu-item>
-    <sl-menu-item>Dropdown Item 2</sl-menu-item>
-    <sl-menu-item>Dropdown Item 3</sl-menu-item>
-    <sl-divider></sl-divider>
-    <sl-menu-item type="checkbox" checked>Checkbox</sl-menu-item>
-    <sl-menu-item disabled>Disabled</sl-menu-item>
-    <sl-divider></sl-divider>
-    <sl-menu-item>
+<o-dropdown>
+  <o-button slot="trigger" caret>Dropdown</o-button>
+  <o-menu>
+    <o-menu-item>Dropdown Item 1</o-menu-item>
+    <o-menu-item>Dropdown Item 2</o-menu-item>
+    <o-menu-item>Dropdown Item 3</o-menu-item>
+    <o-divider></o-divider>
+    <o-menu-item type="checkbox" checked>Checkbox</o-menu-item>
+    <o-menu-item disabled>Disabled</o-menu-item>
+    <o-divider></o-divider>
+    <o-menu-item>
       Prefix
-      <sl-icon slot="prefix" name="gift"></sl-icon>
-    </sl-menu-item>
-    <sl-menu-item>
+      <o-icon slot="prefix" name="gift"></o-icon>
+    </o-menu-item>
+    <o-menu-item>
       Suffix Icon
-      <sl-icon slot="suffix" name="heart"></sl-icon>
-    </sl-menu-item>
-  </sl-menu>
-</sl-dropdown>
+      <o-icon slot="suffix" name="heart"></o-icon>
+    </o-menu-item>
+  </o-menu>
+</o-dropdown>
 ```
 
 ```jsx react
-import { SlButton, SlDivider, SlDropdown, SlIcon, SlMenu, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { OButton, ODivider, ODropdown, OIcon, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
-  <SlDropdown>
-    <SlButton slot="trigger" caret>
+  <ODropdown>
+    <OButton slot="trigger" caret>
       Dropdown
-    </SlButton>
-    <SlMenu>
-      <SlMenuItem>Dropdown Item 1</SlMenuItem>
-      <SlMenuItem>Dropdown Item 2</SlMenuItem>
-      <SlMenuItem>Dropdown Item 3</SlMenuItem>
-      <SlDivider />
-      <SlMenuItem type="checkbox" checked>
+    </OButton>
+    <OMenu>
+      <OMenuItem>Dropdown Item 1</OMenuItem>
+      <OMenuItem>Dropdown Item 2</OMenuItem>
+      <OMenuItem>Dropdown Item 3</OMenuItem>
+      <ODivider />
+      <OMenuItem type="checkbox" checked>
         Checkbox
-      </SlMenuItem>
-      <SlMenuItem disabled>Disabled</SlMenuItem>
-      <SlDivider />
-      <SlMenuItem>
+      </OMenuItem>
+      <OMenuItem disabled>Disabled</OMenuItem>
+      <ODivider />
+      <OMenuItem>
         Prefix
-        <SlIcon slot="prefix" name="gift" />
-      </SlMenuItem>
-      <SlMenuItem>
+        <OIcon slot="prefix" name="gift" />
+      </OMenuItem>
+      <OMenuItem>
         Suffix Icon
-        <SlIcon slot="suffix" name="heart" />
-      </SlMenuItem>
-    </SlMenu>
-  </SlDropdown>
+        <OIcon slot="suffix" name="heart" />
+      </OMenuItem>
+    </OMenu>
+  </ODropdown>
 );
 ```
 
@@ -64,25 +64,25 @@ const App = () => (
 
 ### Getting the Selected Item
 
-When dropdowns are used with [menus](/components/menu), you can listen for the [`sl-select`](/components/menu#events) event to determine which menu item was selected. The menu item element will be exposed in `event.detail.item`. You can set `value` props to make it easier to identify commands.
+When dropdowns are used with [menus](/components/menu), you can listen for the [`o-select`](/components/menu#events) event to determine which menu item was selected. The menu item element will be exposed in `event.detail.item`. You can set `value` props to make it easier to identify commands.
 
 ```html preview
 <div class="dropdown-selection">
-  <sl-dropdown>
-    <sl-button slot="trigger" caret>Edit</sl-button>
-    <sl-menu>
-      <sl-menu-item value="cut">Cut</sl-menu-item>
-      <sl-menu-item value="copy">Copy</sl-menu-item>
-      <sl-menu-item value="paste">Paste</sl-menu-item>
-    </sl-menu>
-  </sl-dropdown>
+  <o-dropdown>
+    <o-button slot="trigger" caret>Edit</o-button>
+    <o-menu>
+      <o-menu-item value="cut">Cut</o-menu-item>
+      <o-menu-item value="copy">Copy</o-menu-item>
+      <o-menu-item value="paste">Paste</o-menu-item>
+    </o-menu>
+  </o-dropdown>
 </div>
 
 <script>
   const container = document.querySelector('.dropdown-selection');
-  const dropdown = container.querySelector('sl-dropdown');
+  const dropdown = container.querySelector('o-dropdown');
 
-  dropdown.addEventListener('sl-select', event => {
+  dropdown.addEventListener('o-select', event => {
     const selectedItem = event.detail.item;
     console.log(selectedItem.value);
   });
@@ -90,7 +90,7 @@ When dropdowns are used with [menus](/components/menu), you can listen for the [
 ```
 
 ```jsx react
-import { SlButton, SlDropdown, SlMenu, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { OButton, ODropdown, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => {
   function handleSelect(event) {
@@ -99,16 +99,16 @@ const App = () => {
   }
 
   return (
-    <SlDropdown>
-      <SlButton slot="trigger" caret>
+    <ODropdown>
+      <OButton slot="trigger" caret>
         Edit
-      </SlButton>
-      <SlMenu onSlSelect={handleSelect}>
-        <SlMenuItem value="cut">Cut</SlMenuItem>
-        <SlMenuItem value="copy">Copy</SlMenuItem>
-        <SlMenuItem value="paste">Paste</SlMenuItem>
-      </SlMenu>
-    </SlDropdown>
+      </OButton>
+      <OMenu onOSelect={handleSelect}>
+        <OMenuItem value="cut">Cut</OMenuItem>
+        <OMenuItem value="copy">Copy</OMenuItem>
+        <OMenuItem value="paste">Paste</OMenuItem>
+      </OMenu>
+    </ODropdown>
   );
 };
 ```
@@ -117,21 +117,21 @@ Alternatively, you can listen for the `click` event on individual menu items. No
 
 ```html preview
 <div class="dropdown-selection-alt">
-  <sl-dropdown>
-    <sl-button slot="trigger" caret>Edit</sl-button>
-    <sl-menu>
-      <sl-menu-item value="cut">Cut</sl-menu-item>
-      <sl-menu-item value="copy">Copy</sl-menu-item>
-      <sl-menu-item value="paste">Paste</sl-menu-item>
-    </sl-menu>
-  </sl-dropdown>
+  <o-dropdown>
+    <o-button slot="trigger" caret>Edit</o-button>
+    <o-menu>
+      <o-menu-item value="cut">Cut</o-menu-item>
+      <o-menu-item value="copy">Copy</o-menu-item>
+      <o-menu-item value="paste">Paste</o-menu-item>
+    </o-menu>
+  </o-dropdown>
 </div>
 
 <script>
   const container = document.querySelector('.dropdown-selection-alt');
-  const cut = container.querySelector('sl-menu-item[value="cut"]');
-  const copy = container.querySelector('sl-menu-item[value="copy"]');
-  const paste = container.querySelector('sl-menu-item[value="paste"]');
+  const cut = container.querySelector('o-menu-item[value="cut"]');
+  const copy = container.querySelector('o-menu-item[value="copy"]');
+  const paste = container.querySelector('o-menu-item[value="paste"]');
 
   cut.addEventListener('click', () => console.log('cut'));
   copy.addEventListener('click', () => console.log('copy'));
@@ -140,7 +140,7 @@ Alternatively, you can listen for the `click` event on individual menu items. No
 ```
 
 ```jsx react
-import { SlButton, SlDropdown, SlMenu, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { OButton, ODropdown, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => {
   function handleCut() {
@@ -156,16 +156,16 @@ const App = () => {
   }
 
   return (
-    <SlDropdown>
-      <SlButton slot="trigger" caret>
+    <ODropdown>
+      <OButton slot="trigger" caret>
         Edit
-      </SlButton>
-      <SlMenu>
-        <SlMenuItem onClick={handleCut}>Cut</SlMenuItem>
-        <SlMenuItem onClick={handleCopy}>Copy</SlMenuItem>
-        <SlMenuItem onClick={handlePaste}>Paste</SlMenuItem>
-      </SlMenu>
-    </SlDropdown>
+      </OButton>
+      <OMenu>
+        <OMenuItem onClick={handleCut}>Cut</OMenuItem>
+        <OMenuItem onClick={handleCopy}>Copy</OMenuItem>
+        <OMenuItem onClick={handlePaste}>Paste</OMenuItem>
+      </OMenu>
+    </ODropdown>
   );
 };
 ```
@@ -175,36 +175,36 @@ const App = () => {
 The preferred placement of the dropdown can be set with the `placement` attribute. Note that the actual position may vary to ensure the panel remains in the viewport.
 
 ```html preview
-<sl-dropdown placement="top-start">
-  <sl-button slot="trigger" caret>Edit</sl-button>
-  <sl-menu>
-    <sl-menu-item>Cut</sl-menu-item>
-    <sl-menu-item>Copy</sl-menu-item>
-    <sl-menu-item>Paste</sl-menu-item>
-    <sl-divider></sl-divider>
-    <sl-menu-item>Find</sl-menu-item>
-    <sl-menu-item>Replace</sl-menu-item>
-  </sl-menu>
-</sl-dropdown>
+<o-dropdown placement="top-start">
+  <o-button slot="trigger" caret>Edit</o-button>
+  <o-menu>
+    <o-menu-item>Cut</o-menu-item>
+    <o-menu-item>Copy</o-menu-item>
+    <o-menu-item>Paste</o-menu-item>
+    <o-divider></o-divider>
+    <o-menu-item>Find</o-menu-item>
+    <o-menu-item>Replace</o-menu-item>
+  </o-menu>
+</o-dropdown>
 ```
 
 ```jsx react
-import { SlButton, SlDivider, SlDropdown, SlMenu, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { OButton, ODivider, ODropdown, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
-  <SlDropdown placement="top-start">
-    <SlButton slot="trigger" caret>
+  <ODropdown placement="top-start">
+    <OButton slot="trigger" caret>
       Edit
-    </SlButton>
-    <SlMenu>
-      <SlMenuItem>Cut</SlMenuItem>
-      <SlMenuItem>Copy</SlMenuItem>
-      <SlMenuItem>Paste</SlMenuItem>
-      <SlDivider />
-      <SlMenuItem>Find</SlMenuItem>
-      <SlMenuItem>Replace</SlMenuItem>
-    </SlMenu>
-  </SlDropdown>
+    </OButton>
+    <OMenu>
+      <OMenuItem>Cut</OMenuItem>
+      <OMenuItem>Copy</OMenuItem>
+      <OMenuItem>Paste</OMenuItem>
+      <ODivider />
+      <OMenuItem>Find</OMenuItem>
+      <OMenuItem>Replace</OMenuItem>
+    </OMenu>
+  </ODropdown>
 );
 ```
 
@@ -213,36 +213,36 @@ const App = () => (
 The distance from the panel to the trigger can be customized using the `distance` attribute. This value is specified in pixels.
 
 ```html preview
-<sl-dropdown distance="30">
-  <sl-button slot="trigger" caret>Edit</sl-button>
-  <sl-menu>
-    <sl-menu-item>Cut</sl-menu-item>
-    <sl-menu-item>Copy</sl-menu-item>
-    <sl-menu-item>Paste</sl-menu-item>
-    <sl-divider></sl-divider>
-    <sl-menu-item>Find</sl-menu-item>
-    <sl-menu-item>Replace</sl-menu-item>
-  </sl-menu>
-</sl-dropdown>
+<o-dropdown distance="30">
+  <o-button slot="trigger" caret>Edit</o-button>
+  <o-menu>
+    <o-menu-item>Cut</o-menu-item>
+    <o-menu-item>Copy</o-menu-item>
+    <o-menu-item>Paste</o-menu-item>
+    <o-divider></o-divider>
+    <o-menu-item>Find</o-menu-item>
+    <o-menu-item>Replace</o-menu-item>
+  </o-menu>
+</o-dropdown>
 ```
 
 ```jsx react
-import { SlButton, SlDivider, SlDropdown, SlMenu, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { OButton, ODivider, ODropdown, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
-  <SlDropdown distance={30}>
-    <SlButton slot="trigger" caret>
+  <ODropdown distance={30}>
+    <OButton slot="trigger" caret>
       Edit
-    </SlButton>
-    <SlMenu>
-      <SlMenuItem>Cut</SlMenuItem>
-      <SlMenuItem>Copy</SlMenuItem>
-      <SlMenuItem>Paste</SlMenuItem>
-      <SlDivider />
-      <SlMenuItem>Find</SlMenuItem>
-      <SlMenuItem>Replace</SlMenuItem>
-    </SlMenu>
-  </SlDropdown>
+    </OButton>
+    <OMenu>
+      <OMenuItem>Cut</OMenuItem>
+      <OMenuItem>Copy</OMenuItem>
+      <OMenuItem>Paste</OMenuItem>
+      <ODivider />
+      <OMenuItem>Find</OMenuItem>
+      <OMenuItem>Replace</OMenuItem>
+    </OMenu>
+  </ODropdown>
 );
 ```
 
@@ -251,36 +251,36 @@ const App = () => (
 The offset of the panel along the trigger can be customized using the `skidding` attribute. This value is specified in pixels.
 
 ```html preview
-<sl-dropdown skidding="30">
-  <sl-button slot="trigger" caret>Edit</sl-button>
-  <sl-menu>
-    <sl-menu-item>Cut</sl-menu-item>
-    <sl-menu-item>Copy</sl-menu-item>
-    <sl-menu-item>Paste</sl-menu-item>
-    <sl-divider></sl-divider>
-    <sl-menu-item>Find</sl-menu-item>
-    <sl-menu-item>Replace</sl-menu-item>
-  </sl-menu>
-</sl-dropdown>
+<o-dropdown skidding="30">
+  <o-button slot="trigger" caret>Edit</o-button>
+  <o-menu>
+    <o-menu-item>Cut</o-menu-item>
+    <o-menu-item>Copy</o-menu-item>
+    <o-menu-item>Paste</o-menu-item>
+    <o-divider></o-divider>
+    <o-menu-item>Find</o-menu-item>
+    <o-menu-item>Replace</o-menu-item>
+  </o-menu>
+</o-dropdown>
 ```
 
 ```jsx react
-import { SlButton, SlDivider, SlDropdown, SlMenu, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { OButton, ODivider, ODropdown, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
-  <SlDropdown skidding={30}>
-    <SlButton slot="trigger" caret>
+  <ODropdown skidding={30}>
+    <OButton slot="trigger" caret>
       Edit
-    </SlButton>
-    <SlMenu>
-      <SlMenuItem>Cut</SlMenuItem>
-      <SlMenuItem>Copy</SlMenuItem>
-      <SlMenuItem>Paste</SlMenuItem>
-      <SlDivider />
-      <SlMenuItem>Find</SlMenuItem>
-      <SlMenuItem>Replace</SlMenuItem>
-    </SlMenu>
-  </SlDropdown>
+    </OButton>
+    <OMenu>
+      <OMenuItem>Cut</OMenuItem>
+      <OMenuItem>Copy</OMenuItem>
+      <OMenuItem>Paste</OMenuItem>
+      <ODivider />
+      <OMenuItem>Find</OMenuItem>
+      <OMenuItem>Replace</OMenuItem>
+    </OMenu>
+  </ODropdown>
 );
 ```
 
@@ -290,42 +290,42 @@ Dropdown panels will be clipped if they're inside a container that has `overflow
 
 ```html preview
 <div class="dropdown-hoist">
-  <sl-dropdown>
-    <sl-button slot="trigger" caret>No Hoist</sl-button>
-    <sl-menu>
-      <sl-menu-item>Item 1</sl-menu-item>
-      <sl-menu-item>Item 2</sl-menu-item>
-      <sl-menu-item>Item 3</sl-menu-item>
-    </sl-menu>
-  </sl-dropdown>
+  <o-dropdown>
+    <o-button slot="trigger" caret>No Hoist</o-button>
+    <o-menu>
+      <o-menu-item>Item 1</o-menu-item>
+      <o-menu-item>Item 2</o-menu-item>
+      <o-menu-item>Item 3</o-menu-item>
+    </o-menu>
+  </o-dropdown>
 
-  <sl-dropdown hoist>
-    <sl-button slot="trigger" caret>Hoist</sl-button>
-    <sl-menu>
-      <sl-menu-item>Item 1</sl-menu-item>
-      <sl-menu-item>Item 2</sl-menu-item>
-      <sl-menu-item>Item 3</sl-menu-item>
-    </sl-menu>
-  </sl-dropdown>
+  <o-dropdown hoist>
+    <o-button slot="trigger" caret>Hoist</o-button>
+    <o-menu>
+      <o-menu-item>Item 1</o-menu-item>
+      <o-menu-item>Item 2</o-menu-item>
+      <o-menu-item>Item 3</o-menu-item>
+    </o-menu>
+  </o-dropdown>
 </div>
 
 <style>
   .dropdown-hoist {
     position: relative;
-    border: solid 2px var(--sl-panel-border-color);
-    padding: var(--sl-spacing-medium);
+    border: solid 2px var(--o-panel-border-color);
+    padding: var(--o-spacing-medium);
     overflow: hidden;
   }
 </style>
 ```
 
 ```jsx react
-import { SlButton, SlDivider, SlDropdown, SlIcon, SlMenu, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { OButton, ODivider, ODropdown, OIcon, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
   .dropdown-hoist {
-    border: solid 2px var(--sl-panel-border-color);
-    padding: var(--sl-spacing-medium);
+    border: solid 2px var(--o-panel-border-color);
+    padding: var(--o-spacing-medium);
     overflow: hidden;
   }
 `;
@@ -333,27 +333,27 @@ const css = `
 const App = () => (
   <>
     <div className="dropdown-hoist">
-      <SlDropdown>
-        <SlButton slot="trigger" caret>
+      <ODropdown>
+        <OButton slot="trigger" caret>
           No Hoist
-        </SlButton>
-        <SlMenu>
-          <SlMenuItem>Item 1</SlMenuItem>
-          <SlMenuItem>Item 2</SlMenuItem>
-          <SlMenuItem>Item 3</SlMenuItem>
-        </SlMenu>
-      </SlDropdown>
+        </OButton>
+        <OMenu>
+          <OMenuItem>Item 1</OMenuItem>
+          <OMenuItem>Item 2</OMenuItem>
+          <OMenuItem>Item 3</OMenuItem>
+        </OMenu>
+      </ODropdown>
 
-      <SlDropdown hoist>
-        <SlButton slot="trigger" caret>
+      <ODropdown hoist>
+        <OButton slot="trigger" caret>
           Hoist
-        </SlButton>
-        <SlMenu>
-          <SlMenuItem>Item 1</SlMenuItem>
-          <SlMenuItem>Item 2</SlMenuItem>
-          <SlMenuItem>Item 3</SlMenuItem>
-        </SlMenu>
-      </SlDropdown>
+        </OButton>
+        <OMenu>
+          <OMenuItem>Item 1</OMenuItem>
+          <OMenuItem>Item 2</OMenuItem>
+          <OMenuItem>Item 3</OMenuItem>
+        </OMenu>
+      </ODropdown>
     </div>
 
     <style>{css}</style>
@@ -361,4 +361,4 @@ const App = () => (
 );
 ```
 
-[component-metadata:sl-dropdown]
+[component-metadata:o-dropdown]

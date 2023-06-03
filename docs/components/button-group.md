@@ -1,24 +1,24 @@
 # Button Group
 
-[component-header:sl-button-group]
+[component-header:o-button-group]
 
 ```html preview
-<sl-button-group label="Alignment">
-  <sl-button>Left</sl-button>
-  <sl-button>Center</sl-button>
-  <sl-button>Right</sl-button>
-</sl-button-group>
+<o-button-group label="Alignment">
+  <o-button>Left</o-button>
+  <o-button>Center</o-button>
+  <o-button>Right</o-button>
+</o-button-group>
 ```
 
 ```jsx react
-import { SlButton, SlButtonGroup } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OButtonGroup } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
-  <SlButtonGroup label="Alignment">
-    <SlButton>Left</SlButton>
-    <SlButton>Center</SlButton>
-    <SlButton>Right</SlButton>
-  </SlButtonGroup>
+  <OButtonGroup label="Alignment">
+    <OButton>Left</OButton>
+    <OButton>Center</OButton>
+    <OButton>Right</OButton>
+  </OButtonGroup>
 );
 ```
 
@@ -29,57 +29,57 @@ const App = () => (
 All button sizes are supported, but avoid mixing sizes within the same button group.
 
 ```html preview
-<sl-button-group label="Alignment">
-  <sl-button size="small">Left</sl-button>
-  <sl-button size="small">Center</sl-button>
-  <sl-button size="small">Right</sl-button>
-</sl-button-group>
+<o-button-group label="Alignment">
+  <o-button size="small">Left</o-button>
+  <o-button size="small">Center</o-button>
+  <o-button size="small">Right</o-button>
+</o-button-group>
 
 <br /><br />
 
-<sl-button-group label="Alignment">
-  <sl-button size="medium">Left</sl-button>
-  <sl-button size="medium">Center</sl-button>
-  <sl-button size="medium">Right</sl-button>
-</sl-button-group>
+<o-button-group label="Alignment">
+  <o-button size="medium">Left</o-button>
+  <o-button size="medium">Center</o-button>
+  <o-button size="medium">Right</o-button>
+</o-button-group>
 
 <br /><br />
 
-<sl-button-group label="Alignment">
-  <sl-button size="large">Left</sl-button>
-  <sl-button size="large">Center</sl-button>
-  <sl-button size="large">Right</sl-button>
-</sl-button-group>
+<o-button-group label="Alignment">
+  <o-button size="large">Left</o-button>
+  <o-button size="large">Center</o-button>
+  <o-button size="large">Right</o-button>
+</o-button-group>
 ```
 
 ```jsx react
-import { SlButton, SlButtonGroup } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OButtonGroup } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <>
-    <SlButtonGroup label="Alignment">
-      <SlButton size="small">Left</SlButton>
-      <SlButton size="small">Center</SlButton>
-      <SlButton size="small">Right</SlButton>
-    </SlButtonGroup>
+    <OButtonGroup label="Alignment">
+      <OButton size="small">Left</OButton>
+      <OButton size="small">Center</OButton>
+      <OButton size="small">Right</OButton>
+    </OButtonGroup>
 
     <br />
     <br />
 
-    <SlButtonGroup label="Alignment">
-      <SlButton size="medium">Left</SlButton>
-      <SlButton size="medium">Center</SlButton>
-      <SlButton size="medium">Right</SlButton>
-    </SlButtonGroup>
+    <OButtonGroup label="Alignment">
+      <OButton size="medium">Left</OButton>
+      <OButton size="medium">Center</OButton>
+      <OButton size="medium">Right</OButton>
+    </OButtonGroup>
 
     <br />
     <br />
 
-    <SlButtonGroup label="Alignment">
-      <SlButton size="large">Left</SlButton>
-      <SlButton size="large">Center</SlButton>
-      <SlButton size="large">Right</SlButton>
-    </SlButtonGroup>
+    <OButtonGroup label="Alignment">
+      <OButton size="large">Left</OButton>
+      <OButton size="large">Center</OButton>
+      <OButton size="large">Right</OButton>
+    </OButtonGroup>
   </>
 );
 ```
@@ -89,91 +89,91 @@ const App = () => (
 Theme buttons are supported through the button's `variant` attribute.
 
 ```html preview
-<sl-button-group label="Alignment">
-  <sl-button variant="primary">Left</sl-button>
-  <sl-button variant="primary">Center</sl-button>
-  <sl-button variant="primary">Right</sl-button>
-</sl-button-group>
+<o-button-group label="Alignment">
+  <o-button variant="primary">Left</o-button>
+  <o-button variant="primary">Center</o-button>
+  <o-button variant="primary">Right</o-button>
+</o-button-group>
 
 <br /><br />
 
-<sl-button-group label="Alignment">
-  <sl-button variant="success">Left</sl-button>
-  <sl-button variant="success">Center</sl-button>
-  <sl-button variant="success">Right</sl-button>
-</sl-button-group>
+<o-button-group label="Alignment">
+  <o-button variant="success">Left</o-button>
+  <o-button variant="success">Center</o-button>
+  <o-button variant="success">Right</o-button>
+</o-button-group>
 
 <br /><br />
 
-<sl-button-group label="Alignment">
-  <sl-button variant="neutral">Left</sl-button>
-  <sl-button variant="neutral">Center</sl-button>
-  <sl-button variant="neutral">Right</sl-button>
-</sl-button-group>
+<o-button-group label="Alignment">
+  <o-button variant="neutral">Left</o-button>
+  <o-button variant="neutral">Center</o-button>
+  <o-button variant="neutral">Right</o-button>
+</o-button-group>
 
 <br /><br />
 
-<sl-button-group label="Alignment">
-  <sl-button variant="warning">Left</sl-button>
-  <sl-button variant="warning">Center</sl-button>
-  <sl-button variant="warning">Right</sl-button>
-</sl-button-group>
+<o-button-group label="Alignment">
+  <o-button variant="warning">Left</o-button>
+  <o-button variant="warning">Center</o-button>
+  <o-button variant="warning">Right</o-button>
+</o-button-group>
 
 <br /><br />
 
-<sl-button-group label="Alignment">
-  <sl-button variant="danger">Left</sl-button>
-  <sl-button variant="danger">Center</sl-button>
-  <sl-button variant="danger">Right</sl-button>
-</sl-button-group>
+<o-button-group label="Alignment">
+  <o-button variant="danger">Left</o-button>
+  <o-button variant="danger">Center</o-button>
+  <o-button variant="danger">Right</o-button>
+</o-button-group>
 ```
 
 ```jsx react
-import { SlButton, SlButtonGroup } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OButtonGroup } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <>
-    <SlButtonGroup label="Alignment">
-      <SlButton variant="primary">Left</SlButton>
-      <SlButton variant="primary">Center</SlButton>
-      <SlButton variant="primary">Right</SlButton>
-    </SlButtonGroup>
+    <OButtonGroup label="Alignment">
+      <OButton variant="primary">Left</OButton>
+      <OButton variant="primary">Center</OButton>
+      <OButton variant="primary">Right</OButton>
+    </OButtonGroup>
 
     <br />
     <br />
 
-    <SlButtonGroup label="Alignment">
-      <SlButton variant="success">Left</SlButton>
-      <SlButton variant="success">Center</SlButton>
-      <SlButton variant="success">Right</SlButton>
-    </SlButtonGroup>
+    <OButtonGroup label="Alignment">
+      <OButton variant="success">Left</OButton>
+      <OButton variant="success">Center</OButton>
+      <OButton variant="success">Right</OButton>
+    </OButtonGroup>
 
     <br />
     <br />
 
-    <SlButtonGroup label="Alignment">
-      <SlButton variant="neutral">Left</SlButton>
-      <SlButton variant="neutral">Center</SlButton>
-      <SlButton variant="neutral">Right</SlButton>
-    </SlButtonGroup>
+    <OButtonGroup label="Alignment">
+      <OButton variant="neutral">Left</OButton>
+      <OButton variant="neutral">Center</OButton>
+      <OButton variant="neutral">Right</OButton>
+    </OButtonGroup>
 
     <br />
     <br />
 
-    <SlButtonGroup label="Alignment">
-      <SlButton variant="warning">Left</SlButton>
-      <SlButton variant="warning">Center</SlButton>
-      <SlButton variant="warning">Right</SlButton>
-    </SlButtonGroup>
+    <OButtonGroup label="Alignment">
+      <OButton variant="warning">Left</OButton>
+      <OButton variant="warning">Center</OButton>
+      <OButton variant="warning">Right</OButton>
+    </OButtonGroup>
 
     <br />
     <br />
 
-    <SlButtonGroup label="Alignment">
-      <SlButton variant="danger">Left</SlButton>
-      <SlButton variant="danger">Center</SlButton>
-      <SlButton variant="danger">Right</SlButton>
-    </SlButtonGroup>
+    <OButtonGroup label="Alignment">
+      <OButton variant="danger">Left</OButton>
+      <OButton variant="danger">Center</OButton>
+      <OButton variant="danger">Right</OButton>
+    </OButtonGroup>
   </>
 );
 ```
@@ -183,116 +183,116 @@ const App = () => (
 Pill buttons are supported through the button's `pill` attribute.
 
 ```html preview
-<sl-button-group label="Alignment">
-  <sl-button size="small" pill>Left</sl-button>
-  <sl-button size="small" pill>Center</sl-button>
-  <sl-button size="small" pill>Right</sl-button>
-</sl-button-group>
+<o-button-group label="Alignment">
+  <o-button size="small" pill>Left</o-button>
+  <o-button size="small" pill>Center</o-button>
+  <o-button size="small" pill>Right</o-button>
+</o-button-group>
 
 <br /><br />
 
-<sl-button-group label="Alignment">
-  <sl-button size="medium" pill>Left</sl-button>
-  <sl-button size="medium" pill>Center</sl-button>
-  <sl-button size="medium" pill>Right</sl-button>
-</sl-button-group>
+<o-button-group label="Alignment">
+  <o-button size="medium" pill>Left</o-button>
+  <o-button size="medium" pill>Center</o-button>
+  <o-button size="medium" pill>Right</o-button>
+</o-button-group>
 
 <br /><br />
 
-<sl-button-group label="Alignment">
-  <sl-button size="large" pill>Left</sl-button>
-  <sl-button size="large" pill>Center</sl-button>
-  <sl-button size="large" pill>Right</sl-button>
-</sl-button-group>
+<o-button-group label="Alignment">
+  <o-button size="large" pill>Left</o-button>
+  <o-button size="large" pill>Center</o-button>
+  <o-button size="large" pill>Right</o-button>
+</o-button-group>
 ```
 
 ```jsx react
-import { SlButton, SlButtonGroup } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OButtonGroup } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <>
-    <SlButtonGroup label="Alignment">
-      <SlButton size="small" pill>
+    <OButtonGroup label="Alignment">
+      <OButton size="small" pill>
         Left
-      </SlButton>
-      <SlButton size="small" pill>
+      </OButton>
+      <OButton size="small" pill>
         Center
-      </SlButton>
-      <SlButton size="small" pill>
+      </OButton>
+      <OButton size="small" pill>
         Right
-      </SlButton>
-    </SlButtonGroup>
+      </OButton>
+    </OButtonGroup>
 
     <br />
     <br />
 
-    <SlButtonGroup label="Alignment">
-      <SlButton size="medium" pill>
+    <OButtonGroup label="Alignment">
+      <OButton size="medium" pill>
         Left
-      </SlButton>
-      <SlButton size="medium" pill>
+      </OButton>
+      <OButton size="medium" pill>
         Center
-      </SlButton>
-      <SlButton size="medium" pill>
+      </OButton>
+      <OButton size="medium" pill>
         Right
-      </SlButton>
-    </SlButtonGroup>
+      </OButton>
+    </OButtonGroup>
 
     <br />
     <br />
 
-    <SlButtonGroup label="Alignment">
-      <SlButton size="large" pill>
+    <OButtonGroup label="Alignment">
+      <OButton size="large" pill>
         Left
-      </SlButton>
-      <SlButton size="large" pill>
+      </OButton>
+      <OButton size="large" pill>
         Center
-      </SlButton>
-      <SlButton size="large" pill>
+      </OButton>
+      <OButton size="large" pill>
         Right
-      </SlButton>
-    </SlButtonGroup>
+      </OButton>
+    </OButtonGroup>
   </>
 );
 ```
 
 ### Dropdowns in Button Groups
 
-Dropdowns can be placed inside button groups as long as the trigger is an `<sl-button>` element.
+Dropdowns can be placed inside button groups as long as the trigger is an `<o-button>` element.
 
 ```html preview
-<sl-button-group label="Example Button Group">
-  <sl-button>Button</sl-button>
-  <sl-button>Button</sl-button>
-  <sl-dropdown>
-    <sl-button slot="trigger" caret>Dropdown</sl-button>
-    <sl-menu>
-      <sl-menu-item>Item 1</sl-menu-item>
-      <sl-menu-item>Item 2</sl-menu-item>
-      <sl-menu-item>Item 3</sl-menu-item>
-    </sl-menu>
-  </sl-dropdown>
-</sl-button-group>
+<o-button-group label="Example Button Group">
+  <o-button>Button</o-button>
+  <o-button>Button</o-button>
+  <o-dropdown>
+    <o-button slot="trigger" caret>Dropdown</o-button>
+    <o-menu>
+      <o-menu-item>Item 1</o-menu-item>
+      <o-menu-item>Item 2</o-menu-item>
+      <o-menu-item>Item 3</o-menu-item>
+    </o-menu>
+  </o-dropdown>
+</o-button-group>
 ```
 
 ```jsx react
-import { SlButton, SlButtonGroup, SlDropdown, SlMenu, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OButtonGroup, ODropdown, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
-  <SlButtonGroup label="Example Button Group">
-    <SlButton>Button</SlButton>
-    <SlButton>Button</SlButton>
-    <SlDropdown>
-      <SlButton slot="trigger" caret>
+  <OButtonGroup label="Example Button Group">
+    <OButton>Button</OButton>
+    <OButton>Button</OButton>
+    <ODropdown>
+      <OButton slot="trigger" caret>
         Dropdown
-      </SlButton>
-      <SlMenu>
-        <SlMenuItem>Item 1</SlMenuItem>
-        <SlMenuItem>Item 2</SlMenuItem>
-        <SlMenuItem>Item 3</SlMenuItem>
-      </SlMenu>
-    </SlDropdown>
-  </SlButtonGroup>
+      </OButton>
+      <OMenu>
+        <OMenuItem>Item 1</OMenuItem>
+        <OMenuItem>Item 2</OMenuItem>
+        <OMenuItem>Item 3</OMenuItem>
+      </OMenu>
+    </ODropdown>
+  </OButtonGroup>
 );
 ```
 
@@ -301,36 +301,36 @@ const App = () => (
 Create a split button using a button and a dropdown. Use a [visually hidden](/components/visually-hidden) label to ensure the dropdown is accessible to users with assistive devices.
 
 ```html preview
-<sl-button-group label="Example Button Group">
-  <sl-button variant="primary">Save</sl-button>
-  <sl-dropdown placement="bottom-end">
-    <sl-button slot="trigger" variant="primary" caret>
-      <sl-visually-hidden>More options</sl-visually-hidden>
-    </sl-button>
-    <sl-menu>
-      <sl-menu-item>Save</sl-menu-item>
-      <sl-menu-item>Save as&hellip;</sl-menu-item>
-      <sl-menu-item>Save all</sl-menu-item>
-    </sl-menu>
-  </sl-dropdown>
-</sl-button-group>
+<o-button-group label="Example Button Group">
+  <o-button variant="primary">Save</o-button>
+  <o-dropdown placement="bottom-end">
+    <o-button slot="trigger" variant="primary" caret>
+      <o-visually-hidden>More options</o-visually-hidden>
+    </o-button>
+    <o-menu>
+      <o-menu-item>Save</o-menu-item>
+      <o-menu-item>Save as&hellip;</o-menu-item>
+      <o-menu-item>Save all</o-menu-item>
+    </o-menu>
+  </o-dropdown>
+</o-button-group>
 ```
 
 ```jsx react
-import { SlButton, SlButtonGroup, SlDropdown, SlMenu, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OButtonGroup, ODropdown, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
-  <SlButtonGroup label="Example Button Group">
-    <SlButton variant="primary">Save</SlButton>
-    <SlDropdown placement="bottom-end">
-      <SlButton slot="trigger" variant="primary" caret></SlButton>
-      <SlMenu>
-        <SlMenuItem>Save</SlMenuItem>
-        <SlMenuItem>Save as&hellip;</SlMenuItem>
-        <SlMenuItem>Save all</SlMenuItem>
-      </SlMenu>
-    </SlDropdown>
-  </SlButtonGroup>
+  <OButtonGroup label="Example Button Group">
+    <OButton variant="primary">Save</OButton>
+    <ODropdown placement="bottom-end">
+      <OButton slot="trigger" variant="primary" caret></OButton>
+      <OMenu>
+        <OMenuItem>Save</OMenuItem>
+        <OMenuItem>Save as&hellip;</OMenuItem>
+        <OMenuItem>Save all</OMenuItem>
+      </OMenu>
+    </ODropdown>
+  </OButtonGroup>
 );
 ```
 
@@ -339,39 +339,39 @@ const App = () => (
 Buttons can be wrapped in tooltips to provide more detail when the user interacts with them.
 
 ```html preview
-<sl-button-group label="Alignment">
-  <sl-tooltip content="I'm on the left">
-    <sl-button>Left</sl-button>
-  </sl-tooltip>
+<o-button-group label="Alignment">
+  <o-tooltip content="I'm on the left">
+    <o-button>Left</o-button>
+  </o-tooltip>
 
-  <sl-tooltip content="I'm in the middle">
-    <sl-button>Center</sl-button>
-  </sl-tooltip>
+  <o-tooltip content="I'm in the middle">
+    <o-button>Center</o-button>
+  </o-tooltip>
 
-  <sl-tooltip content="I'm on the right">
-    <sl-button>Right</sl-button>
-  </sl-tooltip>
-</sl-button-group>
+  <o-tooltip content="I'm on the right">
+    <o-button>Right</o-button>
+  </o-tooltip>
+</o-button-group>
 ```
 
 ```jsx react
-import { SlButton, SlButtonGroup, SlTooltip } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OButtonGroup, OTooltip } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <>
-    <SlButtonGroup label="Alignment">
-      <SlTooltip content="I'm on the left">
-        <SlButton>Left</SlButton>
-      </SlTooltip>
+    <OButtonGroup label="Alignment">
+      <OTooltip content="I'm on the left">
+        <OButton>Left</OButton>
+      </OTooltip>
 
-      <SlTooltip content="I'm in the middle">
-        <SlButton>Center</SlButton>
-      </SlTooltip>
+      <OTooltip content="I'm in the middle">
+        <OButton>Center</OButton>
+      </OTooltip>
 
-      <SlTooltip content="I'm on the right">
-        <SlButton>Right</SlButton>
-      </SlTooltip>
-    </SlButtonGroup>
+      <OTooltip content="I'm on the right">
+        <OButton>Right</OButton>
+      </OTooltip>
+    </OButtonGroup>
   </>
 );
 ```
@@ -382,107 +382,107 @@ Create interactive toolbars with button groups.
 
 ```html preview
 <div class="button-group-toolbar">
-  <sl-button-group label="History">
-    <sl-tooltip content="Undo">
-      <sl-button><sl-icon name="arrow-counterclockwise" label="Undo"></sl-icon></sl-button>
-    </sl-tooltip>
-    <sl-tooltip content="Redo">
-      <sl-button><sl-icon name="arrow-clockwise" label="Redo"></sl-icon></sl-button>
-    </sl-tooltip>
-  </sl-button-group>
+  <o-button-group label="History">
+    <o-tooltip content="Undo">
+      <o-button><o-icon name="arrow-counterclockwise" label="Undo"></o-icon></o-button>
+    </o-tooltip>
+    <o-tooltip content="Redo">
+      <o-button><o-icon name="arrow-clockwise" label="Redo"></o-icon></o-button>
+    </o-tooltip>
+  </o-button-group>
 
-  <sl-button-group label="Formatting">
-    <sl-tooltip content="Bold">
-      <sl-button><sl-icon name="type-bold" label="Bold"></sl-icon></sl-button>
-    </sl-tooltip>
-    <sl-tooltip content="Italic">
-      <sl-button><sl-icon name="type-italic" label="Italic"></sl-icon></sl-button>
-    </sl-tooltip>
-    <sl-tooltip content="Underline">
-      <sl-button><sl-icon name="type-underline" label="Underline"></sl-icon></sl-button>
-    </sl-tooltip>
-  </sl-button-group>
+  <o-button-group label="Formatting">
+    <o-tooltip content="Bold">
+      <o-button><o-icon name="type-bold" label="Bold"></o-icon></o-button>
+    </o-tooltip>
+    <o-tooltip content="Italic">
+      <o-button><o-icon name="type-italic" label="Italic"></o-icon></o-button>
+    </o-tooltip>
+    <o-tooltip content="Underline">
+      <o-button><o-icon name="type-underline" label="Underline"></o-icon></o-button>
+    </o-tooltip>
+  </o-button-group>
 
-  <sl-button-group label="Alignment">
-    <sl-tooltip content="Align Left">
-      <sl-button><sl-icon name="justify-left" label="Align Left"></sl-icon></sl-button>
-    </sl-tooltip>
-    <sl-tooltip content="Align Center">
-      <sl-button><sl-icon name="justify" label="Align Center"></sl-icon></sl-button>
-    </sl-tooltip>
-    <sl-tooltip content="Align Right">
-      <sl-button><sl-icon name="justify-right" label="Align Right"></sl-icon></sl-button>
-    </sl-tooltip>
-  </sl-button-group>
+  <o-button-group label="Alignment">
+    <o-tooltip content="Align Left">
+      <o-button><o-icon name="justify-left" label="Align Left"></o-icon></o-button>
+    </o-tooltip>
+    <o-tooltip content="Align Center">
+      <o-button><o-icon name="justify" label="Align Center"></o-icon></o-button>
+    </o-tooltip>
+    <o-tooltip content="Align Right">
+      <o-button><o-icon name="justify-right" label="Align Right"></o-icon></o-button>
+    </o-tooltip>
+  </o-button-group>
 </div>
 
 <style>
-  .button-group-toolbar sl-button-group:not(:last-of-type) {
-    margin-right: var(--sl-spacing-x-small);
+  .button-group-toolbar o-button-group:not(:last-of-type) {
+    margin-right: var(--o-spacing-x-small);
   }
 </style>
 ```
 
 ```jsx react
-import { SlButton, SlButtonGroup, SlIcon, SlTooltip } from '%PACKAGE_NAME%/dist/react';
+import { OButton, OButtonGroup, OIcon, OTooltip } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const css = `
-  .button-group-toolbar sl-button-group:not(:last-of-type) {
-    margin-right: var(--sl-spacing-x-small);
+  .button-group-toolbar o-button-group:not(:last-of-type) {
+    margin-right: var(--o-spacing-x-small);
   }
 `;
 
 const App = () => (
   <>
     <div className="button-group-toolbar">
-      <SlButtonGroup label="History">
-        <SlTooltip content="Undo">
-          <SlButton>
-            <SlIcon name="arrow-counterclockwise"></SlIcon>
-          </SlButton>
-        </SlTooltip>
-        <SlTooltip content="Redo">
-          <SlButton>
-            <SlIcon name="arrow-clockwise"></SlIcon>
-          </SlButton>
-        </SlTooltip>
-      </SlButtonGroup>
+      <OButtonGroup label="History">
+        <OTooltip content="Undo">
+          <OButton>
+            <OIcon name="arrow-counterclockwise"></OIcon>
+          </OButton>
+        </OTooltip>
+        <OTooltip content="Redo">
+          <OButton>
+            <OIcon name="arrow-clockwise"></OIcon>
+          </OButton>
+        </OTooltip>
+      </OButtonGroup>
 
-      <SlButtonGroup label="Formatting">
-        <SlTooltip content="Bold">
-          <SlButton>
-            <SlIcon name="type-bold"></SlIcon>
-          </SlButton>
-        </SlTooltip>
-        <SlTooltip content="Italic">
-          <SlButton>
-            <SlIcon name="type-italic"></SlIcon>
-          </SlButton>
-        </SlTooltip>
-        <SlTooltip content="Underline">
-          <SlButton>
-            <SlIcon name="type-underline"></SlIcon>
-          </SlButton>
-        </SlTooltip>
-      </SlButtonGroup>
+      <OButtonGroup label="Formatting">
+        <OTooltip content="Bold">
+          <OButton>
+            <OIcon name="type-bold"></OIcon>
+          </OButton>
+        </OTooltip>
+        <OTooltip content="Italic">
+          <OButton>
+            <OIcon name="type-italic"></OIcon>
+          </OButton>
+        </OTooltip>
+        <OTooltip content="Underline">
+          <OButton>
+            <OIcon name="type-underline"></OIcon>
+          </OButton>
+        </OTooltip>
+      </OButtonGroup>
 
-      <SlButtonGroup label="Alignment">
-        <SlTooltip content="Align Left">
-          <SlButton>
-            <SlIcon name="justify-left"></SlIcon>
-          </SlButton>
-        </SlTooltip>
-        <SlTooltip content="Align Center">
-          <SlButton>
-            <SlIcon name="justify"></SlIcon>
-          </SlButton>
-        </SlTooltip>
-        <SlTooltip content="Align Right">
-          <SlButton>
-            <SlIcon name="justify-right"></SlIcon>
-          </SlButton>
-        </SlTooltip>
-      </SlButtonGroup>
+      <OButtonGroup label="Alignment">
+        <OTooltip content="Align Left">
+          <OButton>
+            <OIcon name="justify-left"></OIcon>
+          </OButton>
+        </OTooltip>
+        <OTooltip content="Align Center">
+          <OButton>
+            <OIcon name="justify"></OIcon>
+          </OButton>
+        </OTooltip>
+        <OTooltip content="Align Right">
+          <OButton>
+            <OIcon name="justify-right"></OIcon>
+          </OButton>
+        </OTooltip>
+      </OButtonGroup>
     </div>
 
     <style>{css}</style>
@@ -490,4 +490,4 @@ const App = () => (
 );
 ```
 
-[component-metadata:sl-button-group]
+[component-metadata:o-button-group]

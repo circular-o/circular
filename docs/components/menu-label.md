@@ -1,37 +1,37 @@
 # Menu Label
 
-[component-header:sl-menu-label]
+[component-header:o-menu-label]
 
 ```html preview
-<sl-menu style="max-width: 200px;">
-  <sl-menu-label>Fruits</sl-menu-label>
-  <sl-menu-item value="apple">Apple</sl-menu-item>
-  <sl-menu-item value="banana">Banana</sl-menu-item>
-  <sl-menu-item value="orange">Orange</sl-menu-item>
-  <sl-divider></sl-divider>
-  <sl-menu-label>Vegetables</sl-menu-label>
-  <sl-menu-item value="broccoli">Broccoli</sl-menu-item>
-  <sl-menu-item value="carrot">Carrot</sl-menu-item>
-  <sl-menu-item value="zucchini">Zucchini</sl-menu-item>
-</sl-menu>
+<o-menu style="max-width: 200px;">
+  <o-menu-label>Fruits</o-menu-label>
+  <o-menu-item value="apple">Apple</o-menu-item>
+  <o-menu-item value="banana">Banana</o-menu-item>
+  <o-menu-item value="orange">Orange</o-menu-item>
+  <o-divider></o-divider>
+  <o-menu-label>Vegetables</o-menu-label>
+  <o-menu-item value="broccoli">Broccoli</o-menu-item>
+  <o-menu-item value="carrot">Carrot</o-menu-item>
+  <o-menu-item value="zucchini">Zucchini</o-menu-item>
+</o-menu>
 ```
 
 ```jsx react
-import { SlDivider, SlMenu, SlMenuLabel, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { ODivider, OMenu, OMenuLabel, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
-  <SlMenu style={{ maxWidth: '200px' }}>
-    <SlMenuLabel>Fruits</SlMenuLabel>
-    <SlMenuItem value="apple">Apple</SlMenuItem>
-    <SlMenuItem value="banana">Banana</SlMenuItem>
-    <SlMenuItem value="orange">Orange</SlMenuItem>
-    <SlDivider />
-    <SlMenuLabel>Vegetables</SlMenuLabel>
-    <SlMenuItem value="broccoli">Broccoli</SlMenuItem>
-    <SlMenuItem value="carrot">Carrot</SlMenuItem>
-    <SlMenuItem value="zucchini">Zucchini</SlMenuItem>
-  </SlMenu>
+  <OMenu style={{ maxWidth: '200px' }}>
+    <OMenuLabel>Fruits</OMenuLabel>
+    <OMenuItem value="apple">Apple</OMenuItem>
+    <OMenuItem value="banana">Banana</OMenuItem>
+    <OMenuItem value="orange">Orange</OMenuItem>
+    <ODivider />
+    <OMenuLabel>Vegetables</OMenuLabel>
+    <OMenuItem value="broccoli">Broccoli</OMenuItem>
+    <OMenuItem value="carrot">Carrot</OMenuItem>
+    <OMenuItem value="zucchini">Zucchini</OMenuItem>
+  </OMenu>
 );
 ```
 
-[component-metadata:sl-menu-label]
+[component-metadata:o-menu-label]

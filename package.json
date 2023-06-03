@@ -1,18 +1,18 @@
 {
   "name": "@jeysonj2/circular",
   "description": "A forward-thinking library of web components.",
-  "version": "1.1.0",
+  "version": "1.2.0-next.1",
   "homepage": "https://github.com/circular-o/circular",
   "author": "Cory LaViska + Circular Team",
   "license": "MIT",
   "customElements": "dist/custom-elements.json",
   "web-types": "dist/web-types.json",
   "type": "module",
-  "types": "dist/shoelace.d.ts",
+  "types": "dist/circular.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/shoelace.d.ts",
-      "import": "./dist/shoelace.js"
+      "types": "./dist/circular.d.ts",
+      "import": "./dist/circular.js"
     },
     "./dist/custom-elements.json": "./dist/custom-elements.json",
     "./dist/themes/*": "./dist/themes/*",
@@ -45,6 +45,7 @@
     "start": "node scripts/build.js --bundle --serve --copydir \"docs/dist\"",
     "build": "node scripts/build.js --bundle --types --copydir \"docs/dist\"",
     "verify": "npm run prettier:check && npm run lint && npm run build && npm run test",
+    "verify:fix": "npm run prettier && npm run lint:fix && npm run build && npm run test",
     "/* 1": "verify-no-tests is useful to test the CI without running tests */",
     "verify-no-tests": "npm run prettier:check && npm run lint && npm run build",
     "prepublishOnly-skip": "npm run verify",
@@ -65,7 +66,7 @@
     "semantic-release": "semantic-release"
   },
   "engines": {
-    "node": ">=16.20.0"
+    "node": ">=18.16.0"
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.6.0",

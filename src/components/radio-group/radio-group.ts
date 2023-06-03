@@ -10,28 +10,28 @@ import {
 import { HasSlotController } from '../../internal/slot';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './radio-group.styles';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
-import type SlRadio from '../radio/radio';
-import type SlRadioButton from '../radio-button/radio-button';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element';
+import type ORadio from '../radio/radio';
+import type ORadioButton from '../radio-button/radio-button';
 
 /**
  * @summary Radio groups are used to group multiple [radios](/components/radio) or [radio buttons](/components/radio-button) so they function as a single form control.
- * @documentation https://shoelace.style/components/radio-group
+ * @documentation https://circular-o.github.io/circular/#/components/radio-group
  * @status stable
  * @since 2.0
  *
- * @dependency sl-button-group
+ * @dependency o-button-group
  *
- * @slot - The default slot where `<sl-radio>` or `<sl-radio-button>` elements are placed.
+ * @slot - The default slot where `<o-radio>` or `<o-radio-button>` elements are placed.
  * @slot label - The radio group's label. Required for proper accessibility. Alternatively, you can use the `label`
  *  attribute.
  *
- * @event sl-change - Emitted when the radio group's selected value changes.
- * @event sl-input - Emitted when the radio group receives user input.
- * @event sl-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
+ * @event o-change - Emitted when the radio group's selected value changes.
+ * @event o-input - Emitted when the radio group receives user input.
+ * @event o-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
  *
  * @csspart form-control - The form control that wraps the label, input, and help text.
  * @csspart form-control-label - The label's wrapper.
@@ -40,8 +40,8 @@ import type SlRadioButton from '../radio-button/radio-button';
  * @csspart button-group - The button group that wraps radio buttons.
  * @csspart button-group__base - The button group's `base` part.
  */
-@customElement('sl-radio-group')
-export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFormControl {
+@customElement('o-radio-group')
+export default class ORadioGroup extends LibraryBaseElement implements LibraryBaseFormControl {
   static styles: CSSResultGroup = styles;
 
   protected readonly formControlController = new FormControlController(this);
@@ -122,11 +122,11 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
   }
 
   private getAllRadios() {
-    return [...this.querySelectorAll<SlRadio | SlRadioButton>('sl-radio, sl-radio-button')];
+    return [...this.querySelectorAll<ORadio | ORadioButton>('o-radio, o-radio-button')];
   }
 
   private handleRadioClick(event: MouseEvent) {
-    const target = (event.target as HTMLElement).closest<SlRadio | SlRadioButton>('sl-radio, sl-radio-button')!;
+    const target = (event.target as HTMLElement).closest<ORadio | ORadioButton>('o-radio, o-radio-button')!;
     const radios = this.getAllRadios();
     const oldValue = this.value;
 
@@ -138,8 +138,8 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
     radios.forEach(radio => (radio.checked = radio === target));
 
     if (this.value !== oldValue) {
-      this.emit('sl-change');
-      this.emit('sl-input');
+      this.emit('o-change');
+      this.emit('o-input');
     }
   }
 
@@ -181,8 +181,8 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
     }
 
     if (this.value !== oldValue) {
-      this.emit('sl-change');
-      this.emit('sl-input');
+      this.emit('o-change');
+      this.emit('o-input');
     }
 
     event.preventDefault();
@@ -205,7 +205,7 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
   }
 
   private syncRadios() {
-    if (customElements.get('sl-radio') || customElements.get('sl-radio-button')) {
+    if (customElements.get('o-radio') || customElements.get('o-radio-button')) {
       const radios = this.getAllRadios();
 
       // Sync the checked state and size
@@ -214,7 +214,7 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
         radio.size = this.size;
       });
 
-      this.hasButtonGroup = radios.some(radio => radio.tagName.toLowerCase() === 'sl-radio-button');
+      this.hasButtonGroup = radios.some(radio => radio.tagName.toLowerCase() === 'o-radio-button');
 
       if (!radios.some(radio => radio.checked)) {
         if (this.hasButtonGroup) {
@@ -229,16 +229,16 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
       }
 
       if (this.hasButtonGroup) {
-        const buttonGroup = this.shadowRoot?.querySelector('sl-button-group');
+        const buttonGroup = this.shadowRoot?.querySelector('o-button-group');
 
         if (buttonGroup) {
           buttonGroup.disableRole = true;
         }
       }
     } else {
-      // Rerun this handler when <sl-radio> or <sl-radio-button> is registered
-      customElements.whenDefined('sl-radio').then(() => this.syncRadios());
-      customElements.whenDefined('sl-radio-button').then(() => this.syncRadios());
+      // Rerun this handler when <o-radio> or <o-radio-button> is registered
+      customElements.whenDefined('o-radio').then(() => this.syncRadios());
+      customElements.whenDefined('o-radio-button').then(() => this.syncRadios());
     }
   }
 
@@ -364,9 +364,9 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
 
           ${this.hasButtonGroup
             ? html`
-                <sl-button-group part="button-group" exportparts="base:button-group__base">
+                <o-button-group part="button-group" exportparts="base:button-group__base">
                   ${defaultSlot}
-                </sl-button-group>
+                </o-button-group>
               `
             : defaultSlot}
         </div>
@@ -388,6 +388,6 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-radio-group': SlRadioGroup;
+    'o-radio-group': ORadioGroup;
   }
 }

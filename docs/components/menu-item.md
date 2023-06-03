@@ -1,50 +1,50 @@
 # Menu Item
 
-[component-header:sl-menu-item]
+[component-header:o-menu-item]
 
 ```html preview
-<sl-menu style="max-width: 200px;">
-  <sl-menu-item>Option 1</sl-menu-item>
-  <sl-menu-item>Option 2</sl-menu-item>
-  <sl-menu-item>Option 3</sl-menu-item>
-  <sl-divider></sl-divider>
-  <sl-menu-item type="checkbox" checked>Checkbox</sl-menu-item>
-  <sl-menu-item disabled>Disabled</sl-menu-item>
-  <sl-divider></sl-divider>
-  <sl-menu-item>
+<o-menu style="max-width: 200px;">
+  <o-menu-item>Option 1</o-menu-item>
+  <o-menu-item>Option 2</o-menu-item>
+  <o-menu-item>Option 3</o-menu-item>
+  <o-divider></o-divider>
+  <o-menu-item type="checkbox" checked>Checkbox</o-menu-item>
+  <o-menu-item disabled>Disabled</o-menu-item>
+  <o-divider></o-divider>
+  <o-menu-item>
     Prefix Icon
-    <sl-icon slot="prefix" name="gift"></sl-icon>
-  </sl-menu-item>
-  <sl-menu-item>
+    <o-icon slot="prefix" name="gift"></o-icon>
+  </o-menu-item>
+  <o-menu-item>
     Suffix Icon
-    <sl-icon slot="suffix" name="heart"></sl-icon>
-  </sl-menu-item>
-</sl-menu>
+    <o-icon slot="suffix" name="heart"></o-icon>
+  </o-menu-item>
+</o-menu>
 ```
 
 ```jsx react
-import { SlDivider, SlIcon, SlMenu, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { ODivider, OIcon, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
-  <SlMenu style={{ maxWidth: '200px' }}>
-    <SlMenuItem>Option 1</SlMenuItem>
-    <SlMenuItem>Option 2</SlMenuItem>
-    <SlMenuItem>Option 3</SlMenuItem>
-    <SlDivider />
-    <SlMenuItem type="checkbox" checked>
+  <OMenu style={{ maxWidth: '200px' }}>
+    <OMenuItem>Option 1</OMenuItem>
+    <OMenuItem>Option 2</OMenuItem>
+    <OMenuItem>Option 3</OMenuItem>
+    <ODivider />
+    <OMenuItem type="checkbox" checked>
       Checkbox
-    </SlMenuItem>
-    <SlMenuItem disabled>Disabled</SlMenuItem>
-    <SlDivider />
-    <SlMenuItem>
+    </OMenuItem>
+    <OMenuItem disabled>Disabled</OMenuItem>
+    <ODivider />
+    <OMenuItem>
       Prefix Icon
-      <SlIcon slot="prefix" name="gift" />
-    </SlMenuItem>
-    <SlMenuItem>
+      <OIcon slot="prefix" name="gift" />
+    </OMenuItem>
+    <OMenuItem>
       Suffix Icon
-      <SlIcon slot="suffix" name="heart" />
-    </SlMenuItem>
-  </SlMenu>
+      <OIcon slot="suffix" name="heart" />
+    </OMenuItem>
+  </OMenu>
 );
 ```
 
@@ -55,22 +55,22 @@ const App = () => (
 Add the `disabled` attribute to disable the menu item so it cannot be selected.
 
 ```html preview
-<sl-menu style="max-width: 200px;">
-  <sl-menu-item>Option 1</sl-menu-item>
-  <sl-menu-item disabled>Option 2</sl-menu-item>
-  <sl-menu-item>Option 3</sl-menu-item>
-</sl-menu>
+<o-menu style="max-width: 200px;">
+  <o-menu-item>Option 1</o-menu-item>
+  <o-menu-item disabled>Option 2</o-menu-item>
+  <o-menu-item>Option 3</o-menu-item>
+</o-menu>
 ```
 
 ```jsx react
-import { SlMenu, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
-  <SlMenu style={{ maxWidth: '200px' }}>
-    <SlMenuItem>Option 1</SlMenuItem>
-    <SlMenuItem disabled>Option 2</SlMenuItem>
-    <SlMenuItem>Option 3</SlMenuItem>
-  </SlMenu>
+  <OMenu style={{ maxWidth: '200px' }}>
+    <OMenuItem>Option 1</OMenuItem>
+    <OMenuItem disabled>Option 2</OMenuItem>
+    <OMenuItem>Option 3</OMenuItem>
+  </OMenu>
 );
 ```
 
@@ -79,52 +79,52 @@ const App = () => (
 Add content to the start and end of menu items using the `prefix` and `suffix` slots.
 
 ```html preview
-<sl-menu style="max-width: 200px;">
-  <sl-menu-item>
-    <sl-icon slot="prefix" name="house"></sl-icon>
+<o-menu style="max-width: 200px;">
+  <o-menu-item>
+    <o-icon slot="prefix" name="house"></o-icon>
     Home
-  </sl-menu-item>
+  </o-menu-item>
 
-  <sl-menu-item>
-    <sl-icon slot="prefix" name="envelope"></sl-icon>
+  <o-menu-item>
+    <o-icon slot="prefix" name="envelope"></o-icon>
     Messages
-    <sl-badge slot="suffix" variant="primary" pill>12</sl-badge>
-  </sl-menu-item>
+    <o-badge slot="suffix" variant="primary" pill>12</o-badge>
+  </o-menu-item>
 
-  <sl-divider></sl-divider>
+  <o-divider></o-divider>
 
-  <sl-menu-item>
-    <sl-icon slot="prefix" name="gear"></sl-icon>
+  <o-menu-item>
+    <o-icon slot="prefix" name="gear"></o-icon>
     Settings
-  </sl-menu-item>
-</sl-menu>
+  </o-menu-item>
+</o-menu>
 ```
 
 ```jsx react
-import { SlBadge, SlDivider, SlIcon, SlMenu, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { OBadge, ODivider, OIcon, OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
-  <SlMenu style={{ maxWidth: '200px' }}>
-    <SlMenuItem>
-      <SlIcon slot="prefix" name="house" />
+  <OMenu style={{ maxWidth: '200px' }}>
+    <OMenuItem>
+      <OIcon slot="prefix" name="house" />
       Home
-    </SlMenuItem>
+    </OMenuItem>
 
-    <SlMenuItem>
-      <SlIcon slot="prefix" name="envelope" />
+    <OMenuItem>
+      <OIcon slot="prefix" name="envelope" />
       Messages
-      <SlBadge slot="suffix" variant="primary" pill>
+      <OBadge slot="suffix" variant="primary" pill>
         12
-      </SlBadge>
-    </SlMenuItem>
+      </OBadge>
+    </OMenuItem>
 
-    <SlDivider />
+    <ODivider />
 
-    <SlMenuItem>
-      <SlIcon slot="prefix" name="gear" />
+    <OMenuItem>
+      <OIcon slot="prefix" name="gear" />
       Settings
-    </SlMenuItem>
-  </SlMenu>
+    </OMenuItem>
+  </OMenu>
 );
 ```
 
@@ -135,46 +135,46 @@ Set the `type` attribute to `checkbox` to create a menu item that will toggle on
 Checkbox menu items are visually indistinguishable from regular menu items. Their ability to be toggled is primarily inferred from context, much like you'd find in the menu of a native app.
 
 ```html preview
-<sl-menu style="max-width: 200px;">
-  <sl-menu-item type="checkbox">Autosave</sl-menu-item>
-  <sl-menu-item type="checkbox" checked>Check Spelling</sl-menu-item>
-  <sl-menu-item type="checkbox">Word Wrap</sl-menu-item>
-</sl-menu>
+<o-menu style="max-width: 200px;">
+  <o-menu-item type="checkbox">Autosave</o-menu-item>
+  <o-menu-item type="checkbox" checked>Check Spelling</o-menu-item>
+  <o-menu-item type="checkbox">Word Wrap</o-menu-item>
+</o-menu>
 ```
 
 ```jsx react
-import { SlMenu, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
-  <SlMenu style={{ maxWidth: '200px' }}>
-    <SlMenuItem type="checkbox">Autosave</SlMenuItem>
-    <SlMenuItem type="checkbox" checked>
+  <OMenu style={{ maxWidth: '200px' }}>
+    <OMenuItem type="checkbox">Autosave</OMenuItem>
+    <OMenuItem type="checkbox" checked>
       Check Spelling
-    </SlMenuItem>
-    <SlMenuItem type="checkbox">Word Wrap</SlMenuItem>
-  </SlMenu>
+    </OMenuItem>
+    <OMenuItem type="checkbox">Word Wrap</OMenuItem>
+  </OMenu>
 );
 ```
 
 ### Value & Selection
 
-The `value` attribute can be used to assign a hidden value, such as a unique identifier, to a menu item. When an item is selected, the `sl-select` event will be emitted and a reference to the item will be available at `event.detail.item`. You can use this reference to access the selected item's value, its checked state, and more.
+The `value` attribute can be used to assign a hidden value, such as a unique identifier, to a menu item. When an item is selected, the `o-select` event will be emitted and a reference to the item will be available at `event.detail.item`. You can use this reference to access the selected item's value, its checked state, and more.
 
 ```html preview
-<sl-menu class="menu-value" style="max-width: 200px;">
-  <sl-menu-item value="opt-1">Option 1</sl-menu-item>
-  <sl-menu-item value="opt-2">Option 2</sl-menu-item>
-  <sl-menu-item value="opt-3">Option 3</sl-menu-item>
-  <sl-divider></sl-divider>
-  <sl-menu-item type="checkbox" value="opt-4">Checkbox 4</sl-menu-item>
-  <sl-menu-item type="checkbox" value="opt-5">Checkbox 5</sl-menu-item>
-  <sl-menu-item type="checkbox" value="opt-6">Checkbox 6</sl-menu-item>
-</sl-menu>
+<o-menu class="menu-value" style="max-width: 200px;">
+  <o-menu-item value="opt-1">Option 1</o-menu-item>
+  <o-menu-item value="opt-2">Option 2</o-menu-item>
+  <o-menu-item value="opt-3">Option 3</o-menu-item>
+  <o-divider></o-divider>
+  <o-menu-item type="checkbox" value="opt-4">Checkbox 4</o-menu-item>
+  <o-menu-item type="checkbox" value="opt-5">Checkbox 5</o-menu-item>
+  <o-menu-item type="checkbox" value="opt-6">Checkbox 6</o-menu-item>
+</o-menu>
 
 <script>
   const menu = document.querySelector('.menu-value');
 
-  menu.addEventListener('sl-select', event => {
+  menu.addEventListener('o-select', event => {
     const item = event.detail.item;
 
     // Log value
@@ -188,7 +188,7 @@ The `value` attribute can be used to assign a hidden value, such as a unique ide
 ```
 
 ```jsx react
-import { SlMenu, SlMenuItem } from '%PACKAGE_NAME%/dist/react';
+import { OMenu, OMenuItem } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => {
   function handleSelect(event) {
@@ -202,13 +202,13 @@ const App = () => {
   }
 
   return (
-    <SlMenu style={{ maxWidth: '200px' }} onSlSelect={handleSelect}>
-      <SlMenuItem value="opt-1">Option 1</SlMenuItem>
-      <SlMenuItem value="opt-2">Option 2</SlMenuItem>
-      <SlMenuItem value="opt-3">Option 3</SlMenuItem>
-    </SlMenu>
+    <OMenu style={{ maxWidth: '200px' }} onOSelect={handleSelect}>
+      <OMenuItem value="opt-1">Option 1</OMenuItem>
+      <OMenuItem value="opt-2">Option 2</OMenuItem>
+      <OMenuItem value="opt-3">Option 3</OMenuItem>
+    </OMenu>
   );
 };
 ```
 
-[component-metadata:sl-menu-item]
+[component-metadata:o-menu-item]
