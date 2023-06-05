@@ -54,4 +54,21 @@ window.setDocsConfig = newConfig => {
   );
 };
 
+// Function to set version number from dist/custom-elements.json if the current value is "latest"
+window.setVersionNumberFromCustomElementsFile = () => {
+  const packageData = window.getDocsConfig();
+
+  if (packageData.packageVersion === 'latest') {
+    fetch('dist/custom-elements.json')
+      .then(response => response.json())
+      .then(data => {
+        const { version } = data.package;
+        window.setDocsConfig({ packageVersion: version });
+      });
+  }
+};
+
 window.setDocsConfig({});
+(async () => {
+  await window.setVersionNumberFromCustomElementsFile();
+})();

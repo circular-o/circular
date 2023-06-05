@@ -9,14 +9,7 @@
   let metadata = {};
 
   const getCustomElementsMetadata = async () => {
-    const m = await customElements;
-    const { packageVersion } = window.getDocsConfig();
-    // If packageVersion is set to "latest", then it will be overwritten with the actual version number
-    if (packageVersion === 'latest') {
-      window.setDocsConfig({ packageVersion: m.package.version });
-    }
-
-    return m;
+    return await customElements;
   };
 
   function createPropsTable(props) {
