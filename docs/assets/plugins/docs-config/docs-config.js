@@ -1,5 +1,4 @@
 window.DEFAULT_DOCS_CONFIGURATION = {
-  repo: 'https://github.com/circular-o/circular',
   // Configuration variables related to the package
   packagesCdnUrl: `https://cdn.jsdelivr.net/npm`,
   packageOrganization: '@jeysonj2',
@@ -68,7 +67,50 @@ window.setVersionNumberFromCustomElementsFile = () => {
   }
 };
 
-window.setDocsConfig({});
 (async () => {
+  window.setDocsConfig({});
   await window.setVersionNumberFromCustomElementsFile();
+})();
+
+(() => {
+  window.$docsify.plugins.push(hook => {
+    hook.init(() => {
+      const { repoUrl } = window.getDocsConfig();
+      window.$docsify.repo = repoUrl;
+    });
+
+    hook.beforeEach((content, next) => {
+      const {
+        packageOrganization,
+        packageName,
+        packageVersion,
+        docsWebsite,
+        repoUrl,
+        twitterUser,
+        sponsorUrl,
+        libraryName
+      } = window.getDocsConfig();
+
+      // Replace %PACKAGE-VERSION% placeholders
+      content = content.replace(/%PACKAGE-VERSION%/g, packageVersion);
+      // Replace %PACKAGE-ORGANIZATION% placeholders
+      content = content.replace(/%PACKAGE-ORGANIZATION%/g, `${packageOrganization}`);
+      // Replace %PACKAGE-NAME% placeholders
+      content = content.replace(/%PACKAGE-NAME%/g, `${packageName}`);
+      // Replace %PACKAGE-FULL-PATH% placeholders
+      content = content.replace(/%PACKAGE-FULL-PATH%/g, `${packageOrganization}/${packageName}`);
+      // Replace %DOCS-WEBSITE% placeholders
+      content = content.replace(/%DOCS-WEBSITE%/g, `${docsWebsite}`);
+      // Replace %REPO-URL% placeholders
+      content = content.replace(/%REPO-URL%/g, `${repoUrl}`);
+      // Replace %TWITTER-USER% placeholders
+      content = content.replace(/%TWITTER-USER%/g, `${twitterUser}`);
+      // Replace %SPONSOR-URL% placeholders
+      content = content.replace(/%SPONSOR-URL%/g, `${sponsorUrl}`);
+      // Replace %LIBRARY-NAME% placeholders
+      content = content.replace(/%LIBRARY-NAME%/g, `${libraryName}`);
+
+      next(content);
+    });
+  });
 })();

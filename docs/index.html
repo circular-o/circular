@@ -50,7 +50,6 @@
       const theme = localStorage.getItem('theme') || 'auto';
       document.documentElement.classList.toggle('o-theme-dark', theme === 'dark' || (theme === 'auto' && prefersDark));
     </script>
-    <script src="assets/docs-config.js"></script>
     <script>
       window.$docsify = {
         alias: {
@@ -79,8 +78,7 @@
           crossChapterText: false
         },
         // routerMode: 'history',
-        themeColor: 'var(--o-color-primary-500)',
-        repo: window.DEFAULT_DOCS_CONFIGURATION.repo
+        themeColor: 'var(--o-color-primary-500)'
       };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
@@ -89,6 +87,7 @@
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/components/prism-bash.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/components/prism-jsx.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/components/prism-tsx.min.js"></script>
+    <script src="assets/plugins/docs-config/docs-config.js"></script>
     <script src="assets/plugins/metadata/metadata.js"></script>
     <script src="assets/plugins/code-block/code-block.js"></script>
     <script src="assets/plugins/scroll-position/scroll-position.js"></script>

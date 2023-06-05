@@ -342,9 +342,6 @@
       version.textContent = isDev ? 'Development' : isNext ? 'Next' : packageVersion;
       target.appendChild(version);
 
-      // Store version for reuse
-      sessionStorage.setItem('o-version', packageVersion);
-
       // Add repo buttons
       const buttons = document.createElement('div');
       buttons.classList.add('sidebar-buttons');
@@ -363,39 +360,10 @@
     });
 
     hook.beforeEach(async (content, next) => {
-      const {
-        packageOrganization,
-        packageName,
-        packageVersion,
-        docsWebsite,
-        repoUrl,
-        twitterUser,
-        sponsorUrl,
-        packageUrlNoVersion,
-        packageUrl,
-        libraryName
-      } = window.getDocsConfig();
+      const { packageOrganization, packageName, repoUrl, twitterUser, sponsorUrl, packageUrlNoVersion, packageUrl } =
+        window.getDocsConfig();
 
       metadata = await getCustomElementsMetadata();
-
-      // Replace %PACKAGE-VERSION% placeholders
-      content = content.replace(/%PACKAGE-VERSION%/g, packageVersion);
-      // Replace %PACKAGE-ORGANIZATION% placeholders
-      content = content.replace(/%PACKAGE-ORGANIZATION%/g, `${packageOrganization}`);
-      // Replace %PACKAGE-NAME% placeholders
-      content = content.replace(/%PACKAGE-NAME%/g, `${packageName}`);
-      // Replace %PACKAGE-FULL-PATH% placeholders
-      content = content.replace(/%PACKAGE-FULL-PATH%/g, `${packageOrganization}/${packageName}`);
-      // Replace %DOCS-WEBSITE% placeholders
-      content = content.replace(/%DOCS-WEBSITE%/g, `${docsWebsite}`);
-      // Replace %REPO-URL% placeholders
-      content = content.replace(/%REPO-URL%/g, `${repoUrl}`);
-      // Replace %TWITTER-USER% placeholders
-      content = content.replace(/%TWITTER-USER%/g, `${twitterUser}`);
-      // Replace %SPONSOR-URL% placeholders
-      content = content.replace(/%SPONSOR-URL%/g, `${sponsorUrl}`);
-      // Replace %LIBRARY-NAME% placeholders
-      content = content.replace(/%LIBRARY-NAME%/g, `${libraryName}`);
 
       // Handle [component-header] tags
       content = content.replace(/\[component-header:([a-z-]+)\]/g, (match, tag) => {

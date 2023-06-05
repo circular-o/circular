@@ -288,7 +288,6 @@
     const { reactVersion, reactCdnUrl, packageUrl, reactUrl, reactPackageUrl, packageName } = window.getDocsConfig();
 
     const button = event.target.closest('button');
-    // const version = sessionStorage.getItem('o-version');
 
     if (button?.classList.contains('code-block__button--codepen')) {
       const codeBlock = button.closest('.code-block');
