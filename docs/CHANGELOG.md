@@ -1,3 +1,9 @@
+# [1.3.0-next.1](https://github.com/circular-o/circular/compare/v1.2.2-next.1...v1.3.0-next.1) (2023-06-05)
+
+### Features
+
+- **docs:** refactors docs-config.js as a docsify plugin ([6323726](https://github.com/circular-o/circular/commit/6323726c00fca68a2b30e4b870c3a41bd300f365))
+
 ## [1.2.2-next.1](https://github.com/circular-o/circular/compare/v1.2.1...v1.2.2-next.1) (2023-06-05)
 
 ### Bug Fixes
