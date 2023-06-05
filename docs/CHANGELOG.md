@@ -1,3 +1,9 @@
+## [1.2.2-next.1](https://github.com/circular-o/circular/compare/v1.2.1...v1.2.2-next.1) (2023-06-05)
+
+### Bug Fixes
+
+- **docs:** Gets the package version on docs load ([5e28093](https://github.com/circular-o/circular/commit/5e28093328f48b837465d426b76b101efed5e2af))
+
 ## [1.2.1](https://github.com/circular-o/circular/compare/v1.2.0...v1.2.1) (2023-06-03)
 
 ### Bug Fixes
