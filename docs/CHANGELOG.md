@@ -1,3 +1,13 @@
+# [1.3.0](https://github.com/circular-o/circular/compare/v1.2.1...v1.3.0) (2023-06-05)
+
+### Bug Fixes
+
+- **docs:** Gets the package version on docs load ([5e28093](https://github.com/circular-o/circular/commit/5e28093328f48b837465d426b76b101efed5e2af))
+
+### Features
+
+- **docs:** refactors docs-config.js as a docsify plugin ([6323726](https://github.com/circular-o/circular/commit/6323726c00fca68a2b30e4b870c3a41bd300f365))
+
 # [1.3.0-next.1](https://github.com/circular-o/circular/compare/v1.2.2-next.1...v1.3.0-next.1) (2023-06-05)
 
 ### Features
