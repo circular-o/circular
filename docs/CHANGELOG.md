@@ -1,3 +1,9 @@
+## [1.3.1-next.1](https://github.com/circular-o/circular/compare/v1.3.0...v1.3.1-next.1) (2023-06-07)
+
+### Bug Fixes
+
+- **package.json:** Fixes npm start script to load the latest changes during development ([f2d3638](https://github.com/circular-o/circular/commit/f2d3638623d3bf91106056c9c490c17e7e56856e))
+
 # [1.3.0](https://github.com/circular-o/circular/compare/v1.2.1...v1.3.0) (2023-06-05)
 
 ### Bug Fixes
