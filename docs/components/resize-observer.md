@@ -49,7 +49,7 @@ const css = `
 const App = () => (
   <>
     <div className="resize-observer-overview">
-      <OResizeObserver onSlResize={event => console.log(event.detail)}>
+      <OResizeObserver onOResize={event => console.log(event.detail)}>
         <div>Resize this box and watch the console 👉</div>
       </OResizeObserver>
     </div>

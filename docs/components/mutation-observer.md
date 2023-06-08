@@ -68,7 +68,7 @@ const App = () => {
 
   return (
     <>
-      <OMutationObserver attr="*" onSlMutation={event => console.log(event.detail)}>
+      <OMutationObserver attr="*" onOMutation={event => console.log(event.detail)}>
         <OButton variant={variant} onClick={handleClick}>
           Click to mutate
         </OButton>
@@ -168,7 +168,7 @@ const App = () => {
   return (
     <>
       <div className="mutation-child-list">
-        <OMutationObserver child-list onSlMutation={event => console.log(event.detail)}>
+        <OMutationObserver child-list onOMutation={event => console.log(event.detail)}>
           <div className="buttons">
             <OButton variant="primary" onClick={addButton}>
               Add button

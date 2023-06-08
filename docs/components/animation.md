@@ -331,7 +331,7 @@ const App = () => {
 
   return (
     <div class="animation-form">
-      <OAnimation name="rubberBand" duration={1000} iterations={1} play={play} onSlFinish={() => setPlay(false)}>
+      <OAnimation name="rubberBand" duration={1000} iterations={1} play={play} onOFinish={() => setPlay(false)}>
         <OButton variant="primary" onClick={() => setPlay(true)}>
           Click me
         </OButton>

@@ -31,7 +31,7 @@ const App = () => {
 
   return (
     <>
-      <ODrawer label="Drawer" open={open} onSlAfterHide={() => setOpen(false)}>
+      <ODrawer label="Drawer" open={open} onOAfterHide={() => setOpen(false)}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         <OButton slot="footer" variant="primary" onClick={() => setOpen(false)}>
           Close
@@ -77,7 +77,7 @@ const App = () => {
 
   return (
     <>
-      <ODrawer label="Drawer" placement="start" open={open} onSlAfterHide={() => setOpen(false)}>
+      <ODrawer label="Drawer" placement="start" open={open} onOAfterHide={() => setOpen(false)}>
         This drawer slides in from the start.
         <OButton slot="footer" variant="primary" onClick={() => setOpen(false)}>
           Close
@@ -121,7 +121,7 @@ const App = () => {
 
   return (
     <>
-      <ODrawer label="Drawer" placement="top" open={open} onSlAfterHide={() => setOpen(false)}>
+      <ODrawer label="Drawer" placement="top" open={open} onOAfterHide={() => setOpen(false)}>
         This drawer slides in from the top.
         <OButton slot="footer" variant="primary" onClick={() => setOpen(false)}>
           Close
@@ -165,7 +165,7 @@ const App = () => {
 
   return (
     <>
-      <ODrawer label="Drawer" placement="bottom" open={open} onSlAfterHide={() => setOpen(false)}>
+      <ODrawer label="Drawer" placement="bottom" open={open} onOAfterHide={() => setOpen(false)}>
         This drawer slides in from the bottom.
         <OButton slot="footer" variant="primary" onClick={() => setOpen(false)}>
           Close
@@ -233,7 +233,7 @@ const App = () => {
           contained
           no-modal
           open={open}
-          onSlAfterHide={() => setOpen(false)}
+          onOAfterHide={() => setOpen(false)}
           style={{ '--size': '50%' }}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -280,7 +280,7 @@ const App = () => {
 
   return (
     <>
-      <ODrawer label="Drawer" open={open} onSlAfterHide={() => setOpen(false)} style={{ '--size': '50vw' }}>
+      <ODrawer label="Drawer" open={open} onOAfterHide={() => setOpen(false)} style={{ '--size': '50vw' }}>
         This drawer is always 50% of the viewport.
         <OButton slot="footer" variant="primary" onClick={() => setOpen(false)}>
           Close
@@ -326,7 +326,7 @@ const App = () => {
 
   return (
     <>
-      <ODrawer label="Drawer" open={open} onSlAfterHide={() => setOpen(false)}>
+      <ODrawer label="Drawer" open={open} onOAfterHide={() => setOpen(false)}>
         <div
           style={{
             height: '150vh',
@@ -381,7 +381,7 @@ const App = () => {
 
   return (
     <>
-      <ODrawer label="Drawer" open={open} onSlAfterHide={() => setOpen(false)}>
+      <ODrawer label="Drawer" open={open} onOAfterHide={() => setOpen(false)}>
         <OIconButton slot="header-actions" name="box-arrow-up-right" onClick={() => window.open(location.href)} />
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         <OButton slot="footer" variant="primary" onClick={() => setOpen(false)}>
@@ -444,7 +444,7 @@ const App = () => {
 
   return (
     <>
-      <ODrawer label="Drawer" open={open} onSlRequestClose={handleRequestClose} onSlAfterHide={() => setOpen(false)}>
+      <ODrawer label="Drawer" open={open} onORequestClose={handleRequestClose} onOAfterHide={() => setOpen(false)}>
         This drawer will not close when you click on the overlay.
         <OButton slot="footer" variant="primary" onClick={() => setOpen(false)}>
           Save &amp; Close
@@ -489,7 +489,7 @@ const App = () => {
 
   return (
     <>
-      <ODrawer label="Drawer" open={open} onSlAfterHide={() => setOpen(false)}>
+      <ODrawer label="Drawer" open={open} onOAfterHide={() => setOpen(false)}>
         <OInput autofocus placeholder="I will have focus when the drawer is opened" />
         <OButton slot="footer" variant="primary" onClick={() => setOpen(false)}>
           Close
