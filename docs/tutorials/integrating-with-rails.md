@@ -109,17 +109,17 @@ Once it is installed, you should be able to use the following view helpers to re
 
 ```erb
 <%= sl_form_for @user do |form| %>
-  <%  # Text input: %DOCS-WEBSITE%/#/components/input %>
+  <%  # Text input: %DOCS-WEBSITE%/components/input %>
   <%= form.text_field :name %>
   <%= form.password_field :password, placeholder: "Password Toggle", 'toggle-password': true %>
 
-  <%  # Radio buttons: %DOCS-WEBSITE%/#/components/color-picker %>
+  <%  # Radio buttons: %DOCS-WEBSITE%/components/color-picker %>
   <%= form.color_field :color %>
 
-  <%  # Radio buttons: %DOCS-WEBSITE%/#/components/radio %>
+  <%  # Radio buttons: %DOCS-WEBSITE%/components/radio %>
   <%= form.collection_radio_buttons :status, { id_1: "Option 1", id_2: "Option 2", id_3: "Option 3" }, :first, :last %>
 
-  <%  # Select: %DOCS-WEBSITE%/#/components/select %>
+  <%  # Select: %DOCS-WEBSITE%/components/select %>
   <%= form.collection_select :tag, { id_1: "Option 1", id_2: "Option 2", id_3: "Option 3" }, :first, :last, {}, { placeholder: "Select one" } %>
 
   <%= form.submit %>
