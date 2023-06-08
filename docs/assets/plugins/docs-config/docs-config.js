@@ -7,6 +7,7 @@ window.DEFAULT_DOCS_CONFIGURATION = {
   // Note: The version number must be a valid semver version
   // Note: If you leave it as "latest" and you are using the metadata plugin, the version number will be automatically updated
   packageVersion: 'latest',
+  // Please check below the init hook to see how this variable is updated
   docsWebsite: 'https://circular-o.github.io/circular',
   repoUrl: 'https://github.com/circular-o/circular',
   twitterUser: 'circular_o',
@@ -75,8 +76,20 @@ window.setVersionNumberFromCustomElementsFile = () => {
 (() => {
   window.$docsify.plugins.push(hook => {
     hook.init(() => {
-      const { repoUrl } = window.getDocsConfig();
+      const { repoUrl, docsWebsite } = window.getDocsConfig();
       window.$docsify.repo = repoUrl;
+
+      const isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+      const isHistoryMode = window.$docsify.routerMode === 'history';
+      let newDocsWebsite = '';
+
+      if (isHistoryMode) {
+        newDocsWebsite = isLocalhost ? location.origin : docsWebsite;
+      } else {
+        newDocsWebsite = isLocalhost ? `${location.origin}${location.pathname}#` : `${docsWebsite}/#`;
+      }
+
+      window.setDocsConfig({ docsWebsite: newDocsWebsite });
     });
 
     hook.beforeEach((content, next) => {

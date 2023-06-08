@@ -32,7 +32,7 @@ Import the %LIBRARY-NAME% default theme (stylesheet) in `/resources/css/app.css`
 
 ### Import Your %LIBRARY-NAME% Components
 
-Import each %LIBRARY-NAME% component you plan to use in `/resources/js/bootstrap.js`. Use the full path to each component (as outlined in the [Cherry Picking instructions](%DOCS-WEBSITE%/#/getting-started/installation?id=cherry-picking)). You can find the full import statement for a component in the _Importing_ section of the component's documentation (use the _Bundler_ import). Your imports should look similar to:
+Import each %LIBRARY-NAME% component you plan to use in `/resources/js/bootstrap.js`. Use the full path to each component (as outlined in the [Cherry Picking instructions](%DOCS-WEBSITE%/getting-started/installation?id=cherry-picking)). You can find the full import statement for a component in the _Importing_ section of the component's documentation (use the _Bundler_ import). Your imports should look similar to:
 
 ```js
 import '%PACKAGE-FULL-PATH%/dist/components/button/button.js';
