@@ -104,7 +104,7 @@ fs.mkdirSync(outdir, { recursive: true });
     });
 
     // Make sure docs/dist is empty since we're serving it virtually
-    deleteSync('docs/dist');
+    // deleteSync('docs/dist');
 
     const browserSyncConfig = {
       startPath: '/',
@@ -116,10 +116,10 @@ fs.mkdirSync(outdir, { recursive: true });
       single: true,
       ghostMode: false,
       server: {
-        baseDir: 'docs',
-        routes: {
-          '/dist': './dist'
-        }
+        baseDir: 'docs'
+        // routes: {
+        //   '/dist': './dist'
+        // }
       }
     };
 
