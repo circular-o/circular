@@ -168,7 +168,7 @@ const App = () => {
             name="placement"
             value={placement}
             className="popup-overview-select"
-            onSlChange={event => setPlacement(event.target.value)}
+            onOChange={event => setPlacement(event.target.value)}
           >
             <OMenuItem value="top">top</OMenuItem>
             <OMenuItem value="top-start">top-start</OMenuItem>
@@ -200,10 +200,10 @@ const App = () => {
         </div>
 
         <div className="popup-overview-options">
-          <OSwitch checked={active} onSlChange={event => setActive(event.target.checked)}>
+          <OSwitch checked={active} onOChange={event => setActive(event.target.checked)}>
             Active
           </OSwitch>
-          <OSwitch checked={arrow} onSlChange={event => setArrow(event.target.checked)}>
+          <OSwitch checked={arrow} onOChange={event => setArrow(event.target.checked)}>
             Arrow
           </OSwitch>
         </div>
@@ -293,7 +293,7 @@ const App = () => {
         </OPopup>
 
         <br />
-        <OSwitch checked={active} onSlChange={event => setActive(event.target.checked)}>
+        <OSwitch checked={active} onOChange={event => setActive(event.target.checked)}>
           Active
         </OSwitch>
       </div>
@@ -463,7 +463,7 @@ const App = () => {
           <div className="box" />
         </OPopup>
 
-        <OSelect label="Placement" value={placement} onSlChange={event => setPlacement(event.target.value)}>
+        <OSelect label="Placement" value={placement} onOChange={event => setPlacement(event.target.value)}>
           <OMenuItem value="top">top</OMenuItem>
           <OMenuItem value="top-start">top-start</OMenuItem>
           <OMenuItem value="top-end">top-end</OMenuItem>
@@ -571,7 +571,7 @@ const App = () => {
           max="50"
           step="1"
           value={distance}
-          onSlChange={event => setDistance(event.target.value)}
+          onOChange={event => setDistance(event.target.value)}
         />
       </div>
 
@@ -667,7 +667,7 @@ const App = () => {
           max="50"
           step="1"
           value={skidding}
-          onSlChange={event => setSkidding(event.target.value)}
+          onOChange={event => setSkidding(event.target.value)}
         />
       </div>
 
@@ -827,7 +827,7 @@ const App = () => {
             name="placement"
             value={placement}
             className="popup-overview-select"
-            onSlChange={event => setPlacement(event.target.value)}
+            onOChange={event => setPlacement(event.target.value)}
           >
             <OMenuItem value="top">top</OMenuItem>
             <OMenuItem value="top-start">top-start</OMenuItem>
@@ -847,7 +847,7 @@ const App = () => {
             label="Arrow Placement"
             name="arrow-placement"
             value={arrowPlacement}
-            onSlChange={event => setArrowPlacement(event.target.value)}
+            onOChange={event => setArrowPlacement(event.target.value)}
           >
             <OMenuItem value="anchor">anchor</OMenuItem>
             <OMenuItem value="start">start</OMenuItem>
@@ -857,7 +857,7 @@ const App = () => {
         </div>
 
         <div className="popup-arrow-options">
-          <OSwitch name="arrow" checked={arrow} onSlChange={event => setArrow(event.target.checked)}>
+          <OSwitch name="arrow" checked={arrow} onOChange={event => setArrow(event.target.checked)}>
             Arrow
           </OSwitch>
         </div>
@@ -959,7 +959,7 @@ const App = () => {
           <div class="box" />
         </OPopup>
 
-        <OSelect value={sync} label="Sync" onSlChange={event => setSync(event.target.value)}>
+        <OSelect value={sync} label="Sync" onOChange={event => setSync(event.target.value)}>
           <OMenuItem value="width">Width</OMenuItem>
           <OMenuItem value="height">Height</OMenuItem>
           <OMenuItem value="both">Both</OMenuItem>
@@ -1077,7 +1077,7 @@ const App = () => {
           </OPopup>
         </div>
 
-        <OSwitch checked={fixed} onSlChange={event => setFixed(event.target.checked)}>
+        <OSwitch checked={fixed} onOChange={event => setFixed(event.target.checked)}>
           Fixed
         </OSwitch>
       </div>
@@ -1182,7 +1182,7 @@ const App = () => {
         </div>
 
         <br />
-        <OSwitch checked={flip} onSlChange={event => setFlip(event.target.checked)}>
+        <OSwitch checked={flip} onOChange={event => setFlip(event.target.checked)}>
           Flip
         </OSwitch>
       </div>
@@ -1373,7 +1373,7 @@ const App = () => {
           </OPopup>
         </div>
 
-        <OSwitch checked={shift} onSlChange={event => setShift(event.target.checked)}>
+        <OSwitch checked={shift} onOChange={event => setShift(event.target.checked)}>
           Shift
         </OSwitch>
       </div>
@@ -1494,7 +1494,7 @@ const App = () => {
         </div>
 
         <br />
-        <OSwitch checked={autoSize} onSlChange={event => setAutoSize(event.target.checked)}>
+        <OSwitch checked={autoSize} onOChange={event => setAutoSize(event.target.checked)}>
           Auto-size
         </OSwitch>
       </div>

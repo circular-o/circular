@@ -122,7 +122,7 @@ const App = () => {
 
   return (
     <>
-      <OSelect label="Selection" value={selection} onSlChange={event => setSelection(event.target.value)}>
+      <OSelect label="Selection" value={selection} onOChange={event => setSelection(event.target.value)}>
         <OMenuItem value="single">single</OMenuItem>
         <OMenuItem value="multiple">multiple</OMenuItem>
         <OMenuItem value="leaf">leaf</OMenuItem>
@@ -276,7 +276,7 @@ const App = () => {
 
   return (
     <OTree>
-      <OTreeItem lazy={lazy} onSlLazyLoad={handleLazyLoad}>
+      <OTreeItem lazy={lazy} onOLazyLoad={handleLazyLoad}>
         Available Trees
         {childItems.map(item => (
           <OTreeItem>{item}</OTreeItem>

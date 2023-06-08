@@ -141,7 +141,7 @@ const App = () => {
 
   return (
     <form class="custom-validity" onSubmit={handleSubmit}>
-      <OCheckbox ref={checkbox} onSlChange={handleChange}>
+      <OCheckbox ref={checkbox} onOChange={handleChange}>
         Check me
       </OCheckbox>
       <br />

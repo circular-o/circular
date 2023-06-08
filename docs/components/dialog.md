@@ -31,7 +31,7 @@ const App = () => {
 
   return (
     <>
-      <ODialog label="Dialog" open={open} onSlAfterHide={() => setOpen(false)}>
+      <ODialog label="Dialog" open={open} onOAfterHide={() => setOpen(false)}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         <OButton slot="footer" variant="primary" onClick={() => setOpen(false)}>
           Close
@@ -83,7 +83,7 @@ const App = () => {
 
   return (
     <>
-      <ODialog label="Dialog" open={open} style={{ '--width': '50vw' }} onSlAfterHide={() => setOpen(false)}>
+      <ODialog label="Dialog" open={open} style={{ '--width': '50vw' }} onOAfterHide={() => setOpen(false)}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         <OButton slot="footer" variant="primary" onClick={() => setOpen(false)}>
           Close
@@ -129,7 +129,7 @@ const App = () => {
 
   return (
     <>
-      <ODialog label="Dialog" open={open} onSlAfterHide={() => setOpen(false)}>
+      <ODialog label="Dialog" open={open} onOAfterHide={() => setOpen(false)}>
         <div
           style={{
             height: '150vh',
@@ -185,7 +185,7 @@ const App = () => {
 
   return (
     <>
-      <ODialog label="Dialog" open={open} onSlAfterHide={() => setOpen(false)}>
+      <ODialog label="Dialog" open={open} onOAfterHide={() => setOpen(false)}>
         <OIconButton
           class="new-window"
           slot="header-actions"
@@ -253,7 +253,7 @@ const App = () => {
 
   return (
     <>
-      <ODialog label="Dialog" open={open} onSlRequestClose={handleRequestClose} onSlAfterHide={() => setOpen(false)}>
+      <ODialog label="Dialog" open={open} onORequestClose={handleRequestClose} onOAfterHide={() => setOpen(false)}>
         This dialog will not close when you click on the overlay.
         <OButton slot="footer" variant="primary" onClick={() => setOpen(false)}>
           Close
@@ -298,7 +298,7 @@ const App = () => {
 
   return (
     <>
-      <ODialog label="Dialog" open={open} onSlAfterHide={() => setOpen(false)}>
+      <ODialog label="Dialog" open={open} onOAfterHide={() => setOpen(false)}>
         <OInput autofocus placeholder="I will have focus when the dialog is opened" />
         <OButton slot="footer" variant="primary" onClick={() => setOpen(false)}>
           Close

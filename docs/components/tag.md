@@ -123,15 +123,15 @@ const App = () => {
   return (
     <>
       <div className="tags-removable">
-        <OTag size="small" removable onSlRemove={handleRemove}>
+        <OTag size="small" removable onORemove={handleRemove}>
           Small
         </OTag>
 
-        <OTag size="medium" removable onSlRemove={handleRemove}>
+        <OTag size="medium" removable onORemove={handleRemove}>
           Medium
         </OTag>
 
-        <OTag size="large" removable onSlRemove={handleRemove}>
+        <OTag size="large" removable onORemove={handleRemove}>
           Large
         </OTag>
       </div>

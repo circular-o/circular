@@ -434,7 +434,7 @@ const App = () => {
         label="Primary Panel"
         value={primary}
         style={{ maxWidth: '200px', marginTop: '1rem' }}
-        onSlChange={event => setPrimary(event.target.value)}
+        onOChange={event => setPrimary(event.target.value)}
       >
         <OMenuItem value="">None</OMenuItem>
         <OMenuItem value="start">Start</OMenuItem>

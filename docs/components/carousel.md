@@ -885,7 +885,7 @@ const App = () => {
         label="Aspect ratio"
         name="aspect"
         value={aspectRatio}
-        onSlChange={event => setAspectRatio(event.target.value)}
+        onOChange={event => setAspectRatio(event.target.value)}
       >
         <OOption value="1 / 1">1 / 1</OOption>
         <OOption value="3 / 2">3 / 2</OOption>

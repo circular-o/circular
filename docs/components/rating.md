@@ -182,7 +182,7 @@ const App = () => {
   return (
     <>
       <div class="detect-hover">
-        <ORating label="Rating" onSlHover={handleHover} />
+        <ORating label="Rating" onOHover={handleHover} />
         <span>{feedback}</span>
       </div>
       <style>{css}</style>

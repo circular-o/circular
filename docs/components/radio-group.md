@@ -132,7 +132,7 @@ const App = () => {
         size={size}
         value={size}
         class="radio-group-size"
-        onSlChange={event => setSize(event.target.value)}
+        onOChange={event => setSize(event.target.value)}
       >
         <ORadio value="small">Small</ORadio>
         <ORadio value="medium">Medium</ORadio>
@@ -181,7 +181,7 @@ const App = () => {
 
   return (
     <form class="custom-validity" onSubmit={handleSubmit}>
-      <ORadioGroup label="Select an option" name="a" required onSlChange={handleChange}>
+      <ORadioGroup label="Select an option" name="a" required onOChange={handleChange}>
         <ORadio value="1">
           Option 1
         </ORadio>
@@ -262,7 +262,7 @@ const App = () => {
 
   return (
     <form class="custom-validity" onSubmit={handleSubmit}>
-      <ORadioGroup ref={radioGroup} label="Select an option" name="a" value="1" onSlChange={handleChange}>
+      <ORadioGroup ref={radioGroup} label="Select an option" name="a" value="1" onOChange={handleChange}>
         <ORadio value="1">Not me</ORadio>
         <ORadio value="2">Me neither</ORadio>
         <ORadio value="3">Choose me</ORadio>

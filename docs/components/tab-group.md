@@ -233,17 +233,17 @@ const App = () => {
   }
 
   return (
-    <OTabGroup className="tabs-closable" onSlClose={handleClose}>
+    <OTabGroup className="tabs-closable" onOClose={handleClose}>
       <OTab slot="nav" panel="general">
         General
       </OTab>
-      <OTab slot="nav" panel="closable-1" closable onSlClose={handleClose}>
+      <OTab slot="nav" panel="closable-1" closable onOClose={handleClose}>
         Closable 1
       </OTab>
-      <OTab slot="nav" panel="closable-2" closable onSlClose={handleClose}>
+      <OTab slot="nav" panel="closable-2" closable onOClose={handleClose}>
         Closable 2
       </OTab>
-      <OTab slot="nav" panel="closable-3" closable onSlClose={handleClose}>
+      <OTab slot="nav" panel="closable-3" closable onOClose={handleClose}>
         Closable 3
       </OTab>
 
