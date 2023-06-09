@@ -55,7 +55,7 @@ const expectShowAndAfterShowToBeEmittedInCorrectOrder = async (alert: OAlert, ac
 };
 
 const getCloseButton = (alert: OAlert): OIconButton | null | undefined =>
-  alert.shadowRoot?.querySelector<OIconButton>('[part="close-button"]');
+  (alert.isToast() ? alert.getToastElement()! : alert).shadowRoot?.querySelector<OIconButton>('[part="close-button"]');
 
 describe('<o-alert>', () => {
   let clock: sinon.SinonFakeTimers | null = null;
@@ -161,7 +161,9 @@ describe('<o-alert>', () => {
       expectShowAndAfterShowToBeEmittedInCorrectOrder(alert, () => alert.toast());
       const toastStack = getToastStack();
       expect(toastStack).to.be.visible;
-      expect(toastStack?.firstChild).to.be.equal(alert);
+      expect(alert.isToast()).to.be.true;
+      expect(toastStack?.firstChild).to.be.equal(alert.getToastElement()!);
+      alert.remove();
     });
 
     it('resolves only after being closed', async () => {
@@ -169,7 +171,11 @@ describe('<o-alert>', () => {
 
       const afterShowEvent = oneEvent(alert, 'o-after-show');
       let toastPromiseResolved = false;
-      alert.toast().then(() => (toastPromiseResolved = true));
+
+      alert.toast().then(() => {
+        toastPromiseResolved = true;
+        alert.remove();
+      });
 
       await afterShowEvent;
       expect(toastPromiseResolved).to.be.false;
@@ -187,6 +193,7 @@ describe('<o-alert>', () => {
     const expectToastStack = () => {
       const toastStack = getToastStack();
       expect(toastStack).not.to.be.null;
+      return toastStack;
     };
 
     const expectNoToastStack = () => {
@@ -232,6 +239,70 @@ describe('<o-alert>', () => {
       await closeToast(alert2!);
 
       expectNoToastStack();
+    });
+
+    const expectToastProperlyOpen = (alert: OAlert, msgsPrefix = '1') => {
+      expect(alert.open, `${msgsPrefix}. open = false`).to.be.false;
+      expect(alert.openToast, `${msgsPrefix}. openToast = true}`).to.be.true;
+      expect(alert.isToast(), `${msgsPrefix}. isToast() = true`).to.be.true;
+
+      const toastStack = expectToastStack();
+
+      const toastElement = alert.getToastElement();
+      expect(toastStack?.firstChild, `${msgsPrefix}. toastStack?.firstChild`).to.be.equal(toastElement);
+
+      expect(toastElement?.open, `${msgsPrefix}. toast element open = true`).to.be.true;
+      expect(toastElement?.openToast, `${msgsPrefix}. toast element openToast = false`).to.be.false;
+      expect(toastElement?.isToast(), `${msgsPrefix}. toast element isToast() = false`).to.be.false;
+    };
+
+    const expectToastProperlyClosed = (alert: OAlert, msgPrefix = '1') => {
+      expectNoToastStack();
+
+      expect(alert.open, `${msgPrefix}. open = false`).to.be.false;
+      expect(alert.openToast, `${msgPrefix}. openToast = false`).to.be.false;
+      expect(alert.isToast(), `${msgPrefix}. isToast() = false`).to.be.false;
+      expect(alert.getToastElement(), `${msgPrefix}. toastElement is undefined`).to.be.undefined;
+    };
+
+    const waitAfterShow = async (alert: OAlert): Promise<void> => {
+      await oneEvent(alert, 'o-after-show');
+      await aTimeout(0);
+    };
+
+    const waitAfterClose = async (alert: OAlert): Promise<void> => {
+      await oneEvent(alert, 'o-after-hide');
+      await aTimeout(0);
+    };
+
+    it('uses open-toast property to show and hide the alert as toast', async () => {
+      const alert = await fixture<OAlert>(html`<o-alert open-toast>I am an alert</o-alert>`);
+
+      /**
+       * Case: 1
+       * The alert is shown automatically as toast because the open-toast property is set
+       * The alert is hidden as toast when the openToast property is set to false
+       */
+      await waitAfterShow(alert);
+      expectToastProperlyOpen(alert);
+      // Hide the alert by setting the openToast property to false
+      alert.openToast = false;
+      await waitAfterClose(alert);
+      expectToastProperlyClosed(alert);
+
+      /**
+       * Case: 2
+       * The alert is shown as toast when the openToast property is set to true
+       * The alert is hidden as toast when hide method is called
+       */
+      // Show the alert using the open-toast property
+      alert.openToast = true;
+      await waitAfterShow(alert);
+      expectToastProperlyOpen(alert, '2');
+      // Hide the alert by using the hide method
+      alert.hide();
+      await waitAfterClose(alert);
+      expectToastProperlyClosed(alert, '2');
     });
   });
 

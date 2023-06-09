@@ -48,6 +48,8 @@ export default class OAlert extends LibraryBaseElement {
   private readonly hasSlotController = new HasSlotController(this, 'icon', 'suffix');
   private readonly localize = new LocalizeController(this);
 
+  private toastElement: OAlert | undefined;
+
   @query('[part~="base"]') base: HTMLElement;
 
   /**
@@ -69,8 +71,15 @@ export default class OAlert extends LibraryBaseElement {
    */
   @property({ type: Number }) duration = Infinity;
 
+  /**
+   * Indicates whether or not the alert should open using toast function. You can toggle this attribute to show the
+   * alert as toast, or you can use the `toast()` method and this attribute will reflect the alert's open-toast state.
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'open-toast' }) openToast = false;
+
   firstUpdated() {
     this.base.hidden = !this.open;
+    this.handleOpenToastChange();
   }
 
   private restartAutoHide() {
@@ -124,24 +133,73 @@ export default class OAlert extends LibraryBaseElement {
     this.restartAutoHide();
   }
 
+  @watch('openToast', { waitUntilFirstUpdate: true })
+  async handleOpenToastChange() {
+    if (this.openToast) {
+      await this.toast();
+      this.openToast = false;
+    } else if (!this.openToast && this.isToast()) {
+      this.hide();
+    }
+  }
+
   /** Shows the alert. */
   async show() {
-    if (this.open) {
+    const el = this.toastElement || this;
+
+    if (el.open) {
       return undefined;
     }
 
-    this.open = true;
-    return waitForEvent(this, 'o-after-show');
+    el.open = true;
+    return waitForEvent(el, 'o-after-show');
   }
 
   /** Hides the alert */
   async hide() {
-    if (!this.open) {
+    const el = this.toastElement || this;
+
+    if (!el.open) {
       return undefined;
     }
 
-    this.open = false;
-    return waitForEvent(this, 'o-after-hide');
+    el.open = false;
+    return waitForEvent(el, 'o-after-hide');
+  }
+
+  private toastClone() {
+    const el = this.cloneNode(true) as OAlert;
+
+    // Set the attributes of the cloned element
+    el.open = false;
+    // It is very important to set the openToast property to false before appending the element to the toast stack
+    // if not, the handleOpenToastChange method will be called again and the toast will be duplicated and running into an infinite loop
+    el.openToast = false;
+    el.closable = this.closable;
+    el.duration = this.duration;
+    el.variant = this.variant;
+
+    // Emit cloned events on the original element
+    el.addEventListener('o-show', () => this.emit('o-show'), { once: true });
+    el.addEventListener('o-after-show', () => this.emit('o-after-show'), { once: true });
+    el.addEventListener('o-hide', () => this.emit('o-hide'), { once: true });
+    el.addEventListener('o-after-hide', () => this.emit('o-after-hide'), { once: true });
+
+    this.setToastElement(el);
+
+    return this.getToastElement()!;
+  }
+
+  private setToastElement(el: OAlert | undefined) {
+    this.toastElement = el;
+  }
+
+  getToastElement() {
+    return this.toastElement;
+  }
+
+  isToast() {
+    return !!this.toastElement;
   }
 
   /**
@@ -155,19 +213,29 @@ export default class OAlert extends LibraryBaseElement {
         document.body.append(toastStack);
       }
 
-      toastStack.appendChild(this);
+      const el = this.toastClone();
+
+      // Hide the current element, only the cloned element will be visible
+      const prevDisplay = this.style.display;
+      this.style.display = 'none';
+
+      toastStack.append(el);
 
       // Wait for the toast stack to render
       requestAnimationFrame(() => {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions -- force a reflow for the initial transition
-        this.clientWidth;
-        this.show();
+        el.clientWidth;
+        el.show();
       });
 
-      this.addEventListener(
+      el.addEventListener(
         'o-after-hide',
         () => {
-          toastStack.removeChild(this);
+          el.remove();
+
+          this.setToastElement(undefined);
+          this.style.display = prevDisplay;
+
           resolve();
 
           // Remove the toast stack from the DOM when there are no more alerts

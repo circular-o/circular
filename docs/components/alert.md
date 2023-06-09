@@ -150,7 +150,7 @@ const App = () => {
   }
 
   return (
-    <OAlert open={open} closable onSlAfterHide={handleHide}>
+    <OAlert open={open} closable onOAfterHide={handleHide}>
       <OIcon slot="icon" name="info-circle" />
       You can close this alert any time!
     </OAlert>
@@ -225,7 +225,7 @@ const App = () => {
           Show Alert
         </OButton>
 
-        <OAlert variant="primary" duration="3000" open={open} closable onSlAfterHide={() => setOpen(false)}>
+        <OAlert variant="primary" duration="3000" open={open} closable onOAfterHide={() => setOpen(false)}>
           <OIcon slot="icon" name="info-circle" />
           This alert will automatically hide itself after three seconds, unless you interact with it.
         </OAlert>
@@ -239,7 +239,7 @@ const App = () => {
 
 ### Toast Notifications
 
-To display an alert as a toast notification, or "toast", create the alert and call its `toast()` method. This will move the alert out of its position in the DOM and into [the toast stack](#the-toast-stack) where it will be shown. Once dismissed, it will be removed from the DOM completely. To reuse a toast, store a reference to it and call `toast()` again later on.
+To display an alert as a toast notification, or "toast", create the alert and call its `toast()` method. This will clone the alert and then add the cloned element into [the toast stack](#the-toast-stack) where it will be shown. Once dismissed, the cloned element will be removed from the DOM completely, and the original alert element will remain in the DOM. You can call `toast()` again as you wish.
 
 You should always use the `closable` attribute so users can dismiss the notification. It's also common to set a reasonable `duration` when the notification doesn't require acknowledgement.
 
@@ -370,6 +370,81 @@ const App = () => {
 };
 ```
 
+### Open Toast automatically
+
+Some times you need to display an alert immediately as a toast notification, without needing to get the reference and then call the `toast()` method.
+
+If you have an alert reference already, you can set the property `openToast = true` and it will display the alert as a toast notification.
+
+```html preview
+<div class="alert-open-toast">
+  <o-button variant="success">Open toast</o-button>
+
+  <o-alert variant="success" open-toast duration="5000" closable>
+    <o-icon slot="icon" name="info-circle"></o-icon>
+    This alert will automatically open as a toast and then hide itself after few seconds. It is using
+    <a href="%DOCS-WEBSITE%/components/alert?id=open-toast-automatically"><code>open-toast</code></a>
+    property
+  </o-alert>
+</div>
+
+<script>
+  const container = document.querySelector('.alert-open-toast');
+  const button = container.querySelector('o-button');
+  const alert = container.querySelector('o-alert');
+
+  button.addEventListener('click', () => (alert.openToast = true));
+</script>
+
+<style>
+  .alert-duration o-alert {
+    margin-top: var(--o-spacing-medium);
+  }
+</style>
+```
+
+```jsx react
+import { useState } from 'react';
+import { OAlert, OButton, OIcon } from '%PACKAGE-FULL-PATH%/dist/react';
+
+const css = `
+  .alert-duration o-alert {
+    margin-top: var(--o-spacing-medium);
+  }
+`;
+
+const App = () => {
+  const [openToast, setOpenToast] = useState(false);
+
+  return (
+    <>
+      <div className="alert-duration">
+        <OButton variant="primary" onClick={() => setOpenToast(true)}>
+          Open toast
+        </OButton>
+
+        <OAlert
+          variant="primary"
+          duration="5000"
+          open-toast={openToast}
+          closable
+          onOAfterHide={() => setOpenToast(false)}
+        >
+          <OIcon slot="icon" name="info-circle" />
+          This alert will automatically open as a toast and then hide itself after few seconds. It is using
+          <a href="%DOCS-WEBSITE%/components/alert?id=open-toast-automatically">
+            <code>open-toast</code>
+          </a>
+          property
+        </OAlert>
+      </div>
+
+      <style>{css}</style>
+    </>
+  );
+};
+```
+
 ### Creating Toasts Imperatively
 
 For convenience, you can create a utility that emits toast notifications with a function call rather than composing them in your HTML. To do this, generate the alert with JavaScript, append it to the body, and call the `toast()` method as shown in the example below.
@@ -403,8 +478,9 @@ For convenience, you can create a utility that emits toast notifications with a 
       `
     });
 
-    document.body.append(alert);
-    return alert.toast();
+    container.append(alert);
+
+    return alert.toast().then(() => alert.remove());
   }
 
   button.addEventListener('click', () => {
