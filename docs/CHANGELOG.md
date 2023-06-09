@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/circular-o/circular/compare/v1.3.0...v1.4.0) (2023-06-09)
+
+### Bug Fixes
+
+- **build.js:** Fixes bug on dev server when rebuilding ([6bc038a](https://github.com/circular-o/circular/commit/6bc038a7ab3b387d39b90b061460b47d1e87106a))
+- **build:** Copies dist folder to docs/dist on dev server ([9ea358a](https://github.com/circular-o/circular/commit/9ea358a884358733f6ec152ee739e2ba33b1932b))
+- **package.json:** Fixes npm start script to load the latest changes during development ([f2d3638](https://github.com/circular-o/circular/commit/f2d3638623d3bf91106056c9c490c17e7e56856e))
+
+### Features
+
+- **alert:** Adds open-toast property ([51c5c9a](https://github.com/circular-o/circular/commit/51c5c9a9ef9571fc8db68224638f84dc00809303))
+
 # [1.4.0-next.1](https://github.com/circular-o/circular/compare/v1.3.1-next.1...v1.4.0-next.1) (2023-06-09)
 
 ### Bug Fixes
