@@ -103,8 +103,10 @@ fs.mkdirSync(outdir, { recursive: true });
       port: portNumbers(4000, 4999)
     });
 
-    // Make sure docs/dist is empty since we're serving it virtually
-    // deleteSync('docs/dist');
+    // Copy the build output to docs/dist
+    const docsDir = 'docs/dist';
+    deleteSync(docsDir);
+    copy(outdir, docsDir);
 
     const browserSyncConfig = {
       startPath: '/',
@@ -148,6 +150,15 @@ fs.mkdirSync(outdir, { recursive: true });
           }
 
           execSync(`node scripts/make-metadata.js --outdir "${outdir}"`, { stdio: 'inherit' });
+        })
+        .then(() => {
+          deleteSync(docsDir);
+          copy(outdir, docsDir);
+
+          if (copydir) {
+            deleteSync(copydir);
+            copy(outdir, copydir);
+          }
         })
         .then(() => {
           bs.reload();
