@@ -1,3 +1,9 @@
+## [1.4.1](https://github.com/circular-o/circular/compare/v1.4.0...v1.4.1) (2023-06-13)
+
+### Bug Fixes
+
+- **docs-config.js:** Fixes open-toast link URL ([de43b02](https://github.com/circular-o/circular/commit/de43b0252fcbd0bb726022eff81c86c7bbccf03b))
+
 ## [1.4.1-next.1](https://github.com/circular-o/circular/compare/v1.4.0...v1.4.1-next.1) (2023-06-13)
 
 ### Bug Fixes
