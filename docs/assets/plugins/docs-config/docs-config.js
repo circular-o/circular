@@ -81,12 +81,15 @@ window.setVersionNumberFromCustomElementsFile = () => {
 
       const isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
       const isHistoryMode = window.$docsify.routerMode === 'history';
-      let newDocsWebsite = '';
+      // Remove the hash from the docsWebsite if it's present
+      let newDocsWebsite = docsWebsite.split('#')[0];
 
       if (isHistoryMode) {
-        newDocsWebsite = isLocalhost ? location.origin : docsWebsite;
+        newDocsWebsite = isLocalhost ? location.origin : newDocsWebsite;
       } else {
-        newDocsWebsite = isLocalhost ? `${location.origin}${location.pathname}#` : `${docsWebsite}/#`;
+        newDocsWebsite = isLocalhost ? `${location.origin}${location.pathname}` : `${newDocsWebsite}`;
+        // Removing trailing slash and adding hash
+        newDocsWebsite = `${newDocsWebsite.replace(/\/$/, '')}/#`;
       }
 
       window.setDocsConfig({ docsWebsite: newDocsWebsite });
