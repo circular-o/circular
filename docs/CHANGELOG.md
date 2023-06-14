@@ -1,3 +1,9 @@
+# [1.5.0](https://github.com/circular-o/circular/compare/v1.4.1...v1.5.0) (2023-06-14)
+
+### Features
+
+- Adds o-connected and o-disconnected events ([48ddd96](https://github.com/circular-o/circular/commit/48ddd962f1f046b7e466fa070c7f0ec41060ba53))
+
 # [1.5.0-next.1](https://github.com/circular-o/circular/compare/v1.4.1...v1.5.0-next.1) (2023-06-14)
 
 ### Features
