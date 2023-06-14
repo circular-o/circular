@@ -50,6 +50,130 @@ As a result, you should almost always listen for custom events instead. For exam
 
 All custom events are prefixed with `o-` to prevent collisions with standard events and other libraries. Refer to a component's documentation for a complete list of its custom events.
 
+### Connected and Disconnected events
+
+In some cases, you want to know when the component is added to the document's DOM and when it is removed from the document's DOM. For those cases, the events `o-connected` and `o-disconnected` are dispatched so you can listen to them, the `o-connected` event is providing the custom element reference in the `{ detail: { ref } }` property.
+
+```html preview
+<div class="connected-disconnected-example">
+  <o-alert class="alert-message" variant="neutral" open>Click the button below</o-alert>
+  <o-button class="add-button">Add</o-button>
+  <div class="container"></div>
+</div>
+
+<script>
+  const container = document.querySelector('.connected-disconnected-example .container');
+  const alert = document.querySelector('.connected-disconnected-example .alert-message');
+  const addButton = document.querySelector('.connected-disconnected-example .add-button');
+  let buttonRef = null;
+
+  const showMessage = (message, type) => {
+    alert.innerHTML = message || 'Click the button below';
+    alert.variant = type || 'neutral';
+  };
+
+  const resetAll = () => {
+    // Reset alert
+    showMessage();
+
+    // Reset addButton
+    addButton.style.display = '';
+  };
+
+  addButton.addEventListener('click', () => {
+    addButton.style.display = 'none';
+
+    const button = Object.assign(document.createElement('o-button'), {
+      innerHTML: 'Click me',
+      variant: 'success'
+    });
+
+    button.addEventListener('o-connected', ({ detail }) => {
+      showMessage(`A new button was added to the document's DOM (Class: '${detail.className}')`, 'success');
+
+      buttonRef = detail.ref;
+
+      buttonRef.addEventListener('o-disconnected', () => {
+        showMessage("The button was removed from the document's DOM", 'danger');
+        buttonRef = null;
+        setTimeout(() => resetAll(), 4000);
+      });
+
+      buttonRef.addEventListener('click', () => {
+        buttonRef.remove();
+      });
+    });
+
+    container.append(button);
+  });
+</script>
+```
+
+```jsx react
+import { useRef, useState } from 'react';
+import { OAlert, OButton } from '%PACKAGE-FULL-PATH%/dist/react';
+
+const App = () => {
+  const [alertVariant, setAlertVariant] = useState('neutral');
+  const [alertMessage, setAlertMessage] = useState('Click the button below');
+  const [showAddButton, setShowAddButton] = useState(true);
+  const [showButton, setShowButton] = useState(false);
+  const buttonRef = useRef(null);
+
+  const showMessage = (message, type) => {
+    setAlertMessage(message || 'Click the button below');
+    setAlertVariant(type || 'neutral');
+  };
+
+  const resetAll = () => {
+    // Reset alert
+    showMessage();
+
+    // Reset addButton
+    setShowAddButton(true);
+  };
+
+  const addClickHandler = () => {
+    setShowAddButton(false);
+    setShowButton(true);
+  };
+
+  const buttonConnectedHandler = ({ detail }) => {
+    showMessage(`A new button was added to the document's DOM (Class: '${detail.className}')`, 'success', 'success');
+
+    buttonRef.current = detail.ref;
+
+    buttonRef.current.addEventListener('o-disconnected', () => {
+      showMessage("The button was removed from the document's DOM", 'danger');
+      buttonRef.current = null;
+      setTimeout(() => resetAll(), 4000);
+    });
+
+    buttonRef.current.addEventListener('click', () => {
+      // buttonRef.current.remove();
+      setShowButton(false);
+    });
+  };
+
+  return (
+    <>
+      <div className="connected-disconnected-example">
+        <OAlert variant={alertVariant} open>
+          {alertMessage}
+        </OAlert>
+        {showAddButton && <OButton onClick={addClickHandler}>Add</OButton>}
+
+        {showButton && (
+          <OButton variant="success" onOConnected={buttonConnectedHandler}>
+            Click me
+          </OButton>
+        )}
+      </div>
+    </>
+  );
+};
+```
+
 ## Methods
 
 Some components have methods you can call to trigger various behaviors. For example, you can set focus on a %LIBRARY-NAME% input using the `focus()` method.

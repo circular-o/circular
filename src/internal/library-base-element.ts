@@ -92,6 +92,23 @@ export default class LibraryBaseElement extends LitElement {
 
     return event as GetCustomEventType<T>;
   }
+
+  /** Emits the o-connected event which is sending the component reference once is added to the document's DOM.  */
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    // Emit the o-connected event asynchronously so that the element has time to finish initializing. This helps ensure
+    // that components are ready to be interacted with when the o-connected event is fired.
+    setTimeout(() => {
+      this.emit('o-connected', { detail: { ref: this, className: this.constructor.name } });
+    }, 75);
+  }
+
+  /** Emits the o-disconnected event once the component is removed from the document's DOM.  */
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.emit('o-disconnected');
+  }
 }
 
 export interface LibraryBaseFormControl extends LibraryBaseElement {

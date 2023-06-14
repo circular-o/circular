@@ -113,6 +113,23 @@ export default {
             const className = node.name.getText();
             const classDoc = moduleDoc?.declarations?.find(declaration => declaration.name === className);
 
+            // Add default event to all components coming from LibraryBaseElement
+            if (classDoc?.superclass?.name === 'LibraryBaseElement') {
+              if (!Array.isArray(classDoc?.events)) {
+                classDoc.events = [];
+              }
+
+              classDoc.events.push({
+                name: 'o-connected',
+                description: "Fired when the component is added to the document's DOM."
+              });
+
+              classDoc.events.push({
+                name: 'o-disconnected',
+                description: "Fired when the component is removed from the document's DOM."
+              });
+            }
+
             if (classDoc?.events) {
               classDoc.events.forEach(event => {
                 event.reactName = `on${pascalCase(event.name)}`;

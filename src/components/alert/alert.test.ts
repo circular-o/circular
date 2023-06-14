@@ -2,6 +2,7 @@ import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
 import { clickOnElement, moveMouseOnElement } from '../../internal/test';
 import { queryByTestId } from '../../internal/test/data-testid-helpers';
 import { resetMouse } from '@web/test-runner-commands';
+import { runGlobalEventTests } from '../../internal/test/global-events';
 import sinon from 'sinon';
 import type OAlert from './alert';
 import type OIconButton from '../icon-button/icon-button';
@@ -373,4 +374,6 @@ describe('<o-alert>', () => {
       });
     });
   });
+
+  runGlobalEventTests<OAlert>('o-alert');
 });

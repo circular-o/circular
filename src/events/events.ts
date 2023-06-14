@@ -8,6 +8,8 @@ export { default as OChangeEvent } from './-change';
 export { default as OClearEvent } from './-clear';
 export { default as OCloseEvent } from './-close';
 export { default as OCollapseEvent } from './-collapse';
+export { default as OConnectedEvent } from './-connected';
+export { default as ODisconnectedEvent } from './-disconnected';
 export { default as OErrorEvent } from './-error';
 export { default as OExpandEvent } from './-expand';
 export { default as OFinishEvent } from './-finish';
