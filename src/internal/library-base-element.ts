@@ -1,3 +1,4 @@
+import { debounce } from './debounce';
 import { LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 
@@ -93,15 +94,19 @@ export default class LibraryBaseElement extends LitElement {
     return event as GetCustomEventType<T>;
   }
 
+  /**
+   * Emit the o-connected event asynchronously so that the element has time to finish initializing. This helps ensure
+   * that components are ready to be interacted with when the o-connected event is fired.
+   */
+  @debounce(100)
+  private emitOConnected(): void {
+    this.emit('o-connected', { detail: { ref: this, className: this.constructor.name } });
+  }
+
   /** Emits the o-connected event which is sending the component reference once is added to the document's DOM.  */
   connectedCallback(): void {
     super.connectedCallback();
-
-    // Emit the o-connected event asynchronously so that the element has time to finish initializing. This helps ensure
-    // that components are ready to be interacted with when the o-connected event is fired.
-    setTimeout(() => {
-      this.emit('o-connected', { detail: { ref: this, className: this.constructor.name } });
-    }, 75);
+    this.emitOConnected();
   }
 
   /** Emits the o-disconnected event once the component is removed from the document's DOM.  */
