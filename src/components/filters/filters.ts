@@ -25,7 +25,7 @@ import type { FilterAbstractRender } from './renders/filter.abstract.render';
  * @dependency o-button
  * @dependency o-icon
  *
- * @event o-event-name - Emitted as an example.
+ * @event o-filter-change - Emitted when an alteration to a filter's value is committed by the user.
  *
  * @slot - The default slot.
  * @slot example - An example slot.
