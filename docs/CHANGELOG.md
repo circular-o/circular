@@ -1,3 +1,9 @@
+## [1.5.1-next.4](https://github.com/circular-o/circular/compare/v1.5.1-next.3...v1.5.1-next.4) (2023-06-20)
+
+### Bug Fixes
+
+- **filters:** Adds switch render ([#29](https://github.com/circular-o/circular/issues/29)) ([f14a870](https://github.com/circular-o/circular/commit/f14a8706370fa7520486246e1923d90b0f8f2af3))
+
 ## [1.5.1-next.3](https://github.com/circular-o/circular/compare/v1.5.1-next.2...v1.5.1-next.3) (2023-06-20)
 
 ### Bug Fixes
