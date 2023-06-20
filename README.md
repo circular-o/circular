@@ -68,7 +68,7 @@ npm run build
 
 ### Creating New Components
 
-To scaffold a new component, run the following command, replacing `o-(tag-name` with the desired tag name.)
+To scaffold a new component, run the following command, replacing `o-(tag-name)` with the desired tag name.
 
 ```bash
 npm run create o-(tag-name)

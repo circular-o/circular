@@ -69,7 +69,7 @@
             <td class="nowrap"><code>updateComplete</code></td>
             <td>
               A read-only promise that resolves when the component has
-              <a href="/getting-started/usage?id=component-rendering-and-updating">finished updating</a>.
+              <a href="%DOCS-WEBSITE%/getting-started/usage?id=component-rendering-and-updating">finished updating</a>.
             </td>
             <td></td>
             <td></td>

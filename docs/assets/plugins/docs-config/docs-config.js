@@ -95,7 +95,7 @@ window.setVersionNumberFromCustomElementsFile = () => {
       window.setDocsConfig({ docsWebsite: newDocsWebsite });
     });
 
-    hook.beforeEach((content, next) => {
+    hook.afterEach((content, next) => {
       const {
         packageOrganization,
         packageName,
