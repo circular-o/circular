@@ -29,10 +29,7 @@ export class RowFilterRender extends FilterAbstractRender {
   }
 
   getValidPropsFromFilterConfig(filter: RowFilter) {
-    const keysToIgnore = [...DEFAULT_PROPS_TO_IGNORE];
-    keysToIgnore.push('items');
-
-    return this.removeIgnoredKeysFromFilterConfig(keysToIgnore, filter);
+    return this.removeIgnoredKeysFromFilterConfig([...DEFAULT_PROPS_TO_IGNORE, 'items'], filter);
   }
 
   isPropMandatory(prop: string) {

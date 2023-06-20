@@ -6,7 +6,7 @@ Using filters attribute directly with the tag element:
 
 ```html preview
 <o-filters
-  filters='{"type": "input", "prefix": "search", "name": "test1", "placeholder": "Filter from attribute"}'
+  filters='{"type": "input", "prefix": "search", "name": "test1", "placeholder": "Filter from attribute", "clearIconName": "x-square"}'
 ></o-filters>
 ```
 
@@ -17,6 +17,16 @@ Using filters property with the OFilters element:
 
 <script>
   const filtersEl = document.querySelector('.filters-example');
+  const multiOptions = [
+    { value: 'option-1', label: 'Option 1', expandIconName: 'arrow-down-square' },
+    { value: 'option-2', label: 'Option 2', prefix: 'house' },
+    { value: 'option-3', label: 'Option 3', disabled: true },
+    { value: 'option-4', label: 'Option 4', prefix: 'android2', suffix: 'apple' },
+    { value: 'option-5', label: 'Option 5' },
+    { value: 'option-6', label: 'Option 6' },
+    { value: 'option-7', label: 'Option 7' }
+  ];
+
   filtersEl.filters = [
     {
       type: 'input',
@@ -28,9 +38,21 @@ Using filters property with the OFilters element:
       type: 'divider'
     },
     {
-      type: 'input',
+      type: 'select',
       name: 'test3',
-      placeholder: 'another input'
+      placeholder: 'Select',
+      options: [
+        { value: 'option-1', label: 'Option 1' },
+        { value: 'option-2', label: 'Option 2', prefix: 'house' },
+        { value: 'option-3', label: 'Option 3' }
+      ]
+    },
+    {
+      type: 'select',
+      name: 'test3.2',
+      placeholder: 'Multi-select',
+      options: multiOptions,
+      multiple: true
     }
   ];
 
