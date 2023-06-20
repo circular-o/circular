@@ -24,13 +24,30 @@ let numIcons = 0;
     const srcPath = `./.cache/icons/icons-${version}`;
     const url = `https://github.com/twbs/icons/archive/v${version}.zip`;
 
+    let licenseFilename = 'LICENSE.md';
+    const getLicenseFilename = async path => {
+      try {
+        await stat(`${srcPath}/LICENSE.md`);
+        return 'LICENSE.md';
+      } catch {}
+
+      try {
+        await stat(`${srcPath}/LICENSE`);
+        return 'LICENSE';
+      } catch {}
+
+      throw new Error('Could not find license file');
+    };
+
     try {
-      await stat(`${srcPath}/LICENSE.md`);
+      // await stat(`${srcPath}/LICENSE.md`);
+      licenseFilename = await getLicenseFilename(srcPath);
       console.log('Generating icons from cache');
     } catch {
       // Download the source from GitHub (since not everything is published to NPM)
       console.log(`Downloading and extracting Bootstrap Icons ${version} 📦`);
       await download(url, './.cache/icons', { extract: true });
+      licenseFilename = await getLicenseFilename(srcPath);
     }
 
     // Copy icons
@@ -39,7 +56,7 @@ let numIcons = 0;
     mkdirSync(iconDir, { recursive: true });
     await Promise.all([
       copy(`${srcPath}/icons`, iconDir),
-      copy(`${srcPath}/LICENSE.md`, path.join(iconDir, 'LICENSE.md')),
+      copy(`${srcPath}/${licenseFilename}`, path.join(iconDir, 'LICENSE.md')),
       copy(`${srcPath}/bootstrap-icons.svg`, './docs/assets/icons/sprite.svg', { overwrite: true })
     ]);
 
