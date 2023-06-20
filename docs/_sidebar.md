@@ -70,6 +70,7 @@
   - [Tooltip](/components/tooltip)
   - [Tree](/components/tree)
   - [Tree Item](/components/tree-item)
+  - [Filters](/components/filters)
   <!--plop:component-->
 
 - Utilities
