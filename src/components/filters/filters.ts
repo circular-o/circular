@@ -4,6 +4,7 @@ import { type Filter, type Filters, type RowFilter } from './filters.types';
 import { html, nothing } from 'lit';
 import { InputFilterRender } from './renders/filter.input.render';
 import { RowFilterRender } from './renders/filter.row.render';
+import { SelectFilterRender } from './renders/filter.select.render';
 import { watch } from '../../internal/watch';
 import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './filters.styles';
@@ -88,9 +89,11 @@ export default class OFilters extends LibraryBaseElement {
     const dividerRender = new DividerFilterRender();
     this.addRender(dividerRender);
 
-    // TODO: Add the rest of the renders
     // Select filter
-    // Multi select filter
+    const selectRender = new SelectFilterRender();
+    this.addRender(selectRender);
+
+    // TODO: Add the rest of the renders
     // Switch filter
     // Autocomplete filter
   }

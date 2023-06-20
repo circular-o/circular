@@ -1,11 +1,10 @@
-import type { Filter, FilterType } from '../filters.types';
+import { DEFAULT_PROPS_TO_IGNORE, type Filter, type FilterType } from '../filters.types';
 import type { nothing, TemplateResult } from 'lit';
 import type OFilters from '../filters';
 
 export abstract class FilterAbstractRender {
   abstract type: FilterType;
   abstract render(filtersComponent: OFilters, filter: Filter): typeof nothing | TemplateResult<1 | 2>;
-  abstract getValidPropsFromFilterConfig(filter: Filter): { [key: string]: unknown };
 
   protected removeIgnoredKeysFromFilterConfig(keysToIgnore: string[], filter: Filter) {
     const props: { [key: string]: unknown } = {};
@@ -19,8 +18,12 @@ export abstract class FilterAbstractRender {
     return props;
   }
 
+  getValidPropsFromFilterConfig(filter: Filter) {
+    return this.removeIgnoredKeysFromFilterConfig([...DEFAULT_PROPS_TO_IGNORE], filter);
+  }
+
   isPropMandatory(prop: string) {
     // name is mandatory for all filters
-    return !['name'].includes(prop);
+    return !['name', 'type'].includes(prop);
   }
 }
