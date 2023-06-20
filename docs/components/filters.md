@@ -53,6 +53,11 @@ Using filters property with the OFilters element:
       placeholder: 'Multi-select',
       options: multiOptions,
       multiple: true
+    },
+    {
+      type: 'switch',
+      name: 'test3.3',
+      label: 'Toggle something'
     }
   ];
 

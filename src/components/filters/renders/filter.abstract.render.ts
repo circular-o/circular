@@ -1,6 +1,9 @@
 import { DEFAULT_PROPS_TO_IGNORE, type Filter, type FilterType } from '../filters.types';
 import type { nothing, TemplateResult } from 'lit';
+import type LibraryBaseElement from '../../../internal/library-base-element';
 import type OFilters from '../filters';
+
+export const DEFAULT_MANDATORY_PROPS = ['name', 'type'];
 
 export abstract class FilterAbstractRender {
   abstract type: FilterType;
@@ -24,6 +27,11 @@ export abstract class FilterAbstractRender {
 
   isPropMandatory(prop: string) {
     // name is mandatory for all filters
-    return !['name', 'type'].includes(prop);
+    return !DEFAULT_MANDATORY_PROPS.includes(prop);
+  }
+
+  getElementValue(el: LibraryBaseElement) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
+    return (el as any).value;
   }
 }

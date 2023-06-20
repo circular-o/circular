@@ -1,6 +1,6 @@
 import { addPrefixSuffixToElement, appendIconToElement } from './filter.utilities';
+import { DEFAULT_MANDATORY_PROPS, FilterAbstractRender } from './filter.abstract.render';
 import { DEFAULT_PROPS_TO_IGNORE, type Filter, type FilterType, type SelectFilter } from '../filters.types';
-import { FilterAbstractRender } from './filter.abstract.render';
 import { html } from 'lit';
 import type OFilters from '../filters';
 import type OSelect from '../../select/select';
@@ -44,5 +44,10 @@ export class SelectFilterRender extends FilterAbstractRender {
   getValidPropsFromFilterConfig(filter: SelectFilter) {
     const keysToIgnore = [...DEFAULT_PROPS_TO_IGNORE, 'prefix', 'prefixType', 'expandIconName', 'clearIconName'];
     return this.removeIgnoredKeysFromFilterConfig(keysToIgnore, filter);
+  }
+
+  isPropMandatory(prop: string) {
+    // name is mandatory for all filters
+    return ![...DEFAULT_MANDATORY_PROPS, 'options'].includes(prop);
   }
 }

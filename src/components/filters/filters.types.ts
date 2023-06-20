@@ -37,7 +37,7 @@ export interface InputFilter extends BaseFilter {
   // Custom input filter properties, these ones are treated in a special way by the filter component, usually they are not passed to the input component,
   // it means that are ignored in the getValidPropsFromFilterConfig method
   type: 'input';
-  inputType: 'date' | 'datetime-local' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url';
+  inputType?: 'date' | 'datetime-local' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url';
   prefix?: string;
   suffix?: string;
   // Default value is 'icon'
@@ -145,7 +145,31 @@ export interface OptionSelectFilter {
   disabled?: boolean;
 }
 
-export type Filter = InputFilter | DividerFilter | RowFilter | SelectFilter;
+/**
+ * @summary Switch filter type.
+ * @description
+ * Defines the properties for the switch filter, the useful ones are defined to provide auto-complete options for the IDE (i.e.: vscode),
+ * the rest are passed to the switch component
+ *
+ * Please take into account here can be only passed properties that are not functions, promises, etc, because the filter configurations
+ * are serialized to JSON
+ *
+ * Please check the OSwitch component documentation for more details about the properties that can be passed.
+ */
+export interface SwitchFilter extends BaseFilter {
+  // Custom switch filter properties, these ones are treated in a special way by the filter component, usually they are not passed to the input component,
+  // it means that are ignored in the getValidPropsFromFilterConfig method
+  type: 'switch';
+  label: string;
+
+  // Native switch attributes, these ones are passed as is to the switch component. Please check the OSwitch component documentation for more details
+  value?: string;
+  size?: 'small' | 'medium' | 'large';
+  disabled?: boolean;
+  checked?: boolean;
+}
+
+export type Filter = InputFilter | DividerFilter | RowFilter | SelectFilter | SwitchFilter;
 
 export type Filters = Filter | Filter[];
 

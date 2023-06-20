@@ -1,5 +1,5 @@
+import { DEFAULT_MANDATORY_PROPS, FilterAbstractRender } from './filter.abstract.render';
 import { DEFAULT_PROPS_TO_IGNORE, type FilterType, type RowFilter } from '../filters.types';
-import { FilterAbstractRender } from './filter.abstract.render';
 import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import type OFilters from '../filters';
@@ -34,6 +34,6 @@ export class RowFilterRender extends FilterAbstractRender {
 
   isPropMandatory(prop: string) {
     // items are mandatory
-    return !['name', 'items'].includes(prop);
+    return ![...DEFAULT_MANDATORY_PROPS, 'items'].includes(prop);
   }
 }
