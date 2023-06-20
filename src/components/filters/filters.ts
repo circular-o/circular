@@ -5,6 +5,7 @@ import { html, nothing } from 'lit';
 import { InputFilterRender } from './renders/filter.input.render';
 import { RowFilterRender } from './renders/filter.row.render';
 import { SelectFilterRender } from './renders/filter.select.render';
+import { SwitchFilterRender } from './renders/filter.switch.render';
 import { watch } from '../../internal/watch';
 import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './filters.styles';
@@ -93,8 +94,11 @@ export default class OFilters extends LibraryBaseElement {
     const selectRender = new SelectFilterRender();
     this.addRender(selectRender);
 
-    // TODO: Add the rest of the renders
     // Switch filter
+    const switchRender = new SwitchFilterRender();
+    this.addRender(switchRender);
+
+    // TODO: Add the rest of the renders
     // Autocomplete filter
   }
 
@@ -246,8 +250,9 @@ export default class OFilters extends LibraryBaseElement {
     const changeHandler = (event: CustomEvent) => {
       cancelEvent(event);
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
-      const value = (el as any).value;
+      const renderInstance = this.rendersMap[filter.type].instance;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const value = renderInstance.getElementValue(el);
       this.setFilterData(filter, value, true);
     };
 
