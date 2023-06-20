@@ -151,16 +151,17 @@ fs.mkdirSync(outdir, { recursive: true });
 
           execSync(`node scripts/make-metadata.js --outdir "${outdir}"`, { stdio: 'inherit' });
         })
-        .then(() => {
+        .finally(() => {
           deleteSync(docsDir);
-          copy(outdir, docsDir);
+          copy(outdir, docsDir, {
+            overwrite: true
+          });
 
           if (copydir) {
             deleteSync(copydir);
             copy(outdir, copydir);
           }
-        })
-        .then(() => {
+
           bs.reload();
         })
         .catch(err => console.error(chalk.red(err)));
