@@ -12,6 +12,7 @@ export { default as OConnectedEvent } from './-connected';
 export { default as ODisconnectedEvent } from './-disconnected';
 export { default as OErrorEvent } from './-error';
 export { default as OExpandEvent } from './-expand';
+export { default as OFilterChangeEvent } from './-filter-change';
 export { default as OFinishEvent } from './-finish';
 export { default as OFocusEvent } from './-focus';
 export { default as OHideEvent } from './-hide';

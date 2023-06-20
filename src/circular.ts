@@ -18,6 +18,7 @@ export { default as ODialog } from './components/dialog/dialog';
 export { default as ODivider } from './components/divider/divider';
 export { default as ODrawer } from './components/drawer/drawer';
 export { default as ODropdown } from './components/dropdown/dropdown';
+export { default as OFilters } from './components/filters/filters';
 export { default as OFormatBytes } from './components/format-bytes/format-bytes';
 export { default as OFormatDate } from './components/format-date/format-date';
 export { default as OFormatNumber } from './components/format-number/format-number';
@@ -30,6 +31,7 @@ export { default as OMenu } from './components/menu/menu';
 export { default as OMenuItem } from './components/menu-item/menu-item';
 export { default as OMenuLabel } from './components/menu-label/menu-label';
 export { default as OMutationObserver } from './components/mutation-observer/mutation-observer';
+export { default as OOption } from './components/option/option';
 export { default as OPopup } from './components/popup/popup';
 export { default as OProgressBar } from './components/progress-bar/progress-bar';
 export { default as OProgressRing } from './components/progress-ring/progress-ring';
@@ -55,7 +57,6 @@ export { default as OTooltip } from './components/tooltip/tooltip';
 export { default as OTree } from './components/tree/tree';
 export { default as OTreeItem } from './components/tree-item/tree-item';
 export { default as OVisuallyHidden } from './components/visually-hidden/visually-hidden';
-export { default as OOption } from './components/option/option';
 /* plop:component */
 
 // Utilities
