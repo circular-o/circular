@@ -1,3 +1,11 @@
+## [1.5.1-next.1](https://github.com/circular-o/circular/compare/v1.5.0...v1.5.1-next.1) (2023-06-20)
+
+### Bug Fixes
+
+- **build:** Fixes issue when building on dev env ([2f299c6](https://github.com/circular-o/circular/commit/2f299c6373a90b89a68cb6a42c97f5438e717ad3))
+- **docs:** Fixes issue when replacing global vars ([a3ec231](https://github.com/circular-o/circular/commit/a3ec231c3ced2d8f6c45085f0956cd3ff97a8784))
+- **icons:** Fixes icons license issue ([bdd81d3](https://github.com/circular-o/circular/commit/bdd81d304a7a6672f6c989c9c7d62a2ffb185aed))
+
 # [1.5.0](https://github.com/circular-o/circular/compare/v1.4.1...v1.5.0) (2023-06-14)
 
 ### Features
