@@ -187,7 +187,7 @@ Here's an example that registers an icon library located in the `/assets/icons` 
 
 ```html
 <script type="module">
-  import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+  import { registerIconLibrary } from './dist/utilities/icon-library.js';
 
   registerIconLibrary('my-icons', {
     resolver: name => `/assets/icons/${name}.svg`,
@@ -215,7 +215,7 @@ Icons in this library are licensed under the [Creative Commons 4.0 License](http
 
 ```html preview
 <script type="module">
-  import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+  import { registerIconLibrary } from './dist/utilities/icon-library.js';
 
   registerIconLibrary('boxicons', {
     resolver: name => {
@@ -269,7 +269,7 @@ Icons in this library are licensed under the [MIT License](https://github.com/lu
 </div>
 
 <script type="module">
-  import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+  import { registerIconLibrary } from './dist/utilities/icon-library.js';
 
   registerIconLibrary('lucide', {
     resolver: name => `https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/${name}.svg`
@@ -285,7 +285,7 @@ Icons in this library are licensed under the [Font Awesome Free License](https:/
 
 ```html preview
 <script type="module">
-  import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+  import { registerIconLibrary } from './dist/utilities/icon-library.js';
 
   registerIconLibrary('fa', {
     resolver: name => {
@@ -331,7 +331,7 @@ Icons in this library are licensed under the [MIT License](https://github.com/ta
 
 ```html preview
 <script type="module">
-  import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+  import { registerIconLibrary } from './dist/utilities/icon-library.js';
 
   registerIconLibrary('heroicons', {
     resolver: name => `https://cdn.jsdelivr.net/npm/heroicons@2.0.1/24/outline/${name}.svg`
@@ -356,7 +356,7 @@ Icons in this library are licensed under the [MIT License](https://github.com/lu
 
 ```html preview
 <script type="module">
-  import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+  import { registerIconLibrary } from './dist/utilities/icon-library.js';
 
   registerIconLibrary('iconoir', {
     resolver: name => `https://cdn.jsdelivr.net/gh/lucaburgio/iconoir@latest/icons/${name}.svg`
@@ -381,7 +381,7 @@ Icons in this library are licensed under the [MIT License](https://github.com/io
 
 ```html preview
 <script type="module">
-  import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+  import { registerIconLibrary } from './dist/utilities/icon-library.js';
 
   registerIconLibrary('ionicons', {
     resolver: name => `https://cdn.jsdelivr.net/npm/ionicons@5.1.2/dist/ionicons/svg/${name}.svg`,
@@ -426,7 +426,7 @@ Icons in this library are licensed under the [MIT License](https://github.com/mi
 
 ```html preview
 <script type="module">
-  import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+  import { registerIconLibrary } from './dist/utilities/icon-library.js';
 
   registerIconLibrary('jam', {
     resolver: name => `https://cdn.jsdelivr.net/npm/jam-icons@2.0.0/svg/${name}.svg`,
@@ -459,7 +459,7 @@ Icons in this library are licensed under the [Apache 2.0 License](https://github
 
 ```html preview
 <script type="module">
-  import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+  import { registerIconLibrary } from './dist/utilities/icon-library.js';
 
   registerIconLibrary('material', {
     resolver: name => {
@@ -502,7 +502,7 @@ Icons in this library are licensed under the [Apache 2.0 License](https://github
 
 ```html preview
 <script type="module">
-  import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+  import { registerIconLibrary } from './dist/utilities/icon-library.js';
 
   registerIconLibrary('remixicon', {
     resolver: name => {
@@ -539,7 +539,7 @@ Icons in this library are licensed under the [MIT License](https://github.com/ta
 
 ```html preview
 <script type="module">
-  import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+  import { registerIconLibrary } from './dist/utilities/icon-library.js';
 
   registerIconLibrary('tabler', {
     resolver: name => `https://cdn.jsdelivr.net/npm/@tabler/icons@1.68.0/icons/${name}.svg`
@@ -571,7 +571,7 @@ Icons in this library are licensed under the [Apache 2.0 License](https://github
 
 ```html preview
 <script type="module">
-  import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+  import { registerIconLibrary } from './dist/utilities/icon-library.js';
 
   registerIconLibrary('unicons', {
     resolver: name => {
@@ -609,7 +609,7 @@ This example will load the same set of icons from the jsDelivr CDN instead of yo
 
 ```html
 <script type="module">
-  import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+  import { registerIconLibrary } from './dist/utilities/icon-library.js';
 
   registerIconLibrary('default', {
     resolver: name => `https://cdn.jsdelivr.net/npm/bootstrap-icons@1.0.0/icons/${name}.svg`
@@ -625,7 +625,7 @@ If you want to change the icons %LIBRARY-NAME% uses internally, you can register
 
 ```html
 <script type="module">
-  import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+  import { registerIconLibrary } from './dist/utilities/icon-library.js';
 
   registerIconLibrary('system', {
     resolver: name => `/path/to/custom/icons/${name}.svg`
