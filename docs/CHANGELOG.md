@@ -1,3 +1,13 @@
+## [1.5.1-next.3](https://github.com/circular-o/circular/compare/v1.5.1-next.2...v1.5.1-next.3) (2023-06-20)
+
+### Bug Fixes
+
+- **build:** Fixes issue when building on dev env ([aff9626](https://github.com/circular-o/circular/commit/aff9626f60c70cfa8ff884815dbc085964625f03))
+- **docs:** Fixes issue when replacing global vars ([a42caec](https://github.com/circular-o/circular/commit/a42caec178550cf7f02a1c23daf12d9f4bdbc11a))
+- **filters:** Generates the o-filter-change event for React ([40e02e7](https://github.com/circular-o/circular/commit/40e02e7f63d4ca37af04809fff0cf869a16681d1))
+- **icon.md:** Fixes icon-library import ([3a31c4b](https://github.com/circular-o/circular/commit/3a31c4badaf8d31eb2024e1a62364c271ace0254))
+- **icons:** Fixes icons license issue ([77760bb](https://github.com/circular-o/circular/commit/77760bbb9368f879546206e89e365d2716cef8e9))
+
 ## [1.5.1-next.2](https://github.com/circular-o/circular/compare/v1.5.1-next.1...v1.5.1-next.2) (2023-06-20)
 
 ### Bug Fixes
