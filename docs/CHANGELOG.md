@@ -1,3 +1,9 @@
+## [1.5.1-next.2](https://github.com/circular-o/circular/compare/v1.5.1-next.1...v1.5.1-next.2) (2023-06-20)
+
+### Bug Fixes
+
+- **icon.md:** Fixes icon-library import ([48df207](https://github.com/circular-o/circular/commit/48df207c2ab960a9507290ed64b7acd8c9d9670d))
+
 ## [1.5.1-next.1](https://github.com/circular-o/circular/compare/v1.5.0...v1.5.1-next.1) (2023-06-20)
 
 ### Bug Fixes
