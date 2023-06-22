@@ -20,6 +20,7 @@ interface BaseFilter {
   style?: string;
   // Pass css classes to the component
   css?: string;
+  hidden?: boolean;
 }
 
 /**

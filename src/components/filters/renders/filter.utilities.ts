@@ -43,3 +43,17 @@ export function addPrefixSuffixToElement(
     el.appendChild(iconEl);
   });
 }
+
+export function filterValueAdapter(value: unknown, filterConfig: Filter) {
+  if (filterConfig.type === 'select' || filterConfig.type === 'input') {
+    const isEmpty =
+      value === undefined ||
+      value === null ||
+      (Array.isArray(value) && value.length === 0) ||
+      (typeof value === 'string' && value.trim() === '');
+
+    return isEmpty ? undefined : value;
+  }
+
+  return value;
+}

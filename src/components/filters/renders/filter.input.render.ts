@@ -35,4 +35,16 @@ export class InputFilterRender extends FilterAbstractRender {
     ];
     return this.removeIgnoredKeysFromFilterConfig(keysToIgnore, filter);
   }
+
+  getElementValue(el: OInput) {
+    if (el.type === 'number') {
+      return el.valueAsNumber;
+    }
+
+    if (el.type === 'date') {
+      return el.valueAsDate;
+    }
+
+    return el.value;
+  }
 }

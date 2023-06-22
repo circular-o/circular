@@ -42,28 +42,40 @@ Using filters property with the OFilters element:
       name: 'test3',
       placeholder: 'Select',
       options: [
-        { value: 'option-1', label: 'Option 1' },
-        { value: 'option-2', label: 'Option 2', prefix: 'house' },
-        { value: 'option-3', label: 'Option 3' }
-      ]
+        { value: 'show', label: 'Show multi-select', suffix: 'eye' },
+        { value: 'hide', label: 'Hide multi-select', prefix: 'eye-slash' }
+      ],
+      hidden: true
     },
     {
       type: 'select',
       name: 'test3.2',
       placeholder: 'Multi-select',
       options: multiOptions,
-      multiple: true
+      multiple: true,
+      hidden: true
+    },
+    {
+      type: 'divider'
     },
     {
       type: 'switch',
       name: 'test3.3',
-      label: 'Toggle something'
+      label: 'Show/Hide Select'
     }
   ];
 
-  filtersEl.addEventListener('o-filter-change', ({ detail }) =>
-    console.log('o-filter-change filters-example detail', detail)
-  );
+  filtersEl.addEventListener('o-filter-change', ({ detail }) => {
+    console.log('o-filter-change filters detail', detail);
+
+    const { filter, value } = detail;
+
+    if (filter.name === 'test3.3') {
+      value ? filtersEl.showFilter('test3') : filtersEl.hideFilter('test3');
+    } else if (filter.name === 'test3') {
+      filtersEl.showFilter('test3.2', value === 'show');
+    }
+  });
 </script>
 ```
 
@@ -74,7 +86,10 @@ Two rows:
 
 <script>
   const filtersEl = document.querySelector('.filters-example-2-rows');
-  filtersEl.filters = [
+
+  const switchFilter = { type: 'switch', name: 'test5.5', label: 'Toggle Row 2' };
+
+  const filtersRow1 = [
     {
       type: 'row',
       items: [
@@ -90,29 +105,27 @@ Two rows:
           name: 'test5',
           placeholder: 'Input 2 row 1'
         },
-        {
-          type: 'input',
-          inputType: 'number',
-          inputmode: 'numeric',
-          name: 'test5.5',
-          placeholder: 'Input 3 row 1'
-        },
-        {
-          type: 'divider',
-          vertical: false
-        }
+        switchFilter
       ]
-    },
+    }
+  ];
+
+  const filtersRow2 = [
     {
       type: 'row',
       items: [
+        {
+          type: 'divider',
+          vertical: false
+        },
         {
           type: 'input',
           name: 'test6',
           placeholder: 'Input 1 row 2',
           prefix: 'chat',
           prefixType: 'text',
-          suffix: 'chat'
+          suffix: 'chat',
+          value: 'lo que sea'
         },
         {
           type: 'input',
@@ -125,9 +138,28 @@ Two rows:
     }
   ];
 
-  filtersEl.addEventListener('o-filter-change', ({ detail }) =>
-    console.log('o-filter-change filters-example-2-rows detail', detail)
-  );
+  filtersEl.filters = [...filtersRow1];
+
+  filtersEl.addEventListener('o-filter-change', ({ detail }) => {
+    console.log('o-filter-change filters-example-2-rows detail', detail);
+
+    if (detail.filter.type === 'switch') {
+      filtersEl.filters = detail.value ? [...filtersRow1, ...filtersRow2] : [...filtersRow1];
+    }
+
+    const {
+      filter: { type, name, inputType = 'text' },
+      value
+    } = detail;
+
+    if (name === 'test4' && detail.value?.toLowerCase() === 'show') {
+      filtersEl.setFilterDataByFilterConfig(switchFilter, true, { emitEvent: true });
+    }
+
+    if (type === 'input' && inputType === 'text' && detail.value?.toLowerCase() === 'hide') {
+      filtersEl.setFilterData(switchFilter.name, false, { emitEvent: true });
+    }
+  });
 </script>
 ```
 
