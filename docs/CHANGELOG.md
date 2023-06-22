@@ -1,3 +1,9 @@
+## [1.5.1-next.5](https://github.com/circular-o/circular/compare/v1.5.1-next.4...v1.5.1-next.5) (2023-06-22)
+
+### Bug Fixes
+
+- **filters:** Adds filters functionalities ([3bc00ca](https://github.com/circular-o/circular/commit/3bc00caf09d1d9e05507a44d7c74c9506e0f6aa6))
+
 ## [1.5.1-next.4](https://github.com/circular-o/circular/compare/v1.5.1-next.3...v1.5.1-next.4) (2023-06-20)
 
 ### Bug Fixes
