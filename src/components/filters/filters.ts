@@ -35,23 +35,23 @@ const DATA_FILTER_NAME_ATTRIBUTE = 'data-filter-name';
  * @dependency o-button
  * @dependency o-icon
  *
- * @event o-filter-change - Emitted when an alteration to a filter's value is committed by the user.
+ * @event {{ filter: Filter; value: any; filtersData: { [filterName: string]: any } }} o-filter-change - Emitted when an alteration to a filter's value is committed by the user.
  *
  * @slot clear-all - Clear all button's slot.
  * @slot clear-all-label - Clear all button label's slot.
  *
  * @csspart base - The component's base wrapper.
- * @csspart row - Each row filter container.
+ * @csspart row - Each row filter's container.
  *
- * @cssproperty --base-padding - CSS custom property to change the filters component container's padding, default: var(--o-spacing-small, 0.75rem).
- * @cssproperty --base-width - CSS custom property to set the filters component container's width, default: 100%.
- * @cssproperty --filter-default-width - Sets the default width of each filter (except row, divider and input date), default: 240px.
- * @cssproperty --filter-input-date-width - Sets the width of filter input type date, default: 190px.
- * @cssproperty --filter-divider-width - Sets the width of each horizontal divider filter, default: 100%.
- * @cssproperty --filter-divider-height - Sets the height of each vertical divider filter, default: var(--o-input-height-medium, 2.5rem).
- * @cssproperty --filter-row-padding - Sets the padding of each row filter, default: 0.
- * @cssproperty --filter-row-border - CSS custom property to set the border of each row filter, default: 0.
- * @cssproperty --clear-all-label-padding - CSS custom property to set the padding of the clear all label, default: 0 0.1rem.
+ * @cssproperty [--base-padding=var(--o-spacing-small, 0.75rem)] - CSS custom property to change the filters component container's padding.
+ * @cssproperty [--base-width=100%] - CSS custom property to set the filters component container's width.
+ * @cssproperty [--filter-default-width=240px] - Sets the default width of each filter (except row, divider and input date).
+ * @cssproperty [--filter-input-date-width=190px] - Sets the width of filter input type date.
+ * @cssproperty [--filter-divider-width=100%] - Sets the width of each horizontal divider filter.
+ * @cssproperty [--filter-divider-height=var(--o-input-height-medium, 2.5rem)] - Sets the height of each vertical divider filter.
+ * @cssproperty [--filter-row-padding=0] - Sets the padding of each row filter.
+ * @cssproperty [--filter-row-border=0] - CSS custom property to set the border of each row filter.
+ * @cssproperty [--clear-all-label-padding=0 0.1rem] - CSS custom property to set the padding of the clear all label.
  */
 @customElement('o-filters')
 export default class OFilters extends LibraryBaseElement {
@@ -90,7 +90,7 @@ export default class OFilters extends LibraryBaseElement {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private filtersData: { [key: string]: any } = {};
   private filtersMasterMap: { [key: string]: FilterMasterData } = {};
-  private currentFilterFocus: string | undefined;
+  private lastFocusedFilterName: string | undefined;
   private clearAllContainer: HTMLDivElement;
 
   constructor() {
@@ -293,7 +293,7 @@ export default class OFilters extends LibraryBaseElement {
 
     // event: OFocusEvent
     const focusHandler = () => {
-      this.setCurrentFilterFocus(filterName!);
+      this.setLastFocusedFilterName(filterName!);
     };
 
     el.addEventListener('o-connected', connectedEvent => {
@@ -369,11 +369,11 @@ export default class OFilters extends LibraryBaseElement {
 
   /** Focus a filter control, it is useful when the filters config is updated and a filter control was already focused, so, it keeps the focus */
   private focusFilterControlAfterConnectedEvent(filterName: string) {
-    if (!filterName || !this.getCurrentFilterFocus()) {
+    if (!filterName || !this.getLastFocusedFilterName()) {
       return;
     }
 
-    const name = this.getCurrentFilterFocus()!;
+    const name = this.getLastFocusedFilterName()!;
     const isSameFilter = name === filterName;
 
     if (isSameFilter) {
@@ -430,31 +430,37 @@ export default class OFilters extends LibraryBaseElement {
     }
   }
 
-  /** Filters API, methods that can be called from outside */
+  private getLastFocusedFilterName() {
+    if (this.lastFocusedFilterName && !this.getFilterMasterMap({ name: this.lastFocusedFilterName })) {
+      this.lastFocusedFilterName = undefined;
+    }
 
+    return this.lastFocusedFilterName;
+  }
+
+  private setLastFocusedFilterName(name: string) {
+    if (!name) {
+      return;
+    }
+
+    if (!this.getFilterMasterMap({ name })) {
+      this.lastFocusedFilterName = undefined;
+      return;
+    }
+
+    this.lastFocusedFilterName = name;
+  }
+
+  // ========================================================
+  // Filters API, methods that can be called from outside
+  // ========================================================
+
+  /** Adds a new render instance which can be used to extend the filters types support */
   addRender(instance: FilterAbstractRender) {
     this.rendersMap[instance.type] = { instance, render: (filter: Filter) => instance.render(this, filter) };
   }
 
-  createFilterElement(tag: string, filter: Filter) {
-    this.checkCustomElementDefinition(tag);
-
-    const el = this.setPropsToElement(document.createElement(tag) as LibraryBaseElement, filter);
-
-    const existsDataValue = filter.name && !!this.filtersData[filter.name];
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const filterValue = existsDataValue ? this.filtersData[filter.name!] : filter.value;
-    this.setFilterDataByFilterConfig(filter, filterValue);
-
-    if (filterValue) {
-      this.getRenderInstance(filter)?.setElementValue(el, filterValue);
-    }
-
-    this.setDefaultFilterEvents(el, filter);
-
-    return el;
-  }
-
+  /** Sets a filter value by name */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setFilterValue(name: string, value: any, { emitEvent }: { emitEvent: boolean } = { emitEvent: false }) {
     const filter = this.getFilterConfigByName(name);
@@ -466,6 +472,7 @@ export default class OFilters extends LibraryBaseElement {
     this.setFilterValueByFilterConfig(filter, value, { emitEvent });
   }
 
+  /** Sets a filter value by filter config */
   setFilterValueByFilterConfig(
     filter: Filter,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -489,7 +496,9 @@ export default class OFilters extends LibraryBaseElement {
     this.setFilterDataByFilterConfig(filter, value, { emitEvent });
   }
 
-  getFilterValue({ name }: Partial<Filter>) {
+  /** Gets a filter value by name */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getFilterValue(name: string) {
     if (!name || !this.filtersData[name]) {
       return undefined;
     }
@@ -498,31 +507,12 @@ export default class OFilters extends LibraryBaseElement {
     return this.filtersData[name];
   }
 
+  /** Gets all filters data */
   getFiltersData() {
     return this.filtersData;
   }
 
-  getCurrentFilterFocus() {
-    if (this.currentFilterFocus && !this.getFilterMasterMap({ name: this.currentFilterFocus })) {
-      this.currentFilterFocus = undefined;
-    }
-
-    return this.currentFilterFocus;
-  }
-
-  setCurrentFilterFocus(name: string) {
-    if (!name) {
-      return;
-    }
-
-    if (!this.getFilterMasterMap({ name })) {
-      this.currentFilterFocus = undefined;
-      return;
-    }
-
-    this.currentFilterFocus = name;
-  }
-
+  /** Shows a filter by name, if the `show` param is `false`, the filter will be `hidden` */
   showFilter(name: string, show = true) {
     if (!name) {
       return;
@@ -541,6 +531,7 @@ export default class OFilters extends LibraryBaseElement {
     el.hidden = false;
   }
 
+  /** Hides a filter by name, the of the filter value is set to `undefined` */
   hideFilter(name: string) {
     if (!name) {
       console.warn('hideFilter: Can not hide filter, name is not defined');
@@ -556,7 +547,7 @@ export default class OFilters extends LibraryBaseElement {
     el.hidden = true;
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const currentValue = this.getFilterValue({ name });
+    const currentValue = this.getFilterValue(name);
     if (currentValue === undefined) {
       return;
     }
@@ -564,14 +555,17 @@ export default class OFilters extends LibraryBaseElement {
     this.setFilterValue(name, '', { emitEvent: true });
   }
 
+  /** Gets a filter config by name */
   getFilterConfigByName(name: string) {
     return this.getFilterMasterMap({ name })?.config;
   }
 
+  /** Gets a filter control (Circular element reference) by name */
   getFilterControlByName(name: string) {
     return this.getFilterMasterMap({ name })?.elementRef;
   }
 
+  /** Clear all the filters, sets every value to `undefined` */
   clearAll() {
     const filtersData = this.getFiltersData();
 
@@ -591,11 +585,28 @@ export default class OFilters extends LibraryBaseElement {
     this.emit('o-clear');
   }
 
-  /**
-   * ========================================================
-   * End of Filters API
-   * ========================================================
-   */
+  // ========================================================
+  // End of filters API, methods that can be called from outside
+  // ========================================================
+
+  createFilterElement(tag: string, filter: Filter) {
+    this.checkCustomElementDefinition(tag);
+
+    const el = this.setPropsToElement(document.createElement(tag) as LibraryBaseElement, filter);
+
+    const existsDataValue = filter.name && !!this.filtersData[filter.name];
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const filterValue = existsDataValue ? this.filtersData[filter.name!] : filter.value;
+    this.setFilterDataByFilterConfig(filter, filterValue);
+
+    if (filterValue) {
+      this.getRenderInstance(filter)?.setElementValue(el, filterValue);
+    }
+
+    this.setDefaultFilterEvents(el, filter);
+
+    return el;
+  }
 
   renderFilters(filters: Filter[]) {
     return filters.map(filter => {

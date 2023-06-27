@@ -8,6 +8,14 @@
 ></o-filters>
 ```
 
+```jsx react
+import { OFilters } from '%PACKAGE-FULL-PATH%/dist/react';
+
+const App = () => (
+  <OFilters filters='[{"type": "input", "name": "input", "placeholder": "Input"}, {"type": "select", "name": "select", "placeholder": "Select", "options": [{ "value": "option-1", "label": "Option 1" }, { "value": "option-2", "label": "Option 2" }]}, {"type": "divider"}, {"type": "select", "name": "multi-select", "placeholder": "Multi-select", "multiple": true,"options": [{ "value": "option-1", "label": "Option 1" }, { "value": "option-2", "label": "Option 2" }]}, {"type": "switch", "name": "switch", "label": "Switch"}]'></OFilters>
+);
+```
+
 ## Examples
 
 ### Simple filter
@@ -26,7 +34,15 @@ TODO
 
 TODO
 
+### Advanced: Add render
+
+TODO
+
 ## Filter types
+
+TODO: Show each type definition and describe all of them
+
+---
 
 Using filters attribute directly with the tag element:
 
