@@ -41,9 +41,9 @@ export class InputFilterRender extends FilterAbstractRender {
       return el.valueAsNumber;
     }
 
-    if (el.type === 'date') {
-      return el.valueAsDate;
-    }
+    // if (el.type === 'date') {
+    //   return el.valueAsDate;
+    // }
 
     return el.value;
   }

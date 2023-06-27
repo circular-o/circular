@@ -2,6 +2,32 @@
 
 [component-header:o-filters]
 
+```html preview
+<o-filters
+  filters='[{"type": "input", "name": "input", "placeholder": "Input"}, {"type": "select", "name": "select", "placeholder": "Select", "style": "width:160px", "options": [{ "value": "option-1", "label": "Option 1" }, { "value": "option-2", "label": "Option 2" }]}, {"type": "divider"}, {"type": "select", "name": "multi-select", "placeholder": "Multi-select", "multiple": true,"options": [{ "value": "option-1", "label": "Option 1" }, { "value": "option-2", "label": "Option 2" }]}, {"type": "switch", "name": "switch", "label": "Switch"}]'
+></o-filters>
+```
+
+## Examples
+
+### Simple filter
+
+One config
+
+### Style and CSS properties
+
+One config
+
+### Prefix and Suffix
+
+TODO
+
+### Rows
+
+TODO
+
+## Filter types
+
 Using filters attribute directly with the tag element:
 
 ```html preview
@@ -169,10 +195,22 @@ Two rows:
 
 Custom clear all button:
 
+Custom label:
+
+```html preview
+<o-filters
+  filters='[{"type": "input", "prefix": "search", "name": "username", "placeholder": "Username"}, {"type": "input", "suffix": "envelope-at", "name": "email", "placeholder": "Email", "inputType": "email"}]'
+>
+  <span slot="clear-all-label"> Reset filters </span>
+</o-filters>
+```
+
+Custom button:
+
 ```html preview
 <o-filters
   id="filters-custom-clear-all"
-  filters='[{"type": "input", "prefix": "search", "name": "username", "placeholder": "Username"}, {"type": "input", "suffix": "envelope-at", "name": "email", "placeholder": "Email", "inputType": "email"}]'
+  filters='[{"type": "input", "prefix": "search", "name": "username", "placeholder": "Username"}, {"type": "input", "suffix": "envelope-at", "name": "email", "placeholder": "Email", "inputType": "email"}, {"type": "input", "suffix": "chat-left-text", "name": "comment", "placeholder": "Comment"}]'
 >
   <o-button variant="danger" size="medium" slot="clear-all" outline>
     <o-icon slot="prefix" name="x-lg"></o-icon>
@@ -195,15 +233,5 @@ Custom clear all button:
   });
 </script>
 ```
-
-## Examples
-
-### First Example
-
-TODO
-
-### Second Example
-
-TODO
 
 [component-metadata:o-filters]

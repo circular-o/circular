@@ -1,4 +1,4 @@
-import type { Filter } from '../filters.types';
+import type { Filter, Filters } from '../filters.types';
 import type LibraryBaseElement from '../../../internal/library-base-element';
 import type OIcon from '../../icon/icon';
 
@@ -56,4 +56,14 @@ export function filterValueAdapter(value: unknown, filterConfig: Partial<Filter>
   }
 
   return value;
+}
+
+export function convertFiltersToObject(filters: string | undefined | null) {
+  try {
+    return JSON.parse(filters ?? '{}') as Filters;
+  } catch (error) {
+    console.warn('Filters configuration:', filters);
+    console.error('Error parsing filters configuration', error);
+    return undefined;
+  }
 }

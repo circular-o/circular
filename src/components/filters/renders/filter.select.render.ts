@@ -16,6 +16,10 @@ export class SelectFilterRender extends FilterAbstractRender {
       appendIconToElement(el, filter.clearIconName, { slot: 'clear-icon' });
     }
 
+    // Only one option visible by default
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    el.maxOptionsVisible = filter.maxOptionsVisible ?? 1;
+
     if (filter.expandIconName) {
       appendIconToElement(el, filter.expandIconName, { slot: 'expand-icon' });
     }

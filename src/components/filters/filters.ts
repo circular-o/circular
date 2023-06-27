@@ -1,7 +1,7 @@
+import { convertFiltersToObject, filterValueAdapter } from './renders/filter.utilities';
 import { customElement, property } from 'lit/decorators.js';
 import { DividerFilterRender } from './renders/filter.divider.render';
 import { type Filter, type Filters, type RowFilter } from './filters.types';
-import { filterValueAdapter } from './renders/filter.utilities';
 import { html, nothing } from 'lit';
 import { InputFilterRender } from './renders/filter.input.render';
 import { RowFilterRender } from './renders/filter.row.render';
@@ -22,7 +22,7 @@ interface FilterMasterData {
 const DATA_FILTER_NAME_ATTRIBUTE = 'data-filter-name';
 
 /**
- * @summary Component that renders a list of filters based on a JSON configuration.
+ * @summary A component that renders a list of filters based on a JSON configuration.
  * @documentation https://circular-o.github.io/circular/#/components/filters
  * @status experimental
  * @since 1.5
@@ -37,12 +37,21 @@ const DATA_FILTER_NAME_ATTRIBUTE = 'data-filter-name';
  *
  * @event o-filter-change - Emitted when an alteration to a filter's value is committed by the user.
  *
- * @slot - The default slot.
- * @slot example - An example slot.
+ * @slot clear-all - Clear all button's slot.
+ * @slot clear-all-label - Clear all button label's slot.
  *
  * @csspart base - The component's base wrapper.
+ * @csspart row - Each row filter container.
  *
- * @cssproperty --example - An example CSS custom property.
+ * @cssproperty --base-padding - CSS custom property to change the filters component container's padding, default: var(--o-spacing-small, 0.75rem).
+ * @cssproperty --base-width - CSS custom property to set the filters component container's width, default: 100%.
+ * @cssproperty --filter-default-width - Sets the default width of each filter (except row, divider and input date), default: 240px.
+ * @cssproperty --filter-input-date-width - Sets the width of filter input type date, default: 190px.
+ * @cssproperty --filter-divider-width - Sets the width of each horizontal divider filter, default: 100%.
+ * @cssproperty --filter-divider-height - Sets the height of each vertical divider filter, default: var(--o-input-height-medium, 2.5rem).
+ * @cssproperty --filter-row-padding - Sets the padding of each row filter, default: 0.
+ * @cssproperty --filter-row-border - CSS custom property to set the border of each row filter, default: 0.
+ * @cssproperty --clear-all-label-padding - CSS custom property to set the padding of the clear all label, default: 0 0.1rem.
  */
 @customElement('o-filters')
 export default class OFilters extends LibraryBaseElement {
@@ -53,20 +62,15 @@ export default class OFilters extends LibraryBaseElement {
     type: Object,
     converter: {
       fromAttribute: value => {
-        try {
-          return JSON.parse(value ?? '{}') as Filters;
-        } catch (error) {
-          console.warn('Filters configuration:', value);
-          console.error('Error parsing filters configuration', error);
-          return undefined;
-        }
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
+        return convertFiltersToObject(value);
       },
       toAttribute: value => {
         return JSON.stringify(value);
       }
     }
   })
-  filters: Filters;
+  filters: Filters | undefined;
 
   /** Sets whetter the clear all button has to be shown or not  */
   @property({ type: Boolean, reflect: true, attribute: 'hide-clear-all' }) hideClearAll = false;
@@ -87,7 +91,7 @@ export default class OFilters extends LibraryBaseElement {
   private filtersData: { [key: string]: any } = {};
   private filtersMasterMap: { [key: string]: FilterMasterData } = {};
   private currentFilterFocus: string | undefined;
-  private clearAllSlot: HTMLSlotElement;
+  private clearAllContainer: HTMLDivElement;
 
   constructor() {
     super();
@@ -116,14 +120,17 @@ export default class OFilters extends LibraryBaseElement {
     // TODO: Add the rest of the renders
     // Autocomplete filter
 
-    this.clearAllSlot = document.createElement('slot');
-    this.clearAllSlot.name = 'clear-all';
-    this.clearAllSlot.classList.add('filters__clear-all');
-    this.clearAllSlot.addEventListener('click', (event: MouseEvent) => {
+    const clearAllSlot = document.createElement('slot');
+    clearAllSlot.name = 'clear-all';
+    clearAllSlot.addEventListener('click', (event: MouseEvent) => {
       event.preventDefault();
       event.stopPropagation();
       this.clearAll();
     });
+
+    this.clearAllContainer = document.createElement('div');
+    this.clearAllContainer.classList.add('filters__clear-all');
+    this.clearAllContainer.append(clearAllSlot);
   }
 
   @watch('filters')
@@ -132,15 +139,20 @@ export default class OFilters extends LibraryBaseElement {
   }
 
   private isFiltersConfigValid(): boolean {
+    if (typeof this.filters === 'string') {
+      this.filters = convertFiltersToObject(this.filters);
+    }
+
     return (
-      this.filters && ((Array.isArray(this.filters) && this.filters.length > 0) || Object.keys(this.filters).length > 0)
+      !!this.filters &&
+      ((Array.isArray(this.filters) && this.filters.length > 0) || Object.keys(this.filters).length > 0)
     );
   }
 
   private initConfig() {
     this.filtersConfigs = undefined;
 
-    if (!this.isFiltersConfigValid()) {
+    if (!this.filters || !this.isFiltersConfigValid()) {
       return;
     }
 
@@ -153,6 +165,7 @@ export default class OFilters extends LibraryBaseElement {
       items: [
         {
           type: 'row',
+          css: 'base-row-items',
           items: Array.isArray(this.filters) ? [...this.filters] : [this.filters]
         }
       ]
@@ -372,10 +385,10 @@ export default class OFilters extends LibraryBaseElement {
     const clearAllButton = document.createElement('o-button');
     clearAllButton.variant = 'text';
     clearAllButton.classList.add('filters__button__clear-all');
-    clearAllButton.innerHTML = 'Clear all';
 
     const clearAllSlotLabel = document.createElement('slot');
     clearAllSlotLabel.name = 'clear-all-label';
+    clearAllSlotLabel.innerHTML = 'Clear all';
 
     clearAllButton.appendChild(clearAllSlotLabel);
 
@@ -389,7 +402,7 @@ export default class OFilters extends LibraryBaseElement {
   }
 
   private showClearAllButtonIfNecessary() {
-    this.clearAllSlot.hidden = !this.shouldRenderClearAllButton();
+    this.clearAllContainer.hidden = !this.shouldRenderClearAllButton();
   }
 
   private setFilterDataByFilterConfig(
@@ -605,13 +618,15 @@ export default class OFilters extends LibraryBaseElement {
     const part = (this.filtersConfigs.part as string) || 'row';
     const style = (this.filtersConfigs.style as string) || '';
 
-    this.clearAllSlot.innerHTML = '';
-    this.clearAllSlot.append(this.renderClearAllButton());
+    // Get slot from the clear all container
+    const slot = this.clearAllContainer.querySelector('slot')!;
+    slot.innerHTML = '';
+    slot.append(this.renderClearAllButton());
 
     // Rendering all the filters
     const result = html`
       <o-card part=${part} style=${style} class=${css}>
-        ${this.renderFilters(this.filtersConfigs.items)} ${this.clearAllSlot}
+        ${this.renderFilters(this.filtersConfigs.items)} ${this.clearAllContainer}
       </o-card>
     `;
 

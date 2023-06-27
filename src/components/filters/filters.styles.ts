@@ -7,28 +7,42 @@ export default css`
   :host {
     --base-padding: var(--o-spacing-small, 0.75rem);
     --base-width: 100%;
-    --filter-max-width: 250px;
-    --filter-divider-height: var(--o-input-height-medium);
+    --filter-default-width: 240px;
+    --filter-input-date-width: 190px;
     --filter-divider-width: 100%;
+    --filter-divider-height: var(--o-input-height-medium, 2.5rem);
     --filter-row-padding: 0;
-    --filter-border: 0;
+    --filter-row-border: 0;
     --clear-all-label-padding: 0 0.1rem;
     display: block;
   }
 
-  /*
-  .filter:not(.filter.filter-row) {
-    max-width: var(--filter-max-width);
+  .base-row::part(body) {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 'base-row-items clear-all';
   }
-  */
 
-  .base-row,
+  .base-row-items {
+    grid-area: base-row-items;
+  }
+
+  .filters__clear-all {
+    grid-area: clear-all;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
   .filter-row {
     width: var(--base-width);
   }
 
-  .base-row::part(body),
-  .filter-row::part(body) {
+  .filter-input[type='date'] {
+    width: var(--filter-input-date-width);
+  }
+
+  .filter-row:not(.base-row)::part(body) {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -42,7 +56,11 @@ export default css`
   }
 
   .filter-row:not(.base-row)::part(base) {
-    border: var(--filter-border);
+    border: var(--filter-row-border);
+  }
+
+  .filter:not(.filter-row, .filter-divider) {
+    width: var(--filter-default-width);
   }
 
   .filter-divider[vertical] {
@@ -55,11 +73,7 @@ export default css`
     margin: var(--o-spacing-3x-small) 0;
   }
 
-  .base-row .filters__clear-all {
-    flex: 0 0 auto;
-  }
-
-  .base-row .filters__clear-all .filters__button__clear-all::part(label) {
+  .filters__clear-all .filters__button__clear-all::part(label) {
     text-decoration: underline;
     text-underline-offset: 0.25rem;
     padding: var(--clear-all-label-padding);
