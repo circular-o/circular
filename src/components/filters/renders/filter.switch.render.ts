@@ -29,7 +29,7 @@ export class SwitchFilterRender extends FilterAbstractRender {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
-  setElementValue(el: OSwitch, checked: boolean) {
-    el.checked = checked;
+  setElementValue(el: OSwitch, checked: any) {
+    el.checked = !!checked;
   }
 }

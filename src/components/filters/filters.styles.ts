@@ -12,6 +12,7 @@ export default css`
     --filter-divider-width: 100%;
     --filter-row-padding: 0;
     --filter-border: 0;
+    --clear-all-label-padding: 0 0.1rem;
     display: block;
   }
 
@@ -24,20 +25,19 @@ export default css`
   .base-row,
   .filter-row {
     width: var(--base-width);
-    min-width: var(--base-width);
   }
 
   .base-row::part(body),
   .filter-row::part(body) {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
     gap: var(--base-padding);
   }
 
   .filter-row:not(.base-row)::part(body) {
+    flex-wrap: wrap;
     padding: var(--filter-row-padding);
   }
 
@@ -53,5 +53,15 @@ export default css`
   .filter-divider:not([vertical]) {
     min-width: var(--filter-divider-width);
     margin: var(--o-spacing-3x-small) 0;
+  }
+
+  .base-row .filters__clear-all {
+    flex: 0 0 auto;
+  }
+
+  .base-row .filters__clear-all .filters__button__clear-all::part(label) {
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+    padding: var(--clear-all-label-padding);
   }
 `;

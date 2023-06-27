@@ -44,7 +44,7 @@ export function addPrefixSuffixToElement(
   });
 }
 
-export function filterValueAdapter(value: unknown, filterConfig: Filter) {
+export function filterValueAdapter(value: unknown, filterConfig: Partial<Filter>) {
   if (filterConfig.type === 'select' || filterConfig.type === 'input') {
     const isEmpty =
       value === undefined ||

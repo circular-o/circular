@@ -6,6 +6,7 @@ Using filters attribute directly with the tag element:
 
 ```html preview
 <o-filters
+  hide-clear-all
   filters='{"type": "input", "prefix": "search", "name": "test1", "placeholder": "Filter from attribute", "clearIconName": "x-square"}'
 ></o-filters>
 ```
@@ -56,7 +57,9 @@ Using filters property with the OFilters element:
       hidden: true
     },
     {
-      type: 'divider'
+      type: 'divider',
+      name: 'test3.2-divider',
+      hidden: true
     },
     {
       type: 'switch',
@@ -72,6 +75,7 @@ Using filters property with the OFilters element:
 
     if (filter.name === 'test3.3') {
       value ? filtersEl.showFilter('test3') : filtersEl.hideFilter('test3');
+      filtersEl.showFilter('test3.2-divider', !!value);
     } else if (filter.name === 'test3') {
       filtersEl.showFilter('test3.2', value === 'show');
     }
@@ -153,11 +157,40 @@ Two rows:
     } = detail;
 
     if (name === 'test4' && detail.value?.toLowerCase() === 'show') {
-      filtersEl.setFilterDataByFilterConfig(switchFilter, true, { emitEvent: true });
+      filtersEl.setFilterValueByFilterConfig(switchFilter, true, { emitEvent: true });
     }
 
     if (type === 'input' && inputType === 'text' && detail.value?.toLowerCase() === 'hide') {
-      filtersEl.setFilterData(switchFilter.name, false, { emitEvent: true });
+      filtersEl.setFilterValue(switchFilter.name, false, { emitEvent: true });
+    }
+  });
+</script>
+```
+
+Custom clear all button:
+
+```html preview
+<o-filters
+  id="filters-custom-clear-all"
+  filters='[{"type": "input", "prefix": "search", "name": "username", "placeholder": "Username"}, {"type": "input", "suffix": "envelope-at", "name": "email", "placeholder": "Email", "inputType": "email"}]'
+>
+  <o-button variant="danger" size="medium" slot="clear-all" outline>
+    <o-icon slot="prefix" name="x-lg"></o-icon>
+    Clear
+  </o-button>
+</o-filters>
+
+<o-input id="username-input" label="External username input"></o-input>
+
+<script>
+  const filters = document.querySelector('#filters-custom-clear-all');
+  const usernameInput = document.querySelector('#username-input');
+  usernameInput.addEventListener('o-change', () => {
+    filters.setFilterValue('username', usernameInput.value);
+  });
+  filters.addEventListener('o-filter-change', ({ detail }) => {
+    if (detail.filter.name === 'username') {
+      usernameInput.value = detail.value || '';
     }
   });
 </script>
