@@ -473,27 +473,27 @@ export default css`
    */
 
   .button--has-label.button--small .button__label {
-    padding: 0 var(--o-spacing-small);
+    padding: 0 var(--o-spacing-x-large);
   }
 
   .button--has-label.button--medium .button__label {
-    padding: 0 var(--o-spacing-medium);
+    padding: 0 var(--o-spacing-x-large);
   }
 
   .button--has-label.button--large .button__label {
-    padding: 0 var(--o-spacing-large);
+    padding: 0 var(--o-spacing-x-large);
   }
 
   .button--has-prefix.button--small {
-    padding-inline-start: var(--o-spacing-x-small);
+    padding-inline-start: var(--o-spacing-x-large);
   }
 
   .button--has-prefix.button--small .button__label {
-    padding-inline-start: var(--o-spacing-x-small);
+    padding-inline-start: var(--o-spacing-small);
   }
 
   .button--has-prefix.button--medium {
-    padding-inline-start: var(--o-spacing-small);
+    padding-inline-start: var(--o-spacing-x-large);
   }
 
   .button--has-prefix.button--medium .button__label {
@@ -501,7 +501,7 @@ export default css`
   }
 
   .button--has-prefix.button--large {
-    padding-inline-start: var(--o-spacing-small);
+    padding-inline-start: var(--o-spacing-x-large);
   }
 
   .button--has-prefix.button--large .button__label {
@@ -510,17 +510,17 @@ export default css`
 
   .button--has-suffix.button--small,
   .button--caret.button--small {
-    padding-inline-end: var(--o-spacing-x-small);
+    padding-inline-end: var(--o-spacing-x-large);
   }
 
   .button--has-suffix.button--small .button__label,
   .button--caret.button--small .button__label {
-    padding-inline-end: var(--o-spacing-x-small);
+    padding-inline-end: var(--o-spacing-small);
   }
 
   .button--has-suffix.button--medium,
   .button--caret.button--medium {
-    padding-inline-end: var(--o-spacing-small);
+    padding-inline-end: var(--o-spacing-x-large);
   }
 
   .button--has-suffix.button--medium .button__label,
@@ -530,7 +530,7 @@ export default css`
 
   .button--has-suffix.button--large,
   .button--caret.button--large {
-    padding-inline-end: var(--o-spacing-small);
+    padding-inline-end: var(--o-spacing-x-large);
   }
 
   .button--has-suffix.button--large .button__label,

@@ -83,8 +83,8 @@ export default class OButton extends LibraryBaseElement implements LibraryBaseFo
   /** Draws an outlined button. */
   @property({ type: Boolean, reflect: true }) outline = false;
 
-  /** Draws a pill-style button with rounded edges. */
-  @property({ type: Boolean, reflect: true }) pill = false;
+  /** Draws a square button with rounded borders. */
+  @property({ type: Boolean, reflect: true }) square = false;
 
   /**
    * Draws a circular icon button. When this attribute is present, the button expects a single `<o-icon>` in the
@@ -307,7 +307,7 @@ export default class OButton extends LibraryBaseElement implements LibraryBaseFo
           'button--loading': this.loading,
           'button--standard': !this.outline,
           'button--outline': this.outline,
-          'button--pill': this.pill,
+          'button--pill': !this.square,
           'button--rtl': this.localize.dir() === 'rtl',
           'button--has-label': this.hasSlotController.test('[default]'),
           'button--has-prefix': this.hasSlotController.test('prefix'),
