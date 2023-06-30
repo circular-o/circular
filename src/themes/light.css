@@ -21,17 +21,17 @@
   --o-color-gray-950: #0a0a0a;
 
   /* Red */
-  --o-color-red-50: #f5cbcb;
-  --o-color-red-100: #f2baba;
-  --o-color-red-200: #eb9898;
-  --o-color-red-300: #e57676;
-  --o-color-red-400: #de5353;
-  --o-color-red-500: #d83131;
-  --o-color-red-600: #bc2424;
-  --o-color-red-700: #8d1b1b;
-  --o-color-red-800: #5e1212;
-  --o-color-red-900: #2f0909;
-  --o-color-red-950: #170404;
+  --o-color-red-50: #fff1f2;
+  --o-color-red-100: #ffe0e3;
+  --o-color-red-200: #ffc6cb;
+  --o-color-red-300: #ff9ea7;
+  --o-color-red-400: #ff6674;
+  --o-color-red-500: #fd3649;
+  --o-color-red-600: #eb172b;
+  --o-color-red-700: #b70e1e;
+  --o-color-red-800: #a3111f;
+  --o-color-red-900: #871520;
+  --o-color-red-950: #4a050c;
 
   /* Orange */
   --o-color-orange-50: hsl(33.3 100% 96.5%);
@@ -46,18 +46,18 @@
   --o-color-orange-900: hsl(15.3 74.6% 27.8%);
   --o-color-orange-950: hsl(15.2 69.1% 19%);
 
-  /* Amber */
-  --o-color-amber-50: #ffeadb;
-  --o-color-amber-100: #fedec7;
-  --o-color-amber-200: #fec79f;
-  --o-color-amber-300: #fdaf76;
-  --o-color-amber-400: #fd984e;
-  --o-color-amber-500: #fc8026;
-  --o-color-amber-600: #e76303;
-  --o-color-amber-700: #af4b02;
-  --o-color-amber-800: #783302;
-  --o-color-amber-900: #411c01;
-  --o-color-amber-950: #251001;
+  /* Amber -> Golden Sea */
+  --o-color-amber-50: #fffdea;
+  --o-color-amber-100: #fff6c5;
+  --o-color-amber-200: #ffed85;
+  --o-color-amber-300: #ffdd46;
+  --o-color-amber-400: #ffce00;
+  --o-color-amber-500: #ffa800;
+  --o-color-amber-600: #e27f00;
+  --o-color-amber-700: #bb5802;
+  --o-color-amber-800: #984308;
+  --o-color-amber-900: #7c370b;
+  --o-color-amber-950: #481b00;
 
   /* Yellow */
   --o-color-yellow-50: #fffae5;
@@ -85,18 +85,18 @@
   --o-color-lime-900: hsl(87.6 61.2% 20.2%);
   --o-color-lime-950: hsl(86.5 60.6% 13.9%);
 
-  /* Green */
-  --o-color-green-50: #ffffff;
-  --o-color-green-100: #f8fdf8;
-  --o-color-green-200: #dcf2d9;
-  --o-color-green-300: #c0e8ba;
-  --o-color-green-400: #a3de9c;
-  --o-color-green-500: #87d47d;
-  --o-color-green-600: #60c653;
-  --o-color-green-700: #45a938;
-  --o-color-green-800: #347f2a;
-  --o-color-green-900: #22551c;
-  --o-color-green-950: #1a4015;
+  /* Green -> Tea Green  */
+  --o-color-green-50: #f0fbea;
+  --o-color-green-100: #ddf7d0;
+  --o-color-green-200: #caf2b8;
+  --o-color-green-300: #94e274;
+  --o-color-green-400: #6ed348;
+  --o-color-green-500: #4fb82a;
+  --o-color-green-600: #3a931d;
+  --o-color-green-700: #2e701b;
+  --o-color-green-800: #29591b;
+  --o-color-green-900: #244c1b;
+  --o-color-green-950: #0f2a09;
 
   /* Emerald */
   --o-color-emerald-50: hsl(151.8 81% 95.9%);
@@ -137,18 +137,18 @@
   --o-color-cyan-900: hsl(196.4 63.6% 23.7%);
   --o-color-cyan-950: hsl(196.8 61% 16.1%);
 
-  /* Sky */
-  --o-color-sky-50: #b4ecff;
-  --o-color-sky-100: #a0e7ff;
-  --o-color-sky-200: #77dcff;
-  --o-color-sky-300: #4ed2ff;
-  --o-color-sky-400: #26c7ff;
-  --o-color-sky-500: #00bbfc;
+  /* Sky -> Cerulean Azure */
+  --o-color-sky-50: #f0faff;
+  --o-color-sky-100: #e0f5fe;
+  --o-color-sky-200: #b9ecfe;
+  --o-color-sky-300: #7cdefd;
+  --o-color-sky-400: #36cefa;
+  --o-color-sky-500: #0cb9eb;
   --o-color-sky-600: #009dd3;
-  --o-color-sky-700: #00739b;
-  --o-color-sky-800: #004a63;
-  --o-color-sky-900: #00202b;
-  --o-color-sky-950: #000b0f;
+  --o-color-sky-700: #0177a3;
+  --o-color-sky-800: #066486;
+  --o-color-sky-900: #0b526f;
+  --o-color-sky-950: #07354a;
 
   /* Blue */
   --o-color-blue-50: #7ca0df;
@@ -346,7 +346,7 @@
   --o-spacing-small: 0.75rem; /* 12px */
   --o-spacing-medium: 1rem; /* 16px */
   --o-spacing-large: 1.25rem; /* 20px */
-  --o-spacing-x-large: 1.75rem; /* 28px */
+  --o-spacing-x-large: 1.5rem; /* 24px */
   --o-spacing-2x-large: 2.25rem; /* 36px */
   --o-spacing-3x-large: 3rem; /* 48px */
   --o-spacing-4x-large: 4.5rem; /* 72px */
@@ -367,7 +367,8 @@
 
   /* Fonts */
   --o-font-mono: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
-  --o-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+  /* Font sans -> Poppins  - used in components */
+  --o-font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   --o-font-serif: Georgia, 'Times New Roman', serif;
 
@@ -376,17 +377,23 @@
   --o-font-size-x-small: 0.75rem; /* 12px */
   --o-font-size-small: 0.875rem; /* 14px */
   --o-font-size-medium: 1rem; /* 16px */
-  --o-font-size-large: 1.25rem; /* 20px */
-  --o-font-size-x-large: 1.5rem; /* 24px */
-  --o-font-size-2x-large: 2.25rem; /* 36px */
+  --o-font-size-large: 1.5rem; /* 24px */
+  --o-font-size-x-large: 2rem; /* 32px */
+  --o-font-size-2x-large: 2.5rem; /* 40px */
   --o-font-size-3x-large: 3rem; /* 48px */
-  --o-font-size-4x-large: 4.5rem; /* 72px */
+  --o-font-size-4x-large: 3.5rem; /* 56px */
+  --o-font-size-5x-large: 4rem; /* 64px */
+  --o-font-size-6x-large: 4.5rem; /* 72px */
+  --o-font-size-7x-large: 5.5rem; /* 88px */
+  --o-font-size-8x-large: 8.75rem; /* 140px */
 
   /* Font weights */
   --o-font-weight-light: 300;
   --o-font-weight-normal: 400;
-  --o-font-weight-semibold: 500;
+  --o-font-weight-medium: 500;
+  --o-font-weight-semibold: 600;
   --o-font-weight-bold: 700;
+  --o-font-weight-extrabold: 800;
 
   /* Letter spacings */
   --o-letter-spacing-denser: -0.03em;
@@ -397,10 +404,10 @@
 
   /* Line heights */
   --o-line-height-denser: 1;
-  --o-line-height-dense: 1.4;
-  --o-line-height-normal: 1.8;
-  --o-line-height-loose: 2.2;
-  --o-line-height-looser: 2.6;
+  --o-line-height-dense: 1.2;
+  --o-line-height-normal: 1.4;
+  --o-line-height-loose: 1.5;
+  --o-line-height-looser: 2;
 
   /* Focus rings */
   --o-focus-ring-color: var(--o-color-primary-600);
@@ -415,13 +422,13 @@
 
   /* Buttons */
   --o-button-font-size-small: var(--o-font-size-x-small);
-  --o-button-font-size-medium: var(--o-font-size-small);
-  --o-button-font-size-large: var(--o-font-size-medium);
+  --o-button-font-size-medium: var(--o-font-size-medium);
+  --o-button-font-size-large: var(--o-font-size-large);
 
   /* Inputs */
-  --o-input-height-small: 1.875rem; /* 30px */
-  --o-input-height-medium: 2.5rem; /* 40px */
-  --o-input-height-large: 3.125rem; /* 50px */
+  --o-input-height-small: 2.5rem; /* 40px */
+  --o-input-height-medium: 3rem; /* 48px */
+  --o-input-height-large: 3.5rem; /* 56px */
 
   --o-input-background-color: var(--o-color-neutral-0);
   --o-input-background-color-hover: var(--o-input-background-color);

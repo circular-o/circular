@@ -104,14 +104,17 @@ const App = () => (
 );
 ```
 
-### Pill Buttons
+### Square Buttons
 
-Use the `pill` attribute to give buttons rounded edges.
+Use the `square` attribute to give buttons rounded borders.
 
 ```html preview
-<o-button size="small" pill>Small</o-button>
-<o-button size="medium" pill>Medium</o-button>
-<o-button size="large" pill>Large</o-button>
+<o-button size="small" square>Small</o-button>
+<o-button size="medium" square>Medium</o-button>
+<o-button size="large" square>Large</o-button>
+<o-button variant="primary" size="small" square>Small</o-button>
+<o-button variant="success" size="medium" square>Medium</o-button>
+<o-button variant="warning" size="large" square>Large</o-button>
 ```
 
 ```jsx react
@@ -119,13 +122,22 @@ import { OButton } from '%PACKAGE-FULL-PATH%/dist/react';
 
 const App = () => (
   <>
-    <OButton size="small" pill>
+    <OButton size="small" square>
       Small
     </OButton>
-    <OButton size="medium" pill>
+    <OButton size="medium" square>
       Medium
     </OButton>
-    <OButton size="large" pill>
+    <OButton size="large" square>
+      Large
+    </OButton><br>
+    <OButton variant="primary" size="small" square>
+      Small
+    </OButton>
+    <OButton variant="success" size="medium" square>
+      Medium
+    </OButton>
+    <OButton variant="warning" size="large" square>
       Large
     </OButton>
   </>
@@ -146,6 +158,26 @@ Use the `circle` attribute to create circular icon buttons. When this attribute 
 </o-button>
 
 <o-button variant="default" size="large" circle>
+  <o-icon name="gear" label="Settings"></o-icon>
+</o-button>
+
+<o-button variant="primary" size="medium" circle>
+  <o-icon name="gear" label="Settings"></o-icon>
+</o-button>
+
+<o-button variant="success" size="medium" circle>
+  <o-icon name="gear" label="Settings"></o-icon>
+</o-button>
+
+<o-button variant="neutral" size="medium" circle>
+  <o-icon name="gear" label="Settings"></o-icon>
+</o-button>
+
+<o-button variant="warning" size="large" circle>
+  <o-icon name="gear" label="Settings"></o-icon>
+</o-button>
+
+<o-button variant="danger" size="large" circle>
   <o-icon name="gear" label="Settings"></o-icon>
 </o-button>
 ```
