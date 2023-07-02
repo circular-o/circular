@@ -31,7 +31,7 @@ describe('<o-button>', () => {
       expect(el.caret).to.equal(false);
       expect(el.loading).to.equal(false);
       expect(el.outline).to.equal(false);
-      expect(el.pill).to.equal(false);
+      expect(el.square).to.equal(false);
       expect(el.circle).to.equal(false);
     });
 

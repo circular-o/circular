@@ -1,3 +1,9 @@
+# [1.6.0-next.1](https://github.com/circular-o/circular/compare/v1.5.1-next.5...v1.6.0-next.1) (2023-06-30)
+
+### Features
+
+- update tokens and styles ([#31](https://github.com/circular-o/circular/issues/31)) ([7abc766](https://github.com/circular-o/circular/commit/7abc7661b500d56ccb9570a3d23afee2ed74bc23))
+
 ## [1.5.1-next.5](https://github.com/circular-o/circular/compare/v1.5.1-next.4...v1.5.1-next.5) (2023-06-22)
 
 ### Bug Fixes
