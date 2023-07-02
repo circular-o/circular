@@ -1,13 +1,12 @@
-import { DEFAULT_MANDATORY_PROPS, FilterAbstractRender } from './filter.abstract.render';
+import { AbstractTypePlugin } from './abstract.type.plugin';
 import { DEFAULT_PROPS_TO_IGNORE, type FilterType, type RowFilter } from '../filters.types';
 import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import type OFilters from '../filters';
 
-export class RowFilterRender extends FilterAbstractRender {
+export class RowTypePlugin extends AbstractTypePlugin {
   type: FilterType = 'row';
 
-  render(filtersComponent: OFilters, filter: RowFilter) {
+  render(filter: RowFilter) {
     if (!filter.items || filter.items.length === 0) {
       return nothing;
     }
@@ -16,15 +15,14 @@ export class RowFilterRender extends FilterAbstractRender {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
     const validProps: any = this.getValidPropsFromFilterConfig(filter);
 
+    const parts = `${(filter.part as string) ?? ''} ${(filter.css as string) ?? ''}`?.split(' ') ?? [];
+    parts.push('filter');
+    parts.push(filter.type);
+
     return html`
-      <o-card
-        part=${(filter.part as string) || 'row'}
-        style=${ifDefined(filter.style as string)}
-        class=${css}
-        ${{ ...validProps }}
-      >
-        ${filtersComponent.renderFilters(filter.items)}
-      </o-card>
+      <div part=${parts.join(' ')} style=${ifDefined(filter.style as string)} class=${css} ${{ ...validProps }}>
+        ${this.filtersComponent.renderFilters(filter.items)}
+      </div>
     `;
   }
 
@@ -33,7 +31,6 @@ export class RowFilterRender extends FilterAbstractRender {
   }
 
   isPropMandatory(prop: string) {
-    // items are mandatory
-    return ![...DEFAULT_MANDATORY_PROPS, 'items'].includes(prop);
+    return ['type', 'items'].includes(prop);
   }
 }

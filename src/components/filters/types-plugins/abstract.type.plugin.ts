@@ -5,9 +5,15 @@ import type OFilters from '../filters';
 
 export const DEFAULT_MANDATORY_PROPS = ['name', 'type'];
 
-export abstract class FilterAbstractRender {
+export abstract class AbstractTypePlugin {
   abstract type: FilterType;
-  abstract render(filtersComponent: OFilters, filter: Filter): typeof nothing | TemplateResult<1 | 2>;
+  abstract render(filter: Filter): typeof nothing | TemplateResult<1 | 2> | LibraryBaseElement;
+
+  protected filtersComponent: OFilters;
+
+  constructor(filtersComponent: OFilters) {
+    this.filtersComponent = filtersComponent;
+  }
 
   protected removeIgnoredKeysFromFilterConfig(keysToIgnore: string[], filter: Filter) {
     const props: { [key: string]: unknown } = {};
@@ -26,8 +32,7 @@ export abstract class FilterAbstractRender {
   }
 
   isPropMandatory(prop: string) {
-    // name is mandatory for all filters
-    return !DEFAULT_MANDATORY_PROPS.includes(prop);
+    return DEFAULT_MANDATORY_PROPS.includes(prop);
   }
 
   getElementValue(el: LibraryBaseElement) {

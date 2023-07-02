@@ -1,17 +1,17 @@
-import { convertFiltersToObject, filterValueAdapter } from './renders/filter.utilities';
+import { convertFiltersToObject, filterValueAdapter } from './utilities.type.plugin';
 import { customElement, property } from 'lit/decorators.js';
-import { DividerFilterRender } from './renders/filter.divider.render';
+import { DividerTypePlugin } from './types-plugins/divider.type.plugin';
 import { type Filter, type Filters, type RowFilter } from './filters.types';
 import { html, nothing } from 'lit';
-import { InputFilterRender } from './renders/filter.input.render';
-import { RowFilterRender } from './renders/filter.row.render';
-import { SelectFilterRender } from './renders/filter.select.render';
-import { SwitchFilterRender } from './renders/filter.switch.render';
+import { InputTypePlugin } from './types-plugins/input.type.plugin';
+import { RowTypePlugin } from './types-plugins/row.type.plugin';
+import { SelectTypePlugin } from './types-plugins/select.type.plugin';
+import { SwitchTypePlugin } from './types-plugins/switch.type.plugin';
 import { watch } from '../../internal/watch';
 import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './filters.styles';
+import type { AbstractTypePlugin } from './types-plugins/abstract.type.plugin';
 import type { CSSResultGroup, TemplateResult } from 'lit';
-import type { FilterAbstractRender } from './renders/filter.abstract.render';
 import type { OChangeEvent } from '../../circular';
 
 interface FilterMasterData {
@@ -31,7 +31,6 @@ const DATA_FILTER_NAME_ATTRIBUTE = 'data-filter-name';
  * @dependency o-select
  * @dependency o-switch
  * @dependency o-divider
- * @dependency o-card
  * @dependency o-button
  * @dependency o-icon
  *
@@ -44,8 +43,13 @@ const DATA_FILTER_NAME_ATTRIBUTE = 'data-filter-name';
  * @csspart row - Each row filter's container.
  *
  * @cssproperty [--base-padding=var(--o-spacing-small, 0.75rem)] - CSS custom property to change the filters component container's padding.
- * @cssproperty [--base-width=100%] - CSS custom property to set the filters component container's width.
+ * @cssproperty [--base-min-width=fit-content] - CSS custom property to set the filters component container's (base row) minimum width.
+ * @cssproperty [--base-border-width=1px] - CSS custom property to set the filters component container's border width.
+ * @cssproperty [--base-background-color=var(--o-panel-background-color)] - CSS custom property to set the filters component container's background color.
+ * @cssproperty [--base-border-color=var(--o-color-neutral-200)] - CSS custom property to set the filters component container's border color.
+ * @cssproperty [--base-border-radius=var(--o-border-radius-medium)] - CSS custom property to set the filters component container's border radius.
  * @cssproperty [--filter-default-width=240px] - Sets the default width of each filter (except row, divider and input date).
+ * @cssproperty [--filter-row-width=100%] - CSS custom property to set the filters row component's width.
  * @cssproperty [--filter-input-date-width=190px] - Sets the width of filter input type date.
  * @cssproperty [--filter-divider-width=100%] - Sets the width of each horizontal divider filter.
  * @cssproperty [--filter-divider-height=var(--o-input-height-medium, 2.5rem)] - Sets the height of each vertical divider filter.
@@ -80,10 +84,10 @@ export default class OFilters extends LibraryBaseElement {
 
   // Map of the filter types and its render functions, this is necessary to avoid using eval or calling the function by this[`render${filterType}Filter`]
   // because it is not allowed by the linter for safety reasons
-  private rendersMap: {
+  private typesPluginsMap: {
     [filterType: string]: {
-      render: (filter: Filter) => typeof nothing | TemplateResult;
-      instance: FilterAbstractRender;
+      render: (filter: Filter) => typeof nothing | TemplateResult | LibraryBaseElement;
+      instance: AbstractTypePlugin;
     };
   } = {};
 
@@ -98,24 +102,19 @@ export default class OFilters extends LibraryBaseElement {
 
     // Initializing the default renders map
     // Row filter
-    const rowRender = new RowFilterRender();
-    this.addRender(rowRender);
+    this.registerTypePlugin(new RowTypePlugin(this));
 
     // Input filter
-    const inputRender = new InputFilterRender();
-    this.addRender(inputRender);
+    this.registerTypePlugin(new InputTypePlugin(this));
 
     // Divider filter
-    const dividerRender = new DividerFilterRender();
-    this.addRender(dividerRender);
+    this.registerTypePlugin(new DividerTypePlugin(this));
 
     // Select filter
-    const selectRender = new SelectFilterRender();
-    this.addRender(selectRender);
+    this.registerTypePlugin(new SelectTypePlugin(this));
 
     // Switch filter
-    const switchRender = new SwitchFilterRender();
-    this.addRender(switchRender);
+    this.registerTypePlugin(new SwitchTypePlugin(this));
 
     // TODO: Add the rest of the renders
     // Autocomplete filter
@@ -140,6 +139,7 @@ export default class OFilters extends LibraryBaseElement {
 
   private isFiltersConfigValid(): boolean {
     if (typeof this.filters === 'string') {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       this.filters = convertFiltersToObject(this.filters);
     }
 
@@ -173,11 +173,11 @@ export default class OFilters extends LibraryBaseElement {
   }
 
   private getRenderMap({ type }: Partial<Filter>) {
-    if (!type || !this.rendersMap[type]) {
+    if (!type || !this.typesPluginsMap[type]) {
       return undefined;
     }
 
-    return this.rendersMap[type];
+    return this.typesPluginsMap[type];
   }
 
   private getRenderInstance({ type }: Partial<Filter>) {
@@ -204,8 +204,11 @@ export default class OFilters extends LibraryBaseElement {
       return false;
     }
 
-    if (!this.rendersMap[filter.type]) {
-      console.warn(`Filter type "${filter.type}" is not supported`, filter);
+    if (!this.typesPluginsMap[filter.type]) {
+      console.warn(
+        `Filter type "${filter.type}" is not supported, please register the type plugin to add the support`,
+        filter
+      );
       return false;
     }
 
@@ -219,7 +222,8 @@ export default class OFilters extends LibraryBaseElement {
   }
 
   private checkCustomElementDefinition(tag: string) {
-    if (customElements.get(tag)) {
+    // Check if the custom element is defined, only if the tag is not a native element
+    if (!tag.includes('o-') || customElements.get(tag)) {
       return true;
     }
 
@@ -242,13 +246,27 @@ export default class OFilters extends LibraryBaseElement {
     // Default css classes
     `filter filter-${filter.type}`.split(' ').forEach((cssClass: string) => el.classList.add(cssClass));
 
+    const parts = (filter.part as string)?.split(' ') ?? [];
+    parts.push('filter');
+    parts.push(filter.type);
+
     // Apply the css class if it is defined
     if (filter.css) {
-      `${filter.css as string}`.split(' ').forEach((cssClass: string) => el.classList.add(cssClass));
+      `${filter.css as string}`.split(' ').forEach((cssClass: string) => {
+        el.classList.add(cssClass);
+        parts.push(cssClass);
+      });
     }
 
-    // Apply the rest of the properties
-    Object.assign(el, this.getValidPropsFromFilterConfig(filter));
+    el.setAttribute('part', parts.join(' '));
+
+    try {
+      // Apply the rest of the properties
+      Object.assign(el, this.getValidPropsFromFilterConfig(filter));
+    } catch (error) {
+      console.warn(`Error setting the properties to the filter`, filter);
+      console.error(error);
+    }
 
     return el;
   }
@@ -451,13 +469,33 @@ export default class OFilters extends LibraryBaseElement {
     this.lastFocusedFilterName = name;
   }
 
+  /** Adds a new type instance which can be used to extend the filters types support */
+  private registerTypePlugin(instance: AbstractTypePlugin) {
+    this.typesPluginsMap[instance.type] = { instance, render: (filter: Filter) => instance.render(filter) };
+  }
+
+  private registerTypePluginRequestUpdateTimerId: NodeJS.Timeout | undefined;
+
   // ========================================================
   // Filters API, methods that can be called from outside
   // ========================================================
 
-  /** Adds a new render instance which can be used to extend the filters types support */
-  addRender(instance: FilterAbstractRender) {
-    this.rendersMap[instance.type] = { instance, render: (filter: Filter) => instance.render(this, filter) };
+  /**
+   * Register a new type plugin
+   * @param typePluginCtor type plugin constructor
+   */
+  registerType(typePluginCtor: new (filtersComponent: OFilters) => AbstractTypePlugin) {
+    const instance = new typePluginCtor(this);
+    this.registerTypePlugin(instance);
+
+    // Debounce the request update to avoid multiple updates
+    if (this.registerTypePluginRequestUpdateTimerId) {
+      clearTimeout(this.registerTypePluginRequestUpdateTimerId);
+    }
+
+    this.registerTypePluginRequestUpdateTimerId = setTimeout(() => {
+      this.requestUpdate();
+    }, 250);
   }
 
   /** Sets a filter value by name */
@@ -636,9 +674,9 @@ export default class OFilters extends LibraryBaseElement {
 
     // Rendering all the filters
     const result = html`
-      <o-card part=${part} style=${style} class=${css}>
+      <div part=${part} style=${style} class=${css}>
         ${this.renderFilters(this.filtersConfigs.items)} ${this.clearAllContainer}
-      </o-card>
+      </div>
     `;
 
     // After rendering all the filters, get the filters by name, only the ones that have a name

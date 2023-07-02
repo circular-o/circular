@@ -3,8 +3,8 @@ export type FilterType = 'input' | 'select' | 'switch' | 'divider' | 'row'; // |
 /**
  * @summary Base filter type.
  * @description
- * Defines the props for the base filters, the useful ones are defined to provide auto-complete options for the IDE (i.e.: vscode),
- * the rest are passed to the component.
+ * Defines the props of the base filter, the useful ones are defined to provide auto-complete options for the IDE (i.e.: vscode),
+ * the rest are passed to the filter component.
  *
  * Please check each component documentation for more details.
  */
@@ -26,8 +26,8 @@ interface BaseFilter {
 /**
  * @summary Input filter type.
  * @description
- * Defines the properties for the input filter, the useful ones are defined to provide auto-complete options for the IDE (i.e.: vscode),
- * the rest are passed to the input component
+ * Defines the properties of the input filter, the useful ones are defined to provide auto-complete options for the IDE (i.e.: vscode),
+ * the rest are passed to the input component.
  *
  * Please take into account here can be only passed properties that are not functions, promises, etc, because the filter configurations
  * are serialized to JSON
@@ -62,7 +62,7 @@ export interface InputFilter extends BaseFilter {
 /**
  * @summary Divider filter type.
  * @description
- * Defines the props for the divider filter, the useful ones are defined to provide auto-complete options for the IDE (i.e.: vscode),
+ * Defines the props of the divider filter, the useful ones are defined to provide auto-complete options for the IDE (i.e.: vscode),
  * the rest are passed to the divider component.
  *
  * Please take into account here can be only passed properties that are not functions, promises, etc, because the filter configurations
@@ -87,8 +87,6 @@ export interface DividerFilter extends Omit<BaseFilter, 'name'> {
  *
  * Please take into account here can be only passed properties that are not functions, promises, etc, because the filter configurations
  * are serialized to JSON
- *
- * Please check the OCard component documentation for more details about the properties that can be passed.
  */
 export interface RowFilter extends Omit<BaseFilter, 'name'> {
   // Custom input filter properties, these ones are treated in a special way by the filter component, usually they are not passed to the input component,
