@@ -67,3 +67,9 @@ export function convertFiltersToObject(filters: string | undefined | null) {
     return undefined;
   }
 }
+
+export const cancelEvent = (event: CustomEvent) => {
+  event.preventDefault();
+  event.stopPropagation();
+  event.stopImmediatePropagation();
+};

@@ -213,7 +213,7 @@ All filters include a property called `hidden` which hides the filter during the
       type: 'input',
       name: 'toggle',
       placeholder: 'Toggle',
-      style: 'border: solid 1px var(--o-color-warning-600);border-radius: var(--o-input-border-radius-medium);'
+      style: '--o-input-border-color: var(--o-color-warning-600);'
     },
     { type: 'input', name: 'hide-and-show', placeholder: 'Hide and Show' },
     { type: 'input', name: 'always-hidden', placeholder: 'Hidden', hidden: true }
@@ -249,7 +249,7 @@ const App = () => {
       type: 'input',
       name: 'toggle',
       placeholder: 'Toggle',
-      style: 'border: solid 1px var(--o-color-warning-600);border-radius: var(--o-input-border-radius-medium);'
+      style: '--o-input-border-color: var(--o-color-warning-600);'
     },
     { type: 'input', name: 'hide-and-show', placeholder: 'Hide and Show' },
     { type: 'input', name: 'always-hidden', placeholder: 'Hidden', hidden: true }
@@ -699,13 +699,12 @@ The filter configuration can include 2 special properties called `style` and `cs
 ```html preview
 <o-filters
   class="o-filters-custom-css"
-  filters='[{"type": "input", "name": "input-1", "placeholder": "Input 1", "value": "input-example", "style": "width: 300px; border: solid 3px; border-radius: 3px;"}, {"type": "input", "name": "input-2", "placeholder": "Input 2", "css": "input-custom-css"}]'
+  filters='[{"type": "input", "name": "input-1", "placeholder": "Input 1", "value": "input-example", "style": "width: 300px; --o-input-border-width: 2px;--o-input-border-color: red;"}, {"type": "input", "name": "input-2", "placeholder": "Input 2", "part": "input-custom-css"}]'
 ></o-filters>
 
 <style>
   .o-filters-custom-css::part(input-custom-css) {
-    border: solid 2px blue !important;
-    border-radius: 2px;
+    --o-input-border-color: blue;
   }
 </style>
 ```
@@ -716,8 +715,7 @@ import { OFilters } from '%PACKAGE-FULL-PATH%/dist/react';
 const App = () => {
   const cssClass = `
   .o-filters-custom-css::part(input-custom-css) {
-    border: solid 2px blue !important;
-    border-radius: 2px;
+    --o-input-border-color: blue;
   }
   `;
 
@@ -725,7 +723,7 @@ const App = () => {
     <>
       <OFilters
         class="o-filters-custom-css"
-        filters='[{"type": "input", "name": "input-1", "placeholder": "Input 1", "value": "input-example", "style": "width: 300px; border: solid 3px; border-radius: 3px;"}, {"type": "input", "name": "input-2", "placeholder": "Input 2", "css": "input-custom-css"}]'
+        filters='[{"type": "input", "name": "input-1", "placeholder": "Input 1", "value": "input-example", "style": "width: 300px; --o-input-border-width: 2px;--o-input-border-color: red;"}, {"type": "input", "name": "input-2", "placeholder": "Input 2", "css": "input-custom-css"}]'
       ></OFilters>
 
       <style>{cssClass}</style>
@@ -744,7 +742,7 @@ The extended class has to define the `type` property and the `render` function. 
 
 The `type` property can be a new type name or it can overwrite an existing one.
 
-The `render` function receives the filter configuration as the first parameter and it must return the filter element to render which can be one of the following types `typeof nothing` (nothing to show), `TemplateResult` (returned by the `html` function of lit.dev) | `LibraryBaseElement` (%LIBRARY-NAME% base element class).
+The `render` function receives the filter configuration as the first parameter and it must return the filter element to render which can be one of the following types `typeof nothing` (nothing to show), `TemplateResult` (returned by the `html` function of [lit.dev](https://lit.dev/docs/api/templates/#html)) | `LibraryBaseElement` (%LIBRARY-NAME% base element class).
 
 For more details please check the plugins already defined in the folder `/dist/components/filters/types-plugins/`.
 
@@ -753,24 +751,7 @@ For more details please check the plugins already defined in the folder `/dist/c
 
 <script type="module">
   import { AbstractTypePlugin } from './dist/components/filters/types-plugins/abstract.type.plugin.js';
-
-  class ColorPickerTypePlugin extends AbstractTypePlugin {
-    type = 'color-picker';
-
-    render(filter) {
-      // By default it is 40px width
-      return this.filtersComponent.createFilterElement('o-color-picker', { style: 'width: 40px', ...filter });
-    }
-  }
-
-  class RatingTypePlugin extends AbstractTypePlugin {
-    type = 'rating';
-
-    render(filter) {
-      // By default it is 40px width
-      return this.filtersComponent.createFilterElement('o-rating', filter);
-    }
-  }
+  import { cancelEvent } from './dist/components/filters/utilities.type.plugin.js';
 
   class InputOverwriteTypePlugin extends AbstractTypePlugin {
     type = 'input';
@@ -785,16 +766,72 @@ For more details please check the plugins already defined in the folder `/dist/c
     }
   }
 
+  class RatingTypePlugin extends AbstractTypePlugin {
+    type = 'rating';
+
+    render(filter) {
+      // By default it is 40px width
+      return this.filtersComponent.createFilterElement('o-rating', filter);
+    }
+  }
+
+  class ColorPickerTypePlugin extends AbstractTypePlugin {
+    type = 'color-picker';
+
+    render(filter) {
+      // By default it is 40px width
+      return this.filtersComponent.createFilterElement('o-color-picker', { style: 'width: 40px', ...filter });
+    }
+  }
+
+  class CustomInputTypePlugin extends AbstractTypePlugin {
+    type = 'custom-input';
+
+    render(filter) {
+      return this.filtersComponent.createFilterElement('input', {
+        style: 'border: solid 1px green;width: 150px;',
+        ...filter
+      });
+    }
+
+    addConnectedListener(el, listener) {
+      el.addEventListener('o-connected', connectedEvent => listener(connectedEvent));
+
+      // Native element renders immediately, so the event is dispatched right away
+      const event = new CustomEvent('o-connected', { detail: { ref: el, className: el.constructor.name } });
+      setTimeout(() => {
+        el.dispatchEvent(event);
+      }, 10);
+    }
+
+    addChangeListener(el, listener) {
+      el.addEventListener('change', e => {
+        const event = new CustomEvent('o-change');
+        listener(event);
+      });
+    }
+
+    addFocusListener(el, listener) {
+      el.addEventListener('focus', e => {
+        cancelEvent(e);
+        const event = new CustomEvent('o-focus');
+        listener(event);
+      });
+    }
+  }
+
   const filtersEl = document.querySelector('.filters-custom-render-example');
 
-  filtersEl.registerType(ColorPickerTypePlugin);
-  filtersEl.registerType(RatingTypePlugin);
   filtersEl.registerType(InputOverwriteTypePlugin);
+  filtersEl.registerType(RatingTypePlugin);
+  filtersEl.registerType(ColorPickerTypePlugin);
+  filtersEl.registerType(CustomInputTypePlugin);
 
   filtersEl.filters = [
     { type: 'input', name: 'input-overwrite', placeholder: 'Input overwrite' },
     { type: 'rating', name: 'rating', style: 'width: 116px', value: 3 },
-    { type: 'color-picker', name: 'color-picker' }
+    { type: 'color-picker', name: 'color-picker' },
+    { type: 'custom-input', name: 'custom-input' }
   ];
 
   filtersEl.addEventListener('o-filter-change', ({ detail }) => {
@@ -811,24 +848,6 @@ import { useRef } from 'react';
 
 setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE-FULL-PATH%@%PACKAGE-VERSION%/dist/');
 
-class ColorPickerTypePlugin extends AbstractTypePlugin {
-  type = 'color-picker';
-
-  render(filter) {
-    // By default it is 40px width
-    return this.filtersComponent.createFilterElement('o-color-picker', { style: 'width: 40px', ...filter });
-  }
-}
-
-class RatingTypePlugin extends AbstractTypePlugin {
-  type = 'rating';
-
-  render(filter) {
-    // By default it is 40px width
-    return this.filtersComponent.createFilterElement('o-rating', filter);
-  }
-}
-
 class InputOverwriteTypePlugin extends AbstractTypePlugin {
   type = 'input';
 
@@ -842,11 +861,65 @@ class InputOverwriteTypePlugin extends AbstractTypePlugin {
   }
 }
 
+class RatingTypePlugin extends AbstractTypePlugin {
+  type = 'rating';
+
+  render(filter) {
+    // By default it is 40px width
+    return this.filtersComponent.createFilterElement('o-rating', filter);
+  }
+}
+
+class ColorPickerTypePlugin extends AbstractTypePlugin {
+  type = 'color-picker';
+
+  render(filter) {
+    // By default it is 40px width
+    return this.filtersComponent.createFilterElement('o-color-picker', { style: 'width: 40px', ...filter });
+  }
+}
+
+class CustomInputTypePlugin extends AbstractTypePlugin {
+  type = 'custom-input';
+
+  render(filter) {
+    return this.filtersComponent.createFilterElement('input', {
+      style: 'border: solid 1px green;width: 150px;',
+      ...filter
+    });
+  }
+
+  addConnectedListener(el, listener) {
+    el.addEventListener('o-connected', connectedEvent => listener(connectedEvent));
+
+    // Native element renders immediately, so the event is dispatched right away
+    const event = new CustomEvent('o-connected', { detail: { ref: el, className: el.constructor.name } });
+    setTimeout(() => {
+      el.dispatchEvent(event);
+    }, 10);
+  }
+
+  addChangeListener(el, listener) {
+    el.addEventListener('change', e => {
+      const event = new CustomEvent('o-change');
+      listener(event);
+    });
+  }
+
+  addFocusListener(el, listener) {
+    el.addEventListener('focus', e => {
+      const event = new CustomEvent('o-focus');
+      listener(event);
+    });
+  }
+}
+
 const App = () => {
   const filters = [
     { type: 'input', name: 'input-overwrite', placeholder: 'Input overwrite' },
     { type: 'rating', name: 'rating', style: 'width: 116px', value: 3 },
-    { type: 'color-picker', name: 'color-picker' }
+    { type: 'color-picker', name: 'color-picker' },
+    { type: 'custom-input', name: 'custom-input' }
   ];
 
   // This reference could be used directly on the filters component, however, in some frameworks like NextJS, it will not work, by using the o-connected event, it will work
@@ -857,9 +930,10 @@ const App = () => {
     if (detail.className === 'OFilters') {
       filtersEl.current = detail.ref;
 
-      filtersEl.current.registerType(ColorPickerTypePlugin);
-      filtersEl.current.registerType(RatingTypePlugin);
       filtersEl.current.registerType(InputOverwriteTypePlugin);
+      filtersEl.current.registerType(RatingTypePlugin);
+      filtersEl.current.registerType(ColorPickerTypePlugin);
+      filtersEl.current.registerType(CustomInputTypePlugin);
 
       filtersEl.current.filters = filters;
     }

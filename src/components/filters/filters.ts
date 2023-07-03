@@ -1,4 +1,4 @@
-import { convertFiltersToObject, filterValueAdapter } from './utilities.type.plugin';
+import { cancelEvent, convertFiltersToObject, filterValueAdapter } from './utilities.type.plugin';
 import { customElement, property } from 'lit/decorators.js';
 import { DividerTypePlugin } from './types-plugins/divider.type.plugin';
 import { type Filter, type Filters, type RowFilter } from './filters.types';
@@ -82,11 +82,10 @@ export default class OFilters extends LibraryBaseElement {
   // All the filters are contained in a row, it means that the root filter is always a row
   private filtersConfigs: RowFilter | undefined;
 
-  // Map of the filter types and its render functions, this is necessary to avoid using eval or calling the function by this[`render${filterType}Filter`]
-  // because it is not allowed by the linter for safety reasons
+  // Map of the types plugins, they include the render functions and the instances of the plugins
   private typesPluginsMap: {
     [filterType: string]: {
-      render: (filter: Filter) => typeof nothing | TemplateResult | LibraryBaseElement;
+      render: (filter: Filter) => typeof nothing | TemplateResult | LibraryBaseElement | HTMLElement;
       instance: AbstractTypePlugin;
     };
   } = {};
@@ -100,7 +99,7 @@ export default class OFilters extends LibraryBaseElement {
   constructor() {
     super();
 
-    // Initializing the default renders map
+    // Initializing the default type plugins' map
     // Row filter
     this.registerTypePlugin(new RowTypePlugin(this));
 
@@ -116,7 +115,7 @@ export default class OFilters extends LibraryBaseElement {
     // Switch filter
     this.registerTypePlugin(new SwitchTypePlugin(this));
 
-    // TODO: Add the rest of the renders
+    // TODO: Add the rest of the type plugins
     // Autocomplete filter
 
     const clearAllSlot = document.createElement('slot');
@@ -172,7 +171,7 @@ export default class OFilters extends LibraryBaseElement {
     };
   }
 
-  private getRenderMap({ type }: Partial<Filter>) {
+  private getTypePluginMap({ type }: Partial<Filter>) {
     if (!type || !this.typesPluginsMap[type]) {
       return undefined;
     }
@@ -180,33 +179,26 @@ export default class OFilters extends LibraryBaseElement {
     return this.typesPluginsMap[type];
   }
 
-  private getRenderInstance({ type }: Partial<Filter>) {
-    const renderMap = this.getRenderMap({ type });
-    return renderMap?.instance;
+  private getTypePluginInstance({ type }: Partial<Filter>) {
+    return this.getTypePluginMap({ type })?.instance;
   }
 
-  private getRenderFunction({ type }: Partial<Filter>) {
-    const renderMap = this.getRenderMap({ type });
-    return renderMap?.render;
+  private getTypePluginFunction({ type }: Partial<Filter>) {
+    return this.getTypePluginMap({ type })?.render;
   }
 
   private getValidPropsFromFilterConfig(filter: Filter) {
-    return this.getRenderInstance(filter)?.getValidPropsFromFilterConfig(filter);
+    return this.getTypePluginInstance(filter)?.getValidPropsFromFilterConfig(filter);
   }
 
   private isPropMandatory(prop: string, filter: Filter) {
-    return this.getRenderInstance(filter)?.isPropMandatory(prop);
+    return this.getTypePluginInstance(filter)?.isPropMandatory(prop);
   }
 
   private checkFilterConfigValidity(filter: Filter) {
-    if (!filter.type) {
-      console.warn('Filter type is required', filter);
-      return false;
-    }
-
-    if (!this.typesPluginsMap[filter.type]) {
+    if (!this.getTypePluginMap(filter)) {
       console.warn(
-        `Filter type "${filter.type}" is not supported, please register the type plugin to add the support`,
+        `Filter type "${filter?.type}" is not supported, please register the type plugin to add the support`,
         filter
       );
       return false;
@@ -294,18 +286,13 @@ export default class OFilters extends LibraryBaseElement {
 
   private setDefaultFilterEvents(el: LibraryBaseElement, filter: Filter) {
     const filterName = filter.name;
-
-    const cancelEvent = (event: CustomEvent) => {
-      event.preventDefault();
-      event.stopPropagation();
-      event.stopImmediatePropagation();
-    };
+    const typePluginInstance = this.getTypePluginInstance(filter)!;
 
     const changeHandler = (event: OChangeEvent) => {
       cancelEvent(event);
 
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const value = this.getRenderInstance(filter)?.getElementValue(el);
+      const value = typePluginInstance.getElementValue(el);
       this.setFilterDataByFilterConfig(filter, value, { emitEvent: true });
     };
 
@@ -314,7 +301,7 @@ export default class OFilters extends LibraryBaseElement {
       this.setLastFocusedFilterName(filterName!);
     };
 
-    el.addEventListener('o-connected', connectedEvent => {
+    typePluginInstance.addConnectedListener(el, connectedEvent => {
       // Check if the event is coming from the filter control by using the DATA_FILTER_NAME_ATTRIBUTE
       const elementRef = connectedEvent.detail.ref;
       const className = connectedEvent.detail.className;
@@ -334,15 +321,15 @@ export default class OFilters extends LibraryBaseElement {
       this.updateFilterMasterMap(filterName, { elementRef });
       this.focusFilterControlAfterConnectedEvent(filterName);
 
-      el.addEventListener('o-change', changeHandler);
-      el.addEventListener('o-focus', focusHandler);
+      typePluginInstance.addChangeListener(el, changeHandler);
+      typePluginInstance.addFocusListener(el, focusHandler);
 
-      el.addEventListener('o-disconnected', disconnectedEvent => {
+      typePluginInstance.addDisconnectedListener(el, disconnectedEvent => {
         cancelEvent(disconnectedEvent);
 
         this.emit('o-disconnected', { detail });
 
-        el.removeEventListener('o-change', changeHandler);
+        typePluginInstance.removeEventListener(el, 'o-change', changeHandler);
       });
 
       this.emit('o-connected', { detail });
@@ -530,7 +517,7 @@ export default class OFilters extends LibraryBaseElement {
       return;
     }
 
-    this.getRenderInstance(filter)?.setElementValue(el, value);
+    this.getTypePluginInstance(filter)?.setElementValue(el, value);
     this.setFilterDataByFilterConfig(filter, value, { emitEvent });
   }
 
@@ -638,7 +625,7 @@ export default class OFilters extends LibraryBaseElement {
     this.setFilterDataByFilterConfig(filter, filterValue);
 
     if (filterValue) {
-      this.getRenderInstance(filter)?.setElementValue(el, filterValue);
+      this.getTypePluginInstance(filter)?.setElementValue(el, filterValue);
     }
 
     this.setDefaultFilterEvents(el, filter);
@@ -648,7 +635,7 @@ export default class OFilters extends LibraryBaseElement {
 
   renderFilters(filters: Filter[]) {
     return filters.map(filter => {
-      const render = this.getRenderFunction(filter);
+      const render = this.getTypePluginFunction(filter);
 
       if (!this.checkFilterConfigValidity(filter) || !render) {
         return nothing;

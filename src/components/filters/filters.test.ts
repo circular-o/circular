@@ -6,4 +6,6 @@ describe('<o-filters>', () => {
 
     expect(el).to.exist;
   });
+
+  // Single filter, one per type
 });
