@@ -1,3 +1,9 @@
+# [1.6.0-next.2](https://github.com/circular-o/circular/compare/v1.6.0-next.1...v1.6.0-next.2) (2023-07-03)
+
+### Bug Fixes
+
+- **filters:** Improves Clear button, Type plugins, docs, styles, and other ([9d00228](https://github.com/circular-o/circular/commit/9d00228afd53d36c54aa65e1ba99e8e2236fbc99))
+
 # [1.6.0-next.1](https://github.com/circular-o/circular/compare/v1.5.1-next.5...v1.6.0-next.1) (2023-06-30)
 
 ### Features
