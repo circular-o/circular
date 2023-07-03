@@ -1,15 +1,13 @@
-import { addPrefixSuffixToElement, appendIconToElement } from './filter.utilities';
+import { AbstractTypePlugin } from './abstract.type.plugin';
+import { addPrefixSuffixToElement, appendIconToElement } from '../utilities.type.plugin';
 import { DEFAULT_PROPS_TO_IGNORE, type FilterType, type InputFilter } from '../filters.types';
-import { FilterAbstractRender } from './filter.abstract.render';
-import { html } from 'lit';
-import type OFilters from '../filters';
 import type OInput from '../../input/input';
 
-export class InputFilterRender extends FilterAbstractRender {
+export class InputTypePlugin extends AbstractTypePlugin {
   type: FilterType = 'input';
 
-  render(filtersComponent: OFilters, filter: InputFilter) {
-    const el = filtersComponent.createFilterElement('o-input', filter) as OInput;
+  render(filter: InputFilter) {
+    const el = this.filtersComponent.createFilterElement('o-input', filter) as OInput;
 
     el.type = filter.inputType ?? 'text';
 
@@ -20,7 +18,7 @@ export class InputFilterRender extends FilterAbstractRender {
 
     addPrefixSuffixToElement(el, filter);
 
-    return html`${el}`;
+    return el;
   }
 
   getValidPropsFromFilterConfig(filter: InputFilter) {
@@ -33,16 +31,13 @@ export class InputFilterRender extends FilterAbstractRender {
       'suffixType',
       'clearIconName'
     ];
+
     return this.removeIgnoredKeysFromFilterConfig(keysToIgnore, filter);
   }
 
   getElementValue(el: OInput) {
     if (el.type === 'number') {
       return el.valueAsNumber;
-    }
-
-    if (el.type === 'date') {
-      return el.valueAsDate;
     }
 
     return el.value;

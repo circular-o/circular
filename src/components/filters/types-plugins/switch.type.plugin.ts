@@ -1,14 +1,13 @@
-import { DEFAULT_MANDATORY_PROPS, FilterAbstractRender } from './filter.abstract.render';
+import { AbstractTypePlugin, DEFAULT_MANDATORY_PROPS } from './abstract.type.plugin';
 import { DEFAULT_PROPS_TO_IGNORE, type FilterType, type SwitchFilter } from '../filters.types';
 import { html } from 'lit';
-import type OFilters from '../filters';
 import type OSwitch from '../../switch/switch';
 
-export class SwitchFilterRender extends FilterAbstractRender {
+export class SwitchTypePlugin extends AbstractTypePlugin {
   type: FilterType = 'switch';
 
-  render(filtersComponent: OFilters, filter: SwitchFilter) {
-    const el = filtersComponent.createFilterElement('o-switch', filter) as OSwitch;
+  render(filter: SwitchFilter) {
+    const el = this.filtersComponent.createFilterElement('o-switch', filter) as OSwitch;
     el.innerHTML = filter.label ?? '';
 
     return html`${el}`;
@@ -20,8 +19,7 @@ export class SwitchFilterRender extends FilterAbstractRender {
   }
 
   isPropMandatory(prop: string) {
-    // name is mandatory for all filters
-    return ![...DEFAULT_MANDATORY_PROPS, 'label'].includes(prop);
+    return [...DEFAULT_MANDATORY_PROPS, 'label'].includes(prop);
   }
 
   getElementValue(el: OSwitch) {
@@ -29,7 +27,7 @@ export class SwitchFilterRender extends FilterAbstractRender {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
-  setElementValue(el: OSwitch, checked: boolean) {
-    el.checked = checked;
+  setElementValue(el: OSwitch, checked: any) {
+    el.checked = !!checked;
   }
 }

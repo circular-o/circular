@@ -41,6 +41,7 @@
   - [Divider](/components/divider)
   - [Drawer](/components/drawer)
   - [Dropdown](/components/dropdown)
+  - [Filters](/components/filters)
   - [Icon](/components/icon)
   - [Icon Button](/components/icon-button)
   - [Image Comparer](/components/image-comparer)
@@ -70,7 +71,6 @@
   - [Tooltip](/components/tooltip)
   - [Tree](/components/tree)
   - [Tree Item](/components/tree-item)
-  - [Filters](/components/filters)
   <!--plop:component-->
 
 - Utilities

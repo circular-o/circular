@@ -1,6 +1,6 @@
-import type { Filter } from '../filters.types';
-import type LibraryBaseElement from '../../../internal/library-base-element';
-import type OIcon from '../../icon/icon';
+import type { Filter, Filters } from './filters.types';
+import type LibraryBaseElement from '../../internal/library-base-element';
+import type OIcon from '../icon/icon';
 
 export function appendIconToElement(
   element: LibraryBaseElement,
@@ -44,7 +44,7 @@ export function addPrefixSuffixToElement(
   });
 }
 
-export function filterValueAdapter(value: unknown, filterConfig: Filter) {
+export function filterValueAdapter(value: unknown, filterConfig: Partial<Filter>) {
   if (filterConfig.type === 'select' || filterConfig.type === 'input') {
     const isEmpty =
       value === undefined ||
@@ -57,3 +57,19 @@ export function filterValueAdapter(value: unknown, filterConfig: Filter) {
 
   return value;
 }
+
+export function convertFiltersToObject(filters: string | undefined | null) {
+  try {
+    return JSON.parse(filters ?? '{}') as Filters;
+  } catch (error) {
+    console.warn('Filters configuration:', filters);
+    console.error('Error parsing filters configuration', error);
+    return undefined;
+  }
+}
+
+export const cancelEvent = (event: CustomEvent) => {
+  event.preventDefault();
+  event.stopPropagation();
+  event.stopImmediatePropagation();
+};

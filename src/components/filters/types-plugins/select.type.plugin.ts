@@ -1,20 +1,23 @@
-import { addPrefixSuffixToElement, appendIconToElement } from './filter.utilities';
-import { DEFAULT_MANDATORY_PROPS, FilterAbstractRender } from './filter.abstract.render';
+import { AbstractTypePlugin, DEFAULT_MANDATORY_PROPS } from './abstract.type.plugin';
+import { addPrefixSuffixToElement, appendIconToElement } from '../utilities.type.plugin';
 import { DEFAULT_PROPS_TO_IGNORE, type Filter, type FilterType, type SelectFilter } from '../filters.types';
 import { html } from 'lit';
-import type OFilters from '../filters';
 import type OSelect from '../../select/select';
 
-export class SelectFilterRender extends FilterAbstractRender {
+export class SelectTypePlugin extends AbstractTypePlugin {
   type: FilterType = 'select';
 
-  render(filtersComponent: OFilters, filter: SelectFilter) {
-    const el = filtersComponent.createFilterElement('o-select', filter) as OSelect;
+  render(filter: SelectFilter) {
+    const el = this.filtersComponent.createFilterElement('o-select', filter) as OSelect;
 
     el.clearable = filter.clearable ?? true;
     if (el.clearable && filter.clearIconName) {
       appendIconToElement(el, filter.clearIconName, { slot: 'clear-icon' });
     }
+
+    // Only one option visible by default
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    el.maxOptionsVisible = filter.maxOptionsVisible ?? 1;
 
     if (filter.expandIconName) {
       appendIconToElement(el, filter.expandIconName, { slot: 'expand-icon' });
@@ -47,7 +50,6 @@ export class SelectFilterRender extends FilterAbstractRender {
   }
 
   isPropMandatory(prop: string) {
-    // name is mandatory for all filters
-    return ![...DEFAULT_MANDATORY_PROPS, 'options'].includes(prop);
+    return [...DEFAULT_MANDATORY_PROPS, 'options'].includes(prop);
   }
 }

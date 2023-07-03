@@ -1,17 +1,17 @@
+import { cancelEvent, convertFiltersToObject, filterValueAdapter } from './utilities.type.plugin';
 import { customElement, property } from 'lit/decorators.js';
-import { DividerFilterRender } from './renders/filter.divider.render';
+import { DividerTypePlugin } from './types-plugins/divider.type.plugin';
 import { type Filter, type Filters, type RowFilter } from './filters.types';
-import { filterValueAdapter } from './renders/filter.utilities';
 import { html, nothing } from 'lit';
-import { InputFilterRender } from './renders/filter.input.render';
-import { RowFilterRender } from './renders/filter.row.render';
-import { SelectFilterRender } from './renders/filter.select.render';
-import { SwitchFilterRender } from './renders/filter.switch.render';
+import { InputTypePlugin } from './types-plugins/input.type.plugin';
+import { RowTypePlugin } from './types-plugins/row.type.plugin';
+import { SelectTypePlugin } from './types-plugins/select.type.plugin';
+import { SwitchTypePlugin } from './types-plugins/switch.type.plugin';
 import { watch } from '../../internal/watch';
 import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './filters.styles';
+import type { AbstractTypePlugin } from './types-plugins/abstract.type.plugin';
 import type { CSSResultGroup, TemplateResult } from 'lit';
-import type { FilterAbstractRender } from './renders/filter.abstract.render';
 import type { OChangeEvent } from '../../circular';
 
 interface FilterMasterData {
@@ -22,7 +22,7 @@ interface FilterMasterData {
 const DATA_FILTER_NAME_ATTRIBUTE = 'data-filter-name';
 
 /**
- * @summary Component that renders a list of filters based on a JSON configuration.
+ * @summary A component that renders a list of filters based on a JSON configuration.
  * @documentation https://circular-o.github.io/circular/#/components/filters
  * @status experimental
  * @since 1.5
@@ -31,18 +31,31 @@ const DATA_FILTER_NAME_ATTRIBUTE = 'data-filter-name';
  * @dependency o-select
  * @dependency o-switch
  * @dependency o-divider
- * @dependency o-card
  * @dependency o-button
  * @dependency o-icon
  *
- * @event o-filter-change - Emitted when an alteration to a filter's value is committed by the user.
+ * @event {{ filter: Filter; value: any; filtersData: { [filterName: string]: any } }} o-filter-change - Emitted when an alteration to a filter's value is committed by the user.
  *
- * @slot - The default slot.
- * @slot example - An example slot.
+ * @slot clear-all - Clear all button's slot.
+ * @slot clear-all-label - Clear all button label's slot.
  *
  * @csspart base - The component's base wrapper.
+ * @csspart row - Each row filter's container.
  *
- * @cssproperty --example - An example CSS custom property.
+ * @cssproperty [--base-padding=var(--o-spacing-small, 0.75rem)] - CSS custom property to change the filters component container's padding.
+ * @cssproperty [--base-min-width=fit-content] - CSS custom property to set the filters component container's (base row) minimum width.
+ * @cssproperty [--base-border-width=1px] - CSS custom property to set the filters component container's border width.
+ * @cssproperty [--base-background-color=var(--o-panel-background-color)] - CSS custom property to set the filters component container's background color.
+ * @cssproperty [--base-border-color=var(--o-color-neutral-200)] - CSS custom property to set the filters component container's border color.
+ * @cssproperty [--base-border-radius=var(--o-border-radius-medium)] - CSS custom property to set the filters component container's border radius.
+ * @cssproperty [--filter-default-width=240px] - Sets the default width of each filter (except row, divider and input date).
+ * @cssproperty [--filter-row-width=100%] - CSS custom property to set the filters row component's width.
+ * @cssproperty [--filter-input-date-width=190px] - Sets the width of filter input type date.
+ * @cssproperty [--filter-divider-width=100%] - Sets the width of each horizontal divider filter.
+ * @cssproperty [--filter-divider-height=var(--o-input-height-medium, 2.5rem)] - Sets the height of each vertical divider filter.
+ * @cssproperty [--filter-row-padding=0] - Sets the padding of each row filter.
+ * @cssproperty [--filter-row-border=0] - CSS custom property to set the border of each row filter.
+ * @cssproperty [--clear-all-label-padding=0 0.1rem] - CSS custom property to set the padding of the clear all label.
  */
 @customElement('o-filters')
 export default class OFilters extends LibraryBaseElement {
@@ -53,66 +66,69 @@ export default class OFilters extends LibraryBaseElement {
     type: Object,
     converter: {
       fromAttribute: value => {
-        try {
-          return JSON.parse(value || '{}') as Filters;
-        } catch (error) {
-          console.warn('Filters configuration:', value);
-          console.error('Error parsing filters configuration', error);
-          return undefined;
-        }
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
+        return convertFiltersToObject(value);
       },
       toAttribute: value => {
         return JSON.stringify(value);
       }
     }
   })
-  filters: Filters;
+  filters: Filters | undefined;
+
+  /** Sets whetter the clear all button has to be shown or not  */
+  @property({ type: Boolean, reflect: true, attribute: 'hide-clear-all' }) hideClearAll = false;
 
   // All the filters are contained in a row, it means that the root filter is always a row
   private filtersConfigs: RowFilter | undefined;
 
-  // Map of the filter types and its render functions, this is necessary to avoid using eval or calling the function by this[`render${filterType}Filter`]
-  // because it is not allowed by the linter for safety reasons
-  private rendersMap: {
+  // Map of the types plugins, they include the render functions and the instances of the plugins
+  private typesPluginsMap: {
     [filterType: string]: {
-      render: (filter: Filter) => typeof nothing | TemplateResult;
-      instance: FilterAbstractRender;
+      render: (filter: Filter) => typeof nothing | TemplateResult | LibraryBaseElement | HTMLElement;
+      instance: AbstractTypePlugin;
     };
   } = {};
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private filtersData: { [key: string]: any } = {};
-
   private filtersMasterMap: { [key: string]: FilterMasterData } = {};
-
-  private currentFilterFocus: string | undefined;
+  private lastFocusedFilterName: string | undefined;
+  private clearAllContainer: HTMLDivElement;
 
   constructor() {
     super();
 
-    // Initializing the default renders map
+    // Initializing the default type plugins' map
     // Row filter
-    const rowRender = new RowFilterRender();
-    this.addRender(rowRender);
+    this.registerTypePlugin(new RowTypePlugin(this));
 
     // Input filter
-    const inputRender = new InputFilterRender();
-    this.addRender(inputRender);
+    this.registerTypePlugin(new InputTypePlugin(this));
 
     // Divider filter
-    const dividerRender = new DividerFilterRender();
-    this.addRender(dividerRender);
+    this.registerTypePlugin(new DividerTypePlugin(this));
 
     // Select filter
-    const selectRender = new SelectFilterRender();
-    this.addRender(selectRender);
+    this.registerTypePlugin(new SelectTypePlugin(this));
 
     // Switch filter
-    const switchRender = new SwitchFilterRender();
-    this.addRender(switchRender);
+    this.registerTypePlugin(new SwitchTypePlugin(this));
 
-    // TODO: Add the rest of the renders
+    // TODO: Add the rest of the type plugins
     // Autocomplete filter
+
+    const clearAllSlot = document.createElement('slot');
+    clearAllSlot.name = 'clear-all';
+    clearAllSlot.addEventListener('click', (event: MouseEvent) => {
+      event.preventDefault();
+      event.stopPropagation();
+      this.clearAll();
+    });
+
+    this.clearAllContainer = document.createElement('div');
+    this.clearAllContainer.classList.add('filters__clear-all');
+    this.clearAllContainer.append(clearAllSlot);
   }
 
   @watch('filters')
@@ -120,23 +136,22 @@ export default class OFilters extends LibraryBaseElement {
     this.initConfig();
   }
 
-  addRender(renderInstance: FilterAbstractRender) {
-    this.rendersMap[renderInstance.type] = {
-      render: (filter: Filter) => renderInstance.render(this, filter),
-      instance: renderInstance
-    };
-  }
-
   private isFiltersConfigValid(): boolean {
+    if (typeof this.filters === 'string') {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      this.filters = convertFiltersToObject(this.filters);
+    }
+
     return (
-      this.filters && ((Array.isArray(this.filters) && this.filters.length > 0) || Object.keys(this.filters).length > 0)
+      !!this.filters &&
+      ((Array.isArray(this.filters) && this.filters.length > 0) || Object.keys(this.filters).length > 0)
     );
   }
 
   private initConfig() {
     this.filtersConfigs = undefined;
 
-    if (!this.isFiltersConfigValid()) {
+    if (!this.filters || !this.isFiltersConfigValid()) {
       return;
     }
 
@@ -146,26 +161,46 @@ export default class OFilters extends LibraryBaseElement {
       part: 'base',
       style: '--padding: var(--base-padding);',
       css: 'base-row',
-      items: Array.isArray(this.filters) ? [...this.filters] : [this.filters]
+      items: [
+        {
+          type: 'row',
+          css: 'base-row-items',
+          items: Array.isArray(this.filters) ? [...this.filters] : [this.filters]
+        }
+      ]
     };
   }
 
+  private getTypePluginMap({ type }: Partial<Filter>) {
+    if (!type || !this.typesPluginsMap[type]) {
+      return undefined;
+    }
+
+    return this.typesPluginsMap[type];
+  }
+
+  private getTypePluginInstance({ type }: Partial<Filter>) {
+    return this.getTypePluginMap({ type })?.instance;
+  }
+
+  private getTypePluginFunction({ type }: Partial<Filter>) {
+    return this.getTypePluginMap({ type })?.render;
+  }
+
   private getValidPropsFromFilterConfig(filter: Filter) {
-    return this.rendersMap[filter.type].instance.getValidPropsFromFilterConfig(filter);
+    return this.getTypePluginInstance(filter)?.getValidPropsFromFilterConfig(filter);
   }
 
   private isPropMandatory(prop: string, filter: Filter) {
-    return this.rendersMap[filter.type].instance.isPropMandatory(prop);
+    return this.getTypePluginInstance(filter)?.isPropMandatory(prop);
   }
 
   private checkFilterConfigValidity(filter: Filter) {
-    if (!filter.type) {
-      console.warn('Filter type is required', filter);
-      return false;
-    }
-
-    if (!this.rendersMap[filter.type]) {
-      console.warn(`Filter type "${filter.type}" is not supported`, filter);
+    if (!this.getTypePluginMap(filter)) {
+      console.warn(
+        `Filter type "${filter?.type}" is not supported, please register the type plugin to add the support`,
+        filter
+      );
       return false;
     }
 
@@ -179,7 +214,8 @@ export default class OFilters extends LibraryBaseElement {
   }
 
   private checkCustomElementDefinition(tag: string) {
-    if (customElements.get(tag)) {
+    // Check if the custom element is defined, only if the tag is not a native element
+    if (!tag.includes('o-') || customElements.get(tag)) {
       return true;
     }
 
@@ -202,13 +238,27 @@ export default class OFilters extends LibraryBaseElement {
     // Default css classes
     `filter filter-${filter.type}`.split(' ').forEach((cssClass: string) => el.classList.add(cssClass));
 
+    const parts = (filter.part as string)?.split(' ') ?? [];
+    parts.push('filter');
+    parts.push(filter.type);
+
     // Apply the css class if it is defined
     if (filter.css) {
-      `${filter.css as string}`.split(' ').forEach((cssClass: string) => el.classList.add(cssClass));
+      `${filter.css as string}`.split(' ').forEach((cssClass: string) => {
+        el.classList.add(cssClass);
+        parts.push(cssClass);
+      });
     }
 
-    // Apply the rest of the properties
-    Object.assign(el, this.getValidPropsFromFilterConfig(filter));
+    el.setAttribute('part', parts.join(' '));
+
+    try {
+      // Apply the rest of the properties
+      Object.assign(el, this.getValidPropsFromFilterConfig(filter));
+    } catch (error) {
+      console.warn(`Error setting the properties to the filter`, filter);
+      console.error(error);
+    }
 
     return el;
   }
@@ -235,53 +285,51 @@ export default class OFilters extends LibraryBaseElement {
   }
 
   private setDefaultFilterEvents(el: LibraryBaseElement, filter: Filter) {
-    const cancelEvent = (event: CustomEvent) => {
-      event.preventDefault();
-      event.stopPropagation();
-      event.stopImmediatePropagation();
-    };
+    const filterName = filter.name;
+    const typePluginInstance = this.getTypePluginInstance(filter)!;
 
     const changeHandler = (event: OChangeEvent) => {
       cancelEvent(event);
 
-      const renderInstance = this.rendersMap[filter.type].instance;
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const value = renderInstance.getElementValue(el);
+      const value = typePluginInstance.getElementValue(el);
       this.setFilterDataByFilterConfig(filter, value, { emitEvent: true });
     };
 
     // event: OFocusEvent
     const focusHandler = () => {
-      this.setCurrentFilterFocus(filter.name!);
+      this.setLastFocusedFilterName(filterName!);
     };
 
-    el.addEventListener('o-connected', connectedEvent => {
+    typePluginInstance.addConnectedListener(el, connectedEvent => {
       // Check if the event is coming from the filter control by using the DATA_FILTER_NAME_ATTRIBUTE
-      const eventEl = connectedEvent.detail.ref;
-      if (filter.name && eventEl.getAttribute(DATA_FILTER_NAME_ATTRIBUTE) !== filter.name) {
+      const elementRef = connectedEvent.detail.ref;
+      const className = connectedEvent.detail.className;
+
+      if (!filterName || elementRef.getAttribute(DATA_FILTER_NAME_ATTRIBUTE) !== filterName) {
         return;
       }
 
       cancelEvent(connectedEvent);
 
       const detail = {
-        ref: connectedEvent.detail.ref,
-        className: connectedEvent.detail.className,
+        ref: elementRef,
+        className,
         data: { filter }
       };
 
-      this.updateFilterMasterMap(filter.name!, { elementRef: connectedEvent.detail.ref });
-      this.focusFilterControlAfterConnectedEvent(filter.name!);
+      this.updateFilterMasterMap(filterName, { elementRef });
+      this.focusFilterControlAfterConnectedEvent(filterName);
 
-      el.addEventListener('o-change', changeHandler);
-      el.addEventListener('o-focus', focusHandler);
+      typePluginInstance.addChangeListener(el, changeHandler);
+      typePluginInstance.addFocusListener(el, focusHandler);
 
-      el.addEventListener('o-disconnected', disconnectedEvent => {
+      typePluginInstance.addDisconnectedListener(el, disconnectedEvent => {
         cancelEvent(disconnectedEvent);
 
         this.emit('o-disconnected', { detail });
 
-        el.removeEventListener('o-change', changeHandler);
+        typePluginInstance.removeEventListener(el, 'o-change', changeHandler);
       });
 
       this.emit('o-connected', { detail });
@@ -307,72 +355,63 @@ export default class OFilters extends LibraryBaseElement {
     });
   }
 
+  private getFilterMasterMap({ name }: Partial<Filter>) {
+    if (!name || !this.filtersMasterMap[name]) {
+      console.warn(`getFilterMasterMap: Filter with name "${name ?? ''}" is not defined`);
+      return undefined;
+    }
+
+    return name ? this.filtersMasterMap[name] : undefined;
+  }
+
   private updateFilterMasterMap(name: string, filterMasterData: Partial<FilterMasterData>) {
-    if (!name || !filterMasterData || !this.filtersMasterMap[name]) {
+    if (!name || !filterMasterData || !this.getFilterMasterMap({ name })) {
       return;
     }
 
-    this.filtersMasterMap[name] = { ...this.filtersMasterMap[name], ...filterMasterData };
+    this.filtersMasterMap[name] = { ...this.getFilterMasterMap({ name })!, ...filterMasterData };
   }
 
   /** Focus a filter control, it is useful when the filters config is updated and a filter control was already focused, so, it keeps the focus */
   private focusFilterControlAfterConnectedEvent(filterName: string) {
-    if (!filterName || !this.getCurrentFilterFocus()) {
+    if (!filterName || !this.getLastFocusedFilterName()) {
       return;
     }
 
-    const name = this.getCurrentFilterFocus()!;
+    const name = this.getLastFocusedFilterName()!;
     const isSameFilter = name === filterName;
-    const isElementRefDefined = !!this.filtersMasterMap[name].elementRef;
 
-    if (isSameFilter && isElementRefDefined) {
-      this.filtersMasterMap[name].elementRef?.focus();
+    if (isSameFilter) {
+      this.getFilterMasterMap({ name })?.elementRef?.focus();
     }
   }
 
-  private getFilterMasterData(name: string) {
-    if (!name || !this.filtersMasterMap[name]) {
-      console.warn(`Filter with name "${name}" is not defined`);
-      return undefined;
-    }
+  private renderClearAllButton() {
+    const clearAllButton = document.createElement('o-button');
+    clearAllButton.variant = 'text';
+    clearAllButton.classList.add('filters__button__clear-all');
 
-    return this.filtersMasterMap[name];
+    const clearAllSlotLabel = document.createElement('slot');
+    clearAllSlotLabel.name = 'clear-all-label';
+    clearAllSlotLabel.innerHTML = 'Clear all';
+
+    clearAllButton.appendChild(clearAllSlotLabel);
+
+    return clearAllButton;
   }
 
-  /** Filters API, methods that can be called from outside */
-
-  createFilterElement(tag: string, filter: Filter) {
-    this.checkCustomElementDefinition(tag);
-
-    const el = this.setPropsToElement(document.createElement(tag) as LibraryBaseElement, filter);
-
-    const existsDataValue = filter.name && !!this.filtersData[filter.name];
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const filterValue = existsDataValue ? this.filtersData[filter.name!] : filter.value;
-    this.setFilterDataByFilterConfig(filter, filterValue);
-
-    if (filterValue) {
-      const renderInstance = this.rendersMap[filter.type].instance;
-      renderInstance.setElementValue(el, filterValue);
-    }
-
-    this.setDefaultFilterEvents(el, filter);
-
-    return el;
+  private shouldRenderClearAllButton() {
+    // Only checks if there is any filter data if the clear all button is not hidden
+    const hasFiltersDataSomeValue = () => Object.keys(this.filtersData).some(key => !!this.filtersData[key]);
+    return !this.hideClearAll && hasFiltersDataSomeValue();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setFilterData(name: string, value: any, { emitEvent }: { emitEvent: boolean } = { emitEvent: false }) {
-    const filter = this.getFilterConfigByName(name);
-    if (!filter) {
-      return;
-    }
-
-    this.setFilterDataByFilterConfig(filter, value, { emitEvent });
+  private showClearAllButtonIfNecessary() {
+    this.clearAllContainer.hidden = !this.shouldRenderClearAllButton();
   }
 
-  setFilterDataByFilterConfig(
-    filter: Filter,
+  private setFilterDataByFilterConfig(
+    filter: Partial<Filter>,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any,
     { emitEvent }: { emitEvent: boolean } = { emitEvent: false }
@@ -386,13 +425,105 @@ export default class OFilters extends LibraryBaseElement {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     this.filtersData[filter.name] = filterValue;
 
+    this.showClearAllButtonIfNecessary();
+
     if (emitEvent) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      this.emit('o-filter-change', { detail: { filter, value: filterValue, filtersData: this.getFiltersData() } });
+      this.emit('o-filter-change', {
+        detail: { filter: filter as Filter, value: filterValue, filtersData: this.getFiltersData() }
+      });
     }
   }
 
-  getFilterData({ name }: Filter) {
+  private getLastFocusedFilterName() {
+    if (this.lastFocusedFilterName && !this.getFilterMasterMap({ name: this.lastFocusedFilterName })) {
+      this.lastFocusedFilterName = undefined;
+    }
+
+    return this.lastFocusedFilterName;
+  }
+
+  private setLastFocusedFilterName(name: string) {
+    if (!name) {
+      return;
+    }
+
+    if (!this.getFilterMasterMap({ name })) {
+      this.lastFocusedFilterName = undefined;
+      return;
+    }
+
+    this.lastFocusedFilterName = name;
+  }
+
+  /** Adds a new type instance which can be used to extend the filters types support */
+  private registerTypePlugin(instance: AbstractTypePlugin) {
+    this.typesPluginsMap[instance.type] = { instance, render: (filter: Filter) => instance.render(filter) };
+  }
+
+  private registerTypePluginRequestUpdateTimerId: NodeJS.Timeout | undefined;
+
+  // ========================================================
+  // Filters API, methods that can be called from outside
+  // ========================================================
+
+  /**
+   * Register a new type plugin
+   * @param typePluginCtor type plugin constructor
+   */
+  registerType(typePluginCtor: new (filtersComponent: OFilters) => AbstractTypePlugin) {
+    const instance = new typePluginCtor(this);
+    this.registerTypePlugin(instance);
+
+    // Debounce the request update to avoid multiple updates
+    if (this.registerTypePluginRequestUpdateTimerId) {
+      clearTimeout(this.registerTypePluginRequestUpdateTimerId);
+    }
+
+    this.registerTypePluginRequestUpdateTimerId = setTimeout(() => {
+      this.requestUpdate();
+    }, 250);
+  }
+
+  /** Sets a filter value by name */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setFilterValue(name: string, value: any, { emitEvent }: { emitEvent: boolean } = { emitEvent: false }) {
+    const filter = this.getFilterConfigByName(name);
+    if (!filter) {
+      console.warn(`setFilterValue: Can't set the filter value, filter with name "${name}" is not defined`);
+      return;
+    }
+
+    this.setFilterValueByFilterConfig(filter, value, { emitEvent });
+  }
+
+  /** Sets a filter value by filter config */
+  setFilterValueByFilterConfig(
+    filter: Filter,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    value: any,
+    { emitEvent }: { emitEvent: boolean } = { emitEvent: false }
+  ) {
+    if (!filter.name || !filter.type) {
+      console.warn("setFilterValue: Can't set the filter value, filter name/type is not defined", filter);
+      return;
+    }
+
+    const el = this.getFilterMasterMap({ name: filter.name })?.elementRef;
+    if (!el) {
+      console.warn(
+        `setFilterValue: Can't set the filter value, filter element with name "${filter.name}" is not defined`
+      );
+      return;
+    }
+
+    this.getTypePluginInstance(filter)?.setElementValue(el, value);
+    this.setFilterDataByFilterConfig(filter, value, { emitEvent });
+  }
+
+  /** Gets a filter value by name */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getFilterValue(name: string) {
     if (!name || !this.filtersData[name]) {
       return undefined;
     }
@@ -401,33 +532,14 @@ export default class OFilters extends LibraryBaseElement {
     return this.filtersData[name];
   }
 
+  /** Gets all filters data */
   getFiltersData() {
     return this.filtersData;
   }
 
-  getCurrentFilterFocus() {
-    if (this.currentFilterFocus && !this.filtersMasterMap[this.currentFilterFocus]) {
-      this.currentFilterFocus = undefined;
-    }
-
-    return this.currentFilterFocus;
-  }
-
-  setCurrentFilterFocus(name: string) {
-    if (!name) {
-      return;
-    }
-
-    if (!this.filtersMasterMap[name]) {
-      this.currentFilterFocus = undefined;
-      return;
-    }
-
-    this.currentFilterFocus = name;
-  }
-
+  /** Shows a filter by name, if the `show` param is `false`, the filter will be `hidden` */
   showFilter(name: string, show = true) {
-    if (!name || !this.filtersMasterMap[name]) {
+    if (!name) {
       return;
     }
 
@@ -436,7 +548,7 @@ export default class OFilters extends LibraryBaseElement {
       return;
     }
 
-    const el = this.filtersMasterMap[name].elementRef;
+    const el = this.getFilterMasterMap({ name })?.elementRef;
     if (!el) {
       return;
     }
@@ -444,45 +556,92 @@ export default class OFilters extends LibraryBaseElement {
     el.hidden = false;
   }
 
+  /** Hides a filter by name, the of the filter value is set to `undefined` */
   hideFilter(name: string) {
-    if (!name || !this.filtersMasterMap[name]) {
+    if (!name) {
+      console.warn('hideFilter: Can not hide filter, name is not defined');
       return;
     }
 
-    const el = this.filtersMasterMap[name].elementRef;
+    const el = this.getFilterMasterMap({ name })?.elementRef;
     if (!el) {
+      console.warn(`hideFilter: Can not hide filter, filter element with name "${name}" is not defined`);
       return;
     }
 
     el.hidden = true;
 
-    const filterConfig = this.getFilterConfigByName(name);
-    const renderInstance = this.rendersMap[filterConfig!.type].instance;
-    renderInstance.setElementValue(el, '');
-    this.setFilterDataByFilterConfig(filterConfig!, '', { emitEvent: true });
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const currentValue = this.getFilterValue(name);
+    if (currentValue === undefined) {
+      return;
+    }
+
+    this.setFilterValue(name, '', { emitEvent: true });
   }
 
+  /** Gets a filter config by name */
   getFilterConfigByName(name: string) {
-    return this.getFilterMasterData(name)?.config;
+    return this.getFilterMasterMap({ name })?.config;
   }
 
+  /** Gets a filter control (Circular element reference) by name */
   getFilterControlByName(name: string) {
-    return this.getFilterMasterData(name)?.elementRef;
+    return this.getFilterMasterMap({ name })?.elementRef;
   }
 
-  /**
-   * ========================================================
-   * End of Filters API
-   * ========================================================
-   */
+  /** Clear all the filters, sets every value to `undefined` */
+  clearAll() {
+    const filtersData = this.getFiltersData();
+
+    Object.keys(filtersData).forEach((name: string) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const value = filtersData[name];
+
+      // Only clear the filter if it has a value
+      if (value === undefined) {
+        return;
+      }
+
+      // Clear the filter value
+      this.setFilterValue(name, undefined, { emitEvent: true });
+    });
+
+    this.emit('o-clear');
+  }
+
+  // ========================================================
+  // End of filters API, methods that can be called from outside
+  // ========================================================
+
+  createFilterElement(tag: string, filter: Filter) {
+    this.checkCustomElementDefinition(tag);
+
+    const el = this.setPropsToElement(document.createElement(tag) as LibraryBaseElement, filter);
+
+    const existsDataValue = filter.name && !!this.filtersData[filter.name];
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const filterValue = existsDataValue ? this.filtersData[filter.name!] : filter.value;
+    this.setFilterDataByFilterConfig(filter, filterValue);
+
+    if (filterValue) {
+      this.getTypePluginInstance(filter)?.setElementValue(el, filterValue);
+    }
+
+    this.setDefaultFilterEvents(el, filter);
+
+    return el;
+  }
 
   renderFilters(filters: Filter[]) {
     return filters.map(filter => {
-      if (!this.checkFilterConfigValidity(filter)) {
+      const render = this.getTypePluginFunction(filter);
+
+      if (!this.checkFilterConfigValidity(filter) || !render) {
         return nothing;
       }
 
-      return this.rendersMap[filter.type].render(filter);
+      return render(filter);
     });
   }
 
@@ -491,8 +650,21 @@ export default class OFilters extends LibraryBaseElement {
       return nothing;
     }
 
+    const css = `filter filter-row ${(this.filtersConfigs.css as string) ?? ''}`;
+    const part = (this.filtersConfigs.part as string) || 'row';
+    const style = (this.filtersConfigs.style as string) || '';
+
+    // Get slot from the clear all container
+    const slot = this.clearAllContainer.querySelector('slot')!;
+    slot.innerHTML = '';
+    slot.append(this.renderClearAllButton());
+
     // Rendering all the filters
-    const result = html`${this.renderFilters([this.filtersConfigs])}`;
+    const result = html`
+      <div part=${part} style=${style} class=${css}>
+        ${this.renderFilters(this.filtersConfigs.items)} ${this.clearAllContainer}
+      </div>
+    `;
 
     // After rendering all the filters, get the filters by name, only the ones that have a name
     this.setFiltersMasterMap(this.filtersConfigs.items);
