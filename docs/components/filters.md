@@ -357,10 +357,7 @@ The filters component exposes on its API methods to set and get a filter value.
 
 ```jsx react
 import { OFilters, OButton, OIcon, OInput } from '%PACKAGE-FULL-PATH%/dist/react';
-import { setBasePath } from '%PACKAGE-FULL-PATH%/dist/utilities/base-path';
 import { useRef } from 'react';
-
-setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE-FULL-PATH%@%PACKAGE-VERSION%/dist/');
 
 const App = () => {
   const inputFilter = {
@@ -678,9 +675,6 @@ Customizing the button:
 
 ```jsx react
 import { OFilters, OButton, OIcon } from '%PACKAGE-FULL-PATH%/dist/react';
-import { setBasePath } from '%PACKAGE-FULL-PATH%/dist/utilities/base-path';
-
-setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE-FULL-PATH%@%PACKAGE-VERSION%/dist/');
 
 const App = () => (
   <OFilters filters='[{"type": "input", "prefix": "search", "name": "username", "placeholder": "Username", "value": "username-example"}, {"type": "input", "suffix": "envelope-at", "name": "email", "placeholder": "Email", "inputType": "email"}]'>
@@ -750,8 +744,8 @@ For more details please check the plugins already defined in the folder `/dist/c
 <o-filters class="filters-custom-render-example"></o-filters>
 
 <script type="module">
-  import { AbstractTypePlugin } from './dist/components/filters/types-plugins/abstract.type.plugin.js';
-  import { cancelEvent } from './dist/components/filters/utilities.type.plugin.js';
+  import { AbstractTypePlugin } from '%PACKAGE-URL%/dist/components/filters/types-plugins/abstract.type.plugin.js';
+  import { cancelEvent } from '%PACKAGE-URL%/dist/components/filters/utilities.type.plugin.js';
 
   class InputOverwriteTypePlugin extends AbstractTypePlugin {
     type = 'input';
@@ -806,6 +800,7 @@ For more details please check the plugins already defined in the folder `/dist/c
 
     addChangeListener(el, listener) {
       el.addEventListener('change', e => {
+        cancelEvent(e);
         const event = new CustomEvent('o-change');
         listener(event);
       });
@@ -843,10 +838,8 @@ For more details please check the plugins already defined in the folder `/dist/c
 ```jsx react
 import { OFilters } from '%PACKAGE-FULL-PATH%/dist/react';
 import { AbstractTypePlugin } from '%PACKAGE-FULL-PATH%/dist/components/filters/types-plugins/abstract.type.plugin';
-import { setBasePath } from '%PACKAGE-FULL-PATH%/dist/utilities/base-path';
+import { cancelEvent } from '%PACKAGE-FULL-PATH%/dist/components/filters/utilities.type.plugin.js';
 import { useRef } from 'react';
-
-setBasePath('https://cdn.jsdelivr.net/npm/%PACKAGE-FULL-PATH%@%PACKAGE-VERSION%/dist/');
 
 class InputOverwriteTypePlugin extends AbstractTypePlugin {
   type = 'input';
@@ -901,6 +894,7 @@ class CustomInputTypePlugin extends AbstractTypePlugin {
 
   addChangeListener(el, listener) {
     el.addEventListener('change', e => {
+      cancelEvent(e);
       const event = new CustomEvent('o-change');
       listener(event);
     });
@@ -908,6 +902,7 @@ class CustomInputTypePlugin extends AbstractTypePlugin {
 
   addFocusListener(el, listener) {
     el.addEventListener('focus', e => {
+      cancelEvent(e);
       const event = new CustomEvent('o-focus');
       listener(event);
     });

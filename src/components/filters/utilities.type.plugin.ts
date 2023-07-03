@@ -68,8 +68,16 @@ export function convertFiltersToObject(filters: string | undefined | null) {
   }
 }
 
-export const cancelEvent = (event: CustomEvent) => {
+export function cancelEvent(event: CustomEvent) {
   event.preventDefault();
   event.stopPropagation();
   event.stopImmediatePropagation();
+}
+
+export default {
+  appendIconToElement,
+  addPrefixSuffixToElement,
+  filterValueAdapter,
+  convertFiltersToObject,
+  cancelEvent
 };

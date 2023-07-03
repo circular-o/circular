@@ -104,7 +104,8 @@ window.setVersionNumberFromCustomElementsFile = () => {
         repoUrl,
         twitterUser,
         sponsorUrl,
-        libraryName
+        libraryName,
+        packageUrl
       } = window.getDocsConfig();
 
       // Replace %PACKAGE-VERSION% placeholders
@@ -115,6 +116,8 @@ window.setVersionNumberFromCustomElementsFile = () => {
       content = content.replace(/%PACKAGE-NAME%/g, `${packageName}`);
       // Replace %PACKAGE-FULL-PATH% placeholders
       content = content.replace(/%PACKAGE-FULL-PATH%/g, `${packageOrganization}/${packageName}`);
+      // Replace %PACKAGE-URL% placeholders (CDN URL)
+      content = content.replace(/%PACKAGE-URL%/g, `${packageUrl}`);
       // Replace %DOCS-WEBSITE% placeholders
       content = content.replace(/%DOCS-WEBSITE%/g, `${docsWebsite}`);
       // Replace %REPO-URL% placeholders
