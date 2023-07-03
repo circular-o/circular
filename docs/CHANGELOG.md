@@ -1,3 +1,9 @@
+# [1.6.0-next.3](https://github.com/circular-o/circular/compare/v1.6.0-next.2...v1.6.0-next.3) (2023-07-03)
+
+### Bug Fixes
+
+- **filters:** Fixes some docs issues ([f749679](https://github.com/circular-o/circular/commit/f749679f9f2c80b4c6fdc25f5e92bb25e43052ea))
+
 # [1.6.0-next.2](https://github.com/circular-o/circular/compare/v1.6.0-next.1...v1.6.0-next.2) (2023-07-03)
 
 ### Bug Fixes
