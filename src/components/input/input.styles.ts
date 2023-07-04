@@ -41,17 +41,17 @@ export default css`
   .input--standard.input--focused:not(.input--disabled) {
     background-color: var(--o-input-background-color-focus);
     border-color: var(--o-input-border-color-focus);
-    box-shadow: 0 0 0 var(--o-focus-ring-width) var(--o-input-focus-ring-color);
+    border-width: var(--o-input-border-width-medium);
+    // box-shadow: 0 0 0 var(--o-focus-ring-width) var(--o-input-focus-ring-color);
   }
 
-  .input--standard.input--focused:not(.input--disabled) .input__control {
-    color: var(--o-input-color-focus);
-  }
+  // .input--standard.input--focused:not(.input--disabled) .input__control {
+  //   color: var(--o-input-color-focus);
+  // }
 
   .input--standard.input--disabled {
     background-color: var(--o-input-background-color-disabled);
     border-color: var(--o-input-border-color-disabled);
-    opacity: 0.5;
     cursor: not-allowed;
   }
 
@@ -150,6 +150,11 @@ export default css`
   .input__prefix::slotted(o-icon),
   .input__suffix::slotted(o-icon) {
     color: var(--o-input-icon-color);
+  }
+
+  .input--standard.input--disabled .input__prefix::slotted(o-icon),
+  .input--standard.input--disabled .input__suffix::slotted(o-icon) {
+    color: var(--o-input-icon-color-disabled);
   }
 
   /*

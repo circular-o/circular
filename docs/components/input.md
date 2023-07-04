@@ -105,7 +105,12 @@ const App = () => <OInput placeholder="Type something" filled />;
 Use the `disabled` attribute to disable an input.
 
 ```html preview
-<o-input placeholder="Disabled" disabled></o-input>
+<o-input placeholder="Disabled" disabled></o-input><br />
+
+<o-input placeholder="Disabled" disabled>
+  <o-icon name="house" slot="prefix"></o-icon>
+  <o-icon name="chat" slot="suffix"></o-icon>
+</o-input>
 ```
 
 ```jsx react

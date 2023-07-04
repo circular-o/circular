@@ -37,6 +37,11 @@ a:hover {
   color: var(--o-color-primary-700);
 }
 
+a:focus-visible {
+  outline: var(--o-focus-ring);
+  z-index: 2;
+}
+
 strong {
   font-weight: var(--o-font-weight-bold);
 }
