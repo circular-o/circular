@@ -100,14 +100,14 @@ export default css`
   }
 
   .button--standard.button--primary:hover:not(.button--disabled) {
-    background-color: var(--o-color-primary-500);
-    border-color: var(--o-color-primary-500);
+    background-color: var(--o-color-primary-700);
+    border-color: var(--o-color-primary-700);
     color: var(--o-color-neutral-0);
   }
 
   .button--standard.button--primary:active:not(.button--disabled) {
-    background-color: var(--o-color-primary-600);
-    border-color: var(--o-color-primary-600);
+    background-color: var(--o-color-primary-800);
+    border-color: var(--o-color-primary-800);
     color: var(--o-color-neutral-0);
   }
 
@@ -169,20 +169,20 @@ export default css`
 
   /* Danger */
   .button--standard.button--danger {
-    background-color: var(--o-color-danger-600);
-    border-color: var(--o-color-danger-600);
+    background-color: var(--o-color-danger-700);
+    border-color: var(--o-color-danger-700);
     color: var(--o-color-neutral-0);
   }
 
   .button--standard.button--danger:hover:not(.button--disabled) {
-    background-color: var(--o-color-danger-500);
-    border-color: var(--o-color-danger-500);
+    background-color: var(--o-color-danger-800);
+    border-color: var(--o-color-danger-800);
     color: var(--o-color-neutral-0);
   }
 
   .button--standard.button--danger:active:not(.button--disabled) {
-    background-color: var(--o-color-danger-600);
-    border-color: var(--o-color-danger-600);
+    background-color: var(--o-color-danger-900);
+    border-color: var(--o-color-danger-900);
     color: var(--o-color-neutral-0);
   }
 

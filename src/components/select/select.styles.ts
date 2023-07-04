@@ -64,9 +64,9 @@ export default css`
     -webkit-appearance: none;
   }
 
-  .select:not(.select--disabled):hover .select__display-input {
-    color: var(--o-input-color-hover);
-  }
+  // .select:not(.select--disabled):hover .select__display-input {
+  //   color: var(--o-input-color-hover);
+  // }
 
   .select__display-input:focus {
     outline: none;
@@ -118,11 +118,15 @@ export default css`
     border: solid var(--o-input-border-width) var(--o-input-border-color);
   }
 
+  .select--standard:not(.select--disabled) .select__combobox:hover {
+    background-color: var(--o-input-background-color-hover);
+    border-color: var(--o-input-border-color-hover);
+  }
+
   .select--standard.select--disabled .select__combobox {
     background-color: var(--o-input-background-color-disabled);
     border-color: var(--o-input-border-color-disabled);
     color: var(--o-input-color-disabled);
-    opacity: 0.5;
     cursor: not-allowed;
     outline: none;
   }
@@ -131,7 +135,8 @@ export default css`
   .select--standard:not(.select--disabled).select--focused .select__combobox {
     background-color: var(--o-input-background-color-focus);
     border-color: var(--o-input-border-color-focus);
-    box-shadow: 0 0 0 var(--o-focus-ring-width) var(--o-input-focus-ring-color);
+    border-width: var(--o-input-border-width-medium);
+    // box-shadow: 0 0 0 var(--o-focus-ring-width) var(--o-input-focus-ring-color);
   }
 
   /* Filled selects */
