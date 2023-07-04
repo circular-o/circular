@@ -185,6 +185,25 @@ import { OIcon } from '%PACKAGE-FULL-PATH%/dist/react';
 const App = () => <OIcon src="assets/images/shoe.svg" style={{ fontSize: '8rem' }}></OIcon>;
 ```
 
+### Fallback
+
+Sometimes a icon can not be found and a fallback content should be displayed instead, thus the default slot acts as a fallback carrier.
+
+```html preview
+<o-icon src="assets/images/shoe.svg" style="font-size: 4rem;">FALLBACK</o-icon>
+<o-icon name="i-dont-exists">FALLBACK</o-icon>
+```
+
+```jsx react
+import { OIcon } from '%PACKAGE-FULL-PATH%/dist/react';
+
+
+const App = () => (
+  <OIcon src="assets/images/shoe.svg" style={{ fontSize: '8rem' }}>FALLBACK</OIcon>
+  <OIcon name="i-dont-exists">FALLBACK</OIcon>
+);
+```
+
 ## Icon Libraries
 
 You can register additional icons to use with the `<o-icon>` component through icon libraries. Icon files can exist locally or on a CORS-enabled endpoint (e.g. a CDN). There is no limit to how many icon libraries you can register and there is no cost associated with registering them, as individual icons are only requested when they're used.

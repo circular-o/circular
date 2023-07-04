@@ -71,6 +71,9 @@
   - [Tooltip](/components/tooltip)
   - [Tree](/components/tree)
   - [Tree Item](/components/tree-item)
+  - [Navbar](/components/navbar)
+  - [Navbar Item](/components/navbar-item)
+  - [Typography](/components/typography)
   <!--plop:component-->
 
 - Utilities

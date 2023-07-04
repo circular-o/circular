@@ -57,6 +57,9 @@ export { default as OTooltip } from './components/tooltip/tooltip';
 export { default as OTree } from './components/tree/tree';
 export { default as OTreeItem } from './components/tree-item/tree-item';
 export { default as OVisuallyHidden } from './components/visually-hidden/visually-hidden';
+export { default as ONavbar } from './components/navbar/navbar';
+export { default as ONavbarItem } from './components/navbar-item/navbar-item';
+export { default as OTypography } from './components/typography/typography';
 /* plop:component */
 
 // Utilities

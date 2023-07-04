@@ -1,9 +1,9 @@
+import { type CSSResultGroup, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { getIconLibrary, unwatchIcon, watchIcon } from './library';
 import { watch } from '../../internal/watch';
 import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './icon.styles';
-import type { CSSResultGroup } from 'lit';
 
 const CACHEABLE_ERROR = Symbol();
 const RETRYABLE_ERROR = Symbol();
@@ -21,7 +21,10 @@ const iconCache = new Map<string, Promise<SVGResult>>();
  * @event o-load - Emitted when the icon has loaded.
  * @event o-error - Emitted when the icon fails to load due to an error.
  *
+ *
+ *
  * @csspart svg - The internal SVG element.
+ * @csspart fallback - The slot containing the fallback.
  */
 @customElement('o-icon')
 export default class OIcon extends LibraryBaseElement {
@@ -145,8 +148,10 @@ export default class OIcon extends LibraryBaseElement {
       case CACHEABLE_ERROR:
         this.svg = null;
         this.emit('o-error');
+        this.removeAttribute('data-hide-slot');
         break;
       default:
+        this.setAttribute('data-hide-slot', 'true');
         this.svg = svg.cloneNode(true) as SVGElement;
         library?.mutator?.(this.svg);
         this.emit('o-load');
@@ -154,7 +159,10 @@ export default class OIcon extends LibraryBaseElement {
   }
 
   render() {
-    return this.svg;
+    return html`
+      <slot part="fallback"></slot>
+      ${this.svg}
+    `;
   }
 }
 
