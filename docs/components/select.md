@@ -431,4 +431,151 @@ const App = () => (
 );
 ```
 
+### Autocomplete
+
+By setting the `autocomplete` property, the select will show an input box on the top of the options list to filter them.
+
+```html preview
+<div style="display: flex;gap: 8px;align-items: center; padding-bottom: 12px;">
+  <o-radio-group class="select-autocomplete-sizes" value="medium">
+    <o-radio-button value="small">Small</o-radio-button>
+    <o-radio-button value="medium">Medium</o-radio-button>
+    <o-radio-button value="large">Large</o-radio-button>
+  </o-radio-group>
+  <o-switch class="select-autocomplete-multiple">Multiple</o-switch>
+</div>
+
+<o-select class="select-autocomplete-select" autocomplete>
+  <o-option value="matrix">Matrix</o-option>
+  <o-option value="guardians-of-the-galaxy">Guardians of the Galaxy</o-option>
+  <o-option value="expendables">Expendables</o-option>
+  <o-option value="iron-man">Iron Man</o-option>
+  <o-option value="spider-man">Spider-man</o-option>
+  <o-option value="rocky">Rocky</o-option>
+</o-select>
+
+<script>
+  const sizes = document.querySelector('.select-autocomplete-sizes');
+  const multiple = document.querySelector('.select-autocomplete-multiple');
+  const select = document.querySelector('.select-autocomplete-select');
+
+  sizes.addEventListener('o-change', () => {
+    select.size = sizes.value;
+  });
+
+  multiple.addEventListener('o-change', () => {
+    select.multiple = multiple.checked;
+  });
+</script>
+```
+
+```jsx react
+import { OSelect, ORadioGroup, ORadioButton, OSwitch, OOption } from '%PACKAGE-FULL-PATH%/dist/react';
+import { useState } from 'react';
+
+const App = () => {
+  const containerStyle = {
+    display: 'flex',
+    gap: '8px',
+    alignItems: 'center',
+    paddingBottom: '12px'
+  };
+
+  const [size, setSize] = useState('medium');
+  const [multiple, setMultiple] = useState(false);
+
+  return (
+    <>
+      <div style={containerStyle}>
+        <ORadioGroup value={size} onOChange={event => setSize(event.target.value)}>
+          <ORadioButton value="small">Small</ORadioButton>
+          <ORadioButton value="medium">Medium</ORadioButton>
+          <ORadioButton value="large">Large</ORadioButton>
+        </ORadioGroup>
+        <OSwitch onOChange={event => setMultiple(event.target.checked)} multiple={multiple}>
+          Multiple
+        </OSwitch>
+      </div>
+      <OSelect autocomplete size={size} multiple={multiple}>
+        <OOption value="matrix">Matrix</OOption>
+        <OOption value="guardians-of-the-galaxy">Guardians of the Galaxy</OOption>
+        <OOption value="expendables">Expendables</OOption>
+        <OOption value="iron-man">Iron Man</OOption>
+        <OOption value="spider-man">Spider-man</OOption>
+        <OOption value="rocky">Rocky</OOption>
+      </OSelect>
+    </>
+  );
+};
+```
+
+Also, the `options` of the `o-select` can be set by setting the property `autocomplete-external` and by handling externally the `o-autocomplete-input` event which contains the value of the autocomplete input.
+
+```html preview
+<o-select class="select-autocomplete-external-select" autocomplete autocomplete-external> </o-select>
+
+<script>
+  const options = ['Matrix', 'Guardians of the Galaxy', 'Expendables', 'Iron Man', 'Spider-man', 'Rocky'];
+  const select = document.querySelector('.select-autocomplete-external-select');
+
+  const setOptions = inputValue => {
+    let optionsHtml = '';
+
+    options.forEach(o => {
+      if (o.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase())) {
+        optionsHtml = `${optionsHtml}
+          <o-option value="${o.split(' ').join('-').toLocaleLowerCase()}">${o}</o-option>`;
+      }
+    });
+
+    select.innerHTML = optionsHtml;
+  };
+
+  setOptions('');
+
+  select.addEventListener('o-autocomplete-input', ({ detail: { ref, value } }) => {
+    setOptions(value || '');
+  });
+</script>
+```
+
+```jsx react
+import { OSelect, OOption } from '%PACKAGE-FULL-PATH%/dist/react';
+import { useState } from 'react';
+
+const App = () => {
+  const options = ['Matrix', 'Guardians of the Galaxy', 'Expendables', 'Iron Man', 'Spider-man', 'Rocky'];
+
+  const getFilteredOptions = inputValue => {
+    const result = [];
+    options.forEach(o => {
+      if (o.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase())) {
+        result.push({
+          value: o.split(' ').join('-').toLocaleLowerCase(),
+          label: o
+        });
+      }
+    });
+
+    return result;
+  };
+
+  const handleAutocompleteInput = ({ detail: { value } }) => {
+    setFilteredOptions(getFilteredOptions(value));
+  };
+
+  const [filteredOptions, setFilteredOptions] = useState(getFilteredOptions(''));
+
+  return (
+    <OSelect autocomplete autocomplete-external onOAutocompleteInput={handleAutocompleteInput}>
+      {filteredOptions.map(({ value, label }) => (
+        <OOption key={value} value={value}>
+          {label}
+        </OOption>
+      ))}
+    </OSelect>
+  );
+};
+```
+
 [component-metadata:o-select]

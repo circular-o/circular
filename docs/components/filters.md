@@ -736,7 +736,7 @@ The extended class has to define the `type` property and the `render` function. 
 
 The `type` property can be a new type name or it can overwrite an existing one.
 
-The `render` function receives the filter configuration as the first parameter and it must return the filter element to render which can be one of the following types `typeof nothing` (nothing to show), `TemplateResult` (returned by the `html` function of [lit.dev](https://lit.dev/docs/api/templates/#html)) | `LibraryBaseElement` (%LIBRARY-NAME% base element class).
+The `render` function receives the filter configuration as the first parameter and it must return the filter element to render which can be one of the following types `typeof nothing` (nothing to show), `TemplateResult` (returned by the `html` function of [lit.dev](https://lit.dev/docs/api/templates/#html)), `LibraryBaseElement` (%LIBRARY-NAME% base element class).
 
 For more details please check the plugins already defined in the folder `/dist/components/filters/types-plugins/`.
 

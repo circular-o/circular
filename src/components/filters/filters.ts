@@ -25,7 +25,7 @@ const DATA_FILTER_NAME_ATTRIBUTE = 'data-filter-name';
  * @summary A component that renders a list of filters based on a JSON configuration.
  * @documentation https://circular-o.github.io/circular/#/components/filters
  * @status experimental
- * @since 1.5
+ * @since 1.6
  *
  * @dependency o-input
  * @dependency o-select
