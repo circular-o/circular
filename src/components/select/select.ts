@@ -1,4 +1,5 @@
 import '../icon/icon';
+import '../input/input';
 import '../popup/popup';
 import '../tag/tag';
 import { animateTo, stopAnimations } from '../../internal/animate';
@@ -18,6 +19,7 @@ import styles from './select.styles';
 import type { CSSResultGroup } from 'lit';
 import type { LibraryBaseFormControl } from '../../internal/library-base-element';
 import type { ORemoveEvent } from '../../events/events';
+import type OInput from '../input/input';
 import type OOption from '../option/option';
 import type OPopup from '../popup/popup';
 
@@ -28,6 +30,7 @@ import type OPopup from '../popup/popup';
  * @since 2.0
  *
  * @dependency o-icon
+ * @dependency o-input
  * @dependency o-popup
  * @dependency o-tag
  *
@@ -37,6 +40,8 @@ import type OPopup from '../popup/popup';
  * @slot clear-icon - An icon to use in lieu of the default clear icon.
  * @slot expand-icon - The icon to show when the control is expanded and collapsed. Rotates on open and close.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
+ * @slot options-prefix - Used to prepend any content to the options list.
+ * @slot options-suffix - Used to append any content to the options list.
  *
  * @event o-change - Emitted when the control's value changes.
  * @event o-clear - Emitted when the control's value is cleared.
@@ -48,6 +53,7 @@ import type OPopup from '../popup/popup';
  * @event o-hide - Emitted when the select's menu closes.
  * @event o-after-hide - Emitted after the select's menu closes and all animations are complete.
  * @event o-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
+ * @event {{ value: string; ref: OInput }} o-autocomplete-input - Emitted when the autocomplete control receives input.
  *
  * @csspart form-control - The form control that wraps the label, input, and help text.
  * @csspart form-control-label - The label's wrapper.
@@ -83,6 +89,7 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
   @query('.select__display-input') displayInput: HTMLInputElement;
   @query('.select__value-input') valueInput: HTMLInputElement;
   @query('.select__listbox') listbox: HTMLSlotElement;
+  @query('.autocomplete__input') autocompleteInput: OInput;
 
   @state() private hasFocus = false;
   @state() displayLabel = '';
@@ -168,6 +175,12 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
   /** The select's required attribute. */
   @property({ type: Boolean, reflect: true }) required = false;
 
+  /** Shows an input on top of the options list, it helps the user to filter the options while typing */
+  @property({ type: Boolean, reflect: true }) autocomplete = false;
+
+  /** When autocomplete and autocomplete-external are set, the options filtering has to be done externally, out of the component context */
+  @property({ type: Boolean, reflect: true, attribute: 'autocomplete-external' }) autocompleteExternal = false;
+
   /** Gets the validity state object */
   get validity() {
     return this.valueInput.validity;
@@ -229,6 +242,15 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
       return;
     }
 
+    // Ignore presses when the target is inside the options-prefix or options-suffix slot
+    // and there is no o-option inside the slot
+    const isInsideOptionsPrefix = target.closest('[slot="options-prefix"]') !== null;
+    const isInsideOptionsSuffix = target.closest('[slot="options-suffix"]') !== null;
+    // Check if the target is not in the slots and is not an o-option
+    if ((isInsideOptionsPrefix || isInsideOptionsSuffix) && target.closest('o-option') === null) {
+      return;
+    }
+
     // Close when pressing escape
     if (event.key === 'Escape' && this.open) {
       event.preventDefault();
@@ -274,7 +296,7 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
 
     // Navigate options
     if (['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) {
-      const allOptions = this.getAllOptions();
+      const allOptions = this.getAllOptions().filter(option => !option.hidden);
       const currentIndex = allOptions.indexOf(this.currentOption);
       let newIndex = Math.max(0, currentIndex);
 
@@ -292,12 +314,38 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
         }
       }
 
+      const focusAutocompleteInput = () => {
+        if (this.autocomplete && this.autocompleteInput) {
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+          window.setTimeout(() => {
+            this.autocompleteInput.focus();
+          }, 250);
+
+          return true;
+        }
+
+        return false;
+      };
+
       if (event.key === 'ArrowDown') {
         newIndex = currentIndex + 1;
-        if (newIndex > allOptions.length - 1) newIndex = 0;
+        if (newIndex > allOptions.length - 1) {
+          // If the autocomplete attribute is set, then at this point we want to focus the input so the user can type
+          // to select. If it's not set, then we want to focus the first option.
+          if (focusAutocompleteInput()) return;
+
+          newIndex = 0;
+        }
       } else if (event.key === 'ArrowUp') {
         newIndex = currentIndex - 1;
-        if (newIndex < 0) newIndex = allOptions.length - 1;
+        if (newIndex < 0) {
+          // If the autocomplete attribute is set, then at this point we want to focus the input so the user can type
+          // to select. If it's not set, then we want to focus the first option.
+          if (focusAutocompleteInput()) return;
+
+          newIndex = allOptions.length - 1;
+        }
       } else if (event.key === 'Home') {
         newIndex = 0;
       } else if (event.key === 'End') {
@@ -462,19 +510,48 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
     }
   }
 
+  private getOptionsInSlot(slotName: string): OOption[] {
+    const slot = this.querySelector(`[slot="${slotName}"]`);
+
+    // if slot is not defined, return an empty array
+    if (!slot) {
+      return [];
+    }
+
+    // if slot is defined, and it is an o-option itself, return an array with the slot
+    if (slot.tagName.toLowerCase() === 'o-option') {
+      return [slot as OOption];
+    }
+
+    // if slot is defined, and it is not an HTMLSlotElement nor an o-option, the select all the o-options inside the slot
+    return Array.from(slot.querySelectorAll<OOption>('o-option'));
+  }
+
   // Gets an array of all <o-option> elements
   private getAllOptions() {
-    return [...this.querySelectorAll<OOption>('o-option')];
+    const optionsInPrefixSlot = this.getOptionsInSlot('options-prefix');
+    const optionsInSuffixSlot = this.getOptionsInSlot('options-suffix');
+    const options = [...this.querySelectorAll<OOption>('o-option')];
+
+    // Filter from options the ones that are in the prefix or suffix slots
+    const optionsNotInPrefixOrSuffixSlot = options.filter(
+      (option: OOption) => !optionsInPrefixSlot.includes(option) && !optionsInSuffixSlot.includes(option)
+    );
+
+    // Select all options except the ones having the attribute slot="options-prefix" or slot="options-suffix"
+    return [...optionsInPrefixSlot, ...optionsNotInPrefixOrSuffixSlot, ...optionsInSuffixSlot];
   }
 
   // Gets the first <o-option> element
   private getFirstOption() {
+    const optionsInPrefixSlot = this.getOptionsInSlot('options-prefix');
+    if (optionsInPrefixSlot.length) return optionsInPrefixSlot[0];
     return this.querySelector<OOption>('o-option');
   }
 
   // Sets the current option, which is the option the user is currently interacting with (e.g. via keyboard). Only one
   // option may be "current" at a time.
-  private setCurrentOption(option: OOption | null) {
+  private setCurrentOption(option: OOption | null, { focus = true } = {}) {
     const allOptions = this.getAllOptions();
 
     // Clear selection
@@ -488,7 +565,7 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
       this.currentOption = option;
       option.current = true;
       option.tabIndex = 0;
-      option.focus();
+      if (focus) option.focus();
     }
   }
 
@@ -552,6 +629,131 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
     this.formControlController.emitInvalidEvent(event);
   }
 
+  private handleAutocompleteInput(event: KeyboardEvent) {
+    if (event.type === 'keydown') {
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      if (['ArrowUp', 'ArrowDown'].includes(event.key)) {
+        event.preventDefault();
+      }
+      return;
+    }
+
+    const allOptions = this.getAllOptions();
+
+    // Navigate options
+    if (['ArrowUp', 'ArrowDown'].includes(event.key)) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+
+      const allVisibleOptions = allOptions.filter(option => !option.hidden);
+
+      // If there are no visible options, do nothing
+      if (allVisibleOptions.length === 0) {
+        return;
+      }
+
+      const currentIndex = allVisibleOptions.indexOf(this.currentOption);
+      let newIndex = Math.max(0, currentIndex);
+
+      if (event.key === 'ArrowDown') {
+        newIndex = currentIndex + 1;
+        if (newIndex > allVisibleOptions.length - 1) newIndex = 0;
+      } else if (event.key === 'ArrowUp') {
+        newIndex = currentIndex - 1;
+        if (newIndex < 0) newIndex = allVisibleOptions.length - 1;
+      }
+
+      // Avoid negative indexes
+      newIndex = Math.max(0, newIndex);
+
+      this.setCurrentOption(allVisibleOptions[newIndex], { focus: false });
+      return;
+    }
+
+    // Close when pressing escape
+    if (event.key === 'Escape') {
+      this.hide();
+      this.displayInput.focus({ preventScroll: true });
+    }
+
+    // Handle enter and space. When pressing space, we allow for type to select behaviors so if there's anything in the
+    // buffer we _don't_ close it.
+    if (event.key === 'Enter') {
+      this.handleDocumentKeyDown(event);
+      return;
+    }
+
+    // If autocomplete is external, do nothing
+    if (this.autocompleteExternal) {
+      return;
+    }
+
+    // Handle value changes
+    const currentAutocompleteInputValue = this.autocompleteInput.value ?? '';
+    allOptions.forEach(el => {
+      el.hidden = !el.getTextLabel().toLocaleLowerCase().includes(currentAutocompleteInputValue.toLocaleLowerCase());
+    });
+
+    // Get the current option and check if it's visible, otherwise select the first visible option
+    const allVisibleOptions = allOptions.filter(option => !option.hidden);
+    // If there are no visible options, do nothing
+    if (allVisibleOptions.length === 0) {
+      this.setCurrentOption(null, { focus: false });
+      return;
+    }
+
+    const currentIndex = allVisibleOptions.indexOf(this.currentOption);
+    const currentOptionIsVisible = currentIndex !== -1;
+    if (!currentOptionIsVisible) {
+      this.setCurrentOption(allVisibleOptions[0], { focus: false });
+    }
+  }
+
+  private autocompleteInputEventTimer: number | null = null;
+  private dispatchAutocompleteInputEvent() {
+    if (this.autocompleteInputEventTimer) {
+      clearTimeout(this.autocompleteInputEventTimer);
+    }
+
+    this.autocompleteInputEventTimer = window.setTimeout(() => {
+      this.dispatchEvent(
+        new CustomEvent('o-autocomplete-input', {
+          detail: { ref: this.autocompleteInput, value: this.autocompleteInput.value }
+        })
+      );
+    }, 100);
+  }
+
+  private autocompleteExternalSelectOption() {
+    const doAutocompleteExternalSelectOption = this.autocomplete && this.autocompleteExternal && this.open;
+
+    if (!doAutocompleteExternalSelectOption) {
+      return;
+    }
+
+    // If there is no current option, select the first one
+    if (!this.currentOption) {
+      window.setTimeout(() => {
+        this.setCurrentOption(this.getFirstOption());
+        this.autocompleteInput.focus();
+      }, 100);
+      return;
+    }
+
+    window.setTimeout(() => {
+      const allOptions = this.getAllOptions();
+      const currentIndex = allOptions.indexOf(this.currentOption);
+
+      // If the current option is not in the list, select the first one
+      if (currentIndex === -1) {
+        this.setCurrentOption(allOptions[0]);
+        this.autocompleteInput.focus();
+      }
+    }, 100);
+  }
+
   @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
     // Close the listbox when the control is disabled
@@ -595,6 +797,11 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
       // Make sure the current option is scrolled into view (required for Safari)
       if (this.currentOption) {
         scrollIntoView(this.currentOption, this.listbox, 'vertical', 'auto');
+      }
+
+      // Focus the input if autocomplete is enabled
+      if (this.autocomplete && this.autocompleteInput) {
+        this.autocompleteInput.focus();
       }
 
       this.emit('o-after-show');
@@ -674,6 +881,9 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
     const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
     const isPlaceholderVisible = this.placeholder && this.value.length === 0;
 
+    // Select the current option after an external change when autocomplete-external is enabled
+    this.autocompleteExternalSelectOption();
+
     return html`
       <div
         part="form-control"
@@ -712,7 +922,8 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
               'select--bottom': this.placement === 'bottom',
               'select--small': this.size === 'small',
               'select--medium': this.size === 'medium',
-              'select--large': this.size === 'large'
+              'select--large': this.size === 'large',
+              'select--has-autocomplete': this.autocomplete
             })}
             placement=${this.placement}
             strategy=${this.hoist ? 'fixed' : 'absolute'}
@@ -828,12 +1039,34 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
               aria-multiselectable=${this.multiple ? 'true' : 'false'}
               aria-labelledby="label"
               part="listbox"
-              class="select__listbox"
+              class=${classMap({
+                select__listbox: true,
+                'with-autocomplete': this.autocomplete,
+                'with-autocomplete--multiple': this.multiple,
+                'with-autocomplete--small': this.autocomplete && this.size === 'small',
+                'with-autocomplete--medium': this.autocomplete && this.size === 'medium',
+                'with-autocomplete--large': this.autocomplete && this.size === 'large'
+              })}
               tabindex="-1"
               @mouseup=${this.handleOptionClick}
               @slotchange=${this.handleDefaultSlotChange}
             >
+              ${this.autocomplete
+                ? html`<o-input
+                    part="autocomplete-input"
+                    data-input-name="select-autocomplete-input"
+                    class="autocomplete__input"
+                    clearable
+                    @keyup=${this.handleAutocompleteInput}
+                    @keydown=${this.handleAutocompleteInput}
+                    @o-input=${this.dispatchAutocompleteInputEvent}
+                    @o-clear=${this.handleAutocompleteInput}
+                    .size=${this.size}
+                  ></o-input>`
+                : ''}
+              <slot name="options-prefix"></slot>
               <slot></slot>
+              <slot name="options-suffix"></slot>
             </div>
           </o-popup>
         </div>

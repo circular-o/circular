@@ -64,9 +64,9 @@ export default css`
     -webkit-appearance: none;
   }
 
-  // .select:not(.select--disabled):hover .select__display-input {
-  //   color: var(--o-input-color-hover);
-  // }
+  /*.select:not(.select--disabled):hover .select__display-input {
+    color: var(--o-input-color-hover);
+  }*/
 
   .select__display-input:focus {
     outline: none;
@@ -136,7 +136,7 @@ export default css`
     background-color: var(--o-input-background-color-focus);
     border-color: var(--o-input-border-color-focus);
     border-width: var(--o-input-border-width-medium);
-    // box-shadow: 0 0 0 var(--o-focus-ring-width) var(--o-input-focus-ring-color);
+    /* box-shadow: 0 0 0 var(--o-focus-ring-width) var(--o-input-focus-ring-color); */
   }
 
   /* Filled selects */
@@ -326,5 +326,35 @@ export default css`
     color: var(--o-color-neutral-500);
     padding-block: var(--o-spacing-x-small);
     padding-inline: var(--o-spacing-x-large);
+  }
+
+  /* Autocomplete */
+  .select__listbox.with-autocomplete {
+    padding-top: 0;
+  }
+
+  .select__listbox {
+    --autocomplete-popup-top: calc(-1 * var(--o-input-height-medium));
+  }
+
+  .with-autocomplete.with-autocomplete--small {
+    --autocomplete-popup-top: calc(-1 * var(--o-input-height-small));
+  }
+
+  .with-autocomplete.with-autocomplete--large {
+    --autocomplete-popup-top: calc(-1 * var(--o-input-height-large));
+  }
+
+  .select.select--has-autocomplete[data-current-placement='bottom'] .select__listbox.with-autocomplete {
+    top: calc(var(--autocomplete-popup-top) - 2px);
+  }
+
+  .select.select--has-autocomplete[data-current-placement='bottom']
+    .select__listbox.with-autocomplete.with-autocomplete--multiple {
+    top: calc(var(--autocomplete-popup-top) - 3px);
+  }
+
+  .select--standard:not(.select--disabled).select--open.select--has-autocomplete .select__combobox {
+    border-color: var(--o-input-border-color);
   }
 `;

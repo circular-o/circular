@@ -4,6 +4,7 @@ import { runFormControlBaseTests } from '../../internal/test/form-control-base-t
 import { sendKeys } from '@web/test-runner-commands';
 import { serialize } from '../../utilities/form';
 import sinon from 'sinon';
+import type LibraryBaseElement from '../../internal/library-base-element';
 import type OOption from '../option/option';
 import type OSelect from './select';
 
@@ -99,13 +100,13 @@ describe('<o-select>', () => {
       </o-select>
     `);
     const label = el.shadowRoot!.querySelector('[part~="form-control-label"]')!;
-    const submitHandler = sinon.spy();
+    const focusHandler = sinon.spy();
 
-    el.addEventListener('o-focus', submitHandler);
+    el.addEventListener('o-focus', focusHandler);
     (label as HTMLLabelElement).click();
-    await waitUntil(() => submitHandler.calledOnce);
+    await waitUntil(() => focusHandler.calledOnce);
 
-    expect(submitHandler).to.have.been.calledOnce;
+    expect(focusHandler).to.have.been.calledOnce;
   });
 
   describe('when the value changes', () => {
@@ -590,6 +591,415 @@ describe('<o-select>', () => {
     const tag = el.shadowRoot!.querySelector('[part~="tag"]')!;
 
     expect(tag.hasAttribute('pill')).to.be.true;
+  });
+
+  const pressKey = async (key: string, el: LibraryBaseElement) => {
+    await sendKeys({ press: key });
+    await el.updateComplete;
+  };
+
+  const testOptionsNavigation = (option: OOption, el: OSelect) => {
+    expect(option).to.equal(el.currentOption);
+
+    if (el.autocomplete) {
+      // If autocomplete is set, the active element should be the autocomplete input
+      const autocompleteInput = el.shadowRoot!.querySelector('[part~="autocomplete-input"]')!;
+      expect(el.shadowRoot!.activeElement).to.equal(autocompleteInput);
+    }
+  };
+
+  describe('when using autocomplete', () => {
+    it('should not have autocomplete input if autocomplete is not set', async () => {
+      const el = await fixture<OSelect>(html` <o-select> </o-select> `);
+      const autocompleteInput = el.shadowRoot!.querySelector('[part~="autocomplete-input"]')!;
+      expect(autocompleteInput).to.be.null;
+    });
+
+    it('should have autocomplete input if autocomplete is set', async () => {
+      const el = await fixture<OSelect>(html` <o-select autocomplete></o-select> `);
+
+      const autocompleteInput = el.shadowRoot!.querySelector('[part~="autocomplete-input"]')!;
+      expect(autocompleteInput).to.be.not.null;
+    });
+
+    it('should have autocomplete input focused when opens the listbox', async () => {
+      const el = await fixture<OSelect>(html` <o-select autocomplete></o-select> `);
+      const autocompleteInput = el.shadowRoot!.querySelector('[part~="autocomplete-input"]')!;
+
+      await el.show();
+      await el.updateComplete;
+      // Wait for 300 milliseconds for the listbox to open and the input to be focused
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      expect(el.shadowRoot!.activeElement).to.equal(autocompleteInput);
+    });
+
+    const testAutocompleteFiltering = async (el: OSelect, { external = false } = {}) => {
+      await el.show();
+      // Wait for 300 milliseconds for the listbox to open and the input to be focused
+      await new Promise(resolve => setTimeout(resolve, 300));
+      await sendKeys({ type: 'm' });
+
+      const options = el.querySelectorAll<OOption>('o-option');
+      expect(options.length).to.equal(3);
+
+      if (external) {
+        expect(options[0].hidden).to.be.false;
+        expect(options[1].hidden).to.be.false;
+        expect(options[2].hidden).to.be.false;
+      } else {
+        expect(options[0].hidden).to.be.true;
+        expect(options[1].hidden).to.be.false;
+        expect(options[2].hidden).to.be.true;
+      }
+    };
+
+    it('should filter the list of options when typing on the autocomplete input', async () => {
+      const el = await fixture<OSelect>(html`
+        <o-select autocomplete>
+          <o-option value="option-1">Option 1</o-option>
+          <o-option value="matrix">Matrix</o-option>
+          <o-option value="option-3">Option 3</o-option>
+        </o-select>
+      `);
+
+      await testAutocompleteFiltering(el);
+    });
+
+    it('should not filter the list of options when typing on the autocomplete input and autocomplete-external is set', async () => {
+      const el = await fixture<OSelect>(html`
+        <o-select autocomplete autocomplete-external>
+          <o-option value="option-1">Option 1</o-option>
+          <o-option value="matrix">Matrix</o-option>
+          <o-option value="option-3">Option 3</o-option>
+        </o-select>
+      `);
+
+      await testAutocompleteFiltering(el, { external: true });
+    });
+
+    it('should dispatch the o-autocomplete-input event when typing on the autocomplete input', async () => {
+      const el = await fixture<OSelect>(html`<o-select autocomplete autocomplete-external></o-select>`);
+
+      // Inspect if the event is dispatched
+      const autocompleteInputHandler = sinon.spy();
+      el.addEventListener('o-autocomplete-input', autocompleteInputHandler);
+
+      await el.show();
+      // Wait for 300 milliseconds for the listbox to open and the input to be focused
+      await new Promise(resolve => setTimeout(resolve, 300));
+      await sendKeys({ type: 'm' });
+      // Wait for 300 milliseconds for the event to be dispatched
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      expect(autocompleteInputHandler).to.have.been.calledOnce;
+    });
+
+    it('should focus the autocomplete input and select the first option after an autocomplete external update', async () => {
+      const el = await fixture<OSelect>(html`<o-select autocomplete autocomplete-external></o-select>`);
+
+      // Inspect if the event is dispatched
+      el.addEventListener('o-autocomplete-input', () => {
+        el.innerHTML = `
+          <o-option value="matrix">Matrix</o-option>
+        `;
+      });
+
+      await el.show();
+      // Wait for 300 milliseconds for the listbox to open and the input to be focused
+      await new Promise(resolve => setTimeout(resolve, 300));
+      await sendKeys({ type: 'm' });
+      // Wait for 300 milliseconds for the event to be dispatched
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      const autocompleteInput = el.shadowRoot!.querySelector('[part~="autocomplete-input"]')!;
+      expect(el.shadowRoot!.activeElement).to.equal(autocompleteInput);
+
+      const option = el.querySelector<OOption>('o-option');
+      expect(option?.current).to.be.true;
+      expect(option).to.equal(el.currentOption);
+    });
+
+    it('should navigate the autocomplete input when using the arrows keys', async () => {
+      const el = await fixture<OSelect>(html`
+        <o-select autocomplete>
+          <o-option value="first">First option</o-option>
+          <o-option value="last">Last option</o-option>
+        </o-select>
+      `);
+
+      const options = el.querySelectorAll<OOption>('o-option');
+      const FIRST_OPTION = options[0];
+      const LAST_OPTION = options[1];
+
+      await el.show();
+      // Wait for 300 milliseconds for the listbox to open and the input to be focused
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // First option should be the current one
+      testOptionsNavigation(FIRST_OPTION, el);
+
+      // Focus the last option
+      await pressKey('ArrowDown', el);
+      // Last option should be the current one
+      testOptionsNavigation(LAST_OPTION, el);
+
+      // Focus the first option again
+      await pressKey('ArrowDown', el);
+      testOptionsNavigation(FIRST_OPTION, el);
+
+      // Focus the last option
+      await pressKey('ArrowUp', el);
+      // Last option should be the current one
+      testOptionsNavigation(LAST_OPTION, el);
+
+      // Focus the first option again
+      await pressKey('ArrowUp', el);
+      testOptionsNavigation(FIRST_OPTION, el);
+    });
+  });
+
+  describe('when options-prefix and options-suffix slots are used', () => {
+    it('should render the options prefix and suffix slots', async () => {
+      const el = await fixture<OSelect>(html`
+        <o-select>
+          <span slot="options-prefix">prefix</span>
+          <span slot="options-suffix">suffix</span>
+        </o-select>
+      `);
+
+      const prefix = el.querySelector('[slot="options-prefix"]')!;
+      const suffix = el.querySelector('[slot="options-suffix"]')!;
+
+      expect(prefix).to.be.visible;
+      expect(suffix).to.be.visible;
+    });
+
+    it('should render the options prefix and suffix slots when using the autocomplete', async () => {
+      const el = await fixture<OSelect>(html`
+        <o-select autocomplete>
+          <span slot="options-prefix">prefix</span>
+          <span slot="options-suffix">suffix</span>
+        </o-select>
+      `);
+
+      const prefix = el.querySelector('[slot="options-prefix"]')!;
+      const suffix = el.querySelector('[slot="options-suffix"]')!;
+
+      expect(prefix).to.be.visible;
+      expect(suffix).to.be.visible;
+    });
+
+    const getOption = (value: string, el: OSelect) => el.querySelector<OOption>(`o-option[value="${value}"]`)!;
+
+    it('should navigate the options in order, prefix <-> options <-> suffix', async () => {
+      const el = await fixture<OSelect>(html`
+        <o-select>
+          <o-option value="matrix">Matrix</o-option>
+          <o-option value="suffix" slot="options-suffix">suffix option</o-option>
+          <o-option value="prefix" slot="options-prefix">prefix option</o-option>
+        </o-select>
+      `);
+
+      const firstOption = () => getOption('prefix', el);
+      const secondOption = () => getOption('matrix', el);
+      const lastOption = () => getOption('suffix', el);
+
+      await el.show();
+      // Wait for 300 milliseconds for the listbox to open and the input to be focused
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // First option should be the current one
+      testOptionsNavigation(firstOption(), el);
+
+      // Focus the second option
+      await pressKey('ArrowDown', el);
+      // Second option should be the current one
+      testOptionsNavigation(secondOption(), el);
+
+      // Focus the last option
+      await pressKey('ArrowDown', el);
+      // Last option should be the current one
+      testOptionsNavigation(lastOption(), el);
+
+      // Focus the first option
+      await pressKey('ArrowDown', el);
+      // First option should be the current one
+      testOptionsNavigation(firstOption(), el);
+
+      // Focus the last option
+      await pressKey('ArrowUp', el);
+      // Last option should be the current one
+      testOptionsNavigation(lastOption(), el);
+
+      // Focus the second option
+      await pressKey('ArrowUp', el);
+      // Second option should be the current one
+      testOptionsNavigation(secondOption(), el);
+
+      // Focus the first option
+      await pressKey('ArrowUp', el);
+      // First option should be the current one
+      testOptionsNavigation(firstOption(), el);
+
+      // Focus the last option
+      await pressKey('ArrowUp', el);
+      // Last option should be the current one
+      testOptionsNavigation(lastOption(), el);
+    });
+
+    it('should navigate the options in order, prefix <-> options <-> suffix when using the autocomplete', async () => {
+      const el = await fixture<OSelect>(html`
+        <o-select autocomplete>
+          <o-option value="matrix">Matrix</o-option>
+          <o-option value="suffix" slot="options-suffix">suffix option</o-option>
+          <o-option value="prefix" slot="options-prefix">prefix option</o-option>
+        </o-select>
+      `);
+
+      const firstOption = () => getOption('prefix', el);
+      const secondOption = () => getOption('matrix', el);
+      const lastOption = () => getOption('suffix', el);
+
+      await el.show();
+      // Wait for 300 milliseconds for the listbox to open and the input to be focused
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // First option should be the current one
+      testOptionsNavigation(firstOption(), el);
+
+      // Focus the second option
+      await pressKey('ArrowDown', el);
+      // Second option should be the current one
+      testOptionsNavigation(secondOption(), el);
+
+      // Focus the last option
+      await pressKey('ArrowDown', el);
+      // Last option should be the current one
+      testOptionsNavigation(lastOption(), el);
+
+      // Focus the first option
+      await pressKey('ArrowDown', el);
+      // First option should be the current one
+      testOptionsNavigation(firstOption(), el);
+
+      // Focus the last option
+      await pressKey('ArrowUp', el);
+      // Last option should be the current one
+      testOptionsNavigation(lastOption(), el);
+
+      // Focus the second option
+      await pressKey('ArrowUp', el);
+      // Second option should be the current one
+      testOptionsNavigation(secondOption(), el);
+
+      // Focus the first option
+      await pressKey('ArrowUp', el);
+      // First option should be the current one
+      testOptionsNavigation(firstOption(), el);
+
+      // Focus the last option
+      await pressKey('ArrowUp', el);
+      // Last option should be the current one
+      testOptionsNavigation(lastOption(), el);
+    });
+
+    it('should navigate the options in order, prefix <-> options <-> suffix when using the autocomplete and the options are filtered', async () => {
+      const el = await fixture<OSelect>(html`
+        <o-select autocomplete>
+          <o-option value="matrix">Matrix</o-option>
+          <o-option value="suffix" slot="options-suffix">suffix option</o-option>
+          <o-option value="prefix" slot="options-prefix">prefix option</o-option>
+        </o-select>
+      `);
+
+      const prefixOption = () => getOption('prefix', el);
+      const suffixOption = () => getOption('suffix', el);
+
+      await el.show();
+      // Wait for 300 milliseconds for the listbox to open and the input to be focused
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // Prefix option should be the current one
+      testOptionsNavigation(prefixOption(), el);
+
+      // Filter the options
+      await pressKey('o', el);
+      await pressKey('p', el);
+
+      // Prefix option should be the current one
+      testOptionsNavigation(prefixOption(), el);
+
+      // Focus the suffix option
+      await pressKey('ArrowDown', el);
+      // Suffix option should be the current one
+      testOptionsNavigation(suffixOption(), el);
+
+      // Focus the prefix option
+      await pressKey('ArrowDown', el);
+      // Prefix option should be the current one
+      testOptionsNavigation(prefixOption(), el);
+
+      // Focus the suffix option
+      await pressKey('ArrowUp', el);
+      // Suffix option should be the current one
+      testOptionsNavigation(suffixOption(), el);
+
+      // Focus the prefix option
+      await pressKey('ArrowUp', el);
+      // Prefix option should be the current one
+      testOptionsNavigation(prefixOption(), el);
+    });
+
+    it('should interact with elements placed in the prefix and suffix slots', async () => {
+      const el = await fixture<OSelect>(html`
+        <o-select autocomplete>
+          <o-option value="matrix">Matrix</o-option>
+          <div slot="options-suffix">
+            <o-input></o-input>
+            <o-button>suffix button</o-button>
+          </div>
+          <o-option value="prefix" slot="options-prefix">prefix option</o-option>
+        </o-select>
+      `);
+
+      const input = el.querySelector('o-input')!;
+      const button = el.querySelector('o-button')!;
+      const prefixOption = getOption('prefix', el);
+
+      // spy the event o-change on the input
+      const inputChangeSpy = sinon.spy();
+      input.addEventListener('o-change', inputChangeSpy);
+      // spy the event click on the button
+      const buttonClickSpy = sinon.spy();
+      button.addEventListener('click', buttonClickSpy);
+      // spy the event click on the prefix option
+      const prefixOptionClickSpy = sinon.spy();
+      prefixOption.addEventListener('click', prefixOptionClickSpy);
+
+      await el.show();
+      // Wait for 300 milliseconds for the listbox to open and the input to be focused
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // Send keys to the input
+      input.focus();
+      await pressKey('8', input);
+      await pressKey('9', input);
+      await pressKey('3', input);
+      await pressKey('1', input);
+      await pressKey('Enter', input);
+
+      expect(inputChangeSpy).to.have.been.calledOnce;
+      expect(input.value).to.equal('8931');
+
+      // Click the button
+      button.click();
+      expect(buttonClickSpy).to.have.been.calledOnce;
+
+      // Click the prefix option
+      prefixOption.click();
+      expect(prefixOptionClickSpy).to.have.been.calledOnce;
+    });
   });
 
   runFormControlBaseTests('o-select');
