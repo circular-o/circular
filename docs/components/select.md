@@ -705,6 +705,22 @@ const App = () => {
       </OSelect>
       <br />
 
+      <OSelect placeholder="Options as options prefix and suffix with autocomplete" autocomplete>
+        {options.slice(0, 3).map(({ value, label }) => (
+          <OOption key={value} value={value}>
+            {label}
+          </OOption>
+        ))}
+
+        <OOption value="suffix-option" slot="options-suffix">
+          I'm a suffix option
+        </OOption>
+        <OOption value="prefix-option" slot="options-prefix">
+          I'm a prefix option
+        </OOption>
+      </OSelect>
+      <br />
+
       <OSelect placeholder="Other elements as options prefix and suffix">
         {options.slice(3).map(({ value, label }) => (
           <OOption key={value} value={value}>

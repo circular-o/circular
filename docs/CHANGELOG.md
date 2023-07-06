@@ -1,3 +1,9 @@
+# [1.6.0-next.7](https://github.com/circular-o/circular/compare/v1.6.0-next.6...v1.6.0-next.7) (2023-07-06)
+
+### Features
+
+- **select:** Adds autocomplete functionality ([53aaaff](https://github.com/circular-o/circular/commit/53aaaff2d377bb1f84b30b031c1d9e21ed477007))
+
 # [1.6.0-next.6](https://github.com/circular-o/circular/compare/v1.6.0-next.5...v1.6.0-next.6) (2023-07-06)
 
 ### Features
