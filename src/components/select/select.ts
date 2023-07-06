@@ -593,6 +593,9 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
     if (event.type === 'keydown') {
       event.stopPropagation();
       event.stopImmediatePropagation();
+      if (['ArrowUp', 'ArrowDown'].includes(event.key)) {
+        event.preventDefault();
+      }
       return;
     }
 
@@ -600,6 +603,10 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
 
     // Navigate options
     if (['ArrowUp', 'ArrowDown'].includes(event.key)) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+
       const allVisibleOptions = allOptions.filter(option => !option.hidden);
 
       // If there are no visible options, do nothing
@@ -621,10 +628,7 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
       // Avoid negative indexes
       newIndex = Math.max(0, newIndex);
 
-      event.preventDefault();
-      event.stopPropagation();
-
-      this.setCurrentOption(allVisibleOptions[newIndex]);
+      this.setCurrentOption(allVisibleOptions[newIndex], { focus: false });
       return;
     }
 
@@ -1016,6 +1020,7 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
                     @keyup=${this.handleAutocompleteInput}
                     @keydown=${this.handleAutocompleteInput}
                     @o-input=${this.dispatchAutocompleteInputEvent}
+                    @o-clear=${this.handleAutocompleteInput}
                     .size=${this.size}
                   ></o-input>`
                 : ''}
