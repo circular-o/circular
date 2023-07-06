@@ -322,9 +322,9 @@
   --o-button-font-size-large: var(--o-font-size-large);
 
   /* Inputs */
-  --o-input-height-small: 2.5rem; /* 40px */
-  --o-input-height-medium: 3rem; /* 48px */
-  --o-input-height-large: 3.5rem; /* 56px */
+  --o-input-height-small: 3rem; /* 48px */
+  --o-input-height-medium: 3.5rem; /* 56px */
+  --o-input-height-large: 4rem; /* 64px */
 
   --o-input-background-color: var(--o-color-neutral-0);
   --o-input-background-color-hover: var(--o-color-neutral-0);

@@ -317,7 +317,9 @@ export default css`
   .button--text {
     background-color: transparent;
     border-color: transparent;
-    color: var(--o-color-primary-600);
+    color: var(--o-color-neutral-1000);
+    text-decoration: underline;
+    text-underline-offset: 5px;
   }
 
   .button--text:hover:not(.button--disabled) {
