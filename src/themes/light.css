@@ -193,6 +193,19 @@
   --o-color-neutral-900: var(--o-color-CW-900);
   --o-color-neutral-950: var(--o-color-CW-950);
 
+  /* Canvas */
+  --o-color-canvas-50: var(--o-color-GR-50);
+  --o-color-canvas-100: var(--o-color-GR-100);
+  --o-color-canvas-200: var(--o-color-GR-200);
+  --o-color-canvas-300: var(--o-color-GR-300);
+  --o-color-canvas-400: var(--o-color-GR-400);
+  --o-color-canvas-500: var(--o-color-GR-500);
+  --o-color-canvas-600: var(--o-color-GR-600);
+  --o-color-canvas-700: var(--o-color-GR-700);
+  --o-color-canvas-800: var(--o-color-GR-800);
+  --o-color-canvas-900: var(--o-color-GR-900);
+  --o-color-canvas-950: var(--o-color-GR-950);
+
   /* Neutral one-offs */
   --o-color-neutral-0: hsl(0, 0%, 100%);
   --o-color-neutral-1000: hsl(0, 0%, 0%);

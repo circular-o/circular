@@ -100,6 +100,24 @@ Theme tokens give you a semantic way to reference colors in your app. The primar
 
 <div class="color-palette">
   <div class="color-palette__name">
+    Canvas<br>
+    <code>--o-color-canvas-<em>{n}</em></code>
+  </div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-canvas-50);"></div>50</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-canvas-100);"></div>100</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-canvas-200);"></div>200</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-canvas-300);"></div>300</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-canvas-400);"></div>400</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-canvas-500);"></div>500</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-canvas-600);"></div>600</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-canvas-700);"></div>700</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-canvas-800);"></div>800</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-canvas-900);"></div>900</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-canvas-950);"></div>950</div>
+</div>
+
+<div class="color-palette">
+  <div class="color-palette__name">
     Black & White<br>
     <code>--o-color-neutral-<em>{n}</em></code>
   </div>
