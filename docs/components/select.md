@@ -578,4 +578,210 @@ const App = () => {
 };
 ```
 
+### Options prefix & suffix
+
+By using the `options-prefix` and `options-prefix` slots, you can prepend or append any content to the options list.
+
+```html preview
+<o-select placeholder="Options as options prefix and suffix">
+  <o-option value="matrix">Matrix</o-option>
+  <o-option value="guardians-of-the-galaxy">Guardians of the Galaxy</o-option>
+  <o-option value="expendables">Expendables</o-option>
+
+  <o-option value="suffix-option" slot="options-suffix">I'm a suffix option</o-option>
+  <o-option value="prefix-option" slot="options-prefix">I'm a prefix option</o-option>
+</o-select>
+<br />
+
+<o-select placeholder="Options as options prefix and suffix with autocomplete" autocomplete>
+  <o-option value="matrix">Matrix</o-option>
+  <o-option value="guardians-of-the-galaxy">Guardians of the Galaxy</o-option>
+  <o-option value="expendables">Expendables</o-option>
+
+  <o-option value="suffix-option" slot="options-suffix">I'm a suffix option</o-option>
+  <o-option value="prefix-option" slot="options-prefix">I'm a prefix option</o-option>
+</o-select>
+<br />
+
+<o-select placeholder="Other elements as options prefix and suffix">
+  <o-option value="iron-man">Iron Man</o-option>
+  <o-option value="spider-man">Spider-man</o-option>
+  <o-option value="rocky">Rocky</o-option>
+
+  <o-button slot="options-suffix">I'm a suffix button</o-button>
+  <o-input placeholder="I'm a prefix o-input" slot="options-prefix"></o-input>
+</o-select>
+<br />
+
+<o-select placeholder="Mix elements inside options prefix and suffix">
+  <o-option value="matrix">Matrix</o-option>
+  <o-option value="guardians-of-the-galaxy">Guardians of the Galaxy</o-option>
+  <o-option value="expendables">Expendables</o-option>
+
+  <div slot="options-prefix">
+    <o-option value="prefix-option">I'm a prefix option</o-option>
+    <o-input placeholder="I'm a prefix o-input" style="--o-input-border-radius-medium: 0"></o-input>
+    <o-divider style="--spacing: 4px"></o-divider>
+  </div>
+
+  <div slot="options-suffix">
+    <o-divider style="--spacing: 4px"></o-divider>
+    <o-button style="--o-input-border-radius-medium: 0; width: 100%" square>I'm a suffix button</o-button>
+    <o-option value="suffix-option">I'm a suffix option</o-option>
+  </div>
+</o-select>
+<br />
+
+<o-select class="select-options-prefix-suffix" placeholder="Interacting with the options prefix and suffix elements">
+  <o-option value="iron-man">Iron Man</o-option>
+  <o-option value="spider-man">Spider-man</o-option>
+  <o-option value="rocky">Rocky</o-option>
+</o-select>
+
+<script>
+  const select = document.querySelector('.select-options-prefix-suffix');
+
+  // Options Prefix
+  const optionsPrefixButton = document.createElement('o-button');
+  optionsPrefixButton.innerHTML = 'Create option';
+  optionsPrefixButton.square = true;
+  optionsPrefixButton.setAttribute('slot', 'options-prefix');
+  optionsPrefixButton.setAttribute('style', '--o-input-border-radius-medium: 0; width: 100%');
+  optionsPrefixButton.addEventListener('click', () => {
+    alert('Options prefix button clicked!');
+  });
+
+  // Options Suffix
+  const optionsSuffixDiv = document.createElement('div');
+  optionsSuffixDiv.setAttribute('slot', 'options-suffix');
+
+  const suffixOption = document.createElement('o-option');
+  suffixOption.value = 'suffix-option';
+  suffixOption.innerHTML = 'Suffix option (Click me!)';
+  suffixOption.addEventListener('click', () => {
+    alert('Options suffix o-option clicked!');
+  });
+
+  const suffixInput = document.createElement('o-input');
+  suffixInput.setAttribute('placeholder', 'Suffix input');
+  suffixInput.addEventListener('o-change', () => {
+    const msg = `Options suffix o-input changed! (value: ${suffixInput.value})`;
+    alert(msg);
+  });
+
+  optionsSuffixDiv.append(suffixOption);
+  optionsSuffixDiv.append(suffixInput);
+
+  // Appending to o-select
+  select.append(optionsPrefixButton);
+  select.append(optionsSuffixDiv);
+</script>
+```
+
+```jsx react
+import { OSelect, OOption, OButton, OInput } from '%PACKAGE-FULL-PATH%/dist/react';
+
+const App = () => {
+  const options = ['Matrix', 'Guardians of the Galaxy', 'Expendables', 'Iron Man', 'Spider-man', 'Rocky'].map(o => ({
+    value: o.split(' ').join('-').toLocaleLowerCase(),
+    label: o
+  }));
+
+  return (
+    <>
+      <OSelect placeholder="Options as options prefix and suffix">
+        {options.slice(0, 3).map(({ value, label }) => (
+          <OOption key={value} value={value}>
+            {label}
+          </OOption>
+        ))}
+
+        <OOption value="suffix-option" slot="options-suffix">
+          I'm a suffix option
+        </OOption>
+        <OOption value="prefix-option" slot="options-prefix">
+          I'm a prefix option
+        </OOption>
+      </OSelect>
+      <br />
+
+      <OSelect placeholder="Other elements as options prefix and suffix">
+        {options.slice(3).map(({ value, label }) => (
+          <OOption key={value} value={value}>
+            {label}
+          </OOption>
+        ))}
+
+        <o-button slot="options-suffix">I'm a suffix button</o-button>
+        <o-input placeholder="I'm a prefix o-input" slot="options-prefix"></o-input>
+      </OSelect>
+      <br />
+
+      <OSelect placeholder="Mix elements inside options prefix and suffix">
+        {options.slice(0, 3).map(({ value, label }) => (
+          <OOption key={value} value={value}>
+            {label}
+          </OOption>
+        ))}
+
+        <div slot="options-prefix">
+          <OOption value="prefix-option">I'm a prefix option</OOption>
+          <o-input placeholder="I'm a prefix o-input" style={{ '--o-input-border-radius-medium': '0' }}></o-input>
+          <o-divider style={{ '--spacing': '4px' }}></o-divider>
+        </div>
+
+        <div slot="options-suffix">
+          <o-divider style={{ '--spacing': '4px' }}></o-divider>
+          <o-button style={{ '--o-input-border-radius-medium': '0', width: '100%' }} square>
+            I'm a suffix button
+          </o-button>
+          <OOption value="suffix-option">I'm a suffix option</OOption>
+        </div>
+      </OSelect>
+      <br />
+
+      <OSelect
+        class="select-options-prefix-suffix"
+        placeholder="Interacting with the options prefix and suffix elements"
+      >
+        {options.slice(3).map(({ value, label }) => (
+          <OOption key={value} value={value}>
+            {label}
+          </OOption>
+        ))}
+
+        <OButton
+          slot="options-prefix"
+          style={{ '--o-input-border-radius-medium': '0', width: '100%' }}
+          onClick={() => alert('Options prefix button clicked!')}
+          square
+        >
+          Create option
+        </OButton>
+
+        <div slot="options-suffix">
+          <OOption
+            value="suffix-option"
+            onClick={() => {
+              alert('Options suffix o-option clicked!');
+            }}
+          >
+            Suffix option (Click me!)
+          </OOption>
+
+          <OInput
+            placeholder="Suffix input"
+            style={{ '--o-input-border-radius-medium': '0' }}
+            onOChange={event => {
+              const msg = `Options suffix o-input changed! (value: ${event.target.value})`;
+              alert(msg);
+            }}
+          ></OInput>
+        </div>
+      </OSelect>
+    </>
+  );
+};
+```
+
 [component-metadata:o-select]

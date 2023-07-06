@@ -40,6 +40,8 @@ import type OPopup from '../popup/popup';
  * @slot clear-icon - An icon to use in lieu of the default clear icon.
  * @slot expand-icon - The icon to show when the control is expanded and collapsed. Rotates on open and close.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
+ * @slot options-prefix - Used to prepend any content to the options list.
+ * @slot options-suffix - Used to append any content to the options list.
  *
  * @event o-change - Emitted when the control's value changes.
  * @event o-clear - Emitted when the control's value is cleared.
@@ -237,6 +239,15 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
 
     // Ignore presses when the target is an icon button (e.g. the remove button in <o-tag>)
     if (isClearButton || isIconButton) {
+      return;
+    }
+
+    // Ignore presses when the target is inside the options-prefix or options-suffix slot
+    // and there is no o-option inside the slot
+    const isInsideOptionsPrefix = target.closest('[slot="options-prefix"]') !== null;
+    const isInsideOptionsSuffix = target.closest('[slot="options-suffix"]') !== null;
+    // Check if the target is not in the slots and is not an o-option
+    if ((isInsideOptionsPrefix || isInsideOptionsSuffix) && target.closest('o-option') === null) {
       return;
     }
 
@@ -499,13 +510,42 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
     }
   }
 
+  private getOptionsInSlot(slotName: string): OOption[] {
+    const slot = this.querySelector(`[slot="${slotName}"]`);
+
+    // if slot is not defined, return an empty array
+    if (!slot) {
+      return [];
+    }
+
+    // if slot is defined, and it is an o-option itself, return an array with the slot
+    if (slot.tagName.toLowerCase() === 'o-option') {
+      return [slot as OOption];
+    }
+
+    // if slot is defined, and it is not an HTMLSlotElement nor an o-option, the select all the o-options inside the slot
+    return Array.from(slot.querySelectorAll<OOption>('o-option'));
+  }
+
   // Gets an array of all <o-option> elements
   private getAllOptions() {
-    return [...this.querySelectorAll<OOption>('o-option')];
+    const optionsInPrefixSlot = this.getOptionsInSlot('options-prefix');
+    const optionsInSuffixSlot = this.getOptionsInSlot('options-suffix');
+    const options = [...this.querySelectorAll<OOption>('o-option')];
+
+    // Filter from options the ones that are in the prefix or suffix slots
+    const optionsNotInPrefixOrSuffixSlot = options.filter(
+      (option: OOption) => !optionsInPrefixSlot.includes(option) && !optionsInSuffixSlot.includes(option)
+    );
+
+    // Select all options except the ones having the attribute slot="options-prefix" or slot="options-suffix"
+    return [...optionsInPrefixSlot, ...optionsNotInPrefixOrSuffixSlot, ...optionsInSuffixSlot];
   }
 
   // Gets the first <o-option> element
   private getFirstOption() {
+    const optionsInPrefixSlot = this.getOptionsInSlot('options-prefix');
+    if (optionsInPrefixSlot.length) return optionsInPrefixSlot[0];
     return this.querySelector<OOption>('o-option');
   }
 
@@ -1024,7 +1064,9 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
                     .size=${this.size}
                   ></o-input>`
                 : ''}
+              <slot name="options-prefix"></slot>
               <slot></slot>
+              <slot name="options-suffix"></slot>
             </div>
           </o-popup>
         </div>
