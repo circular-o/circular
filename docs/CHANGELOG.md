@@ -1,3 +1,9 @@
+# [1.6.0-next.6](https://github.com/circular-o/circular/compare/v1.6.0-next.5...v1.6.0-next.6) (2023-07-06)
+
+### Features
+
+- text buttons styles and update the height to buttons and inputs ([#35](https://github.com/circular-o/circular/issues/35)) ([3bccec3](https://github.com/circular-o/circular/commit/3bccec38bdcb2ea9387d3041cd529755fc3ab0fb))
+
 # [1.6.0-next.5](https://github.com/circular-o/circular/compare/v1.6.0-next.4...v1.6.0-next.5) (2023-07-06)
 
 ### Features
