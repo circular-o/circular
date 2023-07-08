@@ -8,7 +8,7 @@ import { getAllComponents } from './shared.js';
 const { outdir } = commandLineArgs({ name: 'outdir', type: String });
 const metadata = JSON.parse(fs.readFileSync(path.join(outdir, 'custom-elements.json'), 'utf8'));
 
-console.log('Generating search index for documentation');
+console.log('Generating search index for documentation...');
 
 (async () => {
   function getHeadings(markdown, maxLevel = 6) {
@@ -106,4 +106,5 @@ console.log('Generating search index for documentation');
   });
 
   fs.writeFileSync('./docs/search.json', JSON.stringify({ searchIndex, map }), 'utf8');
+  console.log('Search index for documentation generated! 🎉');
 })();

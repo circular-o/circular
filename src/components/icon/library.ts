@@ -1,4 +1,5 @@
 import defaultLibrary from './library.default';
+import materialLibrary from './library.material';
 import systemLibrary from './library.system';
 import type OIcon from '../icon/icon';
 
@@ -10,7 +11,7 @@ export interface IconLibrary {
   mutator?: IconLibraryMutator;
 }
 
-let registry: IconLibrary[] = [defaultLibrary, systemLibrary];
+let registry: IconLibrary[] = [defaultLibrary, systemLibrary, materialLibrary];
 let watchedIcons: OIcon[] = [];
 
 /** Adds an icon to the list of watched icons. */
