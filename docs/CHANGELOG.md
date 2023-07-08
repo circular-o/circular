@@ -1,3 +1,9 @@
+# [1.6.0-next.8](https://github.com/circular-o/circular/compare/v1.6.0-next.7...v1.6.0-next.8) (2023-07-08)
+
+### Bug Fixes
+
+- changes a sub-title in select.md and removes a comment in filter.types.ts ([9301d92](https://github.com/circular-o/circular/commit/9301d92fb73c7763f6c0a07ae06aa5b321d5907c))
+
 # [1.6.0-next.7](https://github.com/circular-o/circular/compare/v1.6.0-next.6...v1.6.0-next.7) (2023-07-08)
 
 ### Features
