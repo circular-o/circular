@@ -2,16 +2,24 @@
 
 [component-header:o-icon]
 
-%LIBRARY-NAME% comes bundled with over 1,500 icons courtesy of the [Bootstrap Icons](https://icons.getbootstrap.com/) project. These icons are part of the `default` icon library. If you prefer, you can register [custom icon libraries](#icon-libraries) as well.
+%LIBRARY-NAME% comes bundled with over 4,000 icons courtesy of the [Bootstrap Icons](https://icons.getbootstrap.com/) and [Material Icons](https://github.com/material-icons/material-icons) projects. These icons are part of the `default` and `material` icon libraries. If you prefer, you can register [custom icon libraries](#icon-libraries) as well.
 
 ?> Depending on how you're loading %LIBRARY-NAME%, you may need to copy icon assets and/or [set the base path](getting-started/installation#setting-the-base-path) so %LIBRARY-NAME% knows where to load them from. Otherwise, icons may not appear and you'll see 404 Not Found errors in the dev console.
 
 ## Default Icons
 
-All available icons in the `default` icon library are shown below. Click or tap on any icon to copy its name, then you can use it in your HTML like this.
+All available icons in the `default` and `material` icon libraries are shown below. Click or tap on any icon to copy its name, then you can use it in your HTML like this.
+
+Default library:
 
 ```html
 <o-icon name="icon-name-here"></o-icon>
+```
+
+Material library:
+
+```html
+<o-icon library="material" name="icon-name-here"></o-icon>
 ```
 
 <div class="icon-search">
@@ -20,8 +28,12 @@ All available icons in the `default` icon library are shown below. Click or tap 
       <o-icon slot="prefix" name="search"></o-icon>
     </o-input>
     <o-select value="outline">
-      <o-option value="outline">Outlined</o-option>
-      <o-option value="fill">Filled</o-option>
+      <o-option value="outline">Outline</o-option>
+      <o-option value="fill">Fill</o-option>
+      <o-option value="baseline">Baseline</o-option>
+      <o-option value="round">Round</o-option>
+      <o-option value="sharp">Sharp</o-option>
+      <o-option value="twotone">Twotone</o-option>
       <o-option value="all">All icons</o-option>
     </o-select>
   </div>
@@ -453,7 +465,9 @@ Icons in this library are licensed under the [MIT License](https://github.com/mi
 
 ### Material Icons
 
-This will register the [Material Icons](https://material.io/resources/icons/?style=baseline) library using the jsDelivr CDN. This library has three variations: outline (default), round (`*_round`), and sharp (`*_sharp`). A mutator function is required to set the SVG's `fill` to `currentColor`.
+It is already included as a default library in %LIBRARY-NAME%, the library name is `material`.
+
+However, in this way you can register the [Material Icons](https://material.io/resources/icons/?style=baseline) library using the jsDelivr CDN. This library has three variations: outline (default), round (`*_round`), and sharp (`*_sharp`). A mutator function is required to set the SVG's `fill` to `currentColor`.
 
 Icons in this library are licensed under the [Apache 2.0 License](https://github.com/google/material-design-icons/blob/master/LICENSE).
 
@@ -464,7 +478,7 @@ Icons in this library are licensed under the [Apache 2.0 License](https://github
   registerIconLibrary('material', {
     resolver: name => {
       const match = name.match(/^(.*?)(_(round|sharp))?$/);
-      return `https://cdn.jsdelivr.net/npm/@material-icons/svg@1.0.5/svg/${match[1]}/${match[3] || 'outline'}.svg`;
+      return `https://cdn.jsdelivr.net/npm/@material-icons/svg@1.0.33/svg/${match[1]}/${match[3] || 'outline'}.svg`;
     },
     mutator: svg => svg.setAttribute('fill', 'currentColor')
   });
@@ -637,7 +651,9 @@ If you want to change the icons %LIBRARY-NAME% uses internally, you can register
 <script>
   function wrapWithTooltip(item) {
     const tooltip = document.createElement('o-tooltip');
-    tooltip.content = item.getAttribute('data-name');
+    const iconName = item.getAttribute('data-name');
+    const iconLibrary = item.getAttribute('data-library');
+    tooltip.content = iconLibrary !== 'default' ? `${iconName} (Library: ${iconLibrary})` : iconName;
 
     // Close open tooltips
     document.querySelectorAll('.icon-list o-tooltip[open]').forEach(tooltip => tooltip.hide());
@@ -648,8 +664,67 @@ If you want to change the icons %LIBRARY-NAME% uses internally, you can register
     requestAnimationFrame(() => tooltip.dispatchEvent(new MouseEvent('mouseover')));
   }
 
+  const libraryContainers = {};
+  const getLibraryContainer = libraryName => {
+    if (libraryContainers[libraryName]) {
+      return libraryContainers[libraryName];
+    }
+
+    const div = document.createElement('div');
+    div.classList.add('library-container');
+    div.classList.add(`library-container-${libraryName}`);
+    div.setAttribute('data-library-name', libraryName);
+
+    const libraryAttr = libraryName === 'default' ? '' : ` library=&quot;${libraryName}&quot;`;
+    div.innerHTML = `
+      <div class="library-title">
+        <h3>${libraryName} library</h3>
+      </div>
+      <div class="library-icons"></div>
+    `;
+
+    libraryContainers[libraryName] = { root: div, iconsContainer: div.querySelector('.library-icons'), variantsContainers: {} };
+
+    return libraryContainers[libraryName];
+  }
+
+  const getVariantContainer = (libraryName, variant) => {
+    const { iconsContainer, variantsContainers } = getLibraryContainer(libraryName);
+    if (variantsContainers[variant]) {
+      return variantsContainers[variant];
+    }
+
+    const div = document.createElement('div');
+    div.classList.add('library-variants');
+    div.classList.add(`library-variants-${variant}`);
+    div.setAttribute('data-variants', variant);
+    variantsContainers[variant] = div;
+
+    // Variant title
+    const title = document.createElement('div');
+    title.classList.add('library-variants-title');
+    title.classList.add(`library-variants-title-${variant}`);
+    title.setAttribute('data-variants', variant);
+    title.innerHTML = `
+      <o-divider style="--spacing: 0"></o-divider>
+      <div class="variant-label"><o-badge variant="neutral">${variant}</o-badge></div>
+    `;
+
+    iconsContainer.appendChild(title);
+    iconsContainer.appendChild(variantsContainers[variant]);
+
+    return variantsContainers[variant];
+  }
+
+  const addLibrariesToIconList = (iconsListContainer) => {
+    Object.keys(libraryContainers).forEach(libraryName => {
+      const {root} = getLibraryContainer(libraryName);
+      iconsListContainer.appendChild(root);
+    });
+  }
+
   fetch('dist/assets/icons/icons.json')
-    .then(res => res.json())  
+    .then(res => res.json())
     .then(icons => {
       const container = document.querySelector('.icon-search');
       const input = container.querySelector('o-input');
@@ -657,55 +732,91 @@ If you want to change the icons %LIBRARY-NAME% uses internally, you can register
       const copyInput = container.querySelector('.icon-copy-input');
       const loader = container.querySelector('.icon-loader');
       const list = container.querySelector('.icon-list');
-      const queue = [];
+      const iconItems = [];
       let inputTimeout;
 
-      // Generate icons
-      icons.map(i => {
+      const getItem = iconData => {
         const item = document.createElement('div');
         item.classList.add('icon-list-item');
-        item.setAttribute('data-name', i.name);
-        item.setAttribute('data-terms', [i.name, i.title, ...(i.tags || []), ...(i.categories || [])].join(' '));
+        item.setAttribute('data-name', iconData.name);
+        item.setAttribute('data-variant', iconData.variant);
+        item.setAttribute('data-library', iconData.library);
+        item.setAttribute('data-terms', [iconData.name, iconData.title, ...(iconData.tags || []), ...(iconData.categories || [])].join(' '));
         item.innerHTML = `
           <svg width="1em" height="1em" fill="currentColor">
-            <use xlink:href="assets/icons/sprite.svg#${i.name}"></use>
-          </svg>      
+            <use xlink:href="assets/icons/${iconData.library}-sprite.svg#${iconData.name}"></use>
+          </svg>
         `;
-        list.appendChild(item);
 
-        // Wrap it with a tooltip the first time the mouse lands on it. We do this instead of baking them into the DOM 
+        // Wrap it with a tooltip the first time the mouse lands on it. We do this instead of baking them into the DOM
         // to improve this page's performance. See: https://github.com/shoelace-style/shoelace/issues/1122
         item.addEventListener('mouseover', () => wrapWithTooltip(item), { once: true });
 
         // Copy on click
         item.addEventListener('click', () => {
           const tooltip = item.closest('o-tooltip');
-          copyInput.value = i.name;
+          copyInput.value = iconData.name;
           copyInput.select();
           document.execCommand('copy');
 
           if (tooltip) {
+            const prevContent = tooltip.content;
             tooltip.content = 'Copied!';
-            setTimeout(() => tooltip.content = i.name, 1000);
+            setTimeout(() => tooltip.content = prevContent, 1000);
           }
+        });
+
+        return item;
+      };
+
+      // Generate icons
+      icons.map(i => {
+        // The variant is outline by default
+        let variant = 'outline';
+        // If the library is default and the name end with -fill, then the variant is fill
+        if (i.library === 'default' && i.name.endsWith('-fill')) {
+          variant = 'fill';
+        }
+
+        const variantContainer = getVariantContainer(i.library, variant);
+        const item = getItem({...i, variant});
+        variantContainer.appendChild(item);
+        iconItems.push(item);
+
+        (i.variants || []).forEach(variant => {
+          const variantContainer = getVariantContainer(i.library, variant);
+          const item = getItem({...i, variant, name: `${i.name}_${variant}`});
+          variantContainer.appendChild(item);
+          iconItems.push(item);
         });
       });
 
+      addLibrariesToIconList(list);
+
       // Filter as the user types
-      input.addEventListener('o-input', () => {
+      const filterIcons = ({noTimeout = false} = {}) => {
         clearTimeout(inputTimeout);
         inputTimeout = setTimeout(() => {
-          [...list.querySelectorAll('.icon-list-item')].map(item => {
+          iconItems
+          .filter(i => {
+            if (select.value === "all") return true;
+            const variant = i.getAttribute('data-variant');
+            return variant === select.value;
+          })
+          .forEach(item => {
             const filter = input.value.toLowerCase();
+
             if (filter === '') {
               item.hidden = false;
-            } else {
-              const terms = item.getAttribute('data-terms').toLowerCase();
-              item.hidden = terms.indexOf(filter) < 0;
+              return;
             }
+
+            const terms = item.getAttribute('data-terms').toLowerCase();
+            item.hidden = terms.indexOf(filter) < 0;
           });
-        }, 250);
-      });
+        }, noTimeout ? 0 : 600);
+      };
+      input.addEventListener('o-input', () => { filterIcons(); });
 
       // Sort by type and remember preference
       const iconType = localStorage.getItem('o-icon:type') || 'outline';
@@ -714,6 +825,7 @@ If you want to change the icons %LIBRARY-NAME% uses internally, you can register
       select.addEventListener('o-change', () => {
         list.setAttribute('data-type', select.value);
         localStorage.setItem('o-icon:type', select.value);
+        filterIcons({noTimeout: true});
       });
     });
 </script>
@@ -750,11 +862,37 @@ If you want to change the icons %LIBRARY-NAME% uses internally, you can register
     min-height: 30vh;
   }
 
-  .icon-list {
+  .library-container {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+      "library-title"
+      "library-icons";
+  }
+
+  .library-container .library-title {
+    grid-area: library-title;
+  }
+
+  .library-container .library-title h3 {
+    text-transform: capitalize;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .library-container .library-icons {
+    grid-area: library-icons;
+  }
+
+  .library-container .library-icons .library-variants {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     position: relative;
-    margin-top: 1rem;
+  }
+
+  .library-container .library-icons .variant-label {
+    display: flex;
+    justify-content: flex-end;
+    text-transform: capitalize;
   }
 
   .icon-loader[hidden],
@@ -780,11 +918,32 @@ If you want to change the icons %LIBRARY-NAME% uses internally, you can register
     color: var(--o-color-primary-600);
   }
 
-  .icon-list[data-type="outline"] .icon-list-item[data-name$="-fill"] {
+  .icon-list[data-type="outline"] .library-container .library-icons > div:not([data-variants="outline"]) {
     display: none;
   }
 
-  .icon-list[data-type="fill"] .icon-list-item:not([data-name$="-fill"]) {
+  .icon-list[data-type="fill"] .library-container-material,
+  .icon-list[data-type="fill"] .library-container .library-icons > div:not([data-variants="fill"]) {
+    display: none;
+  }
+
+  .icon-list[data-type="baseline"] .library-container-default, 
+  .icon-list[data-type="baseline"] .library-container .library-icons > div:not([data-variants="baseline"]) {
+    display: none;
+  }
+
+  .icon-list[data-type="round"] .library-container-default,
+  .icon-list[data-type="round"] .library-container .library-icons > div:not([data-variants="round"]) {
+    display: none;
+  }
+
+  .icon-list[data-type="sharp"] .library-container-default,
+  .icon-list[data-type="sharp"] .library-container .library-icons > div:not([data-variants="sharp"]) {
+    display: none;
+  }
+
+  .icon-list[data-type="twotone"] .library-container-default,
+  .icon-list[data-type="twotone"] .library-container .library-icons > div:not([data-variants="twotone"]) {
     display: none;
   }
 
@@ -795,7 +954,7 @@ If you want to change the icons %LIBRARY-NAME% uses internally, you can register
   }
 
   @media screen and (max-width: 1000px) {
-    .icon-list {
+    .library-container .library-icons .library-variants {
       grid-template-columns: repeat(8, 1fr);
     }
 
@@ -814,9 +973,9 @@ If you want to change the icons %LIBRARY-NAME% uses internally, you can register
   }
 
   @media screen and (max-width: 500px) {
-    .icon-list {
+    .library-container .library-icons .library-variants {
       grid-template-columns: repeat(4, 1fr);
-    }    
+    }
   }
 </style>
 

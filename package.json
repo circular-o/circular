@@ -129,6 +129,7 @@
     "sinon": "^15.1.0",
     "source-map": "^0.7.4",
     "strip-css-comments": "^5.0.0",
+    "svg-sprite": "^2.0.2",
     "tslib": "^2.5.2",
     "typescript": "5.0.4",
     "user-agent-data-types": "^0.3.1"
