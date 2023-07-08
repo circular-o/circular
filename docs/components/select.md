@@ -578,7 +578,7 @@ const App = () => {
 };
 ```
 
-### Options prefix & suffix
+### Slots options-prefix & options-suffix
 
 By using the `options-prefix` and `options-prefix` slots, you can prepend or append any content to the options list.
 

@@ -1,4 +1,4 @@
-export type FilterType = 'input' | 'select' | 'switch' | 'divider' | 'row'; // | 'autocomplete'
+export type FilterType = 'input' | 'select' | 'switch' | 'divider' | 'row';
 
 /**
  * @summary Base filter type.
