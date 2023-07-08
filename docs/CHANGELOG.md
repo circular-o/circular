@@ -1,3 +1,10 @@
+# [1.6.0-next.7](https://github.com/circular-o/circular/compare/v1.6.0-next.6...v1.6.0-next.7) (2023-07-08)
+
+### Features
+
+- **icons:** Includes material library by default ([30f3eb5](https://github.com/circular-o/circular/commit/30f3eb55555a24ab7da11af2ee54aa371f58b634))
+- **select:** Adds autocomplete functionality ([53aaaff](https://github.com/circular-o/circular/commit/53aaaff2d377bb1f84b30b031c1d9e21ed477007))
+
 # [1.6.0-next.6](https://github.com/circular-o/circular/compare/v1.6.0-next.5...v1.6.0-next.6) (2023-07-06)
 
 ### Features
