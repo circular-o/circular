@@ -1,3 +1,9 @@
+# [1.6.0-next.9](https://github.com/circular-o/circular/compare/v1.6.0-next.8...v1.6.0-next.9) (2023-07-10)
+
+### Bug Fixes
+
+- **icon:** Fixes icon color ([3881538](https://github.com/circular-o/circular/commit/3881538520ecdc8f07a41c3b5e9e6a8a87aebe80))
+
 # [1.6.0-next.8](https://github.com/circular-o/circular/compare/v1.6.0-next.7...v1.6.0-next.8) (2023-07-08)
 
 ### Bug Fixes
