@@ -151,7 +151,8 @@ export default class OIcon extends LibraryBaseElement {
         this.removeAttribute('data-hide-slot');
         break;
       default:
-        this.setAttribute('data-hide-slot', 'true');
+        // Boolean attributes must be set to empty strings
+        this.setAttribute('data-hide-slot', '');
         this.svg = svg.cloneNode(true) as SVGElement;
         library?.mutator?.(this.svg);
         this.emit('o-load');

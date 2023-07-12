@@ -13,14 +13,21 @@ export function clamp(value: number, min: number, max: number) {
   return noNegativeZero(value);
 }
 
-export function FormatNumber(num: number): string {
-  if (Math.abs(num) < 1_000) {
-    return num.toString();
-  } else if (Math.abs(num) < 1_000_000) {
-    return Math.round(num / 1_000).toString() + 'K';
-  } else if (Math.abs(num) < 1_000_000_000) {
-    return Math.round(num / 1_000_000).toString() + 'M';
-  } else {
-    return Math.round(num / 1_000_000_000).toString() + 'B';
+/** Abbreviate a number in thousand+ format, e.g. 1000 -> 1K, 1000000 -> 1M  */
+export function numberAbbreviate(num: number): string {
+  const numAbs = Math.abs(num);
+
+  if (numAbs < 1_000) {
+    return `${num}`;
   }
+
+  if (numAbs < 1_000_000) {
+    return `${Math.round(num / 1_000)}K`;
+  }
+
+  if (numAbs < 1_000_000_000) {
+    return `${Math.round(num / 1_000_000)}M`;
+  }
+
+  return `${Math.round(num / 1_000_000_000)}B`;
 }

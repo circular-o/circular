@@ -2,8 +2,8 @@
 /* eslint-disable wc/no-self-class */
 
 import { customElement, property, query } from 'lit/decorators.js';
-import { FormatNumber } from '../../internal/math';
 import { html } from 'lit';
+import { numberAbbreviate } from '../../internal/math';
 import { watch } from '../../internal/watch';
 import LibraryBaseElement from '../../internal/library-base-element';
 import styles from './navbar-item.styles';
@@ -22,21 +22,21 @@ import type { CSSResultGroup } from 'lit';
  *
  * @slot - The default slot - for sub-categories.
  * @slot icon to pass the default icon (unselected)
- * @slot icon_selected to pass the default icon for selected
+ * @slot icon-selected to pass the default icon for selected
  *
  * @csspart icon
- * @csspart icon_selected
+ * @csspart icon-selected
  *
- * @cssproperty --o-navbaritem-light-text-color
- * @cssproperty --o-navbaritem-light-text-color-selected
- * @cssproperty --o-navbaritem-light-background
- * @cssproperty --o-navbaritem-light-background-selected
- * @cssproperty --o-navbaritem-light-background-hover
- * @cssproperty --o-navbaritem-light-background-active
- * @cssproperty --o-navbaritem-light-indicator-selected
- * @cssproperty --o-navbaritem-light-count-border-color
- * @cssproperty --o-navbaritem-light-count-background-color
- * @cssproperty --o-navbaritem-light-count-background-color-selected
+ * @cssproperty [--o-navbar-item-light-text-color=var(--o-color-neutral-1000)]
+ * @cssproperty [--o-navbar-item-light-text-color-selected=var(--o-color-primary-600)]
+ * @cssproperty [--o-navbar-item-light-background=var(--o-color-neutral-0, white)]
+ * @cssproperty [--o-navbar-item-light-background-selected=var(--o-color-neutral-100)]
+ * @cssproperty [--o-navbar-item-light-background-hover=var(--o-color-neutral-100)]
+ * @cssproperty [--o-navbar-item-light-background-active=var(--o-color-neutral-100)]
+ * @cssproperty [--o-navbar-item-light-indicator-selected=var(--o-color-primary-600)]
+ * @cssproperty [--o-navbar-item-light-count-border-color=var(--o-color-neutral-100)]
+ * @cssproperty [--o-navbar-item-light-count-background-color=var(--o-color-neutral-50)]
+ * @cssproperty [--o-navbar-item-light-count-background-color-selected=var(--o-color-neutral-100)]
  */
 
 @customElement('o-navbar-item')
@@ -45,22 +45,22 @@ export default class ONavbarItem extends LibraryBaseElement {
 
   @property() text = '';
   @property({ type: Number }) count?: number;
-  @property({ reflect: true, type: Boolean }) isparent = false;
-  @property({ reflect: true, type: Boolean }) accordionopen = false;
+  @property({ reflect: true, type: Boolean, attribute: 'is-parent' }) isParent = false;
+  @property({ reflect: true, type: Boolean, attribute: 'accordion-open' }) accordionOpen = false;
 
   // elements
   @query('div.accordion') accordionElement!: HTMLDivElement;
 
   // watchers
-  @watch('accordionopen')
-  onaccordionopenupdate() {
+  @watch('accordionOpen')
+  onAccordionOpenUpdate() {
     if (this.accordionElement) {
-      this.accordionElement.setAttribute('open', this.accordionopen.toString());
+      this.accordionElement.setAttribute('open', this.accordionOpen.toString());
     }
   }
 
   private subitems: ONavbarItem[] = [];
-  private currentsubitemselected = 0;
+  private currentSubItemSelected = 0;
 
   // public functions
   public deselect() {
@@ -69,24 +69,24 @@ export default class ONavbarItem extends LibraryBaseElement {
   }
 
   // event handlers
-  public handleclick = () => {
-    if (this.isparent) {
+  public handleClick = () => {
+    if (this.isParent) {
       if (this.getBoundingClientRect().width < 100) {
         // start selecting the subitems
-        const savedcurrent = this.currentsubitemselected;
-        this.subitems[this.currentsubitemselected]?.handleclick();
+        const savedCurrent = this.currentSubItemSelected;
+        this.subitems[this.currentSubItemSelected]?.handleClick();
 
         // make sure we click through all children
-        // we make sure to only call if same value (since there could be a update inbetween line 94 and this)
-        if (this.currentsubitemselected === savedcurrent && !this.subitems[this.currentsubitemselected].isparent) {
-          this.currentsubitemselected++;
-          if (this.currentsubitemselected >= this.subitems.length) {
-            this.currentsubitemselected = 0;
+        // we make sure to only call if same value (since there could be a update in between line 94 and this)
+        if (this.currentSubItemSelected === savedCurrent && !this.subitems[this.currentSubItemSelected].isParent) {
+          this.currentSubItemSelected++;
+          if (this.currentSubItemSelected >= this.subitems.length) {
+            this.currentSubItemSelected = 0;
             this.dispatchEvent(new Event('reached-max'));
           }
         }
       } else {
-        this.accordionopen = !this.accordionopen;
+        this.accordionOpen = !this.accordionOpen;
       }
     } else {
       if (this.hasAttribute('navbar-subitem')) {
@@ -96,44 +96,47 @@ export default class ONavbarItem extends LibraryBaseElement {
       this.classList.add('selected');
     }
   };
-  private handleslotchange = (e: Event) => {
+
+  private handleSlotChange = (e: Event) => {
     if (e.target instanceof HTMLSlotElement) {
       const elements = e.target.assignedElements();
       elements.forEach(element => {
         if (element instanceof ONavbarItem) {
           if (!element.hasAttribute('navbar-subitem')) {
-            if (!this.isparent) {
-              this.isparent = true;
+            if (!this.isParent) {
+              this.isParent = true;
             }
 
             element.setAttribute('subitem-index', this.subitems.length.toString());
             this.subitems.push(element);
-            element.addEventListener('reached-max', this.handlereachedmax);
-            element.addEventListener('child-select', this.hanlechildselect);
+            element.addEventListener('reached-max', this.handleReachedMax);
+            element.addEventListener('child-select', this.handleChildSelect);
             element.setAttribute('navbar-subitem', 'true');
           }
         }
       });
     }
   };
-  // if we reached the current max of our subitems we tell our parents so it can progress further with clicking
-  private handlereachedmax = () => {
-    this.currentsubitemselected++;
 
-    if (this.currentsubitemselected >= this.subitems.length) {
-      this.currentsubitemselected = 0;
+  // if we reached the current max of our subitems we tell our parents so it can progress further with clicking
+  private handleReachedMax = () => {
+    this.currentSubItemSelected++;
+
+    if (this.currentSubItemSelected >= this.subitems.length) {
+      this.currentSubItemSelected = 0;
       this.dispatchEvent(new Event('reached-max'));
     }
   };
-  private hanlechildselect = (e: Event) => {
-    let currentstring: null | string = null;
+
+  private handleChildSelect = (e: Event) => {
+    let currentString: null | string = null;
     if (e.target instanceof ONavbarItem) {
-      currentstring = e.target.getAttribute('subitem-index');
-      this.currentsubitemselected = Number(currentstring);
+      currentString = e.target.getAttribute('subitem-index');
+      this.currentSubItemSelected = Number(currentString);
     }
 
     this.subitems.forEach(element => {
-      if (element.getAttribute('subitem-index') !== currentstring) {
+      if (element.getAttribute('subitem-index') !== currentString) {
         element.deselect();
       }
     });
@@ -152,15 +155,17 @@ export default class ONavbarItem extends LibraryBaseElement {
     const fallback = this.text ? this.text.substring(0, 2).toUpperCase() : '';
 
     return html`
-      <div class="box" tabindex="1" @click="${this.handleclick}" mode="fill" radius="medium" size="large">
+      <div class="box" tabindex="1" @click="${this.handleClick}" mode="fill" radius="medium" size="large">
         <span class="prefix">
           <span class="indicator"></span>
-          <span class="caret"><o-icon src="assets/images/caret.svg"></o-icon></span>
+          <span class="caret"
+            ><o-icon library="material" name="expand_more" style="font-size: var(--o-font-size-large)"></o-icon
+          ></span>
         </span>
 
         <span class="group">
           <slot part="icon" name="icon"><o-typography class="fallback unselected">${fallback}</o-typography></slot>
-          <slot part="icon_selected" name="icon_selected"
+          <slot part="icon-selected" name="icon-selected"
             ><o-typography class="fallback selected">${fallback}</o-typography></slot
           >
           <o-typography>${this.text}</o-typography>
@@ -168,7 +173,7 @@ export default class ONavbarItem extends LibraryBaseElement {
         <span class="suffix">
           ${this.count !== undefined
             ? html`<div class="box counter" radius="pill">
-                <o-typography variant="c4">${FormatNumber(this.count)}</o-typography>
+                <o-typography variant="c4">${numberAbbreviate(this.count)}</o-typography>
               </div>`
             : ''}
         </span>
@@ -176,14 +181,14 @@ export default class ONavbarItem extends LibraryBaseElement {
 
       <div class="accordion sub">
         <div class="group">
-          <slot @slotchange="${this.handleslotchange}"></slot>
+          <slot @slotchange="${this.handleSlotChange}"></slot>
         </div>
       </div>
     `;
   }
 }
 // ${icon ? html`<o-icon class="unselected" name="${icon}">${fallback}</o-icon>` : ''}
-// ${icon_selected ? html`<o-icon class="selected" name="${icon_selected}">${fallback}</o-icon>` : ''}
+// ${icon-selected ? html`<o-icon class="selected" name="${icon-selected}">${fallback}</o-icon>` : ''}
 
 declare global {
   interface HTMLElementTagNameMap {

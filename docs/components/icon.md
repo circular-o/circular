@@ -190,17 +190,22 @@ const App = () => <OIcon src="assets/images/shoe.svg" style={{ fontSize: '8rem' 
 Sometimes a icon can not be found and a fallback content should be displayed instead, thus the default slot acts as a fallback carrier.
 
 ```html preview
-<o-icon src="assets/images/shoe.svg" style="font-size: 4rem;">FALLBACK</o-icon>
-<o-icon name="i-dont-exists">FALLBACK</o-icon>
+<o-icon name="balloon-heart" style="font-size: 2rem;">I won't be shown, the icon exists</o-icon>
+<br />
+<o-icon name="i-do-not-exist">I'm being shown because the icon does not exist</o-icon>
 ```
 
 ```jsx react
 import { OIcon } from '%PACKAGE-FULL-PATH%/dist/react';
 
-
 const App = () => (
-  <OIcon src="assets/images/shoe.svg" style={{ fontSize: '8rem' }}>FALLBACK</OIcon>
-  <OIcon name="i-dont-exists">FALLBACK</OIcon>
+  <>
+    <OIcon name="balloon-heart" style={{ fontSize: '2rem' }}>
+      I won't be shown, the icon exists
+    </OIcon>
+    <br />
+    <OIcon name="i-do-not-exist">I'm being shown because the icon does not exist</OIcon>
+  </>
 );
 ```
 
