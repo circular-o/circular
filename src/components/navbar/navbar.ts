@@ -42,6 +42,7 @@ export default class ONavbar extends LibraryBaseElement {
   // private readonly localize = new LocalizeController(this);
 
   @property({ reflect: true }) mode: Mode = 'open';
+  @property({ reflect: true, type: Boolean, attribute: 'no-hamburger' }) noHamburger = false;
   @property() selected?: string;
 
   @query('div.box') boxTemplateElement!: HTMLDivElement;
@@ -134,10 +135,10 @@ export default class ONavbar extends LibraryBaseElement {
                 class="hover"
               ></o-icon>
             </slot>
-            <o-icon name="menu" library="material" style="font-size: var(--o-font-size-large)" class="open"></o-icon>
+            <o-icon library="material" name="menu" style="font-size: var(--o-font-size-large)" class="open"></o-icon>
             <o-icon
-              name="menu_open"
               library="material"
+              name="menu_open"
               style="font-size: var(--o-font-size-large)"
               class="collapsed"
             ></o-icon>
