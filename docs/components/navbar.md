@@ -51,8 +51,8 @@ import { OIcon, ONavbar, ONavbarItem } from '%PACKAGE-FULL-PATH%/dist/react';
 const App = () => (
   <ONavbar class="navbar-demo-case" selected="Home">
     <ONavbarItem text="Home">
-      <OIcon src="assets/images/navbar-home-unselected.svg" slot="icon"></OIcon>
-      <OIcon src="assets/images/navbar-home-selected.svg" slot="icon-selected"></OIcon>
+      <OIcon library="material" name="grid_view" slot="icon"></OIcon>
+      <OIcon library="material" name="grid_view_baseline" slot="icon-selected"></OIcon>
       <ONavbarItem text="Home 1.1"></ONavbarItem>
       <ONavbarItem text="Home 1.2"></ONavbarItem>
       <ONavbarItem text="Home 1.3">
@@ -79,6 +79,43 @@ const App = () => (
     </ONavbarItem>
   </ONavbar>
 );
+```
+
+## No Hamburger Example
+
+```html preview
+<o-navbar class="navbar-demo-case-no-hamburger" selected="Home" no-hamburger>
+  <o-navbar-item text="Home">
+    <o-icon library="material" name="grid_view" slot="icon"></o-icon>
+    <o-icon library="material" name="grid_view_baseline" slot="icon-selected"></o-icon>
+    <o-navbar-item text="Home 1.1"></o-navbar-item>
+    <o-navbar-item text="Home 1.2"></o-navbar-item>
+    <o-navbar-item text="Home 1.3">
+      <o-navbar-item text="Home 1.3.1"></o-navbar-item>
+      <o-navbar-item text="Home 1.3.2"></o-navbar-item>
+      <o-navbar-item text="Home 1.3.3">
+        <o-navbar-item text="Home 1.3.3.1"></o-navbar-item>
+        <o-navbar-item text="Home 1.3.3.2"></o-navbar-item>
+        <o-navbar-item text="Home 1.3.3.3"></o-navbar-item>
+      </o-navbar-item>
+    </o-navbar-item>
+  </o-navbar-item>
+  <o-navbar-item count="62" text="Users">
+    <o-icon library="material" name="group" slot="icon"></o-icon>
+    <o-icon library="material" name="group_baseline" slot="icon-selected"></o-icon>
+  </o-navbar-item>
+  <o-navbar-item count="62000" text="Price-Lists">
+    <o-icon library="material" name="fact_check" slot="icon"></o-icon>
+    <o-icon library="material" name="fact_check_baseline" slot="icon-selected"></o-icon>
+  </o-navbar-item>
+  <o-navbar-item text="Price-Flow">
+    <o-icon library="material" name="polyline" slot="icon"></o-icon>
+    <o-icon library="material" name="polyline_baseline" slot="icon-selected"></o-icon>
+  </o-navbar-item>
+</o-navbar>
+<script type="module">
+  document.querySelector('.navbar-demo-case-no-hamburger').addEventListener('o-select', e => console.log(e));
+</script>
 ```
 
 [component-metadata:o-navbar]

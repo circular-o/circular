@@ -27,16 +27,16 @@ import type { CSSResultGroup } from 'lit';
  * @csspart icon
  * @csspart icon-selected
  *
- * @cssproperty [--o-navbar-item-light-text-color=var(--o-color-neutral-1000)]
- * @cssproperty [--o-navbar-item-light-text-color-selected=var(--o-color-primary-600)]
- * @cssproperty [--o-navbar-item-light-background=var(--o-color-neutral-0, white)]
- * @cssproperty [--o-navbar-item-light-background-selected=var(--o-color-neutral-100)]
- * @cssproperty [--o-navbar-item-light-background-hover=var(--o-color-neutral-100)]
- * @cssproperty [--o-navbar-item-light-background-active=var(--o-color-neutral-100)]
- * @cssproperty [--o-navbar-item-light-indicator-selected=var(--o-color-primary-600)]
- * @cssproperty [--o-navbar-item-light-count-border-color=var(--o-color-neutral-100)]
- * @cssproperty [--o-navbar-item-light-count-background-color=var(--o-color-neutral-50)]
- * @cssproperty [--o-navbar-item-light-count-background-color-selected=var(--o-color-neutral-100)]
+ * @cssproperty [--o-navbar-item-text-color=var(--o-color-neutral-1000)]
+ * @cssproperty [--o-navbar-item-text-color-selected=var(--o-color-primary-600)]
+ * @cssproperty [--o-navbar-item-background=var(--o-color-neutral-0, white)]
+ * @cssproperty [--o-navbar-item-background-selected=var(--o-color-neutral-100)]
+ * @cssproperty [--o-navbar-item-background-hover=var(--o-color-neutral-100)]
+ * @cssproperty [--o-navbar-item-background-active=var(--o-color-neutral-100)]
+ * @cssproperty [--o-navbar-item-indicator-selected=var(--o-color-primary-600)]
+ * @cssproperty [--o-navbar-item-count-border-color=var(--o-color-neutral-100)]
+ * @cssproperty [--o-navbar-item-count-background-color=var(--o-color-neutral-50)]
+ * @cssproperty [--o-navbar-item-count-background-color-selected=var(--o-color-neutral-100)]
  */
 
 @customElement('o-navbar-item')
@@ -187,8 +187,6 @@ export default class ONavbarItem extends LibraryBaseElement {
     `;
   }
 }
-// ${icon ? html`<o-icon class="unselected" name="${icon}">${fallback}</o-icon>` : ''}
-// ${icon-selected ? html`<o-icon class="selected" name="${icon-selected}">${fallback}</o-icon>` : ''}
 
 declare global {
   interface HTMLElementTagNameMap {

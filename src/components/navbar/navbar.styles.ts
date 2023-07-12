@@ -39,7 +39,7 @@ export default css`
     overflow-x: hidden;
   }
 
-  :host div.box header {
+  :host header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -47,20 +47,29 @@ export default css`
     padding-block: var(--padding-small, 8px);
   }
 
-  :host div.box header o-icon.logo {
+  :host header o-icon.logo {
     margin-left: var(--margin-medium, 16px);
     height: auto;
     width: var(--logo-width, 124px);
   }
 
-  :host div.box header o-button {
+  :host header o-button {
     background-color: var(--hamburger-background);
     color: var(--primary-600, black);
   }
 
-  :host div.box header o-button::part(base) {
+  :host header o-button::part(base) {
     display: flex;
     align-items: center;
+  }
+
+  /* NO HAMBURGER */
+  :host([no-hamburger]) header > o-button {
+    display: none;
+  }
+
+  :host([no-hamburger]) header {
+    justify-content: center;
   }
 
   :host div.box o-divider {
@@ -82,7 +91,7 @@ export default css`
   :host([mode='hover']) {
     width: 72px;
     --hamburger-background-hover: var(
-      --o-navbar-hamburger-hover-background-color-hover,
+      --o-navbar-light-hamburger-hover-background-color-hover,
       var(--o-color-neutral-0, #ffffff)
     );
   }
