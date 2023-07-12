@@ -31,6 +31,8 @@ export { default as OMenu } from './components/menu/menu';
 export { default as OMenuItem } from './components/menu-item/menu-item';
 export { default as OMenuLabel } from './components/menu-label/menu-label';
 export { default as OMutationObserver } from './components/mutation-observer/mutation-observer';
+export { default as ONavbar } from './components/navbar/navbar';
+export { default as ONavbarItem } from './components/navbar-item/navbar-item';
 export { default as OOption } from './components/option/option';
 export { default as OPopup } from './components/popup/popup';
 export { default as OProgressBar } from './components/progress-bar/progress-bar';
@@ -56,10 +58,8 @@ export { default as OTextarea } from './components/textarea/textarea';
 export { default as OTooltip } from './components/tooltip/tooltip';
 export { default as OTree } from './components/tree/tree';
 export { default as OTreeItem } from './components/tree-item/tree-item';
-export { default as OVisuallyHidden } from './components/visually-hidden/visually-hidden';
-export { default as ONavbar } from './components/navbar/navbar';
-export { default as ONavbarItem } from './components/navbar-item/navbar-item';
 export { default as OTypography } from './components/typography/typography';
+export { default as OVisuallyHidden } from './components/visually-hidden/visually-hidden';
 /* plop:component */
 
 // Utilities

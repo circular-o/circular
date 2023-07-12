@@ -22,6 +22,8 @@ import type { Mode, SelectEvent } from './navbar.types';
  * @event o-select - { id: string } of selected navbar-item
  *
  * @slot - The default slot for navbar-items.
+ * @slot logo - The slot for the logo, it is shown when the navbar is opened.
+ * @slot logo-small - The slot for the small logo, it is shown when the navbar is closed.
  *
  * @csspart base - The component's base wrapper.
  * @csspart header - The component's header wrapper.
@@ -42,7 +44,7 @@ export default class ONavbar extends LibraryBaseElement {
   @property({ reflect: true }) mode: Mode = 'open';
   @property() selected?: string;
 
-  @query('div.box') boxtemplateElement!: HTMLDivElement;
+  @query('div.box') boxTemplateElement!: HTMLDivElement;
 
   private items: ONavbarItem[] = [];
   private currentSelected?: ONavbarItem;
@@ -58,28 +60,29 @@ export default class ONavbar extends LibraryBaseElement {
   }
 
   // event handlers
-  private handlehamburgerclick = () => {
+  private handleHamburgerClick = () => {
     // this.open = !this.open;
-    if (this.boxtemplateElement) this.boxtemplateElement.setAttribute('elevation', 'none');
+    if (this.boxTemplateElement) this.boxTemplateElement.setAttribute('elevation', 'none');
     if (this.mode === 'open') {
       this.mode = 'collapsed';
     } else if (this.mode === 'collapsed') {
       this.mode = 'hover';
-      if (this.boxtemplateElement) this.boxtemplateElement.setAttribute('elevation', 'medium');
+      if (this.boxTemplateElement) this.boxTemplateElement.setAttribute('elevation', 'large');
     } else if (this.mode === 'hover') {
       this.mode = 'open';
     }
 
     this.dispatchEvent(new Event('change'));
   };
-  private handleslotchange = (e: Event) => {
+
+  private handleSlotChange = (e: Event) => {
     if (e.target instanceof HTMLSlotElement) {
       const elements = e.target.assignedElements();
       elements.forEach(element => {
         if (element instanceof ONavbarItem) {
           if (!element.hasAttribute('navbar-init')) {
-            element.addEventListener('select', this.handleitemselect);
-            element.addEventListener('child-select', this.handleancestorselect);
+            element.addEventListener('select', this.handleItemSelect);
+            element.addEventListener('child-select', this.handleAncestorSelect);
             element.setAttribute('navbar-init', 'true');
             this.items.push(element);
           }
@@ -87,7 +90,8 @@ export default class ONavbar extends LibraryBaseElement {
       });
     }
   };
-  private handleitemselect = (e: Event) => {
+
+  private handleItemSelect = (e: Event) => {
     if (e.target instanceof ONavbarItem) {
       this.currentAncestorSelected?.deselect();
       if (e.target !== this.currentSelected) {
@@ -98,18 +102,19 @@ export default class ONavbar extends LibraryBaseElement {
       this.dispatchEvent(new CustomEvent<SelectEvent>('o-select', { detail: { id: e.target.id || e.target.text } }));
     }
   };
-  private handleancestorselect = (e: Event) => {
+
+  private handleAncestorSelect = (e: Event) => {
     if (e instanceof CustomEvent && e.target instanceof ONavbarItem) {
-      const childtarget = e.detail as ONavbarItem;
+      const childTarget = e.detail as ONavbarItem;
       if (e.target !== this.currentAncestorSelected) {
         this.currentAncestorSelected?.deselect();
       }
-      if (childtarget !== this.currentSelected) {
+      if (childTarget !== this.currentSelected) {
         this.currentSelected?.deselect();
-        this.currentSelected = childtarget;
+        this.currentSelected = childTarget;
 
         this.dispatchEvent(
-          new CustomEvent<SelectEvent>('o-select', { detail: { id: childtarget.id || childtarget.text } })
+          new CustomEvent<SelectEvent>('o-select', { detail: { id: childTarget.id || childTarget.text } })
         );
       }
       this.currentAncestorSelected = e.target;
@@ -120,16 +125,27 @@ export default class ONavbar extends LibraryBaseElement {
     return html`
       <div class="box" part="base">
         <header part="header">
-          <o-icon class="logo" style="width:124px" size="large" src="assets/images/navbar-interzero-logo.svg"></o-icon>
-          <o-button variant="text" circle size="small" @click="${this.handlehamburgerclick}">
-            <o-icon src="assets/images/navbar-circular-logo.svg" style="font-size: 32px;" class="hover"></o-icon>
-            <o-icon name="menu" library="material" style="font-size: 24px;" class="open"></o-icon>
-            <o-icon name="menu_open" library="material" style="font-size: 24px;" class="collapsed"></o-icon>
+          <slot name="logo"><o-icon class="logo" src="assets/images/circular-logo-light.svg"></o-icon></slot>
+          <o-button variant="text" circle size="small" @click="${this.handleHamburgerClick}">
+            <slot name="logo-small"
+              ><o-icon
+                src="assets/images/circular-icon.svg"
+                style="font-size: var(--o-font-size-x-large)"
+                class="hover"
+              ></o-icon>
+            </slot>
+            <o-icon name="menu" library="material" style="font-size: var(--o-font-size-large)" class="open"></o-icon>
+            <o-icon
+              name="menu_open"
+              library="material"
+              style="font-size: var(--o-font-size-large)"
+              class="collapsed"
+            ></o-icon>
           </o-button>
         </header>
         <o-divider></o-divider>
         <div part="body" class="body">
-          <slot @slotchange="${this.handleslotchange}"></slot>
+          <slot @slotchange="${this.handleSlotChange}"></slot>
         </div>
       </div>
     `;

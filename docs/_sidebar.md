@@ -49,6 +49,8 @@
   - [Menu](/components/menu)
   - [Menu Item](/components/menu-item)
   - [Menu Label](/components/menu-label)
+  - [Navbar](/components/navbar)
+  - [Navbar Item](/components/navbar-item)
   - [Option](/components/option)
   - [Progress Bar](/components/progress-bar)
   - [Progress Ring](/components/progress-ring)
@@ -71,8 +73,6 @@
   - [Tooltip](/components/tooltip)
   - [Tree](/components/tree)
   - [Tree Item](/components/tree-item)
-  - [Navbar](/components/navbar)
-  - [Navbar Item](/components/navbar-item)
   - [Typography](/components/typography)
   <!--plop:component-->
 
