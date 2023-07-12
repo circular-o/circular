@@ -1,3 +1,15 @@
+# [1.6.0-next.10](https://github.com/circular-o/circular/compare/v1.6.0-next.9...v1.6.0-next.10) (2023-07-12)
+
+### Bug Fixes
+
+- Improves on code, styles, and docs on navbar and typography ([c9ebef8](https://github.com/circular-o/circular/commit/c9ebef8d40357c11b65a8a7cd6186a4a2a01b99f))
+- no-hamburger mode + color correction ([ca9592d](https://github.com/circular-o/circular/commit/ca9592da98cf1c95f3fd2d3e2b37d78fb9e3c1fc))
+- **select:** Fixes test when the remove tag button is clicked on multiple select ([011eab4](https://github.com/circular-o/circular/commit/011eab440a62b41856c93095aab81a614ac8f7b4))
+
+### Features
+
+- Navbar component ([33e07ed](https://github.com/circular-o/circular/commit/33e07ed2bd3c3ca1d23a04e52b3b4bdc5b737ae2))
+
 # [1.6.0-next.9](https://github.com/circular-o/circular/compare/v1.6.0-next.8...v1.6.0-next.9) (2023-07-10)
 
 ### Bug Fixes
