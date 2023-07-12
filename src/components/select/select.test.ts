@@ -541,12 +541,15 @@ describe('<o-select>', () => {
     const changeHandler = sinon.spy();
     const inputHandler = sinon.spy();
     const tag = el.shadowRoot!.querySelector('[part~="tag"]')!;
-    const removeButton = tag.shadowRoot!.querySelector('[part~="remove-button"]')!;
+    const removeIconButton = tag.shadowRoot!.querySelector('[part~="remove-button"]')!;
+    const removeButton = removeIconButton.shadowRoot!.querySelector('button')!;
 
     el.addEventListener('o-change', changeHandler);
     el.addEventListener('o-input', inputHandler);
 
-    await clickOnElement(removeButton);
+    // This was causing tests failure on Firefox, so we're using the native click event instead
+    // await clickOnElement(removeButton);
+    removeButton.click();
     await el.updateComplete;
 
     expect(changeHandler).to.have.been.calledOnce;
