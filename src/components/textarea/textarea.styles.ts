@@ -35,9 +35,9 @@ export default css`
     background-color: var(--o-input-background-color-hover);
     border-color: var(--o-input-border-color-hover);
   }
-  // .textarea--standard:hover:not(.textarea--disabled) .textarea__control {
-  //   color: var(--o-input-color-hover);
-  // }
+  /*.textarea--standard:hover:not(.textarea--disabled) .textarea__control {
+    color: var(--o-input-color-hover);
+  }*/
 
   .textarea--standard.textarea--focused:not(.textarea--disabled) {
     background-color: var(--o-input-background-color-focus);
@@ -46,9 +46,9 @@ export default css`
     // box-shadow: 0 0 0 var(--o-focus-ring-width) var(--o-input-focus-ring-color);
   }
 
-  // .textarea--standard.textarea--focused:not(.textarea--disabled) .textarea__control {
-  //   color: var(--o-input-color-focus);
-  // }
+  /*.textarea--standard.textarea--focused:not(.textarea--disabled) .textarea__control {
+    color: var(--o-input-color-focus);
+  }*/
 
   .textarea--standard.textarea--disabled {
     background-color: var(--o-input-background-color-disabled);
@@ -56,9 +56,9 @@ export default css`
     cursor: not-allowed;
   }
 
-  // .textarea--standard.textarea--disabled .textarea__control {
-  //   color: var(--o-input-color-disabled);
-  // }
+  /*.textarea--standard.textarea--disabled .textarea__control {
+    color: var(--o-input-color-disabled);
+  }*/
 
   .textarea--standard.textarea--disabled .textarea__control::placeholder {
     color: var(--o-input-placeholder-color-disabled);

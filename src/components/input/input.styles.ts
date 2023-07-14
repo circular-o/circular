@@ -45,13 +45,14 @@ export default css`
     // box-shadow: 0 0 0 var(--o-focus-ring-width) var(--o-input-focus-ring-color);
   }
 
-  // .input--standard.input--focused:not(.input--disabled) .input__control {
-  //   color: var(--o-input-color-focus);
-  // }
+  /*.input--standard.input--focused:not(.input--disabled) .input__control {
+    color: var(--o-input-color-focus);
+  }*/
 
   .input--standard.input--disabled {
     background-color: var(--o-input-background-color-disabled);
     border-color: var(--o-input-border-color-disabled);
+    /*opacity: 0.5;*/
     cursor: not-allowed;
   }
 
