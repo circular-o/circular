@@ -82,6 +82,24 @@ Theme tokens give you a semantic way to reference colors in your app. The primar
 
 <div class="color-palette">
   <div class="color-palette__name">
+    Accent<br>
+    <code>--o-color-accent-<em>{n}</em></code>
+  </div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-accent-50);"></div>50</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-accent-100);"></div>100</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-accent-200);"></div>200</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-accent-300);"></div>300</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-accent-400);"></div>400</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-accent-500);"></div>500</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-accent-600);"></div>600</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-accent-700);"></div>700</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-accent-800);"></div>800</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-accent-900);"></div>900</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-accent-950);"></div>950</div>
+</div>
+
+<div class="color-palette">
+  <div class="color-palette__name">
     Neutral<br>
     <code>--o-color-neutral-<em>{n}</em></code>
   </div>
@@ -133,162 +151,162 @@ Additional palettes are provided in the form of color primitives. Use these when
 
 <div class="color-palette">
   <div class="color-palette__name">
-    Clear Clue (CB)<br>
-    <code>--o-color-CB-<em>{n}</em></code>
+    Clear Blue<br>
+    <code>--o-color-clear-blue-<em>{n}</em></code>
   </div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CB-50);"></div>50</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CB-100);"></div>100</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CB-200);"></div>200</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CB-300);"></div>300</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CB-400);"></div>400</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CB-500);"></div>500</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CB-600);"></div>600</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CB-700);"></div>700</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CB-800);"></div>800</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CB-900);"></div>900</div>  
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CB-950);"></div>950</div>  
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-clear-blue-50);"></div>50</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-clear-blue-100);"></div>100</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-clear-blue-200);"></div>200</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-clear-blue-300);"></div>300</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-clear-blue-400);"></div>400</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-clear-blue-500);"></div>500</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-clear-blue-600);"></div>600</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-clear-blue-700);"></div>700</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-clear-blue-800);"></div>800</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-clear-blue-900);"></div>900</div>  
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-clear-blue-950);"></div>950</div>  
 </div>
 
 <div class="color-palette">
   <div class="color-palette__name">
-    Cerulean Azure (CA)<br>
-    <code>--o-color-CA-<em>{n}</em></code>
+    Cerulean Azure<br>
+    <code>--o-color-cerulean-azure-<em>{n}</em></code>
   </div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CA-50);"></div>50</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CA-100);"></div>100</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CA-200);"></div>200</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CA-300);"></div>300</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CA-400);"></div>400</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CA-500);"></div>500</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CA-600);"></div>600</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CA-700);"></div>700</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CA-800);"></div>800</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CA-900);"></div>900</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CA-950);"></div>950</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-cerulean-azure-50);"></div>50</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-cerulean-azure-100);"></div>100</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-cerulean-azure-200);"></div>200</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-cerulean-azure-300);"></div>300</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-cerulean-azure-400);"></div>400</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-cerulean-azure-500);"></div>500</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-cerulean-azure-600);"></div>600</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-cerulean-azure-700);"></div>700</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-cerulean-azure-800);"></div>800</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-cerulean-azure-900);"></div>900</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-cerulean-azure-950);"></div>950</div>
 </div>
 
 <div class="color-palette">
   <div class="color-palette__name">
-    Golden Sea (GS)<br>
-    <code>--o-color-GS-<em>{n}</em></code>
+    Golden Sea<br>
+    <code>--o-color-golden-sea-<em>{n}</em></code>
   </div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GS-50);"></div>50</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GS-100);"></div>100</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GS-200);"></div>200</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GS-300);"></div>300</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GS-400);"></div>400</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GS-500);"></div>500</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GS-600);"></div>600</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GS-700);"></div>700</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GS-800);"></div>800</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GS-900);"></div>900</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GS-950);"></div>950</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-golden-sea-50);"></div>50</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-golden-sea-100);"></div>100</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-golden-sea-200);"></div>200</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-golden-sea-300);"></div>300</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-golden-sea-400);"></div>400</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-golden-sea-500);"></div>500</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-golden-sea-600);"></div>600</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-golden-sea-700);"></div>700</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-golden-sea-800);"></div>800</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-golden-sea-900);"></div>900</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-golden-sea-950);"></div>950</div>
 </div>
 
 <div class="color-palette">
   <div class="color-palette__name">
-    Purple Raker (PR)<br>
-    <code>--o-color-PR-<em>{n}</em></code>
+    Purple Raker<br>
+    <code>--o-color-purple-raker-<em>{n}</em></code>
   </div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-PR-50);"></div>50</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-PR-100);"></div>100</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-PR-200);"></div>200</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-PR-300);"></div>300</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-PR-400);"></div>400</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-PR-500);"></div>500</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-PR-600);"></div>600</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-PR-700);"></div>700</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-PR-800);"></div>800</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-PR-900);"></div>900</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-PR-950);"></div>950</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-purple-raker-50);"></div>50</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-purple-raker-100);"></div>100</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-purple-raker-200);"></div>200</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-purple-raker-300);"></div>300</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-purple-raker-400);"></div>400</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-purple-raker-500);"></div>500</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-purple-raker-600);"></div>600</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-purple-raker-700);"></div>700</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-purple-raker-800);"></div>800</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-purple-raker-900);"></div>900</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-purple-raker-950);"></div>950</div>
 </div>
 
 <div class="color-palette">
   <div class="color-palette__name">
-    Salem Green (SG)<br>
-    <code>--o-color-SG-<em>{n}</em></code>
+    Salem Green<br>
+    <code>--o-color-salem-green-<em>{n}</em></code>
   </div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-SG-50);"></div>50</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-SG-100);"></div>100</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-SG-200);"></div>200</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-SG-300);"></div>300</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-SG-400);"></div>400</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-SG-500);"></div>500</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-SG-600);"></div>600</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-SG-700);"></div>700</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-SG-800);"></div>800</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-SG-900);"></div>900</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-SG-950);"></div>950</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-salem-green-50);"></div>50</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-salem-green-100);"></div>100</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-salem-green-200);"></div>200</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-salem-green-300);"></div>300</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-salem-green-400);"></div>400</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-salem-green-500);"></div>500</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-salem-green-600);"></div>600</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-salem-green-700);"></div>700</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-salem-green-800);"></div>800</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-salem-green-900);"></div>900</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-salem-green-950);"></div>950</div>
 </div>
 
 <div class="color-palette">
   <div class="color-palette__name">
-    Tea Green (TG)<br>
-    <code>--o-color-TG-<em>{n}</em></code>
+    Tea Green<br>
+    <code>--o-color-tea-green-<em>{n}</em></code>
   </div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-TG-50);"></div>50</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-TG-100);"></div>100</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-TG-200);"></div>200</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-TG-300);"></div>300</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-TG-400);"></div>400</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-TG-500);"></div>500</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-TG-600);"></div>600</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-TG-700);"></div>700</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-TG-800);"></div>800</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-TG-900);"></div>900</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-TG-950);"></div>950</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-tea-green-50);"></div>50</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-tea-green-100);"></div>100</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-tea-green-200);"></div>200</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-tea-green-300);"></div>300</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-tea-green-400);"></div>400</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-tea-green-500);"></div>500</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-tea-green-600);"></div>600</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-tea-green-700);"></div>700</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-tea-green-800);"></div>800</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-tea-green-900);"></div>900</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-tea-green-950);"></div>950</div>
 </div>
 
 <div class="color-palette">
   <div class="color-palette__name">
-    Hibiscus Red (HR)<br>
-    <code>--o-color-HR-<em>{n}</em></code>
+    Hibiscus Red<br>
+    <code>--o-color-hibiscus-red-<em>{n}</em></code>
   </div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-HR-50);"></div>50</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-HR-100);"></div>100</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-HR-200);"></div>200</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-HR-300);"></div>300</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-HR-400);"></div>400</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-HR-500);"></div>500</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-HR-600);"></div>600</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-HR-700);"></div>700</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-HR-800);"></div>800</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-HR-900);"></div>900</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-HR-950);"></div>950</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-hibiscus-red-50);"></div>50</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-hibiscus-red-100);"></div>100</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-hibiscus-red-200);"></div>200</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-hibiscus-red-300);"></div>300</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-hibiscus-red-400);"></div>400</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-hibiscus-red-500);"></div>500</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-hibiscus-red-600);"></div>600</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-hibiscus-red-700);"></div>700</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-hibiscus-red-800);"></div>800</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-hibiscus-red-900);"></div>900</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-hibiscus-red-950);"></div>950</div>
 </div>
 
 <div class="color-palette">
   <div class="color-palette__name">
-    Coal White (CW)<br>
-    <code>--o-color-CW-<em>{n}</em></code>
+    Mountain White<br>
+    <code>--o-color-mountain-white-<em>{n}</em></code>
   </div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CW-50);"></div>50</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CW-100);"></div>100</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CW-200);"></div>200</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CW-300);"></div>300</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CW-400);"></div>400</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CW-500);"></div>500</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CW-600);"></div>600</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CW-700);"></div>700</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CW-800);"></div>800</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CW-900);"></div>900</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-CW-950);"></div>950</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-mountain-white-50);"></div>50</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-mountain-white-100);"></div>100</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-mountain-white-200);"></div>200</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-mountain-white-300);"></div>300</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-mountain-white-400);"></div>400</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-mountain-white-500);"></div>500</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-mountain-white-600);"></div>600</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-mountain-white-700);"></div>700</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-mountain-white-800);"></div>800</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-mountain-white-900);"></div>900</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-mountain-white-950);"></div>950</div>
 </div>
 
 <div class="color-palette">
   <div class="color-palette__name">
-    Ghost Gray (GR)<br>
-    <code>--o-color-GR-<em>{n}</em></code>
+    Ghost Gray<br>
+    <code>--o-color-ghost-gray-<em>{n}</em></code>
   </div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GR-50);"></div>50</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GR-100);"></div>100</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GR-200);"></div>200</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GR-300);"></div>300</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GR-400);"></div>400</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GR-500);"></div>500</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GR-600);"></div>600</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GR-700);"></div>700</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GR-800);"></div>800</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GR-900);"></div>900</div>
-  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-GR-950);"></div>950</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-ghost-gray-50);"></div>50</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-ghost-gray-100);"></div>100</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-ghost-gray-200);"></div>200</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-ghost-gray-300);"></div>300</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-ghost-gray-400);"></div>400</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-ghost-gray-500);"></div>500</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-ghost-gray-600);"></div>600</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-ghost-gray-700);"></div>700</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-ghost-gray-800);"></div>800</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-ghost-gray-900);"></div>900</div>
+  <div class="color-palette__example"><div class="color-palette__swatch" style="background-color: var(--o-color-ghost-gray-950);"></div>950</div>
 </div>

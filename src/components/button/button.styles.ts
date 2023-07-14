@@ -19,7 +19,7 @@ export default css`
     border-style: solid;
     border-width: var(--o-input-border-width);
     font-family: var(--o-input-font-family);
-    font-weight: var(--o-font-weight-semibold);
+    font-weight: var(--o-font-weight-medium);
     text-decoration: none;
     user-select: none;
     white-space: nowrap;
@@ -319,7 +319,11 @@ export default css`
     border-color: transparent;
     color: var(--o-color-neutral-1000);
     text-decoration: underline;
-    text-underline-offset: 5px;
+    text-underline-offset: var(--o-spacing-2x-small);
+  }
+
+  .button--text.button--small {
+    text-underline-offset: var(--o-spacing-3x-small);
   }
 
   .button--text:hover:not(.button--disabled) {
@@ -475,19 +479,19 @@ export default css`
    */
 
   .button--has-label.button--small .button__label {
-    padding: 0 var(--o-spacing-x-large);
+    padding: 0 var(--o-spacing-small);
   }
 
   .button--has-label.button--medium .button__label {
-    padding: 0 var(--o-spacing-x-large);
+    padding: 0 var(--o-spacing-medium);
   }
 
   .button--has-label.button--large .button__label {
-    padding: 0 var(--o-spacing-x-large);
+    padding: 0 var(--o-spacing-large);
   }
 
   .button--has-prefix.button--small {
-    padding-inline-start: var(--o-spacing-x-large);
+    padding-inline-start: var(--o-spacing-small);
   }
 
   .button--has-prefix.button--small .button__label {
@@ -495,24 +499,24 @@ export default css`
   }
 
   .button--has-prefix.button--medium {
-    padding-inline-start: var(--o-spacing-x-large);
+    padding-inline-start: var(--o-spacing-medium);
   }
 
   .button--has-prefix.button--medium .button__label {
-    padding-inline-start: var(--o-spacing-small);
+    padding-inline-start: var(--o-spacing-medium);
   }
 
   .button--has-prefix.button--large {
-    padding-inline-start: var(--o-spacing-x-large);
+    padding-inline-start: var(--o-spacing-large);
   }
 
   .button--has-prefix.button--large .button__label {
-    padding-inline-start: var(--o-spacing-small);
+    padding-inline-start: var(--o-spacing-large);
   }
 
   .button--has-suffix.button--small,
   .button--caret.button--small {
-    padding-inline-end: var(--o-spacing-x-large);
+    padding-inline-end: var(--o-spacing-small);
   }
 
   .button--has-suffix.button--small .button__label,
@@ -522,22 +526,22 @@ export default css`
 
   .button--has-suffix.button--medium,
   .button--caret.button--medium {
-    padding-inline-end: var(--o-spacing-x-large);
+    padding-inline-end: var(--o-spacing-medium);
   }
 
   .button--has-suffix.button--medium .button__label,
   .button--caret.button--medium .button__label {
-    padding-inline-end: var(--o-spacing-small);
+    padding-inline-end: var(--o-spacing-medium);
   }
 
   .button--has-suffix.button--large,
   .button--caret.button--large {
-    padding-inline-end: var(--o-spacing-x-large);
+    padding-inline-end: var(--o-spacing-large);
   }
 
   .button--has-suffix.button--large .button__label,
   .button--caret.button--large .button__label {
-    padding-inline-end: var(--o-spacing-small);
+    padding-inline-end: var(--o-spacing-large);
   }
 
   /*
