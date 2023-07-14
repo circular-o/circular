@@ -1,3 +1,9 @@
+# [1.6.0-next.12](https://github.com/circular-o/circular/compare/v1.6.0-next.11...v1.6.0-next.12) (2023-07-14)
+
+### Bug Fixes
+
+- **button:** Improves button styles ([9f41637](https://github.com/circular-o/circular/commit/9f41637e87a18c901bc38ffb68971d99c100ce7d))
+
 # [1.6.0-next.11](https://github.com/circular-o/circular/compare/v1.6.0-next.10...v1.6.0-next.11) (2023-07-14)
 
 ### Bug Fixes
