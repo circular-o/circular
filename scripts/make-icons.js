@@ -113,7 +113,7 @@ const iconDir = path.join(outdir, '/assets/icons');
         })
       );
 
-      await writeFile(path.join(iconDir, `${bootstrap}.json`), JSON.stringify(metadata, null, 2), 'utf8');
+      // await writeFile(path.join(iconDir, `${bootstrap}.json`), JSON.stringify(metadata, null, 2), 'utf8');
       iconsToJson = [...iconsToJson, ...metadata];
       console.log(chalk.cyan(`Successfully processed ${bootstrap}! ${numIcons} icons ✨\n`));
     } catch (err) {
@@ -213,7 +213,7 @@ const iconDir = path.join(outdir, '/assets/icons');
         variants: iconVariantsMap[icon.name] || []
       }));
 
-      await writeFile(path.join(iconDir, `${material}.json`), JSON.stringify(metadata, null, 2), 'utf8');
+      // await writeFile(path.join(iconDir, `${material}.json`), JSON.stringify(metadata, null, 2), 'utf8');
       iconsToJson = [...iconsToJson, ...metadata];
       console.log(chalk.cyan(`Successfully processed ${material}! ${metadata.length} icons ✨\n`));
     } catch (err) {

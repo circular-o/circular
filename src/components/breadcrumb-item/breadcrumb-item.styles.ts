@@ -14,7 +14,7 @@ export default css`
     font-family: var(--o-font-sans);
     font-size: var(--o-font-size-small);
     font-weight: var(--o-font-weight-semibold);
-    color: var(--o-color-neutral-600);
+    color: var(--o-color-neutral-700);
     line-height: var(--o-line-height-normal);
     white-space: nowrap;
   }
