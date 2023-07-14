@@ -1,3 +1,10 @@
+# [1.6.0-next.11](https://github.com/circular-o/circular/compare/v1.6.0-next.10...v1.6.0-next.11) (2023-07-14)
+
+### Bug Fixes
+
+- Includes the font face by default with the themes files ([339ad40](https://github.com/circular-o/circular/commit/339ad40e9861b30308a5fb7cb119cfd74680bc40))
+- Updates general styles and theme tokens ([d26986a](https://github.com/circular-o/circular/commit/d26986a2f166e87c2932906ae6ac370275881f20))
+
 # [1.6.0-next.10](https://github.com/circular-o/circular/compare/v1.6.0-next.9...v1.6.0-next.10) (2023-07-12)
 
 ### Bug Fixes
