@@ -14,6 +14,8 @@ import styles from './input.styles';
 import type { CSSResultGroup } from 'lit';
 import type { LibraryBaseFormControl } from '../../internal/library-base-element';
 
+let libraryInputCounterForIds = 0;
+
 /**
  * @summary Inputs collect data from the user.
  * @documentation https://circular-o.github.io/circular/#/components/input
@@ -57,6 +59,8 @@ export default class OInput extends LibraryBaseElement implements LibraryBaseFor
   });
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
   private readonly localize = new LocalizeController(this);
+
+  private readonly inputId = `o-input-${libraryInputCounterForIds++}`;
 
   @query('.input__control') input: HTMLInputElement;
 
@@ -425,7 +429,7 @@ export default class OInput extends LibraryBaseElement implements LibraryBaseFor
         <label
           part="form-control-label"
           class="form-control__label"
-          for="input"
+          for=${this.inputId}
           aria-hidden=${hasLabel ? 'false' : 'true'}
         >
           <slot name="label">${this.label}</slot>
@@ -455,7 +459,7 @@ export default class OInput extends LibraryBaseElement implements LibraryBaseFor
             <slot name="prefix" part="prefix" class="input__prefix"></slot>
             <input
               part="input"
-              id="input"
+              id=${this.inputId}
               class="input__control"
               type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
@@ -471,7 +475,7 @@ export default class OInput extends LibraryBaseElement implements LibraryBaseFor
               step=${ifDefined(this.step as number)}
               .value=${live(this.value)}
               autocapitalize=${ifDefined(this.autocapitalize)}
-              autocomplete=${ifDefined(this.autocomplete)}
+              autocomplete=${this.autocomplete ? 'on' : 'off'}
               autocorrect=${ifDefined(this.autocorrect)}
               ?autofocus=${this.autofocus}
               spellcheck=${this.spellcheck}

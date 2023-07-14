@@ -12,6 +12,8 @@ import styles from './textarea.styles';
 import type { CSSResultGroup } from 'lit';
 import type { LibraryBaseFormControl } from '../../internal/library-base-element';
 
+let libraryTextareaCounterForIds = 0;
+
 /**
  * @summary Textareas collect data from the user and allow multiple lines of text.
  * @documentation https://circular-o.github.io/circular/#/components/textarea
@@ -43,6 +45,8 @@ export default class OTextarea extends LibraryBaseElement implements LibraryBase
   });
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
   private resizeObserver: ResizeObserver;
+
+  private readonly textareaId = `o-textarea-${libraryTextareaCounterForIds++}`;
 
   @query('.textarea__control') input: HTMLTextAreaElement;
 
@@ -318,7 +322,7 @@ export default class OTextarea extends LibraryBaseElement implements LibraryBase
         <label
           part="form-control-label"
           class="form-control__label"
-          for="input"
+          for=${this.textareaId}
           aria-hidden=${hasLabel ? 'false' : 'true'}
         >
           <slot name="label">${this.label}</slot>
@@ -344,7 +348,7 @@ export default class OTextarea extends LibraryBaseElement implements LibraryBase
           >
             <textarea
               part="textarea"
-              id="input"
+              id=${this.textareaId}
               class="textarea__control"
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
               name=${ifDefined(this.name)}
