@@ -1,3 +1,9 @@
+# [1.6.0-next.13](https://github.com/circular-o/circular/compare/v1.6.0-next.12...v1.6.0-next.13) (2023-07-18)
+
+### Bug Fixes
+
+- **themes:** Applies changes from the Figma Circular Design System ([9fbda97](https://github.com/circular-o/circular/commit/9fbda976e67c29e41ad7ccb231d7f7e9782f3b99))
+
 # [1.6.0-next.12](https://github.com/circular-o/circular/compare/v1.6.0-next.11...v1.6.0-next.12) (2023-07-14)
 
 ### Bug Fixes
