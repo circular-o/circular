@@ -1,3 +1,9 @@
+# [1.6.0-next.14](https://github.com/circular-o/circular/compare/v1.6.0-next.13...v1.6.0-next.14) (2023-07-18)
+
+### Bug Fixes
+
+- **select:** Fixes unexpected o-change event from the autocomplete input ([406cfa7](https://github.com/circular-o/circular/commit/406cfa73d88111dcc643c1f704cb6af435e0bfa0))
+
 # [1.6.0-next.13](https://github.com/circular-o/circular/compare/v1.6.0-next.12...v1.6.0-next.13) (2023-07-18)
 
 ### Bug Fixes
