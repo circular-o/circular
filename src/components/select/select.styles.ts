@@ -357,4 +357,10 @@ export default css`
   .select--standard:not(.select--disabled).select--open.select--has-autocomplete .select__combobox {
     border-color: var(--o-input-border-color);
   }
+
+  .autocomplete__input {
+    position: sticky;
+    top: 0;
+    z-index: calc(var(--o-z-index-dropdown) + 1);
+  }
 `;

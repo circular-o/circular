@@ -197,8 +197,13 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
     this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
     this.handleDocumentMouseDown = this.handleDocumentMouseDown.bind(this);
 
-    // Because this is a form control, it shouldn't be opened initially
-    this.open = false;
+    // If the property open is true, we need to show the popup
+    if (this.open) {
+      this.open = false;
+      setTimeout(() => {
+        this.show();
+      }, 10);
+    }
   }
 
   private addOpenListeners() {
@@ -1059,8 +1064,12 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
                     clearable
                     @keyup=${this.handleAutocompleteInput}
                     @keydown=${this.handleAutocompleteInput}
-                    @o-input=${this.dispatchAutocompleteInputEvent}
+                    @o-input=${(event: Event) => {
+                      this.dispatchAutocompleteInputEvent();
+                      event.stopPropagation();
+                    }}
                     @o-clear=${this.handleAutocompleteInput}
+                    @o-change=${(event: Event) => event.stopPropagation()}
                     .size=${this.size}
                   ></o-input>`
                 : ''}
