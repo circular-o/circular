@@ -1,3 +1,9 @@
+# [1.6.0-next.15](https://github.com/circular-o/circular/compare/v1.6.0-next.14...v1.6.0-next.15) (2023-07-19)
+
+### Features
+
+- **grid:** Adds Grid to the library (WIP status) ([ee49ce7](https://github.com/circular-o/circular/commit/ee49ce7fa22814a8298553982cb34df29a738982))
+
 # [1.6.0-next.14](https://github.com/circular-o/circular/compare/v1.6.0-next.13...v1.6.0-next.14) (2023-07-18)
 
 ### Bug Fixes
