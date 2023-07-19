@@ -15,6 +15,8 @@ export { default as OExpandEvent } from './-expand';
 export { default as OFilterChangeEvent } from './-filter-change';
 export { default as OFinishEvent } from './-finish';
 export { default as OFocusEvent } from './-focus';
+export { default as OGridDestroyEvent } from './-grid-destroy';
+export { default as OGridInitEvent } from './-grid-init';
 export { default as OHideEvent } from './-hide';
 export { default as OHoverEvent } from './-hover';
 export { default as OInitialFocusEvent } from './-initial-focus';

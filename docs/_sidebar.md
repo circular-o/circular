@@ -42,6 +42,7 @@
   - [Drawer](/components/drawer)
   - [Dropdown](/components/dropdown)
   - [Filters](/components/filters)
+  - [Grid](/components/grid)
   - [Icon](/components/icon)
   - [Icon Button](/components/icon-button)
   - [Image Comparer](/components/image-comparer)

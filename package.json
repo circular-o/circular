@@ -76,7 +76,9 @@
     "@shoelace-style/localize": "^3.1.0",
     "composed-offset-position": "^0.0.4",
     "lit": "^2.7.4",
-    "qr-creator": "^1.0.0"
+    "luxon": "^3.3.0",
+    "qr-creator": "^1.0.0",
+    "tabulator-tables": "^5.5.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.8.3",
@@ -84,8 +86,10 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
+    "@types/luxon": "^3.3.0",
     "@types/mocha": "^10.0.1",
     "@types/react": "^18.2.6",
+    "@types/tabulator-tables": "^5.4.8",
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",
     "@web/dev-server-esbuild": "^0.4.1",
