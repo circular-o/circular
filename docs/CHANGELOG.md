@@ -1,3 +1,9 @@
+# [1.6.0-next.16](https://github.com/circular-o/circular/compare/v1.6.0-next.15...v1.6.0-next.16) (2023-07-19)
+
+### Bug Fixes
+
+- **grid:** Adds custom styles to allow the tabulator styles modification ([9bb735d](https://github.com/circular-o/circular/commit/9bb735d1f5539a78272ec3bcf6f18c9927de0f30))
+
 # [1.6.0-next.15](https://github.com/circular-o/circular/compare/v1.6.0-next.14...v1.6.0-next.15) (2023-07-19)
 
 ### Features
