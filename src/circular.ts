@@ -22,6 +22,7 @@ export { default as OFilters } from './components/filters/filters';
 export { default as OFormatBytes } from './components/format-bytes/format-bytes';
 export { default as OFormatDate } from './components/format-date/format-date';
 export { default as OFormatNumber } from './components/format-number/format-number';
+export { default as OGrid } from './components/grid/grid';
 export { default as OIcon } from './components/icon/icon';
 export { default as OIconButton } from './components/icon-button/icon-button';
 export { default as OImageComparer } from './components/image-comparer/image-comparer';
