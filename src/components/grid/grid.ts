@@ -1,7 +1,7 @@
 import { customElement, property, query } from 'lit/decorators.js';
 import { Grid, type GridOptions } from './grid-types';
 import { gridOptionsInit } from './grid-definitions';
-import { html } from 'lit';
+import { html, unsafeCSS } from 'lit';
 import { DateTime as LuxonDateTime } from 'luxon';
 import { watch } from '../../internal/watch';
 import LibraryBaseElement from '../../internal/library-base-element';
@@ -13,7 +13,7 @@ import type { GridLayoutType } from './grid-definitions';
  * @summary This component is a wrapper for the Tabulator library.
  *
  * @documentation https://circular-o.github.io/circular/#/components/grid
- * @status WIP
+ * @status Beta
  * @since 1.6
  *
  * @event {{ grid: Grid, options: GridOptions }} o-grid-init - Emitted after the grid has been initialized. The event detail contains the grid instance and the grid full options used to initialize the Grid.
@@ -74,6 +74,9 @@ export default class OGrid extends LibraryBaseElement {
   /** Grid options */
   @property({ type: String }) layout: GridLayoutType = 'default';
 
+  /** Custom styles */
+  @property({ type: String, attribute: 'custom-styles' }) customStyles = '';
+
   private gridInstance: Grid | undefined;
 
   private gridInitTimerId: number | undefined;
@@ -132,7 +135,12 @@ export default class OGrid extends LibraryBaseElement {
   }
 
   render() {
-    return html`<div class="grid-container ${this.layout}" part="base"></div>`;
+    return html`
+      <div class="grid-container ${this.layout}" part="base"></div>
+      <style>
+        ${unsafeCSS(this.customStyles)}
+      </style>
+    `;
   }
 }
 
