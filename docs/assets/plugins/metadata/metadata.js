@@ -375,19 +375,15 @@
           return next(content);
         }
 
-        let badgeType = 'neutral';
-        if (component.status === 'stable') {
-          badgeType = 'primary';
-        }
-        if (component.status === 'experimental') {
-          badgeType = 'warning';
-        }
-        if (component.status === 'planned') {
-          badgeType = 'neutral';
-        }
-        if (component.status === 'deprecated') {
-          badgeType = 'danger';
-        }
+        const statusColorMap = {
+          wip: 'danger',
+          experimental: 'warning',
+          beta: 'neutral" style="--o-color-neutral-600: var(--o-color-accent-600)',
+          stable: 'primary',
+          deprecated: 'danger'
+        };
+
+        const badgeType = statusColorMap[`${component.status}`.toLowerCase()] ?? 'neutral';
 
         result += `
           <div class="component-header">

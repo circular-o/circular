@@ -333,7 +333,7 @@
         `@import '${packageUrl}/dist/themes/${isDark ? 'dark' : 'light'}.css';\n` +
         '\n' +
         'body {\n' +
-        '  font: 16px sans-serif;\n' +
+        '  font: 16px var(--o-font-sans);\n' +
         '  background-color: var(--o-color-neutral-0);\n' +
         '  color: var(--o-color-neutral-900);\n' +
         '  padding: 1rem;\n' +
