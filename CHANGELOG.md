@@ -1,3 +1,20 @@
+# [1.6.0-next.17](https://github.com/circular-o/circular/compare/v1.6.0-next.16...v1.6.0-next.17) (2023-07-26)
+
+### Bug Fixes
+
+- `<sl-carousel>` has the wrong import for `LocalizeController` ([#1384](https://github.com/circular-o/circular/issues/1384)) ([441a957](https://github.com/circular-o/circular/commit/441a957432ebaf0b970fc70625ac33556177c2ff))
+- **docs:** Fixes font family in codepen examples ([9b2efeb](https://github.com/circular-o/circular/commit/9b2efebad71c7eb3f8306e12f909cf1b808d65a6))
+- Prettier and lint issues ([574e297](https://github.com/circular-o/circular/commit/574e2979d6625c782ba82126112baae2362f2f70))
+- radio group race condition ([#1364](https://github.com/circular-o/circular/issues/1364)) ([1ef8e1c](https://github.com/circular-o/circular/commit/1ef8e1cf739017cb3e6c230088f2c9045f3b74b9))
+
+### Features
+
+- Syncs Shoelace current branch with Circular next branch ([c638989](https://github.com/circular-o/circular/commit/c638989afd556de281a11091fc02018f9f5ba875))
+
+### Reverts
+
+- Revert "Update fa.ts (#1053)" (#1058) ([bcb4f22](https://github.com/circular-o/circular/commit/bcb4f2267b4cc0c7987a9c94718d8f7a2166838b)), closes [#1053](https://github.com/circular-o/circular/issues/1053) [#1058](https://github.com/circular-o/circular/issues/1058)
+
 # [1.6.0-next.16](https://github.com/circular-o/circular/compare/v1.6.0-next.15...v1.6.0-next.16) (2023-07-19)
 
 ### Bug Fixes
