@@ -1,7 +1,7 @@
 version: '3'
 services:
   circular-o-docs:
-    image: circular-o/docs
+    image: circular-o/docs:next
     build: .
     ports:
       - '3280:80'
