@@ -254,10 +254,10 @@ export default class ODialog extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-      dialog: true,
-      'dialog--open': this.open,
-      'dialog--has-footer': this.hasSlotController.test('footer')
-    })}
+          dialog: true,
+          'dialog--open': this.open,
+          'dialog--has-footer': this.hasSlotController.test('footer')
+        })}
       >
         <div part="overlay" class="dialog__overlay" @click=${() => this.requestClose('overlay')} tabindex="-1"></div>
 
@@ -272,7 +272,7 @@ export default class ODialog extends LibraryBaseElement {
           tabindex="0"
         >
           ${!this.noHeader
-        ? html`
+            ? html`
                 <header part="header" class="dialog__header">
                   <h2 part="title" class="dialog__title" id="title">
                     <slot name="label"> ${this.label.length > 0 ? this.label : String.fromCharCode(65279)} </slot>
@@ -291,7 +291,7 @@ export default class ODialog extends LibraryBaseElement {
                   </div>
                 </header>
               `
-        : ''}
+            : ''}
 
           <slot part="body" class="dialog__body"></slot>
 

@@ -253,16 +253,16 @@ export default class OAlert extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-      alert: true,
-      'alert--open': this.open,
-      'alert--closable': this.closable,
-      'alert--has-icon': this.hasSlotController.test('icon'),
-      'alert--primary': this.variant === 'primary',
-      'alert--success': this.variant === 'success',
-      'alert--neutral': this.variant === 'neutral',
-      'alert--warning': this.variant === 'warning',
-      'alert--danger': this.variant === 'danger'
-    })}
+          alert: true,
+          'alert--open': this.open,
+          'alert--closable': this.closable,
+          'alert--has-icon': this.hasSlotController.test('icon'),
+          'alert--primary': this.variant === 'primary',
+          'alert--success': this.variant === 'success',
+          'alert--neutral': this.variant === 'neutral',
+          'alert--warning': this.variant === 'warning',
+          'alert--danger': this.variant === 'danger'
+        })}
         role="alert"
         aria-hidden=${this.open ? 'false' : 'true'}
         @mousemove=${this.handleMouseMove}
@@ -272,7 +272,7 @@ export default class OAlert extends LibraryBaseElement {
         <slot part="message" class="alert__message" aria-live="polite"></slot>
 
         ${this.closable
-        ? html`
+          ? html`
               <o-icon-button
                 part="close-button"
                 exportparts="base:close-button__base"
@@ -283,7 +283,7 @@ export default class OAlert extends LibraryBaseElement {
                 @click=${this.handleCloseClick}
               ></o-icon-button>
             `
-        : ''}
+          : ''}
       </div>
     `;
   }

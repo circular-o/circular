@@ -95,19 +95,19 @@ export default class ORadio extends LibraryBaseElement {
       <span
         part="base"
         class=${classMap({
-      radio: true,
-      'radio--checked': this.checked,
-      'radio--disabled': this.disabled,
-      'radio--focused': this.hasFocus,
-      'radio--small': this.size === 'small',
-      'radio--medium': this.size === 'medium',
-      'radio--large': this.size === 'large'
-    })}
+          radio: true,
+          'radio--checked': this.checked,
+          'radio--disabled': this.disabled,
+          'radio--focused': this.hasFocus,
+          'radio--small': this.size === 'small',
+          'radio--medium': this.size === 'medium',
+          'radio--large': this.size === 'large'
+        })}
       >
         <span part="${`control${this.checked ? ' control--checked' : ''}`}" class="radio__control">
           ${this.checked
-        ? html` <o-icon part="checked-icon" class="radio__checked-icon" library="system" name="radio"></o-icon> `
-        : ''}
+            ? html` <o-icon part="checked-icon" class="radio__checked-icon" library="system" name="radio"></o-icon> `
+            : ''}
         </span>
 
         <slot part="label" class="radio__label"></slot>

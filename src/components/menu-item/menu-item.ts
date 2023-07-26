@@ -120,11 +120,11 @@ export default class OMenuItem extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-      'menu-item': true,
-      'menu-item--checked': this.checked,
-      'menu-item--disabled': this.disabled,
-      'menu-item--has-submenu': false // reserved for future use
-    })}
+          'menu-item': true,
+          'menu-item--checked': this.checked,
+          'menu-item--disabled': this.disabled,
+          'menu-item--has-submenu': false // reserved for future use
+        })}
       >
         <span part="checked-icon" class="menu-item__check">
           <o-icon name="check" library="system" aria-hidden="true"></o-icon>

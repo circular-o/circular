@@ -30,10 +30,10 @@ export default class OSkeleton extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-      skeleton: true,
-      'skeleton--pulse': this.effect === 'pulse',
-      'skeleton--sheen': this.effect === 'sheen'
-    })}
+          skeleton: true,
+          'skeleton--pulse': this.effect === 'pulse',
+          'skeleton--sheen': this.effect === 'sheen'
+        })}
       >
         <div part="indicator" class="skeleton__indicator"></div>
       </div>

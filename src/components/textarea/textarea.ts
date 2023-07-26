@@ -238,7 +238,7 @@ export default class OTextarea extends LibraryBaseElement implements LibraryBase
   }
 
   /** Gets or sets the textarea's scroll position. */
-  scrollPosition(position?: { top?: number; left?: number; }): { top: number; left: number; } | undefined {
+  scrollPosition(position?: { top?: number; left?: number }): { top: number; left: number } | undefined {
     if (position) {
       if (typeof position.top === 'number') this.input.scrollTop = position.top;
       if (typeof position.left === 'number') this.input.scrollLeft = position.left;
@@ -311,13 +311,13 @@ export default class OTextarea extends LibraryBaseElement implements LibraryBase
       <div
         part="form-control"
         class=${classMap({
-      'form-control': true,
-      'form-control--small': this.size === 'small',
-      'form-control--medium': this.size === 'medium',
-      'form-control--large': this.size === 'large',
-      'form-control--has-label': hasLabel,
-      'form-control--has-help-text': hasHelpText
-    })}
+          'form-control': true,
+          'form-control--small': this.size === 'small',
+          'form-control--medium': this.size === 'medium',
+          'form-control--large': this.size === 'large',
+          'form-control--has-label': hasLabel,
+          'form-control--has-help-text': hasHelpText
+        })}
       >
         <label
           part="form-control-label"
@@ -332,19 +332,19 @@ export default class OTextarea extends LibraryBaseElement implements LibraryBase
           <div
             part="base"
             class=${classMap({
-      textarea: true,
-      'textarea--small': this.size === 'small',
-      'textarea--medium': this.size === 'medium',
-      'textarea--large': this.size === 'large',
-      'textarea--standard': !this.filled,
-      'textarea--filled': this.filled,
-      'textarea--disabled': this.disabled,
-      'textarea--focused': this.hasFocus,
-      'textarea--empty': !this.value,
-      'textarea--resize-none': this.resize === 'none',
-      'textarea--resize-vertical': this.resize === 'vertical',
-      'textarea--resize-auto': this.resize === 'auto'
-    })}
+              textarea: true,
+              'textarea--small': this.size === 'small',
+              'textarea--medium': this.size === 'medium',
+              'textarea--large': this.size === 'large',
+              'textarea--standard': !this.filled,
+              'textarea--filled': this.filled,
+              'textarea--disabled': this.disabled,
+              'textarea--focused': this.hasFocus,
+              'textarea--empty': !this.value,
+              'textarea--resize-none': this.resize === 'none',
+              'textarea--resize-vertical': this.resize === 'vertical',
+              'textarea--resize-auto': this.resize === 'auto'
+            })}
           >
             <textarea
               part="textarea"

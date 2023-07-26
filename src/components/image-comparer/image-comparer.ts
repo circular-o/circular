@@ -102,9 +102,9 @@ export default class OImageComparer extends LibraryBaseElement {
         part="base"
         id="image-comparer"
         class=${classMap({
-      'image-comparer': true,
-      'image-comparer--rtl': isRtl
-    })}
+          'image-comparer': true,
+          'image-comparer--rtl': isRtl
+        })}
         @keydown=${this.handleKeyDown}
       >
         <div class="image-comparer__image">
@@ -115,8 +115,8 @@ export default class OImageComparer extends LibraryBaseElement {
             part="after"
             class="image-comparer__after"
             style=${styleMap({
-      clipPath: isRtl ? `inset(0 0 0 ${100 - this.position}%)` : `inset(0 ${100 - this.position}% 0 0)`
-    })}
+              clipPath: isRtl ? `inset(0 0 0 ${100 - this.position}%)` : `inset(0 ${100 - this.position}% 0 0)`
+            })}
           ></slot>
         </div>
 
@@ -124,8 +124,8 @@ export default class OImageComparer extends LibraryBaseElement {
           part="divider"
           class="image-comparer__divider"
           style=${styleMap({
-      left: isRtl ? `${100 - this.position}%` : `${this.position}%`
-    })}
+            left: isRtl ? `${100 - this.position}%` : `${this.position}%`
+          })}
           @mousedown=${this.handleDrag}
           @touchstart=${this.handleDrag}
         >

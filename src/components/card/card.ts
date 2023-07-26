@@ -39,11 +39,11 @@ export default class OCard extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-      card: true,
-      'card--has-footer': this.hasSlotController.test('footer'),
-      'card--has-image': this.hasSlotController.test('image'),
-      'card--has-header': this.hasSlotController.test('header')
-    })}
+          card: true,
+          'card--has-footer': this.hasSlotController.test('footer'),
+          'card--has-image': this.hasSlotController.test('image'),
+          'card--has-header': this.hasSlotController.test('header')
+        })}
       >
         <slot name="image" part="image" class="card__image"></slot>
         <slot name="header" part="header" class="card__header"></slot>

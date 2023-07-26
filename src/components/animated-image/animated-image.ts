@@ -95,7 +95,7 @@ export default class OAnimatedImage extends LibraryBaseElement {
         />
 
         ${this.isLoaded
-        ? html`
+          ? html`
               <img
                 class="animated-image__frozen"
                 src=${this.frozenFrame}
@@ -109,7 +109,7 @@ export default class OAnimatedImage extends LibraryBaseElement {
                 <slot name="pause-icon"><o-icon name="pause-fill" library="system"></o-icon></slot>
               </div>
             `
-        : ''}
+          : ''}
       </div>
     `;
   }

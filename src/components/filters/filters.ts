@@ -91,8 +91,8 @@ export default class OFilters extends LibraryBaseElement {
   } = {};
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private filtersData: { [key: string]: any; } = {};
-  private filtersMasterMap: { [key: string]: FilterMasterData; } = {};
+  private filtersData: { [key: string]: any } = {};
+  private filtersMasterMap: { [key: string]: FilterMasterData } = {};
   private lastFocusedFilterName: string | undefined;
   private clearAllContainer: HTMLDivElement;
 
@@ -265,7 +265,7 @@ export default class OFilters extends LibraryBaseElement {
 
   /** Loop over all the filters and internal items (RowFilter) and return an object with the filter name as a key and the filter config as the value */
   private getFiltersConfigGroupByName(filters: Filter[]) {
-    const filtersConfig: { [key: string]: Filter; } = {};
+    const filtersConfig: { [key: string]: Filter } = {};
 
     const getFiltersConfig = (filtersConfigs: Filter[]) => {
       for (const filter of filtersConfigs) {
@@ -414,7 +414,7 @@ export default class OFilters extends LibraryBaseElement {
     filter: Partial<Filter>,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any,
-    { emitEvent }: { emitEvent: boolean; } = { emitEvent: false }
+    { emitEvent }: { emitEvent: boolean } = { emitEvent: false }
   ) {
     if (!filter.name) {
       return;
@@ -487,7 +487,7 @@ export default class OFilters extends LibraryBaseElement {
 
   /** Sets a filter value by name */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setFilterValue(name: string, value: any, { emitEvent }: { emitEvent: boolean; } = { emitEvent: false }) {
+  setFilterValue(name: string, value: any, { emitEvent }: { emitEvent: boolean } = { emitEvent: false }) {
     const filter = this.getFilterConfigByName(name);
     if (!filter) {
       console.warn(`setFilterValue: Can't set the filter value, filter with name "${name}" is not defined`);
@@ -502,7 +502,7 @@ export default class OFilters extends LibraryBaseElement {
     filter: Filter,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any,
-    { emitEvent }: { emitEvent: boolean; } = { emitEvent: false }
+    { emitEvent }: { emitEvent: boolean } = { emitEvent: false }
   ) {
     if (!filter.name || !filter.type) {
       console.warn("setFilterValue: Can't set the filter value, filter name/type is not defined", filter);

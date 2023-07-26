@@ -170,10 +170,10 @@ export default class ONavbarItem extends LibraryBaseElement {
         </span>
         <span class="suffix">
           ${this.count !== undefined
-        ? html`<div class="box counter" radius="pill">
+            ? html`<div class="box counter" radius="pill">
                 <o-typography variant="c4">${numberAbbreviate(this.count)}</o-typography>
               </div>`
-        : ''}
+            : ''}
         </span>
       </div>
 

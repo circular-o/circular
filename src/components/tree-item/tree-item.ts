@@ -207,11 +207,11 @@ export default class OTreeItem extends LibraryBaseElement {
   }
 
   /** Gets all the nested tree items in this node. */
-  getChildrenItems({ includeDisabled = true }: { includeDisabled?: boolean; } = {}): OTreeItem[] {
+  getChildrenItems({ includeDisabled = true }: { includeDisabled?: boolean } = {}): OTreeItem[] {
     return this.childrenSlot
       ? ([...this.childrenSlot.assignedElements({ flatten: true })].filter(
-        (item: OTreeItem) => OTreeItem.isTreeItem(item) && (includeDisabled || !item.disabled)
-      ) as OTreeItem[])
+          (item: OTreeItem) => OTreeItem.isTreeItem(item) && (includeDisabled || !item.disabled)
+        ) as OTreeItem[])
       : [];
   }
 
@@ -223,14 +223,14 @@ export default class OTreeItem extends LibraryBaseElement {
       <div
         part="base"
         class="${classMap({
-      'tree-item': true,
-      'tree-item--expanded': this.expanded,
-      'tree-item--selected': this.selected,
-      'tree-item--disabled': this.disabled,
-      'tree-item--leaf': this.isLeaf,
-      'tree-item--has-expand-button': showExpandButton,
-      'tree-item--rtl': this.localize.dir() === 'rtl'
-    })}"
+          'tree-item': true,
+          'tree-item--expanded': this.expanded,
+          'tree-item--selected': this.selected,
+          'tree-item--disabled': this.disabled,
+          'tree-item--leaf': this.isLeaf,
+          'tree-item--has-expand-button': showExpandButton,
+          'tree-item--rtl': this.localize.dir() === 'rtl'
+        })}"
       >
         <div
           class="tree-item__item"
@@ -247,9 +247,9 @@ export default class OTreeItem extends LibraryBaseElement {
           <div
             part="expand-button"
             class=${classMap({
-      'tree-item__expand-button': true,
-      'tree-item__expand-button--visible': showExpandButton
-    })}
+              'tree-item__expand-button': true,
+              'tree-item__expand-button--visible': showExpandButton
+            })}
             aria-hidden="true"
           >
             ${when(this.loading, () => html` <o-spinner></o-spinner> `)}
@@ -262,9 +262,9 @@ export default class OTreeItem extends LibraryBaseElement {
           </div>
 
           ${when(
-      this.selectable,
-      () =>
-        html`
+            this.selectable,
+            () =>
+              html`
                 <o-checkbox
                   part="checkbox"
                   exportparts="
@@ -283,7 +283,7 @@ export default class OTreeItem extends LibraryBaseElement {
                   tabindex="-1"
                 ></o-checkbox>
               `
-    )}
+          )}
 
           <slot class="tree-item__label" part="label"></slot>
         </div>

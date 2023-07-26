@@ -38,7 +38,7 @@ describe('<o-tree>', () => {
     // The rule aria-required-parent is ignored because it generates a false positive on WebKit browsers
     // TODO: Remove this when the rule is fixed
     await expect(el).to.be.accessible({
-      ignoredRules: ['aria-required-parent'],
+      ignoredRules: ['aria-required-parent']
     });
   });
 

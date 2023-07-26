@@ -79,11 +79,11 @@ export default class OAvatar extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-      avatar: true,
-      'avatar--circle': this.shape === 'circle',
-      'avatar--rounded': this.shape === 'rounded',
-      'avatar--square': this.shape === 'square'
-    })}
+          avatar: true,
+          'avatar--circle': this.shape === 'circle',
+          'avatar--rounded': this.shape === 'rounded',
+          'avatar--square': this.shape === 'square'
+        })}
         role="img"
         aria-label=${this.label}
       >

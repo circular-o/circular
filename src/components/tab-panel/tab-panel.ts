@@ -49,9 +49,9 @@ export default class OTabPanel extends LibraryBaseElement {
       <slot
         part="base"
         class=${classMap({
-      'tab-panel': true,
-      'tab-panel--active': this.active
-    })}
+          'tab-panel': true,
+          'tab-panel--active': this.active
+        })}
       ></slot>
     `;
   }
