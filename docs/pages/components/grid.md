@@ -10,6 +10,11 @@ It applies the default styles and provides a simple API to initialize the grid a
 The grid options provided to initialize the grid component are the same ones used in Tabulator, also the grid instance can be used to call any Tabulator method. See the [Tabulator documentation](https://tabulator.info/docs/5.5) for more details.
 
 ```html:preview
+<o-select class="grid-example-layout-selector" value="default">
+  <o-option value="default">Default</o-option>
+  <o-option value="row-layout">Row layout</o-option>
+</o-select>
+<br>
 <o-grid class="grid-example"></o-grid>
 
 <script>
@@ -33,6 +38,7 @@ The grid options provided to initialize the grid component are the same ones use
     ]
   };
 
+  const selectEl = document.querySelector('o-select.grid-example-layout-selector');
   const gridEl = document.querySelector('o-grid.grid-example');
   gridEl.options = gridOptions;
 
@@ -42,11 +48,16 @@ The grid options provided to initialize the grid component are the same ones use
       alert('Row ' + row.getData().id + ' Clicked!!!!');
     });
   });
+
+  selectEl.addEventListener('o-change', () => {
+    gridEl.layout = selectEl.value;
+  });
 </script>
 ```
 
 ```jsx:react
-import { OGrid } from 'O-PACKAGE-FULL-NAME-O/dist/react';
+import { useState } from 'react';
+import { OGrid, OSelect, OOption } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const tableData = [
   { id: 1, name: 'Oli Bob', age: '12', col: 'red', dob: '' },
@@ -68,6 +79,8 @@ const gridOptions = {
 };
 
 const App = () => {
+const [layout, setLayout] = useState('default');
+
   const gridInitHandler = ({ detail: { grid } }) => {
     //trigger an alert message when the row is clicked
     grid.on('rowClick', function (e, row) {
@@ -75,7 +88,16 @@ const App = () => {
     });
   };
 
-  return <OGrid options={gridOptions} onOGridInit={gridInitHandler}></OGrid>;
+  return (
+    <>
+      <OSelect class="grid-example-layout-selector" value={layout} onOChange={event => setLayout(event.target.value)}>
+        <OOption value="default">Default</OOption>
+        <OOption value="row-layout">Row layout</OOption>
+      </OSelect>
+      <br />
+      <OGrid options={gridOptions} onOGridInit={gridInitHandler} layout={layout}></OGrid>
+    </>
+  );
 };
 ```
 
@@ -216,10 +238,10 @@ const App = () => {
 Based on this [Tabulator example](https://tabulator.info/examples/5.5?#formatters)
 
 ```html:preview
-<h4>Formatters:</h4>
+<h4 style="margin-top: 0">Formatters:</h4>
 <o-grid class="grid-formatters-example"></o-grid>
 <br /><br />
-<h4>Formatters using row-layout:</h4>
+<h4 style="margin-top: 0">Formatters using row-layout:</h4>
 <o-grid class="grid-row-layout-example" layout="row-layout"></o-grid>
 
 <script>
