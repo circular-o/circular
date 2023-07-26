@@ -3,8 +3,8 @@
   const reactVersion = document.documentElement.getAttribute('data-library-react-version');
   const cdndir = document.documentElement.getAttribute('data-library-cdndir');
   const npmdir = document.documentElement.getAttribute('data-library-npmdir');
-  const packageOrganization = document.documentElement.getAttribute('data-library-package-organization');
   const packageName = document.documentElement.getAttribute('data-library-package-name');
+  const packageFullName = document.documentElement.getAttribute('data-library-package-full-name');
   const packageUrl = document.documentElement.getAttribute('data-library-package-url');
   const reactCdnUrl = document.documentElement.getAttribute('data-library-react-cdn-url');
   const reactUrl = document.documentElement.getAttribute('data-library-react-url');
@@ -12,7 +12,7 @@
 
   function convertModuleLinks(html) {
     html = html
-      .replace(new RegExp(`${packageOrganization}/${packageName}`, 'g'), reactPackageUrl)
+      .replace(new RegExp(`${packageFullName}`, 'g'), reactPackageUrl)
       .replace(/from 'react'/g, `from '${reactUrl}'`)
       .replace(/from "react"/g, `from "${reactUrl}"`);
 

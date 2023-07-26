@@ -15,7 +15,7 @@ const DEFAULT_DOCS_CONFIGURATION = {
   sponsorUrl: 'https://github.com/sponsors/claviska',
   // Configuration variables related to the react playground
   reactVersion: '18.2.0',
-  reactCdnUrl: `https://cdn.skypack.dev`,
+  reactCdnUrl: 'https://esm.sh',
   // Library name to be used in the docs
   libraryName: 'Circular'
 };
@@ -44,8 +44,10 @@ const setDocsConfig = newConfig => {
   // Updating the variables which are composed by other package data
   const packageUrlNoVersion = `${config.packagesCdnUrl}/${config.packageOrganization}/${config.packageName}`;
   const packageUrl = `${config.packagesCdnUrl}/${config.packageOrganization}/${config.packageName}@${config.packageVersion}`;
+  const packageFullName = `${config.packageOrganization}/${config.packageName}`;
+  const packageFullNameWithVersion = `${packageFullName}@${config.packageVersion}`;
   const reactUrl = `${config.reactCdnUrl}/react@${config.reactVersion}`;
-  const reactPackageUrl = `${config.reactCdnUrl}/${config.packageOrganization}/${config.packageName}@${config.packageVersion}`;
+  const reactPackageUrl = `${config.reactCdnUrl}/${packageFullNameWithVersion}`;
 
   circularDocsStorage.setItem(
     'o-package-data',
@@ -54,7 +56,9 @@ const setDocsConfig = newConfig => {
       packageUrlNoVersion,
       packageUrl,
       reactUrl,
-      reactPackageUrl
+      reactPackageUrl,
+      packageFullName,
+      packageFullNameWithVersion
     })
   );
 };

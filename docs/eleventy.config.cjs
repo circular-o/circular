@@ -149,7 +149,11 @@ module.exports = function (eleventyConfig) {
       { pattern: 'O-PACKAGE-NAME-O', replacement: `${docsConfig.packageName}` },
       {
         pattern: 'O-PACKAGE-FULL-NAME-O',
-        replacement: `${docsConfig.packageOrganization}/${docsConfig.packageName}`
+        replacement: `${docsConfig.packageFullName}`
+      },
+      {
+        pattern: 'O-PACKAGE-FULL-NAME-WITH-VERSION-O',
+        replacement: `${docsConfig.packageFullNameWithVersion}`
       },
       { pattern: 'O-PACKAGE-URL-O', replacement: `${docsConfig.packageUrl}` },
       { pattern: 'O-DOCS-WEBSITE-O', replacement: `${docsConfig.docsWebsite}` },
