@@ -1,0 +1,9 @@
+/_site
+/.github
+/.husky
+/.git
+/.gitignore
+/.vscode
+/cdn
+/dist
+/node_modules

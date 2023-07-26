@@ -1,8 +1,11 @@
 _site
 .cache
 .DS_Store
+.cache
+docs/dist
+docs/search.json
 dist
-docs/assets/images/sprite.svg
+docs/assets/icons/*-sprite.svg
 node_modules
 src/react
 cdn
