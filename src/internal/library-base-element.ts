@@ -1,4 +1,4 @@
-import { debounce } from './debounce';
+import { debounce } from './debounce.js';
 import { LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 

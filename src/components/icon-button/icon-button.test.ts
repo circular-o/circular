@@ -1,6 +1,7 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
-import type OIconButton from './icon-button';
+import type OIconButton from './icon-button.js';
 
 type LinkTarget = '_self' | '_blank' | '_parent' | '_top';
 

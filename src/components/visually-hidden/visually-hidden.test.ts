@@ -1,3 +1,4 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
 
 describe('<o-visually-hidden>', () => {

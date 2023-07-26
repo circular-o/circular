@@ -1,4 +1,4 @@
-import { type FormatterFunction, GridFormatModule } from '../grid-types';
+import { type FormatterFunction, GridFormatModule } from '../grid-types.js';
 
 export const rowLayoutCellFormatter: FormatterFunction = (cell, formatterParams, onRendered) => {
   // Get the tabulator format module

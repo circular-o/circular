@@ -1,5 +1,6 @@
+import '../../../dist/circular.js';
 import { aTimeout, expect, fixture, html } from '@open-wc/testing';
-import type OTabPanel from './tab-panel';
+import type OTabPanel from './tab-panel.js';
 
 describe('<o-tab-panel>', () => {
   it('passes accessibility test', async () => {

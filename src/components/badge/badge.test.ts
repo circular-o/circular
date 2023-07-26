@@ -1,5 +1,6 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
-import type OBadge from './badge';
+import type OBadge from './badge.js';
 
 describe('<o-badge>', () => {
   let el: OBadge;

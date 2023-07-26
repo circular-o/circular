@@ -1,23 +1,23 @@
-import '../icon/icon';
-import '../spinner/spinner';
+import '../icon/icon.js';
+import '../spinner/spinner.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
-import { FormControlController, validValidityState } from '../../internal/form';
-import { HasSlotController } from '../../internal/slot';
+import { FormControlController, validValidityState } from '../../internal/form.js';
+import { HasSlotController } from '../../internal/slot.js';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { LocalizeController } from '../../utilities/localize';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './button.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './button.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { LibraryBaseFormControl } from '../../internal/library-base-element';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element.js';
 
 /**
  * @summary Buttons represent actions that are available to the user.
- * @documentation https://circular-o.github.io/circular/#/components/button
+ * @documentation /components/button
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon
  * @dependency o-spinner
@@ -167,15 +167,9 @@ export default class OButton extends LibraryBaseElement implements LibraryBaseFo
     return '';
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.handleHostClick = this.handleHostClick.bind(this);
+  constructor() {
+    super();
     this.addEventListener('click', this.handleHostClick);
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.removeEventListener('click', this.handleHostClick);
   }
 
   firstUpdated() {
@@ -204,13 +198,13 @@ export default class OButton extends LibraryBaseElement implements LibraryBaseFo
     }
   }
 
-  private handleHostClick(event: MouseEvent) {
+  private handleHostClick = (event: MouseEvent) => {
     // Prevent the click event from being emitted when the button is disabled or loading
     if (this.disabled || this.loading) {
       event.preventDefault();
       event.stopImmediatePropagation();
     }
-  }
+  };
 
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
@@ -289,30 +283,30 @@ export default class OButton extends LibraryBaseElement implements LibraryBaseFo
       <${tag}
         part="base"
         class=${classMap({
-          button: true,
-          'button--default': this.variant === 'default',
-          'button--primary': this.variant === 'primary',
-          'button--success': this.variant === 'success',
-          'button--neutral': this.variant === 'neutral',
-          'button--warning': this.variant === 'warning',
-          'button--danger': this.variant === 'danger',
-          'button--text': this.variant === 'text',
-          'button--small': this.size === 'small',
-          'button--medium': this.size === 'medium',
-          'button--large': this.size === 'large',
-          'button--caret': this.caret,
-          'button--circle': this.circle,
-          'button--disabled': this.disabled,
-          'button--focused': this.hasFocus,
-          'button--loading': this.loading,
-          'button--standard': !this.outline,
-          'button--outline': this.outline,
-          'button--pill': !this.square,
-          'button--rtl': this.localize.dir() === 'rtl',
-          'button--has-label': this.hasSlotController.test('[default]'),
-          'button--has-prefix': this.hasSlotController.test('prefix'),
-          'button--has-suffix': this.hasSlotController.test('suffix')
-        })}
+      button: true,
+      'button--default': this.variant === 'default',
+      'button--primary': this.variant === 'primary',
+      'button--success': this.variant === 'success',
+      'button--neutral': this.variant === 'neutral',
+      'button--warning': this.variant === 'warning',
+      'button--danger': this.variant === 'danger',
+      'button--text': this.variant === 'text',
+      'button--small': this.size === 'small',
+      'button--medium': this.size === 'medium',
+      'button--large': this.size === 'large',
+      'button--caret': this.caret,
+      'button--circle': this.circle,
+      'button--disabled': this.disabled,
+      'button--focused': this.hasFocus,
+      'button--loading': this.loading,
+      'button--standard': !this.outline,
+      'button--outline': this.outline,
+      'button--pill': !this.square,
+      'button--rtl': this.localize.dir() === 'rtl',
+      'button--has-label': this.hasSlotController.test('[default]'),
+      'button--has-prefix': this.hasSlotController.test('prefix'),
+      'button--has-suffix': this.hasSlotController.test('suffix')
+    })}
         ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
         type=${ifDefined(isLink ? undefined : this.type)}
         title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}

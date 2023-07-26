@@ -1,6 +1,7 @@
-import { clickOnElement } from '../../internal/test';
+import '../../../dist/circular.js';
+import { clickOnElement } from '../../internal/test.js';
 import { expect, fixture, html, oneEvent } from '@open-wc/testing';
-import type OAnimatedImage from './animated-image';
+import type OAnimatedImage from './animated-image.js';
 
 describe('<o-animated-image>', () => {
   it('should render a component', async () => {

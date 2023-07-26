@@ -1,5 +1,5 @@
-import { AbstractTypePlugin } from './abstract.type.plugin';
-import { type DividerFilter, type FilterType } from '../filters.types';
+import { AbstractTypePlugin } from './abstract.type.plugin.js';
+import { type DividerFilter, type FilterType } from '../filters.types.js';
 import { html } from 'lit';
 
 export class DividerTypePlugin extends AbstractTypePlugin {

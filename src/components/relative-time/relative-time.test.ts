@@ -1,7 +1,8 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
 import { LocalizeController } from '@shoelace-style/localize';
 import sinon from 'sinon';
-import type ORelativeTime from './relative-time';
+import type ORelativeTime from './relative-time.js';
 
 interface ORelativeTimeTestCase {
   date: Date;

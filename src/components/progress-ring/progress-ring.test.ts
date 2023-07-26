@@ -1,5 +1,6 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
-import type OProgressRing from './progress-ring';
+import type OProgressRing from './progress-ring.js';
 
 describe('<o-progress-ring>', () => {
   let el: OProgressRing;

@@ -1,7 +1,8 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
-import type OPopup from '../popup/popup';
-import type OTooltip from './tooltip';
+import type OPopup from '../popup/popup.js';
+import type OTooltip from './tooltip.js';
 
 describe('<o-tooltip>', () => {
   it('should be visible with the open attribute', async () => {

@@ -1,7 +1,8 @@
-import { clickOnElement } from '../../internal/test';
+import '../../../dist/circular.js';
+import { clickOnElement } from '../../internal/test.js';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
-import type OMenuItem from './menu-item';
+import type OMenuItem from './menu-item.js';
 
 describe('<o-menu-item>', () => {
   it('should pass accessibility tests', async () => {

@@ -1,8 +1,10 @@
+import '../../../dist/circular.js';
 // cspell:dictionaries lorem-ipsum
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
-import type { OHideEvent, OShowEvent } from '../../events/events';
-import type ODetails from './details';
+import type ODetails from './details.js';
+import type OHideEvent from '../../events/-hide.js';
+import type OShowEvent from '../../events/-show.js';
 
 describe('<o-details>', () => {
   describe('accessibility', () => {

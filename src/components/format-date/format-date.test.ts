@@ -1,6 +1,7 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
 import sinon from 'sinon';
-import type OFormatDate from './format-date';
+import type OFormatDate from './format-date.js';
 
 describe('<o-format-date>', () => {
   describe('defaults ', () => {

@@ -1,11 +1,11 @@
-import { clamp } from '../../internal/math';
+import { clamp } from '../../internal/math.js';
 import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import OTreeItem from '../tree-item/tree-item';
-import styles from './tree.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import OTreeItem from '../tree-item/tree-item.js';
+import styles from './tree.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 function syncCheckboxes(changedTreeItem: OTreeItem, initialSync = false) {
@@ -50,9 +50,9 @@ function syncCheckboxes(changedTreeItem: OTreeItem, initialSync = false) {
 
 /**
  * @summary Trees allow you to display a hierarchical list of selectable [tree items](/components/tree-item). Items with children can be expanded and collapsed as desired by the user.
- * @documentation https://circular-o.github.io/circular/#/components/tree
+ * @documentation /components/tree
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @event {{ selection: OTreeItem[] }} o-selection-change - Emitted when a tree item is selected or deselected.
  *
@@ -92,18 +92,18 @@ export default class OTree extends LibraryBaseElement {
   private mutationObserver: MutationObserver;
   private clickTarget: OTreeItem | null = null;
 
-  async connectedCallback() {
-    super.connectedCallback();
-    this.handleTreeChanged = this.handleTreeChanged.bind(this);
-    this.handleFocusIn = this.handleFocusIn.bind(this);
-    this.handleFocusOut = this.handleFocusOut.bind(this);
-
-    this.setAttribute('role', 'tree');
-    this.setAttribute('tabindex', '0');
-
+  constructor() {
+    super();
     this.addEventListener('focusin', this.handleFocusIn);
     this.addEventListener('focusout', this.handleFocusOut);
     this.addEventListener('o-lazy-change', this.handleSlotChange);
+  }
+
+  async connectedCallback() {
+    super.connectedCallback();
+
+    this.setAttribute('role', 'tree');
+    this.setAttribute('tabindex', '0');
 
     await this.updateComplete;
 
@@ -115,10 +115,6 @@ export default class OTree extends LibraryBaseElement {
     super.disconnectedCallback();
 
     this.mutationObserver.disconnect();
-
-    this.removeEventListener('focusin', this.handleFocusIn);
-    this.removeEventListener('focusout', this.handleFocusOut);
-    this.removeEventListener('o-lazy-change', this.handleSlotChange);
   }
 
   // Generates a clone of the expand icon element to use for each tree item
@@ -160,7 +156,7 @@ export default class OTree extends LibraryBaseElement {
       });
   };
 
-  private handleTreeChanged(mutations: MutationRecord[]) {
+  private handleTreeChanged = (mutations: MutationRecord[]) => {
     for (const mutation of mutations) {
       const addedNodes: OTreeItem[] = [...mutation.addedNodes].filter(OTreeItem.isTreeItem) as OTreeItem[];
       const removedNodes = [...mutation.removedNodes].filter(OTreeItem.isTreeItem) as OTreeItem[];
@@ -172,7 +168,7 @@ export default class OTree extends LibraryBaseElement {
         this.focusItem(this.getFocusableItems()[0]);
       }
     }
-  }
+  };
 
   private syncTreeItems(selectedItem: OTreeItem) {
     const items = this.getAllTreeItems();
@@ -322,16 +318,16 @@ export default class OTree extends LibraryBaseElement {
     this.clickTarget = event.target as OTreeItem;
   }
 
-  private handleFocusOut(event: FocusEvent) {
+  private handleFocusOut = (event: FocusEvent) => {
     const relatedTarget = event.relatedTarget as HTMLElement;
 
     // If the element that got the focus is not in the tree
     if (!relatedTarget || !this.contains(relatedTarget)) {
       this.tabIndex = 0;
     }
-  }
+  };
 
-  private handleFocusIn(event: FocusEvent) {
+  private handleFocusIn = (event: FocusEvent) => {
     const target = event.target as OTreeItem;
 
     // If the tree has been focused, move the focus to the last focused item
@@ -349,7 +345,7 @@ export default class OTree extends LibraryBaseElement {
 
       target.tabIndex = 0;
     }
-  }
+  };
 
   private handleSlotChange() {
     const items = this.getAllTreeItems();

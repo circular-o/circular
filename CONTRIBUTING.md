@@ -2,4 +2,4 @@
 
 Before contributing, please review the contributions guidelines at:
 
-[Circular contributing](https://circular-o.github.io/circular/#/resources/contributing)
+[Circular contributing](https://circular.decodeit.co/resources/contributing)

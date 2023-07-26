@@ -1,5 +1,5 @@
-import { AbstractTypePlugin } from './abstract.type.plugin';
-import { DEFAULT_PROPS_TO_IGNORE, type FilterType, type RowFilter } from '../filters.types';
+import { AbstractTypePlugin } from './abstract.type.plugin.js';
+import { DEFAULT_PROPS_TO_IGNORE, type FilterType, type RowFilter } from '../filters.types.js';
 import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 

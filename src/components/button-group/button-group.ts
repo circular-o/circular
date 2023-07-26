@@ -1,14 +1,14 @@
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html } from 'lit';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './button-group.styles';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './button-group.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Button groups can be used to group related buttons into sections.
- * @documentation https://circular-o.github.io/circular/#/components/button-group
+ * @documentation /components/button-group
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @slot - One or more `<o-button>` elements to display in the button group.
  *

@@ -1,16 +1,16 @@
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators.js';
-import { HasSlotController } from '../../internal/slot';
+import { HasSlotController } from '../../internal/slot.js';
 import { html } from 'lit';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './card.styles';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './card.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Cards can be used to group related subjects in a container.
- * @documentation https://circular-o.github.io/circular/#/components/card
+ * @documentation /components/card
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @slot - The card's main content.
  * @slot header - An optional header for the card.
@@ -39,11 +39,11 @@ export default class OCard extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-          card: true,
-          'card--has-footer': this.hasSlotController.test('footer'),
-          'card--has-image': this.hasSlotController.test('image'),
-          'card--has-header': this.hasSlotController.test('header')
-        })}
+      card: true,
+      'card--has-footer': this.hasSlotController.test('footer'),
+      'card--has-image': this.hasSlotController.test('image'),
+      'card--has-header': this.hasSlotController.test('header')
+    })}
       >
         <slot name="image" part="image" class="card__image"></slot>
         <slot name="header" part="header" class="card__header"></slot>

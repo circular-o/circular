@@ -1,16 +1,16 @@
-import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import LibraryBaseElement from '../../internal/library-base-element';
-import { watch } from '../../internal/watch';
-import { LocalizeController } from '../../utilities/localize';
-import styles from './{{ tagWithoutPrefix tag }}.styles';
+import { html } from 'lit';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import { watch } from '../../internal/watch.js';
+import { LocalizeController } from '../../utilities/localize.js';
+import styles from './{{ tagWithoutPrefix tag }}.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Short summary of the component's intended use.
- * @documentation https://circular-o.github.io/circular/#/components/{{ tagWithoutPrefix tag }}
- * @status experimental
- * @since 2.0
+ * @documentation /components/{{ tagWithoutPrefix tag }}
+ * @status wip
+ * @since 1.x
  *
  * @dependency o-example
  *
@@ -32,10 +32,9 @@ export default class {{ properCase tag }} extends LibraryBaseElement {
   /** An example attribute. */
   @property() attr = 'example';
 
-  @watch('someProperty')
-  doSomething() {
-    // Example event
-    this.emit('o-event-name');
+  @watch('example')
+  handleExampleChange() {
+    // do something
   }
 
   render() {

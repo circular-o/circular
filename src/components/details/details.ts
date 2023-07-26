@@ -1,21 +1,21 @@
-import '../icon/icon';
-import { animateTo, shimKeyframesHeightAuto, stopAnimations } from '../../internal/animate';
+import '../icon/icon.js';
+import { animateTo, shimKeyframesHeightAuto, stopAnimations } from '../../internal/animate.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query } from 'lit/decorators.js';
-import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
+import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
-import { waitForEvent } from '../../internal/event';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './details.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import { waitForEvent } from '../../internal/event.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './details.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Details show a brief summary and expand to show additional content.
- * @documentation https://circular-o.github.io/circular/#/components/details
+ * @documentation /components/details
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon
  *
@@ -164,11 +164,11 @@ export default class ODetails extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-          details: true,
-          'details--open': this.open,
-          'details--disabled': this.disabled,
-          'details--rtl': isRtl
-        })}
+      details: true,
+      'details--open': this.open,
+      'details--disabled': this.disabled,
+      'details--rtl': isRtl
+    })}
       >
         <div
           part="header"

@@ -1,16 +1,16 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import { requestInclude } from './request';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './include.styles';
+import { requestInclude } from './request.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './include.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Includes give you the power to embed external HTML files into the page.
- * @documentation https://circular-o.github.io/circular/#/components/include
+ * @documentation /components/include
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @event o-load - Emitted when the included file is loaded.
  * @event {{ status: number }} o-error - Emitted when the included file fails to load due to an error.

@@ -1,15 +1,15 @@
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './progress-ring.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './progress-ring.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Progress rings are used to show the progress of a determinate operation in a circular fashion.
- * @documentation https://circular-o.github.io/circular/#/components/progress-ring
+ * @documentation /components/progress-ring
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @slot - A label to show inside the ring.
  *

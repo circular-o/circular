@@ -1,5 +1,6 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
-import type OFormatNumber from './format-number';
+import type OFormatNumber from './format-number.js';
 
 describe('<o-format-number>', () => {
   describe('defaults ', () => {

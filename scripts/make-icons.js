@@ -8,7 +8,7 @@ import { deleteAsync } from 'del';
 import download from 'download';
 import fm from 'front-matter';
 import { readFileSync, mkdirSync, writeFileSync } from 'fs';
-import { stat, readFile, writeFile } from 'fs/promises';
+import fs from 'fs/promises';
 import { globby } from 'globby';
 import path from 'path';
 import SVGSpriter from 'svg-sprite';
@@ -51,7 +51,7 @@ const iconDir = path.join(outdir, '/assets/icons');
   const bootstrap = 'bootstrap-icons';
   if (includeLibrary.includes(bootstrap)) {
     try {
-      const iconPackageData = JSON.parse(readFileSync('./node_modules/bootstrap-icons/package.json', 'utf8'));
+      const iconPackageData = JSON.parse(await fs.readFile('./node_modules/bootstrap-icons/package.json', 'utf8'));
       const version = iconPackageData.version;
       const srcPath = `./.cache/icons/icons-${version}`;
       const origin = libraryMap[bootstrap].origin;
@@ -60,11 +60,11 @@ const iconDir = path.join(outdir, '/assets/icons');
 
       const getLicenseFilename = async path => {
         try {
-          await stat(`${srcPath}/LICENSE.md`);
+          await fs.stat(`${srcPath}/LICENSE.md`);
           return 'LICENSE.md';
         } catch {}
         try {
-          await stat(`${srcPath}/LICENSE`);
+          await fs.stat(`${srcPath}/LICENSE`);
           return 'LICENSE';
         } catch {}
         throw new Error('Could not find license file');
@@ -85,7 +85,7 @@ const iconDir = path.join(outdir, '/assets/icons');
       console.log(`Copying ${bootstrap} icons and license`);
       const libraryIconDir = path.join(iconDir, libraryMap[bootstrap].libraryName);
       await deleteAsync([libraryIconDir]);
-      mkdirSync(libraryIconDir, { recursive: true });
+      await fs.mkdir(libraryIconDir, { recursive: true });
       await Promise.all([
         copy(`${srcPath}/icons`, libraryIconDir),
         copy(`${srcPath}/${licenseFilename}`, path.join(libraryIconDir, 'LICENSE.md')),
@@ -101,7 +101,7 @@ const iconDir = path.join(outdir, '/assets/icons');
       const metadata = await Promise.all(
         files.map(async file => {
           const name = path.basename(file, path.extname(file));
-          const data = fm(await readFile(file, 'utf8')).attributes;
+          const data = fm(await fs.readFile(file, 'utf8')).attributes;
           numIcons++;
           return {
             name,
@@ -113,7 +113,7 @@ const iconDir = path.join(outdir, '/assets/icons');
         })
       );
 
-      // await writeFile(path.join(iconDir, `${bootstrap}.json`), JSON.stringify(metadata, null, 2), 'utf8');
+      // await fs.writeFile(path.join(iconDir, `${bootstrap}.json`), JSON.stringify(metadata, null, 2), 'utf8');
       iconsToJson = [...iconsToJson, ...metadata];
       console.log(chalk.cyan(`Successfully processed ${bootstrap}! ${numIcons} icons ✨\n`));
     } catch (err) {
@@ -133,7 +133,7 @@ const iconDir = path.join(outdir, '/assets/icons');
       const licenseFilename = 'LICENSE';
 
       try {
-        await stat(`${srcPath}/${licenseFilename}`);
+        await fs.stat(`${srcPath}/${licenseFilename}`);
         console.log(`Generating ${material} from cache`);
       } catch {
         // Download the source from GitHub (since not everything is published to NPM)
@@ -213,7 +213,7 @@ const iconDir = path.join(outdir, '/assets/icons');
         variants: iconVariantsMap[icon.name] || []
       }));
 
-      // await writeFile(path.join(iconDir, `${material}.json`), JSON.stringify(metadata, null, 2), 'utf8');
+      // await fs.writeFile(path.join(iconDir, `${material}.json`), JSON.stringify(metadata, null, 2), 'utf8');
       iconsToJson = [...iconsToJson, ...metadata];
       console.log(chalk.cyan(`Successfully processed ${material}! ${metadata.length} icons ✨\n`));
     } catch (err) {
@@ -224,5 +224,5 @@ const iconDir = path.join(outdir, '/assets/icons');
   // END Build the Material Icons
 
   // Generate the icons.json file
-  await writeFile(path.join(iconDir, `icons.json`), JSON.stringify(iconsToJson, null, 2), 'utf8');
+  await fs.writeFile(path.join(iconDir, `icons.json`), JSON.stringify(iconsToJson, null, 2), 'utf8');
 })();

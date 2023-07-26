@@ -1,4 +1,4 @@
-import '../button-group/button-group';
+import '../button-group/button-group.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import {
@@ -6,22 +6,22 @@ import {
   FormControlController,
   validValidityState,
   valueMissingValidityState
-} from '../../internal/form';
-import { HasSlotController } from '../../internal/slot';
+} from '../../internal/form.js';
+import { HasSlotController } from '../../internal/slot.js';
 import { html } from 'lit';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './radio-group.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './radio-group.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { LibraryBaseFormControl } from '../../internal/library-base-element';
-import type ORadio from '../radio/radio';
-import type ORadioButton from '../radio-button/radio-button';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element.js';
+import type ORadio from '../radio/radio.js';
+import type ORadioButton from '../radio-button/radio-button.js';
 
 /**
  * @summary Radio groups are used to group multiple [radios](/components/radio) or [radio buttons](/components/radio-button) so they function as a single form control.
- * @documentation https://circular-o.github.io/circular/#/components/radio-group
+ * @documentation /components/radio-group
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-button-group
  *
@@ -204,40 +204,57 @@ export default class ORadioGroup extends LibraryBaseElement implements LibraryBa
     this.formControlController.emitInvalidEvent(event);
   }
 
-  private syncRadios() {
-    if (customElements.get('o-radio') || customElements.get('o-radio-button')) {
-      const radios = this.getAllRadios();
+  private async syncRadioElements() {
+    const radios = this.getAllRadios();
 
+    await Promise.all(
       // Sync the checked state and size
-      radios.forEach(radio => {
+      radios.map(async radio => {
+        await radio.updateComplete;
         radio.checked = radio.value === this.value;
         radio.size = this.size;
-      });
+      })
+    );
 
-      this.hasButtonGroup = radios.some(radio => radio.tagName.toLowerCase() === 'o-radio-button');
+    this.hasButtonGroup = radios.some(radio => radio.tagName.toLowerCase() === 'o-radio-button');
 
-      if (!radios.some(radio => radio.checked)) {
-        if (this.hasButtonGroup) {
-          const buttonRadio = radios[0].shadowRoot?.querySelector('button');
-
-          if (buttonRadio) {
-            buttonRadio.tabIndex = 0;
-          }
-        } else {
-          radios[0].tabIndex = 0;
-        }
-      }
-
+    if (!radios.some(radio => radio.checked)) {
       if (this.hasButtonGroup) {
-        const buttonGroup = this.shadowRoot?.querySelector('o-button-group');
+        const buttonRadio = radios[0].shadowRoot?.querySelector('button');
 
-        if (buttonGroup) {
-          buttonGroup.disableRole = true;
+        if (buttonRadio) {
+          buttonRadio.tabIndex = 0;
         }
+      } else {
+        radios[0].tabIndex = 0;
       }
+    }
+
+    if (this.hasButtonGroup) {
+      const buttonGroup = this.shadowRoot?.querySelector('o-button-group');
+
+      if (buttonGroup) {
+        buttonGroup.disableRole = true;
+      }
+    }
+  }
+
+  private syncRadios() {
+    if (customElements.get('o-radio') && customElements.get('o-radio-button')) {
+      this.syncRadioElements();
+      return;
+    }
+
+    if (customElements.get('o-radio')) {
+      this.syncRadioElements();
+    } else {
+      customElements.whenDefined('o-radio').then(() => this.syncRadios());
+    }
+
+    if (customElements.get('o-radio-button')) {
+      this.syncRadioElements();
     } else {
       // Rerun this handler when <o-radio> or <o-radio-button> is registered
-      customElements.whenDefined('o-radio').then(() => this.syncRadios());
       customElements.whenDefined('o-radio-button').then(() => this.syncRadios());
     }
   }
@@ -324,14 +341,14 @@ export default class ORadioGroup extends LibraryBaseElement implements LibraryBa
       <fieldset
         part="form-control"
         class=${classMap({
-          'form-control': true,
-          'form-control--small': this.size === 'small',
-          'form-control--medium': this.size === 'medium',
-          'form-control--large': this.size === 'large',
-          'form-control--radio-group': true,
-          'form-control--has-label': hasLabel,
-          'form-control--has-help-text': hasHelpText
-        })}
+      'form-control': true,
+      'form-control--small': this.size === 'small',
+      'form-control--medium': this.size === 'medium',
+      'form-control--large': this.size === 'large',
+      'form-control--radio-group': true,
+      'form-control--has-label': hasLabel,
+      'form-control--has-help-text': hasHelpText
+    })}
         role="radiogroup"
         aria-labelledby="label"
         aria-describedby="help-text"
@@ -363,12 +380,12 @@ export default class ORadioGroup extends LibraryBaseElement implements LibraryBa
           </div>
 
           ${this.hasButtonGroup
-            ? html`
+        ? html`
                 <o-button-group part="button-group" exportparts="base:button-group__base">
                   ${defaultSlot}
                 </o-button-group>
               `
-            : defaultSlot}
+        : defaultSlot}
         </div>
 
         <slot

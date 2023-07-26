@@ -2,17 +2,17 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { LocalizeController } from '../../utilities/localize';
+import { LocalizeController } from '../../utilities/localize.js';
 import { styleMap } from 'lit/directives/style-map.js';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './progress-bar.styles';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './progress-bar.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Progress bars are used to show the status of an ongoing operation.
- * @documentation https://circular-o.github.io/circular/#/components/progress-bar
+ * @documentation /components/progress-bar
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @slot - A label to show inside the progress indicator.
  *
@@ -44,10 +44,10 @@ export default class OProgressBar extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-          'progress-bar': true,
-          'progress-bar--indeterminate': this.indeterminate,
-          'progress-bar--rtl': this.localize.dir() === 'rtl'
-        })}
+      'progress-bar': true,
+      'progress-bar--indeterminate': this.indeterminate,
+      'progress-bar--rtl': this.localize.dir() === 'rtl'
+    })}
         role="progressbar"
         title=${ifDefined(this.title)}
         aria-label=${this.label.length > 0 ? this.label : this.localize.term('progress')}

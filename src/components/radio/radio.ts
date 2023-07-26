@@ -1,17 +1,17 @@
-import '../icon/icon';
+import '../icon/icon.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, state } from 'lit/decorators.js';
 import { html } from 'lit';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './radio.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './radio.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Radios allow the user to select a single option from a group.
- * @documentation https://circular-o.github.io/circular/#/components/radio
+ * @documentation /components/radio
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon
  *
@@ -45,47 +45,33 @@ export default class ORadio extends LibraryBaseElement {
   /** Disables the radio. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-
-    this.setInitialAttributes();
-    this.addEventListeners();
-  }
-
-  disconnectedCallback() {
-    this.removeEventListeners();
-  }
-
-  private addEventListeners() {
+  constructor() {
+    super();
     this.addEventListener('blur', this.handleBlur);
     this.addEventListener('click', this.handleClick);
     this.addEventListener('focus', this.handleFocus);
   }
 
-  private removeEventListeners() {
-    this.removeEventListener('blur', this.handleBlur);
-    this.removeEventListener('click', this.handleClick);
-    this.removeEventListener('focus', this.handleFocus);
+  connectedCallback() {
+    super.connectedCallback();
+    this.setInitialAttributes();
   }
 
-  private handleBlur() {
+  private handleBlur = () => {
     this.hasFocus = false;
     this.emit('o-blur');
-  }
+  };
 
-  private handleClick() {
+  private handleClick = () => {
     if (!this.disabled) {
       this.checked = true;
     }
-  }
+  };
 
-  private handleFocus() {
+  private handleFocus = () => {
     this.hasFocus = true;
     this.emit('o-focus');
-  }
+  };
 
   private setInitialAttributes() {
     this.setAttribute('role', 'radio');
@@ -109,19 +95,19 @@ export default class ORadio extends LibraryBaseElement {
       <span
         part="base"
         class=${classMap({
-          radio: true,
-          'radio--checked': this.checked,
-          'radio--disabled': this.disabled,
-          'radio--focused': this.hasFocus,
-          'radio--small': this.size === 'small',
-          'radio--medium': this.size === 'medium',
-          'radio--large': this.size === 'large'
-        })}
+      radio: true,
+      'radio--checked': this.checked,
+      'radio--disabled': this.disabled,
+      'radio--focused': this.hasFocus,
+      'radio--small': this.size === 'small',
+      'radio--medium': this.size === 'medium',
+      'radio--large': this.size === 'large'
+    })}
       >
         <span part="${`control${this.checked ? ' control--checked' : ''}`}" class="radio__control">
           ${this.checked
-            ? html` <o-icon part="checked-icon" class="radio__checked-icon" library="system" name="radio"></o-icon> `
-            : ''}
+        ? html` <o-icon part="checked-icon" class="radio__checked-icon" library="system" name="radio"></o-icon> `
+        : ''}
         </span>
 
         <slot part="label" class="radio__label"></slot>

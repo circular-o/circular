@@ -1,7 +1,7 @@
-import { AbstractTypePlugin, DEFAULT_MANDATORY_PROPS } from './abstract.type.plugin';
-import { DEFAULT_PROPS_TO_IGNORE, type FilterType, type SwitchFilter } from '../filters.types';
+import { AbstractTypePlugin, DEFAULT_MANDATORY_PROPS } from './abstract.type.plugin.js';
+import { DEFAULT_PROPS_TO_IGNORE, type FilterType, type SwitchFilter } from '../filters.types.js';
 import { html } from 'lit';
-import type OSwitch from '../../switch/switch';
+import type OSwitch from '../../switch/switch.js';
 
 export class SwitchTypePlugin extends AbstractTypePlugin {
   type: FilterType = 'switch';

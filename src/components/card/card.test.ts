@@ -1,5 +1,6 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
-import type OCard from './card';
+import type OCard from './card.js';
 
 describe('<o-card>', () => {
   let el: OCard;

@@ -1,16 +1,16 @@
-import { animations } from './animations';
+import { animations } from './animations.js';
 import { customElement, property, queryAsync } from 'lit/decorators.js';
 import { html } from 'lit';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './animation.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './animation.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Animate elements declaratively with nearly 100 baked-in presets, or roll your own with custom keyframes. Powered by the [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
- * @documentation https://circular-o.github.io/circular/#/components/animation
+ * @documentation /components/animation
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @event o-cancel - Emitted when the animation is canceled.
  * @event o-finish - Emitted when the animation finishes.
@@ -78,7 +78,7 @@ export default class OAnimation extends LibraryBaseElement {
   @property({ attribute: 'playback-rate', type: Number }) playbackRate = 1;
 
   /** Gets and sets the current animation time. */
-  get currentTime(): number {
+  get currentTime(): CSSNumberish {
     return this.animation?.currentTime ?? 0;
   }
 
@@ -91,8 +91,6 @@ export default class OAnimation extends LibraryBaseElement {
   connectedCallback() {
     super.connectedCallback();
     this.createAnimation();
-    this.handleAnimationCancel = this.handleAnimationCancel.bind(this);
-    this.handleAnimationFinish = this.handleAnimationFinish.bind(this);
   }
 
   disconnectedCallback() {
@@ -100,17 +98,17 @@ export default class OAnimation extends LibraryBaseElement {
     this.destroyAnimation();
   }
 
-  private handleAnimationFinish() {
+  private handleAnimationFinish = () => {
     this.play = false;
     this.hasStarted = false;
     this.emit('o-finish');
-  }
+  };
 
-  private handleAnimationCancel() {
+  private handleAnimationCancel = () => {
     this.play = false;
     this.hasStarted = false;
     this.emit('o-cancel');
-  }
+  };
 
   private handleSlotChange() {
     this.destroyAnimation();

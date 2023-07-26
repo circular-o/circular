@@ -1,19 +1,19 @@
-import { clamp } from '../../internal/math';
+import { clamp } from '../../internal/math.js';
 import { customElement, property, query } from 'lit/decorators.js';
-import { drag } from '../../internal/drag';
+import { drag } from '../../internal/drag.js';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { LocalizeController } from '../../utilities/localize';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './split-panel.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './split-panel.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Split panels display two adjacent panels, allowing the user to reposition them.
- * @documentation https://circular-o.github.io/circular/#/components/split-panel
+ * @documentation /components/split-panel
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @event o-reposition - Emitted when the divider's position changes.
  *

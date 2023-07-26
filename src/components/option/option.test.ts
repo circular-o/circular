@@ -1,6 +1,7 @@
+import '../../../dist/circular.js';
 import { aTimeout, expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
-import type OOption from './option';
+import type OOption from './option.js';
 
 describe('<o-option>', () => {
   it('passes accessibility test', async () => {

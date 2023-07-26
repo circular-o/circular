@@ -1,8 +1,9 @@
+import '../../../dist/circular.js';
 // cspell:dictionaries lorem-ipsum
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
-import type ODialog from './dialog';
+import type ODialog from './dialog.js';
 
 describe('<o-dialog>', () => {
   it('should be visible with the open attribute', async () => {

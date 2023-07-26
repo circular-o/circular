@@ -1,6 +1,7 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
-import type ORadio from './radio';
-import type ORadioGroup from '../radio-group/radio-group';
+import type ORadio from './radio.js';
+import type ORadioGroup from '../radio-group/radio-group.js';
 
 describe('<o-radio>', () => {
   it('should not get checked when disabled', async () => {

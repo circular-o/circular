@@ -1,5 +1,6 @@
+import '../../../dist/circular.js';
 import { elementUpdated, expect, fixture, html } from '@open-wc/testing';
-import type OFormatBytes from './format-bytes';
+import type OFormatBytes from './format-bytes.js';
 
 describe('<o-format-bytes>', () => {
   describe('defaults ', () => {

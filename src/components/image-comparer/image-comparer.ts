@@ -1,21 +1,21 @@
-import '../icon/icon';
-import { clamp } from '../../internal/math';
+import '../icon/icon.js';
+import { clamp } from '../../internal/math.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query } from 'lit/decorators.js';
-import { drag } from '../../internal/drag';
+import { drag } from '../../internal/drag.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
+import { LocalizeController } from '../../utilities/localize.js';
 import { styleMap } from 'lit/directives/style-map.js';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './image-comparer.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './image-comparer.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Compare visual differences between similar photos with a sliding panel.
- * @documentation https://circular-o.github.io/circular/#/components/image-comparer
+ * @documentation /components/image-comparer
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon
  *
@@ -102,9 +102,9 @@ export default class OImageComparer extends LibraryBaseElement {
         part="base"
         id="image-comparer"
         class=${classMap({
-          'image-comparer': true,
-          'image-comparer--rtl': isRtl
-        })}
+      'image-comparer': true,
+      'image-comparer--rtl': isRtl
+    })}
         @keydown=${this.handleKeyDown}
       >
         <div class="image-comparer__image">
@@ -115,8 +115,8 @@ export default class OImageComparer extends LibraryBaseElement {
             part="after"
             class="image-comparer__after"
             style=${styleMap({
-              clipPath: isRtl ? `inset(0 0 0 ${100 - this.position}%)` : `inset(0 ${100 - this.position}% 0 0)`
-            })}
+      clipPath: isRtl ? `inset(0 0 0 ${100 - this.position}%)` : `inset(0 ${100 - this.position}% 0 0)`
+    })}
           ></slot>
         </div>
 
@@ -124,8 +124,8 @@ export default class OImageComparer extends LibraryBaseElement {
           part="divider"
           class="image-comparer__divider"
           style=${styleMap({
-            left: isRtl ? `${100 - this.position}%` : `${this.position}%`
-          })}
+      left: isRtl ? `${100 - this.position}%` : `${this.position}%`
+    })}
           @mousedown=${this.handleDrag}
           @touchstart=${this.handleDrag}
         >

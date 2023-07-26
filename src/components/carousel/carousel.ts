@@ -1,25 +1,25 @@
-import '../icon/icon';
-import { AutoplayController } from './autoplay-controller';
-import { clamp } from 'src/internal/math';
+import '../icon/icon.js';
+import { AutoplayController } from './autoplay-controller.js';
+import { clamp } from '../../internal/math.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html } from 'lit';
-import { LocalizeController } from '@shoelace-style/localize';
+import { LocalizeController } from '../../utilities/localize.js';
 import { map } from 'lit/directives/map.js';
-import { prefersReducedMotion } from '../../internal/animate';
+import { prefersReducedMotion } from '../../internal/animate.js';
 import { range } from 'lit/directives/range.js';
-import { ScrollController } from './scroll-controller';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import OCarouselItem from '../carousel-item/carousel-item';
-import styles from './carousel.styles';
+import { ScrollController } from './scroll-controller.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import OCarouselItem from '../carousel-item/carousel-item.js';
+import styles from './carousel.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Carousels display an arbitrary number of content slides along a horizontal or vertical axis.
  *
- * @since 2.2
- * @status experimental
+ * @since 1.5
+ * @status beta
  *
  * @dependency o-icon
  *
@@ -132,7 +132,7 @@ export default class OCarousel extends LibraryBaseElement {
 
   protected firstUpdated(): void {
     this.initializeSlides();
-    this.mutationObserver = new MutationObserver(this.handleSlotChange.bind(this));
+    this.mutationObserver = new MutationObserver(this.handleSlotChange);
     this.mutationObserver.observe(this, { childList: true, subtree: false });
   }
 
@@ -211,7 +211,7 @@ export default class OCarousel extends LibraryBaseElement {
     }
   }
 
-  private handleSlotChange(mutations: MutationRecord[]) {
+  private handleSlotChange = (mutations: MutationRecord[]) => {
     const needsInitialization = mutations.some(mutation =>
       [...mutation.addedNodes, ...mutation.removedNodes].some(
         node => OCarouselItem.isCarouselItem(node) && !(node as HTMLElement).hasAttribute('data-clone')
@@ -223,7 +223,7 @@ export default class OCarousel extends LibraryBaseElement {
       this.initializeSlides();
     }
     this.requestUpdate();
-  }
+  };
 
   @watch('loop', { waitUntilFirstUpdate: true })
   @watch('slidesPerPage', { waitUntilFirstUpdate: true })

@@ -1,16 +1,16 @@
-import '../icon/icon';
+import '../icon/icon.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html } from 'lit';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './animated-image.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './animated-image.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary A component for displaying animated GIFs and WEBPs that play and pause on interaction.
- * @documentation https://circular-o.github.io/circular/#/components/animated-image
+ * @documentation /components/animated-image
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon
  *
@@ -95,7 +95,7 @@ export default class OAnimatedImage extends LibraryBaseElement {
         />
 
         ${this.isLoaded
-          ? html`
+        ? html`
               <img
                 class="animated-image__frozen"
                 src=${this.frozenFrame}
@@ -109,7 +109,7 @@ export default class OAnimatedImage extends LibraryBaseElement {
                 <slot name="pause-icon"><o-icon name="pause-fill" library="system"></o-icon></slot>
               </div>
             `
-          : ''}
+        : ''}
       </div>
     `;
   }

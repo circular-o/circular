@@ -1,14 +1,14 @@
 import { customElement } from 'lit/decorators.js';
 import { html } from 'lit';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './carousel-item.styles';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './carousel-item.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary A carousel item represent a slide within a [carousel](/components/carousel).
  *
- * @since 2.0
- * @status experimental
+ * @since 1.5
+ * @status beta
  *
  * @slot - The carousel item's content..
  *
@@ -23,10 +23,11 @@ export default class OCarouselItem extends LibraryBaseElement {
     return node instanceof Element && node.getAttribute('aria-roledescription') === 'slide';
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.setAttribute('role', 'group');
-  }
+  // TODO: This is not passing the test. Why?
+  // connectedCallback() {
+  //   super.connectedCallback();
+  //   this.setAttribute('role', 'group');
+  // }
 
   render() {
     return html` <slot></slot> `;

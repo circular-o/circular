@@ -1,11 +1,12 @@
+import '../../../dist/circular.js';
 import { aTimeout, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
-import { clickOnElement } from '../../internal/test';
-import { runFormControlBaseTests } from '../../internal/test/form-control-base-tests';
+import { clickOnElement } from '../../internal/test.js';
+import { runFormControlBaseTests } from '../../internal/test/form-control-base-tests.js';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
-import type { OChangeEvent } from '../../events/events';
-import type ORadio from '../radio/radio';
-import type ORadioGroup from './radio-group';
+import type { OChangeEvent } from '../../events/events.js';
+import type ORadio from '../radio/radio.js';
+import type ORadioGroup from './radio-group.js';
 
 describe('<o-radio-group>', () => {
   describe('validation tests', () => {
@@ -363,6 +364,54 @@ describe('when the value changes', () => {
     radioGroup.addEventListener('o-input', () => expect.fail('o-input should not be emitted'));
     radioGroup.value = '2';
     await radioGroup.updateComplete;
+  });
+
+  it('should relatively position content to prevent visually hidden scroll bugs', async () => {
+    //
+    // See https://github.com/shoelace-style/shoelace/issues/1380
+    //
+    const radioGroup = await fixture<ORadioGroup>(html`
+      <o-radio-group value="1">
+        <o-radio id="radio-1" value="1"></o-radio>
+      </o-radio-group>
+    `);
+
+    const formControl = radioGroup.shadowRoot!.querySelector('.form-control')!;
+    const visuallyHidden = radioGroup.shadowRoot!.querySelector('.visually-hidden')!;
+
+    expect(getComputedStyle(formControl).position).to.equal('relative');
+    expect(getComputedStyle(visuallyHidden).position).to.equal('absolute');
+  });
+
+  /**
+   * @see https://github.com/shoelace-style/shoelace/issues/1361
+   * This isn't really possible to test right now due to importing "shoelace.js" which
+   * auto-defines all of our components up front. This should be tested if we ever split
+   * to non-auto-defining components and not auto-defining for tests.
+   */
+  it.skip('should sync up radios and radio buttons if defined after radio group', async () => {
+    // customElements.define("o-radio-group", SlRadioGroup)
+    //
+    // const radioGroup = await fixture<SlRadioGroup>(html`
+    //   <o-radio-group value="1">
+    //     <o-radio id="radio-1" value="1"></o-radio>
+    //     <o-radio id="radio-2" value="2"></o-radio>
+    //   </o-radio-group>
+    // `);
+    //
+    // await aTimeout(1)
+    //
+    // customElements.define("o-radio-button", SlRadioButton)
+    //
+    // expect(radioGroup.querySelector("o-radio")?.getAttribute("aria-checked")).to.equal("false")
+    //
+    // await aTimeout(1)
+    //
+    // customElements.define("o-radio", SlRadio)
+    //
+    // await aTimeout(1)
+    //
+    // expect(radioGroup.querySelector("o-radio")?.getAttribute("aria-checked")).to.equal("true")
   });
 
   runFormControlBaseTests('o-radio-group');

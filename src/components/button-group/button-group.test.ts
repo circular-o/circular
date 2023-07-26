@@ -1,5 +1,6 @@
+import '../../../dist/circular.js';
 import { elementUpdated, expect, fixture, html } from '@open-wc/testing';
-import type OButtonGroup from './button-group';
+import type OButtonGroup from './button-group.js';
 
 describe('<o-button-group>', () => {
   describe('defaults ', () => {

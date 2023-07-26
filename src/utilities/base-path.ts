@@ -10,11 +10,11 @@ export function setBasePath(path: string) {
  *
  * The base path is used to load assets such as icons and images, so it needs to be set for components to work properly.
  * By default, this script will look for a script ending in circular.js or circular-autoloader.js and set the base path
- * to the directory that contains that file. To override this behavior, you can add the data-circular attribute to any
- * script on the page (it probably makes the most sense to attach it to the Circular script, but it could also be on a
+ * to the directory that contains that file. To override this behavior, you can add the data-library attribute to any
+ * script on the page (it probably makes the most sense to attach it to the library script, but it could also be on a
  * bundle). The value can be a local folder or it can point to a CORS-enabled endpoint such as a CDN.
  *
- *   <script src="bundle.js" data-circular="/custom/base/path"></script>
+ *   <script src="bundle.js" data-library="/custom/base/path"></script>
  *
  * Alternatively, you can set the base path manually using the exported setBasePath() function.
  *
@@ -23,11 +23,11 @@ export function setBasePath(path: string) {
 export function getBasePath(subpath = '') {
   if (!basePath) {
     const scripts = [...document.getElementsByTagName('script')] as HTMLScriptElement[];
-    const configScript = scripts.find(script => script.hasAttribute('data-circular'));
+    const configScript = scripts.find(script => script.hasAttribute('data-library'));
 
     if (configScript) {
-      // Use the data-circular attribute
-      setBasePath(configScript.getAttribute('data-circular')!);
+      // Use the data-library attribute
+      setBasePath(configScript.getAttribute('data-library')!);
     } else {
       const fallbackScript = scripts.find(s => {
         return /circular(\.min)?\.js($|\?)/.test(s.src) || /circular-autoloader(\.min)?\.js($|\?)/.test(s.src);

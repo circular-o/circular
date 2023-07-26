@@ -1,17 +1,17 @@
 import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
 import { styleMap } from 'lit/directives/style-map.js';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 import QrCreator from 'qr-creator';
-import styles from './qr-code.styles';
+import styles from './qr-code.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Generates a [QR code](https://www.qrcode.com/) and renders it using the [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API).
- * @documentation https://circular-o.github.io/circular/#/components/qr-code
+ * @documentation /components/qr-code
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @csspart base - The component's base wrapper.
  */
@@ -74,9 +74,9 @@ export default class OQrCode extends LibraryBaseElement {
         role="img"
         aria-label=${this.label?.length > 0 ? this.label : this.value}
         style=${styleMap({
-          width: `${this.size}px`,
-          height: `${this.size}px`
-        })}
+      width: `${this.size}px`,
+      height: `${this.size}px`
+    })}
       ></canvas>
     `;
   }

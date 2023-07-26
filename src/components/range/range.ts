@@ -1,23 +1,23 @@
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, eventOptions, property, query, state } from 'lit/decorators.js';
-import { defaultValue } from '../../internal/default-value';
-import { FormControlController } from '../../internal/form';
-import { HasSlotController } from '../../internal/slot';
+import { defaultValue } from '../../internal/default-value.js';
+import { FormControlController } from '../../internal/form.js';
+import { HasSlotController } from '../../internal/slot.js';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
-import { LocalizeController } from '../../utilities/localize';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './range.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './range.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { LibraryBaseFormControl } from '../../internal/library-base-element';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element.js';
 
 /**
  * @summary Ranges allow the user to select a single value within a given range using a slider.
- * @documentation https://circular-o.github.io/circular/#/components/range
+ * @documentation /components/range
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @slot label - The range's label. Alternatively, you can use the `label` attribute.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
@@ -282,11 +282,11 @@ export default class ORange extends LibraryBaseElement implements LibraryBaseFor
       <div
         part="form-control"
         class=${classMap({
-          'form-control': true,
-          'form-control--medium': true, // range only has one size
-          'form-control--has-label': hasLabel,
-          'form-control--has-help-text': hasHelpText
-        })}
+      'form-control': true,
+      'form-control--medium': true, // range only has one size
+      'form-control--has-label': hasLabel,
+      'form-control--has-help-text': hasHelpText
+    })}
       >
         <label
           part="form-control-label"
@@ -301,14 +301,14 @@ export default class ORange extends LibraryBaseElement implements LibraryBaseFor
           <div
             part="base"
             class=${classMap({
-              range: true,
-              'range--disabled': this.disabled,
-              'range--focused': this.hasFocus,
-              'range--rtl': this.localize.dir() === 'rtl',
-              'range--tooltip-visible': this.hasTooltip,
-              'range--tooltip-top': this.tooltip === 'top',
-              'range--tooltip-bottom': this.tooltip === 'bottom'
-            })}
+      range: true,
+      'range--disabled': this.disabled,
+      'range--focused': this.hasFocus,
+      'range--rtl': this.localize.dir() === 'rtl',
+      'range--tooltip-visible': this.hasTooltip,
+      'range--tooltip-top': this.tooltip === 'top',
+      'range--tooltip-bottom': this.tooltip === 'bottom'
+    })}
             @mousedown=${this.handleThumbDragStart}
             @mouseup=${this.handleThumbDragEnd}
             @touchstart=${this.handleThumbDragStart}
@@ -334,12 +334,12 @@ export default class ORange extends LibraryBaseElement implements LibraryBaseFor
               @blur=${this.handleBlur}
             />
             ${this.tooltip !== 'none' && !this.disabled
-              ? html`
+        ? html`
                   <output part="tooltip" class="range__tooltip">
                     ${typeof this.tooltipFormatter === 'function' ? this.tooltipFormatter(this.value) : this.value}
                   </output>
                 `
-              : ''}
+        : ''}
           </div>
         </div>
 

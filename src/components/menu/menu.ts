@@ -1,18 +1,18 @@
 import { customElement, query } from 'lit/decorators.js';
 import { html } from 'lit';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './menu.styles';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './menu.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type OMenuItem from '../menu-item/menu-item';
+import type OMenuItem from '../menu-item/menu-item.js';
 export interface MenuSelectEventDetail {
   item: OMenuItem;
 }
 
 /**
  * @summary Menus provide a list of options for the user to choose from.
- * @documentation https://circular-o.github.io/circular/#/components/menu
+ * @documentation /components/menu
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @slot - The menu's content, including menu items, menu labels, and dividers.
  *

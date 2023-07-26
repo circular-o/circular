@@ -1,18 +1,18 @@
-import { cancelEvent, convertFiltersToObject, filterValueAdapter } from './utilities.type.plugin';
+import { cancelEvent, convertFiltersToObject, filterValueAdapter } from './utilities.type.plugin.js';
 import { customElement, property } from 'lit/decorators.js';
-import { DividerTypePlugin } from './types-plugins/divider.type.plugin';
-import { type Filter, type Filters, type RowFilter } from './filters.types';
+import { DividerTypePlugin } from './types-plugins/divider.type.plugin.js';
+import { type Filter, type Filters, type RowFilter } from './filters.types.js';
 import { html, nothing } from 'lit';
-import { InputTypePlugin } from './types-plugins/input.type.plugin';
-import { RowTypePlugin } from './types-plugins/row.type.plugin';
-import { SelectTypePlugin } from './types-plugins/select.type.plugin';
-import { SwitchTypePlugin } from './types-plugins/switch.type.plugin';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './filters.styles';
-import type { AbstractTypePlugin } from './types-plugins/abstract.type.plugin';
+import { InputTypePlugin } from './types-plugins/input.type.plugin.js';
+import { RowTypePlugin } from './types-plugins/row.type.plugin.js';
+import { SelectTypePlugin } from './types-plugins/select.type.plugin.js';
+import { SwitchTypePlugin } from './types-plugins/switch.type.plugin.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './filters.styles.js';
+import type { AbstractTypePlugin } from './types-plugins/abstract.type.plugin.js';
 import type { CSSResultGroup, TemplateResult } from 'lit';
-import type { OChangeEvent } from '../../circular';
+import type OChangeEvent from '../../events/-change.js';
 
 interface FilterMasterData {
   config: Filter;
@@ -23,8 +23,8 @@ const DATA_FILTER_NAME_ATTRIBUTE = 'data-filter-name';
 
 /**
  * @summary A component that renders a list of filters based on a JSON configuration.
- * @documentation https://circular-o.github.io/circular/#/components/filters
- * @status experimental
+ * @documentation /components/filters
+ * @status beta
  * @since 1.6
  *
  * @dependency o-input
@@ -91,8 +91,8 @@ export default class OFilters extends LibraryBaseElement {
   } = {};
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private filtersData: { [key: string]: any } = {};
-  private filtersMasterMap: { [key: string]: FilterMasterData } = {};
+  private filtersData: { [key: string]: any; } = {};
+  private filtersMasterMap: { [key: string]: FilterMasterData; } = {};
   private lastFocusedFilterName: string | undefined;
   private clearAllContainer: HTMLDivElement;
 
@@ -265,7 +265,7 @@ export default class OFilters extends LibraryBaseElement {
 
   /** Loop over all the filters and internal items (RowFilter) and return an object with the filter name as a key and the filter config as the value */
   private getFiltersConfigGroupByName(filters: Filter[]) {
-    const filtersConfig: { [key: string]: Filter } = {};
+    const filtersConfig: { [key: string]: Filter; } = {};
 
     const getFiltersConfig = (filtersConfigs: Filter[]) => {
       for (const filter of filtersConfigs) {
@@ -414,7 +414,7 @@ export default class OFilters extends LibraryBaseElement {
     filter: Partial<Filter>,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any,
-    { emitEvent }: { emitEvent: boolean } = { emitEvent: false }
+    { emitEvent }: { emitEvent: boolean; } = { emitEvent: false }
   ) {
     if (!filter.name) {
       return;
@@ -487,7 +487,7 @@ export default class OFilters extends LibraryBaseElement {
 
   /** Sets a filter value by name */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setFilterValue(name: string, value: any, { emitEvent }: { emitEvent: boolean } = { emitEvent: false }) {
+  setFilterValue(name: string, value: any, { emitEvent }: { emitEvent: boolean; } = { emitEvent: false }) {
     const filter = this.getFilterConfigByName(name);
     if (!filter) {
       console.warn(`setFilterValue: Can't set the filter value, filter with name "${name}" is not defined`);
@@ -502,7 +502,7 @@ export default class OFilters extends LibraryBaseElement {
     filter: Filter,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any,
-    { emitEvent }: { emitEvent: boolean } = { emitEvent: false }
+    { emitEvent }: { emitEvent: boolean; } = { emitEvent: false }
   ) {
     if (!filter.name || !filter.type) {
       console.warn("setFilterValue: Can't set the filter value, filter name/type is not defined", filter);

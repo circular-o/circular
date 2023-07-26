@@ -1,7 +1,8 @@
-import { clickOnElement } from '../../internal/test';
-import { expect, fixture, html, oneEvent } from '@open-wc/testing';
+import '../../../dist/circular.js';
+import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
+import { clickOnElement } from '../../internal/test.js';
 import sinon from 'sinon';
-import type OCarousel from './carousel';
+import type OCarousel from './carousel.js';
 
 describe('<o-carousel>', () => {
   it('should render a carousel with default configuration', async () => {
@@ -581,6 +582,9 @@ describe('<o-carousel>', () => {
 
         await oneEvent(el.scrollContainer, 'scrollend');
         await el.updateComplete;
+        // let's give some time for the carousel to update the attribute
+        await aTimeout(100);
+
         expect(el.scrollContainer).to.have.attribute('aria-busy', 'false');
       });
     });

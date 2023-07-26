@@ -1,5 +1,6 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
-import type OSkeleton from './skeleton';
+import type OSkeleton from './skeleton.js';
 
 describe('<o-skeleton>', () => {
   it('should render default skeleton', async () => {

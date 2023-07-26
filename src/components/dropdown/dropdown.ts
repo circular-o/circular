@@ -1,27 +1,27 @@
-import '../popup/popup';
-import { animateTo, stopAnimations } from '../../internal/animate';
+import '../popup/popup.js';
+import { animateTo, stopAnimations } from '../../internal/animate.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query } from 'lit/decorators.js';
-import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
-import { getTabbableBoundary } from '../../internal/tabbable';
+import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry.js';
+import { getTabbableBoundary } from '../../internal/tabbable.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
-import { waitForEvent } from '../../internal/event';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './dropdown.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import { waitForEvent } from '../../internal/event.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './dropdown.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { OSelectEvent } from '../../events/events';
-import type OButton from '../button/button';
-import type OIconButton from '../icon-button/icon-button';
-import type OMenu from '../menu/menu';
-import type OPopup from '../popup/popup';
+import type OButton from '../button/button.js';
+import type OIconButton from '../icon-button/icon-button.js';
+import type OMenu from '../menu/menu.js';
+import type OPopup from '../popup/popup.js';
+import type OSelectEvent from '../../events/-select.js';
 
 /**
  * @summary Dropdowns expose additional content that "drops down" in a panel.
- * @documentation https://circular-o.github.io/circular/#/components/dropdown
+ * @documentation /components/dropdown
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-popup
  *
@@ -103,10 +103,6 @@ export default class ODropdown extends LibraryBaseElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.handlePanelSelect = this.handlePanelSelect.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
-    this.handleDocumentMouseDown = this.handleDocumentMouseDown.bind(this);
 
     if (!this.containingElement) {
       this.containingElement = this;
@@ -142,7 +138,7 @@ export default class ODropdown extends LibraryBaseElement {
       | undefined;
   }
 
-  handleKeyDown(event: KeyboardEvent) {
+  private handleKeyDown = (event: KeyboardEvent) => {
     // Close when escape is pressed inside an open dropdown. We need to listen on the panel itself and stop propagation
     // in case any ancestors are also listening for this key.
     if (this.open && event.key === 'Escape') {
@@ -150,9 +146,9 @@ export default class ODropdown extends LibraryBaseElement {
       this.hide();
       this.focusOnTrigger();
     }
-  }
+  };
 
-  handleDocumentKeyDown(event: KeyboardEvent) {
+  private handleDocumentKeyDown = (event: KeyboardEvent) => {
     // Close when escape or tab is pressed
     if (event.key === 'Escape' && this.open) {
       event.stopPropagation();
@@ -189,17 +185,17 @@ export default class ODropdown extends LibraryBaseElement {
         }
       });
     }
-  }
+  };
 
-  handleDocumentMouseDown(event: MouseEvent) {
+  private handleDocumentMouseDown = (event: MouseEvent) => {
     // Close when clicking outside of the containing element
     const path = event.composedPath();
     if (this.containingElement && !path.includes(this.containingElement)) {
       this.hide();
     }
-  }
+  };
 
-  handlePanelSelect(event: OSelectEvent) {
+  private handlePanelSelect = (event: OSelectEvent) => {
     const target = event.target as HTMLElement;
 
     // Hide the dropdown when a menu item is selected
@@ -207,7 +203,7 @@ export default class ODropdown extends LibraryBaseElement {
       this.hide();
       this.focusOnTrigger();
     }
-  }
+  };
 
   handleTriggerClick() {
     if (this.open) {
@@ -400,9 +396,9 @@ export default class ODropdown extends LibraryBaseElement {
         auto-size="vertical"
         auto-size-padding="10"
         class=${classMap({
-          dropdown: true,
-          'dropdown--open': this.open
-        })}
+      dropdown: true,
+      'dropdown--open': this.open
+    })}
       >
         <slot
           name="trigger"

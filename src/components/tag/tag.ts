@@ -1,17 +1,17 @@
-import '../icon-button/icon-button';
+import '../icon-button/icon-button.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './tag.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './tag.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Tags are used as labels to organize things or to indicate a selection.
- * @documentation https://circular-o.github.io/circular/#/components/tag
+ * @documentation /components/tag
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon-button
  *
@@ -50,30 +50,30 @@ export default class OTag extends LibraryBaseElement {
       <span
         part="base"
         class=${classMap({
-          tag: true,
+      tag: true,
 
-          // Types
-          'tag--primary': this.variant === 'primary',
-          'tag--success': this.variant === 'success',
-          'tag--neutral': this.variant === 'neutral',
-          'tag--warning': this.variant === 'warning',
-          'tag--danger': this.variant === 'danger',
-          'tag--text': this.variant === 'text',
+      // Types
+      'tag--primary': this.variant === 'primary',
+      'tag--success': this.variant === 'success',
+      'tag--neutral': this.variant === 'neutral',
+      'tag--warning': this.variant === 'warning',
+      'tag--danger': this.variant === 'danger',
+      'tag--text': this.variant === 'text',
 
-          // Sizes
-          'tag--small': this.size === 'small',
-          'tag--medium': this.size === 'medium',
-          'tag--large': this.size === 'large',
+      // Sizes
+      'tag--small': this.size === 'small',
+      'tag--medium': this.size === 'medium',
+      'tag--large': this.size === 'large',
 
-          // Modifiers
-          'tag--pill': this.pill,
-          'tag--removable': this.removable
-        })}
+      // Modifiers
+      'tag--pill': this.pill,
+      'tag--removable': this.removable
+    })}
       >
         <slot part="content" class="tag__content"></slot>
 
         ${this.removable
-          ? html`
+        ? html`
               <o-icon-button
                 part="remove-button"
                 exportparts="base:remove-button__base"
@@ -85,7 +85,7 @@ export default class OTag extends LibraryBaseElement {
                 tabindex="-1"
               ></o-icon-button>
             `
-          : ''}
+        : ''}
       </span>
     `;
   }

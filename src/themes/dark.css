@@ -111,17 +111,17 @@
   --o-color-mountain-white-950: #f5f5f5;
 
   /* Ghost Gray (GR) */
-  --o-color-ghost-gray-50: #f6f7f8;
-  --o-color-ghost-gray-100: #eaebef;
-  --o-color-ghost-gray-200: #dadde3;
-  --o-color-ghost-gray-300: #c7cbd4;
-  --o-color-ghost-gray-400: #a3a9b7;
+  --o-color-ghost-gray-50: #31323a;
+  --o-color-ghost-gray-100: #4d4e5b;
+  --o-color-ghost-gray-200: #5d5e70;
+  --o-color-ghost-gray-300: #6e7087;
+  --o-color-ghost-gray-400: #7b7f95;
   --o-color-ghost-gray-500: #8c91a5;
-  --o-color-ghost-gray-600: #7b7f95;
-  --o-color-ghost-gray-700: #6e7087;
-  --o-color-ghost-gray-800: #5d5e70;
-  --o-color-ghost-gray-900: #4d4e5b;
-  --o-color-ghost-gray-950: #31323a;
+  --o-color-ghost-gray-600: #a3a9b7;
+  --o-color-ghost-gray-700: #c7cbd4;
+  --o-color-ghost-gray-800: #dadde3;
+  --o-color-ghost-gray-900: #eaebef;
+  --o-color-ghost-gray-950: #f6f7f8;
 
   /* Black & White */
   --o-color-black: #ffffff;

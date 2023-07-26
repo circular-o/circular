@@ -1,15 +1,15 @@
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './badge.styles';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './badge.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Badges are used to draw attention and display statuses or counts.
- * @documentation https://circular-o.github.io/circular/#/components/badge
+ * @documentation /components/badge
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @slot - The badge's content.
  *
@@ -33,15 +33,15 @@ export default class OBadge extends LibraryBaseElement {
       <slot
         part="base"
         class=${classMap({
-          badge: true,
-          'badge--primary': this.variant === 'primary',
-          'badge--success': this.variant === 'success',
-          'badge--neutral': this.variant === 'neutral',
-          'badge--warning': this.variant === 'warning',
-          'badge--danger': this.variant === 'danger',
-          'badge--pill': this.pill,
-          'badge--pulse': this.pulse
-        })}
+      badge: true,
+      'badge--primary': this.variant === 'primary',
+      'badge--success': this.variant === 'success',
+      'badge--neutral': this.variant === 'neutral',
+      'badge--warning': this.variant === 'warning',
+      'badge--danger': this.variant === 'danger',
+      'badge--pill': this.pill,
+      'badge--pulse': this.pulse
+    })}
         role="status"
       ></slot>
     `;

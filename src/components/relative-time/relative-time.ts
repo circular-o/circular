@@ -1,7 +1,7 @@
 import { customElement, property, state } from 'lit/decorators.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
-import LibraryBaseElement from '../../internal/library-base-element';
+import { LocalizeController } from '../../utilities/localize.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 
 interface UnitConfig {
   max: number;
@@ -20,9 +20,9 @@ const availableUnits: UnitConfig[] = [
 
 /**
  * @summary Outputs a localized time phrase relative to the current date and time.
- * @documentation https://circular-o.github.io/circular/#/components/relative-time
+ * @documentation /components/relative-time
  * @status stable
- * @since 2.0
+ * @since 1.5
  */
 @customElement('o-relative-time')
 export default class ORelativeTime extends LibraryBaseElement {

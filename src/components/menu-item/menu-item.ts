@@ -1,18 +1,18 @@
-import '../icon/icon';
+import '../icon/icon.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query } from 'lit/decorators.js';
-import { getTextContent } from '../../internal/slot';
+import { getTextContent } from '../../internal/slot.js';
 import { html } from 'lit';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './menu-item.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './menu-item.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Menu items provide options for the user to pick from in a menu.
- * @documentation https://circular-o.github.io/circular/#/components/menu-item
+ * @documentation /components/menu-item
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon
  *
@@ -48,15 +48,9 @@ export default class OMenuItem extends LibraryBaseElement {
   /** Draws the menu item in a disabled state, preventing selection. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.handleHostClick = this.handleHostClick.bind(this);
+  constructor() {
+    super();
     this.addEventListener('click', this.handleHostClick);
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.removeEventListener('click', this.handleHostClick);
   }
 
   private handleDefaultSlotChange() {
@@ -75,13 +69,13 @@ export default class OMenuItem extends LibraryBaseElement {
     }
   }
 
-  private handleHostClick(event: MouseEvent) {
+  private handleHostClick = (event: MouseEvent) => {
     // Prevent the click event from being emitted when the button is disabled or loading
     if (this.disabled) {
       event.preventDefault();
       event.stopImmediatePropagation();
     }
-  }
+  };
 
   @watch('checked')
   handleCheckedChange() {
@@ -126,11 +120,11 @@ export default class OMenuItem extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-          'menu-item': true,
-          'menu-item--checked': this.checked,
-          'menu-item--disabled': this.disabled,
-          'menu-item--has-submenu': false // reserved for future use
-        })}
+      'menu-item': true,
+      'menu-item--checked': this.checked,
+      'menu-item--disabled': this.disabled,
+      'menu-item--has-submenu': false // reserved for future use
+    })}
       >
         <span part="checked-icon" class="menu-item__check">
           <o-icon name="check" library="system" aria-hidden="true"></o-icon>

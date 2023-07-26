@@ -1,8 +1,8 @@
-import { AbstractTypePlugin, DEFAULT_MANDATORY_PROPS } from './abstract.type.plugin';
-import { addPrefixSuffixToElement, appendIconToElement } from '../utilities.type.plugin';
-import { DEFAULT_PROPS_TO_IGNORE, type Filter, type FilterType, type SelectFilter } from '../filters.types';
+import { AbstractTypePlugin, DEFAULT_MANDATORY_PROPS } from './abstract.type.plugin.js';
+import { addPrefixSuffixToElement, appendIconToElement } from '../utilities.type.plugin.js';
+import { DEFAULT_PROPS_TO_IGNORE, type Filter, type FilterType, type SelectFilter } from '../filters.types.js';
 import { html } from 'lit';
-import type OSelect from '../../select/select';
+import type OSelect from '../../select/select.js';
 
 export class SelectTypePlugin extends AbstractTypePlugin {
   type: FilterType = 'select';

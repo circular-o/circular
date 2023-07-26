@@ -1,12 +1,13 @@
+import '../../../dist/circular.js';
 import { aTimeout, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
-import { clickOnElement } from '../../internal/test';
-import { runFormControlBaseTests } from '../../internal/test/form-control-base-tests';
+import { clickOnElement } from '../../internal/test.js';
+import { runFormControlBaseTests } from '../../internal/test/form-control-base-tests.js';
 import { sendKeys } from '@web/test-runner-commands';
-import { serialize } from '../../utilities/form';
+import { serialize } from '../../utilities/form.js';
 import sinon from 'sinon';
-import type LibraryBaseElement from '../../internal/library-base-element';
-import type OOption from '../option/option';
-import type OSelect from './select';
+import type LibraryBaseElement from '../../internal/library-base-element.js';
+import type OOption from '../option/option.js';
+import type OSelect from './select.js';
 
 describe('<o-select>', () => {
   describe('accessibility', () => {
@@ -461,7 +462,8 @@ describe('<o-select>', () => {
       await select.updateComplete;
       expect(select.value).to.equal('option-3');
 
-      setTimeout(() => clickOnElement(resetButton));
+      // setTimeout(() => clickOnElement(resetButton));
+      setTimeout(() => resetButton.click());
       await oneEvent(form, 'reset');
       await select.updateComplete;
       expect(select.value).to.equal('option-1');

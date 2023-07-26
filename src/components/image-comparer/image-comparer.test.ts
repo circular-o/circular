@@ -1,6 +1,7 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
 import sinon from 'sinon';
-import type OImageComparer from './image-comparer';
+import type OImageComparer from './image-comparer.js';
 
 describe('<o-image-comparer>', () => {
   it('should render a basic before/after', async () => {

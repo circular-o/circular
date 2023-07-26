@@ -1,18 +1,18 @@
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './tab-panel.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './tab-panel.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 let id = 0;
 
 /**
  * @summary Tab panels are used inside [tab groups](/components/tab-group) to display tabbed content.
- * @documentation https://circular-o.github.io/circular/#/components/tab-panel
+ * @documentation /components/tab-panel
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @slot - The tab panel's content.
  *
@@ -49,9 +49,9 @@ export default class OTabPanel extends LibraryBaseElement {
       <slot
         part="base"
         class=${classMap({
-          'tab-panel': true,
-          'tab-panel--active': this.active
-        })}
+      'tab-panel': true,
+      'tab-panel--active': this.active
+    })}
       ></slot>
     `;
   }

@@ -1,8 +1,9 @@
-import { dragElement } from '../../internal/test';
+import '../../../dist/circular.js';
+import { dragElement } from '../../internal/test.js';
 import { expect, fixture, html, oneEvent } from '@open-wc/testing';
-import { queryByTestId } from '../../internal/test/data-testid-helpers';
+import { queryByTestId } from '../../internal/test/data-testid-helpers.js';
 import { resetMouse } from '@web/test-runner-commands';
-import type OSplitPanel from './split-panel';
+import type OSplitPanel from './split-panel.js';
 
 const DIVIDER_WIDTH_IN_PX = 4;
 

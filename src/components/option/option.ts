@@ -1,18 +1,18 @@
-import '../icon/icon';
+import '../icon/icon.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './option.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './option.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Options define the selectable items within various form controls such as [select](/components/select).
- * @documentation https://circular-o.github.io/circular/#/components/option
+ * @documentation /components/option
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon
  *
@@ -114,12 +114,12 @@ export default class OOption extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-          option: true,
-          'option--current': this.current,
-          'option--disabled': this.disabled,
-          'option--selected': this.selected,
-          'option--hover': this.hasHover
-        })}
+      option: true,
+      'option--current': this.current,
+      'option--disabled': this.disabled,
+      'option--selected': this.selected,
+      'option--hover': this.hasHover
+    })}
         @mouseenter=${this.handleMouseEnter}
         @mouseleave=${this.handleMouseLeave}
       >

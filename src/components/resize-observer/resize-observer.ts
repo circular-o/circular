@@ -1,15 +1,15 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './resize-observer.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './resize-observer.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary The Resize Observer component offers a thin, declarative interface to the [`ResizeObserver API`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver).
- * @documentation https://circular-o.github.io/circular/#/components/resize-observer
+ * @documentation /components/resize-observer
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @slot - One or more elements to watch for resizing.
  *

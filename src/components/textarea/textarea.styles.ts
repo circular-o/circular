@@ -1,6 +1,6 @@
 import { css } from 'lit';
-import componentStyles from '../../styles/component.styles';
-import formControlStyles from '../../styles/form-control.styles';
+import componentStyles from '../../styles/component.styles.js';
+import formControlStyles from '../../styles/form-control.styles.js';
 
 export default css`
   ${componentStyles}
@@ -53,6 +53,7 @@ export default css`
   .textarea--standard.textarea--disabled {
     background-color: var(--o-input-background-color-disabled);
     border-color: var(--o-input-border-color-disabled);
+    opacity: 0.5;
     cursor: not-allowed;
   }
 

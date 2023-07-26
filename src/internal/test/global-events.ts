@@ -1,6 +1,6 @@
 import { expect, fixture, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
-import type LibraryBaseElement from '../library-base-element';
+import type LibraryBaseElement from '../library-base-element.js';
 
 export function runGlobalEventTests<T extends LibraryBaseElement>(tagName: string) {
   describe(`Global events for ${tagName}`, () => {

@@ -1,5 +1,6 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
-import type OBreadcrumb from './breadcrumb';
+import type OBreadcrumb from './breadcrumb.js';
 
 // The default link color just misses AA contrast, but the next step up is way too dark. Maybe we can solve this in the
 // future with a prefers-contrast media query.

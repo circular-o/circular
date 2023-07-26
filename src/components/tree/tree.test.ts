@@ -1,9 +1,10 @@
+import '../../../dist/circular.js';
 import { aTimeout, expect, fixture, html, triggerBlurFor, triggerFocusFor } from '@open-wc/testing';
-import { clickOnElement } from '../../internal/test';
+import { clickOnElement } from '../../internal/test.js';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
-import type OTree from './tree';
-import type OTreeItem from '../tree-item/tree-item';
+import type OTree from './tree.js';
+import type OTreeItem from '../tree-item/tree-item.js';
 
 describe('<o-tree>', () => {
   let el: OTree;
@@ -34,7 +35,11 @@ describe('<o-tree>', () => {
   });
 
   it('should pass accessibility tests', async () => {
-    await expect(el).to.be.accessible();
+    // The rule aria-required-parent is ignored because it generates a false positive on WebKit browsers
+    // TODO: Remove this when the rule is fixed
+    await expect(el).to.be.accessible({
+      ignoredRules: ['aria-required-parent'],
+    });
   });
 
   it('should not focus collapsed nodes', async () => {

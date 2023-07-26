@@ -1,19 +1,19 @@
 import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 // import { LocalizeController } from '../../utilities/localize';
-import ONavbarItem from '../navbar-item/navbar-item';
-import styles from './navbar.styles';
+import ONavbarItem from '../navbar-item/navbar-item.js';
+import styles from './navbar.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { Mode, SelectEvent } from './navbar.types';
+import type { Mode, SelectEvent } from './navbar.types.js';
 // import type { SelectEvent, Mode } from './navbar.types';
 
 /**
  * @summary Short summary of the component's intended use.
- * @documentation https://circular-o.github.io/circular/#/components/navbar
- * @status experimental
- * @since 2.0
+ * @documentation /components/navbar
+ * @status wip
+ * @since 1.5
  *
  * @dependency o-icon
  * @dependency o-button
@@ -126,11 +126,11 @@ export default class ONavbar extends LibraryBaseElement {
     return html`
       <div class="box" part="base">
         <header part="header">
-          <slot name="logo"><o-icon class="logo" src="assets/images/circular-logo-light.svg"></o-icon></slot>
+          <slot name="logo"><o-icon class="logo" src="/assets/images/circular-logo-light.svg"></o-icon></slot>
           <o-button variant="text" circle size="small" @click="${this.handleHamburgerClick}">
             <slot name="logo-small"
               ><o-icon
-                src="assets/images/circular-icon.svg"
+                src="/assets/images/circular-icon.svg"
                 style="font-size: var(--o-font-size-x-large)"
                 class="hover"
               ></o-icon>

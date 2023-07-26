@@ -1,8 +1,9 @@
-import { clickOnElement } from '../../internal/test';
+import '../../../dist/circular.js';
+import { clickOnElement } from '../../internal/test.js';
 import { expect, fixture, html } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
-import type ORating from './rating';
+import type ORating from './rating.js';
 
 describe('<o-rating>', () => {
   it('should pass accessibility tests', async () => {

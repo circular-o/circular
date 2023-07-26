@@ -1,22 +1,22 @@
-import '../icon/icon';
+import '../icon/icon.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
-import { defaultValue } from '../../internal/default-value';
-import { FormControlController } from '../../internal/form';
+import { defaultValue } from '../../internal/default-value.js';
+import { FormControlController } from '../../internal/form.js';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './checkbox.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './checkbox.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { LibraryBaseFormControl } from '../../internal/library-base-element';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element.js';
 
 /**
  * @summary Checkboxes allow the user to toggle an option on or off.
- * @documentation https://circular-o.github.io/circular/#/components/checkbox
+ * @documentation /components/checkbox
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon
  *
@@ -187,15 +187,15 @@ export default class OCheckbox extends LibraryBaseElement implements LibraryBase
       <label
         part="base"
         class=${classMap({
-          checkbox: true,
-          'checkbox--checked': this.checked,
-          'checkbox--disabled': this.disabled,
-          'checkbox--focused': this.hasFocus,
-          'checkbox--indeterminate': this.indeterminate,
-          'checkbox--small': this.size === 'small',
-          'checkbox--medium': this.size === 'medium',
-          'checkbox--large': this.size === 'large'
-        })}
+      checkbox: true,
+      'checkbox--checked': this.checked,
+      'checkbox--disabled': this.disabled,
+      'checkbox--focused': this.hasFocus,
+      'checkbox--indeterminate': this.indeterminate,
+      'checkbox--small': this.size === 'small',
+      'checkbox--medium': this.size === 'medium',
+      'checkbox--large': this.size === 'large'
+    })}
       >
         <input
           class="checkbox__input"
@@ -220,10 +220,10 @@ export default class OCheckbox extends LibraryBaseElement implements LibraryBase
           class="checkbox__control"
         >
           ${this.checked
-            ? html` <o-icon part="checked-icon" class="checkbox__checked-icon" library="system" name="check"></o-icon> `
-            : ''}
+        ? html` <o-icon part="checked-icon" class="checkbox__checked-icon" library="system" name="check"></o-icon> `
+        : ''}
           ${!this.checked && this.indeterminate
-            ? html`
+        ? html`
                 <o-icon
                   part="indeterminate-icon"
                   class="checkbox__indeterminate-icon"
@@ -231,7 +231,7 @@ export default class OCheckbox extends LibraryBaseElement implements LibraryBase
                   name="indeterminate"
                 ></o-icon>
               `
-            : ''}
+        : ''}
         </span>
 
         <div part="label" class="checkbox__label">

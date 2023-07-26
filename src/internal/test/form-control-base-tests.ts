@@ -1,5 +1,5 @@
 import { expect, fixture } from '@open-wc/testing';
-import type { LibraryBaseFormControl } from '../library-base-element';
+import type { LibraryBaseFormControl } from '../library-base-element.js';
 
 type CreateControlFn = () => Promise<LibraryBaseFormControl>;
 

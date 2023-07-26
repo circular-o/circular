@@ -1,7 +1,8 @@
+import '../grid/grid.js';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
-import type { Grid, GridOptions } from './grid-types';
-import type OGrid from './grid';
+import type { Grid, GridOptions } from './grid-types.js';
+import type OGrid from './grid.js';
 
 const tableData = [
   { id: 1, name: 'Oli Bob', age: '12', col: 'red', dob: '' },

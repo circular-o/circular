@@ -1,18 +1,18 @@
 import { customElement, property, query } from 'lit/decorators.js';
-import { Grid, type GridOptions } from './grid-types';
-import { gridOptionsInit } from './grid-definitions';
+import { Grid, type GridOptions } from './grid-types.js';
+import { gridOptionsInit } from './grid-definitions.js';
 import { html, unsafeCSS } from 'lit';
 import { DateTime as LuxonDateTime } from 'luxon';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './grid.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './grid.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { GridLayoutType } from './grid-definitions';
+import type { GridLayoutType } from './grid-definitions.js';
 
 /**
  * @summary This component is a wrapper for the Tabulator library.
  *
- * @documentation https://circular-o.github.io/circular/#/components/grid
+ * @documentation /components/grid
  * @status Beta
  * @since 1.6
  *

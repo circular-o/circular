@@ -1,5 +1,6 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
-import type OProgressBar from './progress-bar';
+import type OProgressBar from './progress-bar.js';
 
 describe('<o-progress-bar>', () => {
   let el: OProgressBar;

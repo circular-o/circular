@@ -1,10 +1,11 @@
-import { clickOnElement } from '../../internal/test';
+import '../../../dist/circular.js';
+import { clickOnElement } from '../../internal/test.js';
 import { expect, fixture } from '@open-wc/testing';
 import { html } from 'lit';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
-import type { OSelectEvent } from '../../events/events';
-import type OMenu from './menu';
+import type { OSelectEvent } from '../../events/events.js';
+import type OMenu from './menu.js';
 
 describe('<o-menu>', () => {
   it('emits o-select with the correct event detail when clicking an item', async () => {

@@ -1,25 +1,25 @@
-import '../icon-button/icon-button';
-import { animateTo, stopAnimations } from '../../internal/animate';
+import '../icon-button/icon-button.js';
+import { animateTo, stopAnimations } from '../../internal/animate.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query } from 'lit/decorators.js';
-import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
-import { HasSlotController } from '../../internal/slot';
+import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry.js';
+import { HasSlotController } from '../../internal/slot.js';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { LocalizeController } from '../../utilities/localize';
-import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
-import { waitForEvent } from '../../internal/event';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import Modal from '../../internal/modal';
-import styles from './dialog.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll.js';
+import { waitForEvent } from '../../internal/event.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import Modal from '../../internal/modal.js';
+import styles from './dialog.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Dialogs, sometimes called "modals", appear above the page and require the user's immediate attention.
- * @documentation https://circular-o.github.io/circular/#/components/dialog
+ * @documentation /components/dialog
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon-button
  *
@@ -67,7 +67,7 @@ export default class ODialog extends LibraryBaseElement {
 
   private readonly hasSlotController = new HasSlotController(this, 'footer');
   private readonly localize = new LocalizeController(this);
-  private modal: Modal;
+  private modal = new Modal(this);
   private originalTrigger: HTMLElement | null;
 
   @query('.dialog') dialog: HTMLElement;
@@ -91,12 +91,6 @@ export default class ODialog extends LibraryBaseElement {
    * accessible way for users to dismiss the dialog.
    */
   @property({ attribute: 'no-header', type: Boolean, reflect: true }) noHeader = false;
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
-    this.modal = new Modal(this);
-  }
 
   firstUpdated() {
     this.dialog.hidden = !this.open;
@@ -136,12 +130,12 @@ export default class ODialog extends LibraryBaseElement {
     document.removeEventListener('keydown', this.handleDocumentKeyDown);
   }
 
-  private handleDocumentKeyDown(event: KeyboardEvent) {
+  private handleDocumentKeyDown = (event: KeyboardEvent) => {
     if (this.open && event.key === 'Escape') {
       event.stopPropagation();
       this.requestClose('keyboard');
     }
-  }
+  };
 
   @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
@@ -260,10 +254,10 @@ export default class ODialog extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-          dialog: true,
-          'dialog--open': this.open,
-          'dialog--has-footer': this.hasSlotController.test('footer')
-        })}
+      dialog: true,
+      'dialog--open': this.open,
+      'dialog--has-footer': this.hasSlotController.test('footer')
+    })}
       >
         <div part="overlay" class="dialog__overlay" @click=${() => this.requestClose('overlay')} tabindex="-1"></div>
 
@@ -278,7 +272,7 @@ export default class ODialog extends LibraryBaseElement {
           tabindex="0"
         >
           ${!this.noHeader
-            ? html`
+        ? html`
                 <header part="header" class="dialog__header">
                   <h2 part="title" class="dialog__title" id="title">
                     <slot name="label"> ${this.label.length > 0 ? this.label : String.fromCharCode(65279)} </slot>
@@ -297,7 +291,7 @@ export default class ODialog extends LibraryBaseElement {
                   </div>
                 </header>
               `
-            : ''}
+        : ''}
 
           <slot part="body" class="dialog__body"></slot>
 

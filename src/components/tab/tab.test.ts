@@ -1,8 +1,9 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
 import sinon from 'sinon';
-import type OIconButton from '../icon-button/icon-button';
-import type OTab from './tab';
-import type OTabGroup from '../tab-group/tab-group';
+import type OIconButton from '../icon-button/icon-button.js';
+import type OTab from './tab.js';
+import type OTabGroup from '../tab-group/tab-group.js';
 
 describe('<o-tab>', () => {
   it('passes accessibility test', async () => {

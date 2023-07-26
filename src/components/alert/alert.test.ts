@@ -1,11 +1,12 @@
+import '../../../dist/circular.js';
 import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
-import { clickOnElement, moveMouseOnElement } from '../../internal/test';
-import { queryByTestId } from '../../internal/test/data-testid-helpers';
+import { clickOnElement, moveMouseOnElement } from '../../internal/test.js';
+import { queryByTestId } from '../../internal/test/data-testid-helpers.js';
 import { resetMouse } from '@web/test-runner-commands';
-import { runGlobalEventTests } from '../../internal/test/global-events';
+import { runGlobalEventTests } from '../../internal/test/global-events.js';
 import sinon from 'sinon';
-import type OAlert from './alert';
-import type OIconButton from '../icon-button/icon-button';
+import type OAlert from './alert.js';
+import type OIconButton from '../icon-button/icon-button.js';
 
 const getAlertContainer = (alert: OAlert): HTMLElement => {
   return alert.shadowRoot!.querySelector<HTMLElement>('[part="base"]')!;

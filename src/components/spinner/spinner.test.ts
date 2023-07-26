@@ -1,5 +1,6 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
-import type OSpinner from './spinner';
+import type OSpinner from './spinner.js';
 
 describe('<o-spinner>', () => {
   describe('when provided no parameters', () => {

@@ -1,21 +1,21 @@
-import '../icon-button/icon-button';
+import '../icon-button/icon-button.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
-import { scrollIntoView } from '../../internal/scroll';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './tab-group.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import { scrollIntoView } from '../../internal/scroll.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './tab-group.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type OTab from '../tab/tab';
-import type OTabPanel from '../tab-panel/tab-panel';
+import type OTab from '../tab/tab.js';
+import type OTabPanel from '../tab-panel/tab-panel.js';
 
 /**
  * @summary Tab groups organize content into a container that shows one section at a time.
- * @documentation https://circular-o.github.io/circular/#/components/tab-group
+ * @documentation /components/tab-group
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon-button
  *
@@ -70,7 +70,7 @@ export default class OTabGroup extends LibraryBaseElement {
   @property({ attribute: 'no-scroll-controls', type: Boolean }) noScrollControls = false;
 
   connectedCallback() {
-    const whenAllDefined = Promise.allSettled([
+    const whenAllDefined = Promise.all([
       customElements.whenDefined('o-tab'),
       customElements.whenDefined('o-tab-panel')
     ]);
@@ -120,7 +120,7 @@ export default class OTabGroup extends LibraryBaseElement {
     this.resizeObserver.unobserve(this.nav);
   }
 
-  private getAllTabs(options: { includeDisabled: boolean } = { includeDisabled: true }) {
+  private getAllTabs(options: { includeDisabled: boolean; } = { includeDisabled: true }) {
     const slot = this.shadowRoot!.querySelector<HTMLSlotElement>('slot[name="nav"]')!;
 
     return [...(slot.assignedElements() as OTab[])].filter(el => {
@@ -238,7 +238,7 @@ export default class OTabGroup extends LibraryBaseElement {
     });
   }
 
-  private setActiveTab(tab: OTab, options?: { emitEvents?: boolean; scrollBehavior?: 'auto' | 'smooth' }) {
+  private setActiveTab(tab: OTab, options?: { emitEvents?: boolean; scrollBehavior?: 'auto' | 'smooth'; }) {
     options = {
       emitEvents: true,
       scrollBehavior: 'auto',
@@ -368,20 +368,20 @@ export default class OTabGroup extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-          'tab-group': true,
-          'tab-group--top': this.placement === 'top',
-          'tab-group--bottom': this.placement === 'bottom',
-          'tab-group--start': this.placement === 'start',
-          'tab-group--end': this.placement === 'end',
-          'tab-group--rtl': this.localize.dir() === 'rtl',
-          'tab-group--has-scroll-controls': this.hasScrollControls
-        })}
+      'tab-group': true,
+      'tab-group--top': this.placement === 'top',
+      'tab-group--bottom': this.placement === 'bottom',
+      'tab-group--start': this.placement === 'start',
+      'tab-group--end': this.placement === 'end',
+      'tab-group--rtl': this.localize.dir() === 'rtl',
+      'tab-group--has-scroll-controls': this.hasScrollControls
+    })}
         @click=${this.handleClick}
         @keydown=${this.handleKeyDown}
       >
         <div class="tab-group__nav-container" part="nav">
           ${this.hasScrollControls
-            ? html`
+        ? html`
                 <o-icon-button
                   part="scroll-button scroll-button--start"
                   exportparts="base:scroll-button__base"
@@ -392,7 +392,7 @@ export default class OTabGroup extends LibraryBaseElement {
                   @click=${this.handleScrollToStart}
                 ></o-icon-button>
               `
-            : ''}
+        : ''}
 
           <div class="tab-group__nav">
             <div part="tabs" class="tab-group__tabs" role="tablist">
@@ -402,7 +402,7 @@ export default class OTabGroup extends LibraryBaseElement {
           </div>
 
           ${this.hasScrollControls
-            ? html`
+        ? html`
                 <o-icon-button
                   part="scroll-button scroll-button--end"
                   exportparts="base:scroll-button__base"
@@ -413,7 +413,7 @@ export default class OTabGroup extends LibraryBaseElement {
                   @click=${this.handleScrollToEnd}
                 ></o-icon-button>
               `
-            : ''}
+        : ''}
         </div>
 
         <slot part="body" class="tab-group__body" @slotchange=${this.syncTabsAndPanels}></slot>

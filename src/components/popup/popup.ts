@@ -3,15 +3,15 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
 import { offsetParent } from 'composed-offset-position';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './popup.styles';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './popup.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Popup is a utility that lets you declaratively anchor "popup" containers to another element.
- * @documentation https://circular-o.github.io/circular/#/components/popup
+ * @documentation /components/popup
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @event o-reposition - Emitted when the popup is repositioned. This event can fire a lot, so avoid putting expensive
  *  operations in your listener or consider debouncing it.
@@ -451,11 +451,11 @@ export default class OPopup extends LibraryBaseElement {
       <div
         part="popup"
         class=${classMap({
-          popup: true,
-          'popup--active': this.active,
-          'popup--fixed': this.strategy === 'fixed',
-          'popup--has-arrow': this.arrow
-        })}
+      popup: true,
+      'popup--active': this.active,
+      'popup--fixed': this.strategy === 'fixed',
+      'popup--has-arrow': this.arrow
+    })}
       >
         <slot></slot>
         ${this.arrow ? html`<div part="arrow" class="popup__arrow" role="presentation"></div>` : ''}

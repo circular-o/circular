@@ -1,5 +1,6 @@
+import '../../../dist/circular.js';
 import { elementUpdated, expect, fixture, html } from '@open-wc/testing';
-import type ODivider from './divider';
+import type ODivider from './divider.js';
 
 describe('<o-divider>', () => {
   describe('defaults ', () => {

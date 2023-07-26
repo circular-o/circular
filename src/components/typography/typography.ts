@@ -1,15 +1,15 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './typography.styles';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './typography.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { Variant } from './typography.types';
+import type { Variant } from './typography.types.js';
 
 /**
  * @summary Short summary of the component's intended use.
- * @documentation https://circular-o.github.io/circular/#/components/typography
- * @status experimental
- * @since 2.0
+ * @documentation /components/typography
+ * @status wip
+ * @since 1.5
  *
  * @dependency o-example
  *

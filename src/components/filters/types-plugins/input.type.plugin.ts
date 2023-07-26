@@ -1,7 +1,7 @@
-import { AbstractTypePlugin } from './abstract.type.plugin';
-import { addPrefixSuffixToElement, appendIconToElement } from '../utilities.type.plugin';
-import { DEFAULT_PROPS_TO_IGNORE, type FilterType, type InputFilter } from '../filters.types';
-import type OInput from '../../input/input';
+import { AbstractTypePlugin } from './abstract.type.plugin.js';
+import { addPrefixSuffixToElement, appendIconToElement } from '../utilities.type.plugin.js';
+import { DEFAULT_PROPS_TO_IGNORE, type FilterType, type InputFilter } from '../filters.types.js';
+import type OInput from '../../input/input.js';
 
 export class InputTypePlugin extends AbstractTypePlugin {
   type: FilterType = 'input';

@@ -1,6 +1,7 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
 import sinon from 'sinon';
-import type OTag from './tag';
+import type OTag from './tag.js';
 
 describe('<o-tag>', () => {
   it('should render default tag', async () => {

@@ -1,26 +1,26 @@
-import '../icon/icon';
+import '../icon/icon.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
-import { defaultValue } from '../../internal/default-value';
-import { FormControlController } from '../../internal/form';
-import { HasSlotController } from '../../internal/slot';
+import { defaultValue } from '../../internal/default-value.js';
+import { FormControlController } from '../../internal/form.js';
+import { HasSlotController } from '../../internal/slot.js';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
-import { LocalizeController } from '../../utilities/localize';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './input.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './input.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { LibraryBaseFormControl } from '../../internal/library-base-element';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element.js';
 
 let libraryInputCounterForIds = 0;
 
 /**
  * @summary Inputs collect data from the user.
- * @documentation https://circular-o.github.io/circular/#/components/input
+ * @documentation /components/input
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon
  *
@@ -66,6 +66,9 @@ export default class OInput extends LibraryBaseElement implements LibraryBaseFor
 
   @state() private hasFocus = false;
   @property() title = ''; // make reactive to pass through
+
+  private __numberInput = Object.assign(document.createElement('input'), { type: 'number' });
+  private __dateInput = Object.assign(document.createElement('input'), { type: 'date' });
 
   /**
    * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
@@ -201,32 +204,24 @@ export default class OInput extends LibraryBaseElement implements LibraryBaseFor
 
   /** Gets or sets the current value as a `Date` object. Returns `null` if the value can't be converted. */
   get valueAsDate() {
-    const input = document.createElement('input');
-    input.type = 'date';
-    input.value = this.value;
-    return input.valueAsDate;
+    this.__dateInput.value = this.value;
+    return this.input?.valueAsDate || this.__dateInput.valueAsDate;
   }
 
   set valueAsDate(newValue: Date | null) {
-    const input = document.createElement('input');
-    input.type = 'date';
-    input.valueAsDate = newValue;
-    this.value = input.value;
+    this.__dateInput.valueAsDate = newValue;
+    this.value = this.__dateInput.value;
   }
 
   /** Gets or sets the current value as a number. Returns `NaN` if the value can't be converted. */
   get valueAsNumber() {
-    const input = document.createElement('input');
-    input.type = 'number';
-    input.value = this.value;
-    return input.valueAsNumber;
+    this.__numberInput.value = this.value;
+    return this.input?.valueAsNumber || this.__numberInput.valueAsNumber;
   }
 
   set valueAsNumber(newValue: number) {
-    const input = document.createElement('input');
-    input.type = 'number';
-    input.valueAsNumber = newValue;
-    this.value = input.value;
+    this.__numberInput.valueAsNumber = newValue;
+    this.value = this.__numberInput.value;
   }
 
   /** Gets the validity state object */
@@ -418,13 +413,13 @@ export default class OInput extends LibraryBaseElement implements LibraryBaseFor
       <div
         part="form-control"
         class=${classMap({
-          'form-control': true,
-          'form-control--small': this.size === 'small',
-          'form-control--medium': this.size === 'medium',
-          'form-control--large': this.size === 'large',
-          'form-control--has-label': hasLabel,
-          'form-control--has-help-text': hasHelpText
-        })}
+      'form-control': true,
+      'form-control--small': this.size === 'small',
+      'form-control--medium': this.size === 'medium',
+      'form-control--large': this.size === 'large',
+      'form-control--has-label': hasLabel,
+      'form-control--has-help-text': hasHelpText
+    })}
       >
         <label
           part="form-control-label"
@@ -439,22 +434,22 @@ export default class OInput extends LibraryBaseElement implements LibraryBaseFor
           <div
             part="base"
             class=${classMap({
-              input: true,
+      input: true,
 
-              // Sizes
-              'input--small': this.size === 'small',
-              'input--medium': this.size === 'medium',
-              'input--large': this.size === 'large',
+      // Sizes
+      'input--small': this.size === 'small',
+      'input--medium': this.size === 'medium',
+      'input--large': this.size === 'large',
 
-              // States
-              'input--pill': this.pill,
-              'input--standard': !this.filled,
-              'input--filled': this.filled,
-              'input--disabled': this.disabled,
-              'input--focused': this.hasFocus,
-              'input--empty': !this.value,
-              'input--no-spin-buttons': this.noSpinButtons
-            })}
+      // States
+      'input--pill': this.pill,
+      'input--standard': !this.filled,
+      'input--filled': this.filled,
+      'input--disabled': this.disabled,
+      'input--focused': this.hasFocus,
+      'input--empty': !this.value,
+      'input--no-spin-buttons': this.noSpinButtons
+    })}
           >
             <slot name="prefix" part="prefix" class="input__prefix"></slot>
             <input
@@ -491,9 +486,8 @@ export default class OInput extends LibraryBaseElement implements LibraryBaseFor
               @blur=${this.handleBlur}
             />
 
-            ${
-              hasClearIcon
-                ? html`
+            ${hasClearIcon
+        ? html`
                     <button
                       part="clear-button"
                       class="input__clear"
@@ -507,11 +501,10 @@ export default class OInput extends LibraryBaseElement implements LibraryBaseFor
                       </slot>
                     </button>
                   `
-                : ''
-            }
-            ${
-              this.passwordToggle && !this.disabled
-                ? html`
+        : ''
+      }
+            ${this.passwordToggle && !this.disabled
+        ? html`
                     <button
                       part="password-toggle-button"
                       class="input__password-toggle"
@@ -521,20 +514,20 @@ export default class OInput extends LibraryBaseElement implements LibraryBaseFor
                       tabindex="-1"
                     >
                       ${this.passwordVisible
-                        ? html`
+            ? html`
                             <slot name="show-password-icon">
                               <o-icon name="eye-slash" library="system"></o-icon>
                             </slot>
                           `
-                        : html`
+            : html`
                             <slot name="hide-password-icon">
                               <o-icon name="eye" library="system"></o-icon>
                             </slot>
                           `}
                     </button>
                   `
-                : ''
-            }
+        : ''
+      }
 
             <slot name="suffix" part="suffix" class="input__suffix"></slot>
           </div>

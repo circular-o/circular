@@ -1,13 +1,13 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
-import LibraryBaseElement from '../../internal/library-base-element';
+import { LocalizeController } from '../../utilities/localize.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 
 /**
  * @summary Formats a date/time using the specified locale and options.
- * @documentation https://circular-o.github.io/circular/#/components/format-date
+ * @documentation /components/format-date
  * @status stable
- * @since 2.0
+ * @since 1.5
  */
 @customElement('o-format-date')
 export default class OFormatDate extends LibraryBaseElement {
@@ -65,18 +65,18 @@ export default class OFormatDate extends LibraryBaseElement {
     return html`
       <time datetime=${date.toISOString()}>
         ${this.localize.date(date, {
-          weekday: this.weekday,
-          era: this.era,
-          year: this.year,
-          month: this.month,
-          day: this.day,
-          hour: this.hour,
-          minute: this.minute,
-          second: this.second,
-          timeZoneName: this.timeZoneName,
-          timeZone: this.timeZone,
-          hour12: hour12
-        })}
+      weekday: this.weekday,
+      era: this.era,
+      year: this.year,
+      month: this.month,
+      day: this.day,
+      hour: this.hour,
+      minute: this.minute,
+      second: this.second,
+      timeZoneName: this.timeZoneName,
+      timeZone: this.timeZone,
+      hour12: hour12
+    })}
       </time>
     `;
   }

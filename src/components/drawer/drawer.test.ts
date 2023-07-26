@@ -1,8 +1,9 @@
+import '../../../dist/circular.js';
 // cspell:dictionaries lorem-ipsum
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
-import type ODrawer from './drawer';
+import type ODrawer from './drawer.js';
 
 describe('<o-drawer>', () => {
   it('should be visible with the open attribute', async () => {

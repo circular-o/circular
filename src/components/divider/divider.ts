@@ -1,14 +1,14 @@
 import { customElement, property } from 'lit/decorators.js';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './divider.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './divider.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Dividers are used to visually separate or group elements.
- * @documentation https://circular-o.github.io/circular/#/components/divider
+ * @documentation /components/divider
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @cssproperty --color - The color of the divider.
  * @cssproperty --width - The width of the divider.

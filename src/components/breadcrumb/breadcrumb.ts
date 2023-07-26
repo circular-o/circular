@@ -1,17 +1,17 @@
-import '../icon/icon';
+import '../icon/icon.js';
 import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './breadcrumb.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './breadcrumb.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type OBreadcrumbItem from '../breadcrumb-item/breadcrumb-item';
+import type OBreadcrumbItem from '../breadcrumb-item/breadcrumb-item.js';
 
 /**
  * @summary Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
- * @documentation https://circular-o.github.io/circular/#/components/breadcrumb
+ * @documentation /components/breadcrumb
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @slot - One or more breadcrumb items to display.
  * @slot separator - The separator to use between breadcrumb items. Works best with `<o-icon>`.

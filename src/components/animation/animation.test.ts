@@ -1,5 +1,6 @@
+import '../../../dist/circular.js';
 import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
-import type OAnimation from './animation';
+import type OAnimation from './animation.js';
 
 describe('<o-animation>', () => {
   const boxToAnimate = html`<div style="width: 10px; height: 10px;" data-testid="animated-box"></div>`;

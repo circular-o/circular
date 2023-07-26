@@ -1,21 +1,21 @@
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
-import { defaultValue } from '../../internal/default-value';
-import { FormControlController } from '../../internal/form';
+import { defaultValue } from '../../internal/default-value.js';
+import { FormControlController } from '../../internal/form.js';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './switch.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './switch.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { LibraryBaseFormControl } from '../../internal/library-base-element';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element.js';
 
 /**
  * @summary Switches allow the user to toggle an option on or off.
- * @documentation https://circular-o.github.io/circular/#/components/switch
+ * @documentation /components/switch
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @slot - The switch's label.
  *
@@ -184,14 +184,14 @@ export default class OSwitch extends LibraryBaseElement implements LibraryBaseFo
       <label
         part="base"
         class=${classMap({
-          switch: true,
-          'switch--checked': this.checked,
-          'switch--disabled': this.disabled,
-          'switch--focused': this.hasFocus,
-          'switch--small': this.size === 'small',
-          'switch--medium': this.size === 'medium',
-          'switch--large': this.size === 'large'
-        })}
+      switch: true,
+      'switch--checked': this.checked,
+      'switch--disabled': this.disabled,
+      'switch--focused': this.hasFocus,
+      'switch--small': this.size === 'small',
+      'switch--medium': this.size === 'medium',
+      'switch--large': this.size === 'large'
+    })}
       >
         <input
           class="switch__input"

@@ -1,12 +1,12 @@
 import { customElement, property } from 'lit/decorators.js';
-import { LocalizeController } from '../../utilities/localize';
-import LibraryBaseElement from '../../internal/library-base-element';
+import { LocalizeController } from '../../utilities/localize.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 
 /**
  * @summary Formats a number as a human readable bytes value.
- * @documentation https://circular-o.github.io/circular/#/components/format-bytes
+ * @documentation /components/format-bytes
  * @status stable
- * @since 2.0
+ * @since 1.5
  */
 @customElement('o-format-bytes')
 export default class OFormatBytes extends LibraryBaseElement {

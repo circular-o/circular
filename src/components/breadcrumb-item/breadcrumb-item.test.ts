@@ -1,5 +1,6 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html } from '@open-wc/testing';
-import type OBreadcrumbItem from './breadcrumb-item';
+import type OBreadcrumbItem from './breadcrumb-item.js';
 
 describe('<o-breadcrumb-item>', () => {
   let el: OBreadcrumbItem;

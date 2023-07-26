@@ -1,6 +1,6 @@
-import type { Filter, Filters } from './filters.types';
-import type LibraryBaseElement from '../../internal/library-base-element';
-import type OIcon from '../icon/icon';
+import type { Filter, Filters } from './filters.types.js';
+import type LibraryBaseElement from '../../internal/library-base-element.js';
+import type OIcon from '../icon/icon.js';
 
 export function appendIconToElement(
   element: LibraryBaseElement,

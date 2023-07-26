@@ -1,6 +1,6 @@
 import { css } from 'lit';
-import boxStyles from '../../styles/box.styles';
-import componentStyles from '../../styles/component.styles';
+import boxStyles from '../../styles/box.styles.js';
+import componentStyles from '../../styles/component.styles.js';
 
 export default css`
   ${componentStyles}

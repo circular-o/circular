@@ -1,14 +1,14 @@
 import { customElement } from 'lit/decorators.js';
 import { html } from 'lit';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './menu-label.styles';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './menu-label.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Menu labels are used to describe a group of menu items.
- * @documentation https://circular-o.github.io/circular/#/components/menu-label
+ * @documentation /components/menu-label
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @slot - The menu label's content.
  *

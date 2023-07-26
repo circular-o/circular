@@ -1,15 +1,15 @@
 import { customElement } from 'lit/decorators.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './spinner.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './spinner.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Spinners are used to show the progress of an indeterminate operation.
- * @documentation https://circular-o.github.io/circular/#/components/spinner
+ * @documentation /components/spinner
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @csspart base - The component's base wrapper.
  *

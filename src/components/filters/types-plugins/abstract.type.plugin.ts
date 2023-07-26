@@ -1,8 +1,8 @@
-import { DEFAULT_PROPS_TO_IGNORE, type Filter, type FilterType } from '../filters.types';
+import { DEFAULT_PROPS_TO_IGNORE, type Filter, type FilterType } from '../filters.types.js';
 import type { nothing, TemplateResult } from 'lit';
-import type { OChangeEvent, OConnectedEvent, ODisconnectedEvent, OFocusEvent } from '../../../circular';
-import type LibraryBaseElement from '../../../internal/library-base-element';
-import type OFilters from '../filters';
+import type { OChangeEvent, OConnectedEvent, ODisconnectedEvent, OFocusEvent } from '../../../events/events.js';
+import type LibraryBaseElement from '../../../internal/library-base-element.js';
+import type OFilters from '../filters.js';
 
 export const DEFAULT_MANDATORY_PROPS = ['name', 'type'];
 

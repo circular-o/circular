@@ -1,20 +1,20 @@
-import '../icon-button/icon-button';
+import '../icon-button/icon-button.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './tab.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './tab.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 let id = 0;
 
 /**
  * @summary Tabs are used inside [tab groups](/components/tab-group) to represent and activate [tab panels](/components/tab-panel).
- * @documentation https://circular-o.github.io/circular/#/components/tab
+ * @documentation /components/tab
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon-button
  *
@@ -86,16 +86,16 @@ export default class OTab extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-          tab: true,
-          'tab--active': this.active,
-          'tab--closable': this.closable,
-          'tab--disabled': this.disabled
-        })}
+      tab: true,
+      'tab--active': this.active,
+      'tab--closable': this.closable,
+      'tab--disabled': this.disabled
+    })}
         tabindex=${this.disabled ? '-1' : '0'}
       >
         <slot></slot>
         ${this.closable
-          ? html`
+        ? html`
               <o-icon-button
                 part="close-button"
                 exportparts="base:close-button__base"
@@ -107,7 +107,7 @@ export default class OTab extends LibraryBaseElement {
                 tabindex="-1"
               ></o-icon-button>
             `
-          : ''}
+        : ''}
       </div>
     `;
   }

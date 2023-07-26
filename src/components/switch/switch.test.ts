@@ -1,8 +1,9 @@
+import '../../../dist/circular.js';
 import { aTimeout, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
-import { runFormControlBaseTests } from '../../internal/test/form-control-base-tests';
+import { runFormControlBaseTests } from '../../internal/test/form-control-base-tests.js';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
-import type OSwitch from './switch';
+import type OSwitch from './switch.js';
 
 describe('<o-switch>', () => {
   it('should pass accessibility tests', async () => {

@@ -1,46 +1,47 @@
-import '../button-group/button-group';
-import '../button/button';
-import '../dropdown/dropdown';
-import '../icon/icon';
-import '../input/input';
-import '../visually-hidden/visually-hidden';
-import { clamp } from '../../internal/math';
+import '../button-group/button-group.js';
+import '../button/button.js';
+import '../dropdown/dropdown.js';
+import '../icon/icon.js';
+import '../input/input.js';
+import '../visually-hidden/visually-hidden.js';
+import { clamp } from '../../internal/math.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
-import { defaultValue } from '../../internal/default-value';
-import { drag } from '../../internal/drag';
-import { FormControlController } from '../../internal/form';
+import { defaultValue } from '../../internal/default-value.js';
+import { drag } from '../../internal/drag.js';
+import { FormControlController } from '../../internal/form.js';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { LocalizeController } from '../../utilities/localize';
+import { LocalizeController } from '../../utilities/localize.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { TinyColor } from '@ctrl/tinycolor';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './color-picker.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './color-picker.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { LibraryBaseFormControl } from '../../internal/library-base-element';
-import type { OChangeEvent, OInputEvent } from '../../events/events';
-import type ODropdown from '../dropdown/dropdown';
-import type OInput from '../input/input';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element.js';
+import type OChangeEvent from '../../events/-change.js';
+import type ODropdown from '../dropdown/dropdown.js';
+import type OInput from '../input/input.js';
+import type OInputEvent from '../../events/-input.js';
 
 const hasEyeDropper = 'EyeDropper' in window;
 
 interface EyeDropperConstructor {
-  new (): EyeDropperInterface;
+  new(): EyeDropperInterface;
 }
 
 interface EyeDropperInterface {
-  open: () => Promise<{ sRGBHex: string }>;
+  open: () => Promise<{ sRGBHex: string; }>;
 }
 
 declare const EyeDropper: EyeDropperConstructor;
 
 /**
  * @summary Color pickers allow the user to select a color.
- * @documentation https://circular-o.github.io/circular/#/components/color-picker
+ * @documentation /components/color-picker
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-button
  * @dependency o-button-group
@@ -189,18 +190,10 @@ export default class OColorPicker extends LibraryBaseElement implements LibraryB
     return this.input.validationMessage;
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.handleFocusIn = this.handleFocusIn.bind(this);
-    this.handleFocusOut = this.handleFocusOut.bind(this);
+  constructor() {
+    super();
     this.addEventListener('focusin', this.handleFocusIn);
     this.addEventListener('focusout', this.handleFocusOut);
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.removeEventListener('focusin', this.handleFocusIn);
-    this.removeEventListener('focusout', this.handleFocusOut);
   }
 
   firstUpdated() {
@@ -221,15 +214,17 @@ export default class OColorPicker extends LibraryBaseElement implements LibraryB
     });
   }
 
-  private handleFocusIn() {
+  private handleFocusIn = () => {
+    if (this.hasFocus) return;
     this.hasFocus = true;
     this.emit('o-focus');
-  }
+  };
 
-  private handleFocusOut() {
+  private handleFocusOut = () => {
+    if (!this.hasFocus) return;
     this.hasFocus = false;
     this.emit('o-blur');
-  }
+  };
 
   private handleFormatToggle() {
     const formats = ['hex', 'rgb', 'hsl', 'hsv'];
@@ -803,22 +798,22 @@ export default class OColorPicker extends LibraryBaseElement implements LibraryB
       <div
         part="base"
         class=${classMap({
-          'color-picker': true,
-          'color-picker--inline': this.inline,
-          'color-picker--disabled': this.disabled,
-          'color-picker--focused': this.hasFocus
-        })}
+      'color-picker': true,
+      'color-picker--inline': this.inline,
+      'color-picker--disabled': this.disabled,
+      'color-picker--focused': this.hasFocus
+    })}
         aria-disabled=${this.disabled ? 'true' : 'false'}
         aria-labelledby="label"
         tabindex=${this.inline ? '0' : '-1'}
       >
         ${this.inline
-          ? html`
+        ? html`
               <o-visually-hidden id="label">
                 <slot name="label">${this.label}</slot>
               </o-visually-hidden>
             `
-          : null}
+        : null}
 
         <div
           part="grid"
@@ -830,14 +825,14 @@ export default class OColorPicker extends LibraryBaseElement implements LibraryB
           <span
             part="grid-handle"
             class=${classMap({
-              'color-picker__grid-handle': true,
-              'color-picker__grid-handle--dragging': this.isDraggingGridHandle
-            })}
+          'color-picker__grid-handle': true,
+          'color-picker__grid-handle--dragging': this.isDraggingGridHandle
+        })}
             style=${styleMap({
-              top: `${gridHandleY}%`,
-              left: `${gridHandleX}%`,
-              backgroundColor: this.getHexString(this.hue, this.saturation, this.brightness, this.alpha)
-            })}
+          top: `${gridHandleY}%`,
+          left: `${gridHandleX}%`,
+          backgroundColor: this.getHexString(this.hue, this.saturation, this.brightness, this.alpha)
+        })}
             role="application"
             aria-label="HSV"
             tabindex=${ifDefined(this.disabled ? undefined : '0')}
@@ -857,8 +852,8 @@ export default class OColorPicker extends LibraryBaseElement implements LibraryB
                 part="slider-handle hue-slider-handle"
                 class="color-picker__slider-handle"
                 style=${styleMap({
-                  left: `${this.hue === 0 ? 0 : 100 / (360 / this.hue)}%`
-                })}
+          left: `${this.hue === 0 ? 0 : 100 / (360 / this.hue)}%`
+        })}
                 role="slider"
                 aria-label="hue"
                 aria-orientation="horizontal"
@@ -871,7 +866,7 @@ export default class OColorPicker extends LibraryBaseElement implements LibraryB
             </div>
 
             ${this.opacity
-              ? html`
+        ? html`
                   <div
                     part="slider opacity-slider"
                     class="color-picker__alpha color-picker__slider color-picker__transparent-bg"
@@ -881,19 +876,19 @@ export default class OColorPicker extends LibraryBaseElement implements LibraryB
                     <div
                       class="color-picker__alpha-gradient"
                       style=${styleMap({
-                        backgroundImage: `linear-gradient(
+          backgroundImage: `linear-gradient(
                           to right,
                           ${this.getHexString(this.hue, this.saturation, this.brightness, 0)} 0%
                           ${this.getHexString(this.hue, this.saturation, this.brightness, 100)} 100%
                         )`
-                      })}
+        })}
                     ></div>
                     <span
                       part="slider-handle opacity-slider-handle"
                       class="color-picker__slider-handle"
                       style=${styleMap({
-                        left: `${this.alpha}%`
-                      })}
+          left: `${this.alpha}%`
+        })}
                       role="slider"
                       aria-label="alpha"
                       aria-orientation="horizontal"
@@ -905,7 +900,7 @@ export default class OColorPicker extends LibraryBaseElement implements LibraryB
                     ></span>
                   </div>
                 `
-              : ''}
+        : ''}
           </div>
 
           <button
@@ -914,8 +909,8 @@ export default class OColorPicker extends LibraryBaseElement implements LibraryB
             class="color-picker__preview color-picker__transparent-bg"
             aria-label=${this.localize.term('copy')}
             style=${styleMap({
-              '--preview-color': this.getHexString(this.hue, this.saturation, this.brightness, this.alpha)
-            })}
+          '--preview-color': this.getHexString(this.hue, this.saturation, this.brightness, this.alpha)
+        })}
             @click=${this.handleCopy}
           ></button>
         </div>
@@ -943,7 +938,7 @@ export default class OColorPicker extends LibraryBaseElement implements LibraryB
 
           <o-button-group>
             ${!this.noFormatToggle
-              ? html`
+        ? html`
                   <o-button
                     part="format-button"
                     aria-label=${this.localize.term('toggleColorFormat')}
@@ -961,9 +956,9 @@ export default class OColorPicker extends LibraryBaseElement implements LibraryB
                     ${this.setLetterCase(this.format)}
                   </o-button>
                 `
-              : ''}
+        : ''}
             ${hasEyeDropper
-              ? html`
+        ? html`
                   <o-button
                     part="eye-dropper-button"
                     exportparts="
@@ -984,23 +979,23 @@ export default class OColorPicker extends LibraryBaseElement implements LibraryB
                     ></o-icon>
                   </o-button>
                 `
-              : ''}
+        : ''}
           </o-button-group>
         </div>
 
         ${swatches.length > 0
-          ? html`
+        ? html`
               <div part="swatches" class="color-picker__swatches">
                 ${swatches.map(swatch => {
-                  const parsedColor = this.parseColor(swatch);
+          const parsedColor = this.parseColor(swatch);
 
-                  // If we can't parse it, skip it
-                  if (!parsedColor) {
-                    console.error(`Unable to parse swatch color: "${swatch}"`, this);
-                    return '';
-                  }
+          // If we can't parse it, skip it
+          if (!parsedColor) {
+            console.error(`Unable to parse swatch color: "${swatch}"`, this);
+            return '';
+          }
 
-                  return html`
+          return html`
                     <div
                       part="swatch"
                       class="color-picker__swatch color-picker__transparent-bg"
@@ -1009,7 +1004,7 @@ export default class OColorPicker extends LibraryBaseElement implements LibraryB
                       aria-label=${swatch}
                       @click=${() => this.selectSwatch(swatch)}
                       @keydown=${(event: KeyboardEvent) =>
-                        !this.disabled && event.key === 'Enter' && this.setColor(parsedColor.hexa)}
+              !this.disabled && event.key === 'Enter' && this.setColor(parsedColor.hexa)}
                     >
                       <div
                         class="color-picker__swatch-color"
@@ -1017,10 +1012,10 @@ export default class OColorPicker extends LibraryBaseElement implements LibraryB
                       ></div>
                     </div>
                   `;
-                })}
+        })}
               </div>
             `
-          : ''}
+        : ''}
       </div>
     `;
 
@@ -1043,18 +1038,18 @@ export default class OColorPicker extends LibraryBaseElement implements LibraryB
           part="trigger"
           slot="trigger"
           class=${classMap({
-            'color-dropdown__trigger': true,
-            'color-dropdown__trigger--disabled': this.disabled,
-            'color-dropdown__trigger--small': this.size === 'small',
-            'color-dropdown__trigger--medium': this.size === 'medium',
-            'color-dropdown__trigger--large': this.size === 'large',
-            'color-dropdown__trigger--empty': this.isEmpty,
-            'color-dropdown__trigger--focused': this.hasFocus,
-            'color-picker__transparent-bg': true
-          })}
+      'color-dropdown__trigger': true,
+      'color-dropdown__trigger--disabled': this.disabled,
+      'color-dropdown__trigger--small': this.size === 'small',
+      'color-dropdown__trigger--medium': this.size === 'medium',
+      'color-dropdown__trigger--large': this.size === 'large',
+      'color-dropdown__trigger--empty': this.isEmpty,
+      'color-dropdown__trigger--focused': this.hasFocus,
+      'color-picker__transparent-bg': true
+    })}
           style=${styleMap({
-            color: this.getHexString(this.hue, this.saturation, this.brightness, this.alpha)
-          })}
+      color: this.getHexString(this.hue, this.saturation, this.brightness, this.alpha)
+    })}
           type="button"
         >
           <o-visually-hidden>

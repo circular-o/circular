@@ -1,12 +1,12 @@
 import { customElement, property } from 'lit/decorators.js';
-import { LocalizeController } from '../../utilities/localize';
-import LibraryBaseElement from '../../internal/library-base-element';
+import { LocalizeController } from '../../utilities/localize.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 
 /**
  * @summary Formats a number using the specified locale and options.
- * @documentation https://circular-o.github.io/circular/#/components/format-number
+ * @documentation /components/format-number
  * @status stable
- * @since 2.0
+ * @since 1.5
  */
 @customElement('o-format-number')
 export default class OFormatNumber extends LibraryBaseElement {

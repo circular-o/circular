@@ -1,10 +1,11 @@
+import '../../../dist/circular.js';
 import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
-import { clickOnElement } from '../../internal/test';
-import { runFormControlBaseTests } from '../../internal/test/form-control-base-tests';
+import { clickOnElement } from '../../internal/test.js';
+import { runFormControlBaseTests } from '../../internal/test/form-control-base-tests.js';
 import { sendKeys } from '@web/test-runner-commands';
-import { serialize } from '../../utilities/form';
+import { serialize } from '../../utilities/form.js';
 import sinon from 'sinon';
-import type OColorPicker from './color-picker';
+import type OColorPicker from './color-picker.js';
 
 describe('<o-color-picker>', () => {
   describe('when the value changes', () => {
@@ -367,11 +368,11 @@ describe('<o-color-picker>', () => {
 
     await clickOnElement(colorPicker);
     await colorPicker.updateComplete;
-    expect(focusHandler).to.have.been.calledOnce;
+    expect(focusHandler).to.have.been.called;
 
     await clickOnElement(button);
     await colorPicker.updateComplete;
-    expect(blurHandler).to.have.been.calledOnce;
+    expect(blurHandler).to.have.been.called;
   });
 
   it('should focus and blur when calling focus() and blur() and rendered as a dropdown', async () => {

@@ -1,24 +1,24 @@
-import '../icon-button/icon-button';
-import { animateTo, stopAnimations } from '../../internal/animate';
+import '../icon-button/icon-button.js';
+import { animateTo, stopAnimations } from '../../internal/animate.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query } from 'lit/decorators.js';
-import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
-import { HasSlotController } from '../../internal/slot';
+import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry.js';
+import { HasSlotController } from '../../internal/slot.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
-import { waitForEvent } from '../../internal/event';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './alert.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import { waitForEvent } from '../../internal/event.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './alert.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 const toastStack = Object.assign(document.createElement('div'), { className: 'o-toast-stack' });
 
 /**
  * @summary Alerts are used to display important messages inline or as toast notifications.
- * @documentation https://circular-o.github.io/circular/#/components/alert
+ * @documentation /components/alert
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon-button
  *
@@ -253,16 +253,16 @@ export default class OAlert extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-          alert: true,
-          'alert--open': this.open,
-          'alert--closable': this.closable,
-          'alert--has-icon': this.hasSlotController.test('icon'),
-          'alert--primary': this.variant === 'primary',
-          'alert--success': this.variant === 'success',
-          'alert--neutral': this.variant === 'neutral',
-          'alert--warning': this.variant === 'warning',
-          'alert--danger': this.variant === 'danger'
-        })}
+      alert: true,
+      'alert--open': this.open,
+      'alert--closable': this.closable,
+      'alert--has-icon': this.hasSlotController.test('icon'),
+      'alert--primary': this.variant === 'primary',
+      'alert--success': this.variant === 'success',
+      'alert--neutral': this.variant === 'neutral',
+      'alert--warning': this.variant === 'warning',
+      'alert--danger': this.variant === 'danger'
+    })}
         role="alert"
         aria-hidden=${this.open ? 'false' : 'true'}
         @mousemove=${this.handleMouseMove}
@@ -272,7 +272,7 @@ export default class OAlert extends LibraryBaseElement {
         <slot part="message" class="alert__message" aria-live="polite"></slot>
 
         ${this.closable
-          ? html`
+        ? html`
               <o-icon-button
                 part="close-button"
                 exportparts="base:close-button__base"
@@ -283,7 +283,7 @@ export default class OAlert extends LibraryBaseElement {
                 @click=${this.handleCloseClick}
               ></o-icon-button>
             `
-          : ''}
+        : ''}
       </div>
     `;
   }

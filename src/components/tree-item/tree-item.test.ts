@@ -1,6 +1,7 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
-import type OTreeItem from './tree-item';
+import type OTreeItem from './tree-item.js';
 
 describe('<o-tree-item>', () => {
   let leafItem: OTreeItem;

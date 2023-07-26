@@ -1,5 +1,6 @@
+import '../../../dist/circular.js';
 import { aTimeout, expect, fixture, html, waitUntil } from '@open-wc/testing';
-import type OAvatar from './avatar';
+import type OAvatar from './avatar.js';
 
 // The default avatar background just misses AA contrast, but the next step up is way too dark. Since avatars aren't
 // used to display text, we're going to relax this rule.

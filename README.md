@@ -16,7 +16,7 @@ Designed in New Hampshire by [Cory LaViska](https://twitter.com/claviska).
 
 ---
 
-<!-- Documentation: [shoelace.style](https://shoelace.style) -->
+Documentation: [Circular docs](https://circular.decodeit.co)
 
 Source: [github.com/circular-o/circular](https://github.com/circular-o/circular)
 
@@ -30,7 +30,7 @@ Circular makers can use this documentation to learn how to build Circular from s
 
 **You don't need to do any of this to use Circular!** This page is for people who want to contribute to the project, tinker with the source, or create a custom build of Circular.
 
-If that's not what you're trying to do, the [documentation website](https://circular-o.de) is where you want to be.
+If that's not what you're trying to do, the [documentation website](https://circular.decodeit.co) is where you want to be.
 
 ### What are you using to build Circular?
 
@@ -56,8 +56,6 @@ npm start
 
 This will spin up the Circular dev server. After the initial build, a browser will open automatically. There is currently no hot module reloading (HMR), as browser's don't provide a way to reregister custom elements, but most changes to the source will reload the browser automatically.
 
-The documentation is powered by Docsify, which uses raw markdown files to generate pages. As such, no static files are built for the docs.
-
 ### Building
 
 To generate a production build, run the following command.
@@ -68,10 +66,10 @@ npm run build
 
 ### Creating New Components
 
-To scaffold a new component, run the following command, replacing `o-(tag-name)` with the desired tag name.
+To scaffold a new component, run the following command, replacing `o-tag-name` with the desired tag name.
 
 ```bash
-npm run create o-(tag-name)
+npm run create o-tag-name
 ```
 
 This will generate a source file, a stylesheet, and a docs page for you. When you start the dev server, you'll find the new component in the "Components" section of the sidebar.

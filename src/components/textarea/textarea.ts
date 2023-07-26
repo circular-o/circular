@@ -1,24 +1,24 @@
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
-import { defaultValue } from '../../internal/default-value';
-import { FormControlController } from '../../internal/form';
-import { HasSlotController } from '../../internal/slot';
+import { defaultValue } from '../../internal/default-value.js';
+import { FormControlController } from '../../internal/form.js';
+import { HasSlotController } from '../../internal/slot.js';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './textarea.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './textarea.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { LibraryBaseFormControl } from '../../internal/library-base-element';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element.js';
 
 let libraryTextareaCounterForIds = 0;
 
 /**
  * @summary Textareas collect data from the user and allow multiple lines of text.
- * @documentation https://circular-o.github.io/circular/#/components/textarea
+ * @documentation /components/textarea
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @slot label - The textarea's label. Alternatively, you can use the `label` attribute.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
@@ -238,7 +238,7 @@ export default class OTextarea extends LibraryBaseElement implements LibraryBase
   }
 
   /** Gets or sets the textarea's scroll position. */
-  scrollPosition(position?: { top?: number; left?: number }): { top: number; left: number } | undefined {
+  scrollPosition(position?: { top?: number; left?: number; }): { top: number; left: number; } | undefined {
     if (position) {
       if (typeof position.top === 'number') this.input.scrollTop = position.top;
       if (typeof position.left === 'number') this.input.scrollLeft = position.left;
@@ -311,13 +311,13 @@ export default class OTextarea extends LibraryBaseElement implements LibraryBase
       <div
         part="form-control"
         class=${classMap({
-          'form-control': true,
-          'form-control--small': this.size === 'small',
-          'form-control--medium': this.size === 'medium',
-          'form-control--large': this.size === 'large',
-          'form-control--has-label': hasLabel,
-          'form-control--has-help-text': hasHelpText
-        })}
+      'form-control': true,
+      'form-control--small': this.size === 'small',
+      'form-control--medium': this.size === 'medium',
+      'form-control--large': this.size === 'large',
+      'form-control--has-label': hasLabel,
+      'form-control--has-help-text': hasHelpText
+    })}
       >
         <label
           part="form-control-label"
@@ -332,19 +332,19 @@ export default class OTextarea extends LibraryBaseElement implements LibraryBase
           <div
             part="base"
             class=${classMap({
-              textarea: true,
-              'textarea--small': this.size === 'small',
-              'textarea--medium': this.size === 'medium',
-              'textarea--large': this.size === 'large',
-              'textarea--standard': !this.filled,
-              'textarea--filled': this.filled,
-              'textarea--disabled': this.disabled,
-              'textarea--focused': this.hasFocus,
-              'textarea--empty': !this.value,
-              'textarea--resize-none': this.resize === 'none',
-              'textarea--resize-vertical': this.resize === 'vertical',
-              'textarea--resize-auto': this.resize === 'auto'
-            })}
+      textarea: true,
+      'textarea--small': this.size === 'small',
+      'textarea--medium': this.size === 'medium',
+      'textarea--large': this.size === 'large',
+      'textarea--standard': !this.filled,
+      'textarea--filled': this.filled,
+      'textarea--disabled': this.disabled,
+      'textarea--focused': this.hasFocus,
+      'textarea--empty': !this.value,
+      'textarea--resize-none': this.resize === 'none',
+      'textarea--resize-vertical': this.resize === 'vertical',
+      'textarea--resize-auto': this.resize === 'auto'
+    })}
           >
             <textarea
               part="textarea"

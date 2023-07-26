@@ -3,22 +3,20 @@
 
 import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
-import { numberAbbreviate } from '../../internal/math';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './navbar-item.styles';
+import { numberAbbreviate } from '../../internal/math.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './navbar-item.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Short summary of the component's intended use.
- * @documentation https://circular-o.github.io/circular/#/components/navbar-item
- * @status experimental
- * @since 2.0
+ * @documentation /components/navbar-item
+ * @status wip
+ * @since 1.5
  *
  * @dependency o-icon
  * @dependency o-typography
- *
- * @event o-event-name - Emitted as an example.
  *
  * @slot - The default slot - for sub-categories.
  * @slot icon to pass the default icon (unselected)
@@ -172,10 +170,10 @@ export default class ONavbarItem extends LibraryBaseElement {
         </span>
         <span class="suffix">
           ${this.count !== undefined
-            ? html`<div class="box counter" radius="pill">
+        ? html`<div class="box counter" radius="pill">
                 <o-typography variant="c4">${numberAbbreviate(this.count)}</o-typography>
               </div>`
-            : ''}
+        : ''}
         </span>
       </div>
 

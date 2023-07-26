@@ -1,5 +1,5 @@
-import { type GridOptions } from './grid-types';
-import { rowLayoutCellFormatter } from './formatters/row-layout-cell-formatter';
+import { type GridOptions } from './grid-types.js';
+import { rowLayoutCellFormatter } from './formatters/row-layout-cell-formatter.js';
 
 /**
  * Default grid options

@@ -1,17 +1,17 @@
-import '../icon/icon';
+import '../icon/icon.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, state } from 'lit/decorators.js';
 import { html } from 'lit';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './avatar.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './avatar.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Avatars are used to represent a person or object.
- * @documentation https://circular-o.github.io/circular/#/components/avatar
+ * @documentation /components/avatar
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon
  *
@@ -79,11 +79,11 @@ export default class OAvatar extends LibraryBaseElement {
       <div
         part="base"
         class=${classMap({
-          avatar: true,
-          'avatar--circle': this.shape === 'circle',
-          'avatar--rounded': this.shape === 'rounded',
-          'avatar--square': this.shape === 'square'
-        })}
+      avatar: true,
+      'avatar--circle': this.shape === 'circle',
+      'avatar--rounded': this.shape === 'rounded',
+      'avatar--square': this.shape === 'square'
+    })}
         role="img"
         aria-label=${this.label}
       >

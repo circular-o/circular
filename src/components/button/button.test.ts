@@ -1,7 +1,8 @@
+import '../../../dist/circular.js';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
-import { runFormControlBaseTests } from '../../internal/test/form-control-base-tests';
+import { runFormControlBaseTests } from '../../internal/test/form-control-base-tests.js';
 import sinon from 'sinon';
-import type OButton from './button';
+import type OButton from './button.js';
 
 const variants = ['default', 'primary', 'success', 'neutral', 'warning', 'danger'];
 

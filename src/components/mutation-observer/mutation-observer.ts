@@ -1,15 +1,15 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './mutation-observer.styles';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './mutation-observer.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary The Mutation Observer component offers a thin, declarative interface to the [`MutationObserver API`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
- * @documentation https://circular-o.github.io/circular/#/components/mutation-observer
+ * @documentation /components/mutation-observer
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @event {{ mutationList: MutationRecord[] }} o-mutation - Emitted when a mutation occurs.
  *
@@ -44,7 +44,6 @@ export default class OMutationObserver extends LibraryBaseElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.handleMutation = this.handleMutation.bind(this);
 
     this.mutationObserver = new MutationObserver(this.handleMutation);
 
@@ -57,11 +56,11 @@ export default class OMutationObserver extends LibraryBaseElement {
     this.stopObserver();
   }
 
-  private handleMutation(mutationList: MutationRecord[]) {
+  private handleMutation = (mutationList: MutationRecord[]) => {
     this.emit('o-mutation', {
       detail: { mutationList }
     });
-  }
+  };
 
   private startObserver() {
     const observeAttributes = typeof this.attr === 'string' && this.attr.length > 0;

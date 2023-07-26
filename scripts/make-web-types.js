@@ -10,7 +10,7 @@ import path from 'path';
 
 const { outdir } = commandLineArgs({ name: 'outdir', type: String });
 const metadata = JSON.parse(fs.readFileSync(path.join(outdir, 'custom-elements.json'), 'utf8'));
-const docsBaseUrl = 'https://circular-o.github.io/circular/#/';
+const docsBaseUrl = 'https://circular.decodeit.co/';
 
 const jsonataExprString = `{
   "$schema": "http://json.schemastore.org/web-types",
@@ -63,7 +63,6 @@ const jsonataExprString = `{
   }
 }`;
 
-// Run the conversion
 const expression = jsonata(jsonataExprString);
 const result = await expression.evaluate(metadata);
 

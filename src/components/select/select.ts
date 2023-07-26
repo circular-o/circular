@@ -1,33 +1,33 @@
-import '../icon/icon';
-import '../input/input';
-import '../popup/popup';
-import '../tag/tag';
-import { animateTo, stopAnimations } from '../../internal/animate';
+import '../icon/icon.js';
+import '../input/input.js';
+import '../popup/popup.js';
+import '../tag/tag.js';
+import { animateTo, stopAnimations } from '../../internal/animate.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
-import { defaultValue } from '../../internal/default-value';
-import { FormControlController } from '../../internal/form';
-import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
-import { HasSlotController } from '../../internal/slot';
+import { defaultValue } from '../../internal/default-value.js';
+import { FormControlController } from '../../internal/form.js';
+import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry.js';
+import { HasSlotController } from '../../internal/slot.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
-import { scrollIntoView } from 'src/internal/scroll';
-import { waitForEvent } from '../../internal/event';
-import { watch } from '../../internal/watch';
-import LibraryBaseElement from '../../internal/library-base-element';
-import styles from './select.styles';
+import { LocalizeController } from '../../utilities/localize.js';
+import { scrollIntoView } from '../../internal/scroll.js';
+import { waitForEvent } from '../../internal/event.js';
+import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
+import styles from './select.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { LibraryBaseFormControl } from '../../internal/library-base-element';
-import type { ORemoveEvent } from '../../events/events';
-import type OInput from '../input/input';
-import type OOption from '../option/option';
-import type OPopup from '../popup/popup';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element.js';
+import type { ORemoveEvent } from '../../events/events.js';
+import type OInput from '../input/input.js';
+import type OOption from '../option/option.js';
+import type OPopup from '../popup/popup.js';
 
 /**
  * @summary Selects allow you to choose items from a menu of predefined options.
- * @documentation https://circular-o.github.io/circular/#/components/select
+ * @documentation /components/select
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @dependency o-icon
  * @dependency o-input
@@ -193,9 +193,6 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
 
   connectedCallback() {
     super.connectedCallback();
-    this.handleDocumentFocusIn = this.handleDocumentFocusIn.bind(this);
-    this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
-    this.handleDocumentMouseDown = this.handleDocumentMouseDown.bind(this);
 
     // If the property open is true, we need to show the popup
     if (this.open) {
@@ -229,15 +226,15 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
     this.emit('o-blur');
   }
 
-  private handleDocumentFocusIn(event: KeyboardEvent) {
+  private handleDocumentFocusIn = (event: KeyboardEvent) => {
     // Close when focusing out of the select
     const path = event.composedPath();
     if (this && !path.includes(this)) {
       this.hide();
     }
-  }
+  };
 
-  private handleDocumentKeyDown(event: KeyboardEvent) {
+  private handleDocumentKeyDown = (event: KeyboardEvent) => {
     const target = event.target as HTMLElement;
     const isClearButton = target.closest('.select__clear') !== null;
     const isIconButton = target.closest('o-icon-button') !== null;
@@ -399,15 +396,15 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
         }
       }
     }
-  }
+  };
 
-  private handleDocumentMouseDown(event: MouseEvent) {
+  private handleDocumentMouseDown = (event: MouseEvent) => {
     // Close when clicking outside of the select
     const path = event.composedPath();
     if (this && !path.includes(this)) {
       this.hide();
     }
-  }
+  };
 
   private handleLabelClick() {
     this.displayInput.focus();
@@ -893,13 +890,13 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
       <div
         part="form-control"
         class=${classMap({
-          'form-control': true,
-          'form-control--small': this.size === 'small',
-          'form-control--medium': this.size === 'medium',
-          'form-control--large': this.size === 'large',
-          'form-control--has-label': hasLabel,
-          'form-control--has-help-text': hasHelpText
-        })}
+      'form-control': true,
+      'form-control--small': this.size === 'small',
+      'form-control--medium': this.size === 'medium',
+      'form-control--large': this.size === 'large',
+      'form-control--has-label': hasLabel,
+      'form-control--has-help-text': hasHelpText
+    })}
       >
         <label
           id="label"
@@ -914,22 +911,22 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
         <div part="form-control-input" class="form-control-input">
           <o-popup
             class=${classMap({
-              select: true,
-              'select--standard': true,
-              'select--filled': this.filled,
-              'select--pill': this.pill,
-              'select--open': this.open,
-              'select--disabled': this.disabled,
-              'select--multiple': this.multiple,
-              'select--focused': this.hasFocus,
-              'select--placeholder-visible': isPlaceholderVisible,
-              'select--top': this.placement === 'top',
-              'select--bottom': this.placement === 'bottom',
-              'select--small': this.size === 'small',
-              'select--medium': this.size === 'medium',
-              'select--large': this.size === 'large',
-              'select--has-autocomplete': this.autocomplete
-            })}
+      select: true,
+      'select--standard': true,
+      'select--filled': this.filled,
+      'select--pill': this.pill,
+      'select--open': this.open,
+      'select--disabled': this.disabled,
+      'select--multiple': this.multiple,
+      'select--focused': this.hasFocus,
+      'select--placeholder-visible': isPlaceholderVisible,
+      'select--top': this.placement === 'top',
+      'select--bottom': this.placement === 'bottom',
+      'select--small': this.size === 'small',
+      'select--medium': this.size === 'medium',
+      'select--large': this.size === 'large',
+      'select--has-autocomplete': this.autocomplete
+    })}
             placement=${this.placement}
             strategy=${this.hoist ? 'fixed' : 'absolute'}
             flip
@@ -971,11 +968,11 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
               />
 
               ${this.multiple
-                ? html`
+        ? html`
                     <div part="tags" class="select__tags">
                       ${this.selectedOptions.map((option, index) => {
-                        if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
-                          return html`
+          if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
+            return html`
                             <o-tag
                               part="tag"
                               exportparts="
@@ -992,15 +989,15 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
                               ${option.getTextLabel()}
                             </o-tag>
                           `;
-                        } else if (index === this.maxOptionsVisible) {
-                          return html` <o-tag size=${this.size}> +${this.selectedOptions.length - index} </o-tag> `;
-                        } else {
-                          return null;
-                        }
-                      })}
+          } else if (index === this.maxOptionsVisible) {
+            return html` <o-tag size=${this.size}> +${this.selectedOptions.length - index} </o-tag> `;
+          } else {
+            return null;
+          }
+        })}
                     </div>
                   `
-                : ''}
+        : ''}
 
               <input
                 class="select__value-input"
@@ -1015,7 +1012,7 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
               />
 
               ${hasClearIcon
-                ? html`
+        ? html`
                     <button
                       part="clear-button"
                       class="select__clear"
@@ -1030,7 +1027,7 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
                       </slot>
                     </button>
                   `
-                : ''}
+        : ''}
 
               <slot name="expand-icon" part="expand-icon" class="select__expand-icon">
                 <o-icon library="system" name="chevron-down"></o-icon>
@@ -1045,19 +1042,19 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
               aria-labelledby="label"
               part="listbox"
               class=${classMap({
-                select__listbox: true,
-                'with-autocomplete': this.autocomplete,
-                'with-autocomplete--multiple': this.multiple,
-                'with-autocomplete--small': this.autocomplete && this.size === 'small',
-                'with-autocomplete--medium': this.autocomplete && this.size === 'medium',
-                'with-autocomplete--large': this.autocomplete && this.size === 'large'
-              })}
+          select__listbox: true,
+          'with-autocomplete': this.autocomplete,
+          'with-autocomplete--multiple': this.multiple,
+          'with-autocomplete--small': this.autocomplete && this.size === 'small',
+          'with-autocomplete--medium': this.autocomplete && this.size === 'medium',
+          'with-autocomplete--large': this.autocomplete && this.size === 'large'
+        })}
               tabindex="-1"
               @mouseup=${this.handleOptionClick}
               @slotchange=${this.handleDefaultSlotChange}
             >
               ${this.autocomplete
-                ? html`<o-input
+        ? html`<o-input
                     part="autocomplete-input"
                     data-input-name="select-autocomplete-input"
                     class="autocomplete__input"
@@ -1065,14 +1062,14 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
                     @keyup=${this.handleAutocompleteInput}
                     @keydown=${this.handleAutocompleteInput}
                     @o-input=${(event: Event) => {
-                      this.dispatchAutocompleteInputEvent();
-                      event.stopPropagation();
-                    }}
+            this.dispatchAutocompleteInputEvent();
+            event.stopPropagation();
+          }}
                     @o-clear=${this.handleAutocompleteInput}
                     @o-change=${(event: Event) => event.stopPropagation()}
                     .size=${this.size}
                   ></o-input>`
-                : ''}
+        : ''}
               <slot name="options-prefix"></slot>
               <slot></slot>
               <slot name="options-suffix"></slot>
