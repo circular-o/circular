@@ -1,4 +1,5 @@
 import '../icon/icon.js';
+import '../input/input.js';
 import '../popup/popup.js';
 import '../tag/tag.js';
 import { animateTo, stopAnimations } from '../../internal/animate.js';
@@ -13,41 +14,46 @@ import { LocalizeController } from '../../utilities/localize.js';
 import { scrollIntoView } from '../../internal/scroll.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
-import ShoelaceElement from '../../internal/shoelace-element.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 import styles from './select.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element.js';
-import type SlOption from '../option/option.js';
-import type SlPopup from '../popup/popup.js';
-import type SlRemoveEvent from '../../events/sl-remove.js';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element.js';
+import type { ORemoveEvent } from '../../events/events.js';
+import type OInput from '../input/input.js';
+import type OOption from '../option/option.js';
+import type OPopup from '../popup/popup.js';
 
 /**
  * @summary Selects allow you to choose items from a menu of predefined options.
- * @documentation https://shoelace.style/components/select
+ * @documentation /components/select
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
- * @dependency sl-icon
- * @dependency sl-popup
- * @dependency sl-tag
+ * @dependency o-icon
+ * @dependency o-input
+ * @dependency o-popup
+ * @dependency o-tag
  *
- * @slot - The listbox options. Must be `<sl-option>` elements. You can use `<sl-divider>` to group items visually.
+ * @slot - The listbox options. Must be `<o-option>` elements. You can use `<o-divider>` to group items visually.
  * @slot label - The input's label. Alternatively, you can use the `label` attribute.
  * @slot prefix - Used to prepend a presentational icon or similar element to the combobox.
  * @slot clear-icon - An icon to use in lieu of the default clear icon.
  * @slot expand-icon - The icon to show when the control is expanded and collapsed. Rotates on open and close.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
+ * @slot options-prefix - Used to prepend any content to the options list.
+ * @slot options-suffix - Used to append any content to the options list.
  *
- * @event sl-change - Emitted when the control's value changes.
- * @event sl-clear - Emitted when the control's value is cleared.
- * @event sl-input - Emitted when the control receives input.
- * @event sl-focus - Emitted when the control gains focus.
- * @event sl-blur - Emitted when the control loses focus.
- * @event sl-show - Emitted when the select's menu opens.
- * @event sl-after-show - Emitted after the select's menu opens and all animations are complete.
- * @event sl-hide - Emitted when the select's menu closes.
- * @event sl-after-hide - Emitted after the select's menu closes and all animations are complete.
- * @event sl-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
+ * @event o-change - Emitted when the control's value changes.
+ * @event o-clear - Emitted when the control's value is cleared.
+ * @event o-input - Emitted when the control receives input.
+ * @event o-focus - Emitted when the control gains focus.
+ * @event o-blur - Emitted when the control loses focus.
+ * @event o-show - Emitted when the select's menu opens.
+ * @event o-after-show - Emitted after the select's menu opens and all animations are complete.
+ * @event o-hide - Emitted when the select's menu closes.
+ * @event o-after-hide - Emitted after the select's menu closes and all animations are complete.
+ * @event o-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
+ * @event {{ value: string; ref: OInput }} o-autocomplete-input - Emitted when the autocomplete control receives input.
  *
  * @csspart form-control - The form control that wraps the label, input, and help text.
  * @csspart form-control-label - The label's wrapper.
@@ -66,28 +72,29 @@ import type SlRemoveEvent from '../../events/sl-remove.js';
  * @csspart clear-button - The clear button.
  * @csspart expand-icon - The container that wraps the expand icon.
  */
-@customElement('sl-select')
-export default class SlSelect extends ShoelaceElement implements ShoelaceFormControl {
+@customElement('o-select')
+export default class OSelect extends LibraryBaseElement implements LibraryBaseFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this, {
-    assumeInteractionOn: ['sl-blur', 'sl-input']
+    assumeInteractionOn: ['o-blur', 'o-input']
   });
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
   private readonly localize = new LocalizeController(this);
   private typeToSelectString = '';
   private typeToSelectTimeout: number;
 
-  @query('.select') popup: SlPopup;
+  @query('.select') popup: OPopup;
   @query('.select__combobox') combobox: HTMLSlotElement;
   @query('.select__display-input') displayInput: HTMLInputElement;
   @query('.select__value-input') valueInput: HTMLInputElement;
   @query('.select__listbox') listbox: HTMLSlotElement;
+  @query('.autocomplete__input') autocompleteInput: OInput;
 
   @state() private hasFocus = false;
   @state() displayLabel = '';
-  @state() currentOption: SlOption;
-  @state() selectedOptions: SlOption[] = [];
+  @state() currentOption: OOption;
+  @state() selectedOptions: OOption[] = [];
 
   /** The name of the select, submitted as a name/value pair with form data. */
   @property() name = '';
@@ -168,6 +175,12 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
   /** The select's required attribute. */
   @property({ type: Boolean, reflect: true }) required = false;
 
+  /** Shows an input on top of the options list, it helps the user to filter the options while typing */
+  @property({ type: Boolean, reflect: true }) autocomplete = false;
+
+  /** When autocomplete and autocomplete-external are set, the options filtering has to be done externally, out of the component context */
+  @property({ type: Boolean, reflect: true, attribute: 'autocomplete-external' }) autocompleteExternal = false;
+
   /** Gets the validity state object */
   get validity() {
     return this.valueInput.validity;
@@ -181,8 +194,13 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
   connectedCallback() {
     super.connectedCallback();
 
-    // Because this is a form control, it shouldn't be opened initially
-    this.open = false;
+    // If the property open is true, we need to show the popup
+    if (this.open) {
+      this.open = false;
+      setTimeout(() => {
+        this.show();
+      }, 10);
+    }
   }
 
   private addOpenListeners() {
@@ -200,12 +218,12 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
   private handleFocus() {
     this.hasFocus = true;
     this.displayInput.setSelectionRange(0, 0);
-    this.emit('sl-focus');
+    this.emit('o-focus');
   }
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('o-blur');
   }
 
   private handleDocumentFocusIn = (event: KeyboardEvent) => {
@@ -219,10 +237,19 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
   private handleDocumentKeyDown = (event: KeyboardEvent) => {
     const target = event.target as HTMLElement;
     const isClearButton = target.closest('.select__clear') !== null;
-    const isIconButton = target.closest('sl-icon-button') !== null;
+    const isIconButton = target.closest('o-icon-button') !== null;
 
-    // Ignore presses when the target is an icon button (e.g. the remove button in <sl-tag>)
+    // Ignore presses when the target is an icon button (e.g. the remove button in <o-tag>)
     if (isClearButton || isIconButton) {
+      return;
+    }
+
+    // Ignore presses when the target is inside the options-prefix or options-suffix slot
+    // and there is no o-option inside the slot
+    const isInsideOptionsPrefix = target.closest('[slot="options-prefix"]') !== null;
+    const isInsideOptionsSuffix = target.closest('[slot="options-suffix"]') !== null;
+    // Check if the target is not in the slots and is not an o-option
+    if ((isInsideOptionsPrefix || isInsideOptionsSuffix) && target.closest('o-option') === null) {
       return;
     }
 
@@ -256,8 +283,8 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
 
         // Emit after updating
         this.updateComplete.then(() => {
-          this.emit('sl-input');
-          this.emit('sl-change');
+          this.emit('o-input');
+          this.emit('o-change');
         });
 
         if (!this.multiple) {
@@ -271,7 +298,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
 
     // Navigate options
     if (['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) {
-      const allOptions = this.getAllOptions();
+      const allOptions = this.getAllOptions().filter(option => !option.hidden);
       const currentIndex = allOptions.indexOf(this.currentOption);
       let newIndex = Math.max(0, currentIndex);
 
@@ -289,12 +316,38 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
         }
       }
 
+      const focusAutocompleteInput = () => {
+        if (this.autocomplete && this.autocompleteInput) {
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+          window.setTimeout(() => {
+            this.autocompleteInput.focus();
+          }, 250);
+
+          return true;
+        }
+
+        return false;
+      };
+
       if (event.key === 'ArrowDown') {
         newIndex = currentIndex + 1;
-        if (newIndex > allOptions.length - 1) newIndex = 0;
+        if (newIndex > allOptions.length - 1) {
+          // If the autocomplete attribute is set, then at this point we want to focus the input so the user can type
+          // to select. If it's not set, then we want to focus the first option.
+          if (focusAutocompleteInput()) return;
+
+          newIndex = 0;
+        }
       } else if (event.key === 'ArrowUp') {
         newIndex = currentIndex - 1;
-        if (newIndex < 0) newIndex = allOptions.length - 1;
+        if (newIndex < 0) {
+          // If the autocomplete attribute is set, then at this point we want to focus the input so the user can type
+          // to select. If it's not set, then we want to focus the first option.
+          if (focusAutocompleteInput()) return;
+
+          newIndex = allOptions.length - 1;
+        }
       } else if (event.key === 'Home') {
         newIndex = 0;
       } else if (event.key === 'End') {
@@ -359,7 +412,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
 
   private handleComboboxMouseDown(event: MouseEvent) {
     const path = event.composedPath();
-    const isIconButton = path.some(el => el instanceof Element && el.tagName.toLowerCase() === 'sl-icon-button');
+    const isIconButton = path.some(el => el instanceof Element && el.tagName.toLowerCase() === 'o-icon-button');
 
     // Ignore disabled controls and clicks on tags (remove buttons)
     if (this.disabled || isIconButton) {
@@ -385,9 +438,9 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
 
       // Emit after update
       this.updateComplete.then(() => {
-        this.emit('sl-clear');
-        this.emit('sl-input');
-        this.emit('sl-change');
+        this.emit('o-clear');
+        this.emit('o-input');
+        this.emit('o-change');
       });
     }
   }
@@ -400,7 +453,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
 
   private handleOptionClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
-    const option = target.closest('sl-option');
+    const option = target.closest('o-option');
     const oldValue = this.value;
 
     if (option && !option.disabled) {
@@ -416,8 +469,8 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
       if (this.value !== oldValue) {
         // Emit after updating
         this.updateComplete.then(() => {
-          this.emit('sl-input');
-          this.emit('sl-change');
+          this.emit('o-input');
+          this.emit('o-change');
         });
       }
 
@@ -434,18 +487,18 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
     const values: string[] = [];
 
     // Check for duplicate values in menu items
-    if (customElements.get('sl-option')) {
+    if (customElements.get('o-option')) {
       allOptions.forEach(option => values.push(option.value));
 
       // Select only the options that match the new value
       this.setSelectedOptions(allOptions.filter(el => value.includes(el.value)));
     } else {
-      // Rerun this handler when <sl-option> is registered
-      customElements.whenDefined('sl-option').then(() => this.handleDefaultSlotChange());
+      // Rerun this handler when <o-option> is registered
+      customElements.whenDefined('o-option').then(() => this.handleDefaultSlotChange());
     }
   }
 
-  private handleTagRemove(event: SlRemoveEvent, option: SlOption) {
+  private handleTagRemove(event: ORemoveEvent, option: OOption) {
     event.stopPropagation();
 
     if (!this.disabled) {
@@ -453,25 +506,54 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
 
       // Emit after updating
       this.updateComplete.then(() => {
-        this.emit('sl-input');
-        this.emit('sl-change');
+        this.emit('o-input');
+        this.emit('o-change');
       });
     }
   }
 
-  // Gets an array of all <sl-option> elements
-  private getAllOptions() {
-    return [...this.querySelectorAll<SlOption>('sl-option')];
+  private getOptionsInSlot(slotName: string): OOption[] {
+    const slot = this.querySelector(`[slot="${slotName}"]`);
+
+    // if slot is not defined, return an empty array
+    if (!slot) {
+      return [];
+    }
+
+    // if slot is defined, and it is an o-option itself, return an array with the slot
+    if (slot.tagName.toLowerCase() === 'o-option') {
+      return [slot as OOption];
+    }
+
+    // if slot is defined, and it is not an HTMLSlotElement nor an o-option, the select all the o-options inside the slot
+    return Array.from(slot.querySelectorAll<OOption>('o-option'));
   }
 
-  // Gets the first <sl-option> element
+  // Gets an array of all <o-option> elements
+  private getAllOptions() {
+    const optionsInPrefixSlot = this.getOptionsInSlot('options-prefix');
+    const optionsInSuffixSlot = this.getOptionsInSlot('options-suffix');
+    const options = [...this.querySelectorAll<OOption>('o-option')];
+
+    // Filter from options the ones that are in the prefix or suffix slots
+    const optionsNotInPrefixOrSuffixSlot = options.filter(
+      (option: OOption) => !optionsInPrefixSlot.includes(option) && !optionsInSuffixSlot.includes(option)
+    );
+
+    // Select all options except the ones having the attribute slot="options-prefix" or slot="options-suffix"
+    return [...optionsInPrefixSlot, ...optionsNotInPrefixOrSuffixSlot, ...optionsInSuffixSlot];
+  }
+
+  // Gets the first <o-option> element
   private getFirstOption() {
-    return this.querySelector<SlOption>('sl-option');
+    const optionsInPrefixSlot = this.getOptionsInSlot('options-prefix');
+    if (optionsInPrefixSlot.length) return optionsInPrefixSlot[0];
+    return this.querySelector<OOption>('o-option');
   }
 
   // Sets the current option, which is the option the user is currently interacting with (e.g. via keyboard). Only one
   // option may be "current" at a time.
-  private setCurrentOption(option: SlOption | null) {
+  private setCurrentOption(option: OOption | null, { focus = true } = {}) {
     const allOptions = this.getAllOptions();
 
     // Clear selection
@@ -485,12 +567,12 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
       this.currentOption = option;
       option.current = true;
       option.tabIndex = 0;
-      option.focus();
+      if (focus) option.focus();
     }
   }
 
   // Sets the selected option(s)
-  private setSelectedOptions(option: SlOption | SlOption[]) {
+  private setSelectedOptions(option: OOption | OOption[]) {
     const allOptions = this.getAllOptions();
     const newSelectedOptions = Array.isArray(option) ? option : [option];
 
@@ -507,7 +589,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
   }
 
   // Toggles an option's selected state
-  private toggleOptionSelection(option: SlOption, force?: boolean) {
+  private toggleOptionSelection(option: OOption, force?: boolean) {
     if (force === true || force === false) {
       option.selected = force;
     } else {
@@ -549,6 +631,131 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
     this.formControlController.emitInvalidEvent(event);
   }
 
+  private handleAutocompleteInput(event: KeyboardEvent) {
+    if (event.type === 'keydown') {
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      if (['ArrowUp', 'ArrowDown'].includes(event.key)) {
+        event.preventDefault();
+      }
+      return;
+    }
+
+    const allOptions = this.getAllOptions();
+
+    // Navigate options
+    if (['ArrowUp', 'ArrowDown'].includes(event.key)) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+
+      const allVisibleOptions = allOptions.filter(option => !option.hidden);
+
+      // If there are no visible options, do nothing
+      if (allVisibleOptions.length === 0) {
+        return;
+      }
+
+      const currentIndex = allVisibleOptions.indexOf(this.currentOption);
+      let newIndex = Math.max(0, currentIndex);
+
+      if (event.key === 'ArrowDown') {
+        newIndex = currentIndex + 1;
+        if (newIndex > allVisibleOptions.length - 1) newIndex = 0;
+      } else if (event.key === 'ArrowUp') {
+        newIndex = currentIndex - 1;
+        if (newIndex < 0) newIndex = allVisibleOptions.length - 1;
+      }
+
+      // Avoid negative indexes
+      newIndex = Math.max(0, newIndex);
+
+      this.setCurrentOption(allVisibleOptions[newIndex], { focus: false });
+      return;
+    }
+
+    // Close when pressing escape
+    if (event.key === 'Escape') {
+      this.hide();
+      this.displayInput.focus({ preventScroll: true });
+    }
+
+    // Handle enter and space. When pressing space, we allow for type to select behaviors so if there's anything in the
+    // buffer we _don't_ close it.
+    if (event.key === 'Enter') {
+      this.handleDocumentKeyDown(event);
+      return;
+    }
+
+    // If autocomplete is external, do nothing
+    if (this.autocompleteExternal) {
+      return;
+    }
+
+    // Handle value changes
+    const currentAutocompleteInputValue = this.autocompleteInput.value ?? '';
+    allOptions.forEach(el => {
+      el.hidden = !el.getTextLabel().toLocaleLowerCase().includes(currentAutocompleteInputValue.toLocaleLowerCase());
+    });
+
+    // Get the current option and check if it's visible, otherwise select the first visible option
+    const allVisibleOptions = allOptions.filter(option => !option.hidden);
+    // If there are no visible options, do nothing
+    if (allVisibleOptions.length === 0) {
+      this.setCurrentOption(null, { focus: false });
+      return;
+    }
+
+    const currentIndex = allVisibleOptions.indexOf(this.currentOption);
+    const currentOptionIsVisible = currentIndex !== -1;
+    if (!currentOptionIsVisible) {
+      this.setCurrentOption(allVisibleOptions[0], { focus: false });
+    }
+  }
+
+  private autocompleteInputEventTimer: number | null = null;
+  private dispatchAutocompleteInputEvent() {
+    if (this.autocompleteInputEventTimer) {
+      clearTimeout(this.autocompleteInputEventTimer);
+    }
+
+    this.autocompleteInputEventTimer = window.setTimeout(() => {
+      this.dispatchEvent(
+        new CustomEvent('o-autocomplete-input', {
+          detail: { ref: this.autocompleteInput, value: this.autocompleteInput.value }
+        })
+      );
+    }, 100);
+  }
+
+  private autocompleteExternalSelectOption() {
+    const doAutocompleteExternalSelectOption = this.autocomplete && this.autocompleteExternal && this.open;
+
+    if (!doAutocompleteExternalSelectOption) {
+      return;
+    }
+
+    // If there is no current option, select the first one
+    if (!this.currentOption) {
+      window.setTimeout(() => {
+        this.setCurrentOption(this.getFirstOption());
+        this.autocompleteInput.focus();
+      }, 100);
+      return;
+    }
+
+    window.setTimeout(() => {
+      const allOptions = this.getAllOptions();
+      const currentIndex = allOptions.indexOf(this.currentOption);
+
+      // If the current option is not in the list, select the first one
+      if (currentIndex === -1) {
+        this.setCurrentOption(allOptions[0]);
+        this.autocompleteInput.focus();
+      }
+    }, 100);
+  }
+
   @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
     // Close the listbox when the control is disabled
@@ -574,7 +781,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
       this.setCurrentOption(this.selectedOptions[0] || this.getFirstOption());
 
       // Show
-      this.emit('sl-show');
+      this.emit('o-show');
       this.addOpenListeners();
 
       await stopAnimations(this);
@@ -594,10 +801,15 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
         scrollIntoView(this.currentOption, this.listbox, 'vertical', 'auto');
       }
 
-      this.emit('sl-after-show');
+      // Focus the input if autocomplete is enabled
+      if (this.autocomplete && this.autocompleteInput) {
+        this.autocompleteInput.focus();
+      }
+
+      this.emit('o-after-show');
     } else {
       // Hide
-      this.emit('sl-hide');
+      this.emit('o-hide');
       this.removeOpenListeners();
 
       await stopAnimations(this);
@@ -606,7 +818,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
       this.listbox.hidden = true;
       this.popup.active = false;
 
-      this.emit('sl-after-hide');
+      this.emit('o-after-hide');
     }
   }
 
@@ -618,7 +830,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
     }
 
     this.open = true;
-    return waitForEvent(this, 'sl-after-show');
+    return waitForEvent(this, 'o-after-show');
   }
 
   /** Hides the listbox. */
@@ -629,7 +841,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
     }
 
     this.open = false;
-    return waitForEvent(this, 'sl-after-hide');
+    return waitForEvent(this, 'o-after-hide');
   }
 
   /** Checks for validity but does not show a validation message. Returns `true` when valid and `false` when invalid. */
@@ -671,17 +883,20 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
     const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
     const isPlaceholderVisible = this.placeholder && this.value.length === 0;
 
+    // Select the current option after an external change when autocomplete-external is enabled
+    this.autocompleteExternalSelectOption();
+
     return html`
       <div
         part="form-control"
         class=${classMap({
-          'form-control': true,
-          'form-control--small': this.size === 'small',
-          'form-control--medium': this.size === 'medium',
-          'form-control--large': this.size === 'large',
-          'form-control--has-label': hasLabel,
-          'form-control--has-help-text': hasHelpText
-        })}
+      'form-control': true,
+      'form-control--small': this.size === 'small',
+      'form-control--medium': this.size === 'medium',
+      'form-control--large': this.size === 'large',
+      'form-control--has-label': hasLabel,
+      'form-control--has-help-text': hasHelpText
+    })}
       >
         <label
           id="label"
@@ -694,23 +909,24 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
         </label>
 
         <div part="form-control-input" class="form-control-input">
-          <sl-popup
+          <o-popup
             class=${classMap({
-              select: true,
-              'select--standard': true,
-              'select--filled': this.filled,
-              'select--pill': this.pill,
-              'select--open': this.open,
-              'select--disabled': this.disabled,
-              'select--multiple': this.multiple,
-              'select--focused': this.hasFocus,
-              'select--placeholder-visible': isPlaceholderVisible,
-              'select--top': this.placement === 'top',
-              'select--bottom': this.placement === 'bottom',
-              'select--small': this.size === 'small',
-              'select--medium': this.size === 'medium',
-              'select--large': this.size === 'large'
-            })}
+      select: true,
+      'select--standard': true,
+      'select--filled': this.filled,
+      'select--pill': this.pill,
+      'select--open': this.open,
+      'select--disabled': this.disabled,
+      'select--multiple': this.multiple,
+      'select--focused': this.hasFocus,
+      'select--placeholder-visible': isPlaceholderVisible,
+      'select--top': this.placement === 'top',
+      'select--bottom': this.placement === 'bottom',
+      'select--small': this.size === 'small',
+      'select--medium': this.size === 'medium',
+      'select--large': this.size === 'large',
+      'select--has-autocomplete': this.autocomplete
+    })}
             placement=${this.placement}
             strategy=${this.hoist ? 'fixed' : 'absolute'}
             flip
@@ -752,12 +968,12 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
               />
 
               ${this.multiple
-                ? html`
+        ? html`
                     <div part="tags" class="select__tags">
                       ${this.selectedOptions.map((option, index) => {
-                        if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
-                          return html`
-                            <sl-tag
+          if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
+            return html`
+                            <o-tag
                               part="tag"
                               exportparts="
                                 base:tag__base,
@@ -768,20 +984,20 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
                               ?pill=${this.pill}
                               size=${this.size}
                               removable
-                              @sl-remove=${(event: SlRemoveEvent) => this.handleTagRemove(event, option)}
+                              @o-remove=${(event: ORemoveEvent) => this.handleTagRemove(event, option)}
                             >
                               ${option.getTextLabel()}
-                            </sl-tag>
+                            </o-tag>
                           `;
-                        } else if (index === this.maxOptionsVisible) {
-                          return html` <sl-tag size=${this.size}> +${this.selectedOptions.length - index} </sl-tag> `;
-                        } else {
-                          return null;
-                        }
-                      })}
+          } else if (index === this.maxOptionsVisible) {
+            return html` <o-tag size=${this.size}> +${this.selectedOptions.length - index} </o-tag> `;
+          } else {
+            return null;
+          }
+        })}
                     </div>
                   `
-                : ''}
+        : ''}
 
               <input
                 class="select__value-input"
@@ -796,7 +1012,7 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
               />
 
               ${hasClearIcon
-                ? html`
+        ? html`
                     <button
                       part="clear-button"
                       class="select__clear"
@@ -807,14 +1023,14 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
                       tabindex="-1"
                     >
                       <slot name="clear-icon">
-                        <sl-icon name="x-circle-fill" library="system"></sl-icon>
+                        <o-icon name="x-circle-fill" library="system"></o-icon>
                       </slot>
                     </button>
                   `
-                : ''}
+        : ''}
 
               <slot name="expand-icon" part="expand-icon" class="select__expand-icon">
-                <sl-icon library="system" name="chevron-down"></sl-icon>
+                <o-icon library="system" name="chevron-down"></o-icon>
               </slot>
             </div>
 
@@ -825,14 +1041,40 @@ export default class SlSelect extends ShoelaceElement implements ShoelaceFormCon
               aria-multiselectable=${this.multiple ? 'true' : 'false'}
               aria-labelledby="label"
               part="listbox"
-              class="select__listbox"
+              class=${classMap({
+          select__listbox: true,
+          'with-autocomplete': this.autocomplete,
+          'with-autocomplete--multiple': this.multiple,
+          'with-autocomplete--small': this.autocomplete && this.size === 'small',
+          'with-autocomplete--medium': this.autocomplete && this.size === 'medium',
+          'with-autocomplete--large': this.autocomplete && this.size === 'large'
+        })}
               tabindex="-1"
               @mouseup=${this.handleOptionClick}
               @slotchange=${this.handleDefaultSlotChange}
             >
+              ${this.autocomplete
+        ? html`<o-input
+                    part="autocomplete-input"
+                    data-input-name="select-autocomplete-input"
+                    class="autocomplete__input"
+                    clearable
+                    @keyup=${this.handleAutocompleteInput}
+                    @keydown=${this.handleAutocompleteInput}
+                    @o-input=${(event: Event) => {
+            this.dispatchAutocompleteInputEvent();
+            event.stopPropagation();
+          }}
+                    @o-clear=${this.handleAutocompleteInput}
+                    @o-change=${(event: Event) => event.stopPropagation()}
+                    .size=${this.size}
+                  ></o-input>`
+        : ''}
+              <slot name="options-prefix"></slot>
               <slot></slot>
+              <slot name="options-suffix"></slot>
             </div>
-          </sl-popup>
+          </o-popup>
         </div>
 
         <slot
@@ -867,6 +1109,6 @@ setDefaultAnimation('select.hide', {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-select': SlSelect;
+    'o-select': OSelect;
   }
 }

@@ -6,7 +6,7 @@ export default css`
 
   :host {
     display: inline-block;
-    color: var(--sl-color-neutral-600);
+    color: var(--o-color-neutral-600);
   }
 
   .icon-button {
@@ -15,22 +15,22 @@ export default css`
     align-items: center;
     background: none;
     border: none;
-    border-radius: var(--sl-border-radius-medium);
+    border-radius: var(--o-border-radius-medium);
     font-size: inherit;
     color: inherit;
-    padding: var(--sl-spacing-x-small);
+    padding: var(--o-spacing-x-small);
     cursor: pointer;
-    transition: var(--sl-transition-x-fast) color;
+    transition: var(--o-transition-x-fast) color;
     -webkit-appearance: none;
   }
 
   .icon-button:hover:not(.icon-button--disabled),
   .icon-button:focus-visible:not(.icon-button--disabled) {
-    color: var(--sl-color-primary-600);
+    color: var(--o-color-primary-600);
   }
 
   .icon-button:active:not(.icon-button--disabled) {
-    color: var(--sl-color-primary-700);
+    color: var(--o-color-primary-700);
   }
 
   .icon-button:focus {
@@ -43,8 +43,8 @@ export default css`
   }
 
   .icon-button:focus-visible {
-    outline: var(--sl-focus-ring);
-    outline-offset: var(--sl-focus-ring-offset);
+    outline: var(--o-focus-ring);
+    outline-offset: var(--o-focus-ring-offset);
   }
 
   .icon-button__icon {

@@ -5,17 +5,17 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { watch } from '../../internal/watch.js';
-import ShoelaceElement from '../../internal/shoelace-element.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 import styles from './split-panel.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Split panels display two adjacent panels, allowing the user to reposition them.
- * @documentation https://shoelace.style/components/split-panel
+ * @documentation /components/split-panel
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
- * @event sl-reposition - Emitted when the divider's position changes.
+ * @event o-reposition - Emitted when the divider's position changes.
  *
  * @slot start - Content to place in the start panel.
  * @slot end - Content to place in the end panel.
@@ -32,8 +32,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty [--min=0] - The minimum allowed size of the primary panel.
  * @cssproperty [--max=100%] - The maximum allowed size of the primary panel.
  */
-@customElement('sl-split-panel')
-export default class SlSplitPanel extends ShoelaceElement {
+@customElement('o-split-panel')
+export default class OSplitPanel extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private cachedPositionInPixels: number;
@@ -199,7 +199,7 @@ export default class SlSplitPanel extends ShoelaceElement {
   handlePositionChange() {
     this.cachedPositionInPixels = this.percentageToPixels(this.position);
     this.positionInPixels = this.percentageToPixels(this.position);
-    this.emit('sl-reposition');
+    this.emit('o-reposition');
   }
 
   @watch('positionInPixels')
@@ -272,6 +272,6 @@ export default class SlSplitPanel extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-split-panel': SlSplitPanel;
+    'o-split-panel': OSplitPanel;
   }
 }

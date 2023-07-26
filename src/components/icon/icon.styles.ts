@@ -16,4 +16,15 @@ export default css`
     height: 100%;
     width: 100%;
   }
+
+  :host([data-hide-slot])::part(fallback) {
+    display: none;
+  }
+
+  :host(:not([data-hide-slot])) {
+    width: fit-content;
+  }
+  :host(:not([data-hide-slot])) svg {
+    display: none;
+  }
 `;

@@ -31,7 +31,7 @@ export default {
   plugins: [
     // Append package data
     {
-      name: 'shoelace-package-data',
+      name: 'circular-package-data',
       packageLinkPhase({ customElementsManifest }) {
         customElementsManifest.package = { name, description, version, author, homepage, license };
       }
@@ -39,7 +39,7 @@ export default {
 
     // Parse custom jsDoc tags
     {
-      name: 'shoelace-custom-tags',
+      name: 'circular-custom-tags',
       analyzePhase({ ts, node, moduleDoc }) {
         switch (node.kind) {
           case ts.SyntaxKind.ClassDeclaration: {
@@ -106,12 +106,29 @@ export default {
       }
     },
     {
-      name: 'shoelace-react-event-names',
+      name: 'circular-react-event-names',
       analyzePhase({ ts, node, moduleDoc }) {
         switch (node.kind) {
           case ts.SyntaxKind.ClassDeclaration: {
             const className = node.name.getText();
             const classDoc = moduleDoc?.declarations?.find(declaration => declaration.name === className);
+
+            // Add default event to all components coming from LibraryBaseElement
+            if (classDoc?.superclass?.name === 'LibraryBaseElement') {
+              if (!Array.isArray(classDoc?.events)) {
+                classDoc.events = [];
+              }
+
+              classDoc.events.push({
+                name: 'o-connected',
+                description: "Fired when the component is added to the document's DOM."
+              });
+
+              classDoc.events.push({
+                name: 'o-disconnected',
+                description: "Fired when the component is removed from the document's DOM."
+              });
+            }
 
             if (classDoc?.events) {
               classDoc.events.forEach(event => {
@@ -123,7 +140,7 @@ export default {
       }
     },
     {
-      name: 'shoelace-translate-module-paths',
+      name: 'circular-translate-module-paths',
       packageLinkPhase({ customElementsManifest }) {
         customElementsManifest?.modules?.forEach(mod => {
           //

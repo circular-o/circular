@@ -6,20 +6,20 @@ layout: component
 ---
 
 ```html:preview
-<sl-alert open>
-  <sl-icon slot="icon" name="info-circle"></sl-icon>
+<o-alert open>
+  <o-icon slot="icon" name="info-circle"></o-icon>
   This is a standard alert. You can customize its content and even the icon.
-</sl-alert>
+</o-alert>
 ```
 
 ```jsx:react
-import { SlAlert, SlIcon } from '@shoelace-style/shoelace/dist/react';
+import { OAlert, OIcon } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlAlert open>
-    <SlIcon slot="icon" name="info-circle" />
+  <OAlert open>
+    <OIcon slot="icon" name="info-circle" />
     This is a standard alert. You can customize its content and even the icon.
-  </SlAlert>
+  </OAlert>
 );
 ```
 
@@ -34,92 +34,92 @@ Alerts will not be visible if the `open` attribute is not present.
 Set the `variant` attribute to change the alert's variant.
 
 ```html:preview
-<sl-alert variant="primary" open>
-  <sl-icon slot="icon" name="info-circle"></sl-icon>
+<o-alert variant="primary" open>
+  <o-icon slot="icon" name="info-circle"></o-icon>
   <strong>This is super informative</strong><br />
   You can tell by how pretty the alert is.
-</sl-alert>
+</o-alert>
 
 <br />
 
-<sl-alert variant="success" open>
-  <sl-icon slot="icon" name="check2-circle"></sl-icon>
+<o-alert variant="success" open>
+  <o-icon slot="icon" name="check2-circle"></o-icon>
   <strong>Your changes have been saved</strong><br />
   You can safely exit the app now.
-</sl-alert>
+</o-alert>
 
 <br />
 
-<sl-alert variant="neutral" open>
-  <sl-icon slot="icon" name="gear"></sl-icon>
+<o-alert variant="neutral" open>
+  <o-icon slot="icon" name="gear"></o-icon>
   <strong>Your settings have been updated</strong><br />
   Settings will take affect on next login.
-</sl-alert>
+</o-alert>
 
 <br />
 
-<sl-alert variant="warning" open>
-  <sl-icon slot="icon" name="exclamation-triangle"></sl-icon>
+<o-alert variant="warning" open>
+  <o-icon slot="icon" name="exclamation-triangle"></o-icon>
   <strong>Your session has ended</strong><br />
   Please login again to continue.
-</sl-alert>
+</o-alert>
 
 <br />
 
-<sl-alert variant="danger" open>
-  <sl-icon slot="icon" name="exclamation-octagon"></sl-icon>
+<o-alert variant="danger" open>
+  <o-icon slot="icon" name="exclamation-octagon"></o-icon>
   <strong>Your account has been deleted</strong><br />
   We're very sorry to see you go!
-</sl-alert>
+</o-alert>
 ```
 
 ```jsx:react
-import { SlAlert, SlIcon } from '@shoelace-style/shoelace/dist/react';
+import { OAlert, OIcon } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
-    <SlAlert variant="primary" open>
-      <SlIcon slot="icon" name="info-circle" />
+    <OAlert variant="primary" open>
+      <OIcon slot="icon" name="info-circle" />
       <strong>This is super informative</strong>
       <br />
       You can tell by how pretty the alert is.
-    </SlAlert>
+    </OAlert>
 
     <br />
 
-    <SlAlert variant="success" open>
-      <SlIcon slot="icon" name="check2-circle" />
+    <OAlert variant="success" open>
+      <OIcon slot="icon" name="check2-circle" />
       <strong>Your changes have been saved</strong>
       <br />
       You can safely exit the app now.
-    </SlAlert>
+    </OAlert>
 
     <br />
 
-    <SlAlert variant="neutral" open>
-      <SlIcon slot="icon" name="gear" />
+    <OAlert variant="neutral" open>
+      <OIcon slot="icon" name="gear" />
       <strong>Your settings have been updated</strong>
       <br />
       Settings will take affect on next login.
-    </SlAlert>
+    </OAlert>
 
     <br />
 
-    <SlAlert variant="warning" open>
-      <SlIcon slot="icon" name="exclamation-triangle" />
+    <OAlert variant="warning" open>
+      <OIcon slot="icon" name="exclamation-triangle" />
       <strong>Your session has ended</strong>
       <br />
       Please login again to continue.
-    </SlAlert>
+    </OAlert>
 
     <br />
 
-    <SlAlert variant="danger" open>
-      <SlIcon slot="icon" name="exclamation-octagon" />
+    <OAlert variant="danger" open>
+      <OIcon slot="icon" name="exclamation-octagon" />
       <strong>Your account has been deleted</strong>
       <br />
       We're very sorry to see you go!
-    </SlAlert>
+    </OAlert>
   </>
 );
 ```
@@ -129,14 +129,14 @@ const App = () => (
 Add the `closable` attribute to show a close button that will hide the alert.
 
 ```html:preview
-<sl-alert variant="primary" open closable class="alert-closable">
-  <sl-icon slot="icon" name="info-circle"></sl-icon>
+<o-alert variant="primary" open closable class="alert-closable">
+  <o-icon slot="icon" name="info-circle"></o-icon>
   You can close this alert any time!
-</sl-alert>
+</o-alert>
 
 <script>
   const alert = document.querySelector('.alert-closable');
-  alert.addEventListener('sl-after-hide', () => {
+  alert.addEventListener('o-after-hide', () => {
     setTimeout(() => (alert.open = true), 2000);
   });
 </script>
@@ -144,7 +144,7 @@ Add the `closable` attribute to show a close button that will hide the alert.
 
 ```jsx:react
 import { useState } from 'react';
-import { SlAlert, SlIcon } from '@shoelace-style/shoelace/dist/react';
+import { OAlert, OIcon } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => {
   const [open, setOpen] = useState(true);
@@ -155,10 +155,10 @@ const App = () => {
   }
 
   return (
-    <SlAlert open={open} closable onSlAfterHide={handleHide}>
-      <SlIcon slot="icon" name="info-circle" />
+    <OAlert open={open} closable onOAfterHide={handleHide}>
+      <OIcon slot="icon" name="info-circle" />
       You can close this alert any time!
-    </SlAlert>
+    </OAlert>
   );
 };
 ```
@@ -168,16 +168,16 @@ const App = () => {
 Icons are optional. Simply omit the `icon` slot if you don't want them.
 
 ```html:preview
-<sl-alert variant="primary" open> Nothing fancy here, just a simple alert. </sl-alert>
+<o-alert variant="primary" open> Nothing fancy here, just a simple alert. </o-alert>
 ```
 
 ```jsx:react
-import { SlAlert } from '@shoelace-style/shoelace/dist/react';
+import { OAlert } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlAlert variant="primary" open>
+  <OAlert variant="primary" open>
     Nothing fancy here, just a simple alert.
-  </SlAlert>
+  </OAlert>
 );
 ```
 
@@ -187,36 +187,36 @@ Set the `duration` attribute to automatically hide an alert after a period of ti
 
 ```html:preview
 <div class="alert-duration">
-  <sl-button variant="primary">Show Alert</sl-button>
+  <o-button variant="primary">Show Alert</o-button>
 
-  <sl-alert variant="primary" duration="3000" closable>
-    <sl-icon slot="icon" name="info-circle"></sl-icon>
+  <o-alert variant="primary" duration="3000" closable>
+    <o-icon slot="icon" name="info-circle"></o-icon>
     This alert will automatically hide itself after three seconds, unless you interact with it.
-  </sl-alert>
+  </o-alert>
 </div>
 
 <script>
   const container = document.querySelector('.alert-duration');
-  const button = container.querySelector('sl-button');
-  const alert = container.querySelector('sl-alert');
+  const button = container.querySelector('o-button');
+  const alert = container.querySelector('o-alert');
 
   button.addEventListener('click', () => alert.show());
 </script>
 
 <style>
-  .alert-duration sl-alert {
-    margin-top: var(--sl-spacing-medium);
+  .alert-duration o-alert {
+    margin-top: var(--o-spacing-medium);
   }
 </style>
 ```
 
 ```jsx:react
 import { useState } from 'react';
-import { SlAlert, SlButton, SlIcon } from '@shoelace-style/shoelace/dist/react';
+import { OAlert, OButton, OIcon } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
-  .alert-duration sl-alert {
-    margin-top: var(--sl-spacing-medium);
+  .alert-duration o-alert {
+    margin-top: var(--o-spacing-medium);
   }
 `;
 
@@ -226,14 +226,14 @@ const App = () => {
   return (
     <>
       <div className="alert-duration">
-        <SlButton variant="primary" onClick={() => setOpen(true)}>
+        <OButton variant="primary" onClick={() => setOpen(true)}>
           Show Alert
-        </SlButton>
+        </OButton>
 
-        <SlAlert variant="primary" duration="3000" open={open} closable onSlAfterHide={() => setOpen(false)}>
-          <SlIcon slot="icon" name="info-circle" />
+        <OAlert variant="primary" duration="3000" open={open} closable onOAfterHide={() => setOpen(false)}>
+          <OIcon slot="icon" name="info-circle" />
           This alert will automatically hide itself after three seconds, unless you interact with it.
-        </SlAlert>
+        </OAlert>
       </div>
 
       <style>{css}</style>
@@ -244,55 +244,55 @@ const App = () => {
 
 ### Toast Notifications
 
-To display an alert as a toast notification, or "toast", create the alert and call its `toast()` method. This will move the alert out of its position in the DOM and into [the toast stack](#the-toast-stack) where it will be shown. Once dismissed, it will be removed from the DOM completely. To reuse a toast, store a reference to it and call `toast()` again later on.
+To display an alert as a toast notification, or "toast", create the alert and call its `toast()` method. This will clone the alert and then add the cloned element into [the toast stack](#the-toast-stack) where it will be shown. Once dismissed, the cloned element will be removed from the DOM completely, and the original alert element will remain in the DOM. You can call `toast()` again as you wish.
 
 You should always use the `closable` attribute so users can dismiss the notification. It's also common to set a reasonable `duration` when the notification doesn't require acknowledgement.
 
 ```html:preview
 <div class="alert-toast">
-  <sl-button variant="primary">Primary</sl-button>
-  <sl-button variant="success">Success</sl-button>
-  <sl-button variant="neutral">Neutral</sl-button>
-  <sl-button variant="warning">Warning</sl-button>
-  <sl-button variant="danger">Danger</sl-button>
+  <o-button variant="primary">Primary</o-button>
+  <o-button variant="success">Success</o-button>
+  <o-button variant="neutral">Neutral</o-button>
+  <o-button variant="warning">Warning</o-button>
+  <o-button variant="danger">Danger</o-button>
 
-  <sl-alert variant="primary" duration="3000" closable>
-    <sl-icon slot="icon" name="info-circle"></sl-icon>
+  <o-alert variant="primary" duration="3000" closable>
+    <o-icon slot="icon" name="info-circle"></o-icon>
     <strong>This is super informative</strong><br />
     You can tell by how pretty the alert is.
-  </sl-alert>
+  </o-alert>
 
-  <sl-alert variant="success" duration="3000" closable>
-    <sl-icon slot="icon" name="check2-circle"></sl-icon>
+  <o-alert variant="success" duration="3000" closable>
+    <o-icon slot="icon" name="check2-circle"></o-icon>
     <strong>Your changes have been saved</strong><br />
     You can safely exit the app now.
-  </sl-alert>
+  </o-alert>
 
-  <sl-alert variant="neutral" duration="3000" closable>
-    <sl-icon slot="icon" name="gear"></sl-icon>
+  <o-alert variant="neutral" duration="3000" closable>
+    <o-icon slot="icon" name="gear"></o-icon>
     <strong>Your settings have been updated</strong><br />
     Settings will take affect on next login.
-  </sl-alert>
+  </o-alert>
 
-  <sl-alert variant="warning" duration="3000" closable>
-    <sl-icon slot="icon" name="exclamation-triangle"></sl-icon>
+  <o-alert variant="warning" duration="3000" closable>
+    <o-icon slot="icon" name="exclamation-triangle"></o-icon>
     <strong>Your session has ended</strong><br />
     Please login again to continue.
-  </sl-alert>
+  </o-alert>
 
-  <sl-alert variant="danger" duration="3000" closable>
-    <sl-icon slot="icon" name="exclamation-octagon"></sl-icon>
+  <o-alert variant="danger" duration="3000" closable>
+    <o-icon slot="icon" name="exclamation-octagon"></o-icon>
     <strong>Your account has been deleted</strong><br />
     We're very sorry to see you go!
-  </sl-alert>
+  </o-alert>
 </div>
 
 <script>
   const container = document.querySelector('.alert-toast');
 
   ['primary', 'success', 'neutral', 'warning', 'danger'].map(variant => {
-    const button = container.querySelector(`sl-button[variant="${variant}"]`);
-    const alert = container.querySelector(`sl-alert[variant="${variant}"]`);
+    const button = container.querySelector(`o-button[variant="${variant}"]`);
+    const alert = container.querySelector(`o-alert[variant="${variant}"]`);
 
     button.addEventListener('click', () => alert.toast());
   });
@@ -301,7 +301,7 @@ You should always use the `closable` attribute so users can dismiss the notifica
 
 ```jsx:react
 import { useRef } from 'react';
-import { SlAlert, SlButton, SlIcon } from '@shoelace-style/shoelace/dist/react';
+import { OAlert, OButton, OIcon } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 function showToast(alert) {
   alert.toast();
@@ -316,60 +316,135 @@ const App = () => {
 
   return (
     <>
-      <SlButton variant="primary" onClick={() => primary.current.toast()}>
+      <OButton variant="primary" onClick={() => primary.current.toast()}>
         Primary
-      </SlButton>
+      </OButton>
 
-      <SlButton variant="success" onClick={() => success.current.toast()}>
+      <OButton variant="success" onClick={() => success.current.toast()}>
         Success
-      </SlButton>
+      </OButton>
 
-      <SlButton variant="neutral" onClick={() => neutral.current.toast()}>
+      <OButton variant="neutral" onClick={() => neutral.current.toast()}>
         Neutral
-      </SlButton>
+      </OButton>
 
-      <SlButton variant="warning" onClick={() => warning.current.toast()}>
+      <OButton variant="warning" onClick={() => warning.current.toast()}>
         Warning
-      </SlButton>
+      </OButton>
 
-      <SlButton variant="danger" onClick={() => danger.current.toast()}>
+      <OButton variant="danger" onClick={() => danger.current.toast()}>
         Danger
-      </SlButton>
+      </OButton>
 
-      <SlAlert ref={primary} variant="primary" duration="3000" closable>
-        <SlIcon slot="icon" name="info-circle" />
+      <OAlert ref={primary} variant="primary" duration="3000" closable>
+        <OIcon slot="icon" name="info-circle" />
         <strong>This is super informative</strong>
         <br />
         You can tell by how pretty the alert is.
-      </SlAlert>
+      </OAlert>
 
-      <SlAlert ref={success} variant="success" duration="3000" closable>
-        <SlIcon slot="icon" name="check2-circle" />
+      <OAlert ref={success} variant="success" duration="3000" closable>
+        <OIcon slot="icon" name="check2-circle" />
         <strong>Your changes have been saved</strong>
         <br />
         You can safely exit the app now.
-      </SlAlert>
+      </OAlert>
 
-      <SlAlert ref={neutral} variant="neutral" duration="3000" closable>
-        <SlIcon slot="icon" name="gear" />
+      <OAlert ref={neutral} variant="neutral" duration="3000" closable>
+        <OIcon slot="icon" name="gear" />
         <strong>Your settings have been updated</strong>
         <br />
         Settings will take affect on next login.
-      </SlAlert>
+      </OAlert>
 
-      <SlAlert ref={warning} variant="warning" duration="3000" closable>
-        <SlIcon slot="icon" name="exclamation-triangle" />
+      <OAlert ref={warning} variant="warning" duration="3000" closable>
+        <OIcon slot="icon" name="exclamation-triangle" />
         <strong>Your session has ended</strong>
         <br />
         Please login again to continue.
-      </SlAlert>
+      </OAlert>
 
-      <SlAlert ref={danger} variant="danger" duration="3000" closable>
-        <SlIcon slot="icon" name="exclamation-octagon" />
+      <OAlert ref={danger} variant="danger" duration="3000" closable>
+        <OIcon slot="icon" name="exclamation-octagon" />
         <strong>Your account has been deleted</strong>
         <br />
         We're very sorry to see you go!
-      </SlAlert>
+      </OAlert>
+    </>
+  );
+};
+```
+
+### Open Toast automatically
+
+Some times you need to display an alert immediately as a toast notification, without needing to get the reference and then call the `toast()` method.
+
+If you have an alert reference already, you can set the property `openToast = true` and it will display the alert as a toast notification.
+
+```html:preview
+<div class="alert-open-toast">
+  <o-button variant="success">Open toast</o-button>
+
+  <o-alert variant="success" open-toast duration="5000" closable>
+    <o-icon slot="icon" name="info-circle"></o-icon>
+    This alert will automatically open as a toast and then hide itself after few seconds. It is using
+    <a href="O-DOCS-WEBSITE-O/components/alert?id=open-toast-automatically"><code>open-toast</code></a>
+    property
+  </o-alert>
+</div>
+
+<script>
+  const container = document.querySelector('.alert-open-toast');
+  const button = container.querySelector('o-button');
+  const alert = container.querySelector('o-alert');
+
+  button.addEventListener('click', () => (alert.openToast = true));
+</script>
+
+<style>
+  .alert-duration o-alert {
+    margin-top: var(--o-spacing-medium);
+  }
+</style>
+```
+
+```jsx:react
+import { useState } from 'react';
+import { OAlert, OButton, OIcon } from 'O-PACKAGE-FULL-NAME-O/dist/react';
+
+const css = `
+  .alert-duration o-alert {
+    margin-top: var(--o-spacing-medium);
+  }
+`;
+
+const App = () => {
+  const [openToast, setOpenToast] = useState(false);
+
+  return (
+    <>
+      <div className="alert-duration">
+        <OButton variant="primary" onClick={() => setOpenToast(true)}>
+          Open toast
+        </OButton>
+
+        <OAlert
+          variant="primary"
+          duration="5000"
+          open-toast={openToast}
+          closable
+          onOAfterHide={() => setOpenToast(false)}
+        >
+          <OIcon slot="icon" name="info-circle" />
+          This alert will automatically open as a toast and then hide itself after few seconds. It is using
+          <a href="O-DOCS-WEBSITE-O/components/alert?id=open-toast-automatically">
+            <code>open-toast</code>
+          </a>
+          property
+        </OAlert>
+      </div>
+
+      <style>{css}</style>
     </>
   );
 };
@@ -381,12 +456,12 @@ For convenience, you can create a utility that emits toast notifications with a 
 
 ```html:preview
 <div class="alert-toast-wrapper">
-  <sl-button variant="primary">Create Toast</sl-button>
+  <o-button variant="primary">Create Toast</o-button>
 </div>
 
 <script>
   const container = document.querySelector('.alert-toast-wrapper');
-  const button = container.querySelector('sl-button');
+  const button = container.querySelector('o-button');
   let count = 0;
 
   // Always escape HTML for text arguments!
@@ -398,18 +473,19 @@ For convenience, you can create a utility that emits toast notifications with a 
 
   // Custom function to emit toast notifications
   function notify(message, variant = 'primary', icon = 'info-circle', duration = 3000) {
-    const alert = Object.assign(document.createElement('sl-alert'), {
+    const alert = Object.assign(document.createElement('o-alert'), {
       variant,
       closable: true,
       duration: duration,
       innerHTML: `
-        <sl-icon name="${icon}" slot="icon"></sl-icon>
+        <o-icon name="${icon}" slot="icon"></o-icon>
         ${escapeHtml(message)}
       `
     });
 
-    document.body.append(alert);
-    return alert.toast();
+    container.append(alert);
+
+    return alert.toast().then(() => alert.remove());
   }
 
   button.addEventListener('click', () => {
@@ -422,10 +498,10 @@ For convenience, you can create a utility that emits toast notifications with a 
 
 The toast stack is a fixed position singleton element created and managed internally by the alert component. It will be added and removed from the DOM as needed when toasts are shown. When more than one toast is visible, they will stack vertically in the toast stack.
 
-By default, the toast stack is positioned at the top-right of the viewport. You can change its position by targeting `.sl-toast-stack` in your stylesheet. To make toasts appear at the top-left of the viewport, for example, use the following styles.
+By default, the toast stack is positioned at the top-right of the viewport. You can change its position by targeting `.o-toast-stack` in your stylesheet. To make toasts appear at the top-left of the viewport, for example, use the following styles.
 
 ```css
-.sl-toast-stack {
+.o-toast-stack {
   left: 0;
   right: auto;
 }

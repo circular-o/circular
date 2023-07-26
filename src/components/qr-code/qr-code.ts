@@ -2,21 +2,21 @@ import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
 import { styleMap } from 'lit/directives/style-map.js';
 import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 import QrCreator from 'qr-creator';
-import ShoelaceElement from '../../internal/shoelace-element.js';
 import styles from './qr-code.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Generates a [QR code](https://www.qrcode.com/) and renders it using the [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API).
- * @documentation https://shoelace.style/components/qr-code
+ * @documentation /components/qr-code
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @csspart base - The component's base wrapper.
  */
-@customElement('sl-qr-code')
-export default class SlQrCode extends ShoelaceElement {
+@customElement('o-qr-code')
+export default class OQrCode extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   @query('canvas') canvas: HTMLElement;
@@ -74,9 +74,9 @@ export default class SlQrCode extends ShoelaceElement {
         role="img"
         aria-label=${this.label?.length > 0 ? this.label : this.value}
         style=${styleMap({
-          width: `${this.size}px`,
-          height: `${this.size}px`
-        })}
+      width: `${this.size}px`,
+      height: `${this.size}px`
+    })}
       ></canvas>
     `;
   }
@@ -84,6 +84,6 @@ export default class SlQrCode extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-qr-code': SlQrCode;
+    'o-qr-code': OQrCode;
   }
 }

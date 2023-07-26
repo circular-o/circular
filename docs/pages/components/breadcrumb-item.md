@@ -6,28 +6,28 @@ layout: component
 ---
 
 ```html:preview
-<sl-breadcrumb>
-  <sl-breadcrumb-item>
-    <sl-icon slot="prefix" name="house"></sl-icon>
+<o-breadcrumb>
+  <o-breadcrumb-item>
+    <o-icon slot="prefix" name="house"></o-icon>
     Home
-  </sl-breadcrumb-item>
-  <sl-breadcrumb-item>Clothing</sl-breadcrumb-item>
-  <sl-breadcrumb-item>Shirts</sl-breadcrumb-item>
-</sl-breadcrumb>
+  </o-breadcrumb-item>
+  <o-breadcrumb-item>Clothing</o-breadcrumb-item>
+  <o-breadcrumb-item>Shirts</o-breadcrumb-item>
+</o-breadcrumb>
 ```
 
 ```jsx:react
-import { SlBreadcrumb, SlBreadcrumbItem, SlIcon } from '@shoelace-style/shoelace/dist/react';
+import { OBreadcrumb, OBreadcrumbItem, OIcon } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlBreadcrumb>
-    <SlBreadcrumbItem>
-      <SlIcon slot="prefix" name="house"></SlIcon>
+  <OBreadcrumb>
+    <OBreadcrumbItem>
+      <OIcon slot="prefix" name="house"></OIcon>
       Home
-    </SlBreadcrumbItem>
-    <SlBreadcrumbItem>Clothing</SlBreadcrumbItem>
-    <SlBreadcrumbItem>Shirts</SlBreadcrumbItem>
-  </SlBreadcrumb>
+    </OBreadcrumbItem>
+    <OBreadcrumbItem>Clothing</OBreadcrumbItem>
+    <OBreadcrumbItem>Shirts</OBreadcrumbItem>
+  </OBreadcrumb>
 );
 ```
 

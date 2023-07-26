@@ -6,13 +6,13 @@ layout: component
 ---
 
 ```html:preview
-<sl-progress-bar value="50"></sl-progress-bar>
+<o-progress-bar value="50"></o-progress-bar>
 ```
 
 ```jsx:react
-import { SlProgressBar } from '@shoelace-style/shoelace/dist/react';
+import { OProgressBar } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlProgressBar value={50} />;
+const App = () => <OProgressBar value={50} />;
 ```
 
 ## Examples
@@ -22,13 +22,13 @@ const App = () => <SlProgressBar value={50} />;
 Use the `label` attribute to label the progress bar and tell assistive devices how to announce it.
 
 ```html:preview
-<sl-progress-bar value="50" label="Upload progress"></sl-progress-bar>
+<o-progress-bar value="50" label="Upload progress"></o-progress-bar>
 ```
 
 ```jsx:react
-import { SlProgressBar } from '@shoelace-style/shoelace/dist/react';
+import { OProgressBar } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlProgressBar value="50" label="Upload progress" />;
+const App = () => <OProgressBar value="50" label="Upload progress" />;
 ```
 
 ### Custom Height
@@ -36,15 +36,15 @@ const App = () => <SlProgressBar value="50" label="Upload progress" />;
 Use the `--height` custom property to set the progress bar's height.
 
 ```html:preview
-<sl-progress-bar value="50" style="--height: 6px;"></sl-progress-bar>
+<o-progress-bar value="50" style="--height: 6px;"></o-progress-bar>
 ```
 
 {% raw %}
 
 ```jsx:react
-import { SlProgressBar } from '@shoelace-style/shoelace/dist/react';
+import { OProgressBar } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlProgressBar value={50} style={{ '--height': '6px' }} />;
+const App = () => <OProgressBar value={50} style={{ '--height': '6px' }} />;
 ```
 
 {% endraw %}
@@ -54,12 +54,12 @@ const App = () => <SlProgressBar value={50} style={{ '--height': '6px' }} />;
 Use the default slot to show a value.
 
 ```html:preview
-<sl-progress-bar value="50" class="progress-bar-values">50%</sl-progress-bar>
+<o-progress-bar value="50" class="progress-bar-values">50%</o-progress-bar>
 
 <br />
 
-<sl-button circle><sl-icon name="dash" label="Decrease"></sl-icon></sl-button>
-<sl-button circle><sl-icon name="plus" label="Increase"></sl-icon></sl-button>
+<o-button circle><o-icon name="dash" label="Decrease"></o-icon></o-button>
+<o-button circle><o-icon name="plus" label="Increase"></o-icon></o-button>
 
 <script>
   const progressBar = document.querySelector('.progress-bar-values');
@@ -82,7 +82,7 @@ Use the default slot to show a value.
 
 ```jsx:react
 import { useState } from 'react';
-import { SlButton, SlIcon, SlProgressBar } from '@shoelace-style/shoelace/dist/react';
+import { OButton, OIcon, OProgressBar } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => {
   const [value, setValue] = useState(50);
@@ -96,17 +96,17 @@ const App = () => {
 
   return (
     <>
-      <SlProgressBar value={value}>{value}%</SlProgressBar>
+      <OProgressBar value={value}>{value}%</OProgressBar>
 
       <br />
 
-      <SlButton circle onClick={() => adjustValue(-10)}>
-        <SlIcon name="dash" label="Decrease" />
-      </SlButton>
+      <OButton circle onClick={() => adjustValue(-10)}>
+        <OIcon name="dash" label="Decrease" />
+      </OButton>
 
-      <SlButton circle onClick={() => adjustValue(10)}>
-        <SlIcon name="plus" label="Increase" />
-      </SlButton>
+      <OButton circle onClick={() => adjustValue(10)}>
+        <OIcon name="plus" label="Increase" />
+      </OButton>
     </>
   );
 };
@@ -117,11 +117,11 @@ const App = () => {
 The `indeterminate` attribute can be used to inform the user that the operation is pending, but its status cannot currently be determined. In this state, `value` is ignored and the label, if present, will not be shown.
 
 ```html:preview
-<sl-progress-bar indeterminate></sl-progress-bar>
+<o-progress-bar indeterminate></o-progress-bar>
 ```
 
 ```jsx:react
-import { SlProgressBar } from '@shoelace-style/shoelace/dist/react';
+import { OProgressBar } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlProgressBar indeterminate />;
+const App = () => <OProgressBar indeterminate />;
 ```

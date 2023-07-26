@@ -6,23 +6,23 @@ layout: component
 ---
 
 ```html:preview
-<sl-tag variant="primary">Primary</sl-tag>
-<sl-tag variant="success">Success</sl-tag>
-<sl-tag variant="neutral">Neutral</sl-tag>
-<sl-tag variant="warning">Warning</sl-tag>
-<sl-tag variant="danger">Danger</sl-tag>
+<o-tag variant="primary">Primary</o-tag>
+<o-tag variant="success">Success</o-tag>
+<o-tag variant="neutral">Neutral</o-tag>
+<o-tag variant="warning">Warning</o-tag>
+<o-tag variant="danger">Danger</o-tag>
 ```
 
 ```jsx:react
-import { SlTag } from '@shoelace-style/shoelace/dist/react';
+import { OTag } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
-    <SlTag variant="primary">Primary</SlTag>
-    <SlTag variant="success">Success</SlTag>
-    <SlTag variant="neutral">Neutral</SlTag>
-    <SlTag variant="warning">Warning</SlTag>
-    <SlTag variant="danger">Danger</SlTag>
+    <OTag variant="primary">Primary</OTag>
+    <OTag variant="success">Success</OTag>
+    <OTag variant="neutral">Neutral</OTag>
+    <OTag variant="warning">Warning</OTag>
+    <OTag variant="danger">Danger</OTag>
   </>
 );
 ```
@@ -34,19 +34,19 @@ const App = () => (
 Use the `size` attribute to change a tab's size.
 
 ```html:preview
-<sl-tag size="small">Small</sl-tag>
-<sl-tag size="medium">Medium</sl-tag>
-<sl-tag size="large">Large</sl-tag>
+<o-tag size="small">Small</o-tag>
+<o-tag size="medium">Medium</o-tag>
+<o-tag size="large">Large</o-tag>
 ```
 
 ```jsx:react
-import { SlTag } from '@shoelace-style/shoelace/dist/react';
+import { OTag } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
-    <SlTag size="small">Small</SlTag>
-    <SlTag size="medium">Medium</SlTag>
-    <SlTag size="large">Large</SlTag>
+    <OTag size="small">Small</OTag>
+    <OTag size="medium">Medium</OTag>
+    <OTag size="large">Large</OTag>
   </>
 );
 ```
@@ -56,25 +56,25 @@ const App = () => (
 Use the `pill` attribute to give tabs rounded edges.
 
 ```html:preview
-<sl-tag size="small" pill>Small</sl-tag>
-<sl-tag size="medium" pill>Medium</sl-tag>
-<sl-tag size="large" pill>Large</sl-tag>
+<o-tag size="small" pill>Small</o-tag>
+<o-tag size="medium" pill>Medium</o-tag>
+<o-tag size="large" pill>Large</o-tag>
 ```
 
 ```jsx:react
-import { SlTag } from '@shoelace-style/shoelace/dist/react';
+import { OTag } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
-    <SlTag size="small" pill>
+    <OTag size="small" pill>
       Small
-    </SlTag>
-    <SlTag size="medium" pill>
+    </OTag>
+    <OTag size="medium" pill>
       Medium
-    </SlTag>
-    <SlTag size="large" pill>
+    </OTag>
+    <OTag size="large" pill>
       Large
-    </SlTag>
+    </OTag>
   </>
 );
 ```
@@ -85,15 +85,15 @@ Use the `removable` attribute to add a remove button to the tag.
 
 ```html:preview
 <div class="tags-removable">
-  <sl-tag size="small" removable>Small</sl-tag>
-  <sl-tag size="medium" removable>Medium</sl-tag>
-  <sl-tag size="large" removable>Large</sl-tag>
+  <o-tag size="small" removable>Small</o-tag>
+  <o-tag size="medium" removable>Medium</o-tag>
+  <o-tag size="large" removable>Large</o-tag>
 </div>
 
 <script>
   const div = document.querySelector('.tags-removable');
 
-  div.addEventListener('sl-remove', event => {
+  div.addEventListener('o-remove', event => {
     const tag = event.target;
     tag.style.opacity = '0';
     setTimeout(() => (tag.style.opacity = '1'), 2000);
@@ -101,18 +101,18 @@ Use the `removable` attribute to add a remove button to the tag.
 </script>
 
 <style>
-  .tags-removable sl-tag {
-    transition: var(--sl-transition-medium) opacity;
+  .tags-removable o-tag {
+    transition: var(--o-transition-medium) opacity;
   }
 </style>
 ```
 
 ```jsx:react
-import { SlTag } from '@shoelace-style/shoelace/dist/react';
+import { OTag } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
-  .tags-removable sl-tag {
-    transition: var(--sl-transition-medium) opacity;
+  .tags-removable o-tag {
+    transition: var(--o-transition-medium) opacity;
   }
 `;
 
@@ -126,17 +126,17 @@ const App = () => {
   return (
     <>
       <div className="tags-removable">
-        <SlTag size="small" removable onSlRemove={handleRemove}>
+        <OTag size="small" removable onORemove={handleRemove}>
           Small
-        </SlTag>
+        </OTag>
 
-        <SlTag size="medium" removable onSlRemove={handleRemove}>
+        <OTag size="medium" removable onORemove={handleRemove}>
           Medium
-        </SlTag>
+        </OTag>
 
-        <SlTag size="large" removable onSlRemove={handleRemove}>
+        <OTag size="large" removable onORemove={handleRemove}>
           Large
-        </SlTag>
+        </OTag>
       </div>
 
       <style>{css}</style>

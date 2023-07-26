@@ -17,11 +17,15 @@ fs.mkdirSync(reactDir, { recursive: true });
 
 // Fetch component metadata
 const metadata = JSON.parse(fs.readFileSync(path.join(outdir, 'custom-elements.json'), 'utf8'));
+
+// Wrap components
+console.log('Wrapping components for React...');
+
 const components = getAllComponents(metadata);
 const index = [];
 
 components.map(component => {
-  const tagWithoutPrefix = component.tagName.replace(/^sl-/, '');
+  const tagWithoutPrefix = component.tagName.replace(/^o-/, '');
   const componentDir = path.join(reactDir, tagWithoutPrefix);
   const componentFile = path.join(componentDir, 'index.ts');
   const importPath = component.path;
@@ -49,10 +53,12 @@ components.map(component => {
     })
   );
 
-  index.push(`export { default as ${component.name} } from './${tagWithoutPrefix}/index.js';`);
+  index.push(`export { default as ${component.name} } from './${tagWithoutPrefix}';`);
 
   fs.writeFileSync(componentFile, source, 'utf8');
 });
 
 // Generate the index file
 fs.writeFileSync(path.join(reactDir, 'index.ts'), index.join('\n'), 'utf8');
+
+console.log(chalk.cyan(`\nComponents have been wrapped for React! 📦\n`));

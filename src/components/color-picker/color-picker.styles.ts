@@ -17,22 +17,22 @@ export default css`
 
   .color-picker {
     width: var(--grid-width);
-    font-family: var(--sl-font-sans);
-    font-size: var(--sl-font-size-medium);
-    font-weight: var(--sl-font-weight-normal);
+    font-family: var(--o-font-sans);
+    font-size: var(--o-font-size-medium);
+    font-weight: var(--o-font-weight-normal);
     color: var(--color);
-    background-color: var(--sl-panel-background-color);
-    border-radius: var(--sl-border-radius-medium);
+    background-color: var(--o-panel-background-color);
+    border-radius: var(--o-border-radius-medium);
     user-select: none;
   }
 
   .color-picker--inline {
-    border: solid var(--sl-panel-border-width) var(--sl-panel-border-color);
+    border: solid var(--o-panel-border-width) var(--o-panel-border-color);
   }
 
   .color-picker--inline:focus-visible {
-    outline: var(--sl-focus-ring);
-    outline-offset: var(--sl-focus-ring-offset);
+    outline: var(--o-focus-ring);
+    outline-offset: var(--o-focus-ring-offset);
   }
 
   .color-picker__grid {
@@ -40,8 +40,8 @@ export default css`
     height: var(--grid-height);
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%),
       linear-gradient(to right, #fff 0%, rgba(255, 255, 255, 0) 100%);
-    border-top-left-radius: var(--sl-border-radius-medium);
-    border-top-right-radius: var(--sl-border-radius-medium);
+    border-top-left-radius: var(--o-border-radius-medium);
+    border-top-right-radius: var(--o-border-radius-medium);
     cursor: crosshair;
     forced-color-adjust: none;
   }
@@ -55,7 +55,7 @@ export default css`
     border: solid 2px white;
     margin-top: calc(var(--grid-handle-size) / -2);
     margin-left: calc(var(--grid-handle-size) / -2);
-    transition: var(--sl-transition-fast) scale;
+    transition: var(--o-transition-fast) scale;
   }
 
   .color-picker__grid-handle--dragging {
@@ -64,11 +64,11 @@ export default css`
   }
 
   .color-picker__grid-handle:focus-visible {
-    outline: var(--sl-focus-ring);
+    outline: var(--o-focus-ring);
   }
 
   .color-picker__controls {
-    padding: var(--sl-spacing-small);
+    padding: var(--o-spacing-small);
     display: flex;
     align-items: center;
   }
@@ -80,13 +80,13 @@ export default css`
   .color-picker__slider {
     position: relative;
     height: var(--slider-height);
-    border-radius: var(--sl-border-radius-pill);
+    border-radius: var(--o-border-radius-pill);
     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
     forced-color-adjust: none;
   }
 
   .color-picker__slider:not(:last-of-type) {
-    margin-bottom: var(--sl-spacing-small);
+    margin-bottom: var(--o-spacing-small);
   }
 
   .color-picker__slider-handle {
@@ -101,7 +101,7 @@ export default css`
   }
 
   .color-picker__slider-handle:focus-visible {
-    outline: var(--sl-focus-ring);
+    outline: var(--o-focus-ring);
   }
 
   .color-picker__hue {
@@ -135,9 +135,9 @@ export default css`
     width: 2.25rem;
     height: 2.25rem;
     border: none;
-    border-radius: var(--sl-border-radius-circle);
+    border-radius: var(--o-border-radius-circle);
     background: none;
-    margin-left: var(--sl-spacing-small);
+    margin-left: var(--o-spacing-small);
     cursor: copy;
     forced-color-adjust: none;
   }
@@ -157,8 +157,8 @@ export default css`
   }
 
   .color-picker__preview:focus-visible {
-    outline: var(--sl-focus-ring);
-    outline-offset: var(--sl-focus-ring-offset);
+    outline: var(--o-focus-ring);
+    outline-offset: var(--o-focus-ring-offset);
   }
 
   .color-picker__preview-color {
@@ -176,7 +176,7 @@ export default css`
 
   @keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0 var(--sl-color-primary-500);
+      box-shadow: 0 0 0 0 var(--o-color-primary-500);
     }
     70% {
       box-shadow: 0 0 0 0.5rem transparent;
@@ -188,19 +188,19 @@ export default css`
 
   .color-picker__user-input {
     display: flex;
-    padding: 0 var(--sl-spacing-small) var(--sl-spacing-small) var(--sl-spacing-small);
+    padding: 0 var(--o-spacing-small) var(--o-spacing-small) var(--o-spacing-small);
   }
 
-  .color-picker__user-input sl-input {
+  .color-picker__user-input o-input {
     min-width: 0; /* fix input width in Safari */
     flex: 1 1 auto;
   }
 
-  .color-picker__user-input sl-button-group {
-    margin-left: var(--sl-spacing-small);
+  .color-picker__user-input o-button-group {
+    margin-left: var(--o-spacing-small);
   }
 
-  .color-picker__user-input sl-button {
+  .color-picker__user-input o-button {
     min-width: 3.25rem;
     max-width: 3.25rem;
     font-size: 1rem;
@@ -211,8 +211,8 @@ export default css`
     grid-template-columns: repeat(8, 1fr);
     grid-gap: 0.5rem;
     justify-items: center;
-    border-top: solid 1px var(--sl-color-neutral-200);
-    padding: var(--sl-spacing-small);
+    border-top: solid 1px var(--o-color-neutral-200);
+    padding: var(--o-spacing-small);
     forced-color-adjust: none;
   }
 
@@ -220,7 +220,7 @@ export default css`
     position: relative;
     width: var(--swatch-size);
     height: var(--swatch-size);
-    border-radius: var(--sl-border-radius-small);
+    border-radius: var(--o-border-radius-small);
   }
 
   .color-picker__swatch .color-picker__swatch-color {
@@ -235,15 +235,15 @@ export default css`
   }
 
   .color-picker__swatch:focus-visible {
-    outline: var(--sl-focus-ring);
-    outline-offset: var(--sl-focus-ring-offset);
+    outline: var(--o-focus-ring);
+    outline-offset: var(--o-focus-ring-offset);
   }
 
   .color-picker__transparent-bg {
-    background-image: linear-gradient(45deg, var(--sl-color-neutral-300) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, var(--sl-color-neutral-300) 75%),
-      linear-gradient(45deg, transparent 75%, var(--sl-color-neutral-300) 75%),
-      linear-gradient(45deg, var(--sl-color-neutral-300) 25%, transparent 25%);
+    background-image: linear-gradient(45deg, var(--o-color-neutral-300) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--o-color-neutral-300) 75%),
+      linear-gradient(45deg, transparent 75%, var(--o-color-neutral-300) 75%),
+      linear-gradient(45deg, var(--o-color-neutral-300) 25%, transparent 25%);
     background-size: 10px 10px;
     background-position: 0 0, 0 0, -5px -5px, 5px 5px;
   }
@@ -269,9 +269,9 @@ export default css`
 
   .color-dropdown::part(panel) {
     max-height: none;
-    background-color: var(--sl-panel-background-color);
-    border: solid var(--sl-panel-border-width) var(--sl-panel-border-color);
-    border-radius: var(--sl-border-radius-medium);
+    background-color: var(--o-panel-background-color);
+    border: solid var(--o-panel-border-width) var(--o-panel-border-color);
+    border-radius: var(--o-border-radius-medium);
     overflow: visible;
   }
 
@@ -285,21 +285,21 @@ export default css`
   }
 
   .color-dropdown__trigger.color-dropdown__trigger--small {
-    width: var(--sl-input-height-small);
-    height: var(--sl-input-height-small);
-    border-radius: var(--sl-border-radius-circle);
+    width: var(--o-input-height-small);
+    height: var(--o-input-height-small);
+    border-radius: var(--o-border-radius-circle);
   }
 
   .color-dropdown__trigger.color-dropdown__trigger--medium {
-    width: var(--sl-input-height-medium);
-    height: var(--sl-input-height-medium);
-    border-radius: var(--sl-border-radius-circle);
+    width: var(--o-input-height-medium);
+    height: var(--o-input-height-medium);
+    border-radius: var(--o-border-radius-circle);
   }
 
   .color-dropdown__trigger.color-dropdown__trigger--large {
-    width: var(--sl-input-height-large);
-    height: var(--sl-input-height-large);
-    border-radius: var(--sl-border-radius-circle);
+    width: var(--o-input-height-large);
+    height: var(--o-input-height-large);
+    border-radius: var(--o-border-radius-circle);
   }
 
   .color-dropdown__trigger:before {
@@ -311,7 +311,7 @@ export default css`
     height: 100%;
     border-radius: inherit;
     background-color: currentColor;
-    box-shadow: inset 0 0 0 2px var(--sl-input-border-color), inset 0 0 0 4px var(--sl-color-neutral-0);
+    box-shadow: inset 0 0 0 2px var(--o-input-border-color), inset 0 0 0 4px var(--o-color-neutral-0);
   }
 
   .color-dropdown__trigger--empty:before {
@@ -323,8 +323,8 @@ export default css`
   }
 
   .color-dropdown__trigger:focus-visible:not(.color-dropdown__trigger--disabled) {
-    outline: var(--sl-focus-ring);
-    outline-offset: var(--sl-focus-ring-offset);
+    outline: var(--o-focus-ring);
+    outline-offset: var(--o-focus-ring-offset);
   }
 
   .color-dropdown__trigger.color-dropdown__trigger--disabled {

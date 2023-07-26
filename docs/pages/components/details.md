@@ -8,20 +8,20 @@ layout: component
 <!-- cspell:dictionaries lorem-ipsum -->
 
 ```html:preview
-<sl-details summary="Toggle Me">
+<o-details summary="Toggle Me">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
   aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-</sl-details>
+</o-details>
 ```
 
 ```jsx:react
-import { SlDetails } from '@shoelace-style/shoelace/dist/react';
+import { ODetails } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlDetails summary="Toggle Me">
+  <ODetails summary="Toggle Me">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </SlDetails>
+  </ODetails>
 );
 ```
 
@@ -32,20 +32,20 @@ const App = () => (
 Use the `disable` attribute to prevent the details from expanding.
 
 ```html:preview
-<sl-details summary="Disabled" disabled>
+<o-details summary="Disabled" disabled>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
   aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-</sl-details>
+</o-details>
 ```
 
 ```jsx:react
-import { SlDetails } from '@shoelace-style/shoelace/dist/react';
+import { ODetails } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlDetails summary="Disabled" disabled>
+  <ODetails summary="Disabled" disabled>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </SlDetails>
+  </ODetails>
 );
 ```
 
@@ -54,16 +54,16 @@ const App = () => (
 Use the `expand-icon` and `collapse-icon` slots to change the expand and collapse icons, respectively. To disable the animation, override the `rotate` property on the `summary-icon` part as shown below.
 
 ```html:preview
-<sl-details summary="Toggle Me" class="custom-icons">
-  <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
-  <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+<o-details summary="Toggle Me" class="custom-icons">
+  <o-icon name="plus-square" slot="expand-icon"></o-icon>
+  <o-icon name="dash-square" slot="collapse-icon"></o-icon>
 
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
   aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-</sl-details>
+</o-details>
 
 <style>
-  sl-details.custom-icons::part(summary-icon) {
+  o-details.custom-icons::part(summary-icon) {
     /* Disable the expand/collapse animation */
     rotate: none;
   }
@@ -71,10 +71,10 @@ Use the `expand-icon` and `collapse-icon` slots to change the expand and collaps
 ```
 
 ```jsx:react
-import { SlDetails, SlIcon } from '@shoelace-style/shoelace/dist/react';
+import { ODetails, OIcon } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
-  sl-details.custom-icon::part(summary-icon) {
+  o-details.custom-icon::part(summary-icon) {
     /* Disable the expand/collapse animation */
     rotate: none;
   }
@@ -82,13 +82,13 @@ const css = `
 
 const App = () => (
   <>
-    <SlDetails summary="Toggle Me" class="custom-icon">
-      <SlIcon name="plus-square" slot="expand-icon" />
-      <SlIcon name="dash-square" slot="collapse-icon" />
+    <ODetails summary="Toggle Me" class="custom-icon">
+      <OIcon name="plus-square" slot="expand-icon" />
+      <OIcon name="dash-square" slot="collapse-icon" />
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
       magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
       consequat.
-    </SlDetails>
+    </ODetails>
 
     <style>{css}</style>
   </>
@@ -97,38 +97,38 @@ const App = () => (
 
 ### Grouping Details
 
-Details are designed to function independently, but you can simulate a group or "accordion" where only one is shown at a time by listening for the `sl-show` event.
+Details are designed to function independently, but you can simulate a group or "accordion" where only one is shown at a time by listening for the `o-show` event.
 
 ```html:preview
 <div class="details-group-example">
-  <sl-details summary="First" open>
+  <o-details summary="First" open>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </sl-details>
+  </o-details>
 
-  <sl-details summary="Second">
+  <o-details summary="Second">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </sl-details>
+  </o-details>
 
-  <sl-details summary="Third">
+  <o-details summary="Third">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </sl-details>
+  </o-details>
 </div>
 
 <script>
   const container = document.querySelector('.details-group-example');
 
   // Close all other details when one is shown
-  container.addEventListener('sl-show', event => {
-    [...container.querySelectorAll('sl-details')].map(details => (details.open = event.target === details));
+  container.addEventListener('o-show', event => {
+    [...container.querySelectorAll('o-details')].map(details => (details.open = event.target === details));
   });
 </script>
 
 <style>
-  .details-group-example sl-details:not(:last-of-type) {
-    margin-bottom: var(--sl-spacing-2x-small);
+  .details-group-example o-details:not(:last-of-type) {
+    margin-bottom: var(--o-spacing-2x-small);
   }
 </style>
 ```

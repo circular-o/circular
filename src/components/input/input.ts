@@ -9,18 +9,20 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { watch } from '../../internal/watch.js';
-import ShoelaceElement from '../../internal/shoelace-element.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 import styles from './input.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element.js';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element.js';
+
+let libraryInputCounterForIds = 0;
 
 /**
  * @summary Inputs collect data from the user.
- * @documentation https://shoelace.style/components/input
+ * @documentation /components/input
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
- * @dependency sl-icon
+ * @dependency o-icon
  *
  * @slot label - The input's label. Alternatively, you can use the `label` attribute.
  * @slot prefix - Used to prepend a presentational icon or similar element to the input.
@@ -30,12 +32,12 @@ import type { ShoelaceFormControl } from '../../internal/shoelace-element.js';
  * @slot hide-password-icon - An icon to use in lieu of the default hide password icon.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  *
- * @event sl-blur - Emitted when the control loses focus.
- * @event sl-change - Emitted when an alteration to the control's value is committed by the user.
- * @event sl-clear - Emitted when the clear button is activated.
- * @event sl-focus - Emitted when the control gains focus.
- * @event sl-input - Emitted when the control receives input.
- * @event sl-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
+ * @event o-blur - Emitted when the control loses focus.
+ * @event o-change - Emitted when an alteration to the control's value is committed by the user.
+ * @event o-clear - Emitted when the clear button is activated.
+ * @event o-focus - Emitted when the control gains focus.
+ * @event o-input - Emitted when the control receives input.
+ * @event o-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
  *
  * @csspart form-control - The form control that wraps the label, input, and help text.
  * @csspart form-control-label - The label's wrapper.
@@ -48,15 +50,17 @@ import type { ShoelaceFormControl } from '../../internal/shoelace-element.js';
  * @csspart password-toggle-button - The password toggle button.
  * @csspart suffix - The container that wraps the suffix.
  */
-@customElement('sl-input')
-export default class SlInput extends ShoelaceElement implements ShoelaceFormControl {
+@customElement('o-input')
+export default class OInput extends LibraryBaseElement implements LibraryBaseFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this, {
-    assumeInteractionOn: ['sl-blur', 'sl-input']
+    assumeInteractionOn: ['o-blur', 'o-input']
   });
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
   private readonly localize = new LocalizeController(this);
+
+  private readonly inputId = `o-input-${libraryInputCounterForIds++}`;
 
   @query('.input__control') input: HTMLInputElement;
 
@@ -236,19 +240,19 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('o-blur');
   }
 
   private handleChange() {
     this.value = this.input.value;
-    this.emit('sl-change');
+    this.emit('o-change');
   }
 
   private handleClearClick(event: MouseEvent) {
     this.value = '';
-    this.emit('sl-clear');
-    this.emit('sl-input');
-    this.emit('sl-change');
+    this.emit('o-clear');
+    this.emit('o-input');
+    this.emit('o-change');
     this.input.focus();
 
     event.stopPropagation();
@@ -256,13 +260,13 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sl-focus');
+    this.emit('o-focus');
   }
 
   private handleInput() {
     this.value = this.input.value;
     this.formControlController.updateValidity();
-    this.emit('sl-input');
+    this.emit('o-input');
   }
 
   private handleInvalid(event: Event) {
@@ -409,18 +413,18 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
       <div
         part="form-control"
         class=${classMap({
-          'form-control': true,
-          'form-control--small': this.size === 'small',
-          'form-control--medium': this.size === 'medium',
-          'form-control--large': this.size === 'large',
-          'form-control--has-label': hasLabel,
-          'form-control--has-help-text': hasHelpText
-        })}
+      'form-control': true,
+      'form-control--small': this.size === 'small',
+      'form-control--medium': this.size === 'medium',
+      'form-control--large': this.size === 'large',
+      'form-control--has-label': hasLabel,
+      'form-control--has-help-text': hasHelpText
+    })}
       >
         <label
           part="form-control-label"
           class="form-control__label"
-          for="input"
+          for=${this.inputId}
           aria-hidden=${hasLabel ? 'false' : 'true'}
         >
           <slot name="label">${this.label}</slot>
@@ -430,27 +434,27 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
           <div
             part="base"
             class=${classMap({
-              input: true,
+      input: true,
 
-              // Sizes
-              'input--small': this.size === 'small',
-              'input--medium': this.size === 'medium',
-              'input--large': this.size === 'large',
+      // Sizes
+      'input--small': this.size === 'small',
+      'input--medium': this.size === 'medium',
+      'input--large': this.size === 'large',
 
-              // States
-              'input--pill': this.pill,
-              'input--standard': !this.filled,
-              'input--filled': this.filled,
-              'input--disabled': this.disabled,
-              'input--focused': this.hasFocus,
-              'input--empty': !this.value,
-              'input--no-spin-buttons': this.noSpinButtons
-            })}
+      // States
+      'input--pill': this.pill,
+      'input--standard': !this.filled,
+      'input--filled': this.filled,
+      'input--disabled': this.disabled,
+      'input--focused': this.hasFocus,
+      'input--empty': !this.value,
+      'input--no-spin-buttons': this.noSpinButtons
+    })}
           >
             <slot name="prefix" part="prefix" class="input__prefix"></slot>
             <input
               part="input"
-              id="input"
+              id=${this.inputId}
               class="input__control"
               type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
@@ -466,7 +470,7 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
               step=${ifDefined(this.step as number)}
               .value=${live(this.value)}
               autocapitalize=${ifDefined(this.autocapitalize)}
-              autocomplete=${ifDefined(this.autocomplete)}
+              autocomplete=${this.autocomplete ? 'on' : 'off'}
               autocorrect=${ifDefined(this.autocorrect)}
               ?autofocus=${this.autofocus}
               spellcheck=${this.spellcheck}
@@ -482,9 +486,8 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
               @blur=${this.handleBlur}
             />
 
-            ${
-              hasClearIcon
-                ? html`
+            ${hasClearIcon
+        ? html`
                     <button
                       part="clear-button"
                       class="input__clear"
@@ -494,15 +497,14 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
                       tabindex="-1"
                     >
                       <slot name="clear-icon">
-                        <sl-icon name="x-circle-fill" library="system"></sl-icon>
+                        <o-icon name="x-circle-fill" library="system"></o-icon>
                       </slot>
                     </button>
                   `
-                : ''
-            }
-            ${
-              this.passwordToggle && !this.disabled
-                ? html`
+        : ''
+      }
+            ${this.passwordToggle && !this.disabled
+        ? html`
                     <button
                       part="password-toggle-button"
                       class="input__password-toggle"
@@ -512,20 +514,20 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
                       tabindex="-1"
                     >
                       ${this.passwordVisible
-                        ? html`
+            ? html`
                             <slot name="show-password-icon">
-                              <sl-icon name="eye-slash" library="system"></sl-icon>
+                              <o-icon name="eye-slash" library="system"></o-icon>
                             </slot>
                           `
-                        : html`
+            : html`
                             <slot name="hide-password-icon">
-                              <sl-icon name="eye" library="system"></sl-icon>
+                              <o-icon name="eye" library="system"></o-icon>
                             </slot>
                           `}
                     </button>
                   `
-                : ''
-            }
+        : ''
+      }
 
             <slot name="suffix" part="suffix" class="input__suffix"></slot>
           </div>
@@ -548,6 +550,6 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-input': SlInput;
+    'o-input': OInput;
   }
 }

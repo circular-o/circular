@@ -28,7 +28,7 @@ const bundleDirectories = [cdndir, outdir];
 // process and an array of strings containing any output are included in the resolved promise.
 //
 async function buildTheDocs(watch = false) {
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     const afterSignal = '[eleventy.after]';
     const args = ['@11ty/eleventy', '--quiet'];
     const output = [];
@@ -79,9 +79,9 @@ async function buildTheSource() {
       // NOTE: Entry points must be mapped in package.json > exports, otherwise users won't be able to import them!
       //
       // The whole shebang
-      './src/shoelace.ts',
+      './src/circular.ts',
       // The auto-loader
-      './src/shoelace-autoloader.ts',
+      './src/circular-autoloader.ts',
       // Components
       ...(await globby('./src/components/**/!(*.(style|test)).ts')),
       // Translations
@@ -233,7 +233,7 @@ if (serve) {
     startPath: '/',
     port,
     logLevel: 'silent',
-    logPrefix: '[shoelace]',
+    logPrefix: '[circular]',
     logFileChanges: true,
     notify: false,
     single: false,

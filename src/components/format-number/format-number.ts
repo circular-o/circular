@@ -1,15 +1,15 @@
 import { customElement, property } from 'lit/decorators.js';
 import { LocalizeController } from '../../utilities/localize.js';
-import ShoelaceElement from '../../internal/shoelace-element.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 
 /**
  * @summary Formats a number using the specified locale and options.
- * @documentation https://shoelace.style/components/format-number
+ * @documentation /components/format-number
  * @status stable
- * @since 2.0
+ * @since 1.5
  */
-@customElement('sl-format-number')
-export default class SlFormatNumber extends ShoelaceElement {
+@customElement('o-format-number')
+export default class OFormatNumber extends LibraryBaseElement {
   private readonly localize = new LocalizeController(this);
 
   /** The number to format. */
@@ -63,6 +63,6 @@ export default class SlFormatNumber extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-format-number': SlFormatNumber;
+    'o-format-number': OFormatNumber;
   }
 }

@@ -5,30 +5,42 @@ meta:
 layout: component
 ---
 
-Shoelace comes bundled with over 1,500 icons courtesy of the [Bootstrap Icons](https://icons.getbootstrap.com/) project. These icons are part of the `default` icon library. If you prefer, you can register [custom icon libraries](#icon-libraries) as well.
+O-LIBRARY-NAME-O comes bundled with over 4,000 icons courtesy of the [Bootstrap Icons](https://icons.getbootstrap.com/) and [Material Icons](https://github.com/material-icons/material-icons) projects. These icons are part of the `default` and `material` icon libraries. If you prefer, you can register [custom icon libraries](#icon-libraries) as well.
 
 :::tip
-Depending on how you're loading Shoelace, you may need to copy icon assets and/or [set the base path](getting-started/installation#setting-the-base-path) so Shoelace knows where to load them from. Otherwise, icons may not appear and you'll see 404 Not Found errors in the dev console.
+Depending on how you're loading O-LIBRARY-NAME-O, you may need to copy icon assets and/or [set the base path](getting-started/installation#setting-the-base-path) so O-LIBRARY-NAME-O knows where to load them from. Otherwise, icons may not appear and you'll see 404 Not Found errors in the dev console.
 :::
 
 ## Default Icons
 
-All available icons in the `default` icon library are shown below. Click or tap on any icon to copy its name, then you can use it in your HTML like this.
+All available icons in the `default` and `material` icon libraries are shown below. Click or tap on any icon to copy its name, then you can use it in your HTML like this.
+
+Default library:
 
 ```html
-<sl-icon name="icon-name-here"></sl-icon>
+<o-icon name="icon-name-here"></o-icon>
+```
+
+Material library:
+
+```html
+<o-icon library="material" name="icon-name-here"></o-icon>
 ```
 
 <div class="icon-search">
   <div class="icon-search-controls">
-    <sl-input placeholder="Search Icons" clearable>
-      <sl-icon slot="prefix" name="search"></sl-icon>
-    </sl-input>
-    <sl-select value="outline">
-      <sl-option value="outline">Outlined</sl-option>
-      <sl-option value="fill">Filled</sl-option>
-      <sl-option value="all">All icons</sl-option>
-    </sl-select>
+    <o-input placeholder="Search Icons" clearable>
+      <o-icon slot="prefix" name="search"></o-icon>
+    </o-input>
+    <o-select value="outline">
+      <o-option value="outline">Outline</o-option>
+      <o-option value="fill">Fill</o-option>
+      <o-option value="baseline">Baseline</o-option>
+      <o-option value="round">Round</o-option>
+      <o-option value="sharp">Sharp</o-option>
+      <o-option value="twotone">Twotone</o-option>
+      <o-option value="all">All icons</o-option>
+    </o-select>
   </div>
   <div class="icon-list"></div>
   <input type="text" class="icon-copy-input" aria-hidden="true" tabindex="-1">
@@ -38,65 +50,65 @@ All available icons in the `default` icon library are shown below. Click or tap 
 
 ### Colors
 
-Icons inherit their color from the current text color. Thus, you can set the `color` property on the `<sl-icon>` element or an ancestor to change the color.
+Icons inherit their color from the current text color. Thus, you can set the `color` property on the `<o-icon>` element or an ancestor to change the color.
 
 ```html:preview
 <div style="color: #4a90e2;">
-  <sl-icon name="exclamation-triangle"></sl-icon>
-  <sl-icon name="archive"></sl-icon>
-  <sl-icon name="battery-charging"></sl-icon>
-  <sl-icon name="bell"></sl-icon>
+  <o-icon name="exclamation-triangle"></o-icon>
+  <o-icon name="archive"></o-icon>
+  <o-icon name="battery-charging"></o-icon>
+  <o-icon name="bell"></o-icon>
 </div>
 <div style="color: #9013fe;">
-  <sl-icon name="clock"></sl-icon>
-  <sl-icon name="cloud"></sl-icon>
-  <sl-icon name="download"></sl-icon>
-  <sl-icon name="file-earmark"></sl-icon>
+  <o-icon name="clock"></o-icon>
+  <o-icon name="cloud"></o-icon>
+  <o-icon name="download"></o-icon>
+  <o-icon name="file-earmark"></o-icon>
 </div>
 <div style="color: #417505;">
-  <sl-icon name="flag"></sl-icon>
-  <sl-icon name="heart"></sl-icon>
-  <sl-icon name="image"></sl-icon>
-  <sl-icon name="lightning"></sl-icon>
+  <o-icon name="flag"></o-icon>
+  <o-icon name="heart"></o-icon>
+  <o-icon name="image"></o-icon>
+  <o-icon name="lightning"></o-icon>
 </div>
 <div style="color: #f5a623;">
-  <sl-icon name="mic"></sl-icon>
-  <sl-icon name="search"></sl-icon>
-  <sl-icon name="star"></sl-icon>
-  <sl-icon name="trash"></sl-icon>
+  <o-icon name="mic"></o-icon>
+  <o-icon name="search"></o-icon>
+  <o-icon name="star"></o-icon>
+  <o-icon name="trash"></o-icon>
 </div>
 ```
 
 {% raw %}
 
 ```jsx:react
-import { SlIcon } from '@shoelace-style/shoelace/dist/react';
+import { OIcon } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
     <div style={{ color: '#4a90e2' }}>
-      <SlIcon name="exclamation-triangle"></SlIcon>
-      <SlIcon name="archive"></SlIcon>
-      <SlIcon name="battery-charging"></SlIcon>
-      <SlIcon name="bell"></SlIcon>
+      <OIcon name="exclamation-triangle"></OIcon>
+      <OIcon name="archive"></OIcon>
+      <OIcon name="battery-charging"></OIcon>
+      <OIcon name="bell"></OIcon>
     </div>
     <div style={{ color: '#9013fe' }}>
-      <SlIcon name="clock"></SlIcon>
-      <SlIcon name="cloud"></SlIcon>
-      <SlIcon name="download"></SlIcon>
-      <SlIcon name="file-earmark"></SlIcon>
+      <OIcon name="clock"></OIcon>
+      <OIcon name="cloud"></OIcon>
+      <OIcon name="download"></OIcon>
+      <OIcon name="file-earmark"></OIcon>
     </div>
     <div style={{ color: '#417505' }}>
-      <SlIcon name="flag"></SlIcon>
-      <SlIcon name="heart"></SlIcon>
-      <SlIcon name="image"></SlIcon>
-      <SlIcon name="lightning"></SlIcon>
+      <OIcon name="flag"></OIcon>
+      <OIcon name="heart"></OIcon>
+      <OIcon name="image"></OIcon>
+      <OIcon name="lightning"></OIcon>
     </div>
     <div style={{ color: '#f5a623' }}>
-      <SlIcon name="mic"></SlIcon>
-      <SlIcon name="search"></SlIcon>
-      <SlIcon name="star"></SlIcon>
-      <SlIcon name="trash"></SlIcon>
+      <OIcon name="mic"></OIcon>
+      <OIcon name="search"></OIcon>
+      <OIcon name="star"></OIcon>
+      <OIcon name="trash"></OIcon>
     </div>
   </>
 );
@@ -110,48 +122,48 @@ Icons are sized relative to the current font size. To change their size, set the
 
 ```html:preview
 <div style="font-size: 32px;">
-  <sl-icon name="exclamation-triangle"></sl-icon>
-  <sl-icon name="archive"></sl-icon>
-  <sl-icon name="battery-charging"></sl-icon>
-  <sl-icon name="bell"></sl-icon>
-  <sl-icon name="clock"></sl-icon>
-  <sl-icon name="cloud"></sl-icon>
-  <sl-icon name="download"></sl-icon>
-  <sl-icon name="file-earmark"></sl-icon>
-  <sl-icon name="flag"></sl-icon>
-  <sl-icon name="heart"></sl-icon>
-  <sl-icon name="image"></sl-icon>
-  <sl-icon name="lightning"></sl-icon>
-  <sl-icon name="mic"></sl-icon>
-  <sl-icon name="search"></sl-icon>
-  <sl-icon name="star"></sl-icon>
-  <sl-icon name="trash"></sl-icon>
+  <o-icon name="exclamation-triangle"></o-icon>
+  <o-icon name="archive"></o-icon>
+  <o-icon name="battery-charging"></o-icon>
+  <o-icon name="bell"></o-icon>
+  <o-icon name="clock"></o-icon>
+  <o-icon name="cloud"></o-icon>
+  <o-icon name="download"></o-icon>
+  <o-icon name="file-earmark"></o-icon>
+  <o-icon name="flag"></o-icon>
+  <o-icon name="heart"></o-icon>
+  <o-icon name="image"></o-icon>
+  <o-icon name="lightning"></o-icon>
+  <o-icon name="mic"></o-icon>
+  <o-icon name="search"></o-icon>
+  <o-icon name="star"></o-icon>
+  <o-icon name="trash"></o-icon>
 </div>
 ```
 
 {% raw %}
 
 ```jsx:react
-import { SlIcon } from '@shoelace-style/shoelace/dist/react';
+import { OIcon } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <div style={{ fontSize: '32px' }}>
-    <SlIcon name="exclamation-triangle" />
-    <SlIcon name="archive" />
-    <SlIcon name="battery-charging" />
-    <SlIcon name="bell" />
-    <SlIcon name="clock" />
-    <SlIcon name="cloud" />
-    <SlIcon name="download" />
-    <SlIcon name="file-earmark" />
-    <SlIcon name="flag" />
-    <SlIcon name="heart" />
-    <SlIcon name="image" />
-    <SlIcon name="lightning" />
-    <SlIcon name="mic" />
-    <SlIcon name="search" />
-    <SlIcon name="star" />
-    <SlIcon name="trash" />
+    <OIcon name="exclamation-triangle" />
+    <OIcon name="archive" />
+    <OIcon name="battery-charging" />
+    <OIcon name="bell" />
+    <OIcon name="clock" />
+    <OIcon name="cloud" />
+    <OIcon name="download" />
+    <OIcon name="file-earmark" />
+    <OIcon name="flag" />
+    <OIcon name="heart" />
+    <OIcon name="image" />
+    <OIcon name="lightning" />
+    <OIcon name="mic" />
+    <OIcon name="search" />
+    <OIcon name="star" />
+    <OIcon name="trash" />
   </div>
 );
 ```
@@ -163,13 +175,13 @@ const App = () => (
 For non-decorative icons, use the `label` attribute to announce it to assistive devices.
 
 ```html:preview
-<sl-icon name="star-fill" label="Add to favorites"></sl-icon>
+<o-icon name="star-fill" label="Add to favorites"></o-icon>
 ```
 
 ```jsx:react
-import { SlIcon } from '@shoelace-style/shoelace/dist/react';
+import { OIcon } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlIcon name="star-fill" label="Add to favorites" />;
+const App = () => <OIcon name="star-fill" label="Add to favorites" />;
 ```
 
 ### Custom Icons
@@ -177,24 +189,52 @@ const App = () => <SlIcon name="star-fill" label="Add to favorites" />;
 Custom icons can be loaded individually with the `src` attribute. Only SVGs on a local or CORS-enabled endpoint are supported. If you're using more than one custom icon, it might make sense to register a [custom icon library](#icon-libraries).
 
 ```html:preview
-<sl-icon src="https://shoelace.style/assets/images/shoe.svg" style="font-size: 8rem;"></sl-icon>
+<o-icon src="/assets/images/shoe.svg" style="font-size: 8rem;"></o-icon>
 ```
 
 {% raw %}
 
 ```jsx:react
-import { SlIcon } from '@shoelace-style/shoelace/dist/react';
+import { OIcon } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlIcon src="https://shoelace.style/assets/images/shoe.svg" style={{ fontSize: '8rem' }}></SlIcon>;
+const App = () => <OIcon src="/assets/images/shoe.svg" style={{ fontSize: '8rem' }}></OIcon>;
+```
+
+{% endraw %}
+
+### Fallback
+
+Sometimes a icon can not be found and a fallback content should be displayed instead, thus the default slot acts as a fallback carrier.
+
+```html:preview
+<o-icon name="balloon-heart" style="font-size: 2rem;">I won't be shown, the icon exists</o-icon>
+<br />
+<o-icon name="i-do-not-exist">I'm being shown because the icon does not exist</o-icon>
+```
+
+{% raw %}
+
+```jsx:react
+import { OIcon } from 'O-PACKAGE-FULL-NAME-O/dist/react';
+
+const App = () => (
+  <>
+    <OIcon name="balloon-heart" style={{ fontSize: '2rem' }}>
+      I won't be shown, the icon exists
+    </OIcon>
+    <br />
+    <OIcon name="i-do-not-exist">I'm being shown because the icon does not exist</OIcon>
+  </>
+);
 ```
 
 {% endraw %}
 
 ## Icon Libraries
 
-You can register additional icons to use with the `<sl-icon>` component through icon libraries. Icon files can exist locally or on a CORS-enabled endpoint (e.g. a CDN). There is no limit to how many icon libraries you can register and there is no cost associated with registering them, as individual icons are only requested when they're used.
+You can register additional icons to use with the `<o-icon>` component through icon libraries. Icon files can exist locally or on a CORS-enabled endpoint (e.g. a CDN). There is no limit to how many icon libraries you can register and there is no cost associated with registering them, as individual icons are only requested when they're used.
 
-Shoelace ships with two built-in icon libraries, `default` and `system`. The [default icon library](#customizing-the-default-library) contains all of the icons in the Bootstrap Icons project. The [system icon library](#customizing-the-system-library) contains only a small subset of icons that are used internally by Shoelace components.
+O-LIBRARY-NAME-O ships with two built-in icon libraries, `default` and `system`. The [default icon library](#customizing-the-default-library) contains all of the icons in the Bootstrap Icons project. The [system icon library](#customizing-the-system-library) contains only a small subset of icons that are used internally by O-LIBRARY-NAME-O components.
 
 To register an additional icon library, use the `registerIconLibrary()` function that's exported from `utilities/icon-library.js`. At a minimum, you must provide a name and a resolver function. The resolver function translates an icon name to a URL where the corresponding SVG file exists. Refer to the examples below to better understand how it works.
 
@@ -213,11 +253,11 @@ Here's an example that registers an icon library located in the `/assets/icons` 
 </script>
 ```
 
-To display an icon, set the `library` and `name` attributes of an `<sl-icon>` element.
+To display an icon, set the `library` and `name` attributes of an `<o-icon>` element.
 
 ```html
 <!-- This will show the icon located at /assets/icons/smile.svg -->
-<sl-icon library="my-icons" name="smile"></sl-icon>
+<o-icon library="my-icons" name="smile"></o-icon>
 ```
 
 If an icon is used before registration occurs, it will be empty initially but shown when registered.
@@ -246,26 +286,26 @@ Icons in this library are licensed under the [Creative Commons 4.0 License](http
 </script>
 
 <div style="font-size: 24px;">
-  <sl-icon library="boxicons" name="bx-bot"></sl-icon>
-  <sl-icon library="boxicons" name="bx-cookie"></sl-icon>
-  <sl-icon library="boxicons" name="bx-joystick"></sl-icon>
-  <sl-icon library="boxicons" name="bx-save"></sl-icon>
-  <sl-icon library="boxicons" name="bx-server"></sl-icon>
-  <sl-icon library="boxicons" name="bx-wine"></sl-icon>
+  <o-icon library="boxicons" name="bx-bot"></o-icon>
+  <o-icon library="boxicons" name="bx-cookie"></o-icon>
+  <o-icon library="boxicons" name="bx-joystick"></o-icon>
+  <o-icon library="boxicons" name="bx-save"></o-icon>
+  <o-icon library="boxicons" name="bx-server"></o-icon>
+  <o-icon library="boxicons" name="bx-wine"></o-icon>
   <br />
-  <sl-icon library="boxicons" name="bxs-bot"></sl-icon>
-  <sl-icon library="boxicons" name="bxs-cookie"></sl-icon>
-  <sl-icon library="boxicons" name="bxs-joystick"></sl-icon>
-  <sl-icon library="boxicons" name="bxs-save"></sl-icon>
-  <sl-icon library="boxicons" name="bxs-server"></sl-icon>
-  <sl-icon library="boxicons" name="bxs-wine"></sl-icon>
+  <o-icon library="boxicons" name="bxs-bot"></o-icon>
+  <o-icon library="boxicons" name="bxs-cookie"></o-icon>
+  <o-icon library="boxicons" name="bxs-joystick"></o-icon>
+  <o-icon library="boxicons" name="bxs-save"></o-icon>
+  <o-icon library="boxicons" name="bxs-server"></o-icon>
+  <o-icon library="boxicons" name="bxs-wine"></o-icon>
   <br />
-  <sl-icon library="boxicons" name="bxl-apple"></sl-icon>
-  <sl-icon library="boxicons" name="bxl-chrome"></sl-icon>
-  <sl-icon library="boxicons" name="bxl-edge"></sl-icon>
-  <sl-icon library="boxicons" name="bxl-firefox"></sl-icon>
-  <sl-icon library="boxicons" name="bxl-opera"></sl-icon>
-  <sl-icon library="boxicons" name="bxl-microsoft"></sl-icon>
+  <o-icon library="boxicons" name="bxl-apple"></o-icon>
+  <o-icon library="boxicons" name="bxl-chrome"></o-icon>
+  <o-icon library="boxicons" name="bxl-edge"></o-icon>
+  <o-icon library="boxicons" name="bxl-firefox"></o-icon>
+  <o-icon library="boxicons" name="bxl-opera"></o-icon>
+  <o-icon library="boxicons" name="bxl-microsoft"></o-icon>
 </div>
 ```
 
@@ -277,12 +317,12 @@ Icons in this library are licensed under the [MIT License](https://github.com/lu
 
 ```html:preview
 <div style="font-size: 24px;">
-  <sl-icon library="lucide" name="feather"></sl-icon>
-  <sl-icon library="lucide" name="pie-chart"></sl-icon>
-  <sl-icon library="lucide" name="settings"></sl-icon>
-  <sl-icon library="lucide" name="map-pin"></sl-icon>
-  <sl-icon library="lucide" name="printer"></sl-icon>
-  <sl-icon library="lucide" name="shopping-cart"></sl-icon>
+  <o-icon library="lucide" name="feather"></o-icon>
+  <o-icon library="lucide" name="pie-chart"></o-icon>
+  <o-icon library="lucide" name="settings"></o-icon>
+  <o-icon library="lucide" name="map-pin"></o-icon>
+  <o-icon library="lucide" name="printer"></o-icon>
+  <o-icon library="lucide" name="shopping-cart"></o-icon>
 </div>
 
 <script type="module">
@@ -317,26 +357,26 @@ Icons in this library are licensed under the [Font Awesome Free License](https:/
 </script>
 
 <div style="font-size: 24px;">
-  <sl-icon library="fa" name="far-bell"></sl-icon>
-  <sl-icon library="fa" name="far-comment"></sl-icon>
-  <sl-icon library="fa" name="far-hand-point-right"></sl-icon>
-  <sl-icon library="fa" name="far-hdd"></sl-icon>
-  <sl-icon library="fa" name="far-heart"></sl-icon>
-  <sl-icon library="fa" name="far-star"></sl-icon>
+  <o-icon library="fa" name="far-bell"></o-icon>
+  <o-icon library="fa" name="far-comment"></o-icon>
+  <o-icon library="fa" name="far-hand-point-right"></o-icon>
+  <o-icon library="fa" name="far-hdd"></o-icon>
+  <o-icon library="fa" name="far-heart"></o-icon>
+  <o-icon library="fa" name="far-star"></o-icon>
   <br />
-  <sl-icon library="fa" name="fas-archive"></sl-icon>
-  <sl-icon library="fa" name="fas-book"></sl-icon>
-  <sl-icon library="fa" name="fas-chess-knight"></sl-icon>
-  <sl-icon library="fa" name="fas-dice"></sl-icon>
-  <sl-icon library="fa" name="fas-pizza-slice"></sl-icon>
-  <sl-icon library="fa" name="fas-scroll"></sl-icon>
+  <o-icon library="fa" name="fas-archive"></o-icon>
+  <o-icon library="fa" name="fas-book"></o-icon>
+  <o-icon library="fa" name="fas-chess-knight"></o-icon>
+  <o-icon library="fa" name="fas-dice"></o-icon>
+  <o-icon library="fa" name="fas-pizza-slice"></o-icon>
+  <o-icon library="fa" name="fas-scroll"></o-icon>
   <br />
-  <sl-icon library="fa" name="fab-apple"></sl-icon>
-  <sl-icon library="fa" name="fab-chrome"></sl-icon>
-  <sl-icon library="fa" name="fab-edge"></sl-icon>
-  <sl-icon library="fa" name="fab-firefox"></sl-icon>
-  <sl-icon library="fa" name="fab-opera"></sl-icon>
-  <sl-icon library="fa" name="fab-microsoft"></sl-icon>
+  <o-icon library="fa" name="fab-apple"></o-icon>
+  <o-icon library="fa" name="fab-chrome"></o-icon>
+  <o-icon library="fa" name="fab-edge"></o-icon>
+  <o-icon library="fa" name="fab-firefox"></o-icon>
+  <o-icon library="fa" name="fab-opera"></o-icon>
+  <o-icon library="fa" name="fab-microsoft"></o-icon>
 </div>
 ```
 
@@ -356,12 +396,12 @@ Icons in this library are licensed under the [MIT License](https://github.com/ta
 </script>
 
 <div style="font-size: 24px;">
-  <sl-icon library="heroicons" name="chat-bubble-left"></sl-icon>
-  <sl-icon library="heroicons" name="cloud"></sl-icon>
-  <sl-icon library="heroicons" name="cog"></sl-icon>
-  <sl-icon library="heroicons" name="document-text"></sl-icon>
-  <sl-icon library="heroicons" name="gift"></sl-icon>
-  <sl-icon library="heroicons" name="speaker-wave"></sl-icon>
+  <o-icon library="heroicons" name="chat-bubble-left"></o-icon>
+  <o-icon library="heroicons" name="cloud"></o-icon>
+  <o-icon library="heroicons" name="cog"></o-icon>
+  <o-icon library="heroicons" name="document-text"></o-icon>
+  <o-icon library="heroicons" name="gift"></o-icon>
+  <o-icon library="heroicons" name="speaker-wave"></o-icon>
 </div>
 ```
 
@@ -381,12 +421,12 @@ Icons in this library are licensed under the [MIT License](https://github.com/lu
 </script>
 
 <div style="font-size: 24px;">
-  <sl-icon library="iconoir" name="check-circled-outline"></sl-icon>
-  <sl-icon library="iconoir" name="drawer"></sl-icon>
-  <sl-icon library="iconoir" name="keyframes"></sl-icon>
-  <sl-icon library="iconoir" name="headset-help"></sl-icon>
-  <sl-icon library="iconoir" name="color-picker"></sl-icon>
-  <sl-icon library="iconoir" name="wifi"></sl-icon>
+  <o-icon library="iconoir" name="check-circled-outline"></o-icon>
+  <o-icon library="iconoir" name="drawer"></o-icon>
+  <o-icon library="iconoir" name="keyframes"></o-icon>
+  <o-icon library="iconoir" name="headset-help"></o-icon>
+  <o-icon library="iconoir" name="color-picker"></o-icon>
+  <o-icon library="iconoir" name="wifi"></o-icon>
 </div>
 ```
 
@@ -412,26 +452,26 @@ Icons in this library are licensed under the [MIT License](https://github.com/io
 </script>
 
 <div style="font-size: 24px;">
-  <sl-icon library="ionicons" name="alarm"></sl-icon>
-  <sl-icon library="ionicons" name="american-football"></sl-icon>
-  <sl-icon library="ionicons" name="bug"></sl-icon>
-  <sl-icon library="ionicons" name="chatbubble"></sl-icon>
-  <sl-icon library="ionicons" name="settings"></sl-icon>
-  <sl-icon library="ionicons" name="warning"></sl-icon>
+  <o-icon library="ionicons" name="alarm"></o-icon>
+  <o-icon library="ionicons" name="american-football"></o-icon>
+  <o-icon library="ionicons" name="bug"></o-icon>
+  <o-icon library="ionicons" name="chatbubble"></o-icon>
+  <o-icon library="ionicons" name="settings"></o-icon>
+  <o-icon library="ionicons" name="warning"></o-icon>
   <br />
-  <sl-icon library="ionicons" name="alarm-outline"></sl-icon>
-  <sl-icon library="ionicons" name="american-football-outline"></sl-icon>
-  <sl-icon library="ionicons" name="bug-outline"></sl-icon>
-  <sl-icon library="ionicons" name="chatbubble-outline"></sl-icon>
-  <sl-icon library="ionicons" name="settings-outline"></sl-icon>
-  <sl-icon library="ionicons" name="warning-outline"></sl-icon>
+  <o-icon library="ionicons" name="alarm-outline"></o-icon>
+  <o-icon library="ionicons" name="american-football-outline"></o-icon>
+  <o-icon library="ionicons" name="bug-outline"></o-icon>
+  <o-icon library="ionicons" name="chatbubble-outline"></o-icon>
+  <o-icon library="ionicons" name="settings-outline"></o-icon>
+  <o-icon library="ionicons" name="warning-outline"></o-icon>
   <br />
-  <sl-icon library="ionicons" name="alarm-sharp"></sl-icon>
-  <sl-icon library="ionicons" name="american-football-sharp"></sl-icon>
-  <sl-icon library="ionicons" name="bug-sharp"></sl-icon>
-  <sl-icon library="ionicons" name="chatbubble-sharp"></sl-icon>
-  <sl-icon library="ionicons" name="settings-sharp"></sl-icon>
-  <sl-icon library="ionicons" name="warning-sharp"></sl-icon>
+  <o-icon library="ionicons" name="alarm-sharp"></o-icon>
+  <o-icon library="ionicons" name="american-football-sharp"></o-icon>
+  <o-icon library="ionicons" name="bug-sharp"></o-icon>
+  <o-icon library="ionicons" name="chatbubble-sharp"></o-icon>
+  <o-icon library="ionicons" name="settings-sharp"></o-icon>
+  <o-icon library="ionicons" name="warning-sharp"></o-icon>
 </div>
 ```
 
@@ -452,25 +492,27 @@ Icons in this library are licensed under the [MIT License](https://github.com/mi
 </script>
 
 <div style="font-size: 24px;">
-  <sl-icon library="jam" name="calendar"></sl-icon>
-  <sl-icon library="jam" name="camera"></sl-icon>
-  <sl-icon library="jam" name="filter"></sl-icon>
-  <sl-icon library="jam" name="leaf"></sl-icon>
-  <sl-icon library="jam" name="picture"></sl-icon>
-  <sl-icon library="jam" name="set-square"></sl-icon>
+  <o-icon library="jam" name="calendar"></o-icon>
+  <o-icon library="jam" name="camera"></o-icon>
+  <o-icon library="jam" name="filter"></o-icon>
+  <o-icon library="jam" name="leaf"></o-icon>
+  <o-icon library="jam" name="picture"></o-icon>
+  <o-icon library="jam" name="set-square"></o-icon>
   <br />
-  <sl-icon library="jam" name="calendar-f"></sl-icon>
-  <sl-icon library="jam" name="camera-f"></sl-icon>
-  <sl-icon library="jam" name="filter-f"></sl-icon>
-  <sl-icon library="jam" name="leaf-f"></sl-icon>
-  <sl-icon library="jam" name="picture-f"></sl-icon>
-  <sl-icon library="jam" name="set-square-f"></sl-icon>
+  <o-icon library="jam" name="calendar-f"></o-icon>
+  <o-icon library="jam" name="camera-f"></o-icon>
+  <o-icon library="jam" name="filter-f"></o-icon>
+  <o-icon library="jam" name="leaf-f"></o-icon>
+  <o-icon library="jam" name="picture-f"></o-icon>
+  <o-icon library="jam" name="set-square-f"></o-icon>
 </div>
 ```
 
 ### Material Icons
 
-This will register the [Material Icons](https://material.io/resources/icons/?style=baseline) library using the jsDelivr CDN. This library has three variations: outline (default), round (`*_round`), and sharp (`*_sharp`). A mutator function is required to set the SVG's `fill` to `currentColor`.
+It is already included as a default library in O-LIBRARY-NAME-O, the library name is `material`.
+
+However, in this way you can register the [Material Icons](https://material.io/resources/icons/?style=baseline) library using the jsDelivr CDN. This library has three variations: outline (default), round (`*_round`), and sharp (`*_sharp`). A mutator function is required to set the SVG's `fill` to `currentColor`.
 
 Icons in this library are licensed under the [Apache 2.0 License](https://github.com/google/material-design-icons/blob/master/LICENSE).
 
@@ -481,33 +523,33 @@ Icons in this library are licensed under the [Apache 2.0 License](https://github
   registerIconLibrary('material', {
     resolver: name => {
       const match = name.match(/^(.*?)(_(round|sharp))?$/);
-      return `https://cdn.jsdelivr.net/npm/@material-icons/svg@1.0.5/svg/${match[1]}/${match[3] || 'outline'}.svg`;
+      return `https://cdn.jsdelivr.net/npm/@material-icons/svg@1.0.33/svg/${match[1]}/${match[3] || 'outline'}.svg`;
     },
     mutator: svg => svg.setAttribute('fill', 'currentColor')
   });
 </script>
 
 <div style="font-size: 24px;">
-  <sl-icon library="material" name="notifications"></sl-icon>
-  <sl-icon library="material" name="email"></sl-icon>
-  <sl-icon library="material" name="delete"></sl-icon>
-  <sl-icon library="material" name="volume_up"></sl-icon>
-  <sl-icon library="material" name="settings"></sl-icon>
-  <sl-icon library="material" name="shopping_basket"></sl-icon>
+  <o-icon library="material" name="notifications"></o-icon>
+  <o-icon library="material" name="email"></o-icon>
+  <o-icon library="material" name="delete"></o-icon>
+  <o-icon library="material" name="volume_up"></o-icon>
+  <o-icon library="material" name="settings"></o-icon>
+  <o-icon library="material" name="shopping_basket"></o-icon>
   <br />
-  <sl-icon library="material" name="notifications_round"></sl-icon>
-  <sl-icon library="material" name="email_round"></sl-icon>
-  <sl-icon library="material" name="delete_round"></sl-icon>
-  <sl-icon library="material" name="volume_up_round"></sl-icon>
-  <sl-icon library="material" name="settings_round"></sl-icon>
-  <sl-icon library="material" name="shopping_basket_round"></sl-icon>
+  <o-icon library="material" name="notifications_round"></o-icon>
+  <o-icon library="material" name="email_round"></o-icon>
+  <o-icon library="material" name="delete_round"></o-icon>
+  <o-icon library="material" name="volume_up_round"></o-icon>
+  <o-icon library="material" name="settings_round"></o-icon>
+  <o-icon library="material" name="shopping_basket_round"></o-icon>
   <br />
-  <sl-icon library="material" name="notifications_sharp"></sl-icon>
-  <sl-icon library="material" name="email_sharp"></sl-icon>
-  <sl-icon library="material" name="delete_sharp"></sl-icon>
-  <sl-icon library="material" name="volume_up_sharp"></sl-icon>
-  <sl-icon library="material" name="settings_sharp"></sl-icon>
-  <sl-icon library="material" name="shopping_basket_sharp"></sl-icon>
+  <o-icon library="material" name="notifications_sharp"></o-icon>
+  <o-icon library="material" name="email_sharp"></o-icon>
+  <o-icon library="material" name="delete_sharp"></o-icon>
+  <o-icon library="material" name="volume_up_sharp"></o-icon>
+  <o-icon library="material" name="settings_sharp"></o-icon>
+  <o-icon library="material" name="shopping_basket_sharp"></o-icon>
 </div>
 ```
 
@@ -532,19 +574,19 @@ Icons in this library are licensed under the [Apache 2.0 License](https://github
 </script>
 
 <div style="font-size: 24px;">
-  <sl-icon library="remixicon" name="business/cloud-line"></sl-icon>
-  <sl-icon library="remixicon" name="design/brush-line"></sl-icon>
-  <sl-icon library="remixicon" name="business/pie-chart-line"></sl-icon>
-  <sl-icon library="remixicon" name="development/bug-line"></sl-icon>
-  <sl-icon library="remixicon" name="media/image-line"></sl-icon>
-  <sl-icon library="remixicon" name="system/alert-line"></sl-icon>
+  <o-icon library="remixicon" name="business/cloud-line"></o-icon>
+  <o-icon library="remixicon" name="design/brush-line"></o-icon>
+  <o-icon library="remixicon" name="business/pie-chart-line"></o-icon>
+  <o-icon library="remixicon" name="development/bug-line"></o-icon>
+  <o-icon library="remixicon" name="media/image-line"></o-icon>
+  <o-icon library="remixicon" name="system/alert-line"></o-icon>
   <br />
-  <sl-icon library="remixicon" name="business/cloud-fill"></sl-icon>
-  <sl-icon library="remixicon" name="design/brush-fill"></sl-icon>
-  <sl-icon library="remixicon" name="business/pie-chart-fill"></sl-icon>
-  <sl-icon library="remixicon" name="development/bug-fill"></sl-icon>
-  <sl-icon library="remixicon" name="media/image-fill"></sl-icon>
-  <sl-icon library="remixicon" name="system/alert-fill"></sl-icon>
+  <o-icon library="remixicon" name="business/cloud-fill"></o-icon>
+  <o-icon library="remixicon" name="design/brush-fill"></o-icon>
+  <o-icon library="remixicon" name="business/pie-chart-fill"></o-icon>
+  <o-icon library="remixicon" name="development/bug-fill"></o-icon>
+  <o-icon library="remixicon" name="media/image-fill"></o-icon>
+  <o-icon library="remixicon" name="system/alert-fill"></o-icon>
 </div>
 ```
 
@@ -564,19 +606,19 @@ Icons in this library are licensed under the [MIT License](https://github.com/ta
 </script>
 
 <div style="font-size: 24px;">
-  <sl-icon library="tabler" name="alert-triangle"></sl-icon>
-  <sl-icon library="tabler" name="arrow-back"></sl-icon>
-  <sl-icon library="tabler" name="at"></sl-icon>
-  <sl-icon library="tabler" name="ball-baseball"></sl-icon>
-  <sl-icon library="tabler" name="cake"></sl-icon>
-  <sl-icon library="tabler" name="files"></sl-icon>
+  <o-icon library="tabler" name="alert-triangle"></o-icon>
+  <o-icon library="tabler" name="arrow-back"></o-icon>
+  <o-icon library="tabler" name="at"></o-icon>
+  <o-icon library="tabler" name="ball-baseball"></o-icon>
+  <o-icon library="tabler" name="cake"></o-icon>
+  <o-icon library="tabler" name="files"></o-icon>
   <br />
-  <sl-icon library="tabler" name="keyboard"></sl-icon>
-  <sl-icon library="tabler" name="moon"></sl-icon>
-  <sl-icon library="tabler" name="pig"></sl-icon>
-  <sl-icon library="tabler" name="printer"></sl-icon>
-  <sl-icon library="tabler" name="ship"></sl-icon>
-  <sl-icon library="tabler" name="toilet-paper"></sl-icon>
+  <o-icon library="tabler" name="keyboard"></o-icon>
+  <o-icon library="tabler" name="moon"></o-icon>
+  <o-icon library="tabler" name="pig"></o-icon>
+  <o-icon library="tabler" name="printer"></o-icon>
+  <o-icon library="tabler" name="ship"></o-icon>
+  <o-icon library="tabler" name="toilet-paper"></o-icon>
 </div>
 ```
 
@@ -602,25 +644,25 @@ Icons in this library are licensed under the [Apache 2.0 License](https://github
 </script>
 
 <div style="font-size: 24px;">
-  <sl-icon library="unicons" name="clock"></sl-icon>
-  <sl-icon library="unicons" name="graph-bar"></sl-icon>
-  <sl-icon library="unicons" name="padlock"></sl-icon>
-  <sl-icon library="unicons" name="polygon"></sl-icon>
-  <sl-icon library="unicons" name="rocket"></sl-icon>
-  <sl-icon library="unicons" name="star"></sl-icon>
+  <o-icon library="unicons" name="clock"></o-icon>
+  <o-icon library="unicons" name="graph-bar"></o-icon>
+  <o-icon library="unicons" name="padlock"></o-icon>
+  <o-icon library="unicons" name="polygon"></o-icon>
+  <o-icon library="unicons" name="rocket"></o-icon>
+  <o-icon library="unicons" name="star"></o-icon>
   <br />
-  <sl-icon library="unicons" name="clock-s"></sl-icon>
-  <sl-icon library="unicons" name="graph-bar-s"></sl-icon>
-  <sl-icon library="unicons" name="padlock-s"></sl-icon>
-  <sl-icon library="unicons" name="polygon-s"></sl-icon>
-  <sl-icon library="unicons" name="rocket-s"></sl-icon>
-  <sl-icon library="unicons" name="star-s"></sl-icon>
+  <o-icon library="unicons" name="clock-s"></o-icon>
+  <o-icon library="unicons" name="graph-bar-s"></o-icon>
+  <o-icon library="unicons" name="padlock-s"></o-icon>
+  <o-icon library="unicons" name="polygon-s"></o-icon>
+  <o-icon library="unicons" name="rocket-s"></o-icon>
+  <o-icon library="unicons" name="star-s"></o-icon>
 </div>
 ```
 
 ### Customizing the Default Library
 
-The default icon library contains over 1,300 icons courtesy of the [Bootstrap Icons](https://icons.getbootstrap.com/) project. These are the icons that display when you use `<sl-icon>` without the `library` attribute. If you prefer to have these icons resolve elsewhere or to a different icon library, register an icon library using the `default` name and a custom resolver.
+The default icon library contains over 1,300 icons courtesy of the [Bootstrap Icons](https://icons.getbootstrap.com/) project. These are the icons that display when you use `<o-icon>` without the `library` attribute. If you prefer to have these icons resolve elsewhere or to a different icon library, register an icon library using the `default` name and a custom resolver.
 
 This example will load the same set of icons from the jsDelivr CDN instead of your local assets folder.
 
@@ -641,11 +683,11 @@ To improve performance you can use a SVG sprites to avoid multiple trips for eac
 As always, make sure to benchmark these changes. When using HTTP/2, it may in fact be more bandwidth-friendly to use multiple small requests instead of 1 large sprite sheet.
 
 :::danger
-When using sprite sheets, the `sl-load` and `sl-error` events will not fire.
+When using sprite sheets, the `o-load` and `o-error` events will not fire.
 :::
 
 :::danger
-For security reasons, browsers may apply the same-origin policy on `<use>` elements located in the `<sl-icon>` shadow dom and
+For security reasons, browsers may apply the same-origin policy on `<use>` elements located in the `<o-icon>` shadow dom and
 may refuse to load a cross-origin URL. There is currently no defined way to set a cross-origin policy for `<use>` elements.
 For this reason, sprite sheets should only be used if you're self-hosting them.
 :::
@@ -655,23 +697,23 @@ For this reason, sprite sheets should only be used if you're self-hosting them.
   import { registerIconLibrary } from '/dist/utilities/icon-library.js';
 
   registerIconLibrary('sprite', {
-    resolver: name => `/assets/images/sprite.svg#${name}`,
+    resolver: name => `/assets/icons/default-sprite.svg#${name}`,
     mutator: svg => svg.setAttribute('fill', 'currentColor'),
     spriteSheet: true
   });
 </script>
 
 <div style="font-size: 24px;">
-  <sl-icon library="sprite" name="clock"></sl-icon>
-  <sl-icon library="sprite" name="speedometer"></sl-icon>
+  <o-icon library="sprite" name="clock"></o-icon>
+  <o-icon library="sprite" name="speedometer"></o-icon>
 </div>
 ```
 
 ### Customizing the System Library
 
-The system library contains only the icons used internally by Shoelace components. Unlike the default icon library, the system library does not rely on physical assets. Instead, its icons are hard-coded as data URIs into the resolver to ensure their availability.
+The system library contains only the icons used internally by O-LIBRARY-NAME-O components. Unlike the default icon library, the system library does not rely on physical assets. Instead, its icons are hard-coded as data URIs into the resolver to ensure their availability.
 
-If you want to change the icons Shoelace uses internally, you can register an icon library using the `system` name and a custom resolver. If you choose to do this, it's your responsibility to provide all of the icons that are required by components. You can reference `src/components/library.system.ts` for a complete list of system icons used by Shoelace.
+If you want to change the icons O-LIBRARY-NAME-O uses internally, you can register an icon library using the `system` name and a custom resolver. If you choose to do this, it's your responsibility to provide all of the icons that are required by components. You can reference `src/components/library.system.ts` for a complete list of system icons used by O-LIBRARY-NAME-O.
 
 ```html
 <script type="module">
@@ -686,11 +728,13 @@ If you want to change the icons Shoelace uses internally, you can register an ic
 <!-- Supporting scripts and styles for the search utility -->
 <script>
   function wrapWithTooltip(item) {
-    const tooltip = document.createElement('sl-tooltip');
-    tooltip.content = item.getAttribute('data-name');
+    const tooltip = document.createElement('o-tooltip');
+    const iconName = item.getAttribute('data-name');
+    const iconLibrary = item.getAttribute('data-library');
+    tooltip.content = iconLibrary !== 'default' ? `${iconName} (Library: ${iconLibrary})` : iconName;
 
     // Close open tooltips
-    document.querySelectorAll('.icon-list sl-tooltip[open]').forEach(tooltip => tooltip.hide());
+    document.querySelectorAll('.icon-list o-tooltip[open]').forEach(tooltip => tooltip.hide());
 
     // Wrap it with a tooltip and trick it into showing up
     item.parentNode.insertBefore(tooltip, item);
@@ -698,30 +742,89 @@ If you want to change the icons Shoelace uses internally, you can register an ic
     requestAnimationFrame(() => tooltip.dispatchEvent(new MouseEvent('mouseover')));
   }
 
+  const libraryContainers = {};
+  const getLibraryContainer = libraryName => {
+    if (libraryContainers[libraryName]) {
+      return libraryContainers[libraryName];
+    }
+
+    const div = document.createElement('div');
+    div.classList.add('library-container');
+    div.classList.add(`library-container-${libraryName}`);
+    div.setAttribute('data-library-name', libraryName);
+
+    const libraryAttr = libraryName === 'default' ? '' : ` library=&quot;${libraryName}&quot;`;
+    div.innerHTML = `
+      <div class="library-title">
+        <h3>${libraryName} library</h3>
+      </div>
+      <div class="library-icons"></div>
+    `;
+
+    libraryContainers[libraryName] = { root: div, iconsContainer: div.querySelector('.library-icons'), variantsContainers: {} };
+
+    return libraryContainers[libraryName];
+  }
+
+  const getVariantContainer = (libraryName, variant) => {
+    const { iconsContainer, variantsContainers } = getLibraryContainer(libraryName);
+    if (variantsContainers[variant]) {
+      return variantsContainers[variant];
+    }
+
+    const div = document.createElement('div');
+    div.classList.add('library-variants');
+    div.classList.add(`library-variants-${variant}`);
+    div.setAttribute('data-variants', variant);
+    variantsContainers[variant] = div;
+
+    // Variant title
+    const title = document.createElement('div');
+    title.classList.add('library-variants-title');
+    title.classList.add(`library-variants-title-${variant}`);
+    title.setAttribute('data-variants', variant);
+    title.innerHTML = `
+      <o-divider style="--spacing: 0"></o-divider>
+      <div class="variant-label"><o-badge variant="neutral">${variant}</o-badge></div>
+    `;
+
+    iconsContainer.appendChild(title);
+    iconsContainer.appendChild(variantsContainers[variant]);
+
+    return variantsContainers[variant];
+  }
+
+  const addLibrariesToIconList = (iconsListContainer) => {
+    Object.keys(libraryContainers).forEach(libraryName => {
+      const {root} = getLibraryContainer(libraryName);
+      iconsListContainer.appendChild(root);
+    });
+  }
+
   fetch('/dist/assets/icons/icons.json')
     .then(res => res.json())
     .then(icons => {
       const container = document.querySelector('.icon-search');
-      const input = container.querySelector('sl-input');
-      const select = container.querySelector('sl-select');
+      const input = container.querySelector('o-input');
+      const select = container.querySelector('o-select');
       const copyInput = container.querySelector('.icon-copy-input');
       const loader = container.querySelector('.icon-loader');
       const list = container.querySelector('.icon-list');
-      const queue = [];
+      const iconItems = [];
       let inputTimeout;
 
-      // Generate icons
-      icons.map(i => {
+      const getItem = iconData => {
         const item = document.createElement('div');
         item.classList.add('icon-list-item');
-        item.setAttribute('data-name', i.name);
-        item.setAttribute('data-terms', [i.name, i.title, ...(i.tags || []), ...(i.categories || [])].join(' '));
+        item.setAttribute('data-name', iconData.name);
+        item.setAttribute('data-variant', iconData.variant);
+        item.setAttribute('data-library', iconData.library);
+        item.setAttribute('data-terms', [iconData.name, iconData.title, ...(iconData.tags || []), ...(iconData.categories || [])].join(' '));
         item.innerHTML = `
           <svg width="1em" height="1em" fill="currentColor">
-            <use href="/assets/images/sprite.svg#${i.name}"></use>
+            <use xlink:href="/assets/icons/${iconData.library}-sprite.svg#${iconData.name}"></use>
           </svg>
         `;
-        list.appendChild(item);
 
         // Wrap it with a tooltip the first time the mouse lands on it. We do this instead of baking them into the DOM
         // to improve this page's performance. See: https://github.com/shoelace-style/shoelace/issues/1122
@@ -729,50 +832,87 @@ If you want to change the icons Shoelace uses internally, you can register an ic
 
         // Copy on click
         item.addEventListener('click', () => {
-          const tooltip = item.closest('sl-tooltip');
-          copyInput.value = i.name;
+          const tooltip = item.closest('o-tooltip');
+          copyInput.value = iconData.name;
           copyInput.select();
           document.execCommand('copy');
 
           if (tooltip) {
+            const prevContent = tooltip.content;
             tooltip.content = 'Copied!';
-            setTimeout(() => tooltip.content = i.name, 1000);
+            setTimeout(() => tooltip.content = prevContent, 1000);
           }
+        });
+
+        return item;
+      };
+
+      // Generate icons
+      icons.map(i => {
+        // The variant is outline by default
+        let variant = 'outline';
+        // If the library is default and the name end with -fill, then the variant is fill
+        if (i.library === 'default' && i.name.endsWith('-fill')) {
+          variant = 'fill';
+        }
+
+        const variantContainer = getVariantContainer(i.library, variant);
+        const item = getItem({...i, variant});
+        variantContainer.appendChild(item);
+        iconItems.push(item);
+
+        (i.variants || []).forEach(variant => {
+          const variantContainer = getVariantContainer(i.library, variant);
+          const item = getItem({...i, variant, name: `${i.name}_${variant}`});
+          variantContainer.appendChild(item);
+          iconItems.push(item);
         });
       });
 
+      addLibrariesToIconList(list);
+
       // Filter as the user types
-      input.addEventListener('sl-input', () => {
+      const filterIcons = ({noTimeout = false} = {}) => {
         clearTimeout(inputTimeout);
         inputTimeout = setTimeout(() => {
-          [...list.querySelectorAll('.icon-list-item')].map(item => {
+          iconItems
+          .filter(i => {
+            if (select.value === "all") return true;
+            const variant = i.getAttribute('data-variant');
+            return variant === select.value;
+          })
+          .forEach(item => {
             const filter = input.value.toLowerCase();
+
             if (filter === '') {
               item.hidden = false;
-            } else {
-              const terms = item.getAttribute('data-terms').toLowerCase();
-              item.hidden = terms.indexOf(filter) < 0;
+              return;
             }
+
+            const terms = item.getAttribute('data-terms').toLowerCase();
+            item.hidden = terms.indexOf(filter) < 0;
           });
-        }, 250);
-      });
+        }, noTimeout ? 0 : 600);
+      };
+      input.addEventListener('o-input', () => { filterIcons(); });
 
       // Sort by type and remember preference
-      const iconType = sessionStorage.getItem('sl-icon:type') || 'outline';
+      const iconType = localStorage.getItem('o-icon:type') || 'outline';
       select.value = iconType;
       list.setAttribute('data-type', select.value);
-      select.addEventListener('sl-change', () => {
+      select.addEventListener('o-change', () => {
         list.setAttribute('data-type', select.value);
-        sessionStorage.setItem('sl-icon:type', select.value);
+        localStorage.setItem('o-icon:type', select.value);
+        filterIcons({noTimeout: true});
       });
     });
 </script>
 
 <style>
   .icon-search {
-    border: solid 1px var(--sl-panel-border-color);
-    border-radius: var(--sl-border-radius-medium);
-    padding: var(--sl-spacing-medium);
+    border: solid 1px var(--o-panel-border-color);
+    border-radius: var(--o-border-radius-medium);
+    padding: var(--o-spacing-medium);
   }
 
   .icon-search [hidden] {
@@ -783,11 +923,11 @@ If you want to change the icons Shoelace uses internally, you can register an ic
     display: flex;
   }
 
-  .icon-search-controls sl-input {
+  .icon-search-controls o-input {
     flex: 1 1 auto;
   }
 
-  .icon-search-controls sl-select {
+  .icon-search-controls o-select {
     width: 10rem;
     flex: 0 0 auto;
     margin-left: 1rem;
@@ -800,11 +940,37 @@ If you want to change the icons Shoelace uses internally, you can register an ic
     min-height: 30vh;
   }
 
-  .icon-list {
+  .library-container {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+      "library-title"
+      "library-icons";
+  }
+
+  .library-container .library-title {
+    grid-area: library-title;
+  }
+
+  .library-container .library-title h3 {
+    text-transform: capitalize;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .library-container .library-icons {
+    grid-area: library-icons;
+  }
+
+  .library-container .library-icons .library-variants {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     position: relative;
-    margin-top: 1rem;
+  }
+
+  .library-container .library-icons .variant-label {
+    display: flex;
+    justify-content: flex-end;
+    text-transform: capitalize;
   }
 
   .icon-loader[hidden],
@@ -816,25 +982,46 @@ If you want to change the icons Shoelace uses internally, you can register an ic
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: var(--sl-border-radius-medium);
+    border-radius: var(--o-border-radius-medium);
     font-size: 24px;
     width: 2em;
     height: 2em;
     margin: 0 auto;
     cursor: copy;
-    transition: var(--sl-transition-medium) all;
+    transition: var(--o-transition-medium) all;
   }
 
   .icon-list-item:hover {
-    background-color: var(--sl-color-primary-50);
-    color: var(--sl-color-primary-600);
+    background-color: var(--o-color-primary-50);
+    color: var(--o-color-primary-600);
   }
 
-  .icon-list[data-type="outline"] .icon-list-item[data-name$="-fill"] {
+  .icon-list[data-type="outline"] .library-container .library-icons > div:not([data-variants="outline"]) {
     display: none;
   }
 
-  .icon-list[data-type="fill"] .icon-list-item:not([data-name$="-fill"]) {
+  .icon-list[data-type="fill"] .library-container-material,
+  .icon-list[data-type="fill"] .library-container .library-icons > div:not([data-variants="fill"]) {
+    display: none;
+  }
+
+  .icon-list[data-type="baseline"] .library-container-default, 
+  .icon-list[data-type="baseline"] .library-container .library-icons > div:not([data-variants="baseline"]) {
+    display: none;
+  }
+
+  .icon-list[data-type="round"] .library-container-default,
+  .icon-list[data-type="round"] .library-container .library-icons > div:not([data-variants="round"]) {
+    display: none;
+  }
+
+  .icon-list[data-type="sharp"] .library-container-default,
+  .icon-list[data-type="sharp"] .library-container .library-icons > div:not([data-variants="sharp"]) {
+    display: none;
+  }
+
+  .icon-list[data-type="twotone"] .library-container-default,
+  .icon-list[data-type="twotone"] .library-container .library-icons > div:not([data-variants="twotone"]) {
     display: none;
   }
 
@@ -845,7 +1032,7 @@ If you want to change the icons Shoelace uses internally, you can register an ic
   }
 
   @media screen and (max-width: 1000px) {
-    .icon-list {
+    .library-container .library-icons .library-variants {
       grid-template-columns: repeat(8, 1fr);
     }
 
@@ -857,14 +1044,14 @@ If you want to change the icons Shoelace uses internally, you can register an ic
       display: block;
     }
 
-    .icon-search-controls sl-select {
+    .icon-search-controls o-select {
       width: auto;
       margin: 1rem 0 0 0;
     }
   }
 
   @media screen and (max-width: 500px) {
-    .icon-list {
+    .library-container .library-icons .library-variants {
       grid-template-columns: repeat(4, 1fr);
     }
   }

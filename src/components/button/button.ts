@@ -8,23 +8,23 @@ import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { watch } from '../../internal/watch.js';
-import ShoelaceElement from '../../internal/shoelace-element.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 import styles from './button.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element.js';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element.js';
 
 /**
  * @summary Buttons represent actions that are available to the user.
- * @documentation https://shoelace.style/components/button
+ * @documentation /components/button
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
- * @dependency sl-icon
- * @dependency sl-spinner
+ * @dependency o-icon
+ * @dependency o-spinner
  *
- * @event sl-blur - Emitted when the button loses focus.
- * @event sl-focus - Emitted when the button gains focus.
- * @event sl-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
+ * @event o-blur - Emitted when the button loses focus.
+ * @event o-focus - Emitted when the button gains focus.
+ * @event o-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
  *
  * @slot - The button's label.
  * @slot prefix - A presentational prefix icon or similar element.
@@ -34,10 +34,10 @@ import type { ShoelaceFormControl } from '../../internal/shoelace-element.js';
  * @csspart prefix - The container that wraps the prefix.
  * @csspart label - The button's label.
  * @csspart suffix - The container that wraps the suffix.
- * @csspart caret - The button's caret icon, an `<sl-icon>` element.
+ * @csspart caret - The button's caret icon, an `<o-icon>` element.
  */
-@customElement('sl-button')
-export default class SlButton extends ShoelaceElement implements ShoelaceFormControl {
+@customElement('o-button')
+export default class OButton extends LibraryBaseElement implements LibraryBaseFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this, {
@@ -83,11 +83,11 @@ export default class SlButton extends ShoelaceElement implements ShoelaceFormCon
   /** Draws an outlined button. */
   @property({ type: Boolean, reflect: true }) outline = false;
 
-  /** Draws a pill-style button with rounded edges. */
-  @property({ type: Boolean, reflect: true }) pill = false;
+  /** Draws a square button with rounded borders. */
+  @property({ type: Boolean, reflect: true }) square = false;
 
   /**
-   * Draws a circular icon button. When this attribute is present, the button expects a single `<sl-icon>` in the
+   * Draws a circular icon button. When this attribute is present, the button expects a single `<o-icon>` in the
    * default slot.
    */
   @property({ type: Boolean, reflect: true }) circle = false;
@@ -180,12 +180,12 @@ export default class SlButton extends ShoelaceElement implements ShoelaceFormCon
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('o-blur');
   }
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sl-focus');
+    this.emit('o-focus');
   }
 
   private handleClick() {
@@ -283,30 +283,30 @@ export default class SlButton extends ShoelaceElement implements ShoelaceFormCon
       <${tag}
         part="base"
         class=${classMap({
-          button: true,
-          'button--default': this.variant === 'default',
-          'button--primary': this.variant === 'primary',
-          'button--success': this.variant === 'success',
-          'button--neutral': this.variant === 'neutral',
-          'button--warning': this.variant === 'warning',
-          'button--danger': this.variant === 'danger',
-          'button--text': this.variant === 'text',
-          'button--small': this.size === 'small',
-          'button--medium': this.size === 'medium',
-          'button--large': this.size === 'large',
-          'button--caret': this.caret,
-          'button--circle': this.circle,
-          'button--disabled': this.disabled,
-          'button--focused': this.hasFocus,
-          'button--loading': this.loading,
-          'button--standard': !this.outline,
-          'button--outline': this.outline,
-          'button--pill': this.pill,
-          'button--rtl': this.localize.dir() === 'rtl',
-          'button--has-label': this.hasSlotController.test('[default]'),
-          'button--has-prefix': this.hasSlotController.test('prefix'),
-          'button--has-suffix': this.hasSlotController.test('suffix')
-        })}
+      button: true,
+      'button--default': this.variant === 'default',
+      'button--primary': this.variant === 'primary',
+      'button--success': this.variant === 'success',
+      'button--neutral': this.variant === 'neutral',
+      'button--warning': this.variant === 'warning',
+      'button--danger': this.variant === 'danger',
+      'button--text': this.variant === 'text',
+      'button--small': this.size === 'small',
+      'button--medium': this.size === 'medium',
+      'button--large': this.size === 'large',
+      'button--caret': this.caret,
+      'button--circle': this.circle,
+      'button--disabled': this.disabled,
+      'button--focused': this.hasFocus,
+      'button--loading': this.loading,
+      'button--standard': !this.outline,
+      'button--outline': this.outline,
+      'button--pill': !this.square,
+      'button--rtl': this.localize.dir() === 'rtl',
+      'button--has-label': this.hasSlotController.test('[default]'),
+      'button--has-prefix': this.hasSlotController.test('prefix'),
+      'button--has-suffix': this.hasSlotController.test('suffix')
+    })}
         ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
         type=${ifDefined(isLink ? undefined : this.type)}
         title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
@@ -327,10 +327,8 @@ export default class SlButton extends ShoelaceElement implements ShoelaceFormCon
         <slot name="prefix" part="prefix" class="button__prefix"></slot>
         <slot part="label" class="button__label"></slot>
         <slot name="suffix" part="suffix" class="button__suffix"></slot>
-        ${
-          this.caret ? html` <sl-icon part="caret" class="button__caret" library="system" name="caret"></sl-icon> ` : ''
-        }
-        ${this.loading ? html`<sl-spinner></sl-spinner>` : ''}
+        ${this.caret ? html` <o-icon part="caret" class="button__caret" library="system" name="caret"></o-icon> ` : ''}
+        ${this.loading ? html`<o-spinner></o-spinner>` : ''}
       </${tag}>
     `;
     /* eslint-enable lit/no-invalid-html */
@@ -340,6 +338,6 @@ export default class SlButton extends ShoelaceElement implements ShoelaceFormCon
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-button': SlButton;
+    'o-button': OButton;
   }
 }

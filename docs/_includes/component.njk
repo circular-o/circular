@@ -1,7 +1,7 @@
 {% extends "default.njk" %}
 
 {# Find the component based on the `tag` front matter #}
-{% set component = getComponent('sl-' + page.fileSlug) %}
+{% set component = getComponent('o-' + page.fileSlug) %}
 
 {% block content %}
   {# Determine the badge variant #}
@@ -13,8 +13,17 @@
     {% set badgeVariant = 'neutral' %}
   {% elseif component.status == 'deprecated' %}
     {% set badgeVariant = 'danger' %}
+  {% elseif component.status == 'wip' %}
+    {% set badgeVariant = 'danger' %}
+  {% elseif component.status == 'beta' %}
+    {% set badgeVariant = 'neutral' %}
   {% else %}
     {% set badgeVariant = 'neutral' %}
+  {% endif %}
+
+  {% set badgeExtraStyle = '' %}
+  {% if component.status == 'beta' %}
+    {% set badgeExtraStyle = '--o-color-neutral-600: var(--o-color-accent-600);' %}
   {% endif %}
 
   {# Header #}
@@ -26,12 +35,12 @@
     </div>
 
     <div class="component-header__info">
-      <sl-badge variant="neutral" pill>
+      <o-badge variant="neutral" pill>
         Since {{component.since or '?' }}
-      </sl-badge>
-      <sl-badge variant="{{ badgeVariant }}" pill style="text-transform: capitalize;">
+      </o-badge>
+      <o-badge variant="{{ badgeVariant }}" pill style="text-transform: capitalize;{{ badgeExtraStyle }}">
         {{ component.status }}
-      </sl-badge>
+      </o-badge>
     </div>
   </header>
 
@@ -51,42 +60,42 @@
     any of the following snippets to <a href="/getting-started/installation#cherry-picking">cherry pick</a> this component.
   </p>
 
-  <sl-tab-group>
-    <sl-tab slot="nav" panel="script">Script</sl-tab>
-    <sl-tab slot="nav" panel="import">Import</sl-tab>
-    <sl-tab slot="nav" panel="bundler">Bundler</sl-tab>
-    <sl-tab slot="nav" panel="react">React</sl-tab>
+  <o-tab-group>
+    <o-tab slot="nav" panel="script">Script</o-tab>
+    <o-tab slot="nav" panel="import">Import</o-tab>
+    <o-tab slot="nav" panel="bundler">Bundler</o-tab>
+    <o-tab slot="nav" panel="react">React</o-tab>
 
-    <sl-tab-panel name="script">
+    <o-tab-panel name="script">
       <p>
-        To import this component from <a href="https://www.jsdelivr.com/package/npm/@shoelace-style/shoelace">the CDN</a>
+        To import this component from <a href="https://www.jsdelivr.com/package/npm/{{ meta.packageOrganization }}/{{ meta.packageName }}">the CDN</a>
         using a script tag:
       </p>
-      <pre><code class="language-html">&lt;script type=&quot;module&quot; src=&quot;https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@{{ meta.version }}/{{ meta.cdndir }}/{{ component.path }}&quot;&gt;&lt;/script&gt;</code></pre>
-    </sl-tab-panel>
+      <pre><code class="language-html">&lt;script type=&quot;module&quot; src=&quot;{{ meta.packageUrl }}/{{ meta.cdndir }}/{{ component.path }}&quot;&gt;&lt;/script&gt;</code></pre>
+    </o-tab-panel>
 
-    <sl-tab-panel name="import">
+    <o-tab-panel name="import">
       <p>
-        To import this component from <a href="https://www.jsdelivr.com/package/npm/@shoelace-style/shoelace">the CDN</a>
+        To import this component from <a href="https://www.jsdelivr.com/package/npm/{{ meta.packageOrganization }}/{{ meta.packageName }}">the CDN</a>
         using a JavaScript import:
       </p>
-      <pre><code class="language-js">import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@{{ meta.version }}/{{ meta.cdndir }}/{{ component.path }}';</code></pre>
-    </sl-tab-panel>
+      <pre><code class="language-js">import '{{ meta.packageUrl }}/{{ meta.cdndir }}/{{ component.path }}';</code></pre>
+    </o-tab-panel>
 
-    <sl-tab-panel name="bundler">
+    <o-tab-panel name="bundler">
       <p>
         To import this component using <a href="{{ rootUrl('/getting-started/installation#bundling') }}">a bundler</a>:
       </p>
-      <pre><code class="language-js">import '@shoelace-style/shoelace/{{ meta.npmdir }}/{{ component.path }}';</code></pre>
-    </sl-tab-panel>
+      <pre><code class="language-js">import '{{ meta.packageOrganization }}/{{ meta.packageName }}/{{ meta.npmdir }}/{{ component.path }}';</code></pre>
+    </o-tab-panel>
 
-    <sl-tab-panel name="react">
+    <o-tab-panel name="react">
       <p>
         To import this component as a <a href="/frameworks/react">React component</a>:
       </p>
-      <pre><code class="language-js">import { {{ component.name }} } from '@shoelace-style/shoelace/{{ meta.npmdir }}/react';</code></pre>
-    </sl-tab-panel>
-  </sl-tab-group>
+      <pre><code class="language-js">import { {{ component.name }} } from '{{ meta.packageOrganization }}/{{ meta.packageName }}/{{ meta.npmdir }}/react';</code></pre>
+    </o-tab-panel>
+  </o-tab-group>
 
   {# Slots #}
   {% if component.slots.length %}
@@ -139,13 +148,13 @@
               <code class="nowrap">{{ prop.name }}</code>
               {% if prop.attribute != prop.name %}
                 <br>
-                <sl-tooltip content="This attribute is different from its property">
+                <o-tooltip content="This attribute is different from its property">
                   <small>
                     <code class="nowrap">
                       {{ prop.attribute }}
                     </code>
                   </small>
-                </sl-tooltip>
+                </o-tooltip>
               {% endif %}
             </td>
             <td>
@@ -153,7 +162,7 @@
             </td>
             <td style="text-align: center;">
               {% if prop.reflects %}
-                <sl-icon label="yes" name="check-lg"></sl-icon>
+                <o-icon label="yes" name="check-lg"></o-icon>
               {% endif %}
             </td>
             <td>

@@ -6,13 +6,13 @@ layout: component
 ---
 
 ```html:preview
-<sl-input></sl-input>
+<o-input></o-input>
 ```
 
 ```jsx:react
-import { SlInput } from '@shoelace-style/shoelace/dist/react';
+import { OInput } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlInput />;
+const App = () => <OInput />;
 ```
 
 :::tip
@@ -26,13 +26,13 @@ This component works with standard `<form>` elements. Please refer to the sectio
 Use the `label` attribute to give the input an accessible label. For labels that contain HTML, use the `label` slot instead.
 
 ```html:preview
-<sl-input label="What is your name?"></sl-input>
+<o-input label="What is your name?"></o-input>
 ```
 
 ```jsx:react
-import { SlIcon, SlInput } from '@shoelace-style/shoelace/dist/react';
+import { OIcon, OInput } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlInput label="What is your name?" />;
+const App = () => <OInput label="What is your name?" />;
 ```
 
 ### Help Text
@@ -40,13 +40,13 @@ const App = () => <SlInput label="What is your name?" />;
 Add descriptive help text to an input with the `help-text` attribute. For help texts that contain HTML, use the `help-text` slot instead.
 
 ```html:preview
-<sl-input label="Nickname" help-text="What would you like people to call you?"></sl-input>
+<o-input label="Nickname" help-text="What would you like people to call you?"></o-input>
 ```
 
 ```jsx:react
-import { SlIcon, SlInput } from '@shoelace-style/shoelace/dist/react';
+import { OIcon, OInput } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlInput label="Nickname" help-text="What would you like people to call you?" />;
+const App = () => <OInput label="Nickname" help-text="What would you like people to call you?" />;
 ```
 
 ### Placeholders
@@ -54,13 +54,13 @@ const App = () => <SlInput label="Nickname" help-text="What would you like peopl
 Use the `placeholder` attribute to add a placeholder.
 
 ```html:preview
-<sl-input placeholder="Type something"></sl-input>
+<o-input placeholder="Type something"></o-input>
 ```
 
 ```jsx:react
-import { SlInput } from '@shoelace-style/shoelace/dist/react';
+import { OInput } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlInput placeholder="Type something" />;
+const App = () => <OInput placeholder="Type something" />;
 ```
 
 ### Clearable
@@ -68,13 +68,13 @@ const App = () => <SlInput placeholder="Type something" />;
 Add the `clearable` attribute to add a clear button when the input has content.
 
 ```html:preview
-<sl-input placeholder="Clearable" clearable></sl-input>
+<o-input placeholder="Clearable" clearable></o-input>
 ```
 
 ```jsx:react
-import { SlInput } from '@shoelace-style/shoelace/dist/react';
+import { OInput } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlInput placeholder="Clearable" clearable />;
+const App = () => <OInput placeholder="Clearable" clearable />;
 ```
 
 ### Toggle Password
@@ -82,13 +82,13 @@ const App = () => <SlInput placeholder="Clearable" clearable />;
 Add the `password-toggle` attribute to add a toggle button that will show the password when activated.
 
 ```html:preview
-<sl-input type="password" placeholder="Password Toggle" password-toggle></sl-input>
+<o-input type="password" placeholder="Password Toggle" password-toggle></o-input>
 ```
 
 ```jsx:react
-import { SlInput } from '@shoelace-style/shoelace/dist/react';
+import { OInput } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlInput type="password" placeholder="Password Toggle" size="medium" password-toggle />;
+const App = () => <OInput type="password" placeholder="Password Toggle" size="medium" password-toggle />;
 ```
 
 ### Filled Inputs
@@ -96,13 +96,13 @@ const App = () => <SlInput type="password" placeholder="Password Toggle" size="m
 Add the `filled` attribute to draw a filled input.
 
 ```html:preview
-<sl-input placeholder="Type something" filled></sl-input>
+<o-input placeholder="Type something" filled></o-input>
 ```
 
 ```jsx:react
-import { SlInput } from '@shoelace-style/shoelace/dist/react';
+import { OInput } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlInput placeholder="Type something" filled />;
+const App = () => <OInput placeholder="Type something" filled />;
 ```
 
 ### Disabled
@@ -110,13 +110,18 @@ const App = () => <SlInput placeholder="Type something" filled />;
 Use the `disabled` attribute to disable an input.
 
 ```html:preview
-<sl-input placeholder="Disabled" disabled></sl-input>
+<o-input placeholder="Disabled" disabled></o-input>
+<br />
+<o-input placeholder="Disabled" disabled>
+  <o-icon name="house" slot="prefix"></o-icon>
+  <o-icon name="chat" slot="suffix"></o-icon>
+</o-input>
 ```
 
 ```jsx:react
-import { SlInput } from '@shoelace-style/shoelace/dist/react';
+import { OInput } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlInput placeholder="Disabled" disabled />;
+const App = () => <OInput placeholder="Disabled" disabled />;
 ```
 
 ### Sizes
@@ -124,23 +129,23 @@ const App = () => <SlInput placeholder="Disabled" disabled />;
 Use the `size` attribute to change an input's size.
 
 ```html:preview
-<sl-input placeholder="Small" size="small"></sl-input>
+<o-input placeholder="Small" size="small"></o-input>
 <br />
-<sl-input placeholder="Medium" size="medium"></sl-input>
+<o-input placeholder="Medium" size="medium"></o-input>
 <br />
-<sl-input placeholder="Large" size="large"></sl-input>
+<o-input placeholder="Large" size="large"></o-input>
 ```
 
 ```jsx:react
-import { SlInput } from '@shoelace-style/shoelace/dist/react';
+import { OInput } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
-    <SlInput placeholder="Small" size="small" />
+    <OInput placeholder="Small" size="small" />
     <br />
-    <SlInput placeholder="Medium" size="medium" />
+    <OInput placeholder="Medium" size="medium" />
     <br />
-    <SlInput placeholder="Large" size="large" />
+    <OInput placeholder="Large" size="large" />
   </>
 );
 ```
@@ -150,23 +155,23 @@ const App = () => (
 Use the `pill` attribute to give inputs rounded edges.
 
 ```html:preview
-<sl-input placeholder="Small" size="small" pill></sl-input>
+<o-input placeholder="Small" size="small" pill></o-input>
 <br />
-<sl-input placeholder="Medium" size="medium" pill></sl-input>
+<o-input placeholder="Medium" size="medium" pill></o-input>
 <br />
-<sl-input placeholder="Large" size="large" pill></sl-input>
+<o-input placeholder="Large" size="large" pill></o-input>
 ```
 
 ```jsx:react
-import { SlInput } from '@shoelace-style/shoelace/dist/react';
+import { OInput } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
-    <SlInput placeholder="Small" size="small" pill />
+    <OInput placeholder="Small" size="small" pill />
     <br />
-    <SlInput placeholder="Medium" size="medium" pill />
+    <OInput placeholder="Medium" size="medium" pill />
     <br />
-    <SlInput placeholder="Large" size="large" pill />
+    <OInput placeholder="Large" size="large" pill />
   </>
 );
 ```
@@ -176,23 +181,23 @@ const App = () => (
 The `type` attribute controls the type of input the browser renders.
 
 ```html:preview
-<sl-input type="email" placeholder="Email"></sl-input>
+<o-input type="email" placeholder="Email"></o-input>
 <br />
-<sl-input type="number" placeholder="Number"></sl-input>
+<o-input type="number" placeholder="Number"></o-input>
 <br />
-<sl-input type="date" placeholder="Date"></sl-input>
+<o-input type="date" placeholder="Date"></o-input>
 ```
 
 ```jsx:react
-import { SlInput } from '@shoelace-style/shoelace/dist/react';
+import { OInput } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
-    <SlInput type="email" placeholder="Email" />
+    <OInput type="email" placeholder="Email" />
     <br />
-    <SlInput type="number" placeholder="Number" />
+    <OInput type="number" placeholder="Number" />
     <br />
-    <SlInput type="date" placeholder="Date" />
+    <OInput type="date" placeholder="Date" />
   </>
 );
 ```
@@ -202,41 +207,41 @@ const App = () => (
 Use the `prefix` and `suffix` slots to add icons.
 
 ```html:preview
-<sl-input placeholder="Small" size="small">
-  <sl-icon name="house" slot="prefix"></sl-icon>
-  <sl-icon name="chat" slot="suffix"></sl-icon>
-</sl-input>
+<o-input placeholder="Small" size="small">
+  <o-icon name="house" slot="prefix"></o-icon>
+  <o-icon name="chat" slot="suffix"></o-icon>
+</o-input>
 <br />
-<sl-input placeholder="Medium" size="medium">
-  <sl-icon name="house" slot="prefix"></sl-icon>
-  <sl-icon name="chat" slot="suffix"></sl-icon>
-</sl-input>
+<o-input placeholder="Medium" size="medium">
+  <o-icon name="house" slot="prefix"></o-icon>
+  <o-icon name="chat" slot="suffix"></o-icon>
+</o-input>
 <br />
-<sl-input placeholder="Large" size="large">
-  <sl-icon name="house" slot="prefix"></sl-icon>
-  <sl-icon name="chat" slot="suffix"></sl-icon>
-</sl-input>
+<o-input placeholder="Large" size="large">
+  <o-icon name="house" slot="prefix"></o-icon>
+  <o-icon name="chat" slot="suffix"></o-icon>
+</o-input>
 ```
 
 ```jsx:react
-import { SlIcon, SlInput } from '@shoelace-style/shoelace/dist/react';
+import { OIcon, OInput } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
-    <SlInput placeholder="Small" size="small">
-      <SlIcon name="house" slot="prefix"></SlIcon>
-      <SlIcon name="chat" slot="suffix"></SlIcon>
-    </SlInput>
+    <OInput placeholder="Small" size="small">
+      <OIcon name="house" slot="prefix"></OIcon>
+      <OIcon name="chat" slot="suffix"></OIcon>
+    </OInput>
     <br />
-    <SlInput placeholder="Medium" size="medium">
-      <SlIcon name="house" slot="prefix"></SlIcon>
-      <SlIcon name="chat" slot="suffix"></SlIcon>
-    </SlInput>
+    <OInput placeholder="Medium" size="medium">
+      <OIcon name="house" slot="prefix"></OIcon>
+      <OIcon name="chat" slot="suffix"></OIcon>
+    </OInput>
     <br />
-    <SlInput placeholder="Large" size="large">
-      <SlIcon name="house" slot="prefix"></SlIcon>
-      <SlIcon name="chat" slot="suffix"></SlIcon>
-    </SlInput>
+    <OInput placeholder="Large" size="large">
+      <OIcon name="house" slot="prefix"></OIcon>
+      <OIcon name="chat" slot="suffix"></OIcon>
+    </OInput>
   </>
 );
 ```
@@ -246,9 +251,9 @@ const App = () => (
 Use [CSS parts](#css-parts) to customize the way form controls are drawn. This example uses CSS grid to position the label to the left of the control, but the possible orientations are nearly endless. The same technique works for inputs, textareas, radio groups, and similar form controls.
 
 ```html:preview
-<sl-input class="label-on-left" label="Name" help-text="Enter your name"></sl-input>
-<sl-input class="label-on-left" label="Email" type="email" help-text="Enter your email"></sl-input>
-<sl-textarea class="label-on-left" label="Bio" help-text="Tell us something about yourself"></sl-textarea>
+<o-input class="label-on-left" label="Name" help-text="Enter your name"></o-input>
+<o-input class="label-on-left" label="Email" type="email" help-text="Enter your email"></o-input>
+<o-textarea class="label-on-left" label="Bio" help-text="Tell us something about yourself"></o-textarea>
 
 <style>
   .label-on-left {
@@ -257,13 +262,13 @@ Use [CSS parts](#css-parts) to customize the way form controls are drawn. This e
   }
 
   .label-on-left + .label-on-left {
-    margin-top: var(--sl-spacing-medium);
+    margin-top: var(--o-spacing-medium);
   }
 
   .label-on-left::part(form-control) {
     display: grid;
     grid: auto / var(--label-width) 1fr;
-    gap: var(--sl-spacing-3x-small) var(--gap-width);
+    gap: var(--o-spacing-3x-small) var(--gap-width);
     align-items: center;
   }
 

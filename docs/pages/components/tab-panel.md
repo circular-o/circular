@@ -6,42 +6,42 @@ layout: component
 ---
 
 ```html:preview
-<sl-tab-group>
-  <sl-tab slot="nav" panel="general">General</sl-tab>
-  <sl-tab slot="nav" panel="custom">Custom</sl-tab>
-  <sl-tab slot="nav" panel="advanced">Advanced</sl-tab>
-  <sl-tab slot="nav" panel="disabled" disabled>Disabled</sl-tab>
+<o-tab-group>
+  <o-tab slot="nav" panel="general">General</o-tab>
+  <o-tab slot="nav" panel="custom">Custom</o-tab>
+  <o-tab slot="nav" panel="advanced">Advanced</o-tab>
+  <o-tab slot="nav" panel="disabled" disabled>Disabled</o-tab>
 
-  <sl-tab-panel name="general">This is the general tab panel.</sl-tab-panel>
-  <sl-tab-panel name="custom">This is the custom tab panel.</sl-tab-panel>
-  <sl-tab-panel name="advanced">This is the advanced tab panel.</sl-tab-panel>
-  <sl-tab-panel name="disabled">This is a disabled tab panel.</sl-tab-panel>
-</sl-tab-group>
+  <o-tab-panel name="general">This is the general tab panel.</o-tab-panel>
+  <o-tab-panel name="custom">This is the custom tab panel.</o-tab-panel>
+  <o-tab-panel name="advanced">This is the advanced tab panel.</o-tab-panel>
+  <o-tab-panel name="disabled">This is a disabled tab panel.</o-tab-panel>
+</o-tab-group>
 ```
 
 ```jsx:react
-import { SlTab, SlTabGroup, SlTabPanel } from '@shoelace-style/shoelace/dist/react';
+import { OTab, OTabGroup, OTabPanel } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlTabGroup>
-    <SlTab slot="nav" panel="general">
+  <OTabGroup>
+    <OTab slot="nav" panel="general">
       General
-    </SlTab>
-    <SlTab slot="nav" panel="custom">
+    </OTab>
+    <OTab slot="nav" panel="custom">
       Custom
-    </SlTab>
-    <SlTab slot="nav" panel="advanced">
+    </OTab>
+    <OTab slot="nav" panel="advanced">
       Advanced
-    </SlTab>
-    <SlTab slot="nav" panel="disabled" disabled>
+    </OTab>
+    <OTab slot="nav" panel="disabled" disabled>
       Disabled
-    </SlTab>
+    </OTab>
 
-    <SlTabPanel name="general">This is the general tab panel.</SlTabPanel>
-    <SlTabPanel name="custom">This is the custom tab panel.</SlTabPanel>
-    <SlTabPanel name="advanced">This is the advanced tab panel.</SlTabPanel>
-    <SlTabPanel name="disabled">This is a disabled tab panel.</SlTabPanel>
-  </SlTabGroup>
+    <OTabPanel name="general">This is the general tab panel.</OTabPanel>
+    <OTabPanel name="custom">This is the custom tab panel.</OTabPanel>
+    <OTabPanel name="advanced">This is the advanced tab panel.</OTabPanel>
+    <OTabPanel name="disabled">This is a disabled tab panel.</OTabPanel>
+  </OTabGroup>
 );
 ```
 

@@ -6,13 +6,13 @@ layout: component
 ---
 
 ```html:preview
-<sl-checkbox>Checkbox</sl-checkbox>
+<o-checkbox>Checkbox</o-checkbox>
 ```
 
 ```jsx:react
-import { SlCheckbox } from '@shoelace-style/shoelace/dist/react';
+import { OCheckbox } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlCheckbox>Checkbox</SlCheckbox>;
+const App = () => <OCheckbox>Checkbox</OCheckbox>;
 ```
 
 :::tip
@@ -26,13 +26,13 @@ This component works with standard `<form>` elements. Please refer to the sectio
 Use the `checked` attribute to activate the checkbox.
 
 ```html:preview
-<sl-checkbox checked>Checked</sl-checkbox>
+<o-checkbox checked>Checked</o-checkbox>
 ```
 
 ```jsx:react
-import { SlCheckbox } from '@shoelace-style/shoelace/dist/react';
+import { OCheckbox } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlCheckbox checked>Checked</SlCheckbox>;
+const App = () => <OCheckbox checked>Checked</OCheckbox>;
 ```
 
 ### Indeterminate
@@ -40,13 +40,13 @@ const App = () => <SlCheckbox checked>Checked</SlCheckbox>;
 Use the `indeterminate` attribute to make the checkbox indeterminate.
 
 ```html:preview
-<sl-checkbox indeterminate>Indeterminate</sl-checkbox>
+<o-checkbox indeterminate>Indeterminate</o-checkbox>
 ```
 
 ```jsx:react
-import { SlCheckbox } from '@shoelace-style/shoelace/dist/react';
+import { OCheckbox } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlCheckbox indeterminate>Indeterminate</SlCheckbox>;
+const App = () => <OCheckbox indeterminate>Indeterminate</OCheckbox>;
 ```
 
 ### Disabled
@@ -54,13 +54,13 @@ const App = () => <SlCheckbox indeterminate>Indeterminate</SlCheckbox>;
 Use the `disabled` attribute to disable the checkbox.
 
 ```html:preview
-<sl-checkbox disabled>Disabled</sl-checkbox>
+<o-checkbox disabled>Disabled</o-checkbox>
 ```
 
 ```jsx:react
-import { SlCheckbox } from '@shoelace-style/shoelace/dist/react';
+import { OCheckbox } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlCheckbox disabled>Disabled</SlCheckbox>;
+const App = () => <OCheckbox disabled>Disabled</OCheckbox>;
 ```
 
 ### Sizes
@@ -68,23 +68,23 @@ const App = () => <SlCheckbox disabled>Disabled</SlCheckbox>;
 Use the `size` attribute to change a checkbox's size.
 
 ```html:preview
-<sl-checkbox size="small">Small</sl-checkbox>
+<o-checkbox size="small">Small</o-checkbox>
 <br />
-<sl-checkbox size="medium">Medium</sl-checkbox>
+<o-checkbox size="medium">Medium</o-checkbox>
 <br />
-<sl-checkbox size="large">Large</sl-checkbox>
+<o-checkbox size="large">Large</o-checkbox>
 ```
 
 ```jsx:react
-import { SlCheckbox } from '@shoelace-style/shoelace/dist/react';
+import { OCheckbox } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
-    <SlCheckbox size="small">Small</SlCheckbox>
+    <OCheckbox size="small">Small</OCheckbox>
     <br />
-    <SlCheckbox size="medium">Medium</SlCheckbox>
+    <OCheckbox size="medium">Medium</OCheckbox>
     <br />
-    <SlCheckbox size="large">Large</SlCheckbox>
+    <OCheckbox size="large">Large</OCheckbox>
   </>
 );
 ```
@@ -95,23 +95,23 @@ Use the `setCustomValidity()` method to set a custom validation message. This wi
 
 ```html:preview
 <form class="custom-validity">
-  <sl-checkbox>Check me</sl-checkbox>
+  <o-checkbox>Check me</o-checkbox>
   <br />
-  <sl-button type="submit" variant="primary" style="margin-top: 1rem;">Submit</sl-button>
+  <o-button type="submit" variant="primary" style="margin-top: 1rem;">Submit</o-button>
 </form>
 <script>
   const form = document.querySelector('.custom-validity');
-  const checkbox = form.querySelector('sl-checkbox');
+  const checkbox = form.querySelector('o-checkbox');
   const errorMessage = `Don't forget to check me!`;
 
   // Set initial validity as soon as the element is defined
-  customElements.whenDefined('sl-checkbox').then(async () => {
+  customElements.whenDefined('o-checkbox').then(async () => {
     await checkbox.updateComplete;
     checkbox.setCustomValidity(errorMessage);
   });
 
   // Update validity on change
-  checkbox.addEventListener('sl-change', () => {
+  checkbox.addEventListener('o-change', () => {
     checkbox.setCustomValidity(checkbox.checked ? '' : errorMessage);
   });
 
@@ -127,7 +127,7 @@ Use the `setCustomValidity()` method to set a custom validation message. This wi
 
 ```jsx:react
 import { useEffect, useRef } from 'react';
-import { SlButton, SlCheckbox } from '@shoelace-style/shoelace/dist/react';
+import { OButton, OCheckbox } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => {
   const checkbox = useRef(null);
@@ -148,13 +148,13 @@ const App = () => {
 
   return (
     <form class="custom-validity" onSubmit={handleSubmit}>
-      <SlCheckbox ref={checkbox} onSlChange={handleChange}>
+      <OCheckbox ref={checkbox} onOChange={handleChange}>
         Check me
-      </SlCheckbox>
+      </OCheckbox>
       <br />
-      <SlButton type="submit" variant="primary" style={{ marginTop: '1rem' }}>
+      <OButton type="submit" variant="primary" style={{ marginTop: '1rem' }}>
         Submit
-      </SlButton>
+      </OButton>
     </form>
   );
 };

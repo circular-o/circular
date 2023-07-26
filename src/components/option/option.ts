@@ -4,30 +4,30 @@ import { customElement, property, query, state } from 'lit/decorators.js';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize.js';
 import { watch } from '../../internal/watch.js';
-import ShoelaceElement from '../../internal/shoelace-element.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 import styles from './option.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Options define the selectable items within various form controls such as [select](/components/select).
- * @documentation https://shoelace.style/components/option
+ * @documentation /components/option
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
- * @dependency sl-icon
+ * @dependency o-icon
  *
  * @slot - The option's label.
  * @slot prefix - Used to prepend an icon or similar element to the menu item.
  * @slot suffix - Used to append an icon or similar element to the menu item.
  *
- * @csspart checked-icon - The checked icon, an `<sl-icon>` element.
+ * @csspart checked-icon - The checked icon, an `<o-icon>` element.
  * @csspart base - The component's base wrapper.
  * @csspart label - The option's label.
  * @csspart prefix - The container that wraps the prefix.
  * @csspart suffix - The container that wraps the suffix.
  */
-@customElement('sl-option')
-export default class SlOption extends ShoelaceElement {
+@customElement('o-option')
+export default class OOption extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private cachedTextLabel: string;
@@ -114,16 +114,16 @@ export default class SlOption extends ShoelaceElement {
       <div
         part="base"
         class=${classMap({
-          option: true,
-          'option--current': this.current,
-          'option--disabled': this.disabled,
-          'option--selected': this.selected,
-          'option--hover': this.hasHover
-        })}
+      option: true,
+      'option--current': this.current,
+      'option--disabled': this.disabled,
+      'option--selected': this.selected,
+      'option--hover': this.hasHover
+    })}
         @mouseenter=${this.handleMouseEnter}
         @mouseleave=${this.handleMouseLeave}
       >
-        <sl-icon part="checked-icon" class="option__check" name="check" library="system" aria-hidden="true"></sl-icon>
+        <o-icon part="checked-icon" class="option__check" name="check" library="system" aria-hidden="true"></o-icon>
         <slot part="prefix" name="prefix" class="option__prefix"></slot>
         <slot part="label" class="option__label" @slotchange=${this.handleDefaultSlotChange}></slot>
         <slot part="suffix" name="suffix" class="option__suffix"></slot>
@@ -134,6 +134,6 @@ export default class SlOption extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-option': SlOption;
+    'o-option': OOption;
   }
 }

@@ -6,13 +6,13 @@ layout: component
 ---
 
 ```html:preview
-<sl-spinner></sl-spinner>
+<o-spinner></o-spinner>
 ```
 
 ```jsx:react
-import { SlSpinner } from '@shoelace-style/shoelace/dist/react';
+import { OSpinner } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlSpinner />;
+const App = () => <OSpinner />;
 ```
 
 ## Examples
@@ -22,21 +22,21 @@ const App = () => <SlSpinner />;
 Spinners are sized based on the current font size. To change their size, set the `font-size` property on the spinner itself or on a parent element as shown below.
 
 ```html:preview
-<sl-spinner></sl-spinner>
-<sl-spinner style="font-size: 2rem;"></sl-spinner>
-<sl-spinner style="font-size: 3rem;"></sl-spinner>
+<o-spinner></o-spinner>
+<o-spinner style="font-size: 2rem;"></o-spinner>
+<o-spinner style="font-size: 3rem;"></o-spinner>
 ```
 
 {% raw %}
 
 ```jsx:react
-import { SlSpinner } from '@shoelace-style/shoelace/dist/react';
+import { OSpinner } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
-    <SlSpinner />
-    <SlSpinner style={{ fontSize: '2rem' }} />
-    <SlSpinner style={{ fontSize: '3rem' }} />
+    <OSpinner />
+    <OSpinner style={{ fontSize: '2rem' }} />
+    <OSpinner style={{ fontSize: '3rem' }} />
   </>
 );
 ```
@@ -48,16 +48,16 @@ const App = () => (
 The width of the spinner's track can be changed by setting the `--track-width` custom property.
 
 ```html:preview
-<sl-spinner style="font-size: 50px; --track-width: 10px;"></sl-spinner>
+<o-spinner style="font-size: 50px; --track-width: 10px;"></o-spinner>
 ```
 
 {% raw %}
 
 ```jsx:react
-import { SlSpinner } from '@shoelace-style/shoelace/dist/react';
+import { OSpinner } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlSpinner
+  <OSpinner
     style={{
       fontSize: '3rem',
       '--track-width': '6px'
@@ -73,16 +73,16 @@ const App = () => (
 The spinner's colors can be changed by setting the `--indicator-color` and `--track-color` custom properties.
 
 ```html:preview
-<sl-spinner style="font-size: 3rem; --indicator-color: deeppink; --track-color: pink;"></sl-spinner>
+<o-spinner style="font-size: 3rem; --indicator-color: deeppink; --track-color: pink;"></o-spinner>
 ```
 
 {% raw %}
 
 ```jsx:react
-import { SlSpinner } from '@shoelace-style/shoelace/dist/react';
+import { OSpinner } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlSpinner
+  <OSpinner
     style={{
       fontSize: '3rem',
       '--indicator-color': 'deeppink',

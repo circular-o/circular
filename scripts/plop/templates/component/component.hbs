@@ -1,20 +1,20 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 import { watch } from '../../internal/watch.js';
-import ShoelaceElement from '../../internal/shoelace-element.js';
+import { LocalizeController } from '../../utilities/localize.js';
 import styles from './{{ tagWithoutPrefix tag }}.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Short summary of the component's intended use.
- * @documentation https://shoelace.style/components/{{ tagWithoutPrefix tag }}
- * @status experimental
- * @since 2.0
+ * @documentation /components/{{ tagWithoutPrefix tag }}
+ * @status wip
+ * @since 1.x
  *
- * @dependency sl-example
+ * @dependency o-example
  *
- * @event sl-event-name - Emitted as an example.
+ * @event o-event-name - Emitted as an example.
  *
  * @slot - The default slot.
  * @slot example - An example slot.
@@ -24,7 +24,7 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --example - An example CSS custom property.
  */
 @customElement('{{ tag }}')
-export default class {{ properCase tag }} extends ShoelaceElement {
+export default class {{ properCase tag }} extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private readonly localize = new LocalizeController(this);

@@ -1,19 +1,19 @@
-import '../../../dist/shoelace.js';
+import '../../../dist/circular.js';
 import { expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { runFormControlBaseTests } from '../../internal/test/form-control-base-tests.js';
 import { sendKeys } from '@web/test-runner-commands';
 import { serialize } from '../../utilities/form.js';
 import sinon from 'sinon';
-import type SlTextarea from './textarea.js';
+import type OTextarea from './textarea.js';
 
-describe('<sl-textarea>', () => {
+describe('<o-textarea>', () => {
   it('should pass accessibility tests', async () => {
-    const el = await fixture<SlTextarea>(html` <sl-textarea label="Name"></sl-textarea> `);
+    const el = await fixture<OTextarea>(html` <o-textarea label="Name"></o-textarea> `);
     await expect(el).to.be.accessible();
   });
 
   it('default properties', async () => {
-    const el = await fixture<SlTextarea>(html` <sl-textarea></sl-textarea> `);
+    const el = await fixture<OTextarea>(html` <o-textarea></o-textarea> `);
 
     expect(el.size).to.equal('medium');
     expect(el.name).to.equal('');
@@ -41,25 +41,25 @@ describe('<sl-textarea>', () => {
   });
 
   it('should have title if title attribute is set', async () => {
-    const el = await fixture<SlTextarea>(html` <sl-textarea title="Test"></sl-textarea> `);
+    const el = await fixture<OTextarea>(html` <o-textarea title="Test"></o-textarea> `);
     const textarea = el.shadowRoot!.querySelector('textarea')!;
 
     expect(textarea.title).to.equal('Test');
   });
 
   it('should be disabled with the disabled attribute', async () => {
-    const el = await fixture<SlTextarea>(html` <sl-textarea disabled></sl-textarea> `);
+    const el = await fixture<OTextarea>(html` <o-textarea disabled></o-textarea> `);
     const textarea = el.shadowRoot!.querySelector<HTMLTextAreaElement>('[part~="textarea"]')!;
 
     expect(textarea.disabled).to.be.true;
   });
 
   it('should focus the textarea when clicking on the label', async () => {
-    const el = await fixture<SlTextarea>(html` <sl-textarea label="Name"></sl-textarea> `);
+    const el = await fixture<OTextarea>(html` <o-textarea label="Name"></o-textarea> `);
     const label = el.shadowRoot!.querySelector('[part~="form-control-label"]')!;
     const submitHandler = sinon.spy();
 
-    el.addEventListener('sl-focus', submitHandler);
+    el.addEventListener('o-focus', submitHandler);
     (label as HTMLLabelElement).click();
     await waitUntil(() => submitHandler.calledOnce);
 
@@ -67,13 +67,13 @@ describe('<sl-textarea>', () => {
   });
 
   describe('when the value changes', () => {
-    it('should emit sl-change and sl-input when the user types in the textarea', async () => {
-      const el = await fixture<SlTextarea>(html` <sl-textarea></sl-textarea> `);
+    it('should emit o-change and o-input when the user types in the textarea', async () => {
+      const el = await fixture<OTextarea>(html` <o-textarea></o-textarea> `);
       const inputHandler = sinon.spy();
       const changeHandler = sinon.spy();
 
-      el.addEventListener('sl-input', inputHandler);
-      el.addEventListener('sl-change', changeHandler);
+      el.addEventListener('o-input', inputHandler);
+      el.addEventListener('o-change', changeHandler);
       el.focus();
       await sendKeys({ type: 'abc' });
       el.blur();
@@ -83,21 +83,21 @@ describe('<sl-textarea>', () => {
       expect(inputHandler).to.have.been.calledThrice;
     });
 
-    it('should not emit sl-change or sl-input when the value is set programmatically', async () => {
-      const el = await fixture<SlTextarea>(html` <sl-textarea></sl-textarea> `);
+    it('should not emit o-change or o-input when the value is set programmatically', async () => {
+      const el = await fixture<OTextarea>(html` <o-textarea></o-textarea> `);
 
-      el.addEventListener('sl-change', () => expect.fail('sl-change should not be emitted'));
-      el.addEventListener('sl-input', () => expect.fail('sl-input should not be emitted'));
+      el.addEventListener('o-change', () => expect.fail('o-change should not be emitted'));
+      el.addEventListener('o-input', () => expect.fail('o-input should not be emitted'));
       el.value = 'abc';
 
       await el.updateComplete;
     });
 
-    it('should not emit sl-change or sl-input when calling setRangeText()', async () => {
-      const el = await fixture<SlTextarea>(html` <sl-textarea value="hi there"></sl-textarea> `);
+    it('should not emit o-change or o-input when calling setRangeText()', async () => {
+      const el = await fixture<OTextarea>(html` <o-textarea value="hi there"></o-textarea> `);
 
-      el.addEventListener('sl-change', () => expect.fail('sl-change should not be emitted'));
-      el.addEventListener('sl-input', () => expect.fail('sl-input should not be emitted'));
+      el.addEventListener('o-change', () => expect.fail('o-change should not be emitted'));
+      el.addEventListener('o-input', () => expect.fail('o-input should not be emitted'));
       el.focus();
       el.setSelectionRange(0, 2);
       el.setRangeText('hello');
@@ -108,19 +108,19 @@ describe('<sl-textarea>', () => {
 
   describe('when using constraint validation', () => {
     it('should be valid by default', async () => {
-      const el = await fixture<SlTextarea>(html` <sl-textarea></sl-textarea> `);
+      const el = await fixture<OTextarea>(html` <o-textarea></o-textarea> `);
 
       expect(el.checkValidity()).to.be.true;
     });
 
     it('should be invalid when required and empty', async () => {
-      const el = await fixture<SlTextarea>(html` <sl-textarea required></sl-textarea> `);
+      const el = await fixture<OTextarea>(html` <o-textarea required></o-textarea> `);
 
       expect(el.checkValidity()).to.be.false;
     });
 
     it('should be invalid when required and after removing disabled ', async () => {
-      const el = await fixture<SlTextarea>(html` <sl-textarea disabled required></sl-textarea> `);
+      const el = await fixture<OTextarea>(html` <o-textarea disabled required></o-textarea> `);
 
       el.disabled = false;
       await el.updateComplete;
@@ -129,14 +129,14 @@ describe('<sl-textarea>', () => {
     });
 
     it('should be invalid when required and disabled is removed', async () => {
-      const el = await fixture<SlTextarea>(html` <sl-textarea disabled required></sl-textarea> `);
+      const el = await fixture<OTextarea>(html` <o-textarea disabled required></o-textarea> `);
       el.disabled = false;
       await el.updateComplete;
       expect(el.checkValidity()).to.be.false;
     });
 
     it('should receive the correct validation attributes ("states") when valid', async () => {
-      const el = await fixture<SlTextarea>(html` <sl-textarea required value="a"></sl-textarea> `);
+      const el = await fixture<OTextarea>(html` <o-textarea required value="a"></o-textarea> `);
 
       expect(el.checkValidity()).to.be.true;
       expect(el.hasAttribute('data-required')).to.be.true;
@@ -158,7 +158,7 @@ describe('<sl-textarea>', () => {
     });
 
     it('should receive the correct validation attributes ("states") when invalid', async () => {
-      const el = await fixture<SlTextarea>(html` <sl-textarea required></sl-textarea> `);
+      const el = await fixture<OTextarea>(html` <o-textarea required></o-textarea> `);
 
       expect(el.hasAttribute('data-required')).to.be.true;
       expect(el.hasAttribute('data-optional')).to.be.false;
@@ -179,8 +179,8 @@ describe('<sl-textarea>', () => {
     });
 
     it('should receive validation attributes ("states") even when novalidate is used on the parent form', async () => {
-      const el = await fixture<HTMLFormElement>(html` <form novalidate><sl-textarea required></sl-textarea></form> `);
-      const textarea = el.querySelector<SlTextarea>('sl-textarea')!;
+      const el = await fixture<HTMLFormElement>(html` <form novalidate><o-textarea required></o-textarea></form> `);
+      const textarea = el.querySelector<OTextarea>('o-textarea')!;
 
       expect(textarea.hasAttribute('data-required')).to.be.true;
       expect(textarea.hasAttribute('data-optional')).to.be.false;
@@ -193,19 +193,19 @@ describe('<sl-textarea>', () => {
 
   describe('when submitting a form', () => {
     it('should serialize its name and value with FormData', async () => {
-      const form = await fixture<HTMLFormElement>(html` <form><sl-textarea name="a" value="1"></sl-textarea></form> `);
+      const form = await fixture<HTMLFormElement>(html` <form><o-textarea name="a" value="1"></o-textarea></form> `);
       const formData = new FormData(form);
       expect(formData.get('a')).to.equal('1');
     });
 
     it('should serialize its name and value with JSON', async () => {
-      const form = await fixture<HTMLFormElement>(html` <form><sl-textarea name="a" value="1"></sl-textarea></form> `);
+      const form = await fixture<HTMLFormElement>(html` <form><o-textarea name="a" value="1"></o-textarea></form> `);
       const json = serialize(form);
       expect(json.a).to.equal('1');
     });
 
     it('should be invalid when setCustomValidity() is called with a non-empty value', async () => {
-      const textarea = await fixture<HTMLFormElement>(html` <sl-textarea></sl-textarea> `);
+      const textarea = await fixture<HTMLFormElement>(html` <o-textarea></o-textarea> `);
 
       textarea.setCustomValidity('Invalid selection');
       await textarea.updateComplete;
@@ -230,9 +230,9 @@ describe('<sl-textarea>', () => {
       const el = await fixture<HTMLFormElement>(html`
         <div>
           <form id="f">
-            <sl-button type="submit">Submit</sl-button>
+            <o-button type="submit">Submit</o-button>
           </form>
-          <sl-textarea form="f" name="a" value="1"></sl-textarea>
+          <o-textarea form="f" name="a" value="1"></o-textarea>
         </div>
       `);
       const form = el.querySelector('form')!;
@@ -246,12 +246,12 @@ describe('<sl-textarea>', () => {
     it('should reset the element to its initial value', async () => {
       const form = await fixture<HTMLFormElement>(html`
         <form>
-          <sl-textarea name="a" value="test"></sl-textarea>
-          <sl-button type="reset">Reset</sl-button>
+          <o-textarea name="a" value="test"></o-textarea>
+          <o-button type="reset">Reset</o-button>
         </form>
       `);
-      const button = form.querySelector('sl-button')!;
-      const textarea = form.querySelector('sl-textarea')!;
+      const button = form.querySelector('o-button')!;
+      const textarea = form.querySelector('o-textarea')!;
       textarea.value = '1234';
 
       await textarea.updateComplete;
@@ -274,26 +274,26 @@ describe('<sl-textarea>', () => {
 
   describe('when using spellcheck', () => {
     it('should enable spellcheck when no attribute is present', async () => {
-      const el = await fixture<SlTextarea>(html` <sl-textarea></sl-textarea> `);
+      const el = await fixture<OTextarea>(html` <o-textarea></o-textarea> `);
       const textarea = el.shadowRoot!.querySelector<HTMLTextAreaElement>('textarea')!;
       expect(textarea.getAttribute('spellcheck')).to.equal('true');
       expect(textarea.spellcheck).to.be.true;
     });
 
     it('should enable spellcheck when set to "true"', async () => {
-      const el = await fixture<SlTextarea>(html` <sl-textarea spellcheck="true"></sl-textarea> `);
+      const el = await fixture<OTextarea>(html` <o-textarea spellcheck="true"></o-textarea> `);
       const textarea = el.shadowRoot!.querySelector<HTMLTextAreaElement>('textarea')!;
       expect(textarea.getAttribute('spellcheck')).to.equal('true');
       expect(textarea.spellcheck).to.be.true;
     });
 
     it('should disable spellcheck when set to "false"', async () => {
-      const el = await fixture<SlTextarea>(html` <sl-textarea spellcheck="false"></sl-textarea> `);
+      const el = await fixture<OTextarea>(html` <o-textarea spellcheck="false"></o-textarea> `);
       const textarea = el.shadowRoot!.querySelector<HTMLTextAreaElement>('textarea')!;
       expect(textarea.getAttribute('spellcheck')).to.equal('false');
       expect(textarea.spellcheck).to.be.false;
     });
   });
 
-  runFormControlBaseTests('sl-textarea');
+  runFormControlBaseTests('o-textarea');
 });

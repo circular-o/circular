@@ -1,5 +1,5 @@
-# Contributing to Shoelace
+# Contributing to Circular
 
 Before contributing, please review the contributions guidelines at:
 
-[shoelace.style/resources/contributing](https://shoelace.style/resources/contributing)
+[Circular contributing](https://circular.decodeit.co/resources/contributing)

@@ -1,15 +1,15 @@
 import { customElement, property } from 'lit/decorators.js';
 import { LocalizeController } from '../../utilities/localize.js';
-import ShoelaceElement from '../../internal/shoelace-element.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 
 /**
  * @summary Formats a number as a human readable bytes value.
- * @documentation https://shoelace.style/components/format-bytes
+ * @documentation /components/format-bytes
  * @status stable
- * @since 2.0
+ * @since 1.5
  */
-@customElement('sl-format-bytes')
-export default class SlFormatBytes extends ShoelaceElement {
+@customElement('o-format-bytes')
+export default class OFormatBytes extends LibraryBaseElement {
   private readonly localize = new LocalizeController(this);
 
   /** The number to format in bytes. */
@@ -43,6 +43,6 @@ export default class SlFormatBytes extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-format-bytes': SlFormatBytes;
+    'o-format-bytes': OFormatBytes;
   }
 }

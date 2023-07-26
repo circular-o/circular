@@ -5,21 +5,21 @@ meta:
 layout: component
 ---
 
-The mutation observer will report changes to the content it wraps through the `sl-mutation` event. When emitted, a collection of [MutationRecord](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord) objects will be attached to `event.detail` that contains information about how it changed.
+The mutation observer will report changes to the content it wraps through the `o-mutation` event. When emitted, a collection of [MutationRecord](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord) objects will be attached to `event.detail` that contains information about how it changed.
 
 ```html:preview
 <div class="mutation-overview">
-  <sl-mutation-observer attr="variant">
-    <sl-button variant="primary">Click to mutate</sl-button>
-  </sl-mutation-observer>
+  <o-mutation-observer attr="variant">
+    <o-button variant="primary">Click to mutate</o-button>
+  </o-mutation-observer>
 
   <br />
   👆 Click the button and watch the console
 
   <script>
     const container = document.querySelector('.mutation-overview');
-    const mutationObserver = container.querySelector('sl-mutation-observer');
-    const button = container.querySelector('sl-button');
+    const mutationObserver = container.querySelector('o-mutation-observer');
+    const button = container.querySelector('o-button');
     const variants = ['primary', 'success', 'neutral', 'warning', 'danger'];
     let clicks = 0;
 
@@ -30,13 +30,13 @@ The mutation observer will report changes to the content it wraps through the `s
     });
 
     // Log mutations
-    mutationObserver.addEventListener('sl-mutation', event => {
+    mutationObserver.addEventListener('o-mutation', event => {
       console.log(event.detail);
     });
   </script>
 
   <style>
-    .mutation-overview sl-button {
+    .mutation-overview o-button {
       margin-bottom: 1rem;
     }
   </style>
@@ -45,12 +45,12 @@ The mutation observer will report changes to the content it wraps through the `s
 
 ```jsx:react
 import { useState } from 'react';
-import { SlButton, SlMutationObserver } from '@shoelace-style/shoelace/dist/react';
+import { OButton, OMutationObserver } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
   .resize-observer-overview div {
     display: flex;
-    border: solid 2px var(--sl-input-border-color);
+    border: solid 2px var(--o-input-border-color);
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -71,11 +71,11 @@ const App = () => {
 
   return (
     <>
-      <SlMutationObserver attr="*" onSlMutation={event => console.log(event.detail)}>
-        <SlButton variant={variant} onClick={handleClick}>
+      <OMutationObserver attr="*" onOMutation={event => console.log(event.detail)}>
+        <OButton variant={variant} onClick={handleClick}>
           Click to mutate
-        </SlButton>
-      </SlMutationObserver>
+        </OButton>
+      </OMutationObserver>
 
       <style>{css}</style>
     </>
@@ -95,31 +95,31 @@ Use the `child-list` attribute to watch for new child elements that are added or
 
 ```html:preview
 <div class="mutation-child-list">
-  <sl-mutation-observer child-list>
+  <o-mutation-observer child-list>
     <div class="buttons">
-      <sl-button variant="primary">Add button</sl-button>
+      <o-button variant="primary">Add button</o-button>
     </div>
-  </sl-mutation-observer>
+  </o-mutation-observer>
 
   👆 Add and remove buttons and watch the console
 
   <script>
     const container = document.querySelector('.mutation-child-list');
-    const mutationObserver = container.querySelector('sl-mutation-observer');
+    const mutationObserver = container.querySelector('o-mutation-observer');
     const buttons = container.querySelector('.buttons');
-    const button = container.querySelector('sl-button[variant="primary"]');
+    const button = container.querySelector('o-button[variant="primary"]');
     let i = 0;
 
     // Add a button
     button.addEventListener('click', () => {
-      const button = document.createElement('sl-button');
+      const button = document.createElement('o-button');
       button.textContent = ++i;
       buttons.append(button);
     });
 
     // Remove a button
     buttons.addEventListener('click', event => {
-      const target = event.target.closest('sl-button:not([variant="primary"])');
+      const target = event.target.closest('o-button:not([variant="primary"])');
       event.stopPropagation();
 
       if (target) {
@@ -128,7 +128,7 @@ Use the `child-list` attribute to watch for new child elements that are added or
     });
 
     // Log mutations
-    mutationObserver.addEventListener('sl-mutation', event => {
+    mutationObserver.addEventListener('o-mutation', event => {
       console.log(event.detail);
     });
   </script>
@@ -146,7 +146,7 @@ Use the `child-list` attribute to watch for new child elements that are added or
 
 ```jsx:react
 import { useState } from 'react';
-import { SlButton, SlMutationObserver } from '@shoelace-style/shoelace/dist/react';
+import { OButton, OMutationObserver } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
   .mutation-child-list .buttons {
@@ -173,18 +173,18 @@ const App = () => {
   return (
     <>
       <div className="mutation-child-list">
-        <SlMutationObserver child-list onSlMutation={event => console.log(event.detail)}>
+        <OMutationObserver child-list onOMutation={event => console.log(event.detail)}>
           <div className="buttons">
-            <SlButton variant="primary" onClick={addButton}>
+            <OButton variant="primary" onClick={addButton}>
               Add button
-            </SlButton>
+            </OButton>
             {buttonIds.map(id => (
-              <SlButton key={id} variant="default" onClick={() => removeButton(id)}>
+              <OButton key={id} variant="default" onClick={() => removeButton(id)}>
                 {id}
-              </SlButton>
+              </OButton>
             ))}
           </div>
-        </SlMutationObserver>
+        </OMutationObserver>
       </div>
       👆 Add and remove buttons and watch the console
       <style>{css}</style>

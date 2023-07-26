@@ -7,25 +7,27 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { watch } from '../../internal/watch.js';
-import ShoelaceElement from '../../internal/shoelace-element.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 import styles from './textarea.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element.js';
+import type { LibraryBaseFormControl } from '../../internal/library-base-element.js';
+
+let libraryTextareaCounterForIds = 0;
 
 /**
  * @summary Textareas collect data from the user and allow multiple lines of text.
- * @documentation https://shoelace.style/components/textarea
+ * @documentation /components/textarea
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
  * @slot label - The textarea's label. Alternatively, you can use the `label` attribute.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  *
- * @event sl-blur - Emitted when the control loses focus.
- * @event sl-change - Emitted when an alteration to the control's value is committed by the user.
- * @event sl-focus - Emitted when the control gains focus.
- * @event sl-input - Emitted when the control receives input.
- * @event sl-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
+ * @event o-blur - Emitted when the control loses focus.
+ * @event o-change - Emitted when an alteration to the control's value is committed by the user.
+ * @event o-focus - Emitted when the control gains focus.
+ * @event o-input - Emitted when the control receives input.
+ * @event o-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
  *
  * @csspart form-control - The form control that wraps the label, input, and help text.
  * @csspart form-control-label - The label's wrapper.
@@ -34,15 +36,17 @@ import type { ShoelaceFormControl } from '../../internal/shoelace-element.js';
  * @csspart base - The component's base wrapper.
  * @csspart textarea - The internal `<textarea>` control.
  */
-@customElement('sl-textarea')
-export default class SlTextarea extends ShoelaceElement implements ShoelaceFormControl {
+@customElement('o-textarea')
+export default class OTextarea extends LibraryBaseElement implements LibraryBaseFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this, {
-    assumeInteractionOn: ['sl-blur', 'sl-input']
+    assumeInteractionOn: ['o-blur', 'o-input']
   });
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
   private resizeObserver: ResizeObserver;
+
+  private readonly textareaId = `o-textarea-${libraryTextareaCounterForIds++}`;
 
   @query('.textarea__control') input: HTMLTextAreaElement;
 
@@ -167,23 +171,23 @@ export default class SlTextarea extends ShoelaceElement implements ShoelaceFormC
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('o-blur');
   }
 
   private handleChange() {
     this.value = this.input.value;
     this.setTextareaHeight();
-    this.emit('sl-change');
+    this.emit('o-change');
   }
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sl-focus');
+    this.emit('o-focus');
   }
 
   private handleInput() {
     this.value = this.input.value;
-    this.emit('sl-input');
+    this.emit('o-input');
   }
 
   private handleInvalid(event: Event) {
@@ -234,7 +238,7 @@ export default class SlTextarea extends ShoelaceElement implements ShoelaceFormC
   }
 
   /** Gets or sets the textarea's scroll position. */
-  scrollPosition(position?: { top?: number; left?: number }): { top: number; left: number } | undefined {
+  scrollPosition(position?: { top?: number; left?: number; }): { top: number; left: number; } | undefined {
     if (position) {
       if (typeof position.top === 'number') this.input.scrollTop = position.top;
       if (typeof position.left === 'number') this.input.scrollLeft = position.left;
@@ -307,18 +311,18 @@ export default class SlTextarea extends ShoelaceElement implements ShoelaceFormC
       <div
         part="form-control"
         class=${classMap({
-          'form-control': true,
-          'form-control--small': this.size === 'small',
-          'form-control--medium': this.size === 'medium',
-          'form-control--large': this.size === 'large',
-          'form-control--has-label': hasLabel,
-          'form-control--has-help-text': hasHelpText
-        })}
+      'form-control': true,
+      'form-control--small': this.size === 'small',
+      'form-control--medium': this.size === 'medium',
+      'form-control--large': this.size === 'large',
+      'form-control--has-label': hasLabel,
+      'form-control--has-help-text': hasHelpText
+    })}
       >
         <label
           part="form-control-label"
           class="form-control__label"
-          for="input"
+          for=${this.textareaId}
           aria-hidden=${hasLabel ? 'false' : 'true'}
         >
           <slot name="label">${this.label}</slot>
@@ -328,23 +332,23 @@ export default class SlTextarea extends ShoelaceElement implements ShoelaceFormC
           <div
             part="base"
             class=${classMap({
-              textarea: true,
-              'textarea--small': this.size === 'small',
-              'textarea--medium': this.size === 'medium',
-              'textarea--large': this.size === 'large',
-              'textarea--standard': !this.filled,
-              'textarea--filled': this.filled,
-              'textarea--disabled': this.disabled,
-              'textarea--focused': this.hasFocus,
-              'textarea--empty': !this.value,
-              'textarea--resize-none': this.resize === 'none',
-              'textarea--resize-vertical': this.resize === 'vertical',
-              'textarea--resize-auto': this.resize === 'auto'
-            })}
+      textarea: true,
+      'textarea--small': this.size === 'small',
+      'textarea--medium': this.size === 'medium',
+      'textarea--large': this.size === 'large',
+      'textarea--standard': !this.filled,
+      'textarea--filled': this.filled,
+      'textarea--disabled': this.disabled,
+      'textarea--focused': this.hasFocus,
+      'textarea--empty': !this.value,
+      'textarea--resize-none': this.resize === 'none',
+      'textarea--resize-vertical': this.resize === 'vertical',
+      'textarea--resize-auto': this.resize === 'auto'
+    })}
           >
             <textarea
               part="textarea"
-              id="input"
+              id=${this.textareaId}
               class="textarea__control"
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
               name=${ifDefined(this.name)}
@@ -388,6 +392,6 @@ export default class SlTextarea extends ShoelaceElement implements ShoelaceFormC
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-textarea': SlTextarea;
+    'o-textarea': OTextarea;
   }
 }

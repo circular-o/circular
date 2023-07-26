@@ -17,6 +17,7 @@ const prettier = require('./_utilities/prettier.cjs');
 const scrollingTables = require('./_utilities/scrolling-tables.cjs');
 const typography = require('./_utilities/typography.cjs');
 const replacer = require('./_utilities/replacer.cjs');
+const { getDocsConfig, setDocsConfig } = require('./_utilities/docs-config.cjs');
 
 const assetsDir = 'assets';
 const cdndir = 'cdn';
@@ -25,20 +26,24 @@ const allComponents = getAllComponents();
 let hasBuiltSearchIndex = false;
 
 module.exports = function (eleventyConfig) {
+  setDocsConfig({ packageVersion: customElementsManifest.package.version });
+  const docsConfig = getDocsConfig();
+
   //
   // Global data
   //
-  eleventyConfig.addGlobalData('baseUrl', 'https://shoelace.style/'); // the production URL
+  eleventyConfig.addGlobalData('baseUrl', docsConfig.docsWebsite); // the production URL
   eleventyConfig.addGlobalData('layout', 'default'); // make 'default' the default layout
   eleventyConfig.addGlobalData('toc', true); // enable the table of contents
   eleventyConfig.addGlobalData('meta', {
-    title: 'Shoelace',
+    title: docsConfig.libraryName,
     description: 'A forward-thinking library of web components.',
     image: 'images/og-image.png',
     version: customElementsManifest.package.version,
     components: allComponents,
     cdndir,
-    npmdir
+    npmdir,
+    ...docsConfig
   });
 
   //
@@ -74,7 +79,7 @@ module.exports = function (eleventyConfig) {
     if (!component) {
       throw new Error(
         `Unable to find a component called "${tagName}". Make sure the file name is the same as the component's tag ` +
-          `name (minus the sl- prefix).`
+          `name (minus the o- prefix).`
       );
     }
     return component;
@@ -89,21 +94,21 @@ module.exports = function (eleventyConfig) {
   // Filters
   //
   eleventyConfig.addFilter('markdown', content => {
-    return shoelaceFlavoredMarkdown.render(content);
+    return content ? shoelaceFlavoredMarkdown.render(content) : '';
   });
 
   eleventyConfig.addFilter('markdownInline', content => {
-    return shoelaceFlavoredMarkdown.renderInline(content);
+    return content ? shoelaceFlavoredMarkdown.renderInline(content) : '';
   });
 
   eleventyConfig.addFilter('classNameToComponentName', className => {
-    let name = capitalCase(className.replace(/^Sl/, ''));
+    let name = capitalCase(className.replace(/^O/, ''));
     if (name === 'Qr Code') name = 'QR Code'; // manual override
     return name;
   });
 
   eleventyConfig.addFilter('removeSlPrefix', tagName => {
-    return tagName.replace(/^sl-/, '');
+    return tagName.replace(/^o-/, '');
   });
 
   //
@@ -137,7 +142,22 @@ module.exports = function (eleventyConfig) {
     replacer(doc, [
       { pattern: '%VERSION%', replacement: customElementsManifest.package.version },
       { pattern: '%CDNDIR%', replacement: cdndir },
-      { pattern: '%NPMDIR%', replacement: npmdir }
+      { pattern: '%NPMDIR%', replacement: npmdir },
+      // Custom Circular placeholders
+      { pattern: 'O-PACKAGE-VERSION-O', replacement: docsConfig.packageVersion },
+      { pattern: 'O-PACKAGE-ORGANIZATION-O', replacement: `${docsConfig.packageOrganization}` },
+      { pattern: 'O-PACKAGE-NAME-O', replacement: `${docsConfig.packageName}` },
+      {
+        pattern: 'O-PACKAGE-FULL-NAME-O',
+        replacement: `${docsConfig.packageOrganization}/${docsConfig.packageName}`
+      },
+      { pattern: 'O-PACKAGE-URL-O', replacement: `${docsConfig.packageUrl}` },
+      { pattern: 'O-DOCS-WEBSITE-O', replacement: `${docsConfig.docsWebsite}` },
+      { pattern: 'O-DOCS-NEXT-WEBSITE-O', replacement: `${docsConfig.docsNextWebsite}` },
+      { pattern: 'O-REPO-URL-O', replacement: `${docsConfig.repoUrl}` },
+      { pattern: 'O-TWITTER-USER-O', replacement: `${docsConfig.twitterUser}` },
+      { pattern: 'O-SPONSOR-URL-O', replacement: `${docsConfig.sponsorUrl}` },
+      { pattern: 'O-LIBRARY-NAME-O', replacement: `${docsConfig.libraryName}` }
     ]);
 
     // Serialize the Document object to an HTML string and prepend the doctype

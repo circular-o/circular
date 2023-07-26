@@ -5,16 +5,16 @@ meta:
 layout: component
 ---
 
-For a full list of icons that come bundled with Shoelace, refer to the [icon component](/components/icon).
+For a full list of icons that come bundled with O-LIBRARY-NAME-O, refer to the [icon component](/components/icon).
 
 ```html:preview
-<sl-icon-button name="gear" label="Settings"></sl-icon-button>
+<o-icon-button name="gear" label="Settings"></o-icon-button>
 ```
 
 ```jsx:react
-import { SlIconButton } from '@shoelace-style/shoelace/dist/react';
+import { OIconButton } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlIconButton name="gear" label="Settings" />;
+const App = () => <OIconButton name="gear" label="Settings" />;
 ```
 
 ## Examples
@@ -24,21 +24,21 @@ const App = () => <SlIconButton name="gear" label="Settings" />;
 Icon buttons inherit their parent element's `font-size`.
 
 ```html:preview
-<sl-icon-button name="pencil" label="Edit" style="font-size: 1.5rem;"></sl-icon-button>
-<sl-icon-button name="pencil" label="Edit" style="font-size: 2rem;"></sl-icon-button>
-<sl-icon-button name="pencil" label="Edit" style="font-size: 2.5rem;"></sl-icon-button>
+<o-icon-button name="pencil" label="Edit" style="font-size: 1.5rem;"></o-icon-button>
+<o-icon-button name="pencil" label="Edit" style="font-size: 2rem;"></o-icon-button>
+<o-icon-button name="pencil" label="Edit" style="font-size: 2.5rem;"></o-icon-button>
 ```
 
 {% raw %}
 
 ```jsx:react
-import { SlIconButton } from '@shoelace-style/shoelace/dist/react';
+import { OIconButton } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
-    <SlIconButton name="pencil" label="Edit" style={{ fontSize: '1.5rem' }} />
-    <SlIconButton name="pencil" label="Edit" style={{ fontSize: '2rem' }} />
-    <SlIconButton name="pencil" label="Edit" style={{ fontSize: '2.5rem' }} />
+    <OIconButton name="pencil" label="Edit" style={{ fontSize: '1.5rem' }} />
+    <OIconButton name="pencil" label="Edit" style={{ fontSize: '2rem' }} />
+    <OIconButton name="pencil" label="Edit" style={{ fontSize: '2.5rem' }} />
   </>
 );
 ```
@@ -51,41 +51,41 @@ Icon buttons are designed to have a uniform appearance, so their color is not in
 
 ```html:preview
 <div class="icon-button-color">
-  <sl-icon-button name="type-bold" label="Bold"></sl-icon-button>
-  <sl-icon-button name="type-italic" label="Italic"></sl-icon-button>
-  <sl-icon-button name="type-underline" label="Underline"></sl-icon-button>
+  <o-icon-button name="type-bold" label="Bold"></o-icon-button>
+  <o-icon-button name="type-italic" label="Italic"></o-icon-button>
+  <o-icon-button name="type-underline" label="Underline"></o-icon-button>
 </div>
 
 <style>
-  .icon-button-color sl-icon-button::part(base) {
+  .icon-button-color o-icon-button::part(base) {
     color: #b00091;
   }
 
-  .icon-button-color sl-icon-button::part(base):hover,
-  .icon-button-color sl-icon-button::part(base):focus {
+  .icon-button-color o-icon-button::part(base):hover,
+  .icon-button-color o-icon-button::part(base):focus {
     color: #c913aa;
   }
 
-  .icon-button-color sl-icon-button::part(base):active {
+  .icon-button-color o-icon-button::part(base):active {
     color: #960077;
   }
 </style>
 ```
 
 ```jsx:react
-import { SlIconButton } from '@shoelace-style/shoelace/dist/react';
+import { OIconButton } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
-  .icon-button-color sl-icon-button::part(base) {
+  .icon-button-color o-icon-button::part(base) {
     color: #b00091;
   }
 
-  .icon-button-color sl-icon-button::part(base):hover,
-  .icon-button-color sl-icon-button::part(base):focus {
+  .icon-button-color o-icon-button::part(base):hover,
+  .icon-button-color o-icon-button::part(base):focus {
     color: #c913aa;
   }
 
-  .icon-button-color sl-icon-button::part(base):active {
+  .icon-button-color o-icon-button::part(base):active {
     color: #960077;
   }
 `;
@@ -93,9 +93,9 @@ const css = `
 const App = () => (
   <>
     <div className="icon-button-color">
-      <SlIconButton name="type-bold" label="Bold" />
-      <SlIconButton name="type-italic" label="Italic" />
-      <SlIconButton name="type-underline" label="Underline" />
+      <OIconButton name="type-bold" label="Bold" />
+      <OIconButton name="type-italic" label="Italic" />
+      <OIconButton name="type-underline" label="Underline" />
     </div>
 
     <style>{css}</style>
@@ -108,13 +108,13 @@ const App = () => (
 Use the `href` attribute to convert the button to a link.
 
 ```html:preview
-<sl-icon-button name="gear" label="Settings" href="https://example.com" target="_blank"></sl-icon-button>
+<o-icon-button name="gear" label="Settings" href="https://example.com" target="_blank"></o-icon-button>
 ```
 
 ```jsx:react
-import { SlIconButton } from '@shoelace-style/shoelace/dist/react';
+import { OIconButton } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlIconButton name="gear" label="Settings" href="https://example.com" target="_blank" />;
+const App = () => <OIconButton name="gear" label="Settings" href="https://example.com" target="_blank" />;
 ```
 
 ### Icon Button with Tooltip
@@ -122,18 +122,18 @@ const App = () => <SlIconButton name="gear" label="Settings" href="https://examp
 Wrap a tooltip around an icon button to provide contextual information to the user.
 
 ```html:preview
-<sl-tooltip content="Settings">
-  <sl-icon-button name="gear" label="Settings"></sl-icon-button>
-</sl-tooltip>
+<o-tooltip content="Settings">
+  <o-icon-button name="gear" label="Settings"></o-icon-button>
+</o-tooltip>
 ```
 
 ```jsx:react
-import { SlIconButton, SlTooltip } from '@shoelace-style/shoelace/dist/react';
+import { OIconButton, OTooltip } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlTooltip content="Settings">
-    <SlIconButton name="gear" label="Settings" />
-  </SlTooltip>
+  <OTooltip content="Settings">
+    <OIconButton name="gear" label="Settings" />
+  </OTooltip>
 );
 ```
 
@@ -142,11 +142,11 @@ const App = () => (
 Use the `disabled` attribute to disable the icon button.
 
 ```html:preview
-<sl-icon-button name="gear" label="Settings" disabled></sl-icon-button>
+<o-icon-button name="gear" label="Settings" disabled></o-icon-button>
 ```
 
 ```jsx:react
-import { SlIconButton } from '@shoelace-style/shoelace/dist/react';
+import { OIconButton } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlIconButton name="gear" label="Settings" disabled />;
+const App = () => <OIconButton name="gear" label="Settings" disabled />;
 ```

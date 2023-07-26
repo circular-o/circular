@@ -11,31 +11,31 @@ import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll.js
 import { uppercaseFirstLetter } from '../../internal/string.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 import Modal from '../../internal/modal.js';
-import ShoelaceElement from '../../internal/shoelace-element.js';
 import styles from './drawer.styles.js';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Drawers slide in from a container to expose additional options and information.
- * @documentation https://shoelace.style/components/drawer
+ * @documentation /components/drawer
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
- * @dependency sl-icon-button
+ * @dependency o-icon-button
  *
  * @slot - The drawer's main content.
  * @slot label - The drawer's label. Alternatively, you can use the `label` attribute.
- * @slot header-actions - Optional actions to add to the header. Works best with `<sl-icon-button>`.
+ * @slot header-actions - Optional actions to add to the header. Works best with `<o-icon-button>`.
  * @slot footer - The drawer's footer, usually one or more buttons representing various options.
  *
- * @event sl-show - Emitted when the drawer opens.
- * @event sl-after-show - Emitted after the drawer opens and all animations are complete.
- * @event sl-hide - Emitted when the drawer closes.
- * @event sl-after-hide - Emitted after the drawer closes and all animations are complete.
- * @event sl-initial-focus - Emitted when the drawer opens and is ready to receive focus. Calling
+ * @event o-show - Emitted when the drawer opens.
+ * @event o-after-show - Emitted after the drawer opens and all animations are complete.
+ * @event o-hide - Emitted when the drawer closes.
+ * @event o-after-hide - Emitted after the drawer closes and all animations are complete.
+ * @event o-initial-focus - Emitted when the drawer opens and is ready to receive focus. Calling
  *   `event.preventDefault()` will prevent focusing and allow you to set it on a different element, such as an input.
- * @event {{ source: 'close-button' | 'keyboard' | 'overlay' }} sl-request-close - Emitted when the user attempts to
+ * @event {{ source: 'close-button' | 'keyboard' | 'overlay' }} o-request-close - Emitted when the user attempts to
  *   close the drawer by clicking the close button, clicking the overlay, or pressing escape. Calling
  *   `event.preventDefault()` will keep the drawer open. Avoid using this unless closing the drawer will result in
  *   destructive behavior such as data loss.
@@ -44,9 +44,9 @@ import type { CSSResultGroup } from 'lit';
  * @csspart overlay - The overlay that covers the screen behind the drawer.
  * @csspart panel - The drawer's panel (where the drawer and its content are rendered).
  * @csspart header - The drawer's header. This element wraps the title and header actions.
- * @csspart header-actions - Optional actions to add to the header. Works best with `<sl-icon-button>`.
+ * @csspart header-actions - Optional actions to add to the header. Works best with `<o-icon-button>`.
  * @csspart title - The drawer's title.
- * @csspart close-button - The close button, an `<sl-icon-button>`.
+ * @csspart close-button - The close button, an `<o-icon-button>`.
  * @csspart close-button__base - The close button's exported `base` part.
  * @csspart body - The drawer's body.
  * @csspart footer - The drawer's footer.
@@ -69,8 +69,8 @@ import type { CSSResultGroup } from 'lit';
  * @animation drawer.overlay.show - The animation to use when showing the drawer's overlay.
  * @animation drawer.overlay.hide - The animation to use when hiding the drawer's overlay.
  */
-@customElement('sl-drawer')
-export default class SlDrawer extends ShoelaceElement {
+@customElement('o-drawer')
+export default class ODrawer extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private readonly hasSlotController = new HasSlotController(this, 'footer');
@@ -128,7 +128,7 @@ export default class SlDrawer extends ShoelaceElement {
   }
 
   private requestClose(source: 'close-button' | 'keyboard' | 'overlay') {
-    const slRequestClose = this.emit('sl-request-close', {
+    const slRequestClose = this.emit('o-request-close', {
       cancelable: true,
       detail: { source }
     });
@@ -161,7 +161,7 @@ export default class SlDrawer extends ShoelaceElement {
   async handleOpenChange() {
     if (this.open) {
       // Show
-      this.emit('sl-show');
+      this.emit('o-show');
       this.addOpenListeners();
       this.originalTrigger = document.activeElement as HTMLElement;
 
@@ -187,7 +187,7 @@ export default class SlDrawer extends ShoelaceElement {
 
       // Set initial focus
       requestAnimationFrame(() => {
-        const slInitialFocus = this.emit('sl-initial-focus', { cancelable: true });
+        const slInitialFocus = this.emit('o-initial-focus', { cancelable: true });
 
         if (!slInitialFocus.defaultPrevented) {
           // Set focus to the autofocus target and restore the attribute
@@ -213,10 +213,10 @@ export default class SlDrawer extends ShoelaceElement {
         animateTo(this.overlay, overlayAnimation.keyframes, overlayAnimation.options)
       ]);
 
-      this.emit('sl-after-show');
+      this.emit('o-after-show');
     } else {
       // Hide
-      this.emit('sl-hide');
+      this.emit('o-hide');
       this.removeOpenListeners();
 
       if (!this.contained) {
@@ -254,7 +254,7 @@ export default class SlDrawer extends ShoelaceElement {
         setTimeout(() => trigger.focus());
       }
 
-      this.emit('sl-after-hide');
+      this.emit('o-after-hide');
     }
   }
 
@@ -278,7 +278,7 @@ export default class SlDrawer extends ShoelaceElement {
     }
 
     this.open = true;
-    return waitForEvent(this, 'sl-after-show');
+    return waitForEvent(this, 'o-after-show');
   }
 
   /** Hides the drawer */
@@ -288,7 +288,7 @@ export default class SlDrawer extends ShoelaceElement {
     }
 
     this.open = false;
-    return waitForEvent(this, 'sl-after-hide');
+    return waitForEvent(this, 'o-after-hide');
   }
 
   render() {
@@ -296,17 +296,17 @@ export default class SlDrawer extends ShoelaceElement {
       <div
         part="base"
         class=${classMap({
-          drawer: true,
-          'drawer--open': this.open,
-          'drawer--top': this.placement === 'top',
-          'drawer--end': this.placement === 'end',
-          'drawer--bottom': this.placement === 'bottom',
-          'drawer--start': this.placement === 'start',
-          'drawer--contained': this.contained,
-          'drawer--fixed': !this.contained,
-          'drawer--rtl': this.localize.dir() === 'rtl',
-          'drawer--has-footer': this.hasSlotController.test('footer')
-        })}
+      drawer: true,
+      'drawer--open': this.open,
+      'drawer--top': this.placement === 'top',
+      'drawer--end': this.placement === 'end',
+      'drawer--bottom': this.placement === 'bottom',
+      'drawer--start': this.placement === 'start',
+      'drawer--contained': this.contained,
+      'drawer--fixed': !this.contained,
+      'drawer--rtl': this.localize.dir() === 'rtl',
+      'drawer--has-footer': this.hasSlotController.test('footer')
+    })}
       >
         <div part="overlay" class="drawer__overlay" @click=${() => this.requestClose('overlay')} tabindex="-1"></div>
 
@@ -321,7 +321,7 @@ export default class SlDrawer extends ShoelaceElement {
           tabindex="0"
         >
           ${!this.noHeader
-            ? html`
+        ? html`
                 <header part="header" class="drawer__header">
                   <h2 part="title" class="drawer__title" id="title">
                     <!-- If there's no label, use an invisible character to prevent the header from collapsing -->
@@ -329,7 +329,7 @@ export default class SlDrawer extends ShoelaceElement {
                   </h2>
                   <div part="header-actions" class="drawer__header-actions">
                     <slot name="header-actions"></slot>
-                    <sl-icon-button
+                    <o-icon-button
                       part="close-button"
                       exportparts="base:close-button__base"
                       class="drawer__close"
@@ -337,11 +337,11 @@ export default class SlDrawer extends ShoelaceElement {
                       label=${this.localize.term('close')}
                       library="system"
                       @click=${() => this.requestClose('close-button')}
-                    ></sl-icon-button>
+                    ></o-icon-button>
                   </div>
                 </header>
               `
-            : ''}
+        : ''}
 
           <slot part="body" class="drawer__body"></slot>
 
@@ -457,6 +457,6 @@ setDefaultAnimation('drawer.overlay.hide', {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-drawer': SlDrawer;
+    'o-drawer': ODrawer;
   }
 }

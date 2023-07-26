@@ -8,32 +8,32 @@ layout: component
 You can use [menu items](/components/menu-item), [menu labels](/components/menu-label), and [dividers](/components/divider) to compose a menu. Menus support keyboard interactions, including type-to-select an option.
 
 ```html:preview
-<sl-menu style="max-width: 200px;">
-  <sl-menu-item value="undo">Undo</sl-menu-item>
-  <sl-menu-item value="redo">Redo</sl-menu-item>
-  <sl-divider></sl-divider>
-  <sl-menu-item value="cut">Cut</sl-menu-item>
-  <sl-menu-item value="copy">Copy</sl-menu-item>
-  <sl-menu-item value="paste">Paste</sl-menu-item>
-  <sl-menu-item value="delete">Delete</sl-menu-item>
-</sl-menu>
+<o-menu style="max-width: 200px;">
+  <o-menu-item value="undo">Undo</o-menu-item>
+  <o-menu-item value="redo">Redo</o-menu-item>
+  <o-divider></o-divider>
+  <o-menu-item value="cut">Cut</o-menu-item>
+  <o-menu-item value="copy">Copy</o-menu-item>
+  <o-menu-item value="paste">Paste</o-menu-item>
+  <o-menu-item value="delete">Delete</o-menu-item>
+</o-menu>
 ```
 
 {% raw %}
 
 ```jsx:react
-import { SlDivider, SlMenu, SlMenuItem } from '@shoelace-style/shoelace/dist/react';
+import { ODivider, OMenu, OMenuItem } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlMenu style={{ maxWidth: '200px' }}>
-    <SlMenuItem value="undo">Undo</SlMenuItem>
-    <SlMenuItem value="redo">Redo</SlMenuItem>
-    <SlDivider />
-    <SlMenuItem value="cut">Cut</SlMenuItem>
-    <SlMenuItem value="copy">Copy</SlMenuItem>
-    <SlMenuItem value="paste">Paste</SlMenuItem>
-    <SlMenuItem value="delete">Delete</SlMenuItem>
-  </SlMenu>
+  <OMenu style={{ maxWidth: '200px' }}>
+    <OMenuItem value="undo">Undo</OMenuItem>
+    <OMenuItem value="redo">Redo</OMenuItem>
+    <ODivider />
+    <OMenuItem value="cut">Cut</OMenuItem>
+    <OMenuItem value="copy">Copy</OMenuItem>
+    <OMenuItem value="paste">Paste</OMenuItem>
+    <OMenuItem value="delete">Delete</OMenuItem>
+  </OMenu>
 );
 ```
 

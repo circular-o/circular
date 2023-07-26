@@ -2,7 +2,16 @@
 <html
   lang="en"
   data-layout="{{ layout }}"
-  data-shoelace-version="{{ meta.version }}"
+  data-library-version="{{ meta.version }}"
+  data-library-cdndir="{{ meta.cdndir }}"
+  data-library-npmdir="{{ meta.npmdir }}"
+  data-library-package-organization="{{ meta.packageOrganization }}"
+  data-library-package-name="{{ meta.packageName }}"
+  data-library-package-url="{{ meta.packageUrl }}"
+  data-library-react-version="{{ meta.reactVersion }}"
+  data-library-react-cdn-url="{{ meta.reactCdnUrl }}"
+  data-library-react-url="{{ meta.reactUrl }}"
+  data-library-react-package-url="{{ meta.reactPackageUrl }}"
 >
   <head>
     {# Metadata #}
@@ -33,17 +42,17 @@
     <meta property="og:description" content="{{ meta.description }}" />
     <meta property="og:image" content="{{ assetUrl(meta.image, true) }}" />
 
-    {# Shoelace #}
+    {# Import Library #}
     <link rel="stylesheet" href="/dist/themes/light.css" />
     <link rel="stylesheet" href="/dist/themes/dark.css" />
-    <script type="module" src="/dist/shoelace-autoloader.js"></script>
+    <script type="module" src="/dist/circular.js"></script>
 
     {# Set the initial theme and menu states here to prevent flashing #}
     <script>
       (() => {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const theme = localStorage.getItem('theme') || 'auto';
-        document.documentElement.classList.toggle('sl-theme-dark', theme === 'dark' || (theme === 'auto' && prefersDark));
+        document.documentElement.classList.toggle('o-theme-dark', theme === 'dark' || (theme === 'auto' && prefersDark));
       })();
     </script>
 
@@ -71,34 +80,34 @@
     {# Icon toolbar #}
     <div id="icon-toolbar">
       {# GitHub #}
-      <a href="https://github.com/shoelace-style/shoelace" title="View Shoelace on GitHub">
-        <sl-icon name="github"></sl-icon>
+      <a href="{{ meta.repoUrl }}" title="View {{ meta.libraryName }} on GitHub">
+        <o-icon name="github"></o-icon>
       </a>
 
       {# Twitter #}
-      <a href="https://twitter.com/shoelace_style" title="Follow Shoelace on Twitter">
-        <sl-icon name="twitter"></sl-icon>
+      <a href="https://twitter.com/{{ meta.twitterUser }}" title="Follow {{ meta.libraryName }} on Twitter">
+        <o-icon name="twitter"></o-icon>
       </a>
 
       {# Theme selector #}
-      <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
-        <sl-button slot="trigger" size="small" variant="text" caret title="Press \ to toggle">
-          <sl-icon class="only-light" name="sun-fill"></sl-icon>
-          <sl-icon class="only-dark" name="moon-fill"></sl-icon>
-        </sl-button>
-        <sl-menu>
-          <sl-menu-item type="checkbox" value="light">Light</sl-menu-item>
-          <sl-menu-item type="checkbox" value="dark">Dark</sl-menu-item>
-          <sl-divider></sl-divider>
-          <sl-menu-item type="checkbox" value="auto">System</sl-menu-item>
-        </sl-menu>
-      </sl-dropdown>
+      <o-dropdown id="theme-selector" placement="bottom-end" distance="3">
+        <o-button slot="trigger" size="small" variant="text" caret title="Press \ to toggle">
+          <o-icon class="only-light" name="sun-fill"></o-icon>
+          <o-icon class="only-dark" name="moon-fill"></o-icon>
+        </o-button>
+        <o-menu>
+          <o-menu-item type="checkbox" value="light">Light</o-menu-item>
+          <o-menu-item type="checkbox" value="dark">Dark</o-menu-item>
+          <o-divider></o-divider>
+          <o-menu-item type="checkbox" value="auto">System</o-menu-item>
+        </o-menu>
+      </o-dropdown>
     </div>
 
     <aside id="sidebar" data-preserve-scroll>
       <header>
         <a href="/">
-          <img src="{{ assetUrl('images/wordmark.svg') }}" alt="Shoelace" />
+          <img src="{{ assetUrl('images/circular-logo-light.svg') }}" alt="{{ meta.libraryName }}" />
         </a>
         <div class="sidebar-version">
           {{ meta.version }}
@@ -106,19 +115,19 @@
       </header>
 
       <div class="sidebar-buttons">
-        <sl-button size="small" class="repo-button repo-button--sponsor" href="https://github.com/sponsors/claviska" target="_blank">
-          <sl-icon slot="prefix" name="heart"></sl-icon> Sponsor
-        </sl-button>
-        <sl-button size="small" class="repo-button repo-button--github" href="https://github.com/shoelace-style/shoelace" target="_blank">
-          <sl-icon slot="prefix" name="github"></sl-icon> Code
-        </sl-button>
-        <sl-button size="small" class="repo-button repo-button--twitter" href="https://twitter.com/shoelace_style" target="_blank">
-          <sl-icon slot="prefix" name="twitter"></sl-icon> Follow
-        </sl-button>
+        <o-button size="small" class="repo-button repo-button--sponsor" href="{{ meta.sponsorUrl }}" target="_blank">
+          <o-icon slot="prefix" name="heart"></o-icon> Sponsor
+        </o-button>
+        <o-button size="small" class="repo-button repo-button--github" href="{{ meta.repoUrl }}" target="_blank">
+          <o-icon slot="prefix" name="github"></o-icon> Code
+        </o-button>
+        <o-button size="small" class="repo-button repo-button--twitter" href="https://twitter.com/{{ meta.twitterUser }}" target="_blank">
+          <o-icon slot="prefix" name="twitter"></o-icon> Follow
+        </o-button>
       </div>
 
       <button class="search-box" type="button" title="Press / to search" aria-label="Search" data-plugin="search">
-        <sl-icon name="search"></sl-icon>
+        <o-icon name="search"></o-icon>
         <span>Search</span>
       </button>
 

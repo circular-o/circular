@@ -17,23 +17,23 @@ export default css`
     position: relative;
     width: var(--size);
     height: var(--size);
-    background-color: var(--sl-color-neutral-400);
-    font-family: var(--sl-font-sans);
+    background-color: var(--o-color-neutral-400);
+    font-family: var(--o-font-sans);
     font-size: calc(var(--size) * 0.5);
-    font-weight: var(--sl-font-weight-normal);
-    color: var(--sl-color-neutral-0);
+    font-weight: var(--o-font-weight-normal);
+    color: var(--o-color-neutral-0);
     user-select: none;
     vertical-align: middle;
   }
 
   .avatar--circle,
   .avatar--circle .avatar__image {
-    border-radius: var(--sl-border-radius-circle);
+    border-radius: var(--o-border-radius-circle);
   }
 
   .avatar--rounded,
   .avatar--rounded .avatar__image {
-    border-radius: var(--sl-border-radius-medium);
+    border-radius: var(--o-border-radius-medium);
   }
 
   .avatar--square {

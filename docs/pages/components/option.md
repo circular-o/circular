@@ -6,22 +6,22 @@ layout: component
 ---
 
 ```html:preview
-<sl-select label="Select one">
-  <sl-option value="option-1">Option 1</sl-option>
-  <sl-option value="option-2">Option 2</sl-option>
-  <sl-option value="option-3">Option 3</sl-option>
-</sl-select>
+<o-select label="Select one">
+  <o-option value="option-1">Option 1</o-option>
+  <o-option value="option-2">Option 2</o-option>
+  <o-option value="option-3">Option 3</o-option>
+</o-select>
 ```
 
 ```jsx:react
-import { SlOption, SlSelect } from '@shoelace-style/shoelace/dist/react';
+import { OOption, OSelect } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlSelect>
-    <SlOption value="option-1">Option 1</SlOption>
-    <SlOption value="option-2">Option 2</SlOption>
-    <SlOption value="option-3">Option 3</SlOption>
-  </SlSelect>
+  <OSelect>
+    <OOption value="option-1">Option 1</OOption>
+    <OOption value="option-2">Option 2</OOption>
+    <OOption value="option-3">Option 3</OOption>
+  </OSelect>
 );
 ```
 
@@ -32,24 +32,24 @@ const App = () => (
 Use the `disabled` attribute to disable an option and prevent it from being selected.
 
 ```html:preview
-<sl-select label="Select one">
-  <sl-option value="option-1">Option 1</sl-option>
-  <sl-option value="option-2" disabled>Option 2</sl-option>
-  <sl-option value="option-3">Option 3</sl-option>
-</sl-select>
+<o-select label="Select one">
+  <o-option value="option-1">Option 1</o-option>
+  <o-option value="option-2" disabled>Option 2</o-option>
+  <o-option value="option-3">Option 3</o-option>
+</o-select>
 ```
 
 ```jsx:react
-import { SlOption, SlSelect } from '@shoelace-style/shoelace/dist/react';
+import { OOption, OSelect } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlSelect>
-    <SlOption value="option-1">Option 1</SlOption>
-    <SlOption value="option-2" disabled>
+  <OSelect>
+    <OOption value="option-1">Option 1</OOption>
+    <OOption value="option-2" disabled>
       Option 2
-    </SlOption>
-    <SlOption value="option-3">Option 3</SlOption>
-  </SlSelect>
+    </OOption>
+    <OOption value="option-3">Option 3</OOption>
+  </OSelect>
 );
 ```
 
@@ -58,23 +58,23 @@ const App = () => (
 Add icons to the start and end of menu items using the `prefix` and `suffix` slots.
 
 ```html:preview
-<sl-select label="Select one">
-  <sl-option value="option-1">
-    <sl-icon slot="prefix" name="envelope"></sl-icon>
+<o-select label="Select one">
+  <o-option value="option-1">
+    <o-icon slot="prefix" name="envelope"></o-icon>
     Email
-    <sl-icon slot="suffix" name="patch-check"></sl-icon>
-  </sl-option>
+    <o-icon slot="suffix" name="patch-check"></o-icon>
+  </o-option>
 
-  <sl-option value="option-2">
-    <sl-icon slot="prefix" name="telephone"></sl-icon>
+  <o-option value="option-2">
+    <o-icon slot="prefix" name="telephone"></o-icon>
     Phone
-    <sl-icon slot="suffix" name="patch-check"></sl-icon>
-  </sl-option>
+    <o-icon slot="suffix" name="patch-check"></o-icon>
+  </o-option>
 
-  <sl-option value="option-3">
-    <sl-icon slot="prefix" name="chat-dots"></sl-icon>
+  <o-option value="option-3">
+    <o-icon slot="prefix" name="chat-dots"></o-icon>
     Chat
-    <sl-icon slot="suffix" name="patch-check"></sl-icon>
-  </sl-option>
-</sl-select>
+    <o-icon slot="suffix" name="patch-check"></o-icon>
+  </o-option>
+</o-select>
 ```

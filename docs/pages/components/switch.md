@@ -6,13 +6,13 @@ layout: component
 ---
 
 ```html:preview
-<sl-switch>Switch</sl-switch>
+<o-switch>Switch</o-switch>
 ```
 
 ```jsx:react
-import { SlSwitch } from '@shoelace-style/shoelace/dist/react';
+import { OSwitch } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlSwitch>Switch</SlSwitch>;
+const App = () => <OSwitch>Switch</OSwitch>;
 ```
 
 :::tip
@@ -26,13 +26,13 @@ This component works with standard `<form>` elements. Please refer to the sectio
 Use the `checked` attribute to activate the switch.
 
 ```html:preview
-<sl-switch checked>Checked</sl-switch>
+<o-switch checked>Checked</o-switch>
 ```
 
 ```jsx:react
-import { SlSwitch } from '@shoelace-style/shoelace/dist/react';
+import { OSwitch } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlSwitch checked>Checked</SlSwitch>;
+const App = () => <OSwitch checked>Checked</OSwitch>;
 ```
 
 ### Disabled
@@ -40,37 +40,37 @@ const App = () => <SlSwitch checked>Checked</SlSwitch>;
 Use the `disabled` attribute to disable the switch.
 
 ```html:preview
-<sl-switch disabled>Disabled</sl-switch>
+<o-switch disabled>Disabled</o-switch>
 ```
 
 ```jsx:react
-import { SlSwitch } from '@shoelace-style/shoelace/dist/react';
+import { OSwitch } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => <SlSwitch disabled>Disabled</SlSwitch>;
+const App = () => <OSwitch disabled>Disabled</OSwitch>;
 ```
 
-### Sizes
+## Sizes
 
 Use the `size` attribute to change a switch's size.
 
 ```html:preview
-<sl-switch size="small">Small</sl-switch>
+<o-switch size="small">Small</o-switch>
 <br />
-<sl-switch size="medium">Medium</sl-switch>
+<o-switch size="medium">Medium</o-switch>
 <br />
-<sl-switch size="large">Large</sl-switch>
+<o-switch size="large">Large</o-switch>
 ```
 
 ```jsx:react
-import { SlSwitch } from '@shoelace-style/shoelace/dist/react';
+import { OSwitch } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
-    <SlSwitch size="small">Small</SlSwitch>
+    <OSwitch size="small">Small</OSwitch>
     <br />
-    <SlSwitch size="medium">Medium</SlSwitch>
+    <OSwitch size="medium">Medium</OSwitch>
     <br />
-    <SlSwitch size="large">Large</SlSwitch>
+    <OSwitch size="large">Large</OSwitch>
   </>
 );
 ```
@@ -80,16 +80,16 @@ const App = () => (
 Use the available custom properties to change how the switch is styled.
 
 ```html:preview
-<sl-switch style="--width: 80px; --height: 40px; --thumb-size: 36px;">Really big</sl-switch>
+<o-switch style="--width: 80px; --height: 40px; --thumb-size: 36px;">Really big</o-switch>
 ```
 
 {% raw %}
 
 ```jsx:react
-import { SlSwitch } from '@shoelace-style/shoelace/dist/react';
+import { OSwitch } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlSwitch
+  <OSwitch
     style={{
       '--width': '80px',
       '--height': '32px',

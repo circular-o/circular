@@ -8,30 +8,30 @@ import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
-import ShoelaceElement from '../../internal/shoelace-element.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 import styles from './dropdown.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type SlButton from '../button/button.js';
-import type SlIconButton from '../icon-button/icon-button.js';
-import type SlMenu from '../menu/menu.js';
-import type SlPopup from '../popup/popup.js';
-import type SlSelectEvent from '../../events/sl-select.js';
+import type OButton from '../button/button.js';
+import type OIconButton from '../icon-button/icon-button.js';
+import type OMenu from '../menu/menu.js';
+import type OPopup from '../popup/popup.js';
+import type OSelectEvent from '../../events/-select.js';
 
 /**
  * @summary Dropdowns expose additional content that "drops down" in a panel.
- * @documentation https://shoelace.style/components/dropdown
+ * @documentation /components/dropdown
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
- * @dependency sl-popup
+ * @dependency o-popup
  *
  * @slot - The dropdown's main content.
- * @slot trigger - The dropdown's trigger, usually a `<sl-button>` element.
+ * @slot trigger - The dropdown's trigger, usually a `<o-button>` element.
  *
- * @event sl-show - Emitted when the dropdown opens.
- * @event sl-after-show - Emitted after the dropdown opens and all animations are complete.
- * @event sl-hide - Emitted when the dropdown closes.
- * @event sl-after-hide - Emitted after the dropdown closes and all animations are complete.
+ * @event o-show - Emitted when the dropdown opens.
+ * @event o-after-show - Emitted after the dropdown opens and all animations are complete.
+ * @event o-hide - Emitted when the dropdown closes.
+ * @event o-after-hide - Emitted after the dropdown closes and all animations are complete.
  *
  * @csspart base - The component's base wrapper.
  * @csspart trigger - The container that wraps the trigger.
@@ -40,11 +40,11 @@ import type SlSelectEvent from '../../events/sl-select.js';
  * @animation dropdown.show - The animation to use when showing the dropdown.
  * @animation dropdown.hide - The animation to use when hiding the dropdown.
  */
-@customElement('sl-dropdown')
-export default class SlDropdown extends ShoelaceElement {
+@customElement('o-dropdown')
+export default class ODropdown extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
-  @query('.dropdown') popup: SlPopup;
+  @query('.dropdown') popup: OPopup;
   @query('.dropdown__trigger') trigger: HTMLSlotElement;
   @query('.dropdown__panel') panel: HTMLSlotElement;
 
@@ -133,8 +133,8 @@ export default class SlDropdown extends ShoelaceElement {
   }
 
   getMenu() {
-    return this.panel.assignedElements({ flatten: true }).find(el => el.tagName.toLowerCase() === 'sl-menu') as
-      | SlMenu
+    return this.panel.assignedElements({ flatten: true }).find(el => el.tagName.toLowerCase() === 'o-menu') as
+      | OMenu
       | undefined;
   }
 
@@ -160,7 +160,7 @@ export default class SlDropdown extends ShoelaceElement {
     // Handle tabbing
     if (event.key === 'Tab') {
       // Tabbing within an open menu should close the dropdown and refocus the trigger
-      if (this.open && document.activeElement?.tagName.toLowerCase() === 'sl-menu-item') {
+      if (this.open && document.activeElement?.tagName.toLowerCase() === 'o-menu-item') {
         event.preventDefault();
         this.hide();
         this.focusOnTrigger();
@@ -195,11 +195,11 @@ export default class SlDropdown extends ShoelaceElement {
     }
   };
 
-  private handlePanelSelect = (event: SlSelectEvent) => {
+  private handlePanelSelect = (event: OSelectEvent) => {
     const target = event.target as HTMLElement;
 
     // Hide the dropdown when a menu item is selected
-    if (!this.stayOpenOnSelect && target.tagName.toLowerCase() === 'sl-menu') {
+    if (!this.stayOpenOnSelect && target.tagName.toLowerCase() === 'o-menu') {
       this.hide();
       this.focusOnTrigger();
     }
@@ -276,7 +276,7 @@ export default class SlDropdown extends ShoelaceElement {
   // that gets slotted in) so screen readers will understand them. The accessible trigger could be the slotted element,
   // a child of the slotted element, or an element in the slotted element's shadow root.
   //
-  // For example, the accessible trigger of an <sl-button> is a <button> located inside its shadow root.
+  // For example, the accessible trigger of an <o-button> is a <button> located inside its shadow root.
   //
   // To determine this, we assume the first tabbable element in the trigger slot is the "accessible trigger."
   //
@@ -287,10 +287,10 @@ export default class SlDropdown extends ShoelaceElement {
 
     if (accessibleTrigger) {
       switch (accessibleTrigger.tagName.toLowerCase()) {
-        // Shoelace buttons have to update the internal button so it's announced correctly by screen readers
-        case 'sl-button':
-        case 'sl-icon-button':
-          target = (accessibleTrigger as SlButton | SlIconButton).button;
+        // Buttons have to update the internal button so it's announced correctly by screen readers
+        case 'o-button':
+        case 'o-icon-button':
+          target = (accessibleTrigger as OButton | OIconButton).button;
           break;
 
         default:
@@ -309,7 +309,7 @@ export default class SlDropdown extends ShoelaceElement {
     }
 
     this.open = true;
-    return waitForEvent(this, 'sl-after-show');
+    return waitForEvent(this, 'o-after-show');
   }
 
   /** Hides the dropdown panel */
@@ -319,7 +319,7 @@ export default class SlDropdown extends ShoelaceElement {
     }
 
     this.open = false;
-    return waitForEvent(this, 'sl-after-hide');
+    return waitForEvent(this, 'o-after-hide');
   }
 
   /**
@@ -331,7 +331,7 @@ export default class SlDropdown extends ShoelaceElement {
   }
 
   addOpenListeners() {
-    this.panel.addEventListener('sl-select', this.handlePanelSelect);
+    this.panel.addEventListener('o-select', this.handlePanelSelect);
     this.panel.addEventListener('keydown', this.handleKeyDown);
     document.addEventListener('keydown', this.handleDocumentKeyDown);
     document.addEventListener('mousedown', this.handleDocumentMouseDown);
@@ -339,7 +339,7 @@ export default class SlDropdown extends ShoelaceElement {
 
   removeOpenListeners() {
     if (this.panel) {
-      this.panel.removeEventListener('sl-select', this.handlePanelSelect);
+      this.panel.removeEventListener('o-select', this.handlePanelSelect);
       this.panel.removeEventListener('keydown', this.handleKeyDown);
     }
     document.removeEventListener('keydown', this.handleDocumentKeyDown);
@@ -357,7 +357,7 @@ export default class SlDropdown extends ShoelaceElement {
 
     if (this.open) {
       // Show
-      this.emit('sl-show');
+      this.emit('o-show');
       this.addOpenListeners();
 
       await stopAnimations(this);
@@ -366,10 +366,10 @@ export default class SlDropdown extends ShoelaceElement {
       const { keyframes, options } = getAnimation(this, 'dropdown.show', { dir: this.localize.dir() });
       await animateTo(this.popup.popup, keyframes, options);
 
-      this.emit('sl-after-show');
+      this.emit('o-after-show');
     } else {
       // Hide
-      this.emit('sl-hide');
+      this.emit('o-hide');
       this.removeOpenListeners();
 
       await stopAnimations(this);
@@ -378,13 +378,13 @@ export default class SlDropdown extends ShoelaceElement {
       this.panel.hidden = true;
       this.popup.active = false;
 
-      this.emit('sl-after-hide');
+      this.emit('o-after-hide');
     }
   }
 
   render() {
     return html`
-      <sl-popup
+      <o-popup
         part="base"
         id="dropdown"
         placement=${this.placement}
@@ -396,9 +396,9 @@ export default class SlDropdown extends ShoelaceElement {
         auto-size="vertical"
         auto-size-padding="10"
         class=${classMap({
-          dropdown: true,
-          'dropdown--open': this.open
-        })}
+      dropdown: true,
+      'dropdown--open': this.open
+    })}
       >
         <slot
           name="trigger"
@@ -417,7 +417,7 @@ export default class SlDropdown extends ShoelaceElement {
           aria-hidden=${this.open ? 'false' : 'true'}
           aria-labelledby="dropdown"
         ></slot>
-      </sl-popup>
+      </o-popup>
     `;
   }
 }
@@ -440,6 +440,6 @@ setDefaultAnimation('dropdown.hide', {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-dropdown': SlDropdown;
+    'o-dropdown': ODropdown;
   }
 }

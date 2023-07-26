@@ -68,7 +68,7 @@ module.exports = function (doc, options) {
         <div class="code-preview__preview">
           ${code.textContent}
           <div class="code-preview__resizer">
-            <sl-icon name="grip-vertical"></sl-icon>
+            <o-icon name="grip-vertical"></o-icon>
           </div>
         </div>
 

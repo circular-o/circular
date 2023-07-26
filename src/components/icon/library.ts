@@ -1,6 +1,7 @@
 import defaultLibrary from './library.default.js';
+import materialLibrary from './library.material.js';
 import systemLibrary from './library.system.js';
-import type SlIcon from '../icon/icon.js';
+import type OIcon from '../icon/icon.js';
 
 export type IconLibraryResolver = (name: string) => string;
 export type IconLibraryMutator = (svg: SVGElement) => void;
@@ -11,16 +12,16 @@ export interface IconLibrary {
   spriteSheet?: boolean;
 }
 
-let registry: IconLibrary[] = [defaultLibrary, systemLibrary];
-let watchedIcons: SlIcon[] = [];
+let registry: IconLibrary[] = [defaultLibrary, systemLibrary, materialLibrary];
+let watchedIcons: OIcon[] = [];
 
 /** Adds an icon to the list of watched icons. */
-export function watchIcon(icon: SlIcon) {
+export function watchIcon(icon: OIcon) {
   watchedIcons.push(icon);
 }
 
 /** Removes an icon from the list of watched icons. */
-export function unwatchIcon(icon: SlIcon) {
+export function unwatchIcon(icon: OIcon) {
   watchedIcons = watchedIcons.filter(el => el !== icon);
 }
 

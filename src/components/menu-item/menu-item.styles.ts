@@ -16,14 +16,14 @@ export default css`
     position: relative;
     display: flex;
     align-items: stretch;
-    font-family: var(--sl-font-sans);
-    font-size: var(--sl-font-size-medium);
-    font-weight: var(--sl-font-weight-normal);
-    line-height: var(--sl-line-height-normal);
-    letter-spacing: var(--sl-letter-spacing-normal);
-    color: var(--sl-color-neutral-700);
-    padding: var(--sl-spacing-2x-small) var(--sl-spacing-2x-small);
-    transition: var(--sl-transition-fast) fill;
+    font-family: var(--o-font-sans);
+    font-size: var(--o-font-size-medium);
+    font-weight: var(--o-font-weight-normal);
+    line-height: var(--o-line-height-normal);
+    letter-spacing: var(--o-letter-spacing-normal);
+    color: var(--o-color-neutral-700);
+    padding: var(--o-spacing-2x-small) var(--o-spacing-2x-small);
+    transition: var(--o-transition-fast) fill;
     user-select: none;
     white-space: nowrap;
     cursor: pointer;
@@ -47,7 +47,7 @@ export default css`
   }
 
   .menu-item .menu-item__prefix::slotted(*) {
-    margin-inline-end: var(--sl-spacing-x-small);
+    margin-inline-end: var(--o-spacing-x-small);
   }
 
   .menu-item .menu-item__suffix {
@@ -57,7 +57,7 @@ export default css`
   }
 
   .menu-item .menu-item__suffix::slotted(*) {
-    margin-inline-start: var(--sl-spacing-x-small);
+    margin-inline-start: var(--o-spacing-x-small);
   }
 
   :host(:focus-visible) {
@@ -65,14 +65,14 @@ export default css`
   }
 
   :host(:hover:not([aria-disabled='true'], :focus-visible)) .menu-item {
-    background-color: var(--sl-color-neutral-100);
-    color: var(--sl-color-neutral-1000);
+    background-color: var(--o-color-neutral-100);
+    color: var(--o-color-neutral-1000);
   }
 
   :host(:focus-visible) .menu-item {
     outline: none;
-    background-color: var(--sl-color-primary-600);
-    color: var(--sl-color-neutral-0);
+    background-color: var(--o-color-primary-600);
+    color: var(--o-color-neutral-0);
     opacity: 1;
   }
 

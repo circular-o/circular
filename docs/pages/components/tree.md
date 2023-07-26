@@ -6,67 +6,67 @@ layout: component
 ---
 
 ```html:preview
-<sl-tree>
-  <sl-tree-item>
+<o-tree>
+  <o-tree-item>
     Deciduous
-    <sl-tree-item>Birch</sl-tree-item>
-    <sl-tree-item>
+    <o-tree-item>Birch</o-tree-item>
+    <o-tree-item>
       Maple
-      <sl-tree-item>Field maple</sl-tree-item>
-      <sl-tree-item>Red maple</sl-tree-item>
-      <sl-tree-item>Sugar maple</sl-tree-item>
-    </sl-tree-item>
-    <sl-tree-item>Oak</sl-tree-item>
-  </sl-tree-item>
+      <o-tree-item>Field maple</o-tree-item>
+      <o-tree-item>Red maple</o-tree-item>
+      <o-tree-item>Sugar maple</o-tree-item>
+    </o-tree-item>
+    <o-tree-item>Oak</o-tree-item>
+  </o-tree-item>
 
-  <sl-tree-item>
+  <o-tree-item>
     Coniferous
-    <sl-tree-item>Cedar</sl-tree-item>
-    <sl-tree-item>Pine</sl-tree-item>
-    <sl-tree-item>Spruce</sl-tree-item>
-  </sl-tree-item>
+    <o-tree-item>Cedar</o-tree-item>
+    <o-tree-item>Pine</o-tree-item>
+    <o-tree-item>Spruce</o-tree-item>
+  </o-tree-item>
 
-  <sl-tree-item>
+  <o-tree-item>
     Non-trees
-    <sl-tree-item>Bamboo</sl-tree-item>
-    <sl-tree-item>Cactus</sl-tree-item>
-    <sl-tree-item>Fern</sl-tree-item>
-  </sl-tree-item>
-</sl-tree>
+    <o-tree-item>Bamboo</o-tree-item>
+    <o-tree-item>Cactus</o-tree-item>
+    <o-tree-item>Fern</o-tree-item>
+  </o-tree-item>
+</o-tree>
 ```
 
 <!-- prettier-ignore -->
 ```jsx:react
-import { SlTree, SlTreeItem } from '@shoelace-style/shoelace/dist/react';
+import { OTree, OTreeItem } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlTree>
-    <SlTreeItem>
+  <OTree>
+    <OTreeItem>
       Deciduous
-      <SlTreeItem>Birch</SlTreeItem>
-      <SlTreeItem>
+      <OTreeItem>Birch</OTreeItem>
+      <OTreeItem>
         Maple
-        <SlTreeItem>Field maple</SlTreeItem>
-        <SlTreeItem>Red maple</SlTreeItem>
-        <SlTreeItem>Sugar maple</SlTreeItem>
-      </SlTreeItem>
-      <SlTreeItem>Oak</SlTreeItem>
-    </SlTreeItem>
+        <OTreeItem>Field maple</OTreeItem>
+        <OTreeItem>Red maple</OTreeItem>
+        <OTreeItem>Sugar maple</OTreeItem>
+      </OTreeItem>
+      <OTreeItem>Oak</OTreeItem>
+    </OTreeItem>
 
-    <SlTreeItem>
+    <OTreeItem>
       Coniferous
-      <SlTreeItem>Cedar</SlTreeItem>
-      <SlTreeItem>Pine</SlTreeItem>
-      <SlTreeItem>Spruce</SlTreeItem>
-    </SlTreeItem>
+      <OTreeItem>Cedar</OTreeItem>
+      <OTreeItem>Pine</OTreeItem>
+      <OTreeItem>Spruce</OTreeItem>
+    </OTreeItem>
 
-    <SlTreeItem>
+    <OTreeItem>
       Non-trees
-      <SlTreeItem>Bamboo</SlTreeItem>
-      <SlTreeItem>Cactus</SlTreeItem>
-      <SlTreeItem>Fern</SlTreeItem>
-    </SlTreeItem>
-  </SlTree>
+      <OTreeItem>Bamboo</OTreeItem>
+      <OTreeItem>Cactus</OTreeItem>
+      <OTreeItem>Fern</OTreeItem>
+    </OTreeItem>
+  </OTree>
 );
 ```
 
@@ -81,36 +81,36 @@ The `selection` attribute lets you change the selection behavior of the tree.
 - Use `leaf` to only allow leaf nodes to be selected.
 
 ```html:preview
-<sl-select id="selection-mode" value="single" label="Selection">
-  <sl-option value="single">Single</sl-option>
-  <sl-option value="multiple">Multiple</sl-option>
-  <sl-option value="leaf">Leaf</sl-option>
-</sl-select>
+<o-select id="selection-mode" value="single" label="Selection">
+  <o-option value="single">Single</o-option>
+  <o-option value="multiple">Multiple</o-option>
+  <o-option value="leaf">Leaf</o-option>
+</o-select>
 
 <br />
 
-<sl-tree class="tree-selectable">
-  <sl-tree-item>
+<o-tree class="tree-selectable">
+  <o-tree-item>
     Item 1
-    <sl-tree-item>
+    <o-tree-item>
       Item A
-      <sl-tree-item>Item Z</sl-tree-item>
-      <sl-tree-item>Item Y</sl-tree-item>
-      <sl-tree-item>Item X</sl-tree-item>
-    </sl-tree-item>
-    <sl-tree-item>Item B</sl-tree-item>
-    <sl-tree-item>Item C</sl-tree-item>
-  </sl-tree-item>
-  <sl-tree-item>Item 2</sl-tree-item>
-  <sl-tree-item>Item 3</sl-tree-item>
-</sl-tree>
+      <o-tree-item>Item Z</o-tree-item>
+      <o-tree-item>Item Y</o-tree-item>
+      <o-tree-item>Item X</o-tree-item>
+    </o-tree-item>
+    <o-tree-item>Item B</o-tree-item>
+    <o-tree-item>Item C</o-tree-item>
+  </o-tree-item>
+  <o-tree-item>Item 2</o-tree-item>
+  <o-tree-item>Item 3</o-tree-item>
+</o-tree>
 
 <script>
   const selectionMode = document.querySelector('#selection-mode');
   const tree = document.querySelector('.tree-selectable');
 
-  selectionMode.addEventListener('sl-change', () => {
-    tree.querySelectorAll('sl-tree-item').forEach(item => (item.selected = false));
+  selectionMode.addEventListener('o-change', () => {
+    tree.querySelectorAll('o-tree-item').forEach(item => (item.selected = false));
     tree.selection = selectionMode.value;
   });
 </script>
@@ -118,36 +118,36 @@ The `selection` attribute lets you change the selection behavior of the tree.
 
 <!-- prettier-ignore -->
 ```jsx:react
-import { SlTree, SlTreeItem } from '@shoelace-style/shoelace/dist/react';
+import { OTree, OTreeItem } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => {
   const [selection, setSelection] = useState('single');
 
   return (
     <>
-      <SlSelect label="Selection" value={selection} onSlChange={event => setSelection(event.target.value)}>
-        <SlMenuItem value="single">single</SlMenuItem>
-        <SlMenuItem value="multiple">multiple</SlMenuItem>
-        <SlMenuItem value="leaf">leaf</SlMenuItem>
-      </SlSelect>
+      <OSelect label="Selection" value={selection} onOChange={event => setSelection(event.target.value)}>
+        <OMenuItem value="single">single</OMenuItem>
+        <OMenuItem value="multiple">multiple</OMenuItem>
+        <OMenuItem value="leaf">leaf</OMenuItem>
+      </OSelect>
 
       <br />
 
-      <SlTree selection={selection}>
-        <SlTreeItem>
+      <OTree selection={selection}>
+        <OTreeItem>
           Item 1
-          <SlTreeItem>
+          <OTreeItem>
             Item A
-            <SlTreeItem>Item Z</SlTreeItem>
-            <SlTreeItem>Item Y</SlTreeItem>
-            <SlTreeItem>Item X</SlTreeItem>
-          </SlTreeItem>
-          <SlTreeItem>Item B</SlTreeItem>
-          <SlTreeItem>Item C</SlTreeItem>
-        </SlTreeItem>
-        <SlTreeItem>Item 2</SlTreeItem>
-        <SlTreeItem>Item 3</SlTreeItem>
-      </SlTree>
+            <OTreeItem>Item Z</OTreeItem>
+            <OTreeItem>Item Y</OTreeItem>
+            <OTreeItem>Item X</OTreeItem>
+          </OTreeItem>
+          <OTreeItem>Item B</OTreeItem>
+          <OTreeItem>Item C</OTreeItem>
+        </OTreeItem>
+        <OTreeItem>Item 2</OTreeItem>
+        <OTreeItem>Item 3</OTreeItem>
+      </OTree>
     </>
   );
 };
@@ -158,33 +158,33 @@ const App = () => {
 Indent guides can be drawn by setting `--indent-guide-width`. You can also change the color, offset, and style, using `--indent-guide-color`, `--indent-guide-style`, and `--indent-guide-offset`, respectively.
 
 ```html:preview
-<sl-tree class="tree-with-lines">
-  <sl-tree-item expanded>
+<o-tree class="tree-with-lines">
+  <o-tree-item expanded>
     Deciduous
-    <sl-tree-item>Birch</sl-tree-item>
-    <sl-tree-item expanded>
+    <o-tree-item>Birch</o-tree-item>
+    <o-tree-item expanded>
       Maple
-      <sl-tree-item>Field maple</sl-tree-item>
-      <sl-tree-item>Red maple</sl-tree-item>
-      <sl-tree-item>Sugar maple</sl-tree-item>
-    </sl-tree-item>
-    <sl-tree-item>Oak</sl-tree-item>
-  </sl-tree-item>
+      <o-tree-item>Field maple</o-tree-item>
+      <o-tree-item>Red maple</o-tree-item>
+      <o-tree-item>Sugar maple</o-tree-item>
+    </o-tree-item>
+    <o-tree-item>Oak</o-tree-item>
+  </o-tree-item>
 
-  <sl-tree-item>
+  <o-tree-item>
     Coniferous
-    <sl-tree-item>Cedar</sl-tree-item>
-    <sl-tree-item>Pine</sl-tree-item>
-    <sl-tree-item>Spruce</sl-tree-item>
-  </sl-tree-item>
+    <o-tree-item>Cedar</o-tree-item>
+    <o-tree-item>Pine</o-tree-item>
+    <o-tree-item>Spruce</o-tree-item>
+  </o-tree-item>
 
-  <sl-tree-item>
+  <o-tree-item>
     Non-trees
-    <sl-tree-item>Bamboo</sl-tree-item>
-    <sl-tree-item>Cactus</sl-tree-item>
-    <sl-tree-item>Fern</sl-tree-item>
-  </sl-tree-item>
-</sl-tree>
+    <o-tree-item>Bamboo</o-tree-item>
+    <o-tree-item>Cactus</o-tree-item>
+    <o-tree-item>Fern</o-tree-item>
+  </o-tree-item>
+</o-tree>
 
 <style>
   .tree-with-lines {
@@ -197,36 +197,36 @@ Indent guides can be drawn by setting `--indent-guide-width`. You can also chang
 
 <!-- prettier-ignore -->
 ```jsx:react
-import { SlTree, SlTreeItem } from '@shoelace-style/shoelace/dist/react';
+import { OTree, OTreeItem } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlTree class="tree-with-lines" style={{ '--indent-guide-width': '1px' }}>
-    <SlTreeItem expanded>
+  <OTree class="tree-with-lines" style={{ '--indent-guide-width': '1px' }}>
+    <OTreeItem expanded>
       Deciduous
-      <SlTreeItem>Birch</SlTreeItem>
-      <SlTreeItem expanded>
+      <OTreeItem>Birch</OTreeItem>
+      <OTreeItem expanded>
         Maple
-        <SlTreeItem>Field maple</SlTreeItem>
-        <SlTreeItem>Red maple</SlTreeItem>
-        <SlTreeItem>Sugar maple</SlTreeItem>
-      </SlTreeItem>
-      <SlTreeItem>Oak</SlTreeItem>
-    </SlTreeItem>
+        <OTreeItem>Field maple</OTreeItem>
+        <OTreeItem>Red maple</OTreeItem>
+        <OTreeItem>Sugar maple</OTreeItem>
+      </OTreeItem>
+      <OTreeItem>Oak</OTreeItem>
+    </OTreeItem>
 
-    <SlTreeItem>
+    <OTreeItem>
       Coniferous
-      <SlTreeItem>Cedar</SlTreeItem>
-      <SlTreeItem>Pine</SlTreeItem>
-      <SlTreeItem>Spruce</SlTreeItem>
-    </SlTreeItem>
+      <OTreeItem>Cedar</OTreeItem>
+      <OTreeItem>Pine</OTreeItem>
+      <OTreeItem>Spruce</OTreeItem>
+    </OTreeItem>
 
-    <SlTreeItem>
+    <OTreeItem>
       Non-trees
-      <SlTreeItem>Bamboo</SlTreeItem>
-      <SlTreeItem>Cactus</SlTreeItem>
-      <SlTreeItem>Fern</SlTreeItem>
-    </SlTreeItem>
-  </SlTree>
+      <OTreeItem>Bamboo</OTreeItem>
+      <OTreeItem>Cactus</OTreeItem>
+      <OTreeItem>Fern</OTreeItem>
+    </OTreeItem>
+  </OTree>
 );
 ```
 
@@ -234,25 +234,25 @@ const App = () => (
 
 ### Lazy Loading
 
-Use the `lazy` attribute on a tree item to indicate that the content is not yet present and will be loaded later. When the user tries to expand the node, the `loading` state is set to `true` and the `sl-lazy-load` event will be emitted to allow you to load data asynchronously. The item will remain in a loading state until its content is changed.
+Use the `lazy` attribute on a tree item to indicate that the content is not yet present and will be loaded later. When the user tries to expand the node, the `loading` state is set to `true` and the `o-lazy-load` event will be emitted to allow you to load data asynchronously. The item will remain in a loading state until its content is changed.
 
 If you want to disable this behavior after the first load, simply remove the `lazy` attribute and, on the next expand, the existing content will be shown instead.
 
 ```html:preview
-<sl-tree>
-  <sl-tree-item lazy>Available Trees</sl-tree-item>
-</sl-tree>
+<o-tree>
+  <o-tree-item lazy>Available Trees</o-tree-item>
+</o-tree>
 
 <script type="module">
-  const lazyItem = document.querySelector('sl-tree-item[lazy]');
+  const lazyItem = document.querySelector('o-tree-item[lazy]');
 
-  lazyItem.addEventListener('sl-lazy-load', () => {
+  lazyItem.addEventListener('o-lazy-load', () => {
     // Simulate asynchronous loading
     setTimeout(() => {
       const subItems = ['Birch', 'Cedar', 'Maple', 'Pine'];
 
       for (const item of subItems) {
-        const treeItem = document.createElement('sl-tree-item');
+        const treeItem = document.createElement('o-tree-item');
         treeItem.innerText = item;
         lazyItem.append(treeItem);
       }
@@ -265,7 +265,7 @@ If you want to disable this behavior after the first load, simply remove the `la
 ```
 
 ```jsx:react
-import { SlTree, SlTreeItem } from '@shoelace-style/shoelace/dist/react';
+import { OTree, OTreeItem } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => {
   const [childItems, setChildItems] = useState([]);
@@ -282,14 +282,14 @@ const App = () => {
   };
 
   return (
-    <SlTree>
-      <SlTreeItem lazy={lazy} onSlLazyLoad={handleLazyLoad}>
+    <OTree>
+      <OTreeItem lazy={lazy} onOLazyLoad={handleLazyLoad}>
         Available Trees
         {childItems.map(item => (
-          <SlTreeItem>{item}</SlTreeItem>
+          <OTreeItem>{item}</OTreeItem>
         ))}
-      </SlTreeItem>
-    </SlTree>
+      </OTreeItem>
+    </OTree>
   );
 };
 ```
@@ -299,39 +299,39 @@ const App = () => {
 Use the `expand-icon` and `collapse-icon` slots to change the expand and collapse icons, respectively. To disable the animation, override the `rotate` property on the `expand-button` part as shown below.
 
 ```html:preview
-<sl-tree class="custom-icons">
-  <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
-  <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+<o-tree class="custom-icons">
+  <o-icon name="plus-square" slot="expand-icon"></o-icon>
+  <o-icon name="dash-square" slot="collapse-icon"></o-icon>
 
-  <sl-tree-item>
+  <o-tree-item>
     Deciduous
-    <sl-tree-item>Birch</sl-tree-item>
-    <sl-tree-item>
+    <o-tree-item>Birch</o-tree-item>
+    <o-tree-item>
       Maple
-      <sl-tree-item>Field maple</sl-tree-item>
-      <sl-tree-item>Red maple</sl-tree-item>
-      <sl-tree-item>Sugar maple</sl-tree-item>
-    </sl-tree-item>
-    <sl-tree-item>Oak</sl-tree-item>
-  </sl-tree-item>
+      <o-tree-item>Field maple</o-tree-item>
+      <o-tree-item>Red maple</o-tree-item>
+      <o-tree-item>Sugar maple</o-tree-item>
+    </o-tree-item>
+    <o-tree-item>Oak</o-tree-item>
+  </o-tree-item>
 
-  <sl-tree-item>
+  <o-tree-item>
     Coniferous
-    <sl-tree-item>Cedar</sl-tree-item>
-    <sl-tree-item>Pine</sl-tree-item>
-    <sl-tree-item>Spruce</sl-tree-item>
-  </sl-tree-item>
+    <o-tree-item>Cedar</o-tree-item>
+    <o-tree-item>Pine</o-tree-item>
+    <o-tree-item>Spruce</o-tree-item>
+  </o-tree-item>
 
-  <sl-tree-item>
+  <o-tree-item>
     Non-trees
-    <sl-tree-item>Bamboo</sl-tree-item>
-    <sl-tree-item>Cactus</sl-tree-item>
-    <sl-tree-item>Fern</sl-tree-item>
-  </sl-tree-item>
-</sl-tree>
+    <o-tree-item>Bamboo</o-tree-item>
+    <o-tree-item>Cactus</o-tree-item>
+    <o-tree-item>Fern</o-tree-item>
+  </o-tree-item>
+</o-tree>
 
 <style>
-  .custom-icons sl-tree-item::part(expand-button) {
+  .custom-icons o-tree-item::part(expand-button) {
     /* Disable the expand/collapse animation */
     rotate: none;
   }
@@ -340,39 +340,39 @@ Use the `expand-icon` and `collapse-icon` slots to change the expand and collaps
 
 <!-- prettier-ignore -->
 ```jsx:react
-import { SlTree, SlTreeItem } from '@shoelace-style/shoelace/dist/react';
+import { OTree, OTreeItem } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlTree>
-    <SlIcon name="plus-square" slot="expand-icon"></SlIcon>
-    <SlIcon name="dash-square" slot="collapse-icon"></SlIcon>
+  <OTree>
+    <OIcon name="plus-square" slot="expand-icon"></OIcon>
+    <OIcon name="dash-square" slot="collapse-icon"></OIcon>
 
-    <SlTreeItem>
+    <OTreeItem>
       Deciduous
-      <SlTreeItem>Birch</SlTreeItem>
-      <SlTreeItem>
+      <OTreeItem>Birch</OTreeItem>
+      <OTreeItem>
         Maple
-        <SlTreeItem>Field maple</SlTreeItem>
-        <SlTreeItem>Red maple</SlTreeItem>
-        <SlTreeItem>Sugar maple</SlTreeItem>
-      </SlTreeItem>
-      <SlTreeItem>Oak</SlTreeItem>
-    </SlTreeItem>
+        <OTreeItem>Field maple</OTreeItem>
+        <OTreeItem>Red maple</OTreeItem>
+        <OTreeItem>Sugar maple</OTreeItem>
+      </OTreeItem>
+      <OTreeItem>Oak</OTreeItem>
+    </OTreeItem>
 
-    <SlTreeItem>
+    <OTreeItem>
       Coniferous
-      <SlTreeItem>Cedar</SlTreeItem>
-      <SlTreeItem>Pine</SlTreeItem>
-      <SlTreeItem>Spruce</SlTreeItem>
-    </SlTreeItem>
+      <OTreeItem>Cedar</OTreeItem>
+      <OTreeItem>Pine</OTreeItem>
+      <OTreeItem>Spruce</OTreeItem>
+    </OTreeItem>
 
-    <SlTreeItem>
+    <OTreeItem>
       Non-trees
-      <SlTreeItem>Bamboo</SlTreeItem>
-      <SlTreeItem>Cactus</SlTreeItem>
-      <SlTreeItem>Fern</SlTreeItem>
-    </SlTreeItem>
-  </SlTree>
+      <OTreeItem>Bamboo</OTreeItem>
+      <OTreeItem>Cactus</OTreeItem>
+      <OTreeItem>Fern</OTreeItem>
+    </OTreeItem>
+  </OTree>
 );
 ```
 
@@ -381,89 +381,89 @@ const App = () => (
 Decorative icons can be used before labels to provide hints for each node.
 
 ```html:preview
-<sl-tree class="tree-with-icons">
-  <sl-tree-item expanded>
-    <sl-icon name="folder"></sl-icon>
+<o-tree class="tree-with-icons">
+  <o-tree-item expanded>
+    <o-icon name="folder"></o-icon>
     Documents
 
-    <sl-tree-item>
-      <sl-icon name="folder"> </sl-icon>
+    <o-tree-item>
+      <o-icon name="folder"> </o-icon>
       Photos
-      <sl-tree-item>
-        <sl-icon name="image"></sl-icon>
+      <o-tree-item>
+        <o-icon name="image"></o-icon>
         birds.jpg
-      </sl-tree-item>
-      <sl-tree-item>
-        <sl-icon name="image"></sl-icon>
+      </o-tree-item>
+      <o-tree-item>
+        <o-icon name="image"></o-icon>
         kitten.jpg
-      </sl-tree-item>
-      <sl-tree-item>
-        <sl-icon name="image"></sl-icon>
+      </o-tree-item>
+      <o-tree-item>
+        <o-icon name="image"></o-icon>
         puppy.jpg
-      </sl-tree-item>
-    </sl-tree-item>
+      </o-tree-item>
+    </o-tree-item>
 
-    <sl-tree-item>
-      <sl-icon name="folder"></sl-icon>
+    <o-tree-item>
+      <o-icon name="folder"></o-icon>
       Writing
-      <sl-tree-item>
-        <sl-icon name="file"></sl-icon>
+      <o-tree-item>
+        <o-icon name="file"></o-icon>
         draft.txt
-      </sl-tree-item>
-      <sl-tree-item>
-        <sl-icon name="file-pdf"></sl-icon>
+      </o-tree-item>
+      <o-tree-item>
+        <o-icon name="file-pdf"></o-icon>
         final.pdf
-      </sl-tree-item>
-      <sl-tree-item>
-        <sl-icon name="file-bar-graph"></sl-icon>
+      </o-tree-item>
+      <o-tree-item>
+        <o-icon name="file-bar-graph"></o-icon>
         sales.xls
-      </sl-tree-item>
-    </sl-tree-item>
-  </sl-tree-item>
-</sl-tree>
+      </o-tree-item>
+    </o-tree-item>
+  </o-tree-item>
+</o-tree>
 ```
 
 ```jsx:react
-import { SlIcon, SlTree, SlTreeItem } from '@shoelace-style/shoelace/dist/react';
+import { OIcon, OTree, OTreeItem } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => {
   return (
-    <SlTree class="tree-with-icons">
-      <SlTreeItem expanded>
-        <SlIcon name="folder" />
+    <OTree class="tree-with-icons">
+      <OTreeItem expanded>
+        <OIcon name="folder" />
         Root
-        <SlTreeItem>
-          <SlIcon name="folder" />
-          Folder 1<SlTreeItem>
-            <SlIcon name="files" />
+        <OTreeItem>
+          <OIcon name="folder" />
+          Folder 1<OTreeItem>
+            <OIcon name="files" />
             File 1 - 1
-          </SlTreeItem>
-          <SlTreeItem disabled>
-            <SlIcon name="files" />
+          </OTreeItem>
+          <OTreeItem disabled>
+            <OIcon name="files" />
             File 1 - 2
-          </SlTreeItem>
-          <SlTreeItem>
-            <SlIcon name="files" />
+          </OTreeItem>
+          <OTreeItem>
+            <OIcon name="files" />
             File 1 - 3
-          </SlTreeItem>
-        </SlTreeItem>
-        <SlTreeItem>
-          <SlIcon name="files" />
-          Folder 2<SlTreeItem>
-            <SlIcon name="files" />
+          </OTreeItem>
+        </OTreeItem>
+        <OTreeItem>
+          <OIcon name="files" />
+          Folder 2<OTreeItem>
+            <OIcon name="files" />
             File 2 - 1
-          </SlTreeItem>
-          <SlTreeItem>
-            <SlIcon name="files" />
+          </OTreeItem>
+          <OTreeItem>
+            <OIcon name="files" />
             File 2 - 2
-          </SlTreeItem>
-        </SlTreeItem>
-        <SlTreeItem>
-          <SlIcon name="files" />
+          </OTreeItem>
+        </OTreeItem>
+        <OTreeItem>
+          <OIcon name="files" />
           File 1
-        </SlTreeItem>
-      </SlTreeItem>
-    </SlTree>
+        </OTreeItem>
+      </OTreeItem>
+    </OTree>
   );
 };
 ```

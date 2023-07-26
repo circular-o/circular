@@ -6,77 +6,77 @@ layout: component
 ---
 
 ```html:preview
-<sl-carousel pagination navigation mouse-dragging loop>
-  <sl-carousel-item>
+<o-carousel pagination navigation mouse-dragging loop>
+  <o-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
       src="/assets/examples/carousel/mountains.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
       src="/assets/examples/carousel/waterfall.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
       src="/assets/examples/carousel/sunset.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
       src="/assets/examples/carousel/field.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
       src="/assets/examples/carousel/valley.jpg"
     />
-  </sl-carousel-item>
-</sl-carousel>
+  </o-carousel-item>
+</o-carousel>
 ```
 
 ```jsx:react
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { OCarousel, OCarouselItem } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
-    <SlCarousel pagination mouse-dragging>
-      <SlCarouselItem>
+    <OCarousel pagination mouse-dragging>
+      <OCarouselItem>
         <img
           alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
           src="/assets/examples/carousel/mountains.jpg"
         />
-      </SlCarouselItem>
-      <SlCarouselItem>
+      </OCarouselItem>
+      <OCarouselItem>
         <img
           alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
           src="/assets/examples/carousel/waterfall.jpg"
         />
-      </SlCarouselItem>
-      <SlCarouselItem>
+      </OCarouselItem>
+      <OCarouselItem>
         <img
           alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
           src="/assets/examples/carousel/sunset.jpg"
         />
-      </SlCarouselItem>
-      <SlCarouselItem>
+      </OCarouselItem>
+      <OCarouselItem>
         <img
           alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
           src="/assets/examples/carousel/field.jpg"
         />
-      </SlCarouselItem>
-      <SlCarouselItem>
+      </OCarouselItem>
+      <OCarouselItem>
         <img
           alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
           src="/assets/examples/carousel/valley.jpg"
         />
-      </SlCarouselItem>
-    </SlCarousel>
+      </OCarouselItem>
+    </OCarousel>
   </>
 );
 ```
@@ -88,76 +88,76 @@ const App = () => (
 Use the `pagination` attribute to show the total number of slides and the current slide as a set of interactive dots.
 
 ```html:preview
-<sl-carousel pagination>
-  <sl-carousel-item>
+<o-carousel pagination>
+  <o-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
       src="/assets/examples/carousel/mountains.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
       src="/assets/examples/carousel/waterfall.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
       src="/assets/examples/carousel/sunset.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
       src="/assets/examples/carousel/field.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
       src="/assets/examples/carousel/valley.jpg"
     />
-  </sl-carousel-item>
-</sl-carousel>
+  </o-carousel-item>
+</o-carousel>
 ```
 
 ```jsx:react
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { OCarousel, OCarouselItem } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlCarousel pagination>
-    <SlCarouselItem>
+  <OCarousel pagination>
+    <OCarouselItem>
       <img
         alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
         src="/assets/examples/carousel/mountains.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
         src="/assets/examples/carousel/waterfall.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
         src="/assets/examples/carousel/sunset.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
         src="/assets/examples/carousel/field.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
         src="/assets/examples/carousel/valley.jpg"
       />
-    </SlCarouselItem>
-  </SlCarousel>
+    </OCarouselItem>
+  </OCarousel>
 );
 ```
 
@@ -166,76 +166,76 @@ const App = () => (
 Use the `navigation` attribute to show previous and next buttons.
 
 ```html:preview
-<sl-carousel navigation>
-  <sl-carousel-item>
+<o-carousel navigation>
+  <o-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
       src="/assets/examples/carousel/mountains.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
       src="/assets/examples/carousel/waterfall.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
       src="/assets/examples/carousel/sunset.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
       src="/assets/examples/carousel/field.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
       src="/assets/examples/carousel/valley.jpg"
     />
-  </sl-carousel-item>
-</sl-carousel>
+  </o-carousel-item>
+</o-carousel>
 ```
 
 ```jsx:react
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { OCarousel, OCarouselItem } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlCarousel navigation>
-    <SlCarouselItem>
+  <OCarousel navigation>
+    <OCarouselItem>
       <img
         alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
         src="/assets/examples/carousel/mountains.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
         src="/assets/examples/carousel/waterfall.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
         src="/assets/examples/carousel/sunset.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
         src="/assets/examples/carousel/field.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
         src="/assets/examples/carousel/valley.jpg"
       />
-    </SlCarouselItem>
-  </SlCarousel>
+    </OCarouselItem>
+  </OCarousel>
 );
 ```
 
@@ -244,76 +244,76 @@ const App = () => (
 By default, the carousel will not advanced beyond the first and last slides. You can change this behavior and force the carousel to "wrap" with the `loop` attribute.
 
 ```html:preview
-<sl-carousel loop navigation pagination>
-  <sl-carousel-item>
+<o-carousel loop navigation pagination>
+  <o-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
       src="/assets/examples/carousel/mountains.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
       src="/assets/examples/carousel/waterfall.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
       src="/assets/examples/carousel/sunset.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
       src="/assets/examples/carousel/field.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
       src="/assets/examples/carousel/valley.jpg"
     />
-  </sl-carousel-item>
-</sl-carousel>
+  </o-carousel-item>
+</o-carousel>
 ```
 
 ```jsx:react
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { OCarousel, OCarouselItem } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlCarousel loop navigation pagination>
-    <SlCarouselItem>
+  <OCarousel loop navigation pagination>
+    <OCarouselItem>
       <img
         alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
         src="/assets/examples/carousel/mountains.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
         src="/assets/examples/carousel/waterfall.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
         src="/assets/examples/carousel/sunset.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
         src="/assets/examples/carousel/field.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
         src="/assets/examples/carousel/valley.jpg"
       />
-    </SlCarouselItem>
-  </SlCarousel>
+    </OCarouselItem>
+  </OCarousel>
 );
 ```
 
@@ -322,76 +322,76 @@ const App = () => (
 The carousel will automatically advance when the `autoplay` attribute is used. To change how long a slide is shown before advancing, set `autoplay-interval` to the desired number of milliseconds. For best results, use the `loop` attribute when autoplay is enabled. Note that autoplay will pause while the user interacts with the carousel.
 
 ```html:preview
-<sl-carousel autoplay loop pagination>
-  <sl-carousel-item>
+<o-carousel autoplay loop pagination>
+  <o-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
       src="/assets/examples/carousel/mountains.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
       src="/assets/examples/carousel/waterfall.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
       src="/assets/examples/carousel/sunset.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
       src="/assets/examples/carousel/field.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
       src="/assets/examples/carousel/valley.jpg"
     />
-  </sl-carousel-item>
-</sl-carousel>
+  </o-carousel-item>
+</o-carousel>
 ```
 
 ```jsx:react
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { OCarousel, OCarouselItem } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlCarousel autoplay loop pagination>
-    <SlCarouselItem>
+  <OCarousel autoplay loop pagination>
+    <OCarouselItem>
       <img
         alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
         src="/assets/examples/carousel/mountains.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
         src="/assets/examples/carousel/waterfall.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
         src="/assets/examples/carousel/sunset.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
         src="/assets/examples/carousel/field.jpg"
       />
-    </SlCarouselItem>
-    <SlCarouselItem>
+    </OCarouselItem>
+    <OCarouselItem>
       <img
         alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
         src="/assets/examples/carousel/valley.jpg"
       />
-    </SlCarouselItem>
-  </SlCarousel>
+    </OCarouselItem>
+  </OCarousel>
 );
 ```
 
@@ -403,50 +403,50 @@ This example is best demonstrated using a mouse. Try clicking and dragging the s
 
 ```html:preview
 <div class="mouse-dragging">
-  <sl-carousel pagination>
-    <sl-carousel-item>
+  <o-carousel pagination>
+    <o-carousel-item>
       <img
         alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
         src="/assets/examples/carousel/mountains.jpg"
       />
-    </sl-carousel-item>
-    <sl-carousel-item>
+    </o-carousel-item>
+    <o-carousel-item>
       <img
         alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
         src="/assets/examples/carousel/waterfall.jpg"
       />
-    </sl-carousel-item>
-    <sl-carousel-item>
+    </o-carousel-item>
+    <o-carousel-item>
       <img
         alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
         src="/assets/examples/carousel/sunset.jpg"
       />
-    </sl-carousel-item>
-    <sl-carousel-item>
+    </o-carousel-item>
+    <o-carousel-item>
       <img
         alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
         src="/assets/examples/carousel/field.jpg"
       />
-    </sl-carousel-item>
-    <sl-carousel-item>
+    </o-carousel-item>
+    <o-carousel-item>
       <img
         alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
         src="/assets/examples/carousel/valley.jpg"
       />
-    </sl-carousel-item>
-  </sl-carousel>
+    </o-carousel-item>
+  </o-carousel>
 
-  <sl-divider></sl-divider>
+  <o-divider></o-divider>
 
-  <sl-switch>Enable mouse dragging</sl-switch>
+  <o-switch>Enable mouse dragging</o-switch>
 </div>
 
 <script>
   const container = document.querySelector('.mouse-dragging');
-  const carousel = container.querySelector('sl-carousel');
-  const toggle = container.querySelector('sl-switch');
+  const carousel = container.querySelector('o-carousel');
+  const toggle = container.querySelector('o-switch');
 
-  toggle.addEventListener('sl-change', () => {
+  toggle.addEventListener('o-change', () => {
     carousel.toggleAttribute('mouse-dragging', toggle.checked);
   });
 </script>
@@ -454,51 +454,51 @@ This example is best demonstrated using a mouse. Try clicking and dragging the s
 
 ```jsx:react
 import { useState } from 'react';
-import { SlCarousel, SlCarouselItem, SlDivider, SlSwitch } from '@shoelace-style/shoelace/dist/react';
+import { OCarousel, OCarouselItem, ODivider, OSwitch } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => {
   const [isEnabled, setIsEnabled] = useState(false);
 
   return (
     <>
-      <SlCarousel navigation mouseDragging={isEnabled}>
-        <SlCarouselItem>
+      <OCarousel navigation mouseDragging={isEnabled}>
+        <OCarouselItem>
           <img
             alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
             src="/assets/examples/carousel/mountains.jpg"
           />
-        </SlCarouselItem>
-        <SlCarouselItem>
+        </OCarouselItem>
+        <OCarouselItem>
           <img
             alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
             src="/assets/examples/carousel/waterfall.jpg"
           />
-        </SlCarouselItem>
-        <SlCarouselItem>
+        </OCarouselItem>
+        <OCarouselItem>
           <img
             alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
             src="/assets/examples/carousel/sunset.jpg"
           />
-        </SlCarouselItem>
-        <SlCarouselItem>
+        </OCarouselItem>
+        <OCarouselItem>
           <img
             alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
             src="/assets/examples/carousel/field.jpg"
           />
-        </SlCarouselItem>
-        <SlCarouselItem>
+        </OCarouselItem>
+        <OCarouselItem>
           <img
             alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
             src="/assets/examples/carousel/valley.jpg"
           />
-        </SlCarouselItem>
-      </SlCarousel>
+        </OCarouselItem>
+      </OCarousel>
 
-      <SlDivider></SlDivider>
+      <ODivider></ODivider>
 
-      <SlSwitch checked={isEnabled} onSlInput={() => setIsEnabled(!isEnabled)}>
+      <OSwitch checked={isEnabled} onOInput={() => setIsEnabled(!isEnabled)}>
         Enable mouse dragging
-      </SlSwitch>
+      </OSwitch>
     </>
   );
 };
@@ -509,30 +509,30 @@ const App = () => {
 The `slides-per-view` attribute makes it possible to display multiple slides at a time. You can also use the `slides-per-move` attribute to advance more than once slide at a time, if desired.
 
 ```html:preview
-<sl-carousel navigation pagination slides-per-page="2" slides-per-move="2">
-  <sl-carousel-item style="background: var(--sl-color-red-200);">Slide 1</sl-carousel-item>
-  <sl-carousel-item style="background: var(--sl-color-orange-200);">Slide 2</sl-carousel-item>
-  <sl-carousel-item style="background: var(--sl-color-yellow-200);">Slide 3</sl-carousel-item>
-  <sl-carousel-item style="background: var(--sl-color-green-200);">Slide 4</sl-carousel-item>
-  <sl-carousel-item style="background: var(--sl-color-blue-200);">Slide 5</sl-carousel-item>
-  <sl-carousel-item style="background: var(--sl-color-violet-200);">Slide 6</sl-carousel-item>
-</sl-carousel>
+<o-carousel navigation pagination slides-per-page="2" slides-per-move="2">
+  <o-carousel-item style="background: var(--o-color-red-200);">Slide 1</o-carousel-item>
+  <o-carousel-item style="background: var(--o-color-orange-200);">Slide 2</o-carousel-item>
+  <o-carousel-item style="background: var(--o-color-yellow-200);">Slide 3</o-carousel-item>
+  <o-carousel-item style="background: var(--o-color-green-200);">Slide 4</o-carousel-item>
+  <o-carousel-item style="background: var(--o-color-blue-200);">Slide 5</o-carousel-item>
+  <o-carousel-item style="background: var(--o-color-violet-200);">Slide 6</o-carousel-item>
+</o-carousel>
 ```
 
 {% raw %}
 
 ```jsx:react
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { OCarousel, OCarouselItem } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlCarousel navigation pagination slidesPerPage={2} slidesPerMove={2}>
-    <SlCarouselItem style={{ background: 'var(--sl-color-red-200)' }}>Slide 1</SlCarouselItem>
-    <SlCarouselItem style={{ background: 'var(--sl-color-orange-200)' }}>Slide 2</SlCarouselItem>
-    <SlCarouselItem style={{ background: 'var(--sl-color-yellow-200)' }}>Slide 3</SlCarouselItem>
-    <SlCarouselItem style={{ background: 'var(--sl-color-green-200)' }}>Slide 4</SlCarouselItem>
-    <SlCarouselItem style={{ background: 'var(--sl-color-blue-200)' }}>Slide 5</SlCarouselItem>
-    <SlCarouselItem style={{ background: 'var(--sl-color-violet-200)' }}>Slide 6</SlCarouselItem>
-  </SlCarousel>
+  <OCarousel navigation pagination slidesPerPage={2} slidesPerMove={2}>
+    <OCarouselItem style={{ background: 'var(--o-color-red-200)' }}>Slide 1</OCarouselItem>
+    <OCarouselItem style={{ background: 'var(--o-color-orange-200)' }}>Slide 2</OCarouselItem>
+    <OCarouselItem style={{ background: 'var(--o-color-yellow-200)' }}>Slide 3</OCarouselItem>
+    <OCarouselItem style={{ background: 'var(--o-color-green-200)' }}>Slide 4</OCarouselItem>
+    <OCarouselItem style={{ background: 'var(--o-color-blue-200)' }}>Slide 5</OCarouselItem>
+    <OCarouselItem style={{ background: 'var(--o-color-violet-200)' }}>Slide 6</OCarouselItem>
+  </OCarousel>
 );
 ```
 
@@ -543,15 +543,15 @@ const App = () => (
 The content of the carousel can be changed by adding or removing carousel items. The carousel will update itself automatically.
 
 ```html:preview
-<sl-carousel class="dynamic-carousel" pagination navigation>
-  <sl-carousel-item style="background: var(--sl-color-red-200)">Slide 1</sl-carousel-item>
-  <sl-carousel-item style="background: var(--sl-color-orange-200)">Slide 2</sl-carousel-item>
-  <sl-carousel-item style="background: var(--sl-color-yellow-200)">Slide 3</sl-carousel-item>
-</sl-carousel>
+<o-carousel class="dynamic-carousel" pagination navigation>
+  <o-carousel-item style="background: var(--o-color-red-200)">Slide 1</o-carousel-item>
+  <o-carousel-item style="background: var(--o-color-orange-200)">Slide 2</o-carousel-item>
+  <o-carousel-item style="background: var(--o-color-yellow-200)">Slide 3</o-carousel-item>
+</o-carousel>
 
 <div class="carousel-options">
-  <sl-button id="dynamic-add">Add slide</sl-button>
-  <sl-button id="dynamic-remove">Remove slide</sl-button>
+  <o-button id="dynamic-add">Add slide</o-button>
+  <o-button id="dynamic-remove">Remove slide</o-button>
 </div>
 
 <style>
@@ -562,16 +562,16 @@ The content of the carousel can be changed by adding or removing carousel items.
   .dynamic-carousel ~ .carousel-options {
     display: flex;
     justify-content: center;
-    gap: var(--sl-spacing-x-small);
-    margin-top: var(--sl-spacing-large);
+    gap: var(--o-spacing-x-small);
+    margin-top: var(--o-spacing-large);
   }
 
-  .dynamic-carousel sl-carousel-item {
+  .dynamic-carousel o-carousel-item {
     flex: 0 0 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: var(--sl-font-size-2x-large);
+    font-size: var(--o-font-size-2x-large);
   }
 </style>
 
@@ -584,17 +584,17 @@ The content of the carousel can be changed by adding or removing carousel items.
     let colorIndex = 2;
 
     const addSlide = () => {
-      const slide = document.createElement('sl-carousel-item');
+      const slide = document.createElement('o-carousel-item');
       const color = colors[++colorIndex % colors.length];
       slide.innerText = `Slide ${dynamicCarousel.children.length + 1}`;
-      slide.style.setProperty('background', `var(--sl-color-${color}-200)`);
+      slide.style.setProperty('background', `var(--o-color-${color}-200)`);
       dynamicCarousel.appendChild(slide);
       dynamicRemove.disabled = false;
     };
 
     const removeSlide = () => {
       const slide = dynamicCarousel.children[dynamicCarousel.children.length - 1];
-      const numSlides = dynamicCarousel.querySelectorAll('sl-carousel-item').length;
+      const numSlides = dynamicCarousel.querySelectorAll('o-carousel-item').length;
 
       if (numSlides > 1) {
         slide.remove();
@@ -614,7 +614,7 @@ The content of the carousel can be changed by adding or removing carousel items.
 
 ```jsx:react
 import { useState } from 'react';
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { OCarousel, OCarouselItem } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
   .dynamic-carousel {
@@ -624,16 +624,16 @@ const css = `
   .dynamic-carousel ~ .carousel-options {
     display: flex;
     justify-content: center;
-    margin-top: var(--sl-spacing-large);
+    margin-top: var(--o-spacing-large);
   }
 
-  .dynamic-carousel sl-carousel-item {
+  .dynamic-carousel o-carousel-item {
     flex: 0 0 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: var(--sl-font-size-2x-large);
+    font-size: var(--o-font-size-2x-large);
   }
 `;
 
@@ -651,17 +651,17 @@ const App = () => {
 
   return (
     <>
-      <SlCarousel className="dynamic-carousel" pagination navigation>
+      <OCarousel className="dynamic-carousel" pagination navigation>
         {slides.map((color, i) => (
-          <SlCarouselItem style={{ background: colors[i % colors.length }}>
+          <OCarouselItem style={{ background: colors[i % colors.length }}>
             Slide {i}
-          </SlCarouselItem>
+          </OCarouselItem>
         ))}
-      </SlCarousel>
+      </OCarousel>
 
       <div className="carousel-options">
-        <SlButton onClick={addSlide}>Add slide</SlButton>
-        <SlButton onClick={removeSlide}>Remove slide</SlButton>
+        <OButton onClick={addSlide}>Add slide</OButton>
+        <OButton onClick={removeSlide}>Remove slide</OButton>
       </div>
 
       <style>{css}</style>
@@ -677,38 +677,38 @@ const App = () => {
 Setting the `orientation` attribute to `vertical` will render the carousel in a vertical layout. If the content of your slides vary in height, you will need to set amn explicit `height` or `max-height` on the carousel using CSS.
 
 ```html:preview
-<sl-carousel class="vertical" pagination orientation="vertical">
-  <sl-carousel-item>
+<o-carousel class="vertical" pagination orientation="vertical">
+  <o-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
       src="/assets/examples/carousel/mountains.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
       src="/assets/examples/carousel/waterfall.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
       src="/assets/examples/carousel/sunset.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
       src="/assets/examples/carousel/field.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
       src="/assets/examples/carousel/valley.jpg"
     />
-  </sl-carousel-item>
-</sl-carousel>
+  </o-carousel-item>
+</o-carousel>
 <style>
   .vertical {
     max-height: 400px;
@@ -730,7 +730,7 @@ Setting the `orientation` attribute to `vertical` will render the carousel in a 
 ```
 
 ```jsx:react
-import { SlCarousel, SlCarouselItem } from '@shoelace-style/shoelace/dist/react';
+import { OCarousel, OCarouselItem } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
   .vertical {
@@ -753,38 +753,38 @@ const css = `
 
 const App = () => (
   <>
-    <SlCarousel className="vertical" loop pagination orientation="vertical">
-      <SlCarouselItem>
+    <OCarousel className="vertical" loop pagination orientation="vertical">
+      <OCarouselItem>
         <img
           alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
           src="/assets/examples/carousel/mountains.jpg"
         />
-      </SlCarouselItem>
-      <SlCarouselItem>
+      </OCarouselItem>
+      <OCarouselItem>
         <img
           alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
           src="/assets/examples/carousel/waterfall.jpg"
         />
-      </SlCarouselItem>
-      <SlCarouselItem>
+      </OCarouselItem>
+      <OCarouselItem>
         <img
           alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
           src="/assets/examples/carousel/sunset.jpg"
         />
-      </SlCarouselItem>
-      <SlCarouselItem>
+      </OCarouselItem>
+      <OCarouselItem>
         <img
           alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
           src="/assets/examples/carousel/field.jpg"
         />
-      </SlCarouselItem>
-      <SlCarouselItem>
+      </OCarouselItem>
+      <OCarouselItem>
         <img
           alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
           src="/assets/examples/carousel/valley.jpg"
         />
-      </SlCarouselItem>
-    </SlCarousel>
+      </OCarouselItem>
+    </OCarousel>
     <style>{css}</style>
   </>
 );
@@ -795,53 +795,53 @@ const App = () => (
 Use the `--aspect-ratio` custom property to customize the size of the carousel's viewport.
 
 ```html:preview
-<sl-carousel class="aspect-ratio" navigation pagination style="--aspect-ratio: 3/2;">
-  <sl-carousel-item>
+<o-carousel class="aspect-ratio" navigation pagination style="--aspect-ratio: 3/2;">
+  <o-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
       src="/assets/examples/carousel/mountains.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
       src="/assets/examples/carousel/waterfall.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
       src="/assets/examples/carousel/sunset.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
       src="/assets/examples/carousel/field.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
       src="/assets/examples/carousel/valley.jpg"
     />
-  </sl-carousel-item>
-</sl-carousel>
+  </o-carousel-item>
+</o-carousel>
 
-<sl-divider></sl-divider>
+<o-divider></o-divider>
 
-<sl-select label="Aspect ratio" name="aspect" value="3/2">
-  <sl-option value="1/1">1/1</sl-option>
-  <sl-option value="3/2">3/2</sl-option>
-  <sl-option value="16/9">16/9</sl-option>
-</sl-select>
+<o-select label="Aspect ratio" name="aspect" value="3/2">
+  <o-option value="1/1">1/1</o-option>
+  <o-option value="3/2">3/2</o-option>
+  <o-option value="16/9">16/9</o-option>
+</o-select>
 
 <script>
   (() => {
-    const carousel = document.querySelector('sl-carousel.aspect-ratio');
-    const aspectRatio = document.querySelector('sl-select[name="aspect"]');
+    const carousel = document.querySelector('o-carousel.aspect-ratio');
+    const aspectRatio = document.querySelector('o-select[name="aspect"]');
 
-    aspectRatio.addEventListener('sl-change', () => {
+    aspectRatio.addEventListener('o-change', () => {
       carousel.style.setProperty('--aspect-ratio', aspectRatio.value);
     });
   })();
@@ -852,58 +852,58 @@ Use the `--aspect-ratio` custom property to customize the size of the carousel's
 
 ```jsx:react
 import { useState } from 'react';
-import { SlCarousel, SlCarouselItem, SlDivider, SlSelect, SlOption } from '@shoelace-style/shoelace/dist/react';
+import { OCarousel, OCarouselItem, ODivider, OSelect, OOption } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => {
   const [aspectRatio, setAspectRatio] = useState('3/2');
 
   return (
     <>
-      <SlCarousel className="aspect-ratio" navigation pagination style={{ '--aspect-ratio': aspectRatio }}>
-        <SlCarouselItem>
+      <OCarousel className="aspect-ratio" navigation pagination style={{ '--aspect-ratio': aspectRatio }}>
+        <OCarouselItem>
           <img
             alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
             src="/assets/examples/carousel/mountains.jpg"
           />
-        </SlCarouselItem>
-        <SlCarouselItem>
+        </OCarouselItem>
+        <OCarouselItem>
           <img
             alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
             src="/assets/examples/carousel/waterfall.jpg"
           />
-        </SlCarouselItem>
-        <SlCarouselItem>
+        </OCarouselItem>
+        <OCarouselItem>
           <img
             alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
             src="/assets/examples/carousel/sunset.jpg"
           />
-        </SlCarouselItem>
-        <SlCarouselItem>
+        </OCarouselItem>
+        <OCarouselItem>
           <img
             alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
             src="/assets/examples/carousel/field.jpg"
           />
-        </SlCarouselItem>
-        <SlCarouselItem>
+        </OCarouselItem>
+        <OCarouselItem>
           <img
             alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
             src="/assets/examples/carousel/valley.jpg"
           />
-        </SlCarouselItem>
-      </SlCarousel>
+        </OCarouselItem>
+      </OCarousel>
 
-      <SlDivider />
+      <ODivider />
 
-      <SlSelect
+      <OSelect
         label="Aspect ratio"
         name="aspect"
         value={aspectRatio}
-        onSlChange={event => setAspectRatio(event.target.value)}
+        onOChange={event => setAspectRatio(event.target.value)}
       >
-        <SlOption value="1 / 1">1 / 1</SlOption>
-        <SlOption value="3 / 2">3 / 2</SlOption>
-        <SlOption value="16 / 9">16 / 9</SlOption>
-      </SlSelect>
+        <OOption value="1 / 1">1 / 1</OOption>
+        <OOption value="3 / 2">3 / 2</OOption>
+        <OOption value="16 / 9">16 / 9</OOption>
+      </OSelect>
 
       <style>{css}</style>
     </>
@@ -918,80 +918,80 @@ const App = () => {
 Use the `--scroll-hint` custom property to add inline padding in horizontal carousels and block padding in vertical carousels. This will make the closest slides slightly visible, hinting that there are more items in the carousel.
 
 ```html:preview
-<sl-carousel class="scroll-hint" pagination style="--scroll-hint: 10%;">
-  <sl-carousel-item>
+<o-carousel class="scroll-hint" pagination style="--scroll-hint: 10%;">
+  <o-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
       src="/assets/examples/carousel/mountains.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
       src="/assets/examples/carousel/waterfall.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
       src="/assets/examples/carousel/sunset.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
       src="/assets/examples/carousel/field.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
       src="/assets/examples/carousel/valley.jpg"
     />
-  </sl-carousel-item>
-</sl-carousel>
+  </o-carousel-item>
+</o-carousel>
 ```
 
 {% raw %}
 
 ```jsx:react
 import { useState } from 'react';
-import { SlCarousel, SlCarouselItem, SlDivider, SlRange } from '@shoelace-style/shoelace/dist/react';
+import { OCarousel, OCarouselItem, ODivider, ORange } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
-    <SlCarousel className="scroll-hint" pagination style={{ '--scroll-hint': '10%' }}>
-      <SlCarouselItem>
+    <OCarousel className="scroll-hint" pagination style={{ '--scroll-hint': '10%' }}>
+      <OCarouselItem>
         <img
           alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
           src="/assets/examples/carousel/mountains.jpg"
         />
-      </SlCarouselItem>
-      <SlCarouselItem>
+      </OCarouselItem>
+      <OCarouselItem>
         <img
           alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
           src="/assets/examples/carousel/waterfall.jpg"
         />
-      </SlCarouselItem>
-      <SlCarouselItem>
+      </OCarouselItem>
+      <OCarouselItem>
         <img
           alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
           src="/assets/examples/carousel/sunset.jpg"
         />
-      </SlCarouselItem>
-      <SlCarouselItem>
+      </OCarouselItem>
+      <OCarouselItem>
         <img
           alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
           src="/assets/examples/carousel/field.jpg"
         />
-      </SlCarouselItem>
-      <SlCarouselItem>
+      </OCarouselItem>
+      <OCarouselItem>
         <img
           alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
           src="/assets/examples/carousel/valley.jpg"
         />
-      </SlCarouselItem>
-    </SlCarousel>
+      </OCarouselItem>
+    </OCarousel>
   </>
 );
 ```
@@ -1003,38 +1003,38 @@ const App = () => (
 The carousel has a robust API that makes it possible to extend and customize. This example syncs the active slide with a set of thumbnails, effectively creating a gallery-style carousel.
 
 ```html:preview
-<sl-carousel class="carousel-thumbnails" navigation loop>
-  <sl-carousel-item>
+<o-carousel class="carousel-thumbnails" navigation loop>
+  <o-carousel-item>
     <img
       alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
       src="/assets/examples/carousel/mountains.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
       src="/assets/examples/carousel/waterfall.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
       src="/assets/examples/carousel/sunset.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A field of grass with the sun setting in the background (by Sapan Patel on Unsplash)"
       src="/assets/examples/carousel/field.jpg"
     />
-  </sl-carousel-item>
-  <sl-carousel-item>
+  </o-carousel-item>
+  <o-carousel-item>
     <img
       alt="A scenic view of a mountain with clouds rolling in (by V2osk on Unsplash)"
       src="/assets/examples/carousel/valley.jpg"
     />
-  </sl-carousel-item>
-</sl-carousel>
+  </o-carousel-item>
+</o-carousel>
 
 <div class="thumbnails">
   <div class="thumbnails__scroller">
@@ -1058,11 +1058,11 @@ The carousel has a robust API that makes it possible to extend and customize. Th
 
   .thumbnails__scroller {
     display: flex;
-    gap: var(--sl-spacing-small);
+    gap: var(--o-spacing-small);
     overflow-x: auto;
     scrollbar-width: none;
     scroll-behavior: smooth;
-    scroll-padding: var(--sl-spacing-small);
+    scroll-padding: var(--o-spacing-small);
   }
 
   .thumbnails__scroller::-webkit-scrollbar {
@@ -1101,7 +1101,7 @@ The carousel has a robust API that makes it possible to extend and customize. Th
       }
     });
 
-    carousel.addEventListener('sl-slide-change', e => {
+    carousel.addEventListener('o-slide-change', e => {
       const slideIndex = e.detail.index;
 
       [...thumbnails].forEach((thumb, i) => {
@@ -1119,7 +1119,7 @@ The carousel has a robust API that makes it possible to extend and customize. Th
 
 ```jsx:react
 import { useRef } from 'react';
-import { SlCarousel, SlCarouselItem, SlDivider, SlRange } from '@shoelace-style/shoelace/dist/react';
+import { OCarousel, OCarouselItem, ODivider, ORange } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
   .carousel-thumbnails {
@@ -1133,11 +1133,11 @@ const css = `
 
   .thumbnails__scroller {
     display: flex;
-    gap: var(--sl-spacing-small);
+    gap: var(--o-spacing-small);
     overflow-x: auto;
     scrollbar-width: none;
     scroll-behavior: smooth;
-    scroll-padding: var(--sl-spacing-small);
+    scroll-padding: var(--o-spacing-small);
   }
 
   .thumbnails__scroller::-webkit-scrollbar {
@@ -1208,16 +1208,16 @@ const App = () => {
 
   return (
     <>
-      <SlCarousel className="carousel-thumbnails" navigation loop onSlSlideChange={handleSlideChange}>
+      <OCarousel className="carousel-thumbnails" navigation loop onOSlideChange={handleSlideChange}>
         {images.map({ src, alt }) => (
-          <SlCarouselItem>
+          <OCarouselItem>
             <img
               alt={alt}
               src={src}
             />
-          </SlCarouselItem>
+          </OCarouselItem>
         )}
-      </SlCarousel>
+      </OCarousel>
 
       <div class="thumbnails">
         <div class="thumbnails__scroller">

@@ -1,16 +1,16 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize.js';
-import ShoelaceElement from '../../internal/shoelace-element.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 
 /**
  * @summary Formats a date/time using the specified locale and options.
- * @documentation https://shoelace.style/components/format-date
+ * @documentation /components/format-date
  * @status stable
- * @since 2.0
+ * @since 1.5
  */
-@customElement('sl-format-date')
-export default class SlFormatDate extends ShoelaceElement {
+@customElement('o-format-date')
+export default class OFormatDate extends LibraryBaseElement {
   private readonly localize = new LocalizeController(this);
 
   /**
@@ -65,18 +65,18 @@ export default class SlFormatDate extends ShoelaceElement {
     return html`
       <time datetime=${date.toISOString()}>
         ${this.localize.date(date, {
-          weekday: this.weekday,
-          era: this.era,
-          year: this.year,
-          month: this.month,
-          day: this.day,
-          hour: this.hour,
-          minute: this.minute,
-          second: this.second,
-          timeZoneName: this.timeZoneName,
-          timeZone: this.timeZone,
-          hour12: hour12
-        })}
+      weekday: this.weekday,
+      era: this.era,
+      year: this.year,
+      month: this.month,
+      day: this.day,
+      hour: this.hour,
+      minute: this.minute,
+      second: this.second,
+      timeZoneName: this.timeZoneName,
+      timeZone: this.timeZone,
+      hour12: hour12
+    })}
       </time>
     `;
   }
@@ -84,6 +84,6 @@ export default class SlFormatDate extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-format-date': SlFormatDate;
+    'o-format-date': OFormatDate;
   }
 }

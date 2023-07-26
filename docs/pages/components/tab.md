@@ -6,21 +6,21 @@ layout: component
 ---
 
 ```html:preview
-<sl-tab>Tab</sl-tab>
-<sl-tab active>Active</sl-tab>
-<sl-tab closable>Closable</sl-tab>
-<sl-tab disabled>Disabled</sl-tab>
+<o-tab>Tab</o-tab>
+<o-tab active>Active</o-tab>
+<o-tab closable>Closable</o-tab>
+<o-tab disabled>Disabled</o-tab>
 ```
 
 ```jsx:react
-import { SlTab } from '@shoelace-style/shoelace/dist/react';
+import { OTab } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
   <>
-    <SlTab>Tab</SlTab>
-    <SlTab active>Active</SlTab>
-    <SlTab closable>Closable</SlTab>
-    <SlTab disabled>Disabled</SlTab>
+    <OTab>Tab</OTab>
+    <OTab active>Active</OTab>
+    <OTab closable>Closable</OTab>
+    <OTab disabled>Disabled</OTab>
   </>
 );
 ```

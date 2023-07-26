@@ -12,13 +12,13 @@ Skeletons try not to be opinionated, as there are endless possibilities for desi
 ```html:preview
 <div class="skeleton-overview">
   <header>
-    <sl-skeleton></sl-skeleton>
-    <sl-skeleton></sl-skeleton>
+    <o-skeleton></o-skeleton>
+    <o-skeleton></o-skeleton>
   </header>
 
-  <sl-skeleton></sl-skeleton>
-  <sl-skeleton></sl-skeleton>
-  <sl-skeleton></sl-skeleton>
+  <o-skeleton></o-skeleton>
+  <o-skeleton></o-skeleton>
+  <o-skeleton></o-skeleton>
 </div>
 
 <style>
@@ -28,16 +28,16 @@ Skeletons try not to be opinionated, as there are endless possibilities for desi
     margin-bottom: 1rem;
   }
 
-  .skeleton-overview header sl-skeleton:last-child {
+  .skeleton-overview header o-skeleton:last-child {
     flex: 0 0 auto;
     width: 30%;
   }
 
-  .skeleton-overview sl-skeleton {
+  .skeleton-overview o-skeleton {
     margin-bottom: 1rem;
   }
 
-  .skeleton-overview sl-skeleton:nth-child(1) {
+  .skeleton-overview o-skeleton:nth-child(1) {
     float: left;
     width: 3rem;
     height: 3rem;
@@ -45,18 +45,18 @@ Skeletons try not to be opinionated, as there are endless possibilities for desi
     vertical-align: middle;
   }
 
-  .skeleton-overview sl-skeleton:nth-child(3) {
+  .skeleton-overview o-skeleton:nth-child(3) {
     width: 95%;
   }
 
-  .skeleton-overview sl-skeleton:nth-child(4) {
+  .skeleton-overview o-skeleton:nth-child(4) {
     width: 80%;
   }
 </style>
 ```
 
 ```jsx:react
-import { SlSkeleton } from '@shoelace-style/shoelace/dist/react';
+import { OSkeleton } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
   .skeleton-overview header {
@@ -65,16 +65,16 @@ const css = `
     margin-bottom: 1rem;
   }
 
-  .skeleton-overview header sl-skeleton:last-child {
+  .skeleton-overview header o-skeleton:last-child {
     flex: 0 0 auto;
     width: 30%;
   }
 
-  .skeleton-overview sl-skeleton {
+  .skeleton-overview o-skeleton {
     margin-bottom: 1rem;
   }
 
-  .skeleton-overview sl-skeleton:nth-child(1) {
+  .skeleton-overview o-skeleton:nth-child(1) {
     float: left;
     width: 3rem;
     height: 3rem;
@@ -82,11 +82,11 @@ const css = `
     vertical-align: middle;
   }
 
-  .skeleton-overview sl-skeleton:nth-child(3) {
+  .skeleton-overview o-skeleton:nth-child(3) {
     width: 95%;
   }
 
-  .skeleton-overview sl-skeleton:nth-child(4) {
+  .skeleton-overview o-skeleton:nth-child(4) {
     width: 80%;
   }
 `;
@@ -95,13 +95,13 @@ const App = () => (
   <>
     <div className="skeleton-overview">
       <header>
-        <SlSkeleton />
-        <SlSkeleton />
+        <OSkeleton />
+        <OSkeleton />
       </header>
 
-      <SlSkeleton />
-      <SlSkeleton />
-      <SlSkeleton />
+      <OSkeleton />
+      <OSkeleton />
+      <OSkeleton />
     </div>
 
     <style>{css}</style>
@@ -117,36 +117,36 @@ There are two built-in effects, `sheen` and `pulse`. Effects are intentionally s
 
 ```html:preview
 <div class="skeleton-effects">
-  <sl-skeleton effect="none"></sl-skeleton>
+  <o-skeleton effect="none"></o-skeleton>
   None
 
-  <sl-skeleton effect="sheen"></sl-skeleton>
+  <o-skeleton effect="sheen"></o-skeleton>
   Sheen
 
-  <sl-skeleton effect="pulse"></sl-skeleton>
+  <o-skeleton effect="pulse"></o-skeleton>
   Pulse
 </div>
 
 <style>
   .skeleton-effects {
-    font-size: var(--sl-font-size-small);
+    font-size: var(--o-font-size-small);
   }
 
-  .skeleton-effects sl-skeleton:not(:first-child) {
+  .skeleton-effects o-skeleton:not(:first-child) {
     margin-top: 1rem;
   }
 </style>
 ```
 
 ```jsx:react
-import { SlSkeleton } from '@shoelace-style/shoelace/dist/react';
+import { OSkeleton } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
   .skeleton-effects {
-    font-size: var(--sl-font-size-small);
+    font-size: var(--o-font-size-small);
   }
 
-  .skeleton-effects sl-skeleton:not(:first-child) {
+  .skeleton-effects o-skeleton:not(:first-child) {
     margin-top: 1rem;
   }
 `;
@@ -154,11 +154,11 @@ const css = `
 const App = () => (
   <>
     <div className="skeleton-effects">
-      <SlSkeleton effect="none" />
+      <OSkeleton effect="none" />
       None
-      <SlSkeleton effect="sheen" />
+      <OSkeleton effect="sheen" />
       Sheen
-      <SlSkeleton effect="pulse" />
+      <OSkeleton effect="pulse" />
       Pulse
     </div>
 
@@ -173,49 +173,49 @@ Use multiple skeletons and some clever styles to simulate paragraphs.
 
 ```html:preview
 <div class="skeleton-paragraphs">
-  <sl-skeleton></sl-skeleton>
-  <sl-skeleton></sl-skeleton>
-  <sl-skeleton></sl-skeleton>
-  <sl-skeleton></sl-skeleton>
-  <sl-skeleton></sl-skeleton>
+  <o-skeleton></o-skeleton>
+  <o-skeleton></o-skeleton>
+  <o-skeleton></o-skeleton>
+  <o-skeleton></o-skeleton>
+  <o-skeleton></o-skeleton>
 </div>
 
 <style>
-  .skeleton-paragraphs sl-skeleton {
+  .skeleton-paragraphs o-skeleton {
     margin-bottom: 1rem;
   }
 
-  .skeleton-paragraphs sl-skeleton:nth-child(2) {
+  .skeleton-paragraphs o-skeleton:nth-child(2) {
     width: 95%;
   }
 
-  .skeleton-paragraphs sl-skeleton:nth-child(4) {
+  .skeleton-paragraphs o-skeleton:nth-child(4) {
     width: 90%;
   }
 
-  .skeleton-paragraphs sl-skeleton:last-child {
+  .skeleton-paragraphs o-skeleton:last-child {
     width: 50%;
   }
 </style>
 ```
 
 ```jsx:react
-import { SlSkeleton } from '@shoelace-style/shoelace/dist/react';
+import { OSkeleton } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
-  .skeleton-paragraphs sl-skeleton {
+  .skeleton-paragraphs o-skeleton {
     margin-bottom: 1rem;
   }
 
-  .skeleton-paragraphs sl-skeleton:nth-child(2) {
+  .skeleton-paragraphs o-skeleton:nth-child(2) {
     width: 95%;
   }
 
-  .skeleton-paragraphs sl-skeleton:nth-child(4) {
+  .skeleton-paragraphs o-skeleton:nth-child(4) {
     width: 90%;
   }
 
-  .skeleton-paragraphs sl-skeleton:last-child {
+  .skeleton-paragraphs o-skeleton:last-child {
     width: 50%;
   }
 `;
@@ -223,11 +223,11 @@ const css = `
 const App = () => (
   <>
     <div className="skeleton-paragraphs">
-      <SlSkeleton />
-      <SlSkeleton />
-      <SlSkeleton />
-      <SlSkeleton />
-      <SlSkeleton />
+      <OSkeleton />
+      <OSkeleton />
+      <OSkeleton />
+      <OSkeleton />
+      <OSkeleton />
     </div>
 
     <style>{css}</style>
@@ -241,55 +241,55 @@ Set a matching width and height to make a circle, square, or rounded avatar skel
 
 ```html:preview
 <div class="skeleton-avatars">
-  <sl-skeleton></sl-skeleton>
-  <sl-skeleton></sl-skeleton>
-  <sl-skeleton></sl-skeleton>
+  <o-skeleton></o-skeleton>
+  <o-skeleton></o-skeleton>
+  <o-skeleton></o-skeleton>
 </div>
 
 <style>
-  .skeleton-avatars sl-skeleton {
+  .skeleton-avatars o-skeleton {
     display: inline-block;
     width: 3rem;
     height: 3rem;
     margin-right: 0.5rem;
   }
 
-  .skeleton-avatars sl-skeleton:nth-child(1) {
+  .skeleton-avatars o-skeleton:nth-child(1) {
     --border-radius: 0;
   }
 
-  .skeleton-avatars sl-skeleton:nth-child(2) {
-    --border-radius: var(--sl-border-radius-medium);
+  .skeleton-avatars o-skeleton:nth-child(2) {
+    --border-radius: var(--o-border-radius-medium);
   }
 </style>
 ```
 
 ```jsx:react
-import { SlSkeleton } from '@shoelace-style/shoelace/dist/react';
+import { OSkeleton } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
-  .skeleton-avatars sl-skeleton {
+  .skeleton-avatars o-skeleton {
     display: inline-block;
     width: 3rem;
     height: 3rem;
     margin-right: .5rem;
   }
 
-  .skeleton-avatars sl-skeleton:nth-child(1) {
+  .skeleton-avatars o-skeleton:nth-child(1) {
     --border-radius: 0;
   }
 
-  .skeleton-avatars sl-skeleton:nth-child(2) {
-    --border-radius: var(--sl-border-radius-medium);
+  .skeleton-avatars o-skeleton:nth-child(2) {
+    --border-radius: var(--o-border-radius-medium);
   }
 `;
 
 const App = () => (
   <>
     <div className="skeleton-avatars">
-      <SlSkeleton />
-      <SlSkeleton />
-      <SlSkeleton />
+      <OSkeleton />
+      <OSkeleton />
+      <OSkeleton />
     </div>
 
     <style>{css}</style>
@@ -303,26 +303,26 @@ Use the `--border-radius` custom property to make circles, squares, and rectangl
 
 ```html:preview
 <div class="skeleton-shapes">
-  <sl-skeleton class="square"></sl-skeleton>
-  <sl-skeleton class="circle"></sl-skeleton>
-  <sl-skeleton class="triangle"></sl-skeleton>
-  <sl-skeleton class="cross"></sl-skeleton>
-  <sl-skeleton class="comment"></sl-skeleton>
+  <o-skeleton class="square"></o-skeleton>
+  <o-skeleton class="circle"></o-skeleton>
+  <o-skeleton class="triangle"></o-skeleton>
+  <o-skeleton class="cross"></o-skeleton>
+  <o-skeleton class="comment"></o-skeleton>
 </div>
 
 <style>
-  .skeleton-shapes sl-skeleton {
+  .skeleton-shapes o-skeleton {
     display: inline-flex;
     width: 50px;
     height: 50px;
   }
 
   .skeleton-shapes .square::part(indicator) {
-    --border-radius: var(--sl-border-radius-medium);
+    --border-radius: var(--o-border-radius-medium);
   }
 
   .skeleton-shapes .circle::part(indicator) {
-    --border-radius: var(--sl-border-radius-circle);
+    --border-radius: var(--o-border-radius-circle);
   }
 
   .skeleton-shapes .triangle::part(indicator) {
@@ -353,28 +353,28 @@ Use the `--border-radius` custom property to make circles, squares, and rectangl
     clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
   }
 
-  .skeleton-shapes sl-skeleton:not(:last-child) {
+  .skeleton-shapes o-skeleton:not(:last-child) {
     margin-right: 0.5rem;
   }
 </style>
 ```
 
 ```jsx:react
-import { SlSkeleton } from '@shoelace-style/shoelace/dist/react';
+import { OSkeleton } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
-  .skeleton-shapes sl-skeleton {
+  .skeleton-shapes o-skeleton {
     display: inline-flex;
     width: 50px;
     height: 50px;
   }
 
   .skeleton-shapes .square::part(indicator) {
-    --border-radius: var(--sl-border-radius-medium);
+    --border-radius: var(--o-border-radius-medium);
   }
 
   .skeleton-shapes .circle::part(indicator) {
-    --border-radius: var(--sl-border-radius-circle);
+    --border-radius: var(--o-border-radius-circle);
   }
 
   .skeleton-shapes .triangle::part(indicator) {
@@ -392,7 +392,7 @@ const css = `
     clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
   }
 
-  .skeleton-shapes sl-skeleton:not(:last-child) {
+  .skeleton-shapes o-skeleton:not(:last-child) {
     margin-right: .5rem;
   }
 `;
@@ -400,11 +400,11 @@ const css = `
 const App = () => (
   <>
     <div className="skeleton-shapes">
-      <SlSkeleton className="square" />
-      <SlSkeleton className="circle" />
-      <SlSkeleton className="triangle" />
-      <SlSkeleton className="cross" />
-      <SlSkeleton className="comment" />
+      <OSkeleton className="square" />
+      <OSkeleton className="circle" />
+      <OSkeleton className="triangle" />
+      <OSkeleton className="cross" />
+      <OSkeleton className="comment" />
     </div>
 
     <style>{css}</style>
@@ -417,32 +417,32 @@ const App = () => (
 Set the `--color` and `--sheen-color` custom properties to adjust the skeleton's color.
 
 ```html:preview
-<sl-skeleton effect="sheen" style="--color: tomato; --sheen-color: #ffb094;"></sl-skeleton>
+<o-skeleton effect="sheen" style="--color: tomato; --sheen-color: #ffb094;"></o-skeleton>
 ```
 
 {% raw %}
 
 ```jsx:react
-import { SlSkeleton } from '@shoelace-style/shoelace/dist/react';
+import { OSkeleton } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
-  .skeleton-avatars sl-skeleton {
+  .skeleton-avatars o-skeleton {
     display: inline-block;
     width: 3rem;
     height: 3rem;
     margin-right: .5rem;
   }
 
-  .skeleton-avatars sl-skeleton:nth-child(1) {
+  .skeleton-avatars o-skeleton:nth-child(1) {
     --border-radius: 0;
   }
 
-  .skeleton-avatars sl-skeleton:nth-child(2) {
-    --border-radius: var(--sl-border-radius-medium);
+  .skeleton-avatars o-skeleton:nth-child(2) {
+    --border-radius: var(--o-border-radius-medium);
   }
 `;
 
-const App = () => <SlSkeleton effect="sheen" style={{ '--color': 'tomato', '--sheen-color': '#ffb094' }} />;
+const App = () => <OSkeleton effect="sheen" style={{ '--color': 'tomato', '--sheen-color': '#ffb094' }} />;
 ```
 
 {% endraw %}

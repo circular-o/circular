@@ -6,21 +6,13 @@ layout: component
 ---
 
 ```html:preview
-<sl-animated-image
-  src="https://shoelace.style/assets/images/walk.gif"
-  alt="Animation of untied shoes walking on pavement"
-></sl-animated-image>
+<o-animated-image src="/assets/images/walk.gif" alt="Animation of untied shoes walking on pavement"></o-animated-image>
 ```
 
 ```jsx:react
-import { SlAnimatedImage } from '@shoelace-style/shoelace/dist/react';
+import { OAnimatedImage } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => (
-  <SlAnimatedImage
-    src="https://shoelace.style/assets/images/walk.gif"
-    alt="Animation of untied shoes walking on pavement"
-  />
-);
+const App = () => <OAnimatedImage src="/assets/images/walk.gif" alt="Animation of untied shoes walking on pavement" />;
 ```
 
 :::tip
@@ -34,18 +26,13 @@ This component uses `<canvas>` to draw freeze frames, so images are subject to [
 Both GIF and WEBP images are supported.
 
 ```html:preview
-<sl-animated-image
-  src="https://shoelace.style/assets/images/tie.webp"
-  alt="Animation of a shoe being tied"
-></sl-animated-image>
+<o-animated-image src="/assets/images/tie.webp" alt="Animation of a shoe being tied"></o-animated-image>
 ```
 
 ```jsx:react
-import { SlAnimatedImage } from '@shoelace-style/shoelace/dist/react';
+import { OAnimatedImage } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
-const App = () => (
-  <SlAnimatedImage src="https://shoelace.style/assets/images/tie.webp" alt="Animation of a shoe being tied" />
-);
+const App = () => <OAnimatedImage src="/assets/images/tie.webp" alt="Animation of a shoe being tied" />;
 ```
 
 ### Setting a Width and Height
@@ -53,22 +40,22 @@ const App = () => (
 To set a custom size, apply a width and/or height to the host element.
 
 ```html:preview
-<sl-animated-image
-  src="https://shoelace.style/assets/images/walk.gif"
+<o-animated-image
+  src="/assets/images/walk.gif"
   alt="Animation of untied shoes walking on pavement"
   style="width: 150px; height: 200px;"
 >
-</sl-animated-image>
+</o-animated-image>
 ```
 
 {% raw %}
 
 ```jsx:react
-import { SlAnimatedImage } from '@shoelace-style/shoelace/dist/react';
+import { OAnimatedImage } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const App = () => (
-  <SlAnimatedImage
-    src="https://shoelace.style/assets/images/walk.gif"
+  <OAnimatedImage
+    src="/assets/images/walk.gif"
     alt="Animation of untied shoes walking on pavement"
     style={{ width: '150px', height: '200px' }}
   />
@@ -82,11 +69,11 @@ const App = () => (
 You can change the appearance and location of the control box by targeting the `control-box` part in your styles.
 
 ```html:preview
-<sl-animated-image
-  src="https://shoelace.style/assets/images/walk.gif"
+<o-animated-image
+  src="/assets/images/walk.gif"
   alt="Animation of untied shoes walking on pavement"
   class="animated-image-custom-control-box"
-></sl-animated-image>
+></o-animated-image>
 
 <style>
   .animated-image-custom-control-box::part(control-box) {
@@ -102,7 +89,7 @@ You can change the appearance and location of the control box by targeting the `
 ```
 
 ```jsx:react
-import { SlAnimatedImage } from '@shoelace-style/shoelace/dist/react';
+import { OAnimatedImage } from 'O-PACKAGE-FULL-NAME-O/dist/react';
 
 const css = `
   .animated-image-custom-control-box::part(control-box) {
@@ -118,9 +105,9 @@ const css = `
 
 const App = () => (
   <>
-    <SlAnimatedImage
+    <OAnimatedImage
       className="animated-image-custom-control-box"
-      src="https://shoelace.style/assets/images/walk.gif"
+      src="/assets/images/walk.gif"
       alt="Animation of untied shoes walking on pavement"
     />
 

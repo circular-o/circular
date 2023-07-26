@@ -3,7 +3,7 @@ import { getIconLibrary, type IconLibrary, unwatchIcon, watchIcon } from './libr
 import { html } from 'lit';
 import { isTemplateResult } from 'lit/directive-helpers.js';
 import { watch } from '../../internal/watch.js';
-import ShoelaceElement from '../../internal/shoelace-element.js';
+import LibraryBaseElement from '../../internal/library-base-element.js';
 import styles from './icon.styles.js';
 
 import type { CSSResultGroup, HTMLTemplateResult } from 'lit';
@@ -17,18 +17,21 @@ const iconCache = new Map<string, Promise<SVGResult>>();
 
 /**
  * @summary Icons are symbols that can be used to represent various options within an application.
- * @documentation https://shoelace.style/components/icon
+ * @documentation /components/icon
  * @status stable
- * @since 2.0
+ * @since 1.5
  *
- * @event sl-load - Emitted when the icon has loaded. When using `spriteSheet: true` this will not emit.
- * @event sl-error - Emitted when the icon fails to load due to an error. When using `spriteSheet: true` this will not emit.
+ * @event o-load - Emitted when the icon has loaded. When using `spriteSheet: true` this will not emit.
+ * @event o-error - Emitted when the icon fails to load due to an error. When using `spriteSheet: true` this will not emit.
+ *
+ *
  *
  * @csspart svg - The internal SVG element.
  * @csspart use - The <use> element generated when using `spriteSheet: true`
+ * @csspart fallback - The slot containing the fallback.
  */
-@customElement('sl-icon')
-export default class SlIcon extends ShoelaceElement {
+@customElement('o-icon')
+export default class OIcon extends LibraryBaseElement {
   static styles: CSSResultGroup = styles;
 
   private initialRender = false;
@@ -161,6 +164,8 @@ export default class SlIcon extends ShoelaceElement {
     }
 
     if (isTemplateResult(svg)) {
+      // This is a sprite sheet, so we don't have control over the SVG loading, so we assume it's loaded and hide the fallback slot
+      this.setAttribute('data-hide-slot', '');
       this.svg = svg;
       return;
     }
@@ -169,22 +174,28 @@ export default class SlIcon extends ShoelaceElement {
       case RETRYABLE_ERROR:
       case CACHEABLE_ERROR:
         this.svg = null;
-        this.emit('sl-error');
+        this.emit('o-error');
+        this.removeAttribute('data-hide-slot');
         break;
       default:
+        // Boolean attributes must be set to empty strings
+        this.setAttribute('data-hide-slot', '');
         this.svg = svg.cloneNode(true) as SVGElement;
         library?.mutator?.(this.svg);
-        this.emit('sl-load');
+        this.emit('o-load');
     }
   }
 
   render() {
-    return this.svg;
+    return html`
+      <slot part="fallback"></slot>
+      ${this.svg}
+    `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-icon': SlIcon;
+    'o-icon': OIcon;
   }
 }
