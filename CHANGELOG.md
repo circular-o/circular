@@ -1,3 +1,9 @@
+# [1.6.0-next.18](https://github.com/circular-o/circular/compare/v1.6.0-next.17...v1.6.0-next.18) (2023-07-26)
+
+### Bug Fixes
+
+- React CDN ([ebd7a6a](https://github.com/circular-o/circular/commit/ebd7a6aa2f5e35dbf4f17a5cd69a979bb62428f0))
+
 # [1.6.0-next.17](https://github.com/circular-o/circular/compare/v1.6.0-next.16...v1.6.0-next.17) (2023-07-26)
 
 ### Bug Fixes
