@@ -162,7 +162,7 @@ describe('<o-dropdown>', () => {
     expect(el.open).to.be.true;
   });
 
-  it('should open on arrow navigation', async () => {
+  it('should open on arrow down navigation', async () => {
     const el = await fixture<ODropdown>(html`
       <o-dropdown>
         <o-button slot="trigger" caret>Toggle</o-button>
@@ -173,12 +173,35 @@ describe('<o-dropdown>', () => {
       </o-dropdown>
     `);
     const trigger = el.querySelector('o-button')!;
+    const firstMenuItem = el.querySelectorAll('o-menu-item')[0];
 
     trigger.focus();
     await sendKeys({ press: 'ArrowDown' });
     await el.updateComplete;
 
     expect(el.open).to.be.true;
+    expect(document.activeElement).to.equal(firstMenuItem);
+  });
+
+  it('should open on arrow up navigation', async () => {
+    const el = await fixture<ODropdown>(html`
+      <o-dropdown>
+        <o-button slot="trigger" caret>Toggle</o-button>
+        <o-menu>
+          <o-menu-item>Item 1</o-menu-item>
+          <o-menu-item>Item 2</o-menu-item>
+        </o-menu>
+      </o-dropdown>
+    `);
+    const trigger = el.querySelector('o-button')!;
+    const secondMenuItem = el.querySelectorAll('o-menu-item')[1];
+
+    trigger.focus();
+    await sendKeys({ press: 'ArrowUp' });
+    await el.updateComplete;
+
+    expect(el.open).to.be.true;
+    expect(document.activeElement).to.equal(secondMenuItem);
   });
 
   it('should navigate to first focusable item on arrow navigation', async () => {

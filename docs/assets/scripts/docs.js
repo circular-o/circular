@@ -288,7 +288,8 @@
     const el = document.querySelector('.sidebar-version');
     if (!el) return;
 
-    if (location.hostname === 'next.shoelace.style') el.textContent = 'Next';
+    const libraryDocsWebsite = document.documentElement.getAttribute('data-library-docs-website') || '';
+    if (libraryDocsWebsite.includes(location.hostname)) el.textContent = 'Next';
     if (location.hostname === 'localhost') el.textContent = 'Development';
   }
 

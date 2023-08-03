@@ -8,7 +8,7 @@ layout: component
 O-LIBRARY-NAME-O comes bundled with over 4,000 icons courtesy of the [Bootstrap Icons](https://icons.getbootstrap.com/) and [Material Icons](https://github.com/material-icons/material-icons) projects. These icons are part of the `default` and `material` icon libraries. If you prefer, you can register [custom icon libraries](#icon-libraries) as well.
 
 :::tip
-Depending on how you're loading O-LIBRARY-NAME-O, you may need to copy icon assets and/or [set the base path](getting-started/installation#setting-the-base-path) so O-LIBRARY-NAME-O knows where to load them from. Otherwise, icons may not appear and you'll see 404 Not Found errors in the dev console.
+Depending on how you're loading O-LIBRARY-NAME-O, you may need to copy icon assets and/or [set the base path](getting-started/installation/#setting-the-base-path) so O-LIBRARY-NAME-O knows where to load them from. Otherwise, icons may not appear and you'll see 404 Not Found errors in the dev console.
 :::
 
 ## Default Icons

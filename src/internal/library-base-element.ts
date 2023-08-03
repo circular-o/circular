@@ -100,7 +100,10 @@ export default class LibraryBaseElement extends LitElement {
    */
   @debounce(100)
   private emitOConnected(): void {
-    this.emit('o-connected', { detail: { ref: this, className: this.constructor.name } });
+    this.emit('o-connected', {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
+      detail: { ref: this, className: this.constructor.name || (this.constructor as any).LIBRARY_CLASS_NAME }
+    });
   }
 
   /** Emits the o-connected event which is sending the component reference once is added to the document's DOM.  */
@@ -113,6 +116,54 @@ export default class LibraryBaseElement extends LitElement {
   disconnectedCallback(): void {
     super.disconnectedCallback();
     this.emit('o-disconnected');
+  }
+
+  /* eslint-disable */
+  // @ts-expect-error This is auto-injected at build time.
+  static version: string = __LIBRARY_VERSION__;
+  /* eslint-enable */
+  static LIBRARY_CLASS_NAME = 'LibraryBaseElement';
+
+  static define(name: string, elementConstructor = this, options: ElementDefinitionOptions = {}) {
+    const currentlyRegisteredConstructor = customElements.get(name) as
+      | CustomElementConstructor
+      | typeof LibraryBaseElement;
+
+    if (!currentlyRegisteredConstructor) {
+      elementConstructor.LIBRARY_CLASS_NAME = elementConstructor.name;
+      customElements.define(name, class extends elementConstructor {} as unknown as CustomElementConstructor, options);
+      return;
+    }
+
+    let newVersion = ' (unknown version)';
+    let existingVersion = newVersion;
+
+    if ('version' in elementConstructor && elementConstructor.version) {
+      newVersion = ' v' + elementConstructor.version;
+    }
+
+    if ('version' in currentlyRegisteredConstructor && currentlyRegisteredConstructor.version) {
+      existingVersion = ' v' + currentlyRegisteredConstructor.version;
+    }
+
+    // Need to make sure we're not working with null or empty strings before doing version comparisons.
+    if (newVersion && existingVersion && newVersion === existingVersion) {
+      // If versions match, we don't need to warn anyone. Carry on.
+      return;
+    }
+
+    console.warn(
+      `Attempted to register <${name}>${newVersion}, but <${name}>${existingVersion} has already been registered.`
+    );
+  }
+
+  static dependencies: Record<string, typeof LibraryBaseElement> = {};
+
+  constructor() {
+    super();
+    Object.entries((this.constructor as typeof LibraryBaseElement).dependencies).forEach(([name, component]) => {
+      (this.constructor as typeof LibraryBaseElement).define(name, component);
+    });
   }
 }
 

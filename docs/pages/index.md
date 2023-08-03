@@ -19,10 +19,9 @@ toc: false
 - First-class [React support](/frameworks/react) ⚛️
 - Built-in localization 💬
 - Open source 😸
+- [More awesome than ever](https://blog.fontawesome.com/shoelace-joins-font-awesome/) ![Awesome emoji](/assets/images/awesome.svg)
 
 Designed and developed by [O-TWITTER-USER-O Team](https://twitter.com/O-TWITTER-USER-O)
-
-<small>Inspired by [Shoelace](https://shoelace.style/) designed in New Hampshire by [Cory LaViska](https://twitter.com/claviska).</small>
 
 </div>
 <div class="splash-end">
@@ -30,12 +29,16 @@ Designed and developed by [O-TWITTER-USER-O Team](https://twitter.com/O-TWITTER-
 </div>
 </div>
 
+<div class="badges">
+
 [![jsDelivr](https://data.jsdelivr.com/v1/package/npm/O-PACKAGE-ORGANIZATION-O/O-PACKAGE-NAME-O/badge)](https://www.jsdelivr.com/package/npm/O-PACKAGE-ORGANIZATION-O/O-PACKAGE-NAME-O)
 [![npm](https://img.shields.io/npm/dw/O-PACKAGE-ORGANIZATION-O/O-PACKAGE-NAME-O?label=npm&style=flat-square)](https://www.npmjs.com/package/O-PACKAGE-ORGANIZATION-O/O-PACKAGE-NAME-O)
 [![License](https://img.shields.io/badge/license-MIT-232323.svg?style=flat-square)](O-REPO-URL-O/blob/next/LICENSE.md)<br>
 [![Discord](https://img.shields.io/badge/Discord-Join%20the%20chat-5965f2.svg?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/mg8f26C)
 [![Twitter](https://img.shields.io/badge/Twitter-Follow-00acee.svg?style=flat-square&logo=twitter&logoColor=white)](https://twitter.com/O-TWITTER-USER-O)
 [![Sponsor](https://img.shields.io/badge/GitHub-Code-232323.svg?style=flat-square&logo=github&logoColor=white)](O-REPO-URL-O)
+
+</div>
 
 ## Quick Start
 
@@ -107,23 +110,7 @@ If you need to support IE11 or pre-Chromium Edge, this library isn't for you. Al
 
 ## License
 
-O-LIBRARY-NAME-O is designed and developed in Hamburg by [O-LIBRARY-NAME-O Team](https://twitter.com/O-TWITTER-USER-O). It's available under the terms of the MIT license.
-
-Designing, developing, and supporting this library requires a lot of time, effort, and skill. If you're using this software to make a profit, I respectfully ask that you help [fund its development](O-SPONSOR-URL-O) by becoming a sponsor.
-
-👇 Your support is very much appreciated! 👇
-
-<o-button class="repo-button repo-button--sponsor" href="O-SPONSOR-URL-O" target="_blank">
-  <o-icon slot="prefix" name="heart"></o-icon> Become a sponsor
-</o-button>
-
-<o-button class="repo-button repo-button--github" href="O-REPO-URL-O/stargazers" target="_blank">
-  <o-icon slot="prefix" name="github"></o-icon> Star
-</o-button>
-
-<o-button class="repo-button repo-button--twitter" href="https://twitter.com/O-TWITTER-USER-O" target="_blank">
-  <o-icon slot="prefix" name="twitter"></o-icon> Follow
-</o-button>
+O-LIBRARY-NAME-O is designed and developed in Hamburg by [O-LIBRARY-NAME-O Team](https://twitter.com/O-TWITTER-USER-O). It's available under the terms of the [MIT license](O-REPO-URL-O/blob/next/LICENSE.md).
 
 ## Attribution
 

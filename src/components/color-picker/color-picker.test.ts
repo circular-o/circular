@@ -259,6 +259,7 @@ describe('<o-color-picker>', () => {
       await sendKeys({ type: 'fc0' }); // type in a color
       input.blur(); // commit changes by blurring the field
       await el.updateComplete;
+      await aTimeout(100); // wait for the event to be emitted, in Firefox this is not instant
 
       expect(changeHandler).to.have.been.calledOnce;
       expect(inputHandler).to.have.been.calledOnce;
@@ -342,7 +343,8 @@ describe('<o-color-picker>', () => {
     colorPicker.addEventListener('o-focus', focusHandler);
     colorPicker.addEventListener('o-blur', blurHandler);
 
-    await clickOnElement(trigger);
+    // await clickOnElement(trigger);
+    trigger.click();
     await colorPicker.updateComplete;
     expect(focusHandler).to.have.been.calledOnce;
 

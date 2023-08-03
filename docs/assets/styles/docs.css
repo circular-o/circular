@@ -180,7 +180,10 @@ p {
 
 img {
   max-width: 100%;
-  border-radius: var(--docs-border-radius);
+}
+
+.badges img {
+  border-radius: var(--o-border-radius-medium);
 }
 
 .callout img,
@@ -234,6 +237,7 @@ kbd {
   border: solid 1px var(--o-color-neutral-200);
   box-shadow: inset 0 1px 0 0 var(--o-color-neutral-0), inset 0 -1px 0 0 var(--o-color-neutral-200);
   font-family: var(--o-font-mono);
+  font-size: 0.9125em;
   border-radius: var(--docs-border-radius);
   color: var(--o-color-neutral-800);
   padding: 0.125em 0.4em;
@@ -1203,6 +1207,18 @@ html.sidebar-open #menu-toggle {
   font-weight: var(--o-font-weight-normal);
 }
 
+.splash li img {
+  width: 1em;
+  height: 1em;
+  vertical-align: -2px;
+}
+
+.splash li img {
+  width: 1em;
+  height: 1em;
+  vertical-align: -2px;
+}
+
 .splash-end {
   display: flex;
   align-items: flex-end;
@@ -1249,19 +1265,6 @@ html.sidebar-open #menu-toggle {
   }
 }
 
-/* Repo buttons */
-.repo-button--sponsor o-icon {
-  color: var(--o-color-pink-600);
-}
-
-.repo-button--github o-icon {
-  color: var(--o-color-neutral-700);
-}
-
-.repo-button--twitter o-icon {
-  color: var(--o-color-sky-500);
-}
-
 /* Component headers */
 .component-header h1 {
   margin-bottom: 0;
@@ -1291,12 +1294,22 @@ html.sidebar-open #menu-toggle {
 }
 
 /* Repo buttons */
-.repo-button--sponsor o-icon {
-  color: var(--o-color-pink-600);
+.sidebar-buttons {
+  display: flex;
+  gap: 0.125rem;
+  justify-content: space-between;
 }
 
-.repo-button--github o-icon {
-  color: var(--o-color-neutral-700);
+.sidebar-buttons .repo-button {
+  flex: 1 1 auto;
+}
+
+.sidebar-buttons .repo-button {
+  flex: 1 1 auto;
+}
+
+.repo-button--star o-icon {
+  color: var(--o-color-yellow-500);
 }
 
 .repo-button--twitter o-icon {

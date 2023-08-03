@@ -390,9 +390,9 @@ describe('when the value changes', () => {
    * to non-auto-defining components and not auto-defining for tests.
    */
   it.skip('should sync up radios and radio buttons if defined after radio group', async () => {
-    // customElements.define("o-radio-group", SlRadioGroup)
+    // customElements.define("o-radio-group", ORadioGroup)
     //
-    // const radioGroup = await fixture<SlRadioGroup>(html`
+    // const radioGroup = await fixture<ORadioGroup>(html`
     //   <o-radio-group value="1">
     //     <o-radio id="radio-1" value="1"></o-radio>
     //     <o-radio id="radio-2" value="2"></o-radio>
@@ -401,13 +401,13 @@ describe('when the value changes', () => {
     //
     // await aTimeout(1)
     //
-    // customElements.define("o-radio-button", SlRadioButton)
+    // customElements.define("o-radio-button", ORadioButton)
     //
     // expect(radioGroup.querySelector("o-radio")?.getAttribute("aria-checked")).to.equal("false")
     //
     // await aTimeout(1)
     //
-    // customElements.define("o-radio", SlRadio)
+    // customElements.define("o-radio", ORadio)
     //
     // await aTimeout(1)
     //

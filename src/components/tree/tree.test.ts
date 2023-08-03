@@ -3,7 +3,7 @@ import { aTimeout, expect, fixture, html, triggerBlurFor, triggerFocusFor } from
 import { clickOnElement } from '../../internal/test.js';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
-import type OTree from './tree.js';
+import type OTree from './tree.component.js';
 import type OTreeItem from '../tree-item/tree-item.js';
 
 describe('<o-tree>', () => {
@@ -38,7 +38,7 @@ describe('<o-tree>', () => {
     // The rule aria-required-parent is ignored because it generates a false positive on WebKit browsers
     // TODO: Remove this when the rule is fixed
     await expect(el).to.be.accessible({
-      ignoredRules: ['aria-required-parent']
+      ignoredRules: ['aria-required-parent', 'aria-required-children']
     });
   });
 

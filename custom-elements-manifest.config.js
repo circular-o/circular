@@ -1,3 +1,4 @@
+import * as path from 'path';
 import { generateCustomData } from 'cem-plugin-vs-code-custom-data-generator';
 import { parse } from 'comment-parser';
 import { pascalCase } from 'pascal-case';
@@ -26,7 +27,7 @@ function replace(string, terms) {
 }
 
 export default {
-  globs: ['src/components/**/*.ts'],
+  globs: ['src/components/**/*.component.ts'],
   exclude: ['**/*.styles.ts', '**/*.test.ts'],
   plugins: [
     // Append package data
@@ -36,7 +37,32 @@ export default {
         customElementsManifest.package = { name, description, version, author, homepage, license };
       }
     },
+    // Infer tag names because we no longer use @customElement decorators.
+    {
+      name: 'shoelace-infer-tag-names',
+      analyzePhase({ ts, node, moduleDoc }) {
+        switch (node.kind) {
+          case ts.SyntaxKind.ClassDeclaration: {
+            const className = node.name.getText();
+            const classDoc = moduleDoc?.declarations?.find(declaration => declaration.name === className);
 
+            const importPath = moduleDoc.path;
+
+            // This is kind of a best guess at components. "thing.component.ts"
+            if (!importPath.endsWith('.component.ts')) {
+              return;
+            }
+
+            const tagName = 'o-' + path.basename(importPath, '.component.ts');
+
+            classDoc.tagName = tagName;
+
+            // This used to be set to true by @customElement
+            classDoc.customElement = true;
+          }
+        }
+      }
+    },
     // Parse custom jsDoc tags
     {
       name: 'circular-custom-tags',
@@ -57,6 +83,9 @@ export default {
                 }
               });
             });
+
+            // This is what allows us to map JSDOC comments to ReactWrappers.
+            classDoc['jsDoc'] = node.jsDoc?.map(jsDoc => jsDoc.getFullText()).join('\n');
 
             const parsed = parse(`${customComments}\n */`);
             parsed[0].tags?.forEach(t => {
@@ -133,6 +162,7 @@ export default {
             if (classDoc?.events) {
               classDoc.events.forEach(event => {
                 event.reactName = `on${pascalCase(event.name)}`;
+                event.eventName = `${pascalCase(event.name)}Event`;
               });
             }
           }
@@ -154,7 +184,7 @@ export default {
           //
           const terms = [
             { from: /^src\//, to: '' }, // Strip the src/ prefix
-            { from: /\.(t|j)sx?$/, to: '.js' } // Convert .ts to .js
+            { from: /\.component.(t|j)sx?$/, to: '.js' } // Convert .ts to .js
           ];
 
           mod.path = replace(mod.path, terms);

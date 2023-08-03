@@ -487,7 +487,7 @@ const App = () => (
 
 ### Disabled
 
-Use the `disabled` attribute to disable a button. Clicks will be suppressed until the disabled state is removed.
+Use the `disabled` attribute to disable a button.
 
 ```html:preview
 <o-button variant="default" disabled>Default</o-button>

@@ -367,8 +367,7 @@ Then use the following syntax for comments so they appear in the generated docs.
  * @cssproperty --color: The component's text color.
  * @cssproperty --background-color: The component's background color.
  */
-@customElement('o-example')
-export default class SlExample {
+export default class OExample {
   // ...
 }
 ```

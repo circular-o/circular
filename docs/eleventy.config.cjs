@@ -82,6 +82,7 @@ module.exports = function (eleventyConfig) {
           `name (minus the o- prefix).`
       );
     }
+    component.status = (component.status || 'wip').toLowerCase();
     return component;
   });
 
@@ -107,7 +108,7 @@ module.exports = function (eleventyConfig) {
     return name;
   });
 
-  eleventyConfig.addFilter('removeSlPrefix', tagName => {
+  eleventyConfig.addFilter('removeOPrefix', tagName => {
     return tagName.replace(/^o-/, '');
   });
 
@@ -195,7 +196,10 @@ module.exports = function (eleventyConfig) {
       this.field('c'); // content
 
       results.forEach((result, index) => {
-        const url = path.join('/', path.relative(eleventyConfig.dir.output, result.outputPath)).replace(/\\/g, '/');
+        const url = path
+          .join('/', path.relative(eleventyConfig.dir.output, result.outputPath))
+          .replace(/\\/g, '/') // convert backslashes to forward slashes
+          .replace(/\/index.html$/, '/'); // convert trailing /index.html to /
         const doc = new JSDOM(result.content, {
           // We must set a default URL so links are parsed with a hostname. Let's use a bogus TLD so we can easily
           // identify which ones are internal and which ones are external.

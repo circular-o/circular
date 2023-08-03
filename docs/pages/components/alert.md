@@ -388,7 +388,7 @@ If you have an alert reference already, you can set the property `openToast = tr
   <o-alert variant="success" open-toast duration="5000" closable>
     <o-icon slot="icon" name="info-circle"></o-icon>
     This alert will automatically open as a toast and then hide itself after few seconds. It is using
-    <a href="O-DOCS-WEBSITE-O/components/alert?id=open-toast-automatically"><code>open-toast</code></a>
+    <a href="O-DOCS-WEBSITE-O/components/alert/#open-toast-automatically"><code>open-toast</code></a>
     property
   </o-alert>
 </div>
@@ -437,7 +437,7 @@ const App = () => {
         >
           <OIcon slot="icon" name="info-circle" />
           This alert will automatically open as a toast and then hide itself after few seconds. It is using
-          <a href="O-DOCS-WEBSITE-O/components/alert?id=open-toast-automatically">
+          <a href="O-DOCS-WEBSITE-O/components/alert/#open-toast-automatically">
             <code>open-toast</code>
           </a>
           property

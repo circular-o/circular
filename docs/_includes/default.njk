@@ -14,6 +14,8 @@
   data-library-react-cdn-url="{{ meta.reactCdnUrl }}"
   data-library-react-url="{{ meta.reactUrl }}"
   data-library-react-package-url="{{ meta.reactPackageUrl }}"
+  data-library-docs-website="{{ meta.docsWebsite }}"
+  data-library-docs-next-website="{{ meta.docsNextWebsite }}"
 >
   <head>
     {# Metadata #}
@@ -47,7 +49,7 @@
     {# Import Library #}
     <link rel="stylesheet" href="/dist/themes/light.css" />
     <link rel="stylesheet" href="/dist/themes/dark.css" />
-    <script type="module" src="/dist/circular.js"></script>
+    <script type="module" src="/dist/circular-autoloader.js"></script>
 
     {# Set the initial theme and menu states here to prevent flashing #}
     <script>
@@ -117,11 +119,11 @@
       </header>
 
       <div class="sidebar-buttons">
-        <o-button size="small" class="repo-button repo-button--sponsor" href="{{ meta.sponsorUrl }}" target="_blank">
-          <o-icon slot="prefix" name="heart"></o-icon> Sponsor
-        </o-button>
         <o-button size="small" class="repo-button repo-button--github" href="{{ meta.repoUrl }}" target="_blank">
           <o-icon slot="prefix" name="github"></o-icon> Code
+        </o-button>
+        <o-button size="small" class="repo-button repo-button--star" href="{{ meta.repoUrl }}/stargazers" target="_blank">
+          <o-icon slot="prefix" name="star-fill"></o-icon> Star
         </o-button>
         <o-button size="small" class="repo-button repo-button--twitter" href="https://twitter.com/{{ meta.twitterUser }}" target="_blank">
           <o-icon slot="prefix" name="twitter"></o-icon> Follow

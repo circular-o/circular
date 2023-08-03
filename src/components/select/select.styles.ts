@@ -317,11 +317,11 @@ export default css`
     max-height: var(--auto-size-available-height);
   }
 
-  .select__listbox::slotted(o-divider) {
+  .select__listbox ::slotted(o-divider) {
     --spacing: var(--o-spacing-x-small);
   }
 
-  .select__listbox::slotted(small) {
+  .select__listbox ::slotted(small) {
     font-size: var(--o-font-size-small);
     font-weight: var(--o-font-weight-semibold);
     color: var(--o-color-neutral-500);

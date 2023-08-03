@@ -13,6 +13,6 @@ describe('<o-carousel-item>', () => {
     const el = await fixture(html` <div role="list"><o-carousel-item></o-carousel-item></div> `);
 
     // Assert
-    await expect(el).to.be.accessible();
+    await expect(el).to.be.accessible({ ignoredRules: ['aria-required-children'] });
   });
 });

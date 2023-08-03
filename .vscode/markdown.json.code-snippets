@@ -1,0 +1,90 @@
+{
+  // Place your jeyson-circular workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"scope": "javascript,typescript",
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  "O-PACKAGE-VERSION-O": {
+    "scope": "markdown",
+    "prefix": "O-PACKAGE-VERSION",
+    "body": ["O-PACKAGE-VERSION-O"],
+    "description": "Inserts the current version of the package, e.g. 1.2.3"
+  },
+  "O-PACKAGE-ORGANIZATION-O": {
+    "scope": "markdown",
+    "prefix": "O-PACKAGE-ORGANIZATION",
+    "body": ["O-PACKAGE-ORGANIZATION-O"],
+    "description": "Inserts the organization name of the package, e.g. @circular-o"
+  },
+  "O-PACKAGE-NAME-O": {
+    "scope": "markdown",
+    "prefix": "O-PACKAGE-NAME",
+    "body": ["O-PACKAGE-NAME-O"],
+    "description": "Inserts the name of the package, e.g. circular"
+  },
+  "O-PACKAGE-FULL-NAME-O": {
+    "scope": "markdown",
+    "prefix": "O-PACKAGE-FULL-NAME",
+    "body": ["O-PACKAGE-FULL-NAME-O"],
+    "description": "Inserts the full name of the package, e.g. @circular-o/circular"
+  },
+  "O-PACKAGE-FULL-NAME-WITH-VERSION-O": {
+    "scope": "markdown",
+    "prefix": "O-PACKAGE-FULL-NAME-WITH-VERSION",
+    "body": ["O-PACKAGE-FULL-NAME-WITH-VERSION-O"],
+    "description": "Inserts the full name of the package including de version, e.g. @circular-o/circular@1.2.3"
+  },
+  "O-PACKAGE-URL-O": {
+    "scope": "markdown",
+    "prefix": "O-PACKAGE-URL",
+    "body": ["O-PACKAGE-URL-O"],
+    "description": "Inserts the package CDN URL, e.g. https://cdn.jsdelivr.net/npm/@circular-o/circular@1.2.3"
+  },
+  "O-DOCS-WEBSITE-O": {
+    "scope": "markdown",
+    "prefix": "O-DOCS-WEBSITE",
+    "body": ["O-DOCS-WEBSITE-O"],
+    "description": "Inserts the package docs URL, e.g. https://circular.dev"
+  },
+  "O-DOCS-NEXT-WEBSITE-O": {
+    "scope": "markdown",
+    "prefix": "O-DOCS-NEXT-WEBSITE",
+    "body": ["O-DOCS-NEXT-WEBSITE-O"],
+    "description": "Inserts the package docs URL of the next branch, e.g. https://next.circular.dev"
+  },
+  "O-REPO-URL-O": {
+    "scope": "markdown",
+    "prefix": "O-REPO-URL",
+    "body": ["O-REPO-URL-O"],
+    "description": "Inserts the package repository URL, e.g. https://github.com/circular-o/circular"
+  },
+  "O-TWITTER-USER-O": {
+    "scope": "markdown",
+    "prefix": "O-TWITTER-USER",
+    "body": ["O-TWITTER-USER-O"],
+    "description": "Inserts the package twitter user, e.g. circular__o"
+  },
+  "O-SPONSOR-URL-O": {
+    "scope": "markdown",
+    "prefix": "O-SPONSOR-URL",
+    "body": ["O-SPONSOR-URL-O"],
+    "description": "Inserts the package sponsor URL, e.g. https://github.com/sponsors/claviska"
+  },
+  "O-LIBRARY-NAME-O": {
+    "scope": "markdown",
+    "prefix": "O-LIBRARY-NAME",
+    "body": ["O-LIBRARY-NAME-O"],
+    "description": "Inserts the library name, e.g. Circular"
+  }
+}
