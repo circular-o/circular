@@ -40,8 +40,6 @@ Designed and developed by [O-TWITTER-USER-O Team](https://twitter.com/O-TWITTER-
 
 </div>
 
-</div>
-
 ## Quick Start
 
 Add the following code to your page.
