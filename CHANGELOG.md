@@ -1,3 +1,20 @@
+# [1.7.0](https://github.com/circular-o/circular/compare/v1.6.0...v1.7.0) (2023-08-04)
+
+### Bug Fixes
+
+- valueAsDate now falls back to native implementation ([#1399](https://github.com/circular-o/circular/issues/1399)) ([a4f0ae9](https://github.com/circular-o/circular/commit/a4f0ae9088af6332e25baedb99cf86e49979dea9))
+
+### Features
+
+- **details:** use details and summary html tag to enable in browser searching ([#1470](https://github.com/circular-o/circular/issues/1470)) ([89f0f4a](https://github.com/circular-o/circular/commit/89f0f4a02c952f3902b5cb0d0b5d498ed448e77d))
+- Syncs Shoelace next branch ([3b66b01](https://github.com/circular-o/circular/commit/3b66b01f2e1bda605518397a74335cc1768372e0))
+- Syncs Shoelace next branch ([0999b51](https://github.com/circular-o/circular/commit/0999b510042789a8176c0123c53862225ae93f26))
+- Syncs Shoelace next branch ([5e50390](https://github.com/circular-o/circular/commit/5e503901f222015c66480daea8b40715df39457e))
+
+### Reverts
+
+- Revert "Move keydown handler for sl-drawer back to base div (#1459)" ([f954233](https://github.com/circular-o/circular/commit/f954233bda42805eec2799cb4acb27f8fe5edb47)), closes [#1459](https://github.com/circular-o/circular/issues/1459)
+
 # [1.7.0-next.1](https://github.com/circular-o/circular/compare/v1.6.0...v1.7.0-next.1) (2023-08-04)
 
 ### Bug Fixes
