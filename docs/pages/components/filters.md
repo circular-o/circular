@@ -818,22 +818,24 @@ For more details please check the plugins already defined in the folder `/dist/c
     }
   }
 
-  const filtersEl = document.querySelector('.filters-custom-render-example');
+  customElements.whenDefined('o-filters').then(() => {
+    const filtersEl = document.querySelector('.filters-custom-render-example');
 
-  filtersEl.registerType(InputOverwriteTypePlugin);
-  filtersEl.registerType(RatingTypePlugin);
-  filtersEl.registerType(ColorPickerTypePlugin);
-  filtersEl.registerType(CustomInputTypePlugin);
+    filtersEl.registerType(InputOverwriteTypePlugin);
+    filtersEl.registerType(RatingTypePlugin);
+    filtersEl.registerType(ColorPickerTypePlugin);
+    filtersEl.registerType(CustomInputTypePlugin);
 
-  filtersEl.filters = [
-    { type: 'input', name: 'input-overwrite', placeholder: 'Input overwrite' },
-    { type: 'rating', name: 'rating', style: 'width: 116px', value: 3 },
-    { type: 'color-picker', name: 'color-picker' },
-    { type: 'custom-input', name: 'custom-input' }
-  ];
+    filtersEl.filters = [
+      { type: 'input', name: 'input-overwrite', placeholder: 'Input overwrite' },
+      { type: 'rating', name: 'rating', style: 'width: 116px', value: 3 },
+      { type: 'color-picker', name: 'color-picker' },
+      { type: 'custom-input', name: 'custom-input' }
+    ];
 
-  filtersEl.addEventListener('o-filter-change', ({ detail }) => {
-    console.log('o-filter-change filters detail', detail);
+    filtersEl.addEventListener('o-filter-change', ({ detail }) => {
+      console.log('o-filter-change filters detail', detail);
+    });
   });
 </script>
 ```

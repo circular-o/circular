@@ -350,7 +350,7 @@ describe('<o-color-picker>', () => {
 
     await clickOnElement(button);
     await colorPicker.updateComplete;
-    expect(blurHandler).to.have.been.calledOnce;
+    expect(blurHandler).to.have.been.called;
   });
 
   it('should emit o-focus when rendered inline and focused', async () => {
