@@ -1,3 +1,9 @@
+## [1.7.1](https://github.com/circular-o/circular/compare/v1.7.0...v1.7.1) (2023-08-04)
+
+### Bug Fixes
+
+- **filters:** Fixes components autoloading [skip ci] ([439c85a](https://github.com/circular-o/circular/commit/439c85a1c7870b11a470eb89b21b28c0de260ab0))
+
 # [1.7.0](https://github.com/circular-o/circular/compare/v1.6.0...v1.7.0) (2023-08-04)
 
 ### Bug Fixes
