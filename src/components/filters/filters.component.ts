@@ -1,6 +1,7 @@
 import { cancelEvent, convertFiltersToObject, filterValueAdapter } from './utilities.type.plugin.js';
 import { DividerTypePlugin } from './types-plugins/divider.type.plugin.js';
 import { type Filter, type Filters, type RowFilter } from './filters.types.js';
+import { getBasePath } from '../../utilities/base-path.js';
 import { html, nothing } from 'lit';
 import { InputTypePlugin } from './types-plugins/input.type.plugin.js';
 import { property } from 'lit/decorators.js';
@@ -226,15 +227,38 @@ export default class OFilters extends LibraryBaseElement {
     return true;
   }
 
-  private checkCustomElementDefinition(tag: string) {
-    // Check if the custom element is defined, only if the tag is not a native element
-    if (!tag.includes('o-') || customElements.get(tag)) {
-      return true;
-    }
+  private async checkCustomElementDefinition(tag: string) {
+    return new Promise(resolve => {
+      const isLibraryElement = tag.includes('o-');
+      // Check if the custom element is defined, only if the tag is not a native element
+      if (!isLibraryElement || customElements.get(tag)) {
+        resolve(true);
+        return;
+      }
 
-    console.warn(`The web component "${tag}" is not defined, please import it before using it as a filter.
+      // Trying to import the component
+      if (isLibraryElement) {
+        const tagWithoutPrefix = tag.replace(/^o-/i, '');
+        const path = getBasePath(`components/${tagWithoutPrefix}/${tagWithoutPrefix}.js`);
+        console.warn(`The web component "${tag}" is not defined, trying to import it from "${path}"...`);
+        import(path)
+          .then(() => {
+            this.requestUpdate();
+            console.warn(`✅ The web component "${tag}" has been imported successfully.`);
+            resolve(true);
+          })
+          .catch(error => {
+            console.warn(`❗ The web component "${tag}" could not be imported from "${path}".`);
+            console.error(error);
+            resolve(false);
+          });
+        return;
+      }
+
+      console.warn(`The web component "${tag}" is not defined, please import it before using it as a filter.
       \nIf you are using the autoloader you could ignore this message.`);
-    return false;
+      resolve(false);
+    });
   }
 
   private setPropsToElement(el: LibraryBaseElement, filter: Filter) {
