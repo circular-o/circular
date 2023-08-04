@@ -102,25 +102,6 @@ function MyComponent() {
 export default MyComponent;
 ```
 
-You can also import the event type for use in your callbacks, shown below.
-
-```tsx
-import { useCallback, useState } from 'react';
-import { OInput, OInputEvent } from 'O-PACKAGE-FULL-NAME-O/%NPMDIR%/react';
-import type OInputElement from 'O-PACKAGE-FULL-NAME-O/%NPMDIR%/components/input/input';
-
-function MyComponent() {
-  const [value, setValue] = useState('');
-  const onInput = useCallback((event: OInputEvent) => {
-    setValue(event.detail);
-  }, []);
-
-  return <OInput value={value} onOInput={event => setValue((event.target as OInputElement).value)} />;
-}
-
-export default MyComponent;
-```
-
 ## Testing with Jest
 
 Testing with web components can be challenging if your test environment runs in a Node environment (i.e. it doesn't run in a real browser). Fortunately, [Jest](https://jestjs.io/) has made a number of strides to support web components and provide additional browser APIs. However, it's still not a complete replication of a browser environment.

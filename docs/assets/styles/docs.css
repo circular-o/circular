@@ -1213,12 +1213,6 @@ html.sidebar-open #menu-toggle {
   vertical-align: -2px;
 }
 
-.splash li img {
-  width: 1em;
-  height: 1em;
-  vertical-align: -2px;
-}
-
 .splash-end {
   display: flex;
   align-items: flex-end;
