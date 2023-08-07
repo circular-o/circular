@@ -1,3 +1,11 @@
+## [1.7.1-next.1](https://github.com/circular-o/circular/compare/v1.7.0...v1.7.1-next.1) (2023-08-07)
+
+### Bug Fixes
+
+- **docs:** Fixes radio-group small issue [skip ci] ([0af2257](https://github.com/circular-o/circular/commit/0af22575572b2da4f5f8fc22e19888cd491730c3))
+- **filters:** Fixes components autoloading [skip ci] ([439c85a](https://github.com/circular-o/circular/commit/439c85a1c7870b11a470eb89b21b28c0de260ab0))
+- **navbar:** Fixes o-divider dependency ([3424445](https://github.com/circular-o/circular/commit/3424445a65632c83f7ddd05f2c6007b7a151c9ef))
+
 ## [1.7.1](https://github.com/circular-o/circular/compare/v1.7.0...v1.7.1) (2023-08-04)
 
 ### Bug Fixes
