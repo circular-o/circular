@@ -288,9 +288,18 @@
     const el = document.querySelector('.sidebar-version');
     if (!el) return;
 
-    const libraryDocsWebsite = document.documentElement.getAttribute('data-library-docs-website') || '';
-    if (libraryDocsWebsite.includes(location.hostname)) el.textContent = 'Next';
-    if (location.hostname === 'localhost') el.textContent = 'Development';
+    const libraryDocsNextWebsite = document.documentElement.getAttribute('data-library-docs-next-website') || '';
+    const isNext = libraryDocsNextWebsite.includes(location.hostname);
+    const isLocal = location.hostname === 'localhost';
+    const textContent = el.textContent.trim();
+    const nextTag = 'Next';
+    const localTag = 'Local';
+
+    // Tagging next and local versions
+    // Next
+    if (isNext && !el.textContent.includes(nextTag)) el.textContent = `${nextTag} ${textContent}`;
+    // Local
+    else if (isLocal && !el.textContent.includes(localTag)) el.textContent = `${localTag} ${textContent}`;
   }
 
   updateVersion();
