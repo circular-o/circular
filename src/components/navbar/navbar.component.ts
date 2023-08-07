@@ -4,6 +4,7 @@ import { watch } from '../../internal/watch.js';
 import LibraryBaseElement from '../../internal/library-base-element.js';
 // import { LocalizeController } from '../../utilities/localize';
 import OButton from '../button/button.component.js';
+import ODivider from '../divider/divider.component.js';
 import OIcon from '../icon/icon.component.js';
 import ONavbarItem from '../navbar-item/navbar-item.component.js';
 import styles from './navbar.styles.js';
@@ -20,6 +21,7 @@ import type { Mode, SelectEvent } from './navbar.types.js';
  * @dependency o-icon
  * @dependency o-button
  * @dependency o-navbar-item
+ * @dependency o-divider
  *
  * @event o-select - { id: string } of selected navbar-item
  *
@@ -42,7 +44,8 @@ export default class ONavbar extends LibraryBaseElement {
   static dependencies = {
     'o-icon': OIcon,
     'o-button': OButton,
-    'o-navbar-item': ONavbarItem
+    'o-navbar-item': ONavbarItem,
+    'o-divider': ODivider
   };
 
   // private readonly localize = new LocalizeController(this);
