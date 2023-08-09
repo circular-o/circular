@@ -33,6 +33,10 @@ import type { Mode, SelectEvent } from './navbar.types.js';
  * @csspart header - The component's header wrapper.
  * @csspart body - The component's body wrapper.
  *
+ * @property selected - string - sets the pre-selected item
+ * @property noHamburger - boolean
+ * @property mode - "open" | "collapsed" | "hover"
+ *
  * @cssproperty --o-navbar-light-background-color
  * @cssproperty --o-navbar-light-hamburger-background-color
  * @cssproperty --o-navbar-light-hamburger-background-color-hover
@@ -63,10 +67,23 @@ export default class ONavbar extends LibraryBaseElement {
   // update handlers
   @watch('selected')
   updateSelected() {
-    const element = this.items.find(e => e.id === this.selected || e.text === this.selected);
-    if (element) {
-      element.click();
+    for (const item of this.items) {
+      const element = this.recursiveFindItem(item);
+      if (element) {
+        element.handleClick();
+      }
     }
+  }
+
+  private recursiveFindItem(item: ONavbarItem): ONavbarItem | null {
+    if (item.id === this.selected || item.text === this.selected) return item;
+
+    for (const i of item.subitems) {
+      const found = this.recursiveFindItem(i);
+      if (found) return found;
+    }
+
+    return null;
   }
 
   // event handlers
@@ -98,6 +115,10 @@ export default class ONavbar extends LibraryBaseElement {
           }
         }
       });
+
+      if (this.selected) {
+        this.updateSelected();
+      }
     }
   };
 
@@ -137,13 +158,11 @@ export default class ONavbar extends LibraryBaseElement {
         <header part="header">
           <slot name="logo"><o-icon class="logo" src="/assets/images/circular-logo-light.svg"></o-icon></slot>
           <o-button variant="text" circle size="small" @click="${this.handleHamburgerClick}">
-            <slot name="logo-small"
-              ><o-icon
-                src="/assets/images/circular-icon.svg"
-                style="font-size: var(--o-font-size-x-large)"
-                class="hover"
-              ></o-icon>
-            </slot>
+            <span class="hover">
+              <slot name="logo-small"
+                ><o-icon src="/assets/images/circular-icon.svg" style="font-size: var(--o-font-size-x-large)"></o-icon>
+              </slot>
+            </span>
             <o-icon library="material" name="menu" style="font-size: var(--o-font-size-large)" class="open"></o-icon>
             <o-icon
               library="material"
