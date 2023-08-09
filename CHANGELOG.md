@@ -1,3 +1,11 @@
+## [1.7.1-next.2](https://github.com/circular-o/circular/compare/v1.7.1-next.1...v1.7.1-next.2) (2023-08-09)
+
+### Bug Fixes
+
+- navbar example ([27f2c45](https://github.com/circular-o/circular/commit/27f2c45b5681d41dcfce7ca11e20dbd75c18c633))
+- navbar icon issue ([5aa755e](https://github.com/circular-o/circular/commit/5aa755ed81c6db3ab47eda795b1553297d565a86))
+- selected property ([6c0b253](https://github.com/circular-o/circular/commit/6c0b253c4f6b9164b07ef6425ec95679720a33e3))
+
 ## [1.7.1-next.1](https://github.com/circular-o/circular/compare/v1.7.0...v1.7.1-next.1) (2023-08-07)
 
 ### Bug Fixes
