@@ -55,7 +55,7 @@ export default class ONavbarItem extends LibraryBaseElement {
     }
   }
 
-  private subitems: ONavbarItem[] = [];
+  public subitems: ONavbarItem[] = [];
   private currentSubItemSelected = 0;
 
   // public functions
