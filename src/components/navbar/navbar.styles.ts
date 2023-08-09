@@ -113,7 +113,7 @@ export default css`
     display: block;
   }
 
-  :host([mode='hover']) div.box header o-button o-icon.hover {
+  :host([mode='hover']) div.box header o-button span.hover {
     display: none;
   }
 
@@ -130,7 +130,7 @@ export default css`
       display: none;
     }
 
-    :host div.box header o-button o-icon.hover {
+    :host div.box header o-button span.hover {
       display: none;
     }
   }
@@ -161,7 +161,7 @@ export default css`
       display: none !important;
     }
 
-    :host div.box header o-button o-icon.hover {
+    :host div.box header o-button span.hover {
       display: block !important;
     }
   }
