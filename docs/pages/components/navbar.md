@@ -13,7 +13,7 @@ Note that the property `"selected"` can be used to pre-select a page.
 ## Basic Example
 
 ```html:preview
-<o-navbar class="navbar-demo-case" selected="Home">
+<o-navbar class="navbar-demo-case" selected="Home132">
   <o-navbar-item text="Home">
     <o-icon library="material" name="grid_view" slot="icon"></o-icon>
     <o-icon library="material" name="grid_view_baseline" slot="icon-selected"></o-icon>
@@ -21,7 +21,7 @@ Note that the property `"selected"` can be used to pre-select a page.
     <o-navbar-item text="Home 1.2"></o-navbar-item>
     <o-navbar-item text="Home 1.3">
       <o-navbar-item text="Home 1.3.1"></o-navbar-item>
-      <o-navbar-item text="Home 1.3.2"></o-navbar-item>
+      <o-navbar-item id="Home132" text="Home 1.3.2"></o-navbar-item>
       <o-navbar-item text="Home 1.3.3">
         <o-navbar-item text="Home 1.3.3.1"></o-navbar-item>
         <o-navbar-item text="Home 1.3.3.2"></o-navbar-item>
