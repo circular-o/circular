@@ -1,3 +1,9 @@
+## [1.7.1-next.3](https://github.com/circular-o/circular/compare/v1.7.1-next.2...v1.7.1-next.3) (2023-08-14)
+
+### Bug Fixes
+
+- changes className to tagName on o-connected event ([2bba537](https://github.com/circular-o/circular/commit/2bba537503a41089418308c8f62a6f268da8fe12))
+
 ## [1.7.1-next.2](https://github.com/circular-o/circular/compare/v1.7.1-next.1...v1.7.1-next.2) (2023-08-09)
 
 ### Bug Fixes
