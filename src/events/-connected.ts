@@ -1,6 +1,6 @@
 import type LibraryBaseElement from '../internal/library-base-element';
 
-type OConnectedEvent = CustomEvent<{ ref: LibraryBaseElement; className: string; data?: unknown }>;
+type OConnectedEvent = CustomEvent<{ ref: LibraryBaseElement; tagName: string; data?: unknown }>;
 
 declare global {
   interface GlobalEventHandlersEventMap {

@@ -102,7 +102,7 @@ export default class LibraryBaseElement extends LitElement {
   private emitOConnected(): void {
     this.emit('o-connected', {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
-      detail: { ref: this, className: this.constructor.name || (this.constructor as any).LIBRARY_CLASS_NAME }
+      detail: { ref: this, tagName: (this.constructor as any).LIBRARY_TAG_NAME }
     });
   }
 
@@ -122,7 +122,7 @@ export default class LibraryBaseElement extends LitElement {
   // @ts-expect-error This is auto-injected at build time.
   static version: string = __LIBRARY_VERSION__;
   /* eslint-enable */
-  static LIBRARY_CLASS_NAME = 'LibraryBaseElement';
+  static LIBRARY_TAG_NAME = 'o-base-element';
 
   static define(name: string, elementConstructor = this, options: ElementDefinitionOptions = {}) {
     const currentlyRegisteredConstructor = customElements.get(name) as
@@ -130,7 +130,7 @@ export default class LibraryBaseElement extends LitElement {
       | typeof LibraryBaseElement;
 
     if (!currentlyRegisteredConstructor) {
-      elementConstructor.LIBRARY_CLASS_NAME = elementConstructor.name;
+      elementConstructor.LIBRARY_TAG_NAME = name;
       customElements.define(name, class extends elementConstructor {} as unknown as CustomElementConstructor, options);
       return;
     }

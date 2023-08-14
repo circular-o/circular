@@ -341,7 +341,7 @@ export default class OFilters extends LibraryBaseElement {
     typePluginInstance.addConnectedListener(el, connectedEvent => {
       // Check if the event is coming from the filter control by using the DATA_FILTER_NAME_ATTRIBUTE
       const elementRef = connectedEvent.detail.ref;
-      const className = connectedEvent.detail.className;
+      const tagName = connectedEvent.detail.tagName;
 
       if (!filterName || elementRef.getAttribute(DATA_FILTER_NAME_ATTRIBUTE) !== filterName) {
         return;
@@ -351,7 +351,7 @@ export default class OFilters extends LibraryBaseElement {
 
       const detail = {
         ref: elementRef,
-        className,
+        tagName,
         data: { filter }
       };
 

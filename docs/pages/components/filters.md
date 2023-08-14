@@ -264,7 +264,7 @@ const App = () => {
 
   const onConnectedHandler = ({ detail }) => {
     // Filters component's o-connected event will be triggered by the contained filters too, so we need to check if the event is triggered by the component itself
-    if (detail.className === 'OFilters') {
+    if (detail.tagName === 'o-filters') {
       filtersEl.current = detail.ref;
     }
   };
@@ -379,10 +379,10 @@ const App = () => {
 
   const onConnectedHandler = ({ detail }) => {
     // Filters component's o-connected event will be triggered by the contained filters too, so we need to check if the event is triggered by the component itself
-    if (detail.className === 'OFilters') {
+    if (detail.tagName === 'o-filters') {
       filtersEl.current = detail.ref;
     }
-    if (detail.className === 'OInput' && detail.ref.name === 'input-field') {
+    if (detail.tagName === 'o-input' && detail.ref.name === 'input-field') {
       inputEl.current = detail.ref;
     }
   };
@@ -575,7 +575,7 @@ const App = () => {
 
   const onConnectedHandler = ({ detail }) => {
     // Filters component's o-connected event will be triggered by the contained filters too, so we need to check if the event is triggered by the component itself
-    if (detail.className === 'OFilters') {
+    if (detail.tagName === 'o-filters') {
       filtersEl.current = detail.ref;
     }
   };
@@ -795,7 +795,7 @@ For more details please check the plugins already defined in the folder `/dist/c
       el.addEventListener('o-connected', connectedEvent => listener(connectedEvent));
 
       // Native element renders immediately, so the event is dispatched right away
-      const event = new CustomEvent('o-connected', { detail: { ref: el, className: el.constructor.name } });
+      const event = new CustomEvent('o-connected', { detail: { ref: el, tagName: 'input' } });
       setTimeout(() => {
         el.dispatchEvent(event);
       }, 10);
@@ -891,7 +891,7 @@ class CustomInputTypePlugin extends AbstractTypePlugin {
     el.addEventListener('o-connected', connectedEvent => listener(connectedEvent));
 
     // Native element renders immediately, so the event is dispatched right away
-    const event = new CustomEvent('o-connected', { detail: { ref: el, className: el.constructor.name } });
+    const event = new CustomEvent('o-connected', { detail: { ref: el, tagName: 'input' } });
     setTimeout(() => {
       el.dispatchEvent(event);
     }, 10);
@@ -927,7 +927,7 @@ const App = () => {
 
   const onConnectedHandler = ({ detail }) => {
     // Filters component's o-connected event will be triggered by the contained filters too, so we need to check if the event is triggered by the component itself
-    if (detail.className === 'OFilters') {
+    if (detail.tagName === 'o-filters') {
       filtersEl.current = detail.ref;
 
       filtersEl.current.registerType(InputOverwriteTypePlugin);

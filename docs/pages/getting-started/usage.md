@@ -95,7 +95,7 @@ In some cases, you want to know when the component is added to the document's DO
     });
 
     button.addEventListener('o-connected', ({ detail }) => {
-      showMessage(`A new button was added to the document's DOM (Class: '${detail.className}')`, 'success');
+      showMessage(`A new button was added to the document's DOM (Tag: '${detail.tagName}')`, 'success');
 
       buttonRef = detail.ref;
 
@@ -145,7 +145,7 @@ const App = () => {
   };
 
   const buttonConnectedHandler = ({ detail }) => {
-    showMessage(`A new button was added to the document's DOM (Class: '${detail.className}')`, 'success', 'success');
+    showMessage(`A new button was added to the document's DOM (Tag: '${detail.tagName}')`, 'success', 'success');
 
     buttonRef.current = detail.ref;
 
