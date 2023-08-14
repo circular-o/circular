@@ -14,6 +14,7 @@ import OButton from '../button/button.component.js';
 import ODivider from '../divider/divider.component.js';
 import OIcon from '../icon/icon.component.js';
 import OInput from '../input/input.component.js';
+import OOption from '../option/option.component.js';
 import OSelect from '../select/select.component.js';
 import OSwitch from '../switch/switch.component.js';
 import styles from './filters.styles.js';
@@ -69,6 +70,7 @@ export default class OFilters extends LibraryBaseElement {
   static dependencies = {
     'o-input': OInput,
     'o-select': OSelect,
+    'o-option': OOption,
     'o-switch': OSwitch,
     'o-divider': ODivider,
     'o-button': OButton,
