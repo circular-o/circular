@@ -1,3 +1,10 @@
+## [1.7.1-next.4](https://github.com/circular-o/circular/compare/v1.7.1-next.3...v1.7.1-next.4) (2023-11-29)
+
+### Bug Fixes
+
+- **filters:** adds dependency of o-option ([cd99574](https://github.com/circular-o/circular/commit/cd99574aea07b3276c5d985ad837715156ac2781))
+- **select:** validate when value null/undefined ([0e3f865](https://github.com/circular-o/circular/commit/0e3f86515530f3e7fb450dd3c9b72056b2ae1341))
+
 ## [1.7.1-next.3](https://github.com/circular-o/circular/compare/v1.7.1-next.2...v1.7.1-next.3) (2023-08-14)
 
 ### Bug Fixes
