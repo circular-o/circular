@@ -881,8 +881,8 @@ export default class OSelect extends LibraryBaseElement implements LibraryBaseFo
     const hasHelpTextSlot = this.hasSlotController.test('help-text');
     const hasLabel = this.label ? true : !!hasLabelSlot;
     const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
-    const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
-    const isPlaceholderVisible = this.placeholder && this.value.length === 0;
+    const hasClearIcon = this.clearable && !this.disabled && this.value?.length > 0;
+    const isPlaceholderVisible = this.placeholder && this.value?.length === 0;
 
     // Select the current option after an external change when autocomplete-external is enabled
     this.autocompleteExternalSelectOption();
